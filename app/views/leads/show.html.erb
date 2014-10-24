@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Category:</strong>
+  <%= @lead.category %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @lead.photo %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lead.title %>
+</p>
+
+<p>
+  <strong>Job Posting Url:</strong>
+  <%= @lead.url %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lead.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @lead.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @lead.website %>
+</p>
+
+<p>
+  <strong>Twitter URL:</strong>
+  <%= @lead.twitter %>
+</p>
+
+<p>
+  <strong>Linkedin URL:</strong>
+  <%= @lead.linkedin %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @lead.budget %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @lead.notes %>
+</p>
+
+<%= link_to 'Edit', edit_lead_path(@lead) %> |
+<%= link_to 'Back', leads_path %>

@@ -1,0 +1,68 @@
+
+<html lang="en"> <!--<![endif]-->
+<head>
+<style>
+@media (max-width: 480px) {
+  body p {font-size: 10px;}
+
+}
+
+body {color: #444; font-size:14.5px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; width: 60em; max-width: 100%; margin: auto;}
+h1,h2,h3 {color: #111;}
+h3 a {color: #111; text-decoration: none;}
+p { color: #9f9d99; }
+hr {height:1px; background-color: #D9D3CF; outline:none; border: none;}
+a {color: #3477d3;}
+a:hover {text-decoration: underline; color: #111;}
+a:visited {color: #7C3B7D;}
+ol { }
+li { padding: 0; margin: .85em 0; color: #444; line-height: 1.45em;}
+.head {width: 100%; max-width: 100%; display: table; overflow: none;}
+.leads {padding-left: 0em; display: table; max-width: 100%;}
+.category-wrap {display: table; margin-bottom: 1em; }
+p.category { color: #111; font-size: .78em; font-weight: 900;}
+.lead { display: table; width: 100%; margin-top: 1em;}
+.photo-wrap {width: 40px; height: 40px; border-radius: 40px; margin: 0 .75em .5em 0; float: left; background-color: #FFF;}
+.photo-wrap img {width: 40px; height: 40px; border-radius: 40px;}
+.description {margin-top: 0em;}
+.exclusive { background-color: #f5f3f0; border-radius: 5px;  padding: .5em .5em;}
+.exclusive h3 {margin: 0; line-height: 1.4em; font-size: 18px;}
+.exclusive p {line-height: 1.4em; color: #444; margin: 1em 0;}
+.exclusive strong {color: #B72A22; font-size: 13px;}
+.exclusive span { width:100%; font-weight: bold; font-size: .8em; color: #B72A22; margin: .5em 0;}
+
+
+</style>
+</head>
+<body>
+
+<div class="head">
+<img style="width: 158px; height: 48px;" src="./workshop-logo-nl.png" alt="Workshop">
+<p style="float: right;"><a href="http://workshop.groupbuzz.io/topics">My discussion community</a> | <a href="http://letsworkshop.com/account">My account</a></p>
+</div>
+
+<div class="leads">
+<hr>
+<!--Doesn't change--> 
+
+<% @leads.most_recent.group_by(&:category).each do |category, leads| %>
+  <div class="category-wrap">
+    <p class="category"><%= category %>:</p>
+    <% leads.each do |lead| %>
+    <% puts lead.title %>
+        <div class="lead">
+        <div class="photo-wrap"><img src="<%= lead.photo %>"></div> 
+        <p class="description">
+          <b><a href="<%= lead.url %>"><%= lead.title %></a></b> | Name: <%= lead.name %> | Email: <a href="MAILTO:<%= lead.email %>"><%= lead.email %></a> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: $<%= lead.budget %> <% end %>
+        </p>
+        </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+<hr>
+<p style="font-size:0.8em; text-align: center;">
+<p style="font-size:0.8em;"><unsubscribe style="color: #aaa;">Stop receiving emails</unsubscribe> (this won't cancel your subscription).</small></p>
+</body>
+</html>
