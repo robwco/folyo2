@@ -1,17 +1,20 @@
 <h1>Workshop leads</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
   <tbody>
+    <th>Created Today!</th>
     <% @leads.each do |lead| %>
       <tr>
-
+        <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
+        <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+  <tbody>
+    <th>Old Leads:</th>
+    <% @leads.each do |lead| %>
+      <tr>
         <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
         <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
