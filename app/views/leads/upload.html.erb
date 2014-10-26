@@ -44,7 +44,7 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 <hr>
 <!--Doesn't change--> 
 
-<% @leads.most_recent.group_by(&:category).each do |category, leads| %>
+<% @leads.today.most_recent.group_by(&:category).each do |category, leads| %>
   <div class="category-wrap">
     <p class="category"><%= category %>:</p>
     <% leads.each do |lead| %>

@@ -2,17 +2,17 @@
 
 <table>
   <tbody>
-    <th>Created Today!</th>
-    <% @leads.each do |lead| %>
+    <th><p style="color: #33CC66; font-weight: normal; text-align: left;">Created Today!</p></th>
+    <% @leads.today.each do |lead| %>
       <tr>
         <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
         <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
-  
+
   <tbody>
-    <th>Old Leads:</th>
+    <th><p style="color: #888888; font-weight: normal; text-align: left;">All Leads:</p></th>
     <% @leads.each do |lead| %>
       <tr>
         <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
