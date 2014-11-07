@@ -11,6 +11,7 @@ class LeadsController < ApplicationController
   # GET /leads.json
   def upload
     @leads = Lead.all
+    render layout: false
   end
 
   # GET /leads/1
