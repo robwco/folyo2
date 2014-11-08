@@ -46,21 +46,8 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 <div class="leads">
 <hr>
 <!--Doesn't change--> 
+<%= render 'lead_render' %>
 
-<% @leads.today.most_recent.group_by(&:category).each do |category, leads| %>
-  <div class="category-wrap">
-    <p class="category"><%= category %>:</p>
-    <% leads.each do |lead| %>
-    <% puts lead.title %>
-        <div class="lead">
-        <div class="photo-wrap"><img src="<%= lead.photo %>"></div> 
-        <p class="description">
-          <b><a href="<%= lead.url %>"><%= lead.title %></a></b> | Name: <%= lead.name %> | Email: <a href="MAILTO:<%= lead.email %>"><%= lead.email %></a> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: $<%= lead.budget %> <% end %>
-        </p>
-        </div>
-    <% end %>
-  </div>
-<% end %>
 
 
 <hr>
