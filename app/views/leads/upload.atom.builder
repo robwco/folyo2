@@ -1,7 +1,7 @@
 atom_feed do |feed|
   feed.title "Workshop Leads"
-  feed.updated @leads.maximum(:updated_at, :limit => 1)
-  @leads.each do |lead|
+  feed.updated @leads.maximum(:updated_at)
+  @leads.take(1).each do |lead|
     feed.entry lead do |entry|
   	  entry.title lead.title
   	  entry.author do |author|
