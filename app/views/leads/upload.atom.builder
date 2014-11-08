@@ -7,7 +7,7 @@ atom_feed do |feed|
   	  entry.author do |author|
   	  	author.name lead.name
   	  end
-      entry.content render :partial => 'lead_render.html.erb'
+      entry.content render :partial => 'lead_render.html.erb', :type => 'html'
     end
   end
 end
