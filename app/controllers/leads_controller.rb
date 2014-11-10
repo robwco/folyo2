@@ -74,7 +74,9 @@ class LeadsController < ApplicationController
     def set_lead
       @lead = Lead.find(params[:id])
     end
-
+    def change
+      add_column :images, :image_file_name, :string
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def lead_params
       params.require(:lead).permit(:photo, :title, :url, :name, :email, :website, :twitter, :linkedin, :budget, :notes, :category, :image)
