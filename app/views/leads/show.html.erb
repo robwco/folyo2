@@ -6,6 +6,8 @@
 
 <p>
   <strong>Photo:</strong>
+
+  <%= image_tag @lead.image.url(:thumb, timestamp: false)  %>
   <%= @lead.photo %>
 </p>
 

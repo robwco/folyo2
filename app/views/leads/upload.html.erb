@@ -39,7 +39,7 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 <body>
 
 <div class="head">
-<img style="width: 158px; height: 48px;" src="./workshop-logo-nl.png" alt="Workshop">
+	<%= image_tag "logo.png", alt: "Workshop" %>
 <p><a href="http://workshop.groupbuzz.io/topics">My discussion community</a> | <a href="http://letsworkshop.com/account">My account</a></p>
 </div>
 
@@ -47,9 +47,7 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 <hr>
 <!--Doesn't change--> 
 <%= render 'lead_render' %>
-
-
-
+</div>
 <hr>
 <p style="font-size:0.8em; text-align: center;">
 <p style="font-size:0.8em;"><unsubscribe style="color: #aaa;">Stop receiving emails</unsubscribe> (this won't cancel your subscription).</small></p>
