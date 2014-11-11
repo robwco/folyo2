@@ -14,7 +14,6 @@ class LeadsController < ApplicationController
     render layout: false
   end
 
-
   # GET /leads/1
   # GET /leads/1.json
   def show
