@@ -14,6 +14,20 @@ class LeadsController < ApplicationController
     render layout: false
   end
 
+  # GET /leads
+  # GET /leads.json
+  def upload_design
+    @leads = Lead.all
+    render layout: false
+  end
+
+    # GET /leads
+  # GET /leads.json
+  def upload_development
+    @leads = Lead.all
+    render layout: false
+  end
+
   # GET /leads/1
   # GET /leads/1.json
   def show
