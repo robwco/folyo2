@@ -2,12 +2,6 @@ Rails.application.routes.draw do
   resources :leads
 
   get "/upload" => "leads#upload"
-  match '/upload_development' => 'leads#upload_development',
-      :as => :feed,
-      :defaults => { :format => 'atom' }
-  match '/upload_design' => 'leads#upload_design',
-      :as => :feed,
-      :defaults => { :format => 'atom' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
