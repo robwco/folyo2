@@ -1,7 +1,7 @@
 atom_feed do |feed|
   feed.title "Workshop Design Leads"
   feed.updated @leads.maximum(:updated_at)
-  @leads.take(where(:created_at => (Time.now.beginning_of_day..Time.now)) }).each do |lead|
+  @leads.most_recent.take(1).each do |lead|
     feed.entry lead do |entry|
   	  entry.title lead.title
   	  entry.author do |author|
