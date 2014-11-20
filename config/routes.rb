@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root "pages#home"
+
+  resources :exclusives
+
   resources :leads
 
   get "/upload" => "leads#upload"

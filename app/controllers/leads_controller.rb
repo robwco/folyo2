@@ -5,12 +5,14 @@ class LeadsController < ApplicationController
   # GET /leads.json
   def index
     @leads = Lead.all
+    @exclusives = Exclusive.all
   end
 
   # GET /leads
   # GET /leads.json
   def upload
     @leads = Lead.all
+    @exclusives = Exclusive.all
     render layout: false
   end
 

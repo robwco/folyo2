@@ -1,0 +1,45 @@
+<h1>Listing exclusives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Twitter</th>
+      <th>Linkedin</th>
+      <th>Budget</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exclusives.each do |exclusive| %>
+      <tr>
+        <td><%= exclusive.title %></td>
+        <td><%= exclusive.url %></td>
+        <td><%= exclusive.name %></td>
+        <td><%= exclusive.email %></td>
+        <td><%= exclusive.website %></td>
+        <td><%= exclusive.twitter %></td>
+        <td><%= exclusive.linkedin %></td>
+        <td><%= exclusive.budget %></td>
+        <td><%= exclusive.type %></td>
+        <td><%= exclusive.description %></td>
+        <td><%= exclusive.notes %></td>
+        <td><%= link_to 'Show', exclusive %></td>
+        <td><%= link_to 'Edit', edit_exclusive_path(exclusive) %></td>
+        <td><%= link_to 'Destroy', exclusive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Exclusive', new_exclusive_path %>

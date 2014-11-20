@@ -1,15 +1,13 @@
 <% @leads.today.most_recent.group_by(&:category).each do |category, leads| %>
   <div class="category-wrap">
     <p class="category"><%= category %>:</p>
-    <% leads.each do |lead| %>
-    <% puts lead.title %>
-        <div class="lead">
-        <div class="photo-wrap"><a href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com"><%= image_tag lead.image.url(:thumb, timestamp: false)  %></a></div> 
-        <p class="description">
-          <b><a class="url" href="<%= lead.url %>"><%= lead.title %></a></b>
-           Name: <%= lead.name %> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: $<%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
-           <br><a class="email" href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com">Send Email</a> 
-        </p>
-        </div>
-    <% end %>
+      <% leads.each do |lead| %>
+        <% puts lead.title %>
+          <div class="lead"><div class="photo-wrap"><a href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com"><%= image_tag lead.image.url(:thumb, timestamp: false)  %></a></div>
+            <p class="description"><b><a class="url" href="<%= lead.url %>"><%= lead.title %></a></b> Name: <%= lead.name %> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: $<%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
+              <br><a class="email" href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com">Send Email</a> 
+            </p>
+          </div>
+      <% end %>
+  </div>
 <% end %>

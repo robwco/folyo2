@@ -1,14 +1,45 @@
 
-<%= link_to 'Back to Upload Page', upload_path %>
-<h1>Workshop leads</h1>
+<%= link_to 'Preview Leads Email', upload_path %> | <%= link_to 'Preview Design Leads Email', upload_design_path %> | <%= link_to 'Preview Development Leads Email', upload_development_path %>
+
+<h2>Workshop-exclusive leads <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "emphasis" %></h2>
 <table>
   <tbody>
-    <th><p style="color: #33CC66; font-weight: normal; text-align: left;">Created Today!</p></th>
-    <% @leads.today.each do |lead| %>
+
+    <% @exclusives.today.each do |exclusive| %>
+      <% if exclusive.present? %>
+        <th><p><em>Created Today!</em></p></th>
+        <tr>
+          <td style="padding-right: 2em;"><%= link_to exclusive.title, edit_exclusive_path(exclusive) %></td>
+          <td><%= link_to 'Destroy', exclusive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+  </tbody>
+  <tbody>
+    <th><p style="color: #888888; font-weight: normal; text-align: left;">All Leads:</p></th>
+    <% @exclusives.each do |exclusive| %>
       <tr>
-        <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
-        <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="padding-right: 2em;"><%= link_to exclusive.title, edit_exclusive_path(exclusive) %></td>
+        <td><%= link_to 'Destroy', exclusive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+
+<h2>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "emphasis" %></h2>
+<table>
+  <tbody>
+    <% @leads.today.each do |lead| %>
+      <% if lead.present? %>
+        <th><p><em>Created Today!</em></p></th>
+        <tr>
+          <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
+          <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 
@@ -23,6 +54,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Lead', new_lead_path %>

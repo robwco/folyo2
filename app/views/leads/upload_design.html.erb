@@ -14,7 +14,7 @@ a:visited {color: #735c7c;}
 .head {width: 100%; display: table; overflow: none;}
 .head p, .head img {padding: 10px;}
 .head p {float: right; font-size: .78em;}
-.leads {padding: 15px; display: table; width: 100%; box-sizing: border-box; max-width: 100%;}
+.leads, .footer {padding: 15px; display: table; width: 100%; box-sizing: border-box; max-width: 100%;}
 .category-wrap {display: table; margin: 2em 0; width: 100%;}
 p.category { color: #111; font-size: .78em; font-weight: 900;}
 .lead { display: table; width: 100%; max-width: 100%; margin-top: 1em;}
@@ -42,9 +42,11 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 <!--Doesn't change--> 
 <%= render 'lead_render_design' %>
 </div>
+<div class="footer">
 <hr>
 <p style="font-size:0.8em; text-align: center;">
 <p style="font-size:0.8em;"><unsubscribe style="color: #aaa;">Stop receiving emails</unsubscribe> (this won't cancel your subscription).</small></p>
+</div>
 </body>
 </html>
 
