@@ -1,15 +1,20 @@
+<section class="nav-tab">
+<p>Preview emails: <%= link_to 'All Leads', upload_path %> <%= link_to 'Design Leads', upload_design_path %> <%= link_to 'Development Leads', upload_development_path %></p>
+</section>
 
-<%= link_to 'Preview Leads Email', upload_path %> | <%= link_to 'Preview Design Leads Email', upload_design_path %> | <%= link_to 'Preview Development Leads Email', upload_development_path %>
 
-<h2>Workshop-exclusive leads <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "emphasis" %></h2>
+<section class="loose-wrap">
+<!-- <%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>  -->
+
+
+<h1>Workshop-exclusive leads <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "emphasis" %></h1>
 <table>
   <tbody>
 
     <% @exclusives.today.each do |exclusive| %>
       <% if exclusive.present? %>
-        <th><p><em>Created Today!</em></p></th>
         <tr>
-          <td style="padding-right: 2em;"><%= link_to exclusive.title, edit_exclusive_path(exclusive) %></td>
+          <td style="padding-right: 2em;"><span style="color: #19963C; font-size: 14px; font-weight: 500;">Created Today!</span> <%= link_to exclusive.title, edit_exclusive_path(exclusive) %></td>
           <td><%= link_to 'Destroy', exclusive, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
@@ -29,14 +34,13 @@
 <br>
 
 
-<h2>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "emphasis" %></h2>
+<h1>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "emphasis" %></h1>
 <table>
   <tbody>
     <% @leads.today.each do |lead| %>
       <% if lead.present? %>
-        <th><p><em>Created Today!</em></p></th>
         <tr>
-          <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
+          <td style="padding-right: 2em;"><span style="color: #19963C; font-size: 14px; font-weight: 500;">Created Today!</span> <%= link_to lead.title, edit_lead_path(lead) %></td>
           <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
@@ -53,4 +57,4 @@
     <% end %>
   </tbody>
 </table>
-
+</section>
