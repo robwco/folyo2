@@ -1,18 +1,18 @@
 <% @exclusives.today.most_recent.each do |exclusive| %>
-      <div class="exclusive">
-          <span class="details">
-            <h3>Workshop Exclusive</h3><Br>
-            <p><strong>Project Type:</strong> <%= exclusive.category %></p> 
-            <p><strong>Budget:</strong> $<%= exclusive.budget %></p>
-            <p><a href="<% exclusive.website %>">Website</a></p>
-          </span>
-        <h1><%= exclusive.title %></h1>
-        <p><%= h(exclusive.description).gsub(/\n/, '<br/>').html_safe %></p>
-          <p>– <%= exclusive.name %></p>
-          <a class="email" href="MAILTO:<%= exclusive.email %>">Email me</a>
-          <br>
-      </div>
+  <div class="exclusive">
+    <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
+    <h1><%= exclusive.title %></h1>
+    <h2><%= exclusive.category %></h2>
+    <strong>Company:</strong> <a href="<% exclusive.website %>"><%= exclusive.website %></a><br>
+    <strong>Budget:</strong> $<%= exclusive.budget %><br>
+    <strong>Name:</strong> <%= exclusive.name %></p>
+    <p><strong>Description</strong><br>
+    <%= h(exclusive.description).gsub(/\n/, '<br/>').html_safe %></p>
+    <p><strong>To apply</strong><br>
+    <a class="email" href="MAILTO:<%= exclusive.email %>"><%= exclusive.email %></a></p>
+    <h4>This lead is only shown to Workshop members, so you have a great chance of landing it.</h4>
     <hr>
+  </div>
 <% end %>
 
 <% @leads.today.most_recent.group_by(&:category).each do |category, leads| %>
@@ -21,7 +21,7 @@
       <% leads.each do |lead| %>
         <% puts lead.title %>
           <div class="lead"><div class="photo-wrap"><a href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com"><%= image_tag lead.image.url(:thumb, timestamp: false)  %></a></div>
-            <p class="description"><b><a class="url" href="<%= lead.url %>"><%= lead.title %></a></b> Name: <%= lead.name %> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: $<%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
+            <p class="description"><b><a class="url" href="<%= lead.url %>"><%= lead.title %></a></b> Name: <%= lead.name %> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: <%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
               <br><a class="email" href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com">Send Email</a> 
             </p>
           </div>

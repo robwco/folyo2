@@ -56,7 +56,7 @@ class ExclusivesController < ApplicationController
   def destroy
     @exclusive.destroy
     respond_to do |format|
-      format.html { redirect_to exclusives_url, notice: 'Exclusive was successfully destroyed.' }
+      format.html { redirect_to leads_url, notice: 'Exclusive was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ExclusivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exclusive_params
-      params.require(:exclusive).permit(:title, :url, :name, :email, :website, :twitter, :linkedin, :budget, :category, :description, :notes)
+      params.require(:exclusive).permit(:title, :url, :name, :email, :website, :twitter, :linkedin, :budget, :category, :description, :notes, :pic)
     end
 end

@@ -20,6 +20,7 @@ class LeadsController < ApplicationController
   # GET /leads.json
   def upload_design
     @leads = Lead.all
+    @exclusives = Exclusive.all
     render layout: false
   end
 
@@ -27,6 +28,7 @@ class LeadsController < ApplicationController
   # GET /leads.json
   def upload_development
     @leads = Lead.all
+    @exclusives = Exclusive.all
     render layout: false
   end
 

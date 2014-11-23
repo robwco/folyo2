@@ -22,7 +22,7 @@
 
   </tbody>
   <tbody>
-    <th><p style="color: #888888; font-weight: normal; text-align: left;">All Leads:</p></th>
+    <th><p style="color: #888888; font-weight: normal; text-align: left;"><br>All Workshop-Exclusive Leads:</p></th>
     <% @exclusives.each do |exclusive| %>
       <tr>
         <td style="padding-right: 2em;"><%= link_to exclusive.title, edit_exclusive_path(exclusive) %></td>
@@ -48,7 +48,7 @@
   </tbody>
 
   <tbody>
-    <th><p style="color: #888888; font-weight: normal; text-align: left;">All Leads:</p></th>
+    <th><p style="color: #888888; font-weight: normal; text-align: left;"><br>All Leads:</p></th>
     <% @leads.each do |lead| %>
       <tr>
         <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
