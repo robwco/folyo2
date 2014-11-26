@@ -1,20 +1,27 @@
-<section class="nav-tab">
-<p style="text-align: right;"><%= link_to 'Popular Resources', upload_path %> <%= link_to 'Find Someone', upload_design_path %> <%= link_to 'Sign in', upload_development_path %></p>
+<section class="nav tab">
+<p style="text-align: right;"><%= link_to 'Popular Resources', upload_path %> <%= link_to 'Find a Freelancer', upload_design_path %></p>
 </section>
+<section class="nav fixed">
+	<%= link_to 'Help / FAQ', upload_path %>
+</section>
+
+<%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %> <p class="tagline">I send people who need websites your way. This week alone I've sent <span>$<%= number_with_delimiter(@leads.this_week.map{ |lead| lead.budget.to_i }.reduce(:+), :delimiter => ',') %></span> worth of work.</p>
+
 <section class="loose-wrap"  style="text-align: center;">
+<%= image_tag("workshop-freelancer.png") %>
 
-<%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %> <p>People who need websites sent to your inbox.</p>
+<h1 style="margin: .5em auto;">The only thing better than wrapping up a project is having a new one fall into your lap (or inbox). </h1>
 
-<h1>The only thing better than wrapping up a client project is having the next one fall into your lap (or inbox).</h1>
+<p>Try Workshop free! Get 10 of my latest freelance leads sent to your inbox right now.</p>
 
-<p>Try it for free. Sign up here and I'll send you 10 people who are looking for someone like you to improve their website.</p>
-
-<input type="text">
-<input type="text">
-<input type="submit">
+<form class="drip-opt-in" action="https://www.getdrip.com/forms/9298754/submissions" method="post" target="_blank" data-drip-embedded-form="1306">
+    <input type="email" class="sample" name="fields[email]" value="" placeholder="Your email" /><br>
+    <input type="submit" class="sample" name="submit" value="Send me 10 people that need a website" data-drip-attribute="sign-up-button" />
+</form>
 </section>
 
-<section class="tight-wrap">
+<section class="reading-wrap">
+<hr>
 <h2>Thousands of businesses are looking for someone like you to build their website, so why surrender to dry spells?</h2>
 
 <p>Because it's not always easy to find them – especially when you're already working too much. Doing lead generation on top of a million other things sucks. Checking job boards every day – or worse: elance – just isn't the best use of your time. You want to do the work you love, not search for it.</p>
@@ -34,23 +41,39 @@
 <p>If overnight you just stopped wasting your time looking for leads and got them sent to you instead. If you could simply reply to people and projects you were excited to work for, straight from your inbox. If it took minutes (instead of hours) to fill your sales pipeline each morning and you focused almost exclusively on billable work – yet still had a constant stream of sales activity.</p>
 
 <p>What then? Would you add that extra feature to your client's project and blow them away? Or would you use the free time to go on a walk and clear your head? Or maybe work on that side-project you've been itching to build?</p>
+</section>
 
+<section class="loose-wrap">
+<div class="ruben" style="margin: 6em 0;">
+<%= image_tag("ruben.png", :style => "margin: -5em 0 0 0; width:20em; float: right;") %>
+<h1 style="margin-top: -.5em; text-align:center;">&rdquo;Totally a no-brainer for most freelancers.&ldquo;</h1>
+<p style="text-align: center; padding-bottom: 1em;">– Ruben Gamez, Founder of <%= image_tag("bidsketch.png", :style => "width:6em;") %></p>
+</div>
+</section>
+
+<section class="reading-wrap">
 <h1>Let me send you the best remote freelance leads on the web.</h1>
 
 <p>I've designed the service I'm describing for people like you, and I've made it very affordable on purpose. From the day you sign up you'll have the highest quality leads on the web, pre-qualified and sorted into your inbox so that they're easy to scan in minutes. If you reach out to a few of these opportunities every day you'll make thousands of dollars.</p>
-
+</section>
+<section class="loose-wrap"  style="text-align: center; padding: 0 0 3em 0;">
 <h2>This is what an email from me looks like:</h2>
+<%= image_tag('workshop-email.png', :style => "width:100%;") %>
 
-<h3>Plus you also get access to a community of freelancers and consultants ready to help you. <a href="/images/marketing/package-forum.png">Take a look.</a></h3>
+<h3 style="text-align: left; width: 38em; margin: 1em auto auto auto;">
+<%= image_tag('theshedplus.png', :align => "left", :style => "vertical-align: 1em; margin-right:1em; display:inline-block; ") %> Plus you also get access to a community of freelancers and consultants just like you. <a href="https://www.dropbox.com/s/ttuucm6bv12lsoh/package-forum.png?dl=0">Take a look.</a></h3>
 
 <h1>All for about 30¢ per lead</h1>
 
-<p>12 payments of $64/month</p>
+<p>You pay $64/month</p>
 
 <a href="https://workshop.memberful.com/orders/new?plan=1775"><input type="submit" name="submit" value="SEND ME OVER 2400 LEADS PER YEAR" data-drip-attribute="sign-up-button"></a>
 
-<p><a href="https://workshop.memberful.com/orders/new?plan=1798">Save $180 when you pay in full</a></p>
+<p><a href="https://workshop.memberful.com/orders/new?plan=1798">Save $180 when you pay yearly</a></p>
+</section>
 
+<section class="reading-wrap">
+<hr>
 <h1>There's zero risk for the first 30 days. Get over 200 great leads for free.</strong></h1>
 
 <p>Like you, I know there are a ton of businesses who will benefit from working with me. That's why I'm making it a no-brainer by offering you a full refund if you're not completely blown away in the first thirty days.</p>
