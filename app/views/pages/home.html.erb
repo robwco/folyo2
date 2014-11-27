@@ -1,11 +1,13 @@
 <section class="nav tab">
 <p style="text-align: right;"><%= link_to 'Popular Resources', upload_path %> <%= link_to 'Find a Freelancer', upload_design_path %></p>
 </section>
+
 <section class="nav fixed">
 	<%= link_to 'Help / FAQ', upload_path %>
 </section>
 
-<%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %> <p class="tagline">I send people who need websites your way. This week alone I've sent <span>$<%= number_with_delimiter(@leads.this_week.map{ |lead| lead.budget.to_i }.reduce(:+), :delimiter => ',') %></span> worth of work.</p>
+<%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>
+<p class="tagline">I send people who need websites your way. This week alone I've sent more than <span>$<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %></span> worth of work.</p>
 
 <section class="loose-wrap"  style="text-align: center;">
 <%= image_tag("workshop-freelancer.png") %>
@@ -15,8 +17,9 @@
 <p>Try Workshop free! Get 10 of my latest freelance leads sent to your inbox right now.</p>
 
 <form class="drip-opt-in" action="https://www.getdrip.com/forms/9298754/submissions" method="post" target="_blank" data-drip-embedded-form="1306">
-    <input type="email" class="sample" name="fields[email]" value="" placeholder="Your email" /><br>
-    <input type="submit" class="sample" name="submit" value="Send me 10 people that need a website" data-drip-attribute="sign-up-button" />
+
+<input type="email" class="sample" name="fields[email]" value="" placeholder="Your email" /><br>
+<input type="submit" class="sample" name="submit" value="Send me 10 people that need a website" data-drip-attribute="sign-up-button" />
 </form>
 </section>
 
@@ -45,9 +48,13 @@
 
 <section class="loose-wrap">
 <div class="ruben" style="margin: 6em 0;">
+
 <%= image_tag("ruben.png", :style => "margin: -5em 0 0 0; width:20em; float: right;") %>
+
 <h1 style="margin-top: -.5em; text-align:center;">&rdquo;Totally a no-brainer for most freelancers.&ldquo;</h1>
+
 <p style="text-align: center; padding-bottom: 1em;">– Ruben Gamez, Founder of <%= image_tag("bidsketch.png", :style => "width:6em;") %></p>
+
 </div>
 </section>
 
@@ -55,8 +62,10 @@
 <h1>Let me send you the best remote freelance leads on the web.</h1>
 
 <p>I've designed the service I'm describing for people like you, and I've made it very affordable on purpose. From the day you sign up you'll have the highest quality leads on the web, pre-qualified and sorted into your inbox so that they're easy to scan in minutes. If you reach out to a few of these opportunities every day you'll make thousands of dollars.</p>
+
 </section>
-<section class="loose-wrap"  style="text-align: center; padding: 0 0 3em 0;">
+
+<section style="margin: auto; max-width: 1050px; text-align: center; padding: 0 0 3em 0;">
 <h2>This is what an email from me looks like:</h2>
 <%= image_tag('workshop-email.png', :style => "width:100%;") %>
 
