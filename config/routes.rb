@@ -5,9 +5,11 @@ Rails.application.routes.draw do
 
   resources :leads
 
+  get "/connect" => "exclusives#connect"
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
+  get "successful_order" => "pages#successful_order"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

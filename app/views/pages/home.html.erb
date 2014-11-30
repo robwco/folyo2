@@ -1,11 +1,11 @@
 <section class="nav tab">
-<p style="text-align: right;"><%= link_to 'Popular Resources', upload_path %> <%= link_to 'Find a Freelancer', upload_design_path %></p>
+<p style="text-align: right;"><!--<%= link_to 'Popular Resources', upload_path %>--> <%= link_to 'Find a Freelancer', connect_path %></p>
 </section>
-
+<!--
 <section class="nav fixed">
 	<%= link_to 'Help / FAQ', upload_path %>
 </section>
-
+-->
 <%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>
 <p class="tagline">I send people who need websites your way. This week alone I've sent more than <span>$<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %></span> worth of work.</p>
 

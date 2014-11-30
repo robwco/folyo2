@@ -12,7 +12,11 @@ class ExclusivesController < ApplicationController
   def show
   end
 
-  # GET /exclusives/new
+  # GET /exclusives/connect
+  def connect
+    @exclusive = Exclusive.new
+  end  # GET /exclusives/new
+
   def new
     @exclusive = Exclusive.new
   end
