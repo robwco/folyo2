@@ -15,6 +15,12 @@ class LeadsController < ApplicationController
     render layout: false
   end
 
+  def onboard
+    @leads = Lead.all
+    @exclusives = Exclusive.all
+  end
+
+
   # GET /leads
   # GET /leads.json
   def upload_design

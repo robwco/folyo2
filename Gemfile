@@ -15,3 +15,4 @@ gem 'spring',        group: :development
 gem 'rails_12factor'
 gem 'unicorn'
 gem 'aws-sdk', '~> 1.16.1'
+gem 'bcrypt-ruby'
