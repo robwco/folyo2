@@ -32,7 +32,7 @@ class ExclusivesController < ApplicationController
 
     respond_to do |format|
       if @exclusive.save
-        format.html { redirect_to @exclusive, notice: 'Exclusive was successfully created.' }
+        format.html { redirect_to @exclusive, notice: "Cool! You're all set." }
         format.json { render :show, status: :created, location: @exclusive }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class ExclusivesController < ApplicationController
   def update
     respond_to do |format|
       if @exclusive.update(exclusive_params)
-        format.html { redirect_to @exclusive, notice: 'Exclusive was successfully updated.' }
+        format.html { redirect_to @exclusive, notice: 'Your project was successfully updated. ' }
         format.json { render :show, status: :ok, location: @exclusive }
       else
         format.html { render :edit }
