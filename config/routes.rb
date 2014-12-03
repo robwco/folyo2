@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
   get "/successful_order" => "pages#successful_order"
-  get "/people" => "pages#people_product_test"
   get "/successful_featured" => "exclusives#success"
+  get "/onboard" => "leads#onboard"
   get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

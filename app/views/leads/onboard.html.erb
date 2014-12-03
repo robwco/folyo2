@@ -1,6 +1,6 @@
 <style>
 html, body, div {max-width: 100%;}
-body {color: #444; font-size:14.5px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; width: 55em; max-width: 100%; margin: auto;}
+body {color: #444; font-size:14.5px; line-height: 18px; width: 55em; max-width: 100%; margin: auto;}
 h1,h2,h3 {color: #111; line-height: 1.2em;}
 .leads h2 {font-weight: normal; font-size: 1.2em;}
 h3 a {color: #111; text-decoration: none;}
@@ -29,8 +29,9 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 
 
 <section class="reading-wrap">
-<h1 style="margin: 1em 0 0 0;">Welcome inside Workshop!</h1> 
-<p style="margin: .5em 0 1em 0;">You picked a beautiful day to join! Here are the most recent Workshop leads. All of these people were recently looking for a freelancer just like you:</p>
+<h1 style="margin: 1em 0 0 0;">So, today's the day! Welcome inside.</h1>
+<p class="note" style="margin: .5em 0 1em 0;">You picked a beautiful day to join Workshop! Here are the most recent Workshop leads. All of these people were recently looking for a freelancer just like you:</p>
+<hr>
 <div class="leads">
 <% @exclusives.recent_onboard.most_recent.each do |exclusive| %>
   <div class="exclusive">
@@ -56,7 +57,7 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
         <% puts lead.title %>
           <div class="lead"><div class="photo-wrap"><a href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com"><%= image_tag lead.image.url(:thumb, timestamp: false)  %></a></div>
             <p class="description"><b><a class="url" href="<%= lead.url %>"><%= lead.title %></a></b> Name: <%= lead.name %> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: <%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
-              <br><a class="email" href="MAILTO:<%= lead.email %>"><%= lead.email %></a> 
+              <br><a class="email" href="MAILTO:<%= lead.email %>"><%= lead.email %></a>
             </p>
           </div>
       <% end %>
@@ -66,7 +67,7 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 
 <section style="margin: 0 0 5em 0;">
 <h2>Please note:</h2>
-<p>If you showed up to this page somehow and don't know what Workshop is, this is a paid service. I've decided to do it this way to make it easy for my new subscribers. Please learn more about my service <%= link_to 'Workshop', root_path %>.</p>
+<p>If you showed up to this page somehow and don't know what Workshop is, please note it's a paid service. I charge people for this content. Please learn more about my service <%= link_to 'Workshop', root_path %>.</p>
 </section>
 
 </section>
