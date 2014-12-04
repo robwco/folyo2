@@ -34,6 +34,7 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 .name a:hover {text-decoration: underline;}
 .name span a { font-size: 12px; color: #888;}
 .name span.space {text-decoration: none;}
+.exclusive h4 {font-size: 13px;}
 .category { font-weight: 800; font-size: 10px; letter-spacing: .05em; background-color: #F5F3F0; width: 100%; padding: 1em 1.5em; box-sizing: border-box; margin: 0; border-top: 1px solid #D9D3CF;}
 .category-wrap { margin: 0; padding: 0; }
 .photo-wrap {width: 40px; height: 40px; border-radius: 40px; float: left; background-color: #FFF; margin: 0 1em 0 0;}
@@ -48,13 +49,14 @@ a.url:hover {text-decoration: underline; color: #7191bc;}
 .icons a:hover {color: #111;}
 </style>
 
-<section class="reading-wrap">
+<section class="reading-wrap" style="width:48em;">
 <h1 style="margin: 1em 0 0 0;">So, today's the day! Welcome inside.</h1>
 <p class="note" style="margin: .5em 0 1em 0;">You picked a beautiful day to join Workshop! Here are the most recent Workshop leads. All of these people were recently looking for a freelancer just like you:</p>
-<hr>
+
 <div class="leads">
 <% @exclusives.recent_onboard.most_recent.each do |exclusive| %>
   <div class="exclusive">
+    <hr>
     <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
     <h1><%= exclusive.title %></h1>
     <h2><%= exclusive.category %></h2>
@@ -66,7 +68,6 @@ a.url:hover {text-decoration: underline; color: #7191bc;}
     <p><strong>To apply</strong><br>
     <a class="email" href="MAILTO:<%= exclusive.email %>"><%= exclusive.email %></a></p>
     <h4>This lead is only shown to Workshop members, so you have a great chance of landing it.</h4>
-    <hr>
   </div>
 <% end %>
 
