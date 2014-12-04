@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<opml version="1.0">
+    <head>
+        <title>Robert subscriptions in feedly Cloud</title>
+    </head>
+    <body>
+        <outline type="rss" text="Smashing Jobs" title="Smashing Jobs" xmlUrl="http://feeds.feedburner.com/smjobs" htmlUrl="http://jobs.smashingmagazine.com/rss/all/all"/>
+        <outline type="rss" text="AuthenticJobs.com Job Listings" title="AuthenticJobs.com Job Listings" xmlUrl="http://www.authenticjobs.com/rss/custom.php?terms=&amp;type=3,2,6&amp;cats=&amp;onlyremote=1&amp;location=" htmlUrl="http://www.authenticjobs.com"/>
+        <outline type="rss" text="Dribbble / Jobs" title="Dribbble / Jobs" xmlUrl="http://dribbble.com/jobs.rss" htmlUrl="https://dribbble.com/jobs"/>
+        <outline type="rss" text="Tuts+ Jobs RSS Feed" title="Tuts+ Jobs RSS Feed" xmlUrl="https://jobs.tutsplus.com/jobs.rss?employment_type=contract&amp;anywhere=true" htmlUrl="https://jobs.tutsplus.com/"/>
+        <outline type="rss" text="WWR: Programming Jobs" title="WWR: Programming Jobs" xmlUrl="https://weworkremotely.com/categories/2/jobs.rss" htmlUrl="https://weworkremotely.com/categories/2/jobs.rss"/>
+        <outline type="rss" text="WWR: Design Jobs" title="WWR: Design Jobs" xmlUrl="https://weworkremotely.com/categories/1/jobs.rss" htmlUrl="https://weworkremotely.com/categories/1/jobs.rss"/>
+        <outline type="rss" text="WPhired" title="WPhired" xmlUrl="http://feeds.feedburner.com/wphired" htmlUrl="http://www.wphired.com"/>
+        <outline type="rss" text="Behance JobList" title="Behance JobList" xmlUrl="http://feeds.feedburner.com/BehanceNetworkJoblist" htmlUrl="http://www.behance.net/joblist"/>
+        <outline type="rss" text="RFP Blogspot" title="RFP Blogspot" xmlUrl="http://webservicesrfp.blogspot.com/feeds/posts/default" htmlUrl="http://webservicesrfp.blogspot.com/"/>
+        <outline type="rss" text="Twitter 'freelance developer'" title="Twitter 'freelance developer'" xmlUrl="http://www.queryfeed.net/twitter?q=freelance+developer+email&amp;geocode=" htmlUrl="http://www.queryfeed.net"/>
+        <outline type="rss" text="Twitter 'freelance designer email'" title="Twitter 'freelance designer email'" xmlUrl="http://www.queryfeed.net/twitter?q=freelance+designer+email&amp;geocode=" htmlUrl="http://www.queryfeed.net"/>
+        <outline type="rss" text="Twitter 'web dev rfp'" title="Twitter 'web dev rfp'" xmlUrl="http://www.queryfeed.net/twitter?q=web+development+rfp&amp;geocode=" htmlUrl="http://www.queryfeed.net"/>
+        <outline type="rss" text="Motionographer Jobs" title="Motionographer Jobs" xmlUrl="http://feeds.feedburner.com/motionographer/zLzp" htmlUrl="http://motionographer.com/jobs"/>
+        <outline type="rss" text="Drupal Jobs" title="Drupal Jobs" xmlUrl="http://groups.drupal.org/jobs/feed" htmlUrl="https://groups.drupal.org/jobs?group_nid=All&amp;keys=&amp;field_type_value_many_to_one=All&amp;field_telecommute_value_many_to_one=All"/>
+        <outline type="rss" text="djangogigs.com" title="djangogigs.com" xmlUrl="http://djangogigs.com/feeds/gigs/" htmlUrl="https://djangogigs.com//"/>
+        <outline type="rss" text="Top Ruby Jobs" title="Top Ruby Jobs" xmlUrl="https://toprubyjobs.com/jobs.atom" htmlUrl="https://toprubyjobs.com/jobs"/>
+        <outline type="rss" text="Railsjob.com" title="Railsjob.com" xmlUrl="http://feeds.feedburner.com/railsjob" htmlUrl="http://railsjob.com/"/>
+        <outline type="rss" text="Stackoverflow “freelance”" title="Stackoverflow “freelance”" xmlUrl="http://careers.stackoverflow.com/jobs/feed?searchTerm=freelance&amp;allowsremote=True" htmlUrl="http://careers.stackoverflow.com/jobs"/>
+        <outline type="rss" text="WordPress Jobs 'Design'" title="WordPress Jobs 'Design'" xmlUrl="http://jobs.wordpress.net/job_category/design/feed/" htmlUrl="http://jobs.wordpress.net"/>
+        <outline type="rss" text="WordPress 'general'" title="WordPress 'general'" xmlUrl="http://jobs.wordpress.net/job_category/general/feed/" htmlUrl="http://jobs.wordpress.net"/>
+        <outline type="rss" text="Railsjobbers.com" title="Railsjobbers.com" xmlUrl="http://railsjobbers.com/rss/" htmlUrl="http://railsjobbers.com"/>
+        <outline type="rss" text="Djangojobbers.com" title="Djangojobbers.com" xmlUrl="http://djangojobbers.com/rss/" htmlUrl="http://djangojobbers.com"/>
+        <outline type="rss" text="Remojobo" title="Remojobo" xmlUrl="http://www.remojobo.com/feed/" htmlUrl="http://www.remojobo.com"/>
+        <outline type="rss" text="Krop" title="Krop" xmlUrl="http://www.krop.com/services/feeds/rss/latest/" htmlUrl="http://www.krop.com/"/>
+        <outline type="rss" text="CL SD 'freelance web developer'" title="CL SD 'freelance web developer'" xmlUrl="http://sandiego.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20developer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://sandiego.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20developer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL SD 'freelance designer'" title="CL SD 'freelance designer'" xmlUrl="http://sandiego.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20designer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://sandiego.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20designer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL LA 'freelance designer'" title="CL LA 'freelance designer'" xmlUrl="http://losangeles.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20designer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://losangeles.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20designer&amp;amp;sort=rel"/>
+        <outline type="rss" text="SF 'freelance designer'" title="SF 'freelance designer'" xmlUrl="http://sfbay.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20designer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://sfbay.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20designer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL SF 'freelance developer'" title="CL SF 'freelance developer'" xmlUrl="http://sfbay.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20developer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://sfbay.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20developer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL CHI 'freelance designer'" title="CL CHI 'freelance designer'" xmlUrl="http://chicago.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20designer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://chicago.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20designer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL CHI 'freelance developer'" title="CL CHI 'freelance developer'" xmlUrl="http://chicago.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20developer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://chicago.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20developer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL PHI 'freelance designer'" title="CL PHI 'freelance designer'" xmlUrl="http://philadelphia.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20designer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://philadelphia.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20designer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL PHI 'freelance developer'" title="CL PHI 'freelance developer'" xmlUrl="http://philadelphia.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20developer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://philadelphia.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20developer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL AUSTIN 'freelance design'" title="CL AUSTIN 'freelance design'" xmlUrl="http://austin.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20design&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://austin.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20design&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL Austin 'freelance developer'" title="CL Austin 'freelance developer'" xmlUrl="http://austin.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20developer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://austin.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20developer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL NYC 'freelance design'" title="CL NYC 'freelance design'" xmlUrl="http://newyork.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20designer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://newyork.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20designer&amp;amp;sort=rel"/>
+        <outline type="rss" text="CL NYC 'freelance developer'" title="CL NYC 'freelance developer'" xmlUrl="http://newyork.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20developer&amp;s=0&amp;sort=rel&amp;format=rss" htmlUrl="http://newyork.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20developer&amp;amp;sort=rel"/>
+        <outline type="rss" text="Node.js Jobs" title="Node.js Jobs" xmlUrl="http://jobs.nodejs.org/a/jbb/find-jobs-rss" htmlUrl="http://jobs.nodejs.org/a/jbb/find-jobs"/>
+        <outline type="rss" text="NodeJobs.com" title="NodeJobs.com" xmlUrl="http://www.nodejobs.com/feed/rss" htmlUrl="http://www.nodejobs.com"/>
+        <outline type="rss" text="PHP Telecommute" title="PHP Telecommute" xmlUrl="http://www.phpjobs.com/php-telecommute/feeds/rss20" htmlUrl="http://www.phpjobs.com/php-telecommute/"/>
+        <outline type="rss" text="SPD Job Board" title="SPD Job Board" xmlUrl="http://www.spd.org/job-board/atom.xml" htmlUrl="http://www.spd.org/job-board/"/>
+        <outline type="rss" text="JS Ninja" title="JS Ninja" xmlUrl="http://jobs.jsninja.com/a/jbb/find-jobs-rss?sb=1&amp;sbo=1" htmlUrl="http://jobs.jsninja.com/a/jbb/find-jobs"/>
+        <outline type="rss" text="PHP Jobs" title="PHP Jobs" xmlUrl="http://www.phpjobs.com/search?d=1&amp;distance=50&amp;country_code=us&amp;job_group_ids[14131]=1&amp;sort_by=date&amp;search=1&amp;format=rss20" htmlUrl="http://www.phpjobs.com/"/>
+        <outline type="rss" text="CL Seattle Freelance Design" title="CL Seattle Freelance Design" xmlUrl="http://seattle.craigslist.org/search/jjj?catAbb=jjj&amp;is_telecommuting=1&amp;query=freelance%20design&amp;s=0&amp;format=rss" htmlUrl="http://seattle.craigslist.org/search/jjj?is_telecommuting=1&amp;amp;query=freelance%20design"/>
+        <outline type="rss" text="UX Jobs Board" title="UX Jobs Board" xmlUrl="http://www.uxjobsboard.com/feed/" htmlUrl="http://www.uxjobsboard.com"/>
+        <outline type="rss" text="UX Magazine Jobs" title="UX Magazine Jobs" xmlUrl="http://uxmag.com/uxjobs/rss/feed.xml" htmlUrl="http://uxmag.com/uxjobs/rss/feed.xml"/>
+        <outline type="rss" text="Usability News: Jobs" title="Usability News: Jobs" xmlUrl="http://usabilitynews.bcs.org/server.php?controller=rss&amp;source=block&amp;id=6585" htmlUrl="http://usabilitynews.bcs.org/"/>
+        <outline type="rss" text="justUXjobs" title="justUXjobs" xmlUrl="http://www.justuxjobs.com/rss/all/" htmlUrl="http://www.justuxjobs.com/"/>
+        <outline type="rss" text="Boxes And Arrows Jobs Listing" title="Boxes And Arrows Jobs Listing" xmlUrl="http://feeds.feedburner.com/BoxesAndArrowsJobs" htmlUrl="http://jobs.boxesandarrows.com/jobs"/>
+        <outline type="rss" text="HypepotamusFreelance Archives » Hyp..." title="HypepotamusFreelance Archives » Hyp..." xmlUrl="http://www.hypepotamus.com/?feed=job_feed&amp;type=freelance,part-time&amp;location&amp;job_categories&amp;s" htmlUrl="http://www.hypepotamus.com"/>
+        <outline type="rss" text="ExpressionEngine Job Board" title="ExpressionEngine Job Board" xmlUrl="http://feeds.feedburner.com/Director-eeJobBoard" htmlUrl="http://director-ee.com/jobs"/>
+        <outline type="rss" text="LaraJobs" title="LaraJobs" xmlUrl="https://larajobs.com/feed" htmlUrl="http://larajobs.com"/>
+        <outline type="rss" text="We Love AngularJS jobs" title="We Love AngularJS jobs" xmlUrl="http://www.weloveangular.com/jobs/feed.atom" htmlUrl="http://www.weloveangular.com"/>
+        <outline type="rss" text="Jobs allowing remote work" title="Jobs allowing remote work" xmlUrl="http://careers.stackoverflow.com/jobs/feed?allowsremote=True" htmlUrl="http://careers.stackoverflow.com/jobs"/>
+        <outline type="rss" text="Genuinejobs.com" title="Genuinejobs.com" xmlUrl="http://www.genuinejobs.com/feed/" htmlUrl="http://www.genuinejob.com"/>
+        <outline type="rss" text="WFH.io Remote Software Development Jobs" title="WFH.io Remote Software Development Jobs" xmlUrl="https://www.wfh.io/jobs/category/1/jobs.atom" htmlUrl="https://www.wfh.io"/>
+        <outline type="rss" text="Core Intuition" title="Core Intuition" xmlUrl="http://jobs.coreint.org/rss.xml" htmlUrl="http://jobs.coreint.org/"/>
+        <outline type="rss" text="Startup Jobs" title="Startup Jobs" xmlUrl="https://marsjobs.net/jobs/feed" htmlUrl="https://marsjobs.net"/>
+        <outline type="rss" text="Ruby and Rails jobs" title="Ruby and Rails jobs" xmlUrl="http://jobs.rubynow.com/rss/feed.xml" htmlUrl="http://jobs.rubynow.com/jobs"/>
+        <outline type="rss" text="Telecommute jobs - Jobs You can do from Home" title="Telecommute jobs - Jobs You can do from Home" xmlUrl="http://telecommutejobs.biz/feed/" htmlUrl="http://telecommutejobs.biz"/>
+        <outline type="rss" text="Job Postings from Coroflot.com" title="Job Postings from Coroflot.com" xmlUrl="http://feeds.feedburner.com/coroflot/AllJobs" htmlUrl="http://www.coroflot.com"/>
+        <outline type="rss" text="Jobmote - Telecommute jobs" title="Jobmote - Telecommute jobs" xmlUrl="http://jobmote.com/feed.rss" htmlUrl="http://jobmote.com/feed.rss?utm_source=feed&amp;utm_medium=feed&amp;utm_campaign=RSS"/>
+        <outline type="rss" text="Freelance Jobs" title="Freelance Jobs" xmlUrl="http://www.freelancejobopenings.com/feeds/rss20" htmlUrl="http://www.freelancejobopenings.com/"/>
+        <outline type="rss" text="Freelance jobs" title="Freelance jobs" xmlUrl="http://www.simplyhired.com/a/jobs/rss/q-freelance" htmlUrl="http://www.simplyhired.com/k-freelance-jobs.html"/>
+        <outline type="rss" text="Job offers from javascript.jobbersnet.com" title="Job offers from javascript.jobbersnet.com" xmlUrl="http://javascript.jobbersnet.com/rss/" htmlUrl="http://javascript.jobbersnet.com"/>
+        <outline type="rss" text="Job offers from android.jobbersnet.com" title="Job offers from android.jobbersnet.com" xmlUrl="http://android.jobbersnet.com/rss/" htmlUrl="http://android.jobbersnet.com"/>
+        <outline type="rss" text="Job offers from ios.jobbersnet.com" title="Job offers from ios.jobbersnet.com" xmlUrl="http://ios.jobbersnet.com/rss/" htmlUrl="http://ios.jobbersnet.com"/>
+        <outline type="rss" text="Job offers from php.jobbersnet.com" title="Job offers from php.jobbersnet.com" xmlUrl="http://php.jobbersnet.com/rss/" htmlUrl="http://php.jobbersnet.com"/>
+        <outline type="rss" text="Latest jobs from Ruby on Rails Jobs" title="Latest jobs from Ruby on Rails Jobs" xmlUrl="http://www.rorjobs.com/a/jbb/find-jobs-rss" htmlUrl="http://www.rorjobs.com"/>
+    </body>
+</opml>
