@@ -1,7 +1,7 @@
 class Lead < ActiveRecord::Base
 	validates_presence_of :title, :url, :name, :email, :category
 	scope :most_recent, -> { order("created_at desc").limit(50) }
-	scope :today, -> { where(:created_at => ((Time.now - 20.hours)..Time.now)) }
+	scope :today, -> { where(:created_at => ((Time.now - 24.hours)..Time.now)) }
 	scope :this_week, -> { where(:created_at => ((Time.now - 7.days)..Time.now)) }
 	scope :recent_onboard, -> { where(:created_at => ((Time.now - 3.days)..Time.now)) }
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "40x40>" }, :default_url => "/images/:style/missing.png"
