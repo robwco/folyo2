@@ -49,9 +49,10 @@ a.url:hover {text-decoration: underline; color: #7191bc;}
 .icons a:hover {color: #111;}
 </style>
 
-<section class="reading-wrap" style="width:48em;">
-<h1 style="margin: 1em 0 0 0;">So, today's the day! Welcome inside.</h1>
-<p class="note" style="margin: .5em 0 1em 0;">You picked a beautiful day to join Workshop! Here are the most recent Workshop leads. All of these people were recently looking for a freelancer just like you:</p>
+<section class="reading-wrap" style="width:50em;">
+  <%= image_tag "confetti.png" %>
+<h1 style="margin: 0 0 0 0;">So, today's the day! Welcome inside.</h1>
+<p style="margin: 1em auto 1.5em auto">You picked a beautiful day to join Workshop! Here are the most recent Workshop leads. All of these people were recently looking for a freelancer just like you:</p>
 
 <div class="leads">
 <% @exclusives.recent_onboard.most_recent.each do |exclusive| %>
@@ -92,7 +93,8 @@ a.url:hover {text-decoration: underline; color: #7191bc;}
 
 <section style="margin: 0 0 5em 0;">
 <h2>Please note:</h2>
-<p>If you showed up to this page somehow and don't know what Workshop is, please note it's a paid service. I charge people for this content. Please learn more about my service <%= link_to 'Workshop', root_path %>.</p>
+<p>If you somehow arrived at this page without knowing what Workshop is, please know that it's a paid service. I make a living from this content. I'm just one guy who decided to start his own website, so please don't be a douche and steal from me by viewing it for free.</p>
+<p>I decided to not protect this page because I wanted to make it easy for my members to see it but I will be tracking it pretty closely to see who visits and how they got here. If you want to get these leads sent to you or learn more about my service, it's called <%= link_to 'Workshop', root_path %> and it's fffffabulous.</p>
 </section>
 
 </section>
