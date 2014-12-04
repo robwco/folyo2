@@ -1,8 +1,8 @@
 <style>
-html, body, div {max-width: 100%;}
-body {color: #444; font-size:14.5px; line-height: 18px; width: 55em; max-width: 100%; margin: auto;}
+/*body {color: #444; font-size:14.5px; line-height: 18px; width: 55em; max-width: 100%; margin: auto;}
 h1,h2,h3 {color: #111; line-height: 1.2em;}
 .leads h2 {font-weight: normal; font-size: 1.2em;}
+.leads {font-size: .84em;}
 h3 a {color: #111; text-decoration: none;}
 p {color: #444;  }
 strong {color: #111;}
@@ -24,9 +24,15 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
 .description {margin-top: 0em; font-size: .84em;}
 .exclusive h4 {background-color: #F5F3F0; padding: .5em;}
 .exclusive .image-wrap {width: 100%;}
-.exclusive img.image { height: 7.5em; border-radius: 5px; margin: 1em auto 0 auto;}
+.exclusive img.image { height: 7.5em; border-radius: 5px; margin: 1em auto 0 auto;}*/
+.lead {margin: 1em 0;}
+.leads h1 { font-size: 2em;}
+.category { font-weight: 800; font-size: .84em;}
+.category-wrap { margin: 1.5em 0; padding: 0;}
+.photo-wrap img { width: 40px; height: 40px; border-radius: 3px; margin: 0;}
+.description { font-size: 1em; margin: .2em 0; }
+a.url { font-size: 1.1em; line-height: .9em;}
 </style>
-
 
 <section class="reading-wrap">
 <h1 style="margin: 1em 0 0 0;">So, today's the day! Welcome inside.</h1>
@@ -56,9 +62,10 @@ p.category { color: #111; font-size: .78em; font-weight: 900;}
       <% leads.each do |lead| %>
         <% puts lead.title %>
           <div class="lead"><div class="photo-wrap"><a href="MAILTO:<%= lead.email %>?bcc=robert@letsworkshop.com"><%= image_tag lead.image.url(:thumb, timestamp: false)  %></a></div>
-            <p class="description"><b><a class="url" href="<%= lead.url %>"><%= lead.title %></a></b> Name: <%= lead.name %> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: <%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
-              <br><a class="email" href="MAILTO:<%= lead.email %>"><%= lead.email %></a>
+            <p class="description"><b><a class="url" href="<%= lead.url %>"><%= lead.title %></a></b></p>
+            <p class="description"> Name: <%= lead.name %> <% if lead.website.present? %>| <a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: <%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
             </p>
+            <p style="margin: 0;"><a class="emphasis" href="MAILTO:<%= lead.email %>"><%= lead.email %></a></p>
           </div>
       <% end %>
   </div>
