@@ -1,55 +1,4 @@
-<style>
-/*body {color: #444; font-size:14.5px; line-height: 18px; width: 55em; max-width: 100%; margin: auto;}
-h1,h2,h3 {color: #111; line-height: 1.2em;}
-.leads h2 {font-weight: normal; font-size: 1.2em;}
-.leads {font-size: .84em;}
-h3 a {color: #111; text-decoration: none;}
-p {color: #444;  }
-strong {color: #111;}
-hr {height:1px; background-color: #D9D3CF; outline: none; border: none;}
-a {color: #7191bc; display: inline-block;}
-a:hover {color: #111;}
-a:visited {color: #735c7c;}
-.head {width: 100%; display: table; overflow: none;}
-.head p, .head img {padding: 10px;}
-.head p {float: right; font-size: .78em;}
-.leads, .footer {padding: 0; display: table; width: 100%; box-sizing: border-box; max-width: 100%;}
-.category-wrap {display: table; margin: 2em 0; width: 100%;}
-p.category { color: #111; font-size: .78em; font-weight: 900;}
-.lead { display: table; width: 100%; max-width: 100%; margin-top: 1em;}
-.url { font-size: 1.25em; display: inline;}
-.email { height: 1.5em; color: #444; font-weight: 700; font-size: 12px; border: 1px solid #D9D3CF; border-bottom: 2px solid #D9D3CF; padding: 0 .4em; margin: .2em 0; border-radius: 3px; text-decoration: none; display: inline-block; background-color: #FFF;}
-.photo-wrap {width: 40px; height: 40px; border-radius: 40px; margin: 0 .75em 0 0; float: left; background-color: #FFF;}
-.photo-wrap img {width: 40px; height: 40px; border-radius: 40px;}
-.description {margin-top: 0em; font-size: .84em;}
-.exclusive h4 {background-color: #F5F3F0; padding: .5em;}
-.exclusive .image-wrap {width: 100%;}
-.exclusive img.image { height: 7.5em; border-radius: 5px; margin: 1em auto 0 auto;}*/
-.lead {margin: 0; border-top: 1px solid #D9D3CF;  padding: 1.25em 1em 1em 1em;}
-.lead:hover {background-color:rgb(253, 253, 252); cursor: pointer;}
-.lead p {margin: 0;}
-.lead strong { color:#111;}
-.leads h1 { font-size: 2em;}
-.name, .name a { font-size: 13px; text-decoration: none;}
-.name a:hover {text-decoration: underline;}
-.name span a { font-size: 12px; color: #888;}
-.name span.space {text-decoration: none;}
-.exclusive h4 {font-size: 13px; }
-.category { font-weight: 800; font-size: 10px; letter-spacing: .05em; background-color: #F5F3F0; width: 100%; padding: 1em 1.5em; box-sizing: border-box; margin: 0; border-top: 1px solid #D9D3CF;}
-.category-wrap { margin: 0; padding: 0; }
-.photo-wrap {width: 40px; height: 40px; border-radius: 40px; float: left; background-color: #FFF; margin: 0 1em 0 0;}
-.photo-wrap img { width: 40px; height: 40px; border-radius: 3px; margin: 0;}
-.description { font-size: 14px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.description:hover {}
-a.url { font-size: 14px; text-decoration: none; color: #111;font-weight: 700;}
-a.url:hover {text-decoration: underline; color: #7191bc;}
-.email {color: #888; }
-.lead p.icons { margin: 1em 0 0 0; padding: .75em 0 0 0; border-top: 1px solid #F5F3F0;}
-.icons a, .icons { color: #888; font-size: 12px; text-decoration: none;}
-.icons a:hover {color: #111;}
-</style>
-
-<section class="reading-wrap" style="width:50em;">
+<section class="leads-wrap breathe-bottom">
   <%= image_tag "confetti.png", :style => "max-width:100%;" %>
 <h1 style="margin: 0 0 0 0;">So, today's the day! Welcome inside.</h1>
 <p style="margin: 1em auto 1.5em auto">You picked a beautiful day to join Workshop! Here are the most recent Workshop leads. All of these people were recently looking for a freelancer just like you:</p>
@@ -73,20 +22,7 @@ a.url:hover {text-decoration: underline; color: #7191bc;}
 <% end %>
 
 <% @leads.recent_onboard.most_recent.group_by(&:category).each do |category, leads| %>
-  <div class="category-wrap">
-    <p class="category"><%= category %>:</p>
-      <% leads.each do |lead| %>
-        <% puts lead.title %>
-          <div class="lead">
-            <div class="photo-wrap"><a href="MAILTO:<%= lead.email %>"><%= image_tag lead.image.url(:thumb, timestamp: false)  %></a></div>
-            <p class="name"><%= lead.name %>&nbsp;<span><a href="MAILTO:<%= lead.email %>"><%= lead.email %></a></span></p>
-            <p class="description"><strong><a class="url" href="<%= lead.url %>"><%= lead.title %></a></strong></p>
-            <p class="icons">  <% if lead.website.present? %><a href="<%= lead.website %>">Website</a> <% end %> <% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> <% if lead.budget.present? %>| Budget: $<%= lead.budget %><% end %> <% if lead.notes.present? %><%= lead.notes %><% end %>
-            </p>
-            <p style="margin: 0;"></p>
-          </div>
-      <% end %>
-  </div>
+<%= render :partial => 'lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>
 <hr>
 </div>
@@ -98,5 +34,7 @@ a.url:hover {text-decoration: underline; color: #7191bc;}
 </section>
 
 </section>
+
+
 
 

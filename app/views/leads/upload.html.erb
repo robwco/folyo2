@@ -1,53 +1,12 @@
-
-<html lang="en"> <!--<![endif]-->
-<head>
-<style>
-html, body, div {max-width: 100%;}
-body {color: #444; font-size:14.5px; line-height: 18px; font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; width: 55em; max-width: 100%; margin: auto;}
-h1,h2,h3 {color: #111; line-height: 1.2em;}
-h2 {font-weight: normal; font-size: 1.2em;}
-h3 a {color: #111; text-decoration: none;}
-p {color: #444;  }
-strong {color: #111;}
-hr {height:1px; background-color: #D9D3CF; outline: none; border: none;}
-a {color: #7191bc; display: inline-block;}
-a:hover {color: #111;}
-a:visited {color: #735c7c;}
-.head {width: 100%; display: table; overflow: none;}
-.head p, .head img {padding: 10px;}
-.head p {float: right; font-size: .78em;}
-.leads, .footer {padding: 15px; display: table; width: 100%; box-sizing: border-box; max-width: 100%;}
-.category-wrap {display: table; margin: 2em 0; width: 100%;}
-p.category { color: #111; font-size: .78em; font-weight: 900;}
-.lead { display: table; width: 100%; max-width: 100%; margin-top: 1em;}
-.url { font-size: 1.25em; display: inline;}
-.email { height: 1.5em; color: #444; font-weight: 700; font-size: 12px; border: 1px solid #D9D3CF; border-bottom: 2px solid #D9D3CF; padding: 0 .4em; margin: .2em 0; border-radius: 3px; text-decoration: none; display: inline-block; background-color: #FFF;}
-.photo-wrap {width: 40px; height: 40px; border-radius: 40px; margin: 0 .75em 0 0; float: left; background-color: #FFF;}
-.photo-wrap img {width: 40px; height: 40px; border-radius: 40px;}
-.description {margin-top: 0em; font-size: .84em;}
-.exclusive h4 {background-color: #F5F3F0; padding: .5em;}
-.exclusive .image-wrap {width: 100%;}
-.exclusive img.image { height: 7.5em; border-radius: 5px; margin: 1em auto 0 auto;}
-</style>
-</head>
-<body>
-
-<div class="head">
-	<%= image_tag "logo.png", alt: "Workshop" %>
-<p><a href="http://workshop.groupbuzz.io/topics">My discussion community</a> | <a href="http://letsworkshop.com/account">My account</a></p>
-</div>
-
+<section class="nav tab">
+<p>Preview emails: <%= link_to 'All Leads', upload_path %> <%= link_to 'Design Leads', upload_design_path %> <%= link_to 'Development Leads', upload_development_path %></p>
+</section>
+<section class="leads-wrap breathe-bottom">
+<h1 style="margin: 1em 0 1em 0;">Leads appearing in the next email:</h1>
 <div class="leads">
-<hr>
-<!--Doesn't change--> 
+<!--Doesn't change-->
 <%= render 'lead_render' %>
-</div>
-<div class="footer">
 <hr>
-<p style="font-size:0.8em; text-align: center;">
-<p style="font-size:0.8em;"><unsubscribe style="color: #aaa;">Stop receiving emails</unsubscribe> (this won't cancel your subscription).</small></p>
 </div>
-</body>
-</html>
-
-
+<p><%= link_to 'Go Back', leads_path %></p>
+</section>
