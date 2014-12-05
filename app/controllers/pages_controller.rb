@@ -8,15 +8,13 @@ class PagesController < ApplicationController
     # Sales Links
     if params[:coupon] == "pjrvs"
       @sales_link = 'https://workshop.memberful.com/checkout?plan=3618'
-      @coupon_message = '<p class="coupon_message">Hey there, Creative Class! I too am a big fan of Paul Jarvis&hearts; so I offered his students 20% off at the bottom of this page! – Robert</p>'.html_safe
-    end
-    if params[:coupon] == "obie"
+      @coupon_message = '<p class="coupon_message">Hey there, Creative Class! I too am a big fan of Paul Jarvis &hearts; so I offered his students 20% off at the bottom of this page! – Robert</p>'.html_safe
+    elsif params[:coupon] == "obie"
       @sales_link = 'https://workshop.memberful.com/checkout?plan=2236'
-      @coupon_message = '<p class="coupon_message">Hey there! I too am a big fan of Obie Fernandez&hearts; so I offered his peeps 20% off at the bottom of this page! – Robert</p>'.html_safe
-    end
-    if params[:coupon] == "brennan"
+      @coupon_message = '<p class="coupon_message">Hey there! I too am a big fan of Obie Fernandez &hearts; so I offered his peeps 20% off at the bottom of this page! – Robert</p>'.html_safe
+    elsif params[:coupon] == "brennan"
       @sales_link = 'https://workshop.memberful.com/checkout?plan=2238'
-      @coupon_message = '<p class="coupon_message">Hey there, DYFRers! I too am a big fan of Brennan Dunn&hearts; so I offered his homies 20% off at the bottom of this page! – Robert</p>'.html_safe
+      @coupon_message = '<p class="coupon_message">Hey there, DYFRers! I too am a big fan of Brennan Dunn &hearts; so I offered his homies 20% off at the bottom of this page! – Robert</p>'.html_safe
     else
       @sales_link = 'https://workshop.memberful.com/checkout?plan=1775'
     end
