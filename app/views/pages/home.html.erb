@@ -1,6 +1,7 @@
 <section class="nav tab">
 <p style="text-align: right;"><!--<%= link_to 'Popular Resources', upload_path %>--> <%= link_to 'Find a Freelancer', connect_path %></p>
 </section>
+<%= @coupon_message %>
 <!--
 <section class="nav fixed">
 	<%= link_to 'Help / FAQ', upload_path %>
@@ -72,13 +73,11 @@
 <h3 style="text-align: left; width: 38em; margin: 1em auto auto auto;">
 <%= image_tag('theshedplus.png', :align => "left", :style => "vertical-align: 1em; margin-right:1em; display:inline-block; ") %> Plus you also get access to a community of freelancers and consultants just like you. <a href="https://www.dropbox.com/s/ttuucm6bv12lsoh/package-forum.png?dl=0">Take a look.</a></h3>
 
-<h1>All for about 30¢ per lead</h1>
+<h1>Less than 30¢ per lead</h1>
 
-<p>You pay $64/month</p>
+<a href="<%= @sales_link %>"><input type="submit" name="submit" value="SEND ME OVER 2400 LEADS PER YEAR" data-drip-attribute="sign-up-button"></a>
 
-<a href="https://workshop.memberful.com/orders/new?plan=1775"><input type="submit" name="submit" value="SEND ME OVER 2400 LEADS PER YEAR" data-drip-attribute="sign-up-button"></a>
-
-<p><a href="https://workshop.memberful.com/orders/new?plan=1798">Save $180 when you pay yearly</a></p>
+<p><a href="https://workshop.memberful.com/orders/new?plan=1798">Or save $180 by paying yearly.</a></p>
 </section>
 
 <section class="reading-wrap">

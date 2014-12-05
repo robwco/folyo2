@@ -1,19 +1,25 @@
 Rails.application.routes.draw do
-  resources :clients
 
   root "pages#home"
 
-  resources :exclusives
-
-  resources :leads
+  resources :exclusives, :leads, :clients
 
   get "/connect" => "exclusives#connect"
+
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
+
   get "/successful_order" => "pages#successful_order"
   get "/successful_featured" => "exclusives#success"
   get "/onboard" => "leads#onboard"
+
+  # Referral Sales Pages
+  get 'c/:coupon' => 'pages#home'
+  get '/pjrvs', to: redirect('c/pjrvs')
+  get '/obie', to: redirect('c/obie')
+  get '/brennan', to: redirect('c/brennan')
+
   get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

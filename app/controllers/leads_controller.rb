@@ -1,14 +1,10 @@
 class LeadsController < ApplicationController
   before_action :authenticate, :set_lead, only: [:show, :edit, :update, :destroy]
-  # GET /leads
-  # GET /leads.json
   def index
     @leads = Lead.all
     @exclusives = Exclusive.all
   end
 
-  # GET /leads
-  # GET /leads.json
   def upload
     @leads = Lead.all
     @exclusives = Exclusive.all
@@ -19,37 +15,26 @@ class LeadsController < ApplicationController
     @exclusives = Exclusive.all
   end
 
-
-  # GET /leads
-  # GET /leads.json
   def upload_design
     @leads = Lead.all
     @exclusives = Exclusive.all
   end
 
-    # GET /leads
-  # GET /leads.json
   def upload_development
     @leads = Lead.all
     @exclusives = Exclusive.all
   end
 
-  # GET /leads/1
-  # GET /leads/1.json
   def show
   end
 
-  # GET /leads/new
   def new
     @lead = Lead.new
   end
 
-  # GET /leads/1/edit
   def edit
   end
 
-  # POST /leads
-  # POST /leads.json
   def create
     @lead = Lead.new(lead_params)
 
@@ -64,8 +49,6 @@ class LeadsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /leads/1
-  # PATCH/PUT /leads/1.json
   def update
     respond_to do |format|
       if @lead.update(lead_params)
@@ -78,8 +61,6 @@ class LeadsController < ApplicationController
     end
   end
 
-  # DELETE /leads/1
-  # DELETE /leads/1.json
   def destroy
     @lead.destroy
     respond_to do |format|
