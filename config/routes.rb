@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/pjrvs', to: redirect('c/pjrvs')
   get '/obie', to: redirect('c/obie')
   get '/brennan', to: redirect('c/brennan')
+  get '/jfdi', to: redirect('c/jfdi')
 
   get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
