@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-body, p, a, span {font: 15px/1.552em 'Gotham SSm A', 'Gotham SSm B'; margin: 0; padding: 0; color: #444; font-weight: 400; font-style: normal;}
+body, p, a, span {font: 15px/1.552em 'Gotham SSm A', 'Gotham SSm B', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; margin: 0; padding: 0; color: #444; font-weight: 400; font-style: normal;}
 a {color: #7191bc;}
 p {margin: 1em 0 .5em 0;}
 h1 {font: 2.5em/1.2em "sketchnote-square", Verdana, Helvetica, sans-serif;}
