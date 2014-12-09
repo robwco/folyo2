@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
 
+
+  get "/successful" => "pages#successful_sign_up"
   get "/successful_order" => "pages#successful_order"
   get "/successful_featured" => "exclusives#success"
   get "/onboard" => "leads#onboard"
