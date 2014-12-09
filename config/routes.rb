@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
   get "/successful" => "pages#successful_sign_up"
+  get "/successful_feedback" => "pages#successful_feedback"
   get "/successful_order" => "pages#successful_order"
   get "/successful_featured" => "exclusives#success"
   get "/onboard" => "leads#onboard"
