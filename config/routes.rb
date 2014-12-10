@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get "/successful_featured" => "exclusives#success"
   get "/onboard" => "leads#onboard"
 
+  # Sandbox
+  get "/2015" => "pages#freelancetools"
+
   # Referral Sales Pages
   get 'c/:coupon' => 'pages#home'
   get '/pjrvs', to: redirect('c/pjrvs')

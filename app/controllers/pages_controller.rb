@@ -23,15 +23,8 @@ class PagesController < ApplicationController
     end
   end
 
-  def about
-	end
+  def freelancetools
+    render layout: false
+  end
 
-	def help
-	end
-
-	def popular
-	end
-
-	def successful_order
-	end
 end
