@@ -22,9 +22,4 @@ class PagesController < ApplicationController
       @sales_link = 'https://workshop.memberful.com/checkout?plan=1775'
     end
   end
-
-  def freelancetools
-    render layout: false
-  end
-
 end
