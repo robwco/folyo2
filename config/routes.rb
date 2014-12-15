@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :exclusives, :leads, :clients
 
   get "/connect" => "exclusives#connect"
+  get "/popular" => "pages#popular_resources"
 
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
