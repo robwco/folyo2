@@ -18,8 +18,15 @@ class PagesController < ApplicationController
     elsif params[:coupon] == "jfdi"
       @sales_link = 'https://workshop.memberful.com/checkout?plan=4021'
       @coupon_message = '<p class="coupon_message">Hey JFDI! You helped me start Workshop a year ago and continue to help me improve it today.<br> As a special thank you for all JFDIers, I&#39;m offering <strong>20% off and a free 15 day trial</strong> at the bottom of this page. Thanks again, you guys rock! – Robert</p>'.html_safe
+    elsif params[:coupon] == "2015"
+      @sales_link = 'https://workshop.memberful.com/checkout?plan=2713'
+      @coupon_message = '<p class="coupon_message">Happy New Year! As a special thank you, I&#39;m offering <strong>20% off and a free 30 day trial</strong> at the bottom of this page. Thanks again, you guys rock! – Robert</p>'.html_safe
     else
       @sales_link = 'https://workshop.memberful.com/checkout?plan=1775'
     end
   end
+
+  def blog
+  end
+
 end

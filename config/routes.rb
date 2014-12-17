@@ -11,13 +11,17 @@ Rails.application.routes.draw do
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
 
-
   get "/successful" => "pages#successful_sign_up"
   get "/successful_feedback" => "pages#successful_feedback"
   get "/successful_order" => "pages#successful_order"
   get "/successful_featured" => "exclusives#success"
   get "/onboard" => "leads#onboard"
 
+  # Blog Articles
+  get "/freelance-as-a-service" => "pages#freelance-as-a-service"
+  get "/the-email-line" => "pages#the-email-line"
+
+  # Sandbox
   get "/wordpress" => "pages#wordpress"
 
   # Referral Sales Pages
@@ -26,6 +30,7 @@ Rails.application.routes.draw do
   get '/obie', to: redirect('c/obie')
   get '/brennan', to: redirect('c/brennan')
   get '/jfdi', to: redirect('c/jfdi')
+  get '/2015', to: redirect('c/2015')
 
   get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
