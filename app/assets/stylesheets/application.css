@@ -13,14 +13,14 @@
  *= require_tree .
  *= require_self
  */
-body, p, a, span {font: 15px/1.552em 'Gotham SSm A', 'Gotham SSm B', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; margin: 0; padding: 0; color: #444; font-weight: 400; font-style: normal;}
+body, p, a, span {font: 15px/1.56em 'Gotham SSm A', 'Gotham SSm B', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; margin: 0; padding: 0; color: #444; font-weight: 400; font-style: normal;}
 a {color: #7191bc;}
-p {margin: 1em 0 .5em 0;}
+p {margin: .75em 0;}
 h1 {font: 2.5em/1.2em "sketchnote-square", Verdana, Helvetica, sans-serif;}
 h2 {font: 1.6em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif;}
 h3 {margin: 1.5em 0 0 0;}
 h2, h3 {font-weight: 600;}
-h1, h2, h3 {color: #111; margin: 1.5em 0 .5em 0;}
+h1, h2, h3 {color: #111; margin: 1.5em 0 0 0;}
 hr {border: 0; height: 1px; background-color: #D9D3CF; }
 
 a.emphasis {color: #444; font-weight: 700; font-size: 13px; border: 1px solid #D9D3CF; border-bottom: 2px solid #D9D3CF; padding: 0 .4em; margin: .2em 0; border-radius: 3px; text-decoration: none; display: inline-block; vertical-align: .5em; }
