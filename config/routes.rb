@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
 
-  resources :exclusives, :leads, :clients
+  resources :exclusives, :leads
 
   get "/connect" => "exclusives#connect"
   get "/popular" => "pages#popular_resources"
