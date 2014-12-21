@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-
   root "pages#home"
 
-  resources :exclusives, :leads
+  resources :exclusives, :leads, :workers, :sessions
+
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
 
   get "/connect" => "exclusives#connect"
   get "/popular" => "pages#popular_resources"
+
+  get "/work" => "workers#work"
+  get "/login" => "sessions#new"
 
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"

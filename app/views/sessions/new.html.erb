@@ -1,0 +1,30 @@
+<section class="tight-wrap">
+
+<h1 style="margin: 0 0 .5em 0; text-align: center;">
+<%= image_tag("lock.png", :style => "width: 1.5em; margin: 1em auto 0 auto; display: block;") %>
+  Log In</h1>
+
+
+<%= form_tag sessions_path, :class => "login" do %>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, id: "flash_#{name}" %>
+<% end %>
+
+
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email, params[:email], :class => "login" %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Log In" %></div>
+  <!-- <p style="margin: 4em 0 0 0;"><%= link_to "Create account", new_worker_path, :style => "font-size: 13px;" %></p>-->
+<% end %>
+
+
+
+
+</section>

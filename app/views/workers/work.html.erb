@@ -1,0 +1,38 @@
+<% if current_worker %>
+<section class="nav tab">
+<p style="text-align: right;">Logged in as <%= current_worker.email %> <%= link_to "Log Out", session_path("current"), method: "delete" %></p>
+</section>
+<% else %>
+<% end %>
+<section class="leads-wrap" style="padding: 1em 0;">
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, id: "flash_#{name}" %>
+<% end %>
+<h1 style="margin:2em 0 .5em 0;">Past freelance opportunities</h1>
+<div class="leads">
+<!--<% @exclusives.most_recent.each do |exclusive| %>
+  <div class="exclusive">
+    <hr>
+    <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
+    <h1><%= exclusive.title %></h1>
+    <h2><%= exclusive.category %></h2>
+    <strong>Company:</strong> <a href="<% exclusive.website %>"><%= exclusive.website %></a><br>
+    <strong>Budget:</strong> $<%= exclusive.budget %><br>
+    <strong>Name:</strong> <%= exclusive.name %></p>
+    <p><strong>Description</strong><br>
+    <%= h(exclusive.description).gsub(/\n/, '<br/>').html_safe %></p>
+    <p><strong>To apply</strong><br>
+    <a class="email" href="MAILTO:<%= exclusive.email %>"><%= exclusive.email %></a></p>
+    <h4>This lead is only shown to Workshop members, so you have a great chance of landing it.</h4>
+  </div>
+<% end %>-->
+
+<% @leads.most_recent.group_by(&:category).each do |category, leads| %>
+<%= render :partial => './leads/lead_display', :locals => { :category => category, :leads => leads }   %>
+<% end %>
+<hr>
+</div>
+
+
+
+</section>
