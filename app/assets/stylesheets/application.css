@@ -33,7 +33,7 @@ input[type=number] {box-sizing: border-box; background-color: #f5f5f5; font:17px
 input[type=text] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  width: 100%; padding: .25em .5em; margin: .25em 0;}
 input[type=file] {margin: 1em 0;}
 input[type=submit].emphasis {color: #444; font-weight: 700; font-size: 13px; border: 1px solid #D9D3CF; border-bottom: 2px solid #D9D3CF; padding: 0 .4em; margin: .2em 0; border-radius: 3px; text-decoration: none; display: inline-block; vertical-align: .5em; background-color: #FFF; text-transform: none; letter-spacing: normal; }
-input[type=email].sample {box-sizing: border-box;  background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 1.5em;  width: 100%; max-width: 20em; padding: .25em .5em; margin: 1em 0;}
+input[type=email].sample {box-sizing: border-box;  background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; width: 100%; max-width: 20em; padding: .25em .5em; margin: 1em 0;}
 input[type=password] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  width: 100%; max-width: 20em; padding: .25em .5em; margin: 1em 0;}
 input[type=submit].sample {margin: 0 0 2em 0;}
 .field {padding: 1em 0 0 0;}
@@ -64,12 +64,6 @@ input[type=text].login { max-width: 20em;}
 .leads-wrap {width: 50em; margin: 0 auto;}
 .tight-wrap {width: 37.5em; margin: 0 auto;}
 .breathe-bottom {margin: 0 auto 3em auto;}
-
-.sort-work {font-size: 12px; margin: 0 0 2em 0; width: 20em; display: inline-block;}
-.sort-work a {font-size: 12px; margin: .25em; line-height: 1em; text-decoration: none;}
-.search-work {display:table; width: 18.1em; float: right; height: 1em;}
-.search-work input[type=text] {font-size: 12px; max-width:15em; float: left;}
-.search-work input[type=submit] {font-size: 10px; margin: .2em 0 0 0; float:right;}
 
 /* Popular Resources */
 .resource {background-color: #F5F5F5; border-radius: 3px; width: 230px; height: 190px; float: left; margin: 1em; text-align: center;}
