@@ -13,41 +13,51 @@
  *= require_tree .
  *= require_self
  */
+
 body, p, a, span {font: 15px/1.56em 'Gotham SSm A', 'Gotham SSm B', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; margin: 0; padding: 0; color: #444; font-weight: 400; font-style: normal;}
 a {color: #7191bc;}
 p {margin: .75em 0;}
-h1 {font: 2.5em/1.2em "sketchnote-square", Verdana, Helvetica, sans-serif;}
-h2 {font: 1.6em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif;}
-h3 {margin: 1.5em 0 0 0;}
-h2, h3 {font-weight: 600;}
+h1 {font: 2.5em/1.2em "sketchnote-square", Verdana, Helvetica, sans-serif; font-weight: normal;}
+h2 {font: 1.6em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; font-weight: normal;}
+h3 {margin: 1.5em 0 0 0; font-weight: 600;}
 h1, h2, h3 {color: #111; margin: 1.5em 0 0 0;}
 hr {border: 0; height: 1px; background-color: #D9D3CF; }
 
-a.emphasis {color: #444; font-weight: 700; font-size: 13px; border: 1px solid #D9D3CF; border-bottom: 2px solid #D9D3CF; padding: 0 .4em; margin: .2em 0; border-radius: 3px; text-decoration: none; display: inline-block; vertical-align: .5em; }
-a.emphasis:hover {color: #111;}
-a.submit, input[type=submit] {box-sizing: border-box; margin: auto; background-color: #E44727; border-radius: 3px; cursor: pointer; font: 14px/1.552 'Gotham SSm A', 'Gotham SSm B', Helvetica, sans-serif; border: none; color: #FFF; text-transform: uppercase; padding: .5em 2em; font-weight: 700; display: inline-block; letter-spacing: .05em; border-bottom: 2px solid #b72a22; margin: auto; text-align: center; max-width: 100%; text-decoration: none;}
-a.submit:hover, input[type=submit]:hover { background: #F75432;}
-a.submit:active, input[type=submit].sample:focus, input[type=submit]:active, input[type=submit].sample:focus  {box-sizing: border-box; background: #B72A22; border-bottom: 0; border-top: 2px solid #E44727;  outline: none; box-shadow: 0 2px 1px #fff; -moz-box-shadow: 0 2px 1px #fff; -webkit-box-shadow: 0 2px 1px #fff;
-        }
+/* Flash */
+#flash_alert, #flash_notice {background-color: #F7F4ED; color: #606873; padding: .5em 1em; margin: 1em 0 0 0; font-size: 14px; }
+#flash_alert {background-color: #F5E9ED; color: #825B70;}
+.field {padding: 1em 0 0 0;}
+.note {font-size: 13px; color: #888; margin: .25em 0 0 0;}
+.coupon_message {text-align: center; background-color: #F1DB4B; color: rgba(75,25,25,.65); padding: 2em 5em; margin: 0;  font-weight: 500; }
+
+
+/* Brown button */
+a.submit, input[type=submit] {color: #FFF; background-color: #b0aaa2; border: 1px solid #b0aaa2; font-weight: 700; font-size: 12px;border-bottom: 2px solid #868480; padding: .25em .6em; margin: .2em 0; border-radius: 3px; text-decoration: none; display: inline-block; vertical-align: .5em; cursor: pointer; line-height: 1.4em;}
+a.submit:hover, input[type=submit]:hover {color: #FFF; background-color: #bcb5ad; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);}
+a.submit:active, input[type=submit]:active { border-top: 2px solid #868480; background-color: #9a9793; box-shadow: inset 0px 0px 3px rgba(0,0,0,0.3); border-bottom: none; outline:none; }
+
+
+/* Red button */
+a.buy, input[type=submit].buy {box-sizing: border-box; margin: auto; background-color: #E44727; border-radius: 4px; cursor: pointer; font: 14px/1.552 'Gotham SSm A', 'Gotham SSm B', Helvetica, sans-serif; border: none; color: #FFF; padding: .5em 2em; font-weight: 700; display: inline-block; margin: auto; text-align: center; max-width: 100%; text-decoration: none; text-transform: uppercase; text-shadow: 0px 1px 1px #b72a22; border-bottom: 2px solid #b72a22; }
+a.buy:hover, input[type=submit].buy:hover { background: #F75432;}
+a.buy:active, input[type=submit].buy:focus, input[type=submit].buy:active, input[type=submit].buy:focus  {box-sizing: border-box; background: #B72A22; border-bottom: 0; border-top: 2px solid #E44727;  outline: none; box-shadow: 0 2px 1px #fff; -moz-box-shadow: 0 2px 1px #fff; -webkit-box-shadow: 0 2px 1px #fff;}
+input[type=submit].buy {margin: 0 0 2em 0;}
+
+
+/* Form ui */
+form.drip-opt-in { margin: 0 0 3em 0;}
+form.login {margin: 0 auto; max-width: 20em;}
+
+/* Input ui */
 input[type=number] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  padding: .25em .5em; margin: .25em 0;}
 input[type=text] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  width: 100%; padding: .25em .5em; margin: .25em 0;}
 input[type=file] {margin: 1em 0;}
-input[type=submit].emphasis {color: #444; font-weight: 700; font-size: 13px; border: 1px solid #D9D3CF; border-bottom: 2px solid #D9D3CF; padding: 0 .4em; margin: .2em 0; border-radius: 3px; text-decoration: none; display: inline-block; vertical-align: .5em; background-color: #FFF; text-transform: none; letter-spacing: normal; }
 input[type=email].sample {box-sizing: border-box;  background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; width: 100%; max-width: 20em; padding: .25em .5em; margin: 1em 0;}
 input[type=password] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  width: 100%; max-width: 20em; padding: .25em .5em; margin: 1em 0;}
-input[type=submit].sample {margin: 0 0 2em 0;}
-.field {padding: 1em 0 0 0;}
-.note {font-size: 13px; color: #888; margin: .25em 0 0 0;}
-.coupon_message {text-align: center; background-color: #F1DB4B; color: rgba(75,25,25,.65); padding: 2em 5em; margin: 0; font-weight: 500; }
-form.drip-opt-in { margin: 0 0 3em 0;}
-form.login {margin: 0 auto; max-width: 20em;}
 textarea#exclusive_description {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; width: 100%; padding: .25em .5em; margin: .25em 0; outline: none;}
-
 input[type=text].login { max-width: 20em;}
 
-#flash_alert, #flash_notice {background-color: #F7F4ED; color: #606873; padding: .5em 1em; margin: 1em 0 0 0; font-size: 14px; }
-#flash_alert {background-color: #F5E9ED; color: #825B70;}
-
+/* Navigation */
 .nav {box-sizing: border-box;}
 .nav p, .nav a {font-size: 12px; text-decoration: none;}
 .nav.tab {background-color: #f5f5f5; width: 100%; padding: .25em;}
@@ -56,6 +66,7 @@ input[type=text].login { max-width: 20em;}
 .nav.tab a:hover {color: #111;}
 .nav.fixed {position:fixed; bottom:1em; left: 1em;}
 
+/* Logo */
 .logo img {width: 280px; text-align: left;}
 
 /* Wraps */

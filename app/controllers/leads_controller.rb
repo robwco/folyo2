@@ -83,7 +83,7 @@ class LeadsController < ApplicationController
     end
     def authenticate
       authenticate_or_request_with_http_basic do |name, password|
-        name == "workshop" && password == "secret"
+        name == "workshop" && password == "sbGfKA3A9xfd/jB"
       end
     end
 

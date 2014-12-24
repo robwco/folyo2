@@ -7,7 +7,7 @@
 <!-- <%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>  -->
 
 
-<h1>Workshop-exclusive leads <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "emphasis" %></h1>
+<h1>Workshop-exclusive leads <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "submit" %></h1>
 <table>
   <tbody>
 
@@ -34,7 +34,7 @@
 <br>
 
 
-<h1>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "emphasis" %></h1>
+<h1>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "submit" %></h1>
 <table style="margin: 0 0 7em 0;">
   <tbody>
     <% @leads.today.most_recently_updated.each do |lead| %>
