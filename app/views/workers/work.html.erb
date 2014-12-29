@@ -8,8 +8,29 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, id: "flash_#{name}" %>
 <% end %>
-<h1 style="margin:2em 0 .5em 0;">Past freelance opportunities</h1>
+
+<div style="width: 100%; display: table;">
+<%= form_tag work_path, :method => 'get' do %>
+	<p>
+	<%= text_field_tag :search, params[:search], :placeholder => "Search by specialty or project type" %>
+	<%= submit_tag "Search", :name => nil %>
+	</p>
+<% end %>
+</div>
+
+<h1 style="margin:.5em 0 .5em 0;">
+	<% if params[:search].nil? %>
+		All past freelance opportunities
+  <% else %>
+   Results for &lsquo;<%= @search_name %>&rsquo; <a href="#">Save Search</a>
+ <% end	%>
+</h1>
+
+
+
+
 <div class="leads">
+	
 <!--<% @exclusives.most_recent.each do |exclusive| %>
   <div class="exclusive">
     <hr>

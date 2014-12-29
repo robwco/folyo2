@@ -19,6 +19,13 @@ class WorkersController < ApplicationController
   	end
     @leads = Lead.all
     @exclusives = Exclusive.all
+    if params[:search]
+      @leads = Lead.where("category ILIKE '%#{params[:search]}%' OR name ILIKE '%#{params[:search]}%' OR title ILIKE '%#{params[:search]}%'")
+      @search_name = params[:search]
+    else
+      @leads = Lead.all
+    end
+    
   end
 
   private
