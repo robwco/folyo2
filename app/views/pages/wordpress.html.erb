@@ -1,23 +1,89 @@
 <style>
-body {/*background-color: #f6f3f0;*/}
-h1 {color: #101010;}
-h2 {color: #868480; margin: .75em 0; line-height: 1.5em;}
+body {background-color: #fff; }
+h1, h2, p {color: #8a7a6b;}
+h1 { font-family: 'Kansas Medium'; font-size: 3em; color: #381c1d; margin: .5em 0 0 0; line-height: 1.25em;}
+h2 { font-family: 'Kansas Medium'; margin: 1em 0; line-height: 1.5em;}
+.welcome { margin: 3em 0; padding: 4em; text-align: center; border: 4px double #f6f3f0; }
+h1.logo { color: #D13C1C; font-family: 'Kansas Medium'; font-size: 22px; letter-spacing: 1px; text-shadow: 1px 2px 0px #eaddbe; margin: 0 0 1em 0;}
+.loose-wrap {width: 53em; margin: 0 auto;}
+table td { border: 4px double #FFF; padding: 1em; background-color: #f6f3f0;}
+p.starting-at {border-radius: 50px; width:7em; background-color: #c8974a; color: #FFF; font-family: 'Kansas Medium'; margin:.25em auto;}
+.sign { width: 25em; padding: 3em 0; border: 1px solid #F6F3F0; border-radius: 5px; text-align: center;}
+.sign h1 {font-size: 2em;}
+h1.price { color: #D13C1C; font-family: 'Kansas Bold'; font-size: 70px; margin: 0;}
+h1.price span {font-family: 'Kansas Medium'; vertical-align: .45em; font-size: 45px; color: #D13C1C;}
+p.timeframe { font-family: 'Kansas Medium'; border-top: 2px solid #c8974a; border-bottom: 2px solid #c8974a; color: #8a7a6b; width: 12em; margin: .25em auto; font-size: 19px; letter-spacing: 1px;}
+@font-face{ 
+	font-family: 'Kansas Bold';
+	src: url('/fonts/kansas/kansascasual-bold-webfont.eot');
+	src: url('/fonts/kansas/kansascasual-bold-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('/fonts/kansas/kansascasual-bold-webfont.woff') format('woff'),
+	     url('/fonts/kansas/kansascasual-bold-webfont.ttf') format('truetype'),
+	     url('/fonts/kansas/kansascasual-bold-webfont.svg#webfont') format('svg');
+}
+
+@font-face{ 
+	font-family: 'Kansas Medium';
+	src: url('/fonts/kansas/kansascasual-medium-webfont.eot');
+	src: url('/fonts/kansas/kansascasual-medium-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('/fonts/kansas/kansascasual-medium-webfont.woff') format('woff'),
+	     url('/fonts/kansas/kansascasual-medium-webfont.ttf') format('truetype'),
+	     url('/fonts/kansas/kansascasual-medium-webfont.svg#webfont') format('svg');
+}
+
 </style>
 
-<section class="reading-wrap">
-<h1>Buying a big website is too risky.</h1>
-<h2>Skip the 30-page proposals, fat price tags, and energy sucking sinking of thousands of dollars into that big mess of a project.</h1>
-<p>Major site overhauls cost more because you're footing the bill on dozens of unnecessary expenses. Big projects mean lots of meetings and time wasting just trying to sort through it all out. Worse, you don't end up with a great website. You just don't have to pay more.</p>
+<section class="loose-wrap">
+<section class="welcome">
+	<h1 class="logo"><%= image_tag 'sign/welcome-sign.png', :style => 'width: 4em; vertical-align: -.5em;' %>to Wheelhouse</h1>
+	<center><h1>Where you can shop for a new website like at the store</h1>
+	<h2>See exactly what you get, pay for what you need, and skip big messy projects.</h2></center>
+</section>
 
-<!--	
-<p>So why pay more? All you want is your website improved, not a big project. Don't pay for all that other stuff.</p>
-<p>Paying for a big website isn't just scary, it's also risky and can spiral out of control. Instead you want to buy a website one page at a time.</h2>
-	
+<section class="sign">
+	<%= image_tag 'sign/new-sign.png', :style => 'width:5em; margin: 0 0 -1em 0;' %>
+	<h1>Website Redesigns</h1>
+	<p class="starting-at">Starting at</p>
+	<h1 class="price"><span>$</span>5000</h1>
+	<p class="timeframe">Delivered in Two Weeks</p>
+</section>
 
-<p>When you get a proposal it's usually a guess and has no guarantees it'll work. That doesn't seem safe because it's not.</p>
-<p>The problem is you don't know what it should cost, but worse you can't get a straight answer from anyone who should know. It doesn't have to be that hard. There's 200+ wonderful freelancers signed up to Workshop and each one of them can help you get setup.</p>
-<p>	You know what you need to have and you just need something that's going to get it done. You've tried other freelancers but their projects usually balloon.</p>
-<h2> Instead buy and shop for your new sitelike at the store: pick out what you need, pay, and start using it.</h2>
+
+
+<!--
+<h2>Thinking about hiring a designer or developer?</h2>
+ 
+<p>Want to hire a designer or developer? Pick a project you want them to work on first. Decide exactly what you want, then send it to hundreds of freelancers and let them do the work for you. Remote. Projects. </p>
+
+
+
+
+
+
+# Create a Wheelhouse Page #1
+
+My specialty is ...
+
+I build and launch new websites
+I fix and improve old websites
+
+
+# Create a Wheelhouse Page #2 (new)
+
+What will you build?
+-----
+Why should they care?
+
+
+How long will it take?
+-----
+Why is this the right timeframe?
+
+
+How much will it cost?
+-----
+Why is this price a no-brainer?</p>
+
 
 
 
