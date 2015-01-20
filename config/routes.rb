@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get "/the-email-line" => "pages#the-email-line"
 
   # Sandbox
-  get "/wordpress" => "pages#wordpress"
+  get "/wheelhouse" => "pages#wheelhouse"
 
   # Referral Sales Pages
   get 'c/:coupon' => 'pages#home'
