@@ -7,13 +7,15 @@
 	</ul>
 </section>
 <section class="nav fixed">
-	<%= link_to 'Post Your Project Free', connect_path %>
+	<%= link_to image_tag("people.png", :style => "width: 150px; margin: 0 0 -10px -10px; display: inline;"), "#top" %>
+	<br>
+	<strong><%= link_to 'Get 10 Free Leads Now', "#top" %></strong>
 </section>
 <%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>
 <p class="tagline">I send people who need websites your way. This week alone I've sent more than <span>$<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %></span> worth of work.</p>
 
 <section class="loose-wrap"  style="text-align: center;">
-<%= image_tag("workshop-freelancer.png") %>
+<%= image_tag("workshop-freelancer.png", :id => "top") %>
 
 <h1 style="margin: .5em auto;">Wrapping up a client project feels great… until you have to find the next one.</h1>
 

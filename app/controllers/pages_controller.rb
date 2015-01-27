@@ -26,7 +26,8 @@ class PagesController < ApplicationController
     end
   end
 
-  def blog
+  def help
+    @book_upsell = 'Emails that win you clients by Robert Williams'
   end
 
 end
