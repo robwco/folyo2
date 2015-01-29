@@ -48,11 +48,11 @@ $(document).on('click','.searchbychar', function(event) {
 			<br>
 			<h3><%= faq.question %></h3>
 			<blockquote>
-				<%= faq.answer %>
+				<%= raw(faq.answer) %>
 			</blockquote>
 			<% if faq.notes.present? %>
 			<p><strong>Further reading:</strong></p>
-			<p><%= faq.notes %></p>
+			<p><%= raw(faq.notes) %></p>
 			<% end %>
 			<a style="font-size: 10px;" href="#top">Back to top</a>
 			</div>

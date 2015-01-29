@@ -1,27 +1,16 @@
 <section class="loose-wrap">
 <h1>Listing faqs</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Question</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @faqs.each do |faq| %>
-      <tr>
-        <td><%= faq.category %></td>
-        <td><%= faq.question %></td>
-        <td><%= link_to 'Show', faq %></td>
-        <td><%= link_to 'Edit', edit_faq_path(faq) %></td>
-        <td><%= link_to 'Destroy', faq, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @faqs.group_by(&:category).each do |category, faqs| %>
+<h3><%= category %>:</h3>
+	<ul>
+	<% faqs.each do |faq| %>
+		<li><%= link_to faq.question, edit_faq_path(faq) %> | <%= link_to 'Destroy', faq, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <% end %>
+	</ul>
+<% end %>
+
 
 <br>
 
