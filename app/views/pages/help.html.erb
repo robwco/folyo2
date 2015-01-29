@@ -34,7 +34,7 @@ $(document).on('click','.searchbychar', function(event) {
 <h3><%= category %>:</h3>
 	<ul>
 	<% faqs.each do |faq| %>
-		<li><a href="<%= faq.anchor %>"><%= faq.question %></a></li>
+		<li><a href="#<%= faq.anchor %>"><%= faq.question %></a></li>
   <% end %>
 	</ul>
 <% end %>
