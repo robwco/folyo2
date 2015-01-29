@@ -7,20 +7,66 @@ $(document).on('click','.searchbychar', function(event) {
     }, 2000);
 });
 </script>
+<section class="global-nav">
+	<ul>
+	<li><a href="http://emailsthatwin.com">Emails that win book</a></li>
+	<li><a href="http://letsworkshop.com">Freelance jobs emailed to you</a></li>
+	<li><a href="http://letsworkshop.com/connect">Hire a freelance for your project (free)</a></li>
+	</ul>
+</section>
 <section class="loose-wrap" name="top">
 <h1>Your biggest freelancing questions answered.</h1>
 <hr>
-<p style="margin:1.5em 0 1.5em 0;"><strong>It's easy to feel like you work alone when you run a consultancy.</strong> That's why one of the best things to come out of <a href="http://letsworkshop.com">my lead-generation newsletter for freelancers</a> has been the awesome community of knowledgeable freelancers it created. Collectively, they created more value than I ever could, by helping each other so it's with great excitement I present this help page.</p>
+<%= image_tag('people.png', :style => 'width:200px; float:left; margin: 1em 1em 0em -1em;') %>
 
-<p class="help-note"><strong>The answers on this page were mostly written by <a href="http://letsworkshop.com">Workshop</a> members.</strong> They're questions we've all asked about freelancing at one point or another, collected for you in one place. I'd appreciate if you shared and saved this page as I'll continue to update it moving forward.<br>
+<p style="margin:2.5em 0 3em 0;"><strong>It's easy to feel like you're alone when you run a consultancy.</strong> That's why one of the best things about <a href="http://letsworkshop.com">my lead-generation service for freelancers</a> is the community of knowledge we share. Hundreds of world-class consultants helping one another. Collectively, they created more value than I ever could and so it's with great excitement I present this help page.</p>
+
+<p class="help-note" style=""><strong>The answers on this page were mostly written by <a href="http://letsworkshop.com">Workshop</a> members.</strong> They're questions we've all asked about freelancing at one point or another, collected for you in one place. I'd appreciate if you shared and saved this page as I'll continue to update it moving forward.<br>
 <a href="http://letsworkshop.com">Go here for more information on Workshop and to get access to this expertise on-demand.</a></p>
 
 <h3>START HERE:</h3>
 
 <ul>
-<li><a href="/">How can I make finding freelance work easier?</a></li>
+<li><a href="/">How can I make finding freelance work easier on myself?</a></li>
 </ul>
-</h3>
+
+<% @faqs.group_by(&:category).each do |category, faqs| %>
+<h3><%= category %>:</h3>
+	<ul>
+	<% faqs.each do |faq| %>
+		<li><a href="<%= faq.anchor %>"><%= faq.question %></a></li>
+  <% end %>
+	</ul>
+<% end %>
+
+<br>
+<hr>
+
+<% @faqs.group_by(&:category).each do |category, faqs| %>
+	<% faqs.each do |faq| %>
+		<div id="<%= faq.anchor %>">
+			<br>
+			<h3><%= faq.question %></h3>
+			<blockquote>
+				<%= faq.answer %>
+			</blockquote>
+			<% if faq.notes.present? %>
+			<p><strong>Further reading:</strong></p>
+			<p><%= faq.notes %></p>
+			<% end %>
+			<a style="font-size: 10px;" href="#top">Back to top</a>
+			</div>
+			<br>
+			<hr>	
+  <% end %>
+<% end %>
+
+
+
+
+
+
+
 
 <h3>Questions about emailing freelance clients and leads</h3>
 
@@ -125,23 +171,14 @@ $(document).on('click','.searchbychar', function(event) {
 
 <div id="lmk">
 
-	
-
-	<h3>What’s the most common reason I’m not hearing back the leads I email?</h3>
+<h3>What’s the most common reason I’m not hearing back the leads I email?</h3>
 <blockquote>
-	<p>Not being clear about what you want the person you're emailing to do. One sure-fire way to tell if you're doing this is to look for the phrase:</p>
-
-	
-	<p>“Let me know how I can help.”</p>
-
-	
-	<p>I’ve said it myself in countless emails, and when I said it I honestly thought I was being helpful. It felt like the right way to end an email. Heck, it seemed professional.</p>
-
-	<p>But inevitably conversations with new clients reach a point where we needed to discuss solutions, and I thought by letting the client dictate what they wanted from me, I was allowing them to get exactly what they were looking for.</p>
-
-	<p>But the reality was this was A LOAD OF SHIT. By ending my emails like this, I was dropping a wheel-barrel full of work on my client’s desk, and saying “here, you deal with it.”</p>
-
-	<p>It reeked of incompetence.</p>
+<p>Not being clear about what you want the person you're emailing to do is the most common reason for not hearing back. One sure-fire way to tell if you're doing this is if you're abusing the phrase:</p>
+<p>“Let me know how I can help.”</p>
+<p>I’ve said it myself in countless emails, and when I said it I honestly thought I was being helpful. It felt like the right way to end an email. Heck, it seemed professional.</p>
+<p>But inevitably conversations with new clients reach a point where we needed to discuss solutions, and I thought by letting the client dictate what they wanted from me, I was allowing them to get exactly what they were looking for.</p>
+<p>But the reality was this was A LOAD OF SHIT. By ending my emails like this, I was dropping a wheel-barrel full of work on my client’s desk, and saying “here, you deal with it.”</p>
+<p>It reeked of incompetence.</p>
 
 	<p>After all, these were the very problems I was being paid to solve.</p>
 
@@ -200,28 +237,26 @@ $(document).on('click','.searchbychar', function(event) {
 <p>"Hi, i’m replying to your post looking for a freelancer."</p>
 
 
-<p>This person will never hear back because they’ve clearly not taken the time to write a good email. </p>
-
-<p>Instead of just shooting off the first email that comes to mind:</p>
+<p>This person will never hear back because they’ve clearly not taken the time to write a real message. Instead of just shooting off the first email that comes to mind:</p>
 
 <ul>
-<li><p>Read the job post carefully and get an idea of the underlying business outcome is you need.</p></li>
-<li><p>Use their website, emails, twitter, and any other background information I provide to learn more about the type of person you’ll be emailing.</p></li>
-<li><p>Write a custom, tailored email that is conversational and to the point:</p></li>
-</ul>
-
+<li>
+	<p>Read the job post carefully and get an idea of the underlying business outcome they need.</p>
+</li>
+<li><p>Use their website, emails, twitter, and any other background information to learn more about the type of person you’ll be emailing.</p></li>
+<li><p>Write a custom, tailored email that is conversational and to the point:</p>
 <ol>
-	<li><p>Start the email off with a first name and a line that shows you actually read their job post.</p></li>
+<li><p>Start the email off with a first name and a line that shows you actually read their job post.</p></li>
 <li><p>Tell them why you are replying to the job post and what you love about their project. </p></li>
 <li><p>Don’t talk about your portfolio or experience, instead talk about what a successful project could look like.</p></li>
 <li><p>Make it easy for them to reply and get started with the next step. For example, someone should be able to reply “sounds good” to your email.</p></li>
 </ol>
+</li>
+</ul>
 </blockquote>
-
 <p><strong>Further reading:</strong></p>
 <p><a href="http://emailsthatwin.com"><%= @book_upsell %></a></p>
-
-	<a style="font-size: 10px;" href="#top">Back to top</a>
+<a style="font-size: 10px;" href="#top">Back to top</a>
 </div>
 
 <hr>
@@ -261,7 +296,7 @@ $(document).on('click','.searchbychar', function(event) {
 <p>"By the way: I’ve been searching for a developer to help me (short term) on some projects, and I totally forgot to ask you.”</p>
 <p>Since then, that relationship has resulted in $36,225.83 worth of business. Not bad for one follow up email.</p>
 <p>A couple months ago, Robert sent out an email to Shed subscribers titled “What should I do RIGHT NOW to get an inbox full of clients later?” He showed how he sets up a label for prospects to remind himself to follow up. I saw how this is a huge problem for myself and other freelancers. There could be thousands of dollars in opportunities sitting in your email but they end up slipping away unless you have an easy follow up reminder system.</p>
-	<p>So I built <a href="https://touchingbase.io">TouchingBase</a> to help freelancers and consultants stay in touch with prospects and clients without the huge time hassle of setting up and using a CRM. I just launched it a couple weeks ago and have gotten some pretty good feedback on it.</p>
+<p>So I built <a href="https://touchingbase.io">TouchingBase</a> to help freelancers and consultants stay in touch with prospects and clients without the huge time hassle of setting up and using a CRM. I just launched it a couple weeks ago and have gotten some pretty good feedback on it.</p>
 <p>Answer by Matt McCormick</p>
 </blockquote>
 
@@ -272,7 +307,19 @@ $(document).on('click','.searchbychar', function(event) {
 <a style="font-size: 10px;" href="#top">Back to top</a>
 </div>
 <hr>
+<div id="bad-email">
 
+<h3>What’s a bad email to send to a freelance prospect?</h3>
+<blockquote>
+
+
+</blockquote>
+<p><strong>Further reading:</strong></p>
+<p><a href="http://emailsthatwin.com"><%= @book_upsell %></a></p>
+<a style="font-size: 10px;" href="#top">Back to top</a>
+</div>
+
+<hr>
 
 
 </section>

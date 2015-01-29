@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :faqs
+
   root "pages#home"
 
   resources :exclusives, :leads, :workers, :sessions

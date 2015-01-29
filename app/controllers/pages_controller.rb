@@ -27,6 +27,7 @@ class PagesController < ApplicationController
   end
 
   def help
+    @faqs = Faq.all
     @book_upsell = 'Emails that win you clients by Robert Williams'
   end
 
