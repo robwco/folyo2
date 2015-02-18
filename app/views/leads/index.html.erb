@@ -34,7 +34,7 @@
 <br>
 
 
-<h1>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "submit" %></h1>
+<h1>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "submit" %> <%= link_to 'New RFP', new_rfp_path, class: "submit" %></h1>
 <table style="margin: 0 0 7em 0;">
   <tbody>
     <% @leads.today.most_recently_updated.each do |lead| %>

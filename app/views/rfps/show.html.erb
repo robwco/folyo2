@@ -1,0 +1,25 @@
+<section class="loose-wrap">
+<p id="notice"><%= notice %></p>
+
+
+<h1>RFP</h1>
+<p>
+  <strong>Name:</strong>
+  <%= @rfp.name %>
+</p>
+
+<p>
+  <strong>URL to use for RFP lead</strong>
+
+	http://letsworkshop.com<%= @rfp.file.url(:original, timestamp: false) %>
+
+</p>
+
+<%= link_to 'Edit', edit_rfp_path(@rfp) %> |
+<%= link_to 'Back to rfps', rfps_path %>
+
+<br><br>
+
+<%= link_to 'Back to leads', leads_path %>
+
+</section>
