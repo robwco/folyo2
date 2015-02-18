@@ -8,10 +8,10 @@
   <%= @rfp.name %>
 </p>
 
-<p>
+<p style="max-width: 100%;">
   <strong>URL to use for RFP lead</strong>
 
-	http://letsworkshop.com<%= @rfp.file.url(:original, timestamp: false) %>
+	<%= @rfp.file.url(:original, timestamp: false) %>
 
 </p>
 
