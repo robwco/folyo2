@@ -1,3 +1,4 @@
+<section class="tight-wrap">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -26,5 +27,11 @@
   <%= @faq.notes %>
 </p>
 
+<p>
+	<a href="http://letsworkshop.com/advice#<%= @faq.anchor %>">http://letsworkshop.com/advice#<%= @faq.anchor %></a>
+</p>
+
 <%= link_to 'Edit', edit_faq_path(@faq) %> |
 <%= link_to 'Back', faqs_path %>
+
+</section>
