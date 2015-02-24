@@ -18,3 +18,4 @@ gem 'aws-sdk', '~> 1.16.1'
 gem 'bcrypt-ruby'
 gem 'feedjira'
 gem 'redcarpet', '~> 3.0.0'
+gem 'mailman', require: false

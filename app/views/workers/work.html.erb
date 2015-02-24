@@ -10,6 +10,12 @@
 <% end %>
 
 <div style="width: 100%; display: table;">
+	
+	
+
+	
+<!--	
+	
 <%= form_tag work_path, :method => 'get' do %>
 	<p>
 	<%= text_field_tag :search, params[:search], :placeholder => "Search by specialty or project type" %>
@@ -46,12 +52,12 @@
     <a class="email" href="MAILTO:<%= exclusive.email %>"><%= exclusive.email %></a></p>
     <h4>This lead is only shown to Workshop members, so you have a great chance of landing it.</h4>
   </div>
-<% end %>-->
+<% end %>
 
 <% @leads.most_recent.group_by(&:category).each do |category, leads| %>
 <%= render :partial => './leads/lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>
-<hr>
+<hr>-->
 </div>
 
 
