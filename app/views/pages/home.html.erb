@@ -49,7 +49,7 @@ $(document).scroll(function() {
 
 <section class="reading-wrap">
 <center><%= image_tag("people.png", :id => "top", :style => "margin: 0 0 -3em; width: 200px;") %></center>
-<h1>I'll send you freelance leads you can email today and make thousands from.</h1>
+<h1>I'll send you potential consulting clients you can email today, worth thousands.</h1>
 <h2>Get ten right now. For free.</h2>
 
 <p>They're opportunities I've hand picked for you, from all over the web. Each one is 100% remote, 100% freelance, and worth over $1,000 in project work. Give me your email and see for yourself. End your dry spell. Stop waiting for work to come to you.</p>
@@ -95,7 +95,6 @@ $(document).scroll(function() {
 <h2>What does it look like?</h2>
 
 <p>Your subscription gets you a daily email with the best leads from all over the web, <strong>equaling over 2400 leads per year.</strong> You also get exclusive leads posted to Workshop – and no where else. These are five and six figure budget projects sent just to you. If you reach out to a few of these opportunities every day you'll make thousands of dollars every month. So don't wait. Sign up now.</p>
-<h1>Sign up now, I've already sent $<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %> worth of work just this week.</h1>
 </section>
 
 <section style="max-width: 900px; margin: auto;"><%= image_tag('workshop-email.png', :style => "width:100%; margin: 2em 0 -1em 0;") %></section>
@@ -105,6 +104,7 @@ $(document).scroll(function() {
 
 -->
 <center>
+<h1>I've already sent $<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %> worth of work just this week. Sign up now.</h1>
 <a href="<%= @sales_link %>"><input type="submit" name="submit" value="GET THE BEST CONSULTING PROJECTS ON THE WEB" data-drip-attribute="sign-up-button"  style="margin: 2em 0 0 0;"class="buy"></a>
 
 <p style="margin: 1em 0 3em 0;"><a href="https://workshop.memberful.com/orders/new?plan=1798">Save BIG when you pay yearly.</a></p>

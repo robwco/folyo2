@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get "/wheelhouse" => "pages#wheelhouse"
 
   # Referral Sales Pages
-  get "/dyfl" => "pages#dyfl"
+  get "/dyfc" => "pages#dyfc"
   get 'c/:coupon' => 'pages#home'
   get '/pjrvs', to: redirect('c/pjrvs')
   get '/obie', to: redirect('c/obie')
