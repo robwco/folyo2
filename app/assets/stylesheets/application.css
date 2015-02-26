@@ -26,6 +26,7 @@ ol {margin: 0 3em;}
 ul {margin: 0 2em; font-size: 12px;}
 blockquote {margin: 2em 0;}
 
+
 /* Flash */
 #flash_alert, #flash_notice {background-color: #ebe7e2; color: #76726a; padding: .5em 1em; margin: 1em 0 0 0; font-size: 14px; }
 #flash_alert {background-color: #F5E9ED; color: #825B70;}
@@ -95,6 +96,11 @@ input[type=text].login { max-width: 20em;}
 .leads-wrap {width: 50em; margin: 0 auto;}
 .tight-wrap {width: 37.5em; margin: 0 auto;}
 .breathe-bottom {margin: 0 auto 3em auto;}
+
+/* webinar */
+.webinar ul {font-size: 14px; margin: 2em;}
+.webinar ul li {margin:.5em 0; font-style: italic;color: #7d766a; list-style-type: square;}
+.webinar ul li p {  }
 
 /* Popular Resources */
 .resource {background-color: #F5F5F5; border-radius: 3px; width: 230px; height: 190px; float: left; margin: 1em; text-align: center;}
