@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
 
+  get "/thanks" => "pages#successful_generic"
   get "/successful" => "pages#successful_sign_up"
   get "/successful_feedback" => "pages#successful_feedback"
   get "/successful_order" => "pages#successful_order"
