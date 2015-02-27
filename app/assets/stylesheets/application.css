@@ -98,9 +98,10 @@ input[type=text].login { max-width: 20em;}
 .breathe-bottom {margin: 0 auto 3em auto;}
 
 /* webinar */
-.webinar ul {font-size: 14px; margin: 2em;}
-.webinar ul li {margin:.5em 0; font-style: italic;color: #7d766a; list-style-type: square;}
+.webinar ul {font-size: 14px; margin: 1em 2em;}
+.webinar ul li {margin:.5em 0; list-style-type: square;}
 .webinar ul li p {  }
+.webinar input { margin:.35em 0;}
 
 /* Popular Resources */
 .resource {background-color: #F5F5F5; border-radius: 3px; width: 230px; height: 190px; float: left; margin: 1em; text-align: center;}
