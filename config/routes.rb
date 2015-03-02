@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   devise_scope :user do 
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
-
+  
   get "/connect" => "exclusives#connect"
   get "/popular" => "pages#popular_resources"
 
