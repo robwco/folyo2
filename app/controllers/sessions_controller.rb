@@ -17,4 +17,6 @@ class SessionsController < ApplicationController
     session[:worker_id] = nil
     redirect_to login_url, notice: "You're logged out"
   end
+
+
 end

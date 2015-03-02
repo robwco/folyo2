@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :sales
+
+  resources :products
+
+  devise_for :users
   resources :prospects
 
   resources :rfps
@@ -9,15 +14,17 @@ Rails.application.routes.draw do
 
   resources :exclusives, :leads, :workers, :sessions
 
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
-
+  # get 'login', to: 'sessions#new', as: 'login'
+  # get 'logout', to: 'sessions#destroy', as: 'logout'
+  devise_scope :user do 
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
 
   get "/connect" => "exclusives#connect"
   get "/popular" => "pages#popular_resources"
 
   get "/work" => "workers#work"
-  get "/login" => "sessions#new"
+  # get "/login" => "sessions#new"
 
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
