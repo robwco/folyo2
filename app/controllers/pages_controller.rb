@@ -22,7 +22,7 @@ class PagesController < ApplicationController
       @sales_link = 'https://workshop.memberful.com/checkout?plan=2713'
       @coupon_message = '<p class="coupon_message">Happy New Year! As a special thank you, I&#39;m offering <strong>20% off and a free 30 day trial</strong> at the bottom of this page. Thanks again, you guys rock! – Robert</p>'.html_safe
     else
-      @sales_link = 'https://workshop.memberful.com/checkout?plan=1775'
+      @sales_link = 'https://workshop.memberful.com/checkout?plan=1798'
     end
   end
 

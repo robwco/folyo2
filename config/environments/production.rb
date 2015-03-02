@@ -85,5 +85,19 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:  'smtp.mandrillapp.com',
+  port: 587,
+  user_name: ENV['MANDRILL_USERNAME'],
+  password: ENV['MANDRILL_APIKEY'],
+  domain:   'heroku.com',
+  authentication: :plain
+
+  }
+  config.action_mailer.default_url_options = {
+    :host => 'letsworkshop.herokuapp.com'
+  }
 
 end
