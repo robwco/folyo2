@@ -48,6 +48,9 @@ Rails.application.routes.draw do
 
   # Referral Sales Pages
   get "/copyhackers" => "pages#copyhackers"
+  get "/copyhackers/workshop" => "pages#webinar"
+  
+  
   get "/dyfc" => "pages#dyfc"
   get 'c/:coupon' => 'pages#home'
   get '/pjrvs', to: redirect('c/pjrvs')
