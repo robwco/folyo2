@@ -50,6 +50,8 @@ Rails.application.routes.draw do
   get "/copyhackers" => "pages#copyhackers"
   get "/copyhackers/workshop" => "pages#webinar"
   
+  get "/freelancer-association" => "pages#fa-webinar"
+  
   
   get "/dyfc" => "pages#dyfc"
   get 'c/:coupon' => 'pages#home'
