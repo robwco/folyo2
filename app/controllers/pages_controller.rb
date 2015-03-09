@@ -4,7 +4,9 @@ class PagesController < ApplicationController
     @exclusives = Exclusive.all
     @number_of_leads_this_week = Lead.this_week.distinct.count
     @sent_this_week = @leads.this_week.map{ |lead| lead.budget.to_i }.reduce((@number_of_leads_this_week * 1000), :+) + @exclusives.this_week.map{ |exclusive| exclusive.budget.to_i }.reduce(0, :+)
-
+    @number_of_leads_this_month = Lead.this_month.distinct.count
+    @sent_this_month = @leads.this_month.map{ |lead| lead.budget.to_i }.reduce((@number_of_leads_this_month * 1000), :+) + @exclusives.this_month.map{ |exclusive| exclusive.budget.to_i }.reduce(0, :+)
+    
     # Sales Links
     if params[:coupon] == "pjrvs"
       @sales_link = 'https://workshop.memberful.com/checkout?plan=3618'

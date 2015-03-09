@@ -15,8 +15,7 @@ gem 'spring',        group: :development
 gem 'rails_12factor'
 gem 'unicorn'
 gem 'aws-sdk', '~> 1.16.1'
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 gem 'feedjira'
 gem 'redcarpet', '~> 3.0.0'
 gem 'mailman', require: false
-gem 'devise', '~> 3.4.1'
