@@ -1,16 +1,33 @@
 class WorkersController < ApplicationController
+  before_action :authenticate, :only => [:show, :edit, :update, :destroy]
 	def new
 		@worker = Worker.new
 	end
 
   def create
     @worker = Worker.new(worker_params)
+    @leads = Lead.all
+    @exclusives = Exclusive.all
 	  if @worker.save
+	    WorkerMailer.welcome_email(@worker).deliver
 	    session[:worker_id] = @worker.id
-	    redirect_to onboard_url
+	    redirect_to onboard_url, notice: "Thank you for signing up!"
 	  else
 	    render "work"
 	  end
+  end
+  
+  
+  def index
+    @workers = Worker.all
+  end
+  
+  def destroy
+    @worker.destroy
+    respond_to do |format|
+      format.html { redirect_to workers_url, notice: 'Worker was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def work
@@ -25,12 +42,16 @@ class WorkersController < ApplicationController
     else
       @leads = Lead.all
     end
-    
   end
 
-  private
 
-	def worker_params
-  	params.require(:worker).permit(:email, :password, :password_confirmation)
+  private
+    def authenticate
+      authenticate_or_request_with_http_basic do |name, password|
+        name == "workshop" && password == "sbGfKA3A9xfd/jB"
+    end
+  	def worker_params
+    	params.require(:worker).permit(:email, :password, :password_confirmation)
+    end
   end
 end

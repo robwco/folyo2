@@ -14,7 +14,7 @@
 	
 
 	
-<!--	
+
 	
 <%= form_tag work_path, :method => 'get' do %>
 	<p>
@@ -35,9 +35,8 @@
 
 
 
-<div class="leads">
-	
-<!--<% @exclusives.most_recent.each do |exclusive| %>
+<div class="leads">	
+<% @exclusives.most_recent.each do |exclusive| %>
   <div class="exclusive">
     <hr>
     <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
@@ -57,7 +56,7 @@
 <% @leads.most_recent.group_by(&:category).each do |category, leads| %>
 <%= render :partial => './leads/lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>
-<hr>-->
+<hr>
 </div>
 
 

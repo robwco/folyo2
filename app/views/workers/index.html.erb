@@ -1,0 +1,15 @@
+<section class="loose-wrap breathe-bottom">
+
+<table>
+  <tbody>
+
+    <% @workers.each do |worker| %>
+        <tr>
+          <td style="padding-right: 2em;"><%= worker.email %></td>
+          <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+
+  </tbody>
+</table>
+</section>

@@ -175,6 +175,7 @@ DEPENDENCIES
   feedjira
   jbuilder (~> 2.0)
   jquery-rails
+  mail
   mailman
   paperclip!
   pg

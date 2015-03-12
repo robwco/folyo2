@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get "/popular" => "pages#popular_resources"
 
   get "/work" => "workers#work"
-  get "/login" => "sessions#new"
 
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
