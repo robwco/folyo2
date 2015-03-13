@@ -5,7 +5,22 @@
 
 <section class="loose-wrap breathe-bottom">
 <!-- <%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>  -->
-
+<div class="lead-count">
+	<strong>Rails</strong><br>
+	<span style="15px;"><%= @leads.rails.count %></span> leads
+</div>
+<div class="lead-count">
+	<strong>Drupal</strong><br>
+	<span style="15px;"><%= @leads.drupal.count %></span> leads
+</div>
+<div class="lead-count">
+	<strong>Ecommerce</strong><br>
+	<span style="15px;"><%= @leads.ecommerce.count %></span> leads
+</div>
+<div class="lead-count">
+	<strong>Logo Design</strong><br>
+	<span style="15px;"><%= @leads.logo.count %></span> leads
+</div>
 
 <h1>Workshop-exclusive leads <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "submit" %></h1>
 <table>

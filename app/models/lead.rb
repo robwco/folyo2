@@ -10,4 +10,8 @@ class Lead < ActiveRecord::Base
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 	scope :design, -> { where("category like '%DESIGN%'") }
 	scope :development, -> { where("category like '%DEVELOPMENT%'") }
+	scope :rails, -> { where("category ilike '%RAILS%' OR title ilike '%RAILS%'") }
+	scope :drupal, -> { where("category ilike '%DRUPAL%' OR title ilike '%DRUPAL%'") }
+	scope :ecommerce, -> { where("category ilike '%SHOPIFY%' OR category ilike '%MAGENTO%' OR category ilike '%STORE%' OR title ilike '%SHOPIFY%' OR title ilike '%MAGENTO%' OR title ilike '%STORE%'") }
+	scope :logo, -> { where("category ilike '%LOGO%' OR category ilike '%BRAND%' OR category ilike '%BRANDING%' OR title ilike '%LOGO%' OR title ilike '%BRAND%' OR title ilike '%BRANDING%'") }
 end

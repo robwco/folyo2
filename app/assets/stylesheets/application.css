@@ -40,6 +40,9 @@ a.submit, input[type=submit] {color: #76726a; background-color: #ded9d4; border:
 a.submit:hover, input[type=submit]:hover {background-color: #ebe7e2; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);}
 a.submit:active, input[type=submit]:active { border-top: 2px solid #868480; background-color: #9a9793; box-shadow: inset 0px 0px 3px rgba(0,0,0,0.3); border-bottom: none; outline:none;color: #58554d;}
 
+/* Leads Center */
+.lead-count {min-width: 60px; background-color: #F1F1F1; border-radius: 6px; margin: 2em 2em 2em 0; padding: 1em; font-size: 12px; line-height: 16px; text-align: center; display: inline-block;}
+
 
 /* Red button */
 a.buy, input[type=submit].buy {box-sizing: border-box; margin: auto; background-color: #E44727; border-radius: 4px; cursor: pointer; font: 14px/1.552 'Gotham SSm A', 'Gotham SSm B', Helvetica, sans-serif; border: none; color: #FFF; padding: .5em 2em; font-weight: 700; display: inline-block; margin: auto; text-align: center; max-width: 100%; text-decoration: none; text-transform: uppercase; text-shadow: 0px 1px 1px #b72a22; border-bottom: 2px solid #b72a22; }
