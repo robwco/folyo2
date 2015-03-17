@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   # Referral Sales Pages
   get "/copyhackers" => "pages#copyhackers"
-  get "/copyhackers/workshop" => "pages#webinar"
+  get "/freelancer-association/workshop" => "pages#webinar"
   
   get "/freelancer-association" => "pages#fa-webinar"
   

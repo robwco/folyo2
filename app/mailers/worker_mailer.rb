@@ -3,6 +3,6 @@ class WorkerMailer < ActionMailer::Base
   
   def welcome_email(worker)
     @worker = worker
-    mail(to: @worker.email, :subject => ":)")
+    mail(to: worker.email, :subject => ":)")
   end
 end
