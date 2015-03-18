@@ -140,7 +140,7 @@ input[type=text].login { max-width: 20em;}
 .category-wrap { margin: 0; padding: 0; }
 .photo-wrap {width: 40px; height: 40px; border-radius: 40px; float: left; background-color: #FFF; margin: 0 1em 0 0;}
 .photo-wrap img { width: 40px; height: 40px; border-radius: 3px; margin: 0;}
-.description { font-size: 12px; margin: 0; }
+.description { font-size: 14px; margin: 0; white-space: nowrap; text-overflow: ellipsis; }
 .description:hover {}
 a.url { font-size: 14px; text-decoration: none; color: #111;font-weight: 700;}
 a.url:hover {text-decoration: underline; color: #7191bc;}
