@@ -11,43 +11,42 @@
     </div>
   <% end %>
   <div class="field">
-    <%= label_tag 'name', 'Your name' %><br>
+    <%= label_tag 'name', 'Your Name' %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :pic, 'Your mugshot' %><br>
+    <%= f.label :pic, 'Photo of Yourself' %><br>
     <%= f.file_field :pic, class: "form-control" %>
-    <p class="note">Upload a picture of you to accompany your project listing and remind everyone that you're a real person.</p>
+    <p class="note">Uploading a picture of yourself means you'll get even more responses.</p>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email, 'Your Email'  %><br>
     <%= f.text_field :email %>
     <p class="note">Where can a freelancer get a hold of you?</p>
   </div>
   <div class="field">
-    <%= f.label :title, 'Project title' %><br>
+    <%= f.label :title, 'Title Your Project' %><br>
     <%= f.text_field :title %>
-    <p class="note">A few words about the project, what you're looking for, and what your company does.</p>
+    <p class="note">A few words about what you're looking for, and what your company does.</p>
   </div>
   <div class="field">
-    <%= f.label :category, 'Required or preferred specialty' %><br>
+    <%= f.label :category, 'Type of Freelancer (if required)' %><br>
     <%= f.text_field :category, :placeholder => 'Example: Wordpress development, UX design, ruby on rails, etc.' %>
-    <p class="note">My list has some of the most specialized freelancers in the world. Let me know what type of freelancer your project needs and I'll send it to world-class freelancers of that area.</p>
+    <p class="note">I'll send your project to a world-class freelancer in the specific area you need.</p>
   </div>
   <div class="field">
-    <%= f.label :website, 'Your company website' %><br>
-    <%= f.text_field :website, :placeholder => 'http://ww.yourwebsite.com' %>
+    <%= f.label :website, 'Your Website' %><br>
+    <%= f.text_field :website, :placeholder => 'http://www.yourwebsite.com' %>
   </div>
   <div class="field">
-    <p class="note" style="float:right; width: 26em;">Budget guidelines:<br>
-      $2,000+ for Logo<br> $5,000+ for Website<br> $15,000+ for Web App.</p>
-    <%= f.label :budget, 'Project Budget ($1000 minimum)' %><br>
+    <p class="note" style="float:right; width: 26em;">Budget guidelines:<br>$1,000 minimum<br>$2,000+ for a Website<br> $4,000+ for Web App.</p>
+    <%= f.label :budget, 'Your Budget' %><br>
     $ <%= f.number_field :budget %>
   </div>
   <div class="field">
-    <%= f.label :description, 'Brief Project Description' %>
-    <p class="note">Include as much detail about your project as necessary here. For example, what specific pages do you need help on? What kind of deliverables do you expect? When do you need this project completed?</p>
-    <%= f.text_area :description %>
+    <%= f.label :description, 'Describe Your Project' %>
+    <p class="note">Try to include as much detail as possible. For example, what specific web pages or designs do you need help on? What kind of deliverables do you expect? When do you need this project completed?</p>
+    <%= f.text_area :description, :id => "exclusive_description" %>
   </div>
 
   <div class="actions" style="margin: 2em 0 3em 0;">

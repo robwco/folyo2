@@ -59,15 +59,24 @@ form.login {margin: 0 auto; max-width: 20em;}
 input#search {width: 23em; font-size: 13px; vertical-align: .4em;}
 
 /* Input ui */
+.field {margin: 0 0 1em 0;}
 input, textarea {
-  -webkit-appearance: none;
+-webkit-appearance: none; 
+max-width: 100%;
+box-sizing: border-box; 
+background-color: #f5f5f5; 
+border-radius: 3px;
+padding: .125em .5em; 
+margin: .25em 0; 
+font:14px/1.552em 'Gotham SSm A', 'Gotham SSm B'; 
+height: 2.5em;
+outline: none;
+border: none;
 }
-input[type=number] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  padding: .25em .5em; margin: .25em 0;}
-input[type=text] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  width: 100%; padding: .25em .5em; margin: .25em 0;}
-input[type=file] {margin: 1em 0;}
-input[type=email].sample {box-sizing: border-box;  background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; width: 100%; max-width: 20em; padding: .25em .5em; margin: 1em 0;}
-input[type=password] {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; height: 2.25em;  width: 100%; max-width: 20em; padding: .25em .5em; margin: 1em 0;}
-textarea#exclusive_description {box-sizing: border-box; background-color: #f5f5f5; font:17px/1.552em 'Gotham SSm A', 'Gotham SSm B'; width: 100%; padding: .25em .5em; margin: .25em 0; outline: none;}
+input[type=text] {height: 2.25em;}
+input[type=file] {margin: 0; height: 100%; background-color: white;}
+input[type=password] {}
+textarea#exclusive_description {outline: none; min-height: 200px}
 input[type=text].login { max-width: 20em;}
 
 /* Navigation */
@@ -114,6 +123,9 @@ input[type=text].login { max-width: 20em;}
 .resource a p {font-size: 13px; margin: 0; padding: 0 .5em 1em .5em;}
 
 /* Productized Consulting */
+table.wheelhouse {width: 100%;}
+table.wheelhouse p, a {font-size: 13px;}
+table.wheelhouse td {border-top: 1px solid #f8f8f8;}
 .product_box {width: 20em; height: 25em; border: 1px solid #f5f5f5; border-radius: 3px; margin:.5em; padding: 0; float: left;}
 .product_box p, .product_box h3 {padding: 0 .5em; margin: 0;}
 
@@ -150,7 +162,6 @@ a.url:hover {text-decoration: underline; color: #7191bc;}
 .icons a:hover {color: #111;}
 
 /* FAQ */
-
 textarea {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
