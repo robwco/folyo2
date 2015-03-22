@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   get "/successful_order" => "pages#successful_order"
   get "/successful_featured" => "exclusives#success"
   get "/onboard" => "leads#onboard"
-
+  
+  get "/start" => "pages#start.html.erb"
+  
   # Blog Articles
   get "/freelance-as-a-service" => "pages#freelance-as-a-service"
   get "/the-email-line" => "pages#the-email-line"
