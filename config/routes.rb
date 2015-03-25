@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
   get "/connect" => "exclusives#connect"
+  get "/build" => "exclusives#build"
+  
   get "/popular" => "pages#popular_resources"
 
   get "/work" => "workers#work"
@@ -40,6 +42,7 @@ Rails.application.routes.draw do
   
   
   get "/dyfc" => "pages#dyfc"
+  get "/worksheet" => "pages#dyfc-worksheet"
   get 'c/:coupon' => 'pages#home'
   get '/pjrvs', to: redirect('c/pjrvs')
   get '/obie', to: redirect('c/obie')

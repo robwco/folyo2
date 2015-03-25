@@ -19,6 +19,7 @@ a {color: #7191bc;}
 p {margin: .75em 0;}
 h1 {font: 1.6em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; font-weight: normal;}
 h2 {font: 1.6em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; font-weight: normal;}
+h2 a {font: 1em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; font-weight: normal;}
 h3 {margin: 1.5em 0 0 0; font-weight: 600; font: 1.3em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; font-weight: normal; }
 h1, h2, h3 {color: #111; margin: 1.5em 0 0 0;}
 hr {border: 0; height: 1px; background-color: #D9D3CF; }

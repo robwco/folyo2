@@ -11,7 +11,12 @@ class ExclusivesController < ApplicationController
   # GET /exclusives/1.json
   def show
   end
-
+  
+  # GET /exclusives/connect
+  def build
+    @exclusive = Exclusive.new
+  end
+  
   # GET /exclusives/connect
   def connect
     @exclusive = Exclusive.new
