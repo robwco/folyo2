@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   
   
   get "/dyfc" => "pages#dyfc"
+  get "/using-job-boards" => "pages#dyfc-worksheet"
   get "/worksheet" => "pages#dyfc-worksheet"
   get 'c/:coupon' => 'pages#home'
   get '/pjrvs', to: redirect('c/pjrvs')
