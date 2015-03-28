@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :people
+
   root "pages#home"
 
   resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps, :faqs
@@ -24,6 +27,8 @@ Rails.application.routes.draw do
   get "/successful_featured" => "exclusives#success"
   get "/onboard" => "leads#onboard"
   
+  
+  get "/people" => "pages#people.html.erb"
   get "/start" => "pages#start.html.erb"
   
   # Blog Articles

@@ -20,3 +20,4 @@ gem 'feedjira'
 gem 'redcarpet', '~> 3.0.0'
 gem 'mailman', require: false
 gem 'mail'
+gem 'devise'

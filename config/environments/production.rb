@@ -96,8 +96,6 @@ Rails.application.configure do
   authentication: :plain
 
   }
-  config.action_mailer.default_url_options = {
-    :host => 'letsworkshop.herokuapp.com'
-  }
+  config.action_mailer.default_url_options = { :host => 'http://letsworkshop.herokuapp.com/' }
 
 end
