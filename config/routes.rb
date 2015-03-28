@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps, :faqs
-
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
   
   get "/connect" => "exclusives#connect"
   get "/build" => "exclusives#build"
@@ -55,6 +52,10 @@ Rails.application.routes.draw do
   get '/brennan', to: redirect('c/brennan')
   get '/jfdi', to: redirect('c/jfdi')
   get '/2015', to: redirect('c/2015')
+
+  devise_scope :user do 
+      match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
 
   get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.

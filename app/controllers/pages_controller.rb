@@ -6,8 +6,8 @@ class PagesController < ApplicationController
     @sent_this_week = @leads.this_week.map{ |lead| lead.budget.to_i }.reduce((@number_of_leads_this_week * 1000), :+) + @exclusives.this_week.map{ |exclusive| exclusive.budget.to_i }.reduce(0, :+)
     @number_of_leads_this_month = Lead.this_month.distinct.count
     @sent_this_month = @leads.this_month.map{ |lead| lead.budget.to_i }.reduce((@number_of_leads_this_month * 1000), :+) + @exclusives.this_month.map{ |exclusive| exclusive.budget.to_i }.reduce(0, :+)
-
-    def people 
+    if user_signed_in?
+      redirect_to people_url
     end
 
     # Sales Links

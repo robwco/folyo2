@@ -1,34 +1,39 @@
 
 
-<section class="loose-wrap">
+<section style="padding: 2em 4em; ">
 <% if user_signed_in? %>
+<%= link_to "Account Settings", edit_user_registration_path %>
+
+<h1>People</h1>
+<p>Hey Robert these are the people and conversations you care about.</p>
 
 
-<h1>Listing people</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @people.each do |person| %>
-      <tr>
-        <td><%= person.name %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <div class="person_wrap" style="width: 200px; height: 200px; border: 1px solid #F8F8F8; display: inline-block; padding: 1em; border-radius: 3px;">
+			<h1><%= person.name %></h1>
+      <p><%= link_to 'Read more', person %></p>
+			<p><%= link_to 'Edit', edit_person_path(person) %></p>
+			<p><%= link_to 'Delete person', person, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+			</div>
+    <% end %>	
+			
+		<% if user_signed_in? %>
+				<div class="person_wrap">
+					<h1><%= link_to 'New Person', new_person_path %></h1>
+				</div>
+		<% end %>
 <br>
 
-<%= link_to 'New Person', new_person_path %>
+
+
+
+
+<% if user_signed_in? %>
+	<p><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+<% end %>
+
 
 
    <% else %>
