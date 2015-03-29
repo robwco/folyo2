@@ -5,17 +5,16 @@
 <%= link_to "Account Settings", edit_user_registration_path %>
 
 <h1>People</h1>
-<p>Hey Robert these are the people and conversations you care about.</p>
+<p>Hey <%= @current_user.email %>, these are the people and conversations you care about.</p>
 
 
 
 
-    <% @people.each do |person| %>
+    <% @people.most_recently_updated.each do |person| %>
       <div class="person_wrap" style="width: 200px; height: 200px; border: 1px solid #F8F8F8; display: inline-block; padding: 1em; border-radius: 3px;">
-			<h1><%= person.name %></h1>
-      <p><%= link_to 'Read more', person %></p>
-			<p><%= link_to 'Edit', edit_person_path(person) %></p>
-			<p><%= link_to 'Delete person', person, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+			<%= image_tag person.image.url, :style => "width: 90px; height: 90px; border-radius: 100px; margin: 0 auto; display: block;" %>
+			<p><%= link_to person.name, edit_person_path(person) %></p>
+			<p><%= link_to 'Remove', person, method: :delete, data: { confirm: "Are you sure? This will delete all of this person's data" } %></p>
 			</div>
     <% end %>	
 			

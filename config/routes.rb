@@ -22,8 +22,6 @@ Rails.application.routes.draw do
   get "/successful_feedback" => "pages#successful_feedback"
   get "/successful_order" => "pages#successful_order"
   get "/successful_featured" => "exclusives#success"
-  get "/onboard" => "leads#onboard"
-  
   
   get "/people" => "pages#people.html.erb"
   get "/start" => "pages#start.html.erb"
