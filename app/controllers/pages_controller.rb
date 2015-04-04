@@ -34,5 +34,12 @@ class PagesController < ApplicationController
   def help
     @faqs = Faq.all
   end
-
+  
+  def feedback
+    render layout: false
+  end
+  
+  def clientfeedback
+    render layout: false
+  end
 end

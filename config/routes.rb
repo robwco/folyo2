@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get "/the-email-line" => "pages#the-email-line"
   get "/advice" => "pages#help"
   get "/freelance-tools" => "pages#tools"
+  get "/feedback" => "pages#feedback"
+  get "/clientfeedback" => "pages#clientfeedback"
   
   # Sandbox
   get "/wheelhouse" => "pages#wheelhouse"
