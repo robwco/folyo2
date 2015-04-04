@@ -14,3 +14,34 @@ blockquote { border-left: 5px solid #f1f1f1; padding: 0 1em; margin: 1em 0;
 ol li {
 		padding: .25em 0;
 	}
+	
+ol.recommended, ol.recommended li, ol.recommended li p {
+		margin: 0;
+		padding: 0;
+	}	
+	
+ol.recommended {
+	margin: 2em;
+	font-size: 12px;
+
+}
+ol.recommended li {
+	margin: .25em 0;
+
+}
+ol.recommended li p {
+	font-size: 12px;
+
+}
+.highly-recommended {
+	font-size: 10px;
+	font-weight: 600;
+	padding: 0 .3em;
+	margin: 0 .5em;
+	background-color: #ffe672;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	border-radius: 2px;
+	color: #a76e00;
+}

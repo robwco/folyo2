@@ -26,10 +26,11 @@ Rails.application.routes.draw do
   get "/people" => "pages#people.html.erb"
   get "/start" => "pages#start.html.erb"
   
-  # Blog Articles
+  # Resources
   get "/freelance-as-a-service" => "pages#freelance-as-a-service"
   get "/the-email-line" => "pages#the-email-line"
   get "/advice" => "pages#help"
+  get "/freelance-tools" => "pages#tools"
   
   # Sandbox
   get "/wheelhouse" => "pages#wheelhouse"
@@ -37,7 +38,6 @@ Rails.application.routes.draw do
   # Referral Sales Pages
   get "/copyhackers" => "pages#copyhackers"
   get "/freelancer-association/workshop" => "pages#webinar"
-  
   get "/freelancer-association" => "pages#fa-webinar"
   
   
