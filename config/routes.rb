@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get "/advice" => "pages#help"
   get "/freelance-tools" => "pages#tools"
   get "/feedback" => "pages#feedback"
-  get "/clientfeedback" => "pages#clientfeedback"
+  get "feedback/client" => "pages#clientfeedback"
   
   # Sandbox
   get "/wheelhouse" => "pages#wheelhouse"

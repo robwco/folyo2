@@ -18,7 +18,7 @@ a:visited {}
 .wrap {width:40em; margin: 1em auto; }
 .wrap img.smiley {width:4em; margin: 4em auto 2em auto; display: block;}
 .reading-wrap {width:33em; margin: 1em auto 5em auto; }
-.nav { width:100%; margin: 4em .75em; color: #808172;  font-size: 14px; font-family: 'Gotham SSm A', 'Gotham SSm B', Verdana, sans-serif; }
+.nav { width:100%; margin: 1em 0em; color: #808172;  font-size: 14px; font-family: 'Gotham SSm A', 'Gotham SSm B', Verdana, sans-serif; }
 .nav a {color: #2996bf;}
 .nav a:hover {color: #4383bf;}
 .nav ul li:before { content: none;}
@@ -59,9 +59,7 @@ window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.ge
 </script>
 </head>
 <body>
-<p class="banner">Tired of feast or famine freelancing? I'll send you 10 people who need websites everyday. Try <a href="http://letsworkshop.com" style="">Workshop</a> today.</em></p>
-
-<p style="position: fixed; top: 3em; right: 0;"><a class="twitter-share-button"
+<p style="position: fixed; top: 0; right: 0;"><a class="twitter-share-button"
    href="https://twitter.com/share"
   data-url="http://wonderfulfeedback.com"
   data-via="letsworkshop"
@@ -80,7 +78,7 @@ window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.ge
 
 
 <section class="wrap">
-<img src="smiley.png" class="smiley">
+<%= image_tag('smiley.png', :class => "smiley") %>
 <h1>Wonderful Client Feedback</h1>
 
 <section class="reading-wrap">
@@ -92,7 +90,7 @@ window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.ge
 <h2>Don’t blame the client, it’s your fault.</h2>
 <hr>
 <section class="reading-wrap">
-<p>No one knows how to give good feedback instinctively. Even designers have a hard time giving feedback to each other, so a client has no chance. They don’t care about your work, they care about their business. So make every bit of feedback focus on that. Educate your client with my <a href="feedback.pdf">feedback template</a>.</p>
+<p>No one knows how to give good feedback instinctively. Even designers have a hard time giving feedback to each other, so a client has no chance. They don’t care about your work, they care about their business. So make every bit of feedback focus on that. Educate your client with my <a href="/downloads/feedback.pdf">feedback template</a>.</p>
 </section>
 
 <h2>How to never get shitty feedback again:</h2>
@@ -101,8 +99,8 @@ window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.ge
 <p>You and your client want the same thing: a successful project. Now, imagine if you didn't have to fight through bad feedback to get there. You could send off comps without crossing your fingers and praying. Better yet, what if it took minimal effort, because you had a system for getting meaningful feedback on even the most complex projects?</p>
 <p>Sound hard? Maybe it's becuase <em>you</em> don't even know what perfect feedback looks like. I had the same problem. That’s why I created a special document for my clients that did the job of educating them on what effective feedback looks like. I now send it with every project, and know I'll get damn good feedback every time.</p>
 
-<h1 style="margin: 1em auto -.5em auto; font-weight: normal;"><em>Send your clients <a href="/client/">this page</a></em></h1>
-<p class="download">Or if you prefer, you can send <a href="feedback.pdf">this PDF</a>. Attach it to every new project and comp as a routine reminder about how to discuss your work.</p>
+<h1 style="margin: 1em auto -.5em auto; font-weight: normal;"><em>Send your clients <a href="feedback/client/">this page</a></em></h1>
+<p class="download">Or if you prefer, you can send <a href="/downloads/feedback.pdf">this PDF</a>. Attach it to every new project and comp as a routine reminder about how to discuss your work.</p>
 </section>
 
 <h2 style="margin: 4em 0 0 0;">Learn 5 more ways to create better clients</h2>
@@ -113,7 +111,6 @@ window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.ge
 <form class="drip-opt-in" action="https://www.getdrip.com/forms/9298754/submissions" method="post" target="_blank" data-drip-embedded-form="1306">
 <input type="email" class="sample" name="fields[email]" value="" placeholder="Your email" /><br>
 <input type="submit" class="sample" name="submit" value="Send me 10 people that need a website" data-drip-attribute="sign-up-button" />
-<p>Powered by <a href="http://letsworkshop.com"><img src="workshop.png" style="vertical-align: -.6em; height: 2em;"></a></p>
 </form>
 </section>
 
