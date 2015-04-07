@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://code.stripe.com'
 
 ruby '2.1.1'
 gem 'rails', '4.1.6'
@@ -20,4 +21,11 @@ gem 'feedjira'
 gem 'redcarpet', '~> 3.0.0'
 gem 'mailman', require: false
 gem 'mail'
-gem 'devise'
+gem 'devise', '~> 3.4.1'
+gem 'stripe', '~> 1.17.0'
+gem 'httparty'
+
+group :development do
+  gem 'stripe-ruby-mock'
+  gem 'database_cleaner'
+end

@@ -76,6 +76,10 @@
 		<%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
+	
+<% flash.each do |type, msg| %>
+	<%= content_tag :p, msg, class: type %>
+<% end %>
 
 <%= yield %>
 
