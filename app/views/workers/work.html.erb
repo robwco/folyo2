@@ -1,9 +1,6 @@
-<% if current_worker %>
-<section class="nav tab">
-<p style="text-align: right;">Logged in as <%= current_worker.email %> <%= link_to "Log Out", session_path("current"), method: "delete" %></p>
-</section>
-<% else %>
-<% end %>
+
+
+
 <section class="leads-wrap" style="padding: 1em 0;">
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, id: "flash_#{name}" %>
@@ -15,7 +12,7 @@
 
 	
 
-	
+	<!--	
 <%= form_tag work_path, :method => 'get' do %>
 	<p>
 	<%= text_field_tag :search, params[:search], :placeholder => "Search by specialty or project type" %>
@@ -25,39 +22,43 @@
 </div>
 
 <h1 style="margin:.5em 0 .5em 0;">
+
 	<% if params[:search].nil? %>
 		All past freelance opportunities
   <% else %>
    Results for &lsquo;<%= @search_name %>&rsquo; <a href="#">Save Search</a>
  <% end	%>
-</h1>
+</h1>-->
 
 
 
 
-<div class="leads">	
+<div class="leads">
+<h1>Workshop-exclusive leads.</h1> 
+<p>These leads are only shown to Workshop members, so you have a great chance of landing one.</p>
+<table>
 <% @exclusives.most_recent.each do |exclusive| %>
-  <div class="exclusive">
-    <hr>
-    <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
-    <h1><%= exclusive.title %></h1>
-    <h2><%= exclusive.category %></h2>
-    <strong>Company:</strong> <a href="<% exclusive.website %>"><%= exclusive.website %></a><br>
-    <strong>Budget:</strong> $<%= exclusive.budget %><br>
-    <strong>Name:</strong> <%= exclusive.name %></p>
-    <p><strong>Description</strong><br>
-    <%= h(exclusive.description).gsub(/\n/, '<br/>').html_safe %></p>
-    <p><strong>To apply</strong><br>
-    <a class="email" href="MAILTO:<%= exclusive.email %>"><%= exclusive.email %></a></p>
-    <h4>This lead is only shown to Workshop members, so you have a great chance of landing it.</h4>
-  </div>
-<% end %>
 
+  <div class="exclusive">
+	<tr>
+		<td><%= exclusive.created_at.strftime("%b %-d") %></td>
+		<td><%= link_to exclusive.title, exclusive_path(exclusive) %></td>
+		<td>$<%= exclusive.budget %></td>
+  </tr>
+</div>
+<% end %>
+</table>
+
+<!--
+<div class="leads">
+<h1>Workshop-exclusive leads.</h1> 
+<p>These leads are only shown to Workshop members, so you have a great chance of landing one.</p>
+<table>
 <% @leads.most_recent.group_by(&:category).each do |category, leads| %>
 <%= render :partial => './leads/lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>
 <hr>
-</div>
+</div>-->
 
 
 

@@ -31,9 +31,6 @@ class WorkersController < ApplicationController
   end
 
   def work
-  	if current_worker.nil?
-  		redirect_to login_url, alert: "You gotta log in!"
-  	end
     @leads = Lead.all
     @exclusives = Exclusive.all
     if params[:search]
