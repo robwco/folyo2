@@ -36,7 +36,7 @@
 <h1>Workshop-exclusive leads</h1> 
 <p>These are leads featured exclusively through Workshop. They're only seen by members like you, so you have a great chance of landing one.</p>
 <table class="work">
-<% @exclusives.most_recent.each do |exclusive| %>
+<% @exclusives.most_recent.limit(9).each do |exclusive| %>
 
 	<tr>
 		<td><p style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= exclusive.created_at.strftime("%b %-d") %></p></td>
@@ -44,6 +44,12 @@
 		<td><p style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if exclusive.budget.present? %>$<%= exclusive.budget %><% else %><% end %></p></td>
   </tr>
 <% end %>
+	<tr>
+		<td colspan="3">
+			<hr>
+			<a href="#">View all 52 Exclusive Leads →</a>
+		</td>
+	</tr>
 </table>
 
 <h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Ruby on Rails Development</h1> 
@@ -56,6 +62,12 @@
 		<td><p style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if lead.budget.present? %>$<%= lead.budget %><% else %><% end %></p></td>
   </tr>
 <% end %>
+	<tr>
+		<td colspan="3">
+			<hr>
+			<a href="#">View all 23 Ruby on Rails Leads →</a>
+		</td>
+	</tr>
 </table>
 
 <h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Drupal Development</h1> 
@@ -68,6 +80,12 @@
 		<td><p style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if lead.budget.present? %>$<%= lead.budget %><% else %><% end %></p></td>
   </tr>
 <% end %>
+<tr>
+	<td colspan="3">
+		<hr>
+		<a href="#">View all 17 Drupal Leads →</a>
+	</td>
+</tr>
 </table>
 
 
