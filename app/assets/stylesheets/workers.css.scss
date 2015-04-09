@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 table.work {
+	width: 100%;
 	& p {
 		margin: 0;
 	}
@@ -12,4 +13,10 @@ table.work {
 		color: #0083e7;
 	}
 	
+}
+
+#welcome-note-message {
+	& p, & a, & ol {
+	font-size: 12px;
+	}
 }

@@ -1,3 +1,35 @@
+<!--
+<div id="welcome-note" style="position: absolute; width:100%; height: 100%; background-color: rgba(0,0,0,.7);">
+	<div id="welcome-note-message" style="width: 500px; padding: 1em 3em; border-radius: 3px; background-color: #FFF; margin: 3em auto;">
+  <%= image_tag "confetti.png", :style => "max-width:100%;" %>
+		
+		<h2 style="margin: .5em 0 0 0;">So, today's the day! Welcome inside.</h2>
+
+<p>If you're eager to find more work, Workshop is going help with that.</p>
+<p>Every weekday morning at 8:00am EST you'll get an email from me with freelance consulting opportunities that I've collected from the day before.</p>
+<p>Think of me as your clone who handles finding new work opportunities while you sleep.</p>
+<p>Getting started can be tough, so here's two tips to make it easy:</p>
+<ol>
+	<li><p>Don't burn out! Pick one or two people to contact per day. Sending emails at an easy pace means you'll hear back from more people.</p></li>
+	<li><p>Don't look for your ideal client, you won't find them because they don't exist. Instead, look for people who need expensive problems solved. Educate them on why you're the best person to solve it. This will create your own ideal clients, for life.</p></li>
+</ol>
+
+	<p>The rest is simple!</p>
+	<p>On the next screen (or in your inbox) you'll see the most recent leads you can email immediately and start winning new work. All of these people were recently looking to hire someone like you.</p>
+<p>Tonight you can go to sleep easy knowing tomorrow when you wake up you'll get an email with all the best leads on the web.</p>
+
+<p>Thank you,<br>
+Robert<br>
+(I run Workshop)</p>
+
+<p>PS. You stumbled onto this tiny product that I started in my house one day and that's amazing. If you need anything <a href="MAILTO:robert@letsworkshop.com">please email me</a>. I make a living from this content and I really appreciate you taking a look.</p>
+
+</div>
+</div>
+-->
+<% if user_signed_in? %>
+	<p><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+<% end %>
 
 
 
@@ -32,10 +64,9 @@
 
 
 
-
-<h1>Workshop-exclusive leads</h1> 
-<p>These are leads featured exclusively through Workshop. They're only seen by members like you, so you have a great chance of landing one.</p>
+<h1><span style="margin:0 .25em 0 -1.25em;color:#ffd943; font-size: 18px">&#9733;</span> Leads featured exclusively on Workshop</h1>
 <table class="work">
+<hr>
 <% @exclusives.most_recent.limit(9).each do |exclusive| %>
 
 	<tr>
@@ -52,9 +83,11 @@
 	</tr>
 </table>
 
-<h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Ruby on Rails Development</h1> 
+<h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Ruby on Rails Development</h1>
+
 <table class="work">
-<% @leads.rails.most_recent.limit(9).each do |lead| %>
+<hr>
+<% @leads.rails.most_recent.limit(5).each do |lead| %>
 
 	<tr>
 		<td><p style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
@@ -70,9 +103,10 @@
 	</tr>
 </table>
 
-<h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Drupal Development</h1> 
+<h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Drupal Development</h1>
 <table class="work">
-<% @leads.drupal.most_recent.limit(9).each do |lead| %>
+<hr>
+<% @leads.drupal.most_recent.limit(5).each do |lead| %>
 
 	<tr>
 		<td><p style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>

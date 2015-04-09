@@ -1,5 +1,5 @@
 class WorkersController < ApplicationController
-  before_action :authenticate, :only => [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 	def new
 		@worker = Worker.new
 	end
@@ -17,6 +17,11 @@ class WorkersController < ApplicationController
 	  end
   end
   
+  def category
+  end
+  
+  def recent
+  end
   
   def index
     @workers = Worker.all
