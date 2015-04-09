@@ -129,10 +129,11 @@ input[type=text].login { max-width: 20em;}
 
 /* Productized Consulting */
 table.wheelhouse {width: 100%;}
-table.wheelhouse p, a {font-size: 13px;}
+table.wheelhouse p, table.wheelhouse a {font-size: 13px;}
 table.wheelhouse td {border-top: 1px solid #f8f8f8;}
 .product_box {width: 20em; height: 25em; border: 1px solid #f5f5f5; border-radius: 3px; margin:.5em; padding: 0; float: left;}
 .product_box p, .product_box h3 {padding: 0 .5em; margin: 0;}
+
 
 
 /* Displaying the featured preview */

@@ -33,21 +33,43 @@
 
 
 
-<div class="leads">
-<h1>Workshop-exclusive leads.</h1> 
-<p>These leads are only shown to Workshop members, so you have a great chance of landing one.</p>
-<table>
+<h1>Workshop-exclusive leads</h1> 
+<p>These are leads featured exclusively through Workshop. They're only seen by members like you, so you have a great chance of landing one.</p>
+<table class="work">
 <% @exclusives.most_recent.each do |exclusive| %>
 
-  <div class="exclusive">
 	<tr>
-		<td><%= exclusive.created_at.strftime("%b %-d") %></td>
-		<td><%= link_to exclusive.title, exclusive_path(exclusive) %></td>
-		<td>$<%= exclusive.budget %></td>
+		<td><p style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= exclusive.created_at.strftime("%b %-d") %></p></td>
+		<td><p style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><strong><%= link_to exclusive.title, exclusive_path(exclusive) %></strong></p></td>
+		<td><p style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if exclusive.budget.present? %>$<%= exclusive.budget %><% else %><% end %></p></td>
   </tr>
-</div>
 <% end %>
 </table>
+
+<h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Ruby on Rails Development</h1> 
+<table class="work">
+<% @leads.rails.most_recent.limit(9).each do |lead| %>
+
+	<tr>
+		<td><p style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
+		<td><p style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><strong><%= link_to lead.title, lead_path(lead) %></strong></p></td>
+		<td><p style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if lead.budget.present? %>$<%= lead.budget %><% else %><% end %></p></td>
+  </tr>
+<% end %>
+</table>
+
+<h1><input type="checkbox" name="vehicle" value="Car" checked style="margin: 1em 0 0 -2em;"> Drupal Development</h1> 
+<table class="work">
+<% @leads.drupal.most_recent.limit(9).each do |lead| %>
+
+	<tr>
+		<td><p style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
+		<td><p style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><strong><%= link_to lead.title, lead_path(lead) %></strong></p></td>
+		<td><p style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if lead.budget.present? %>$<%= lead.budget %><% else %><% end %></p></td>
+  </tr>
+<% end %>
+</table>
+
 
 <!--
 <div class="leads">
