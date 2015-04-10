@@ -5,7 +5,7 @@
   <div class="exclusive">
     <div class="image-wrap"><%= image_tag @exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
     <h1><%= @exclusive.title %></h1>
-    <h2><%= @exclusive.category %></h2>
+    <h3><%= @exclusive.category %></h3>
     <strong>Company:</strong> <a href="<%= @exclusive.website %>"><%= @exclusive.website %></a><br>
     <strong>Budget:</strong> $<%= @exclusive.budget %><br>
     <strong>Name:</strong> <%= @exclusive.name %></p>
@@ -19,6 +19,5 @@
 
 
 <p><%= link_to 'Perfect! All done', successful_featured_path, :class => 'submit', :style => 'text-align: right;' %> <span style="margin: 0 .5em;">or</span> <%= link_to 'Make a change', edit_exclusive_path(@exclusive), :class => 'emphasis', :style => 'vertical-align: 3px;' %></p>
-
 
 </section>

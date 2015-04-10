@@ -44,7 +44,7 @@ class WorkersController < ApplicationController
       @category_id = Category.find_by(name: params[:category]).id
       @leads = Lead.where(category_id: @category_id).all
       @exclusives = Exclusive.all
-      @categories = Category.all
+      @categories = Category.category_id.all
     end
   end
 
