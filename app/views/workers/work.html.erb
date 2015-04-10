@@ -87,7 +87,7 @@ Robert<br>
 				<h1><%= category.name %></h1> <!--<input type="checkbox" name="vehicle" value="Car" checked> <span>You're getting these leads sent to your inbox.--></span>
 				<table class="work">
 				<hr>
-				<% category.leads.limit(2).each do |lead| %>
+				<% category.leads.most_recent.limit(5).each do |lead| %>
 					<tr>
 						<td><p class="created_at_date" style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
 						<td style="lead_title" style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><%= link_to lead.title, lead_path(lead) %></td>
@@ -107,11 +107,12 @@ Robert<br>
 				</table>	
 	<% end %>
 <% else %>
+	<%= link_to "Back to Recent Leads", work_path %>
 	<% @categories.each do |category| %>
 				<h1><%= category.name %></h1> <!--<input type="checkbox" name="vehicle" value="Car" checked> <span>You're getting these leads sent to your inbox.--></span>
 				<table class="work">
 				<hr>
-				<% category.leads.each do |lead| %>
+				<% category.leads.most_recent.each do |lead| %>
 					<tr>
 						<td><p class="created_at_date" style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
 						<td style="lead_title" style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><%= link_to lead.title, lead_path(lead) %></td>
