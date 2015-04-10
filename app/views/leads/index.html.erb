@@ -55,7 +55,7 @@
     <% @leads.today.most_recently_updated.each do |lead| %>
       <% if lead.present? %>
         <tr>
-	        <td style="padding-right: 2em; font-size: 10px; width: 50px;"><%= lead.category %></td>
+	        <td><%= lead.category_id %></td>
           <td style="padding-right: 2em;"><span style="color: #19963C; font-size: 14px; font-weight: 500;">Created Today!</span> <%= link_to lead.title, edit_lead_path(lead) %></td>
           <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -64,10 +64,10 @@
   </tbody>
 
   <tbody>
-    <th><p style="color: #888888; font-weight: normal; text-align: left;"><br>All Leads:</p></th>
+    <th colspan="3"><p style="color: #888888; font-weight: normal; text-align: left;"><br>All Leads:</p></th>
     <% @leads.most_recently_updated.each do |lead| %>
       <tr>
-        <td style="padding-right: 2em; font-size: 10px; width: 50px;"><%= lead.category %></td>
+        <td><%= lead.category_id %></td>
         <td style="padding-right: 2em;"><%= link_to lead.title, edit_lead_path(lead) %></td>
         <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

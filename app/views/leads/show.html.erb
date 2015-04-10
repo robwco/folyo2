@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Category:</strong>
-  <%= @lead.category %>
+  <%= @lead.category_id %>
 </p>
 
 <p>
@@ -57,6 +57,7 @@
   <%= @lead.notes %>
 </p>
 
+<%= link_to 'Work', work_path %> |
 <%= link_to 'Edit', edit_lead_path(@lead) %> |
 <%= link_to 'Back', leads_path %>
 </section>

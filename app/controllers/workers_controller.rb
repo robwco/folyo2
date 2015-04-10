@@ -36,13 +36,15 @@ class WorkersController < ApplicationController
   end
 
   def work
-    @leads = Lead.all
-    @exclusives = Exclusive.all
-    if params[:search]
-      @leads = Lead.where("category ILIKE '%#{params[:search]}%' OR name ILIKE '%#{params[:search]}%' OR title ILIKE '%#{params[:search]}%'")
-      @search_name = params[:search]
+    if params[:category].blank?
+      @leads = Lead.most_recent.limit(7).all
+      @exclusives = Exclusive.all
+      @categories = Category.all
     else
-      @leads = Lead.all
+      @category_id = Category.find_by(name: params[:category]).id
+      @leads = Lead.where(category_id: @category_id).all
+      @exclusives = Exclusive.all
+      @categories = Category.all
     end
   end
 

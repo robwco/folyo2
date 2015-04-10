@@ -1,0 +1,27 @@
+
+
+#welcome-note-message {
+	& p, & a, & ol {
+	font-size: 12px;
+	}
+}
+table.work {
+	width: 100%;
+	& p {
+		margin: 0;
+	}
+	& a {
+		text-decoration: none;
+	}
+	& a:hover {
+		color: #0083e7;
+	}
+
+
+}	.created_at_date {
+		
+	}
+	.lead_title {}
+	.lead_budget {
+		
+	}
