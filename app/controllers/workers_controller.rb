@@ -37,14 +37,14 @@ class WorkersController < ApplicationController
 
   def work
     if params[:category].blank?
-      @leads = Lead.most_recent.limit(7).all
+      @leads = Lead.most_recent.all
       @exclusives = Exclusive.all
       @categories = Category.all
     else
       @category_id = Category.find_by(name: params[:category]).id
       @leads = Lead.where(category_id: @category_id).all
       @exclusives = Exclusive.all
-      @categories = Category.category_id.all
+      @categories = Category.where(name: params[:category]).all
     end
   end
 

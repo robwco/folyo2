@@ -59,6 +59,7 @@ Robert<br>
 </h1>-->
 
 
+<% if params[:category].blank? %>
 <h1><span style="margin:0 .25em 0 -1.25em;color:#ffd943; font-size: 18px">&#9733;</span> Leads featured exclusively on Workshop</h1>
 <table class="work">
 <hr>
@@ -77,33 +78,55 @@ Robert<br>
 		</td>
 	</tr>
 </table>
-
-
-<% @categories.each do |category| %>
-			<h1><%= category.name %></h1> <!--<input type="checkbox" name="vehicle" value="Car" checked> <span>You're getting these leads sent to your inbox.--></span>
-			<table class="work">
-			<hr>
-			<% category.leads.each do |lead| %>
-				<tr>
-					<td><p class="created_at_date" style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
-					<td style="lead_title" style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><%= link_to lead.title, lead_path(lead) %></td>
-					<td><p style="lead_budget" style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if lead.budget.present? %>$<%= lead.budget %><% else %><% end %></p></td>
-			  </tr>
-			<% end %>
-				<tr>
-					<td colspan="3">
-						<hr>
-						<% if params[:category].blank? %>
-							<%= link_to "View all #{category.leads.count} #{category.name} Leads →", work_path(category: category.name )%>
-						<% else %>
-							<%= link_to "Back to Recent Leads", work_path %>
-						<% end %>
-					</td>
-				</tr>
-			</table>	
+<% else %>
 <% end %>
 
 
+<% if params[:category].blank? %>
+	<% @categories.each do |category| %>
+				<h1><%= category.name %></h1> <!--<input type="checkbox" name="vehicle" value="Car" checked> <span>You're getting these leads sent to your inbox.--></span>
+				<table class="work">
+				<hr>
+				<% category.leads.limit(2).each do |lead| %>
+					<tr>
+						<td><p class="created_at_date" style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
+						<td style="lead_title" style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><%= link_to lead.title, lead_path(lead) %></td>
+						<td><p style="lead_budget" style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if lead.budget.present? %>$<%= lead.budget %><% else %><% end %></p></td>
+				  </tr>
+				<% end %>
+					<tr>
+						<td colspan="3">
+							<hr>
+							<% if params[:category].blank? %>
+								<%= link_to "View all #{category.leads.count} #{category.name} Leads →", work_path(category: category.name )%>
+							<% else %>
+								<%= link_to "Back to Recent Leads", work_path %>
+							<% end %>
+						</td>
+					</tr>
+				</table>	
+	<% end %>
+<% else %>
+	<% @categories.each do |category| %>
+				<h1><%= category.name %></h1> <!--<input type="checkbox" name="vehicle" value="Car" checked> <span>You're getting these leads sent to your inbox.--></span>
+				<table class="work">
+				<hr>
+				<% category.leads.each do |lead| %>
+					<tr>
+						<td><p class="created_at_date" style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
+						<td style="lead_title" style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><%= link_to lead.title, lead_path(lead) %></td>
+						<td><p style="lead_budget" style="color: #6a6357; font-size:14px; padding-left: 1em;"><% if lead.budget.present? %>$<%= lead.budget %><% else %><% end %></p></td>
+				  </tr>
+				<% end %>
+					<tr>
+						<td colspan="3">
+							<hr>
+								<%= link_to "← Back to Recent Leads", work_path %>
+						</td>
+					</tr>
+				</table>	
+	<% end %>
+<% end %>
 
 
 <h1>Leads with no category</h1>
