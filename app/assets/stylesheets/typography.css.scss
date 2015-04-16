@@ -5,8 +5,20 @@ body, p, a, span, ol, ul, textarea {
 	font-weight: 400; 
 	font-style: normal;
 }
+p {
+	margin: .75em 0;
+}
 
-p {margin: .75em 0;}
+h1.jumbo {
+	font-size: 2em; 
+	margin: 0; 
+	padding: 0;
+}
+h2.jumbo {
+	margin: .5em 0 1em; 
+	padding: 0; 
+	color: #8c8c8c;
+}
 h1, h2, h3 {
 	margin: 1.5em 0 0 0;
 }
@@ -20,11 +32,31 @@ h3 {
 	font: 1.3em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; 
 	font-weight: normal; 
 }
+hr {
+	border: 0; 
+	height: 1px; 
+	background-color: #D9D3CF; 
+}
+ol {
+	margin: 0 3em;
+}
+ul {
+	margin: 0 2em; 
+	font-size: 12px;
+}
+blockquote {
+	margin: 2em 0;
+}
 
-hr {border: 0; height: 1px; background-color: #D9D3CF; }
-ol {margin: 0 3em;}
-ul {margin: 0 2em; font-size: 12px;}
-blockquote {margin: 2em 0;}
+.resources {
+	font-size: 12px;
+	font-weight: 600;
+	a {
+		font-weight: 400;
+		font-size: 12px;
+	}
+}
+
 
 
 .help-note {
@@ -151,13 +183,8 @@ input[type=text].login { max-width: 20em;}
 #tenfreeleads {visibility: hidden; display: none;}
 }
 
-/* Logo */
-.logo img {width: 280px; text-align: left;}
-.people-clients {background: url('../images/people.png'); background-size: 100%; margin: 1em 0 0; width: 200px; height: 180px;}
-.people-clients:hover {background-image:url('../images/clients.png');}
-
 /* Wraps */
-.loose-wrap {width: 47em; margin: 0 auto;}
+.loose-wrap {width: 53em; margin: 0 auto;}
 .reading-wrap {width: 42em; margin: 0 auto;}
 .leads-wrap {width: 50em; margin: 0 auto;}
 .tight-wrap {width: 37.5em; margin: 0 auto;}

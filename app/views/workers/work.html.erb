@@ -36,7 +36,8 @@ Robert<br>
 	<% end %>
 
 
-
+	
+<p><%= link_to "Recommended Tools", freelance_tools_path %> | <%= link_to "Advice", advice_path %></p>
 
 <div style="width: 100%; display: table;">
 	
@@ -87,7 +88,7 @@ Robert<br>
 				<h1><%= category.name %></h1> <!--<input type="checkbox" name="vehicle" value="Car" checked> <span>You're getting these leads sent to your inbox.--></span>
 				<table class="work">
 				<hr>
-				<% category.leads.most_recent.limit(5).each do |lead| %>
+				<% category.leads.most_recent.limit(7).each do |lead| %>
 					<tr>
 						<td><p class="created_at_date" style="text-align:right; color: #6a6357; font-size:14px; padding-right: 1em;"><%= lead.created_at.strftime("%b %-d") %></p></td>
 						<td style="lead_title" style="overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; 	white-space: nowrap; width: 500px; display: block;"><%= link_to lead.title, lead_path(lead) %></td>
@@ -100,14 +101,14 @@ Robert<br>
 							<% if params[:category].blank? %>
 								<%= link_to "View all #{category.leads.count} #{category.name} Leads →", work_path(category: category.name )%>
 							<% else %>
-								<%= link_to "Back to Recent Leads", work_path %>
+								<%= link_to "← Back to Recent Leads", work_path %>
 							<% end %>
 						</td>
 					</tr>
 				</table>	
 	<% end %>
 <% else %>
-	<%= link_to "Back to Recent Leads", work_path %>
+	<%= link_to "← Back to Recent Leads", work_path %>
 	<% @categories.each do |category| %>
 				<h1><%= category.name %></h1> <!--<input type="checkbox" name="vehicle" value="Car" checked> <span>You're getting these leads sent to your inbox.--></span>
 				<table class="work">

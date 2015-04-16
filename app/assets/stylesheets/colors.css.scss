@@ -1,13 +1,22 @@
+$red: 							#E44727;
+
 $blue:              #7191bc;
 $strong-blue:				#3477d3;
 $strong-blue-hover: darken($strong-blue, 20%);
-$black:             #111;
+
+$gray:              #e7e2db;
+$light-gray:				#f0eeea;
 $dark-gray: 				#444;
+$brown-gray: 				#8c8c8c;
+
 $white:             #fff;
-$gray:              #eaedf2;
+$black:             #111;
+
 $light-yellow:			#fef3b8;
 $yellow:						#ffe672;
 $dark-yellow:				#a76e00;
+
+
 
 $text-color:        		$dark-gray;
 $header-color: 					$black;
@@ -21,6 +30,21 @@ $highlight-text-color: 	$dark-yellow;
 
 
 body, p, a, span, ol, ul, textarea { color: $text-color; }
+
+.navigation {
+	padding: 1em 0;
+	border-top:1px dotted $light-gray;
+	border-bottom:1px dotted $light-gray;
+	a {
+		color: $brown-gray;
+	}
+	
+}
+
+
+a.signup {
+	color: $red;
+}
 
 a { color: $link-color;
 	&:hover	{	color: $link-hover;
