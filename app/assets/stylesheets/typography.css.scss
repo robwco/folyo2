@@ -41,10 +41,6 @@ ol {
 }
 ul {
 	margin: 0 2em; 
-	font-size: 12px;
-}
-blockquote {
-	margin: 2em 0;
 }
 
 .resources {
@@ -57,7 +53,6 @@ blockquote {
 }
 
 
-
 .help-note {
 	font-size: 12px; 
 	padding: 1em; 
@@ -66,11 +61,6 @@ blockquote {
 		font-weight: 600;}
 }
 
-blockquote { 
-	border-left: 5px solid #f1f1f1; 
-	padding: 0 1em; 
-	margin: 1em 0;
-}	
 
 ol {
 	padding: .25em 0;
@@ -102,11 +92,27 @@ ol {
 }
 
 
-input[type=text], textarea {width: 50em;}
-textarea {height: 9em;}
+input[type=text], textarea {
+	width: 50em;
+	}
+textarea {
+	height: 9em;
+	}
 
-	
+.cite {
+	font-size: 80%;
+}
 
+blockquote {
+	cite p {
+	font-size: 80%;
+	font-style: normal;
+	text-align: center;
+	}
+	p, ol, li {
+		font-size: 90%;
+	}
+}
 
 /* Flash */
 #flash_alert, #flash_notice {background-color: #ebe7e2; color: #76726a; padding: .5em 1em; margin: 1em 0 0 0; font-size: 14px; }

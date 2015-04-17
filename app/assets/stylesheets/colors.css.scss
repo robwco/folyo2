@@ -72,3 +72,8 @@ a { color: $link-color;
 h1, h2, h3 {
 		color: $header-color;
 }
+.cite, cite p {
+	color: $brown-gray;
+}
+blockquote {
+}

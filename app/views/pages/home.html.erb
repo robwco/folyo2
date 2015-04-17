@@ -27,27 +27,8 @@ $(document).scroll(function() {
 	</center>
 </section>
 
+<%= render 'navigation' %>
 
-<div class="navigation">
-		<div class="resources">
-			<div>
-			Your Business:<br>
-				<a href="/freelance-tools">Find the best tools for freelancers on the web</a><br>
-				<a href="http://emailsthatwin.com">Send emails that win you clients</a><br>
-				<a href="http://inwheelhouse.com">Productize your consulting</a><br>
-				<a href="/connect">Find a freelancer for free</a><br>
-				<a href="http://knowingwhattosay.com">Read my articles</a><br>
-			</div>			
-			<div>
-			Support:<br>
-				<a href="/advice">Answers to your biggest questions about freelancing</a><br>
-				<a href="/using-job-boards">Find new work every month on your own</a><br>
-				<a href="/advice">Questions about Workshop</a><br>
-				<a href="MAILTO:robert@letsworkshop.com">Contact me</a><br>
-				<a href="#buy" class="signup"><strong>Try it out with 200+ leads for free</strong></a>
-			</div>
-		</div>
-</div>
 
 <!--
 <section class="nav fixed" id="tenfreeleads">
@@ -191,39 +172,28 @@ $(document).scroll(function() {
 <hr>
 </section>
 
+<div id="success">
 
 <section class="loose-wrap">
 
 <section class="reading-wrap">
-
 <h1>Hundreds of freelancers have tried Workshop and loved it...</h1>
 
-<div class="ruben" style="margin: 6em 0 1em 0; display:table;">
-
-<%= image_tag("ruben.png", :style => "margin: -5em 0 0 0; width:20em; float: right;") %>
-
-<h1 style="margin-top: -.5em; text-align:center; font-size: 2em;">&rdquo;Totally a no-brainer for most freelancers.&ldquo;</h1>
-
-<p style="text-align: center; padding-bottom: 1em;">– Ruben Gamez, Founder of <%= image_tag("bidsketch.png", :style => "width:6em;") %></p>
-</div>
 
 
 <blockquote>
 <table>
 <tr>
-<td><img src="nickd.png"></td>
 <td>
-<p>
-&ldquo;Running an independent design consultancy, one of the hardest things I do on a daily basis is get sales. Robert’s book helped me communicate in a more focused, actionable way to get the business that my clients and I both deserve. Because I never learned how to write good email in design school, and neither did you.&rdquo;<br>
-<span><a href="https://draft.nu/" target="_blank">Nick Disabato, Design Consultant</a></span></p>
+<%= image_tag("testimonials/dmatheson.jpg") %>
+<cite><p>David Matheson</p></cite>
 </td>
-</tr>
-</table>
-</blockquote>
-
-<blockquote><p>&ldquo;Workshop, for me has been a straight up godsend considering the quality of leads and dirt cheap cost.</p>
+	
+<td>
+<p>&ldquo;Workshop, for me has been a straight up godsend considering the quality of leads and dirt cheap cost.</p>
 
 <p>I initially tried out Workshop after using a competitor's version, where I found Workshop's leads more legit due to their quality and having more options to check out/contact the potential client. However, the day I took Workshop for a test drive, both of my main clients called me up for projects, so I went with them, but kept Workshop in mind. After the projects were finished, I sensed there would be a lull in my work, I remembered Workshop, and here's how it went down that Wednesday:</p>
+
 <ul>
 <li>8:30 am- signed up for Workshop</li>
 <li>9:21 am- sent first email to lead</li>
@@ -234,110 +204,264 @@ $(document).scroll(function() {
 <p>If this sounds ridiculous, it's because it is. And it actually happened.</p>
 
 <p>Because of Workshop I'm starting to build an on-going relationship with a client, which is beyond worth $70/month. I typically don't do reviews, rate things, etc, but this has to be said: Workshop is an incredibly EFFECTIVE tool, and a must-have for freelancers. Thanks so much!&rdquo;</p>
-<p>– David Matheson</p>
-</blockquote>
-<blockquote><p>&ldquo;I don’t reply to a very large number of WorkShop leads – I like to focus on the ones that are particularly interesting to me, and fit my skill set well. Amongst the work I scored from WorkShop last year were two “projects” that have now blossomed into amazing client relationships and tens of thousands of dollars… with no end in sight. I was really on the fence about WorkShop (and freelancing in general), but I’ve gotten over my imposter-syndrome at this point and realize I do actually know what I’m doing, and that I can compete and score some of these leads.&rdquo;</p>
-<p>– Corey Tiani</p>
-</blockquote>
-
-<blockquote><p>&ldquo;I signed up about 2 months ago when I decided to move away from my full time job and transition into freelancing. I put together a simple portfolio and replied to 2-3 ads per day consistently. After a month of the free trial I had made over $3000 off of Workshop leads and also got offered a full-time contract ($100,000/year roughly). That's a bigger return than I ever expected. It's brought a ridiculous return and if I ever move to freelancing again, first thing I'll do is sign up for Workshop again.&rdquo;</p>
-<p>– Milosz Falinski</p>
+</td>
+</tr>
+</table>
 </blockquote>
 
-<blockquote><p>&ldquo;Thought I'd send you an email to let you know that I've closed a $20K+ 
-project from Workshop, with a few more in the final stages.&rdquo;</p>
-<p>– Eric Davis</p>
-</blockquote>
-
-<blockquote><p>&ldquo;I have ordered Workshop because it sounded like a dream way to receive possible leads. I hesitated for a while but ordered after a week. Robert wrote in one of his first emails, that it takes time and practice to actually land a project, and that it can take weeks or even months. I had no problem with that. Nevertheless, I landed my first project after just 4 or 5 days. The monthly cost of Workshop is covered already, and I still have weeks left from my first month. I keep being a Workshopper, thanks Robert!&rdquo;</p>
-<p>– Gábor Szurdoki</p>
-</blockquote>
-
-<blockquote><p>&ldquo;I wrote to two contacts from the first Workshop email I got. I already made an appointment for a Skype call with one of the two. It’s 50% conversion for now, not bad at all ;) Looking forward for the new email today&rdquo;</p>
-<p>– Anton Sten</p>
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/ctiani.jpg") %>
+<cite><p>Corey Tiani</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;I don’t reply to a very large number of WorkShop leads – I like to focus on the ones that are particularly interesting to me, and fit my skill set well. Amongst the work I scored from WorkShop last year were two “projects” that have now blossomed into amazing client relationships and tens of thousands of dollars… with no end in sight. I was really on the fence about WorkShop (and freelancing in general), but I’ve gotten over my imposter-syndrome at this point and realize I do actually know what I’m doing, and that I can compete and score some of these leads.&rdquo;</p>
+</td>
+</tr>
+</table>
 </blockquote>
 
 
-<blockquote><p>&ldquo;In seven months, I've closed 3 deals that total a little over $20,000-directly from the leads in Workshop. All three of these projects have led to long-term clients that continue to come back to me, so the value of these contracts continues to grow.</p>
-
-<p>One of the clients wanted a front-end developer, and now I am helping him build a travel booking engine. It has been a small but on-going project worth about $2,000 every month. Another client runs a successful e-Learning web application. I wrapped up the work that was in the scope of the project a few weeks ago, and just the other day, the client contacted me to see if I was available to take on some more work.</p>
-
-<p>The discussions on the Workshop Forum (The Shed) has proven incredibly valuable, and have done a lot to improve my response-rate when emailing leads, my technique for following up, as well as my business in general. Truth be told, I probably could have gotten even more work through Workshop, but when I am very busy, I am selective about which leads I contact. It's possible to actually wind up with more work than I can handle through Workshop! :-)</p>
-
-<p>BTW, I just closed another lead from Workshop, a deal to subcontract for a design agency. Its really great what you're doing!
-&rdquo;</p>
-<p>– Elliot Betancourt</p>
-</blockquote>
-
-<blockquote><p>&ldquo;Out of the 3 emails I’ve sent to to workshop leads, 2 replied and resulted in contracts for an estimated total of$42,000 worth of work, 10% equity in a company, and $1000/mo retainer.&rdquo;</p>
-<p>– Jared Short</p>
-</blockquote>
-
-<blockquote><p>&ldquo;Workshop has been a success: I have a monthly contract and 2 recurring contacts that I do deals with every couple of months, all 3 of which I found through Workshop.&rdquo;</p>
-<p>– TJ Nevis</p>
-</blockquote>
-
-<blockquote><p>&ldquo;I wrote to two contacts from the first Workshop email I got. I already made an appointment for a Skype call with one of the two. It’s 50% conversion for now, not bad at all. ;)&rdquo;</p>
-<p>– Manuele Capacci</p>
-</blockquote>
-
-<blockquote><p>&ldquo;Landed a couple clients through Workshop in the last week or so. I worked on my email template following the advice you give in the course, then got in touch with them and closed the deal. Getting the emails and applying to them has also helped me gain more confidence when I apply to other leads found outside of Workshop.&rdquo;</p>
-<p>– Jason Swett</p>
-</blockquote>
-
-<blockquote><p>&ldquo;On the first day I used Workshop I contacted three prospective clients and got three emails back. One of those communications turned into a solid gig. It's totally worth it so far. A big part of why it's worth it to me to pay $64/mo for Workshop is that I know they'll be 100% freelance-friendly leads and I don't have to think about whether it makes sense for me to apply or not. Again, I'm really loving Workshop so far, and thanks for creating it. I look forward to continuing to use it for a long time.&rdquo;</p>
-<p>– Jamie Syke</p>
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/mfalinski.jpeg") %>
+<cite><p>Milosz Falinski</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;I signed up about 2 months ago when I decided to move away from my full time job and transition into freelancing. I put together a simple portfolio and replied to 2-3 ads per day consistently. After a month of the free trial I had made over $3000 off of Workshop leads and also got offered a full-time contract ($100,000/year roughly). That's a bigger return than I ever expected. It's brought a ridiculous return and if I ever move to freelancing again, first thing I'll do is sign up for Workshop again.&rdquo;</p>
+</td>
+</tr>
+</table>
 </blockquote>
 
 
-<blockquote><p>&ldquo;Since using Workshop I have seen excellent results toward bringing in new business. I was able to start a connection with a lead that has brought in over $2700 in projects, with more planned in the near future. I'm also in talks with another great organization that may result in ongoing projects as well. I read through every Workshop lead and typically followup with one each day. It lets me put to rest how I get clients so that I'm able to focus on automating this part of my business.&rdquo;</p>
-<p>– Joshua Wold</p></blockquote>
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/edavis.jpg") %>
+<cite><p>Eric Davis</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;Thought I'd send you an email to let you know that I've closed a $20K+ 
+	project from Workshop, with a few more in the final stages.&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
 
 
-<blockquote><p>&ldquo;This service is filling up my pipeline faster than anything else I've tried!&rdquo;</p>
-<p>– Joe Dejene</p></blockquote>
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/gszurdoki.jpg") %>
+<cite><p>Gábor Szurdoki</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;I have ordered Workshop because it sounded like a dream way to receive possible leads. I hesitated for a while but ordered after a week. Robert wrote in one of his first emails, that it takes time and practice to actually land a project, and that it can take weeks or even months. I had no problem with that. Nevertheless, I landed my first project after just 4 or 5 days. The monthly cost of Workshop is covered already, and I still have weeks left from my first month. I keep being a Workshopper, thanks Robert!&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
 
 
-<blockquote><p>&ldquo;My clients were always my priority. When I had too much client work, I neglected sales activities and my pipeline suffered.
 
-Since starting with Workshop, I've had an unbroken chain of daily lead generation activity no matter what.
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/asten.jpg") %>
+<cite><p>Anton Sten</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;I wrote to two contacts from the first Workshop email I got. I already made an appointment for a Skype call with one of the two. It’s 50% conversion for now, not bad at all ;) Looking forward for the new email today&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
 
-I use my inbox as a to-do list and every day that workshop email is a convenient reminder to get selling.&rdquo;</p>
-<p>– Kurt Elster</p></blockquote>
+
+
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/ebetancourt.jpg") %>
+<cite><p>Elliot Betancourt</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;In seven months, I've closed 3 deals that total a little over $20,000-directly from the leads in Workshop. All three of these projects have led to long-term clients that continue to come back to me, so the value of these contracts continues to grow.</p>
+
+	<p>One of the clients wanted a front-end developer, and now I am helping him build a travel booking engine. It has been a small but on-going project worth about $2,000 every month. Another client runs a successful e-Learning web application. I wrapped up the work that was in the scope of the project a few weeks ago, and just the other day, the client contacted me to see if I was available to take on some more work.</p>
+
+	<p>The discussions on the Workshop Forum (The Shed) has proven incredibly valuable, and have done a lot to improve my response-rate when emailing leads, my technique for following up, as well as my business in general. Truth be told, I probably could have gotten even more work through Workshop, but when I am very busy, I am selective about which leads I contact. It's possible to actually wind up with more work than I can handle through Workshop! :-)</p>
+
+	<p>BTW, I just closed another lead from Workshop, a deal to subcontract for a design agency. Its really great what you're doing!&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/jshort.jpeg") %>
+<cite><p>Jared Short</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;Out of the 3 emails I’ve sent to to workshop leads, 2 replied and resulted in contracts for an estimated total of $42,000 worth of work, 10% equity in a company, and $1000/mo retainer.&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/tnevis.jpg") %>
+<cite><p>TJ Nevis</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;Workshop has been a success: I have a monthly contract and 2 recurring contacts that I do deals with every couple of months, all 3 of which I found through Workshop.&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/mcapacci.jpg") %>
+<cite><p>Manuele Capacci</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;I wrote to two contacts from the first Workshop email I got. I already made an appointment for a Skype call with one of the two. It’s 50% conversion for now, not bad at all. ;)&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/jswett.jpg") %>
+<cite><p>Jason Swett</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;Landed a couple clients through Workshop in the last week or so. I worked on my email template following the advice you give in the course, then got in touch with them and closed the deal. Getting the emails and applying to them has also helped me gain more confidence when I apply to other leads found outside of Workshop.&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/jsyke.jpg") %>
+<cite><p>Jamie Syke</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;On the first day I used Workshop I contacted three prospective clients and got three emails back. One of those communications turned into a solid gig. It's totally worth it so far. A big part of why it's worth it to me to pay $64/mo for Workshop is that I know they'll be 100% freelance-friendly leads and I don't have to think about whether it makes sense for me to apply or not. Again, I'm really loving Workshop so far, and thanks for creating it. I look forward to continuing to use it for a long time.&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/jwold.jpeg") %>
+<cite><p>Joshua Wold</p></cite>
+</td>
+	
+<td>
+<p>&ldquo;Since using Workshop I have seen excellent results toward bringing in new business. I was able to start a connection with a lead that has brought in over $2700 in projects, with more planned in the near future. I'm also in talks with another great organization that may result in ongoing projects as well. I read through every Workshop lead and typically followup with one each day. It lets me put to rest how I get clients so that I'm able to focus on automating this part of my business.&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/jdejene.jpg") %>
+<cite><p>Joe Dejene</p></cite>
+</td>
+<td>
+<p>&ldquo;This service is filling up my pipeline faster than anything else I've tried!&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
+
+
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/kelster.jpg") %>
+<cite><p>Kurt Elster</p></cite>
+</td>
+<td>
+<p>&ldquo;My clients were always my priority. When I had too much client work, I neglected sales activities and my pipeline suffered. Since starting with Workshop, I've had an unbroken chain of daily lead generation activity no matter what. I use my inbox as a to-do list and every day that workshop email is a convenient reminder to get selling.&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
+
 
 <center>
 	<hr>
 <h1>Get the best consulting opportunities on the web delivered to your inbox! Starting at only $99/month.</h1>
 <a href="<%= @sales_link %>"><input type="submit" name="submit" value="Start your risk-free trial – Over 200+ great leads" data-drip-attribute="sign-up-button"  style="margin: 2em 0 2em;" class="buy"></a>
-<p style="margin-top: -1em; padding: 0 0 3em; color: #808171; font-size: 13px;">I've sent over $<%= number_with_delimiter(@sent_this_month, :delimiter => ',') %> worth of work this month! Don't miss out another minute.</p>
 </center>
 
-</section>
-</section>
 
 
+<p style="text-align:center; margin: 0;">&ldquo;Totally a no-brainer for most freelancers.&rdquo;</p>
 
-<div class="navigation">
-		<div class="resources">
-			<div>
-			Your Business:<br>
-				<a href="/freelance-tools">Find the best tools for freelancers on the web</a><br>
-				<a href="http://emailsthatwin.com">Send emails that win you clients</a><br>
-				<a href="http://inwheelhouse.com">Productize your consulting</a><br>
-				<a href="/connect">Find a freelancer for free</a><br>
-				<a href="http://knowingwhattosay.com">Read my articles</a><br>
-			</div>			
-			<div>
-			Support:<br>
-				<a href="/advice">Answers to your biggest questions about freelancing</a><br>
-				<a href="/using-job-boards">Find new work every month on your own</a><br>
-				<a href="/advice">Questions about Workshop</a><br>
-				<a href="MAILTO:robert@letsworkshop.com">Contact me</a><br>
-				<a href="#buy" class="signup"><strong>Try it out with 200+ leads for free</strong></a>
-			</div>
-		</div>
+<p class="cite" style="text-align: center; padding-bottom: 1em; margin: 0 0 3em;">Ruben Gamez, Founder of <%= image_tag("bidsketch.png", :style => "width:5em;") %></p>
+
 </div>
 
+
+
+</section>
+</section>
+
+
+
+<%= render 'navigation' %>
 
 
 <center>
