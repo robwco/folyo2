@@ -6,8 +6,8 @@ $strong-blue-hover: darken($strong-blue, 20%);
 
 $gray:              #e7e2db;
 $light-gray:				#f0eeea;
-$dark-gray: 				#444;
-$brown-gray: 				#8c8c8c;
+$dark-gray: 				#4b4947;
+$brown-gray: 				#9e9890;
 
 $white:             #fff;
 $black:             #111;
@@ -29,18 +29,24 @@ $highlight: 						$yellow;
 $highlight-text-color: 	$dark-yellow;
 
 
-body, p, a, span, ol, ul, textarea { color: $text-color; }
-
+body, p, a, span, ol, ul, textarea { 
+	color: $text-color; 
+}
+h2.jumbo {
+	color: $brown-gray;
+}
 .navigation {
 	padding: 1em 0;
 	border-top:1px dotted $light-gray;
 	border-bottom:1px dotted $light-gray;
 	a {
 		color: $brown-gray;
+		&:hover {
+			color: $dark-gray;
+		}
 	}
 	
 }
-
 
 a.signup {
 	color: $red;
