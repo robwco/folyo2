@@ -26,11 +26,24 @@ $(document).on('click','.searchbychar', function(event) {
 </p>
 
 <section class="loose-wrap faq" name="top">
-<h1>Your questions about Workshop, answered.</h1>
+<h1>Your biggest freelancing questions answered.</h1>
 <hr>
+<%= image_tag('people.png', :style => 'width:150px; float:left; margin: 1em 1em 0em -1em;') %>
 
-<% @faqs.workshop.group_by(&:category).each do |category, faqs| %>
-	<ul style="margin: 2em;">
+<p style="margin:2.5em 0 3em 0;"><strong>It's easy to feel like you're alone when you run a consultancy.</strong> That's why one of the best things about <a href="http://letsworkshop.com">my lead-generation service for freelancers</a> is the community of knowledge we share. Hundreds of world-class consultants helping one another. Collectively, they created more value than I ever could and so it's with great excitement I present this help page.</p>
+
+<p class="help-note" style=""><strong>The answers on this page were mostly written by <a href="http://letsworkshop.com">Workshop</a> members.</strong> They're questions we've all asked about freelancing at one point or another, collected for you in one place. I'd appreciate if you shared and saved this page as I'll continue to update it moving forward.<br>
+<a href="http://letsworkshop.com">Go here for more information on Workshop and to get access to this expertise on-demand.</a></p>
+
+<h3>START HERE:</h3>
+
+<ul>
+<li><a href="/">How can I make finding freelance work easier on myself?</a></li>
+</ul>
+
+<% @faqs.group_by(&:category).each do |category, faqs| %>
+<h3><%= category %>:</h3>
+	<ul>
 	<% faqs.each do |faq| %>
 		<li><a href="#<%= faq.anchor %>"><%= faq.question %></a></li>
   <% end %>
@@ -40,7 +53,7 @@ $(document).on('click','.searchbychar', function(event) {
 <br>
 <hr>
 
-<% @faqs.workshop.group_by(&:category).each do |category, faqs| %>
+<% @faqs.group_by(&:category).each do |category, faqs| %>
 	<% faqs.each do |faq| %>
 		<div id="<%= faq.anchor %>">
 			<br>

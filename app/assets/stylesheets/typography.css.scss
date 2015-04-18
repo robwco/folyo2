@@ -103,7 +103,14 @@ textarea {
 	font-size: 80%;
 }
 
+/* Testimonials */
+.faq blockquote {
+	margin: 0;
+}
+
 blockquote {
+	margin: 3em 0;
+	padding: 0;
 	cite p {
 	font-size: 80%;
 	font-style: normal;
@@ -112,6 +119,16 @@ blockquote {
 	p, ol, li {
 		font-size: 90%;
 	}
+	td {
+		vertical-align: top;
+		padding: 0 .5em;
+	}
+	img {
+		width: 65px; 
+		border-radius: 50px; 
+		margin: 1em 0 0;
+	}
+	
 }
 
 /* Flash */

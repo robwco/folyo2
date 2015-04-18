@@ -12,20 +12,3 @@
 	height: 180px;
 }
 .people-clients:hover {background-image:url('../images/clients.png');}
-
-/* Testimonials */
-
-blockquote {
-	margin: 3em 0;
-	padding: 0;
-	td {
-		vertical-align: top;
-		padding: 0 .5em;
-	}
-	img {
-		width: 65px; 
-		border-radius: 50px; 
-		margin: 1em 0 0;
-	}
-	
-}

@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   # Resources
   get "/freelance-as-a-service" => "pages#freelance-as-a-service"
   get "/the-email-line" => "pages#the-email-line"
-  get "/advice" => "pages#help"
+  get "/advice" => "pages#advice"
+  get "/help" => "pages#help"
   get "/freelance-tools" => "pages#tools"
   get "/feedback" => "pages#feedback"
   get "feedback/client" => "pages#clientfeedback"
