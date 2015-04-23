@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   get "/thanks" => "pages#successful_generic"
   get "/successful" => "pages#successful_sign_up"
   get "/successful_feedback" => "pages#successful_feedback"
-  get "/successful_order" => "pages#successful_order"
+  get "/successful_order_etw" => "pages#successful_order_etw"
+  get "/successful_order_workshop" => "pages#successful_order_workshop"
   get "/successful_featured" => "exclusives#success"
   
   get "/people" => "pages#people.html.erb"
