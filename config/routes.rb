@@ -25,8 +25,11 @@ Rails.application.routes.draw do
   get "/successful_order_workshop" => "pages#successful_order_workshop"
   get "/successful_featured" => "exclusives#success"
   
+  get "/tyler" => "pages#tyler"
+  
   get "/people" => "pages#people.html.erb"
   get "/start" => "pages#start.html.erb"
+  get "/pricing" => "pages#pricing.html.erb"
   
   # Resources
   get "/freelance-as-a-service" => "pages#freelance-as-a-service"

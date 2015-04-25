@@ -9,6 +9,10 @@ p {
 	margin: .75em 0;
 }
 
+.small, .small a {
+	font-size: 12px;
+}
+
 h1.jumbo {
 	font-size: 2em; 
 	margin: 0; 
@@ -21,6 +25,8 @@ h2.jumbo {
 h1, h2, h3 {
 	margin: 1.5em 0 0 0;
 }
+h1, h2, h4, h5, h6 
+	{ font-family: "sketchnote-square", Verdana, Helvetica, sans-serif;}
 h1, h2 {
 	font: 1.6em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; 
 	font-weight: normal;
@@ -31,10 +37,13 @@ h3 {
 	font: 1.3em/1.3em "sketchnote-square", Verdana, Helvetica, sans-serif; 
 	font-weight: normal; 
 }
+h4 {
+	font-size: 1.25em;
+	margin: 1em 0 0;
+}
 hr {
 	border: 0; 
-	height: 1px; 
-	background-color: #D9D3CF; 
+	height: 1px;
 }
 ol {
 	margin: 0 3em;
@@ -131,6 +140,21 @@ blockquote {
 	
 }
 
+
+table.benefits {
+	img {width: 150px;}
+	h2 {
+		font-size: 20px;
+	}
+	p {
+		margin: .5em 0 2em 0;
+	}
+	margin: 1em 0;
+		border-collapse:collapse;
+	td {
+		padding: 0 1em;
+	}
+}
 /* Flash */
 #flash_alert, #flash_notice {background-color: #ebe7e2; color: #76726a; padding: .5em 1em; margin: 1em 0 0 0; font-size: 14px; }
 #flash_alert {background-color: #F5E9ED; color: #825B70;}

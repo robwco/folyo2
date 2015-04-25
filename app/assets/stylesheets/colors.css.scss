@@ -8,6 +8,7 @@ $gray:              #e7e2db;
 $light-gray:				#f0eeea;
 $dark-gray: 				#4b4947;
 $brown-gray: 				#9e9890;
+$line-gray: 				#D9D3CF;
 
 $white:             #fff;
 $black:             #111;
@@ -32,6 +33,9 @@ $highlight-text-color: 	$dark-yellow;
 body, p, a, span, ol, ul, textarea { 
 	color: $text-color; 
 }
+hr {
+	background-color: $line-gray; 
+}
 h2.jumbo {
 	color: $brown-gray;
 }
@@ -47,7 +51,13 @@ h2.jumbo {
 	}
 	
 }
-
+.small {
+	color: $brown-gray;
+}
+table.benefits {
+	td {
+	}
+}
 a.signup {
 	color: $red;
 }
