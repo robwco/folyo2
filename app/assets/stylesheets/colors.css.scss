@@ -11,6 +11,7 @@ $brown-gray: 				#9e9890;
 $line-gray: 				#D9D3CF;
 
 $white:             #fff;
+$off-white:					#f5f5f5;
 $black:             #111;
 
 $light-yellow:			#fef3b8;
@@ -39,6 +40,10 @@ hr {
 h2.jumbo {
 	color: $brown-gray;
 }
+
+h4 {
+	color: $black;
+}
 .navigation {
 	padding: 1em 0;
 	border-top:1px dotted $light-gray;
@@ -54,10 +59,22 @@ h2.jumbo {
 .small {
 	color: $brown-gray;
 }
-table.benefits {
-	td {
+
+.pricing form {
+	border: 2px solid $light-gray;
+}
+.pricing-lead-category {
+	background-color: $light-gray;
+}
+
+.payment-form {
+	background-color: $off-white;
+	box-shadow: 0px 0px 5px $brown-gray;
+	input[type=email] {
+		background-color: $white;
 	}
 }
+
 a.signup {
 	color: $red;
 }
