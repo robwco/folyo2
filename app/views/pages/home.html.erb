@@ -13,21 +13,18 @@ $(document).scroll(function() {
 
 
 
-
-	<center>
-	<div class="people-clients"></div>	
-	</center>
-
-
-
 <section class="reading-wrap">
 	<center>
-		<h1 class="jumbo">A tiny lead generation service helping freelancers like you make thousands of dollars each week.</h1>
+		<h1 class="jumbo" style="margin: 3em 0 0;">A tiny lead generation service helping freelancers like you make thousands of dollars each week.</h1>
 		<h2 class="jumbo">Get emailed the best freelance gigs on the web everyday.</h2>
 	</center>
 </section>
 
-<%= render 'navigation' %>
+
+
+<center>
+<div class="people-clients"></div>	
+</center>
 
 
 <!--
@@ -394,12 +391,18 @@ $(document).scroll(function() {
 <p>I started doing this with select consultancies in November, 2013. Since then I've helped hundreds land work. Some have even made hundreds of thousands of dollars from my leads. Now, I focus on Workshop full-time, which wouldn't be possible if it didn't produce massive results for my customers.</p>
 
 
-
-
 <center>
-<a href="<%= @sales_link %>"><input type="submit" name="submit" value="Show me my future clients" data-drip-attribute="sign-up-button"  style="margin: 2em 0;" class="buy"></a>
-<p style="margin-top: -1em; padding: 0 0 3em; color: #808171; font-size: 13px;">I've sent over $<%= number_with_delimiter(@sent_this_month, :delimiter => ',') %> worth of work this month! Don't miss out.</p>
+<h1>Get the best consulting opportunities on the web delivered to your inbox! Starting at only $99/month.</h1>
+<a href="<%= @sales_link %>"><input type="submit" name="submit" value="Show me my future clients" data-drip-attribute="sign-up-button"  style="margin: 2em 0 2em;" class="buy"></a>
 </center>
+
+
+
+<p style="text-align:center; margin: 0;">&ldquo;Totally a no-brainer for most freelancers.&rdquo;</p>
+
+<p class="cite" style="text-align: center; padding-bottom: 1em; margin: 0 0 3em;">Ruben Gamez, Founder of <%= image_tag("bidsketch.png", :style => "width:5em;") %></p>
+
+</div>
 
 <hr>
 </section>
@@ -480,6 +483,19 @@ $(document).scroll(function() {
 </blockquote>
 
 
+<blockquote>
+<table>
+<tr>
+<td>
+<%= image_tag("testimonials/jdejene.jpg") %>
+<cite><p>Joe Dejene</p></cite>
+</td>
+<td>
+<p>&ldquo;This service is filling up my pipeline faster than anything else I've tried!&rdquo;</p>
+</td>
+</tr>
+</table>
+</blockquote>
 
 <blockquote>
 <table>
@@ -497,48 +513,22 @@ $(document).scroll(function() {
 </blockquote>
 
 
-<blockquote>
-<table>
-<tr>
-<td>
-<%= image_tag("testimonials/jdejene.jpg") %>
-<cite><p>Joe Dejene</p></cite>
-</td>
-<td>
-<p>&ldquo;This service is filling up my pipeline faster than anything else I've tried!&rdquo;</p>
-</td>
-</tr>
-</table>
-</blockquote>
+<hr>
 
 
-
-<center>
-	<hr>
-<h1>Get the best consulting opportunities on the web delivered to your inbox! Starting at only $99/month.</h1>
-<a href="<%= @sales_link %>"><input type="submit" name="submit" value="Show me my future clients" data-drip-attribute="sign-up-button"  style="margin: 2em 0 2em;" class="buy"></a>
-</center>
-
-
-
-<p style="text-align:center; margin: 0;">&ldquo;Totally a no-brainer for most freelancers.&rdquo;</p>
-
-<p class="cite" style="text-align: center; padding-bottom: 1em; margin: 0 0 3em;">Ruben Gamez, Founder of <%= image_tag("bidsketch.png", :style => "width:5em;") %></p>
-
-</div>
 
 
 
 </section>
 </section>
 
+<section class="loose-wrap">
+
+<%= render 'courseoptin' %>
+
+</section>
 
 
 <%= render 'navigation' %>
 
 
-<center>
-<div class="logo">
-	<%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>
-</div>
-</center>

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "/successful_featured" => "exclusives#success"
   
   get "/tyler" => "pages#tyler"
+  get "/freelancing" => "pages#course"
   
   get "/people" => "pages#people.html.erb"
   get "/start" => "pages#start.html.erb"
