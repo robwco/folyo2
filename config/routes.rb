@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   root "pages#home"
 
-  resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps, :faqs
-  
+  resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps
+
   get "/connect" => "exclusives#connect"
   get "/build" => "exclusives#build"
   
@@ -69,7 +69,12 @@ Rails.application.routes.draw do
       match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
 
+  
+  resources :faqs, only: [:index, :new, :create]
+  resources :faqs, path: "", except: [:index, :new, :create]
+
   get '*path' => redirect('/')
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

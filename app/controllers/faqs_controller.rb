@@ -1,5 +1,5 @@
 class FaqsController < ApplicationController
-  before_action :set_faq, only: [:show, :edit, :update, :destroy]
+  before_filter :find_faq, only: [:show, :edit, :update, :destroy]
 
   # GET /faqs
   # GET /faqs.json
@@ -10,6 +10,7 @@ class FaqsController < ApplicationController
   # GET /faqs/1
   # GET /faqs/1.json
   def show
+    
   end
 
   # GET /faqs/new
@@ -63,8 +64,9 @@ class FaqsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_faq
-      @faq = Faq.find(params[:id])
+    
+    def find_faq 
+      @faq = Faq.find_by_anchor!(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
