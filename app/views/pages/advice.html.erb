@@ -1,5 +1,12 @@
 <div class="content">
 <% content_for :title, "Your biggest questions about freelancing, answered." %>
+
+
+<!-- Twitter code -->
+<script type="text/javascript">
+window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+</script>
+
 <script>
 $(document).on('click','.searchbychar', function(event) {
     event.preventDefault();
@@ -20,8 +27,8 @@ $(document).on('click','.searchbychar', function(event) {
 </p>
 
 <div class="book-cover">
-<h1>This is a complete guide to finding and winning better freelance work online created by top consultants from all over the web.</h1>
-<h2><a href="http://letsworkshop.com">by Workshop</a> • <a href="https://letsworkshop.com/freelancing">Get Email Updates</a></h2>
+<h1>The complete freelancer's guide to finding and winning better client work online.</h1>
+<h2><%= link_to "by Workshop", root_path %> • <%= link_to "Get Email Updates", freelancing_path %></h2>
 </div>
 
 <hr>
