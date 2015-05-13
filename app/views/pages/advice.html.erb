@@ -1,3 +1,4 @@
+<div class="content">
 <% content_for :title, "Your biggest questions about freelancing, answered." %>
 <script>
 $(document).on('click','.searchbychar', function(event) {
@@ -8,15 +9,8 @@ $(document).on('click','.searchbychar', function(event) {
     }, 2000);
 });
 </script>
-<section class="global-nav">
-	<ul>
-	<li><a href="http://emailsthatwin.com">Emails that win book</a></li>
-	<li><a href="http://letsworkshop.com">Freelance jobs emailed to you</a></li>
-	<li><a href="http://letsworkshop.com/connect">Hire a freelance for your project (free)</a></li>
-	</ul>
-</section>
 
-<p style="position: fixed; top: .5em; right: 0; font-size: 12px; display: table;"><a class="twitter-share-button"
+<p style="position: fixed; top: 1em; right: 1em; font-size: 12px; display: table;"><a class="twitter-share-button"
    href="https://twitter.com/share"
   data-url="http://letsworkshop.com/advice"
   data-via="letsworkshop"
@@ -25,54 +19,22 @@ $(document).on('click','.searchbychar', function(event) {
   data-count="horizontal">Tweet</a>
 </p>
 
-<section class="loose-wrap faq" name="top">
-<h1>Your biggest freelancing questions answered.</h1>
+<div class="book-cover">
+<h1>This is a complete guide to finding and winning better freelance work online created by top consultants from all over the web.</h1>
+<h2><a href="http://letsworkshop.com">by Workshop</a> • <a href="https://letsworkshop.com/freelancing">Get Email Updates</a></h2>
+</div>
+
 <hr>
-<%= image_tag('people.png', :style => 'width:150px; float:left; margin: 1em 1em 0em -1em;') %>
 
-<p style="margin:2.5em 0 3em 0;"><strong>It's easy to feel like you're alone when you run a consultancy.</strong> That's why one of the best things about <a href="http://letsworkshop.com">my lead-generation service for freelancers</a> is the community of knowledge we share. Hundreds of world-class consultants helping one another. Collectively, they created more value than I ever could and so it's with great excitement I present this help page.</p>
-
-<p class="help-note" style=""><strong>The answers on this page were mostly written by <a href="http://letsworkshop.com">Workshop</a> members.</strong> They're questions we've all asked about freelancing at one point or another, collected for you in one place. I'd appreciate if you shared and saved this page as I'll continue to update it moving forward.<br>
-<a href="http://letsworkshop.com">Go here for more information on Workshop and to get access to this expertise on-demand.</a></p>
-
-<h3>START HERE:</h3>
-
-<ul>
-<li><a href="/">How can I make finding freelance work easier on myself?</a></li>
-</ul>
 
 <% @faqs.group_by(&:category).each do |category, faqs| %>
-<h3><%= category %>:</h3>
-	<ul>
-	<% faqs.each do |faq| %>
-		<li><a href="#<%= faq.anchor %>"><%= faq.question %></a></li>
-  <% end %>
+	<h3 class="topic-section"><%= category %>:</h3>
+	<ul class="topic-list">
+		<% faqs.each do |faq| %>
+			<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	  <% end %>
 	</ul>
 <% end %>
 
-<br>
-<hr>
 
-<% @faqs.group_by(&:category).each do |category, faqs| %>
-	<% faqs.each do |faq| %>
-		<div id="<%= faq.anchor %>">
-			<br>
-			<h3><%= faq.question %></h3>
-			<blockquote>
-				<%= markdown(faq.answer) %>
-			</blockquote>
-			<% if faq.notes.present? %>
-			<p><strong>Further reading:</strong></p>
-			<p><%= markdown(faq.notes) %></p>
-			<% end %>
-			<a style="font-size: 10px;" href="#top">Back to top</a>
-			</div>
-			<br>
-			<hr>	
-  <% end %>
-<% end %>
-
-
-
-
-</section>
+</div>

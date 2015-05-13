@@ -1,28 +1,11 @@
-<section class="nav tab">
+
 <p>Preview emails: <%= link_to 'All Leads', upload_path %> <%= link_to 'Design Leads', upload_design_path %> <%= link_to 'Development Leads', upload_development_path %></p>
-</section>
 
+<div class="content">
 
-<section class="loose-wrap breathe-bottom">
-<!-- <%= link_to image_tag("workshop-logo-big.png"), root_path, :class => 'logo' %>  -->
-<div class="lead-count">
-	<strong>Rails</strong><br>
-	<span style="15px;"><%= @leads.rails.count %></span> leads
-</div>
-<div class="lead-count">
-	<strong>Drupal</strong><br>
-	<span style="15px;"><%= @leads.drupal.count %></span> leads
-</div>
-<div class="lead-count">
-	<strong>Ecommerce</strong><br>
-	<span style="15px;"><%= @leads.ecommerce.count %></span> leads
-</div>
-<div class="lead-count">
-	<strong>Logo Design</strong><br>
-	<span style="15px;"><%= @leads.logo.count %></span> leads
-</div>
+<%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "submit" %> <%= link_to 'New Lead', new_lead_path, class: "submit" %> <%= link_to 'New RFP', new_rfp_path, class: "submit" %>
+<h1>Workshop-exclusive leads</h1>
 
-<h1>Workshop-exclusive leads <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "submit" %></h1>
 <table>
   <tbody>
 
@@ -49,7 +32,8 @@
 <br>
 
 
-<h1>Workshop leads <%= link_to 'New Lead', new_lead_path, class: "submit" %> <%= link_to 'New RFP', new_rfp_path, class: "submit" %></h1>
+<h1>Workshop leads</h1>
+
 <table style="margin: 0 0 7em 0;">
   <tbody>
     <% @leads.today.most_recently_updated.each do |lead| %>
@@ -72,4 +56,6 @@
     <% end %>
   </tbody>
 </table>
-</section>
+
+
+</div>

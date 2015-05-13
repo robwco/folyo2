@@ -17,36 +17,36 @@
   <div class="field">
     <%= f.label :pic, 'Photo of Yourself' %><br>
     <%= f.file_field :pic, class: "form-control" %>
-    <p class="note">Uploading a picture of yourself means you'll get even more responses.</p>
+    <p class="sub-label">Uploading a picture of yourself means you'll get even more responses.</p>
   </div>
   <div class="field">
     <%= f.label :email, 'Your Email'  %><br>
     <%= f.text_field :email %>
-    <p class="note">Where can a freelancer get a hold of you?</p>
+    <p class="sub-label">Where can a freelancer get a hold of you?</p>
   </div>
   <div class="field">
     <%= f.label :title, 'Title Your Project' %><br>
     <%= f.text_field :title %>
-    <p class="note">A few words about what you're looking for, and what your company does.</p>
+    <p class="sub-label">A few words about what you're looking for, and what your company does.</p>
   </div>
   <div class="field">
     <%= f.label :category, 'Type of Freelancer (if required)' %><br>
     <%= f.text_field :category, :placeholder => 'Example: Wordpress development, UX design, ruby on rails, etc.' %>
-    <p class="note">I'll send your project to a world-class freelancer in the specific area you need.</p>
+    <p class="sub-label">I'll send your project to a world-class freelancer in the specific area you need.</p>
   </div>
   <div class="field">
     <%= f.label :website, 'Your Website' %><br>
     <%= f.text_field :website, :placeholder => 'http://www.yourwebsite.com' %>
   </div>
   <div class="field">
-    <p class="note" style="float:right; width: 26em;">Budget guidelines:<br>$1,000 minimum<br>$2,000+ for a Marketing Website<br> $8,000+ for Web App.</p>
     <%= f.label :budget, 'Your Budget' %><br>
-    $ <%= f.number_field :budget %>
+    <span>$</span> <%= f.number_field :budget, :style => "width: 16em; display: inline;" %>
+	  <p class="sub-label"><a href="http://blog.folyo.me/how-much-does-a-website-cost-and-other-pricing-questions/">How much should my project cost?</a></p>
   </div>
   <div class="field">
     <%= f.label :description, 'Describe Your Project' %>
-    <p class="note">Try to include as much detail as possible. For example, what specific web pages or designs do you need help on? What kind of deliverables do you expect? When do you need this project completed?</p>
-    <%= f.text_area :description, :id => "exclusive_description" %>
+    <p class="sub-label">Try to include as much detail as possible. For example, what specific web pages or designs do you need help on? What kind of deliverables do you expect? When do you need this project completed?</p>
+    <%= f.text_area :description, :id => "exclusive_description", :style => "height: 15em;" %>
   </div>
 
   <div class="actions" style="margin: 2em 0 0 0;">

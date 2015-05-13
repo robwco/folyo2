@@ -9,66 +9,41 @@ $(document).on('click','.searchbychar', function(event) {
     }, 2000);
 });
 </script>
-<section class="global-nav">
-	<ul>
-	<li><a href="http://emailsthatwin.com">Emails that win book</a></li>
-	<li><a href="http://letsworkshop.com">Freelance jobs emailed to you</a></li>
-	<li><a href="http://letsworkshop.com/connect">Hire a freelance for your project (free)</a></li>
-	</ul>
-</section>
 
 <p style="position: fixed; top: .5em; right: 0; font-size: 12px; display: table;"><a class="twitter-share-button"
    href="https://twitter.com/share"
-  data-url="<%= @faq_path %>"
+  data-url="http://letsworkshop.com/advice"
   data-via="letsworkshop"
   data-text="<%= @faq.question %>"
   data-related="letsworkshop"
   data-count="horizontal">Tweet</a>
 </p>
 
-<section class="loose-wrap faq" name="top">
+<div class="content" name="top">
+
+<%= link_to "← Back to Table of Contents", advice_path %>
 
 
+<!--
+<aside class="toc-tree">
+	<ul>
+		<li>How many people reply to a lead?</li>
+	</ul>
+</aside>-->
 
 		<div id="<%= @faq.anchor %>">
 			<br>
 			<h1><%= @faq.question %></h1>
-			<blockquote>
-				<%= markdown(@faq.answer) %>
-			</blockquote>
+			<%= markdown(@faq.answer) %>
 			<% if @faq.notes.present? %>
 			<p><strong>Further reading:</strong></p>
 			<p><%= markdown(@faq.notes) %></p>
 			<% end %>
 			</div>
 			<br>
-			<hr>
-
-
 
 
 <%= render 'pages/courseoptin' %>
 
 
-
-
-
-			<h1>Your biggest freelancing questions answered.</h1>
-			<hr>
-			<%= image_tag('people.png', :style => 'width:150px; float:left; margin: 1em 1em 0em -1em;') %>
-
-			<p style="margin:2.5em 0 3em 0;"><strong>It's easy to feel like you're alone when you run a consultancy.</strong> That's why one of the best things about <a href="http://letsworkshop.com">my lead-generation service for freelancers</a> is the community of knowledge we share. Hundreds of world-class consultants helping one another. Collectively, they created more value than I ever could and so it's with great excitement I present this help page.</p>
-
-			<p class="help-note" style=""><strong>The answers on this page were mostly written by <a href="http://letsworkshop.com">Workshop</a> members.</strong> They're questions we've all asked about freelancing at one point or another, collected for you in one place. I'd appreciate if you shared and saved this page as I'll continue to update it moving forward.<br>
-			<a href="http://letsworkshop.com">Go here for more information on Workshop and to get access to this expertise on-demand.</a></p>
-
-			<h3>START HERE:</h3>
-
-			<ul>
-			<li><a href="/">How can I make finding freelance work easier on myself?</a></li>
-			</ul>
-
-			<br>
-
-
-</section>
+</div>

@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 20150409210703) do
     t.datetime "updated_at"
   end
 
-  create_table "clients", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "exclusives", force: true do |t|
     t.string   "title"
     t.string   "url"
