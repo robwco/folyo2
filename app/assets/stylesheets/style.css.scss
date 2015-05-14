@@ -83,7 +83,8 @@ input[type=submit], a.submit {
 	}
 }
 
-p {
+
+p, ul, ol {
 	font: 17px/1.6 $ui-font;
 	font-weight: normal;
 	color: $paragraph-color;
@@ -91,6 +92,12 @@ p {
 	margin: 0 auto 1.3em;
 }
 
+ul, ol {
+	margin: 1em auto 2em;
+	li {
+		margin: 1em auto 0;
+	}
+}
 
 hr {
 	background-color: $line-gray; 
@@ -226,7 +233,7 @@ input[type="text"], input[type="password"], input[type="name"],  input[type="ema
 	margin: 6em auto;
 	h1 {
 		font-family: $header-font;
-		font-size: 3em;
+		font-size: 3.25em;
 		letter-spacing: .05em;
 		font-weight: 700;
 		margin: 5em auto 0;
