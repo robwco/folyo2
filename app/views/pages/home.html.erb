@@ -1,11 +1,15 @@
 <%= @coupon_message %>
-<%= link_to "Learn how to win better client work", advice_path %>
+<%= link_to "Get your next client today", advice_path, :style => "" %>
+<%= link_to "Find a freelancer for free", connect_path, :style => "float:right;" %>
 
 <div class="content">
 	
-	<div class="people-clients"></div>
+<center>
+<%= render 'tagline' %>
+</center>
 
-<div class="words">	
+<div class="people-clients"></div>
+	
 <h1>You know you can help thousands of businesses… so why does freelancing feel like a race to the bottom?</h1>
 
 <p>Well first, you're not in front of all of these businesses daily - and finding them isn't exactly easy. After all, you're already working too much. You have existing clients to take care of, important emails to check, and your least favorite: fires to put out.</p>
@@ -13,7 +17,6 @@
 <p>Doing lead generation on top of all of this sucks. Checking job boards every day (or worse: elance) just isn't the best use of your time... and you know it, which is why you put it off. After all, you want to do the work you love, not search for it. So instead you wait for work to come to you (read: do nothing).</p>
 
 <p>But putting it off only makes things worse. Much worse. Having no control over the work you take on means instead of firing bad clients you're forced to put up with them forever. Instead of getting paid what you're worth, you get low-balled. Instead of knowing where your next project is going to come from, you're constantly worried about dry spells. It's not worth it.</p>
-</div>
 
 <blockquote>
 	<table>
