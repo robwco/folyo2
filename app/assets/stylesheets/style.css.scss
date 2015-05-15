@@ -130,14 +130,19 @@ ul, ol {
 	  -o-column-count: 2;
 	  -ms-column-count: 2;
 	  column-count: 2;
-		margin: 3em auto 10em;
+		margin: 1em auto 6em;
+		-moz-column-gap: 2em;
+	  -webkit-column-gap: 2em;
+	  -o-column-gap: 2em;
+	  -ms-column-gap: 2em;
+	  column-gap: 2em;
 		li {
 			display: inline-block;
 			width: 100%;
 		}
 	}
 	a.topic-chapter {
-		font: 25px/1.4 $ui-font;
+		font: 22px/1.4 $ui-font;
 		display: inline-block;
 		overflow: hidden;
 	}
