@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 h3 {
 	font-size: 22px;
 	&.topic-section {
-		margin: 6em auto 0;
+		margin: 4em auto 0;
 		
 	}
 }
@@ -126,7 +126,6 @@ ul, ol {
 		font: 25px/1.4 $ui-font;
 		display: inline-block;
 		overflow: hidden;
-		background-color: $light-yellow;
 	}
 }
 
