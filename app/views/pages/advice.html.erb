@@ -38,14 +38,66 @@ $(document).on('click','.searchbychar', function(event) {
 <hr>
 
 
-<% @faqs.group_by(&:category).each do |category, faqs| %>
-	<h3 class="topic-section"><%= category %></h3>
-	<ul class="topic-list">
-		<% faqs.each do |faq| %>
-			<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
-	  <% end %>
-	</ul>
-<% end %>
+
+<h3 class="topic-section">
+	<% @faqs.most_recently_updated.limit(1).each do |faq| %>
+		<%= link_to "Latest <span>#{faq.question}</span>".html_safe, faq_path(faq)%>
+	<% end %>
+</h3>
+
+<h3 class="topic-section">Introduction</h3>
+<ul class="topic-list">
+	<% @faqs.where("category ilike 'Introduction'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
+<h3 class="topic-section">Finding potential clients</h3>
+<ul class="topic-list">
+	<% @faqs.where("category ilike 'Finding potential clients'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
+<h3 class="topic-section">Marketplaces and job boards</h3>
+<ul class="topic-list">
+	<% @faqs.where("category ilike 'Marketplaces and job boards'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
+<h3 class="topic-section">Using email to land work</h3>
+<ul class="topic-list">
+	<li><a class="topic-chapter" href="http://emailsthatwin.com">Cold emails</a></li>
+	<% @faqs.where("category ilike 'Marketplaces and job boards'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
+<h3 class="topic-section">Upsell opportunities</h3>
+<ul class="topic-list">
+	<% @faqs.where("category ilike 'Upsell opportunities'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
+<h3 class="topic-section">Following up</h3>
+<ul class="topic-list">
+	<% @faqs.where("category ilike 'Following up'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
+<h3 class="topic-section">Appendix</h3>
+<ul class="topic-list">
+	<% @faqs.where("category ilike 'Appendix'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
+
+
+
 
 
 </div>

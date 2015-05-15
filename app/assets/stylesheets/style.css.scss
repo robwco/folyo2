@@ -56,6 +56,20 @@ h3 {
 	font-size: 22px;
 	&.topic-section {
 		margin: 4em auto 0;
+		a {
+			margin-left: -.5em;
+			padding: 0 .5em;
+			font: 30px/1.3 $header-font;
+			color: $header-color;
+			span { 
+				margin-left: .5em;
+				font-size: 70%;
+				}
+			&:hover {
+				background-color: $off-white;
+				border-radius: $ui-border-radius;
+			}
+		}
 		
 	}
 }
