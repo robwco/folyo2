@@ -35,6 +35,11 @@ $ui-font: 							'Gotham SSm A', 'Gotham SSm B', "Lucida Grande", sans-serif;
 
 $header-font:						"sketchnote-square", Verdana, Helvetica, sans-serif;;
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
 span {
 	font: 90%/1.6 $ui-font;
 }
@@ -49,7 +54,8 @@ h1, h2, h3, h4, h5, h6 {
 
 h3 {
 	font-size: 22px;
-	.topic-section {
+	&.topic-section {
+		margin: 6em auto 0;
 		
 	}
 }
@@ -78,6 +84,9 @@ input[type=submit], a.submit {
 	font-size: 80%;
 	font-family: $ui-font;
 	border: none;
+	-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 	&:hover {
 		background-color: $link-hover;
 		text-shadow: 0px 0px 1px $link-color;
@@ -102,25 +111,22 @@ ul, ol {
 		margin: 1em auto 0;
 	}
 	&.topic-list {
-		  -moz-column-count: 2;
-		  -webkit-column-count: 2;
-		  -o-column-count: 2;
-		  -ms-column-count: 2;
-		  column-count: 2;
-		  -moz-column-gap: 2em;
-		  -webkit-column-gap: 2em;
-		  -o-column-gap: 2em;
-		  -ms-column-gap: 2em;
-		  column-gap: 2em;
-		  font-size: 110%;
-		  margin-left: 1rem;
-		  margin-top: 0.7rem;
-		  margin-bottom: 1.5rem;
+	  -moz-column-count: 2;
+	  -webkit-column-count: 2;
+	  -o-column-count: 2;
+	  -ms-column-count: 2;
+	  column-count: 2;
+		margin: 3em auto 10em;
+		li {
+			display: inline-block;
+			width: 100%;
 		}
-	
-	
+	}
 	a.topic-chapter {
 		font: 25px/1.4 $ui-font;
+		display: inline-block;
+		overflow: hidden;
+		background-color: $light-yellow;
 	}
 }
 
