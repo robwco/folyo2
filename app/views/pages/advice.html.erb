@@ -59,6 +59,14 @@ $(document).on('click','.searchbychar', function(event) {
 	<% end %>
 </ul>
 
+<h3 class="topic-section">Using email to land work</h3>
+<ul class="topic-list">
+	<li><a class="topic-chapter" href="http://emailsthatwin.com">Cold emails</a></li>
+	<% @faqs.where("category ilike 'Using email to land work'").each do |faq| %>
+		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
+	<% end %>
+</ul>
+
 <h3 class="topic-section">Marketplaces and job boards</h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Marketplaces and job boards'").each do |faq| %>
@@ -66,24 +74,10 @@ $(document).on('click','.searchbychar', function(event) {
 	<% end %>
 </ul>
 
-<h3 class="topic-section">Using email to land work</h3>
-<ul class="topic-list">
-	<li><a class="topic-chapter" href="http://emailsthatwin.com">Cold emails</a></li>
-	<% @faqs.where("category ilike 'Marketplaces and job boards'").each do |faq| %>
-		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
-	<% end %>
-</ul>
-
 <h3 class="topic-section">Upsell opportunities</h3>
 <ul class="topic-list">
+	<li><%= link_to "Project feedback", feedback_path, :class=> "topic-chapter" %></li>
 	<% @faqs.where("category ilike 'Upsell opportunities'").each do |faq| %>
-		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
-	<% end %>
-</ul>
-
-<h3 class="topic-section">Following up</h3>
-<ul class="topic-list">
-	<% @faqs.where("category ilike 'Following up'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>
