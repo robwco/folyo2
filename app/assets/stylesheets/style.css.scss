@@ -85,6 +85,18 @@ a {
 	}
 }
 
+nav {
+	padding: .5em 1em;
+	box-sizing: border-box;
+	width: 100%;
+	display: table;
+	a {
+		float: left;
+		font-size: 110%;
+		margin: .5em 0 0 1.5em;
+	}
+}
+
 input[type=submit], a.submit {
 	cursor: pointer;
 	border-radius: 5px; 

@@ -1,6 +1,8 @@
 <%= @coupon_message %>
-<%= link_to "Get your next client today", advice_path, :style => "" %>
-<%= link_to "Find a freelancer for free", connect_path, :style => "float:right;" %>
+<nav class="navigation-links" role="navigation">
+<%= link_to "Get your next client today", advice_path %>
+<%= link_to "Find a freelancer for free", connect_path, :class => "right" %>
+</nav>
 
 <div class="content">
 	
@@ -203,15 +205,15 @@
 
 <p style="font-size: 90%; text-align: center; padding-bottom: 1em; margin: .5em auto 3em;">Ruben Gamez, Founder of <%= image_tag("bidsketch.png", :style => "width:5em;") %></p>
 
-
+<hr>
 <table>
 	<tr>
-		<td><%= image_tag('theshedplus.png', :style => "margin: 0 3em;") %></td> 
+		<td><%= image_tag('slack.png', :style => "max-width: 6em; margin: 1.5em 3em;") %></td> 
 		
-		<td><p><strong>Limited Time -</strong> You'll get bonus access to a community of freelancers and consultants ready to help you improve your business.<br><a href="/advice" target="_blank">Take a peek at past advice.</a></p></td>
+		<td><p style="margin: 1em 0 1em;"><strong>Bonus: Private Slack community</strong><br>You'll get access to a community of freelancers and consultants ready to help you improve your business. <a href="/advice" target="_blank">Take a peek at past advice.</a></p></td>
 	</tr>
 </table>
-
+<hr>
 
 
 <h1>There's absolutely zero risk. Get 100% of your money back if you don't like it, at any time.</h1>
