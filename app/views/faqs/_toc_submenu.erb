@@ -1,7 +1,0 @@
-<ul>
-	<% Faq.roots.each do |faq| %>
-		<li>
-			<%= link_to_unless_current faq.question, faq, class: ("active" if @faq == faq) %>
-		</li>
-	<% end %>
-</ul>

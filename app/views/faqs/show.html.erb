@@ -15,8 +15,15 @@
 
 	<div class="faq-content">
 		<div class="toc-menu">
-			<%= link_to "← Back to Table of Contents", advice_path %>
+			<!--
+			<%= link_to "← Back to Table of Contents", advice_path %>-->
+			
+			<%= render 'submenu', faqs: @faq.root.descendants.arrange %>
 
+
+
+
+<!--
 			<% @faqs.group_by(&:category).each do |category, faqs| %>
 				<p><strong><%= category %>:</strong></p>
 					<ul class="toc-sub-menu">
@@ -24,7 +31,7 @@
 							<li><%= link_to_unless_current faq.question, faq_path(faq) %></li>
 					  <% end %>
 					</ul>
-			<% end %>
+			<% end %>-->
 		</div>
 
 

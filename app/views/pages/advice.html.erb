@@ -40,7 +40,7 @@ $(document).on('click','.searchbychar', function(event) {
 	<% end %>
 </h3>
 
-<h3 class="topic-section">Introduction</h3>
+<h3 class="topic-section" id="intro">Introduction</h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Introduction'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
@@ -48,13 +48,13 @@ $(document).on('click','.searchbychar', function(event) {
 </ul>
 
 <h3 class="topic-section">Finding potential clients</h3>
-<ul class="topic-list">
+<ul class="topic-list"  id="clients">
 	<% @faqs.where("category ilike 'Finding potential clients'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>
 
-<h3 class="topic-section">Using email to land work</h3>
+<h3 class="topic-section" id="email">Using email to land work</h3>
 <ul class="topic-list">
 	<li><a class="topic-chapter off-site" href="http://emailsthatwin.com" target="_blank">Cold emails</a></li>
 	<% @faqs.where("category ilike 'Using email to land work'").each do |faq| %>
@@ -62,14 +62,14 @@ $(document).on('click','.searchbychar', function(event) {
 	<% end %>
 </ul>
 
-<h3 class="topic-section">Marketplaces and job boards</h3>
+<h3 class="topic-section" id="marketplaces">Marketplaces and job boards</h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Marketplaces and job boards'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>
 
-<h3 class="topic-section">Upsell opportunities</h3>
+<h3 class="topic-section"  id="upsells">Upsell opportunities</h3>
 <ul class="topic-list">
 	<li><%= link_to "Project feedback", feedback_path, :class=> "topic-chapter" %></li>
 	<% @faqs.where("category ilike 'Upsell opportunities'").each do |faq| %>
@@ -77,7 +77,7 @@ $(document).on('click','.searchbychar', function(event) {
 	<% end %>
 </ul>
 
-<h3 class="topic-section">Appendix</h3>
+<h3 class="topic-section"  id="appendix">Appendix</h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Appendix'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
