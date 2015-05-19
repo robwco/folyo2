@@ -139,6 +139,9 @@ p, ul, ol {
 .faq-content {
 	display: table;
 	width: 100%;
+	p {
+		font-size: $small-font-size;
+	}
 }
 .toc-menu {
 	float: left;
@@ -146,6 +149,7 @@ p, ul, ol {
 	border-right: 1px dotted $line-gray;
 	margin: 5em 2em 1em 0;
 	padding: 0 1em 0 0;
+	text-align: right;
 	ul {
 		list-style-type: none;
 		margin: 0;
@@ -156,6 +160,9 @@ p, ul, ol {
 	a, li, p {
 		font-size: 12px;
 		margin: 0;
+	}
+	p {
+		margin: .5em 0 0;
 	}
 }
 
