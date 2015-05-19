@@ -15,6 +15,10 @@
     <%= f.text_field :anchor %>
   </div>
   <div class="field">
+    <%= f.label :parent_id %><br>
+    <%= f.collection_select :parent_id, Faq.order(:category), :id, :question, include_blank: true %>
+  </div>
+  <div class="field">
     <%= f.label :category %><br>
     <%= f.text_field :category %>
   </div>

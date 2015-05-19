@@ -1,5 +1,5 @@
 <div class="content">
-<% content_for :title, "Your biggest questions about freelancing, answered." %>
+<% content_for :title, "The freelancer's guide to finding and winning better client work online." %>
 
 
 <!-- Twitter code -->
@@ -27,17 +27,12 @@ $(document).on('click','.searchbychar', function(event) {
 </p>
 
 <div class="book-cover">
-<h1>The freelancer's guide to finding and winning better client work online</h1>
-<h2><%= link_to "by Workshop", root_path %> • <%= link_to "Get Email Updates", freelancing_path %>
-<a href="http://letsworkshop.com"><%= render 'tagline' %></a></h2>
-
-
-
+	<h1>The freelancer's guide to finding and winning better client work online</h1>
+	<h2><%= link_to "by Workshop", root_path %> • <%= link_to "Get Email Updates", freelancing_path %>
+	<a href="http://letsworkshop.com"><%= render 'tagline' %></a></h2>
 </div>
 
 <hr>
-
-
 
 <h3 class="topic-section">
 	<% @faqs.most_recently_updated.limit(1).each do |faq| %>
@@ -61,7 +56,7 @@ $(document).on('click','.searchbychar', function(event) {
 
 <h3 class="topic-section">Using email to land work</h3>
 <ul class="topic-list">
-	<li><a class="topic-chapter" href="http://emailsthatwin.com">Cold emails</a></li>
+	<li><a class="topic-chapter off-site" href="http://emailsthatwin.com" target="_blank">Cold emails</a></li>
 	<% @faqs.where("category ilike 'Using email to land work'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>

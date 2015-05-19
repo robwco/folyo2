@@ -71,7 +71,7 @@ class FaqsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def faq_params
-      params.require(:faq).permit(:category, :question, :answer, :notes, :anchor)
+      params.require(:faq).permit(:category, :question, :answer, :notes, :anchor, :ancestry, :parent_id)
     end
     def authenticate
       authenticate_or_request_with_http_basic do |name, password|
