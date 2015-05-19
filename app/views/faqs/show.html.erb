@@ -17,7 +17,7 @@
 		<div class="toc-menu">
 			<%= link_to "← Back to Table of Contents", advice_path %>
 
-			<% @faqs.roots.group_by(&:category).each do |category, faqs| %>
+			<% @faqs.group_by(&:category).each do |category, faqs| %>
 				<p><strong><%= category %>:</strong></p>
 					<ul class="toc-sub-menu">
 						<% faqs.each do |faq| %>
@@ -28,7 +28,7 @@
 		</div>
 
 
-		<div id="<%= @faq.anchor %>">
+		<div id="<%= @faq.anchor %>" class="chapter-wrap">
 			<h1><%= @faq.question %></h1>
 				<%= markdown(@faq.answer) %>
 				<% if @faq.notes.present? %>

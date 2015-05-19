@@ -141,20 +141,33 @@ p, ul, ol {
 	width: 100%;
 	p {
 		font-size: $small-font-size;
+		strong {
+			width: 100%;
+		}
+	}
+	blockquote { 
+		max-width: 100%;
+		display: table;
+		padding: 1em;
+		p { 
+			font-style: italic;
+		}
 	}
 }
 .toc-menu {
 	float: left;
 	width: 200px;
 	border-right: 1px dotted $line-gray;
-	margin: 5em 2em 1em 0;
+	margin: 7em 2em 1em 0;
 	padding: 0 1em 0 0;
 	text-align: right;
+	display: table;
 	ul {
 		list-style-type: none;
 		margin: 0;
 		li {
-			margin: .5em 0;
+			margin: .25em 0;
+			font-style: italic;
 		}
 	}
 	a, li, p {
@@ -162,7 +175,7 @@ p, ul, ol {
 		margin: 0;
 	}
 	p {
-		margin: .5em 0 0;
+		margin: 1em 0 0;
 	}
 }
 
@@ -212,6 +225,8 @@ blockquote {
 	margin: 4em 0 5em;
 	border-top: 1px dotted $light-gray;
 	border-bottom: 1px dotted $light-gray;
+	max-width: 100%;
+	
 	td {
 		padding: 1em;
 	}
