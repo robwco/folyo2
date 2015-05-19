@@ -1,3 +1,14 @@
+<script>
+$(document).on('click','.searchbychar', function(event) {
+    event.preventDefault();
+    var target = "#" + this.getAttribute('data-target');
+    $('html, body').animate({
+        scrollTop: $(target).offset().top
+    }, 2000);
+});
+</script>
+
+
 <%= form_for(@faq) do |f| %>
   <% if @faq.errors.any? %>
     <div id="error_explanation">
@@ -16,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :parent_id %><br>
-    <%= f.collection_select :parent_id, Faq.order(:category), :id, :question, include_blank: true %>
+    <%= f.collection_select :parent_id, Faq.order(:category), :id, :category, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :category %><br>

@@ -1,14 +1,6 @@
-
 <% content_for :title, @faq.question %>
-<script>
-$(document).on('click','.searchbychar', function(event) {
-    event.preventDefault();
-    var target = "#" + this.getAttribute('data-target');
-    $('html, body').animate({
-        scrollTop: $(target).offset().top
-    }, 2000);
-});
-</script>
+
+
 
 <p style="position: fixed; top: .5em; right: 0; font-size: 12px; display: table;"><a class="twitter-share-button"
    href="https://twitter.com/share"
@@ -19,29 +11,34 @@ $(document).on('click','.searchbychar', function(event) {
   data-count="horizontal">Tweet</a>
 </p>
 
-<div class="content" name="top">
+<div class="content" name="top" >
 
-<%= link_to "← Back to Table of Contents", advice_path %>
+	<div class="faq-content">
+		<div class="toc-menu">
+			<% @faqs.group_by(&:category).each do |category, faqs| %>
+				<p><strong><%= category %>:</strong></p>
+					<ul class="toc-sub-menu">
+						<% faqs.each do |faq| %>
+							<li><%= link_to_unless_current faq.question, faq_path(faq) %></li>
+					  <% end %>
+					</ul>
+			<% end %>
+		</div>
 
-
-<!--
-<aside class="toc-tree">
-	<ul>
-		<li>How many people reply to a lead?</li>
-	</ul>
-</aside>-->
 
 		<div id="<%= @faq.anchor %>">
-			<br>
 			<h1><%= @faq.question %></h1>
-			<%= markdown(@faq.answer) %>
-			<% if @faq.notes.present? %>
-			<p><strong>Further reading:</strong></p>
-			<p><%= markdown(@faq.notes) %></p>
-			<% end %>
-			</div>
-			<br>
+				<%= markdown(@faq.answer) %>
+				<% if @faq.notes.present? %>
+				<p><strong>Further reading:</strong></p>
+				<p><%= markdown(@faq.notes) %></p>
+				<% end %>
+		</div>
+	<br>
+</div>
 
+
+<%= link_to "← Back to Table of Contents", advice_path %>
 
 <%= render 'pages/courseoptin' %>
 

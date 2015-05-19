@@ -11,6 +11,7 @@ class FaqsController < ApplicationController
   # GET /faqs/1.json
   def show
     
+      @faqs = Faq.all
   end
 
   # GET /faqs/new
