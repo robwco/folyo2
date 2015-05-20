@@ -1,4 +1,4 @@
-<% content_for :title, @faq.question %>
+<% content_for :title, @faq.title %>
 
 
 
@@ -34,7 +34,7 @@
 
 
 		<div id="<%= @faq.anchor %>" class="chapter-wrap">
-			<h1><%= @faq.question %></h1>
+			<h1><%= @faq.title %></h1>
 				<%= markdown(@faq.answer) %>
 				<% if @faq.notes.present? %>
 				<p><strong>Further reading:</strong></p>

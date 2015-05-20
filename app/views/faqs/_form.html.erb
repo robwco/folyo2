@@ -21,6 +21,11 @@ $(document).on('click','.searchbychar', function(event) {
       </ul>
     </div>
   <% end %>
+	
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
   <div class="field">
     <%= f.label :anchor %><br>
     <%= f.text_field :anchor %>

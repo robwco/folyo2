@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519184248) do
+ActiveRecord::Schema.define(version: 20150520022542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150519184248) do
     t.datetime "updated_at"
     t.string   "anchor"
     t.string   "ancestry"
+    t.string   "title"
   end
 
   add_index "faqs", ["ancestry"], name: "index_faqs_on_ancestry", using: :btree
