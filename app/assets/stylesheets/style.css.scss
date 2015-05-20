@@ -136,7 +136,9 @@ p, ul, ol {
 	margin: 0 auto 1.3em;
 }
 
+
 .faq-content {
+
 	display: table;
 	width: 100%;
 	p, ul, ol {
@@ -148,13 +150,35 @@ p, ul, ol {
 	blockquote { 
 		max-width: 100%;
 		display: table;
-		padding: 1em;
-		p { 
-			font-style: italic;
-		}
 	}
 	.chapter-wrap {
 		display: table;
+		
+		.run-in {
+			span {
+				font-size: 550%;
+			  font-family: 'Sentinel SSm A', 'Sentinel SSm B', Georgia, serif;
+				color: lighten($paragraph-color, 5%);
+				background-size: 70px 70px;
+			  width: 79px;
+			  height: 79px;
+			  text-align: center;
+			  line-height: 75px;
+			  margin-right: 3px;
+			  float: left;
+			  display: block;
+			  position: relative;
+			  top: 6px;
+			  font-weight: 400;
+			}
+			letter-spacing: 2px;
+		  margin-right: 3px;
+		  font-style: normal;
+			font-size: 90%;
+			text-transform: uppercase;
+		  font-family: 'Sentinel SSm A', 'Sentinel SSm B', Georgia, serif;
+			color: darken($paragraph-color, 5%);
+		}
 	}
 	.toc-menu {
 		float: left;
@@ -216,6 +240,10 @@ ul, ol {
 	}
 }
 
+br + p, p {
+	margin: 1em auto;
+}
+
 ol {
     counter-reset:li; /* Initiate a counter */
     margin-left:0; /* Remove the default left margin */
@@ -223,19 +251,18 @@ ol {
 }
 ol > li {
     position:relative; /* Create a positioning context */
-    margin:0 0 6px 2em; /* Give each list item a left margin to make room for the numbers */
-    padding:4px 8px; /* Add some spacing around the content */
+    margin:0 0 10px 3em; /* Give each list item a left margin to make room for the numbers */
+    padding:4px 12px; /* Add some spacing around the content */
     list-style:none; /* Disable the normal item numbering */
-    border-top:2px solid #666;
-    background:#f6f6f6;
+    background: $white;
 }
 ol > li:before {
     content:counter(li); /* Use the counter as content */
     counter-increment:li; /* Increment the counter by 1 */
     /* Position and style the number */
     position:absolute;
-    top:-2px;
-    left:-2em;
+    top:.5em;
+    left:-4em;
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
@@ -244,13 +271,14 @@ ol > li:before {
 		border-radius: 2em;
     /* Some space between the number and the content in browsers that support
        generated content but not positioning it (Camino 2 is one example) */
-    margin-right:8px;
-    padding:1px;
-    border-top:2px solid #666;
-    color:#fff;
-    background:#666;
+    margin-right:3em;
+		margin-left: 1em;
+    padding:2px;
+    color: $paragraph-color;
+    background: $off-white;
     font-weight: 700;
-    font-family: 'Sentinel SSm A', 'Sentinel SSm B', "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Sentinel SSm A', 'Sentinel SSm B', Georgia, serif;
+		font-size: 14px;
     text-align:center;
 }
 li ol,
@@ -269,35 +297,46 @@ hr {
 	max-width: 100%;
 }
 
+code {
+	background-color: $off-white;
+	border-radius: $ui-border-radius;
+	padding: .5em 1em;
+}
+
 blockquote {
-	margin: 4em 0 5em;
+	margin: 2em 0 3em;
 	border-top: 1px dotted $light-gray;
 	border-bottom: 1px dotted $light-gray;
 	max-width: 100%;
-	
+	text-indent: 1em;
+	padding: 0 2em;
+	h1, h2, h3 {
+		margin: .5em 0;
+	}
 	td {
 		padding: 1em;
 	}
 	p, ul, ol {
-		line-height: 2;
+		line-height: 1.5;
 		font-size: $small-font-size;
 	}
 }
 
 
 cite {
-	width: 100px;
+	width: 100%;
 	display: block;
 	text-align: center;
+	color: $black;
 	line-height: 1.5;
-	p {
-		color: $black;
-		line-height: 1.5;
-		}
+	font: 80%/1.5 $ui-font;
+	margin: 0;
+	width: 100%;
 	img {
 		width: 75px;
 		border-radius: 100%;
-		margin: 0 auto .25em auto;
+		margin: 0 auto 0 auto;
+		display: block;
 	}
 }
 
@@ -309,22 +348,18 @@ cite {
 	td {
 		padding: 0;
 	}
-	p {
-		margin: .5em 0 2em;
-	}
 	cite {
 		width: 100%;
 		text-align: left;
 		border-bottom: 1px dotted $light-gray;
-		p {
-			margin: 2.5em 0 1em;
-			padding: .5em 0 0 0;
-		}
+		padding: 6px 0 .5em 0;
+		min-height: 30px;
+		margin: 3em 0 0;
 		img {
 			width: 30px;
-			float: left;
-			margin: 0 .5em 0 0;
 			border-radius: 100%;
+			display: block;
+			margin-top: -6px;
 		}
 	}
 }
