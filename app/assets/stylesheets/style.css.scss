@@ -140,7 +140,6 @@ p, ul, ol {
 	display: table;
 	width: 100%;
 	p, ul, ol {
-		font-size: $small-font-size;
 		strong {
 			width: 100%;
 		}
@@ -216,6 +215,47 @@ ul, ol {
 		overflow: hidden;
 	}
 }
+
+ol {
+    counter-reset:li; /* Initiate a counter */
+    margin-left:0; /* Remove the default left margin */
+    padding-left:0; /* Remove the default left padding */
+}
+ol > li {
+    position:relative; /* Create a positioning context */
+    margin:0 0 6px 2em; /* Give each list item a left margin to make room for the numbers */
+    padding:4px 8px; /* Add some spacing around the content */
+    list-style:none; /* Disable the normal item numbering */
+    border-top:2px solid #666;
+    background:#f6f6f6;
+}
+ol > li:before {
+    content:counter(li); /* Use the counter as content */
+    counter-increment:li; /* Increment the counter by 1 */
+    /* Position and style the number */
+    position:absolute;
+    top:-2px;
+    left:-2em;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    width:2em;
+		height: 2em;
+		border-radius: 2em;
+    /* Some space between the number and the content in browsers that support
+       generated content but not positioning it (Camino 2 is one example) */
+    margin-right:8px;
+    padding:1px;
+    border-top:2px solid #666;
+    color:#fff;
+    background:#666;
+    font-weight: 700;
+    font-family: 'Sentinel SSm A', 'Sentinel SSm B', "Helvetica Neue", Arial, sans-serif;
+    text-align:center;
+}
+li ol,
+li ul {margin-top:6px;}
+ol ol li:last-child {margin-bottom:0;}
 
 hr {
 	background-color: $line-gray; 
@@ -376,11 +416,11 @@ input[type="text"], input[type="password"], input[type="name"],  input[type="ema
 	border-radius: 15px; 
 	padding: 1em 3em 3em; 
 	box-sizing: border-box; 
-	margin: 2em 0; 
+	margin: 2em auto; 
 	display: table; 
 	background: #fd6c2d url("../images/course-form.png") repeat right top;
 	.course-description {
-		background-color: rgba(129, 47, 15, 0.3);
+		background-color: rgba(129, 47, 15, 0.6);
 		border-radius: 15px;
 		width: 350px; 
 		float: left; 
@@ -388,7 +428,7 @@ input[type="text"], input[type="password"], input[type="name"],  input[type="ema
 		box-sizing: border-box;
 	}
 	h2 {
-		margin: 0;
+		margin: .5em 0 0;
 		color: #FFF;
 		font-family: 'Gotham SSm A', 'Gotham SSm B', Helvetica, sans-serif;
 		font-weight: 600;
@@ -396,14 +436,17 @@ input[type="text"], input[type="password"], input[type="name"],  input[type="ema
 	}
 	p {
 		color: #FFF;
+		font-size: 15px;
+		margin: .5em 0 1em;
 	}
 	input {
 		width: 100%;
+		margin: 0;
 	}
 	input[type=submit].buy {
 		background-color: #ffc601;
 		color: #423300;
-		border-radius: 10px;
+		border-radius: $ui-border-radius;
 		padding: 1em 0;
 		text-transform: none;
 		text-shadow: none;
@@ -421,13 +464,15 @@ input[type="text"], input[type="password"], input[type="name"],  input[type="ema
 		font-size: 14px;
 		padding: .15em 1em;
 		border-radius: 3px;
+		border: none;
 		p {
 			text-shadow: 0px 2px 1px #fd6c2d;
 			color:#fff;
+			line-height: 1.75;
+			margin: .5em 0;
 		}
 	}
 	form.free-course-signup {
-
 		float: right; 
 		width:300px; 
 		padding: .25em;

@@ -32,9 +32,8 @@ class PagesController < ApplicationController
   end
 
   def advice
-    @faqs = Faq.all
+    @faqs = Faq.all    
   end
-  
 
   def help
     @faqs = Faq.all

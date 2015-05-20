@@ -22,8 +22,6 @@
 
 
 <!--
-
-
 <ul class="toc-sub-menu">
 	<p><strong>
 		<% @faqs.most_recently_updated.limit(1).each do |faq| %>
@@ -37,7 +35,6 @@
 			</li>
 		<% end %>
 </ul>
-
 <ul class="toc-sub-menu">
 	<p><strong>Finding potential clients</strong></p>
 		<% @faqs.where("category ilike 'Finding potential clients'").each do |faq| %>
@@ -46,8 +43,6 @@
 			</li>
 		<% end %>
 </ul>
-
-
 <ul class="toc-sub-menu">
 	<p><strong>Using email to land work</strong></p>
 				<li><a class="off-site" href="http://emailsthatwin.com" target="_blank">Cold emails</a></li>
@@ -57,8 +52,6 @@
 			</li>
 		<% end %>
 </ul>
-
-
 <ul class="toc-sub-menu">
 	<p><strong>Marketplaces and job boards</strong></p>
 		<% @faqs.where("category ilike 'Marketplaces and job boards'").each do |faq| %>
@@ -67,7 +60,6 @@
 			</li>
 		<% end %>
 </ul>
-
 <ul class="toc-sub-menu">
 	<p><strong>Upsell opportunities</strong></p>
 				<li><%= link_to "Project feedback", feedback_path, :target => "_blank" %></li>
@@ -77,8 +69,6 @@
 			</li>
 		<% end %>
 </ul>
-
-
 <ul class="toc-sub-menu">
 	<p><strong>Appendix</strong></p>
 		<% @faqs.where("category ilike 'Appendix'").each do |faq| %>
@@ -88,28 +78,24 @@
 		<% end %>
 </ul> -->
 <!--
-
 <h3 class="topic-section">Finding potential clients</h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Finding potential clients'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>
-
 <h3 class="topic-section"></h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Using email to land work'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>
-
 <h3 class="topic-section">Marketplaces and job boards</h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Marketplaces and job boards'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>
-
 <h3 class="topic-section">Upsell opportunities</h3>
 <ul class="topic-list">
 	<li><%= link_to "Project feedback", feedback_path, :class=> "topic-chapter" %></li>
@@ -117,11 +103,9 @@
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>
-
 <h3 class="topic-section">Appendix</h3>
 <ul class="topic-list">
 	<% @faqs.where("category ilike 'Appendix'").each do |faq| %>
 		<li><%= link_to faq.question, faq_path(faq), :class => "topic-chapter" %></li>
 	<% end %>
 </ul>-->
-
