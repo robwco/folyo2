@@ -15,8 +15,6 @@
 
 	<div class="faq-content">
 		<div class="toc-menu">
-			<!--
-			<%= link_to "← Back to Table of Contents", advice_path %>-->
 			
 			<%= render 'submenu', faqs: @faq.root.descendants.arrange %>
 
