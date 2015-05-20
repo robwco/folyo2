@@ -33,7 +33,7 @@
 		</div>
 
 
-		<div id="<%= @faq.anchor %>" class="chapter-wrap">
+		<div class="chapter-wrap">
 			<h1><%= @faq.title %></h1>
 				<%= markdown(@faq.answer) %>
 				<% if @faq.notes.present? %>
