@@ -24,5 +24,7 @@ module WorkshopEmailApp
     
     # Required for Heroku
     config.assets.initialize_on_precompile = false
+	config.autoload_paths += Dir["#{Rails.root}/app/services"]
   end
 end
+

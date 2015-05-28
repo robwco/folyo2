@@ -26,6 +26,8 @@ gem 'stripe', '~> 1.17.0'
 gem 'httparty'
 gem 'will_paginate', '~> 3.0.5'
 gem 'ancestry'
+gem 'aasm'
+gem 'paper_trail', '~> 3.0.6'
 
 group :development do
   gem 'stripe-ruby-mock'

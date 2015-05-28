@@ -1,4 +1,5 @@
 class ExclusivesController < ApplicationController
+  before_action :authenticate_admin!, except: [:show, :connect, :create, :new, :build, :edit, :update]
   before_action :set_exclusive, only: [:show, :edit, :update, :destroy]
 
   # GET /exclusives

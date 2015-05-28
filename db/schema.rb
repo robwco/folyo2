@@ -11,23 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520022542) do
+ActiveRecord::Schema.define(version: 20150528210945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.boolean  "site_owner"
+    t.boolean  "leads_only"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
-  create_table "clients", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "categories_users", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "user_id"
   end
+
+  add_index "categories_users", ["category_id"], name: "index_categories_users_on_category_id", using: :btree
+  add_index "categories_users", ["user_id"], name: "index_categories_users_on_user_id", using: :btree
 
   create_table "exclusives", force: true do |t|
     t.string   "title"
@@ -97,6 +119,18 @@ ActiveRecord::Schema.define(version: 20150520022542) do
 
   add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
 
+  create_table "plans", force: true do |t|
+    t.string   "stripe_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "amount"
+    t.string   "interval"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "trial_period_days"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.string   "permalink"
@@ -146,6 +180,18 @@ ActiveRecord::Schema.define(version: 20150520022542) do
 
   add_index "sales", ["product_id"], name: "index_sales_on_product_id", using: :btree
 
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "plan_id"
+    t.string   "stripe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "coupon_code"
+  end
+
+  add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -159,10 +205,26 @@ ActiveRecord::Schema.define(version: 20150520022542) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "stripe_customer_id"
+    t.string   "state"
+    t.boolean  "canceling"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
   create_table "workers", force: true do |t|
     t.string   "email"

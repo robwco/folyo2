@@ -1,5 +1,7 @@
 class LeadsController < ApplicationController
-  before_action :authenticate, :set_lead, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
+  before_action :set_lead, only: [:show, :edit, :update, :destroy]
+
   def index
     @leads = Lead.all
     @exclusives = Exclusive.all

@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :admins
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :people
 
   root "pages#home"
 
-  resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps
+  get "/welcome" => "subscriptions#welcome", as: :welcome
+  get "/admins/welcome" => "admins#welcome", as: :admin_root
+  get "/subscriptions/upgrade_yearly" => "subscriptions#upgrade_yearly", as: :upgrade_yearly
+  put "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
+  get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
+  post "/subscriptions/cancel_leads_followup" => "subscriptions#cancel_leads_followup", as: :cancel_subscription_leads_followup
+  delete "/subscriptions/destroy" => "subscriptions#destroy", as: :destroy_subscription
+  put "/subscriptions/reactivate" => "subscriptions#reactivate", as: :reactivate_subscription
+
+  resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps, :subscriptions, :plans
 
   get "/connect" => "exclusives#connect"
   get "/build" => "exclusives#build"
@@ -69,6 +79,9 @@ Rails.application.routes.draw do
 
   devise_scope :user do 
       match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
+  devise_scope :admin do 
+      match '/sessions/admin', to: 'devise/sessions#create', via: :post
   end
 
   

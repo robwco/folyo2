@@ -1,0 +1,37 @@
+<div class="content">
+	<p>
+	<%= link_to 'New Plan', new_plan_path, class: "submit" %>
+	</p>
+
+	<h1>Workshop Plans</h1>
+
+
+	<table style="margin: 0 0 7em 0;">
+	  <tbody>
+		<% @plans.each do |plan| %>
+		  <% if plan.published? %>
+			<tr>
+				<td style="padding-right: 2em;"><span style="color: #19963C; font-size: 14px; font-weight: 500;">Active!</span> <%= plan.name %></td>
+				<td>$<%= plan.price %> / <%= plan.interval %></td>
+			</tr>
+		  <% end %>
+		<% end %>
+	  </tbody>
+
+	  <tbody>
+		<tr>
+			<th colspan="2"><p style="color: #888888; font-weight: normal; text-align: left;"><br>Archived Plans:</p></th>
+		</tr>
+		<% @plans.each do |plan| %>
+		  <% unless plan.published? %>
+			<tr>
+				<td style="padding-right: 2em;"> <%= plan.name %></td>
+				<td>$<%= plan.price %> / <%= plan.interval %></td>
+			</tr>
+		  <% end %>
+		<% end %>
+	  </tbody>
+	</table>
+
+
+</div>

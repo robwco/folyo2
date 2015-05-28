@@ -1,4 +1,5 @@
 class FaqsController < ApplicationController
+  before_filter :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy]
   before_filter :find_faq, only: [:show, :edit, :update, :destroy]
 
   # GET /faqs
