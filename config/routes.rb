@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/subscriptions/upgrade_yearly" => "subscriptions#upgrade_yearly", as: :upgrade_yearly
   put "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
   get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
+  post "/subscriptions/cancel" => "subscriptions#cancel_post", as: :cancel_subscription_post
   post "/subscriptions/cancel_leads_followup" => "subscriptions#cancel_leads_followup", as: :cancel_subscription_leads_followup
   delete "/subscriptions/destroy" => "subscriptions#destroy", as: :destroy_subscription
   put "/subscriptions/reactivate" => "subscriptions#reactivate", as: :reactivate_subscription

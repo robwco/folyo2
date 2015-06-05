@@ -49,6 +49,24 @@ class SubscriptionsController < ApplicationController
 	@cancellation = Cancellation.new	
   end
 
+  def cancel_post
+	case params[:cancel_reason]
+	when Cancellation::NOT_ENOUGH_RESPONSES.to_s
+		render :not_enough_responses
+	when Cancellation::WRONG_LEAD_TYPES.to_s
+		@cancellation = Cancellation.new	
+		render :wrong_lead_types
+	when Cancellation::HIGHER_QUALITY_LEADS.to_s
+		render :higher_quality_leads
+	when Cancellation::IM_BOOKED.to_s
+		render :im_booked
+	else
+		@cancellation = Cancellation.new	
+		render 'cancel'
+	end
+
+  end
+
   def cancel_leads_followup
 	  @cancellation = Cancellation.new params[:cancellation]
 
@@ -61,7 +79,7 @@ class SubscriptionsController < ApplicationController
 
   def destroy
 	  if CancelSubscription.call(current_user)
-		  flash[:notice] = 'Your account was canceled successfully. Your Workshop subscription will end at the end of your current billing period.'
+		  flash[:notice] = 'Your Workshop subscription will end at the end of your current billing period.'
 		  redirect_to edit_user_registration_path
 	  else
 		  flash[:notice] = 'There was an error canceling your account. Please try again or contact Customer Service if you are unable to cancel.'

@@ -1,48 +1,14 @@
 <div class="content">
 	<h1>Why do you want to cancel your Workshop subscription?</h1>
 
-	<h3>I don't get enough responses</h3>
+	<%= form_for(@cancellation, url: cancel_subscription_post_path, html: { method: :post }) do |f| %>
+		<ul style="list-style:none;">
+			<li><strong><label><input type="radio" name="cancel_reason" value="<%= Cancellation::NOT_ENOUGH_RESPONSES %>" /> I don't get enough responses</label></strong></li>
+			<li><strong><label><input type="radio" name="cancel_reason" value="<%= Cancellation::WRONG_LEAD_TYPES %>" /> Not the right type of leads for me</label></strong></li>
+			<li><strong><label><input type="radio" name="cancel_reason" value="<%= Cancellation::HIGHER_QUALITY_LEADS %>" /> I want higher quality leads</label></strong></li>
+			<li><strong><label><input type="radio" name="cancel_reason" value="<%= Cancellation::IM_BOOKED %>" /> I'm booked</label></strong></li>
+		</ul>
 
-	<p>
-		Getting potential clients to respond to your emails is one of the toughest things to learn as a freelancer. It takes most years of trial and
-		error to become skilled enough to consistently land new clients. Luckily, I have put together a book to help you learn those skills in hours,
-		instead of years. 
-
-	</p>
-	<p><%= link_to 'Learn to write emails that win clients', 'http://www.emailsthatwin.com', class: 'submit' %> </p>
-
-	<h3>Not the right type of leads for me</h3>
-
-	<p>
-		That’s too bad. What kind of leads are you looking for? 
-	</p>
-
-	<%= form_for(@cancellation, url: cancel_subscription_leads_followup_path, html: { method: :post }) do |f| %>
-
-		<%= f.text_area :requested_leads %>
-
-		<%= f.submit 'Help me with these leads' %>
+		<%= f.submit 'I want to cancel my Workshop subscription' %>
 	<% end %>
-
-	<h3>I want higher quality leads</h3>
-	<p>
-		Sometimes the projects you see in workshop might look lower quality because of one reason or another but putting yourself in the clients shoes will 
-		make you see that they’re really just trying to protect themselves with their low-ball budgets. Top freelancers realize this and get clients to 10x 
-		their budgets regularly. If you really want to cancel I understand but here’s a 20% off coupon to my book emails that win you clients. I think it
-		would really help if you ever want to come back. I’d hate to see you go away empty handed and go back to emailing prospects using something like elance or odesk.
-	</p>
-
-	<p><%= button_to 'Click here to cancel your account', destroy_subscription_path, method: 'delete' %></p>
-
-	<h3>I'm booked</h3>
-
-	<p>
-		How far in advance? If it’s not 6-12 months out, sending out a few emails out now can really make a difference because you’ll be 
-		negotiating from a position of power. Have you ever entered a meeting where at the time you were living paycheck to paycheck? That’s a 
-		horrible feeling to be in.
-	</p>
-
-	<p><%= button_to 'I still want to cancel', destroy_subscription_path, method: 'delete' %></p>
-
-	<p><em>Your subscription will be canceled at the end of your current billing period.</em></p>
 </div>

@@ -1,0 +1,16 @@
+<h3>Not the right type of leads for me</h3>
+
+<p>
+	That’s too bad. What kind of leads are you looking for? 
+</p>
+
+<%= form_for(@cancellation, url: cancel_subscription_leads_followup_path, html: { method: :post }) do |f| %>
+
+	<%= f.text_area :requested_leads %>
+
+	<%= f.submit 'Help me with these leads' %>
+<% end %>
+
+<p>
+	<%= link_to 'Go back', edit_user_registration_path %>
+</p>
