@@ -1,4 +1,4 @@
-<% @exclusives.this_week.most_recently_updated.each do |exclusive| %>
+<% @exclusives.most_recently_updated.each do |exclusive| %>
   <div class="exclusive">
     <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
     <h1><%= exclusive.title %></h1>
@@ -15,6 +15,7 @@
   </div>
 <% end %>
 
-<% @leads.today.most_recently_updated.group_by(&:category).each do |category, leads| %>
-<%= render :partial => 'lead_display', :locals => { :category => category, :leads => leads }   %>
+
+<% @leads.group_by(&:category_name).each do |category, leads| %>
+<%= render :partial => 'worker_mailer/lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>

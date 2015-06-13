@@ -12,4 +12,28 @@ class WorkerMailer < ActionMailer::Base
 
 	mail(to: 'jaf656s@gmail.com', subject: 'A cancelling user requested these types of leads')
   end
+
+  def daily_leads(user)
+	  @user = user
+	  category_ids = @user.category_ids
+
+	  if category_ids.empty?
+		  @leads = Lead.eager_load(:category).most_recent.limit(10)
+	  else
+		  @leads = Lead.eager_load(:category).most_recent.where("category_id IN (?)", category_ids)
+	  end
+
+	  @exclusives = Exclusive.most_recent
+
+	  @categories = Category.all
+	  @milestones = Milestone.all
+
+	  @milestones_hash = Hash[ @milestones.map{ |m| [m.id, m.description] }]
+
+	  subject = "Latest Gigs #{DateTime.now.strftime('%d %B %Y')}"
+
+	  subject << " **exclusive lead inside**" if @exclusives.count > 0
+	  
+	  mail(to: user.email, subject: subject, from: "\"Robert Williams (from Workshop)\" <robert@letsworkshop.com>")
+  end
 end

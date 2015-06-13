@@ -8,6 +8,7 @@ class PlansController < ApplicationController
 
   def new
 	  @plan = Plan.new
+	  @plan.interval_count = 1
   end
 
   def create
@@ -19,9 +20,18 @@ class PlansController < ApplicationController
 	 end
   end
 
+  def archive
+	@plan = Plan.find(params[:id])
+	unless @plan.archive
+		flash[:notice] = 'An error occurred when archiving the plan'
+	end
+	redirect_to plans_path
+
+  end
+
   private
     def plan_params
-      params.require(:plan).permit(:stripe_id, :name, :description, :amount, :interval, :trial_period_days)
+      params.require(:plan).permit(:stripe_id, :name, :description, :amount, :interval_count, :interval, :trial_period_days)
     end
 
 	def ensure_site_owner

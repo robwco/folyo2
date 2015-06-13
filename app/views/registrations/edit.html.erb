@@ -52,18 +52,6 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <h2>Your plan</h2>
-  <p>
-	  <%= resource.subscription.plan.name %> <strong>$<%= resource.subscription.plan.price %></strong> / <%= resource.subscription.plan.interval %>
-  </p>
-  <% if resource.subscription.plan.monthly? %>
-	  <p>
-		  <%= link_to "Upgrade to yearly", '/subscriptions/upgrade_yearly' %>
-	  </p>
-  <% end %>
-
-  <%= render 'creditcard', :number_required => false  %>
-
   <%= render 'categories' %>
 
   <div class="actions">
@@ -71,11 +59,30 @@
   </div>
 <% end %>
 
+
+<h2>Your plan</h2>
+<p>
+  <%= resource.subscription.plan.name %> <strong>$<%= resource.subscription.plan.price %></strong> / <%= resource.subscription.plan.interval_text %>
+</p>
+<% unless resource.subscription.plan.yearly? %>
+  <p>
+	  <%= link_to "Upgrade your plan", upgrade_plan_path %>
+  </p>
+<% end %>
+
+<h2>Credit Card</h2>
+<p>
+  <strong>Last 4: </strong> <%= current_user.last4 %> <strong>Expiration:</strong> <%= "#{current_user.expiration_month} / #{current_user.expiration_year}" %>
+</p>
+<p>
+  <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %>
+</p>
+
 <% if resource.canceling? %>
 	<h3>Your account will be canceled at the end of the billing period</h3>
 	<p> <%= button_to "Reactivate my account", reactivate_subscription_path, class: 'submit', method: 'put' %></p>
 <% elsif resource.good_standing? %>
-	<h3>Cancel my account</h3>
+	<h2>Cancel my account</h2>
 
 	<p>Unhappy?</p>
 	<p> <%= link_to "Cancel my account", cancel_subscription_path, class: 'submit' %></p>

@@ -3,19 +3,32 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :people
 
+  mount StripeEvent::Engine => '/stripe-events'
+
   root "pages#home"
+
+  get "/test_emails" => "subscriptions#test_email"
+  get "/send_emails" => "subscriptions#send_email"
 
   get "/welcome" => "subscriptions#welcome", as: :welcome
   get "/admins/welcome" => "admins#welcome", as: :admin_root
-  get "/subscriptions/upgrade_yearly" => "subscriptions#upgrade_yearly", as: :upgrade_yearly
-  put "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
+  get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
+  put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
   get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
   post "/subscriptions/cancel" => "subscriptions#cancel_post", as: :cancel_subscription_post
   post "/subscriptions/cancel_leads_followup" => "subscriptions#cancel_leads_followup", as: :cancel_subscription_leads_followup
   delete "/subscriptions/destroy" => "subscriptions#destroy", as: :destroy_subscription
+  get "/subscriptions/creditcard" => "subscriptions#creditcard", as: :update_subscription_creditcard
+  put "/subscriptions/creditcard_save" => "subscriptions#creditcard_save", as: :subscription_creditcard_save
   put "/subscriptions/reactivate" => "subscriptions#reactivate", as: :reactivate_subscription
+  get "/subscriptions/categories" => "subscriptions#categories", as: :update_subscription_categories
+  put "/subscriptions/categories_save" => "subscriptions#categories_save", as: :subscription_categories_save
+  get "/subscriptions/milestones" => "subscriptions#milestones", as: :update_subscription_milestones
+  put "/subscriptions/milestones_save" => "subscriptions#milestones_save", as: :subscription_milestones_save
 
   resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps, :subscriptions, :plans
+
+  put "/plans/archive/:id" => "plans#archive", as: :archive_plan
 
   get "/connect" => "exclusives#connect"
   get "/build" => "exclusives#build"

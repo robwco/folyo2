@@ -17,7 +17,16 @@ class ChangeSubscriptionCard
 		stripe_sub.save
 	  end
 
-	  user.reactivate! if user.may_reactivate?
+	  user.reactivate if user.may_reactivate?
+
+      customer = Stripe::Customer.retrieve(user.stripe_customer_id)
+	  card = customer.sources.first
+	  user.last4 = card.last4
+	  user.expiration_month = card.exp_month
+	  user.expiration_year = card.exp_year
+
+	  user.save!
+
     rescue Stripe::StripeError => e
       subscription.errors[:base] << e.message
 	  return false

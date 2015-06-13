@@ -12,13 +12,8 @@ class RegistrationsController < Devise::RegistrationsController
 	self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
 
 	if resource.update_with_password(account_update_params)
-		if !params[:stripeToken] || ChangeSubscriptionCard.call(resource.subscription, params[:stripeToken])
-			sign_in resource_name, resource, bypass: true
-			respond_with resource, location: after_update_path_for(resource)
-		else
-			clean_up_passwords resource
-			render 'edit'
-		end
+		sign_in resource_name, resource, bypass: true
+		respond_with resource, location: after_update_path_for(resource)
 	else
 		clean_up_passwords resource
 		render 'edit'

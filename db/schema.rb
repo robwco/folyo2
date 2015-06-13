@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528210945) do
+ActiveRecord::Schema.define(version: 20150612231427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,22 @@ ActiveRecord::Schema.define(version: 20150528210945) do
 
   add_index "categories_users", ["category_id"], name: "index_categories_users_on_category_id", using: :btree
   add_index "categories_users", ["user_id"], name: "index_categories_users_on_user_id", using: :btree
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "exclusives", force: true do |t|
     t.string   "title"
@@ -106,6 +122,18 @@ ActiveRecord::Schema.define(version: 20150528210945) do
     t.integer  "category_id"
   end
 
+  create_table "milestones", force: true do |t|
+    t.text "description"
+  end
+
+  create_table "milestones_users", id: false, force: true do |t|
+    t.integer "milestone_id"
+    t.integer "user_id"
+  end
+
+  add_index "milestones_users", ["milestone_id"], name: "index_milestones_users_on_milestone_id", using: :btree
+  add_index "milestones_users", ["user_id"], name: "index_milestones_users_on_user_id", using: :btree
+
   create_table "people", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -129,6 +157,7 @@ ActiveRecord::Schema.define(version: 20150528210945) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "trial_period_days"
+    t.integer  "interval_count"
   end
 
   create_table "products", force: true do |t|
@@ -180,6 +209,12 @@ ActiveRecord::Schema.define(version: 20150528210945) do
 
   add_index "sales", ["product_id"], name: "index_sales_on_product_id", using: :btree
 
+  create_table "stripe_webhooks", force: true do |t|
+    t.string   "stripe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subscriptions", force: true do |t|
     t.integer  "user_id"
     t.integer  "plan_id"
@@ -209,6 +244,9 @@ ActiveRecord::Schema.define(version: 20150528210945) do
     t.string   "stripe_customer_id"
     t.string   "state"
     t.boolean  "canceling"
+    t.string   "last4"
+    t.integer  "expiration_month"
+    t.integer  "expiration_year"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

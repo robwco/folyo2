@@ -8,10 +8,12 @@ class CreateSubscription
 	return false unless user.save
 
 	coupon_code = nil if coupon_code.blank?
+	customer_created = false
 
     begin
       stripe_sub = nil
       if user.stripe_customer_id.blank?
+		customer_created = true
         customer = Stripe::Customer.create(
           source: token,
           email: user.email,
@@ -20,6 +22,12 @@ class CreateSubscription
         )
         user.stripe_customer_id = customer.id
 		user.subscribe
+
+	    card = customer.sources.first
+	    user.last4 = card.last4
+	    user.expiration_month = card.exp_month
+	    user.expiration_year = card.exp_year
+
         user.save!
         stripe_sub = customer.subscriptions.first
 		user.subscription.coupon_code = coupon_code
@@ -41,6 +49,8 @@ class CreateSubscription
       user.subscription.errors[:base] << e.message
 	  return false
     end
+
+	CreateOnboarding.call(user) if customer_created
 
     return true
   end 

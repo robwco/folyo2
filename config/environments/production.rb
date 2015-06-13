@@ -86,7 +86,8 @@ Rails.application.configure do
     }
   }
   
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :mandrill
+  /*config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address:  'smtp.mandrillapp.com',
   port: 587,
@@ -95,7 +96,7 @@ Rails.application.configure do
   domain:   'heroku.com',
   authentication: :plain
 
-  }
+  }*/
   config.action_mailer.default_url_options = { :host => 'letsworkshop.com' }
 
 end

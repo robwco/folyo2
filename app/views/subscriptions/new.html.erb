@@ -53,8 +53,9 @@
 		<br>
 		<hr>				
 		<center>
-			<h1 class="jumbo" style="margin: 1em 0 0;">Pay $<%= @plan.price %>/month</h1>
+			<h1 class="jumbo" style="margin: 1em 0 0;">Pay $<%= @plan.price %>/<%= @plan.interval %></h1>
 			<input type="hidden" name="coupon_code" value="<%= @coupon %>" />
+			<input type="hidden" name="plan" value="<%= @plan.id %>" />
 			<a href="#"><%= f.submit "Show me my future clients", id: 'form-submit', style: 'margin: 2em 0;', class: 'buy', data: { :"drip-attribute" => 'sign-up-button' } %></a>
 		</center>
 	

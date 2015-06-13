@@ -45,6 +45,13 @@ class User < ActiveRecord::Base
   has_one :subscription, dependent: :destroy
   has_many :people
   has_and_belongs_to_many :categories, dependent: :destroy
+  has_and_belongs_to_many :milestone, dependent: :destroy
+
+  scope :active, -> { where(:state => ['trialing','active','past_due']) }
+
+  def self.with_stripe_id(stripe_id)
+	where("stripe_customer_id = ?", stripe_id)
+  end
 
   def canceled?
 	  trial_canceled? || user_canceled? || overdue_canceled?

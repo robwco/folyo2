@@ -27,6 +27,10 @@
     <%= f.text_field :amount %>
   </div>
   <div class="field">
+    <%= f.label :interval_count, 'Interval Count (e.g. every X months)' %><br>
+    <%= f.text_field :interval_count %><br>
+  </div>
+  <div class="field">
     <%= f.label :interval %><br>
     <%= f.collection_select :interval, ['month','year'], :to_s, :to_s, {promt: "Choose an interval"} %><br>
   </div>
