@@ -22,7 +22,7 @@ class CreateOnboarding
 			leads_fields["lead#{index}_linkedin"] = lead.linkedin
 			leads_fields["lead#{index}_website"] = lead.website
 			leads_fields["lead#{index}_budget"] = lead.budget
-			leads_fields["lead#{index}_category"] = lead.category
+			leads_fields["lead#{index}_category"] = lead.category.name
 		end
 
 		Drip::Client.default_client.create_or_update_subscriber user.email, { 'custom_fields' => leads_fields }
