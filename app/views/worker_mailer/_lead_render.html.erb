@@ -1,4 +1,4 @@
-<% @exclusives.most_recently_updated.each do |exclusive| %>
+<% @exclusives.most_recently_updated.this_week.each do |exclusive| %>
   <div class="exclusive">
     <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
     <h1><%= exclusive.title %></h1>

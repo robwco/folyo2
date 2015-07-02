@@ -18,7 +18,7 @@ class SubscriptionsController < ApplicationController
 
 		@user = current_user
 
-		render 'worker_mailer/daily_leads'
+		render 'worker_mailer/daily_leads', layout: false
 		
 	end
 
@@ -28,7 +28,8 @@ class SubscriptionsController < ApplicationController
 	end
 
   def welcome
-	
+		@user = current_user
+		@leads = Lead.all
   end
 
   def new

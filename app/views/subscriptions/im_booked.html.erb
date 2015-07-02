@@ -1,13 +1,37 @@
-<h3>I'm booked</h3>
+<div class="cancellation-letter">
+<h1>Congratulations on landing work!</h1>
 
-<p>
-	How far in advance? If it’s not 6-12 months out, sending out a few emails out now can really make a difference because you’ll be 
-	negotiating from a position of power. Have you ever entered a meeting where at the time you were living paycheck to paycheck? That’s a 
-	horrible feeling to be in.
+<p>How far in advanced are you booked?</p> 
+
+<p>I ask because by canceling now you'll losing out on over $399. See, the current pricing for Workshop is over $99/month and it’s about to go up in price again as I release some big improvements and additional features.</p>
+
+<h5>By canceling now it means you’ll be letting your introductory rate expire.</h5>
+
+<p>The <%= current_user.subscription.plan.interval %>ly subscription you have currently comes out to $<%= current_user.subscription.plan.price %>/<%= current_user.subscription.plan.interval %> and I don’t offer it anymore. Soon I’ll also be limiting the amount of members we let join, so I'd hate to see you not be able to get back in, especially if you fall into a dry spell.</p>
+ 
+<h5>Currently you're guaranteed your spot at your current low price for as long as you're a member... but you won't be once you cancel.</h5>
+
+
+<p>That’s why this is sort of urgent.</p> 
+
+<p>You might be fully-booked right now, and although it seems like it will last forever - the truth is dry spells happen because freelancers don’t keep looking for work during good times. That’s why I recommend if you’re not booked at least 6-12 months in advanced, you keep emailing at least one new lead every day.</p> 
+
+<h5>Staying signed up now that you're currently booked will also allow you to negotiate with prospects from a position of power instead of being desperate.</p>
+
+<p>In fact, even if you don’t stay signed up for Workshop, I’d still recommend this habit.</p>
+
+<p>Looking forward to having you as a customer!</p>
+
+<p>Regards,<br>
+	Robert<br>
+	<%= image_tag('rob-sig.png', :style => "width: 9em;") %>
 </p>
 
-<%= button_to 'I still want to cancel', destroy_subscription_path, method: 'delete' %>
+</div>
+
+<center>
 <p>
-	<%= link_to 'Go back', edit_user_registration_path %>
+	<%= link_to 'Cancel my account', destroy_subscription_path, method: 'delete', :style => "color: #E44727;" %>
 </p>
+</center>
 

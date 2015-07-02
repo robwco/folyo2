@@ -1,30 +1,32 @@
-<section class="content">
-
-<h2>Log in</h2>
+<section class="content" style="max-width: 26em;">
+<h2><a href="http://letsworkshop.com"><%= image_tag("logo-mark.png", :style => "width: 1.5em; vertical-align: -.3em;") %></a> Welcome back!</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <h5>Your email</h5>
+    <%= f.email_field :email, autofocus: true, :placeholder => "Email" %>
+    <h5>Your password</h5>
+    <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
 
-  <div class="actions">
+
+
+	  <% if devise_mapping.rememberable? -%>
+
+	      <%= f.check_box :remember_me, :style => "margin-right: .6em;" %>
+	      <%= f.label "Remember me on this computer", :style => "font-size: 12px; font-weight: normal; text-transform: none; letter-spacing: 0;" %>
+
+	  <% end -%>
+ 	</div>
+
+  <div class="actions" style="margin: 1em 0;">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
 
 </section>

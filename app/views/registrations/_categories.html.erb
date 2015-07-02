@@ -1,7 +1,7 @@
-<h2>What kind of work do you do?</h2>
+<h5>What type of work should I send you?</h5>
 <%= hidden_field_tag("user[category_ids][]", nil) %>
 
-<table class="lead-category">
+<table class="lead-category" style="border: 2px solid #d9d3cf; padding: 1em 2em 1em 0; margin: 1em 0 0; border-radius: .25em; box-sizing: border-box; width: 100%;">
 	<% Category.all.each_slice(2) do |batch| %>
 		<tr>
 			<% batch.each do |c| %>
@@ -10,7 +10,7 @@
 					<%= check_box_tag "user[category_ids][#{c.id}]", c.id, @user.category_ids.include?(c.id), :name => "user[category_ids][]" %>
 				</td>
 				<td style="vertical-align: top; padding-right:0px;">
-					<p style="margin:0; padding:0; font-size:1.5em"><%= label_tag "user_category_ids_#{c.id}", c.name, :style => "text-transform:none;font-size:1em" %></p>
+					<p style="margin:0; padding:0; font-size:1.5em"><%= label_tag "user_category_ids_#{c.id}", c.name, :style => "text-transform:none;" %></p>
 					<hr>
 					<p>
 						<%= c.description.html_safe %>

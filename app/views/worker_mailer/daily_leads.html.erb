@@ -10,7 +10,7 @@ body {
 	color: #444; 
 	font-size:15px; 
 	line-height: 18px; 
-	font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-family: 'Gotham SSm A', 'Gotham SSm B', Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
 	width: 55em; 
 	max-width: 100%;
 	margin: auto; 
@@ -21,6 +21,9 @@ a {
 	color: #3477d3;
 }
 
+h1, h2, h3 {
+	line-height: 1.2;
+}
 h3 {
 	margin: 1em 0 .25em;
 }
@@ -35,19 +38,19 @@ h3 {
 }
 
 .checklist {
-	background-color: #f0eeea;
 	font-size: 13px;
 	line-height: 25px;
-	padding: 10px 15px 5px 15px;
+	padding: .5em 2em 1em;
 	box-sizing: border-box;
 	width: 100%;
 	border-radius: 5px;
 	margin: 1em 0 2em;
+	border: 2px solid #d9d3cf;
 }
 
 .checklist h3 {
-	margin: 0 0 -5px 0;
-	text-align: center;
+	font-size: 150%;
+	margin: 1em 0 1em 0;
 }
 
 .checklist strike {
@@ -59,7 +62,6 @@ h3 {
 .checklist a {
 	margin: 0 0 0 10px;
 	vertical-align: 4px;
-	color: #7191bc;
 }
 
 td {
@@ -173,7 +175,7 @@ These leads have been hand-checked for quality. If you see something you don’t
 <hr>
 
 <p class="small" style="margin: 1em 0 2em 0;">
-<a href="<%= edit_user_registration_url(only_path: false) %>">Update your account settings, email, or cancel your account.</a><br>
+<a href="<%= edit_user_registration_url(only_path: false) %>">Update your account settings</a><br>
 </p>
 
 </div>

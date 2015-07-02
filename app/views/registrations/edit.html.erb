@@ -1,3 +1,5 @@
+<p style="text-align: right; font-size: 12px; padding: 1em; margin: 1em auto;">Hey <%= first_name current_user.name %>, good to see you again! <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+
 <h2>Edit your account</h2>
 
 <% if current_user.past_due? %>
@@ -24,72 +26,71 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <h5>Your email</h5>
+    <%= f.email_field :email, autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+
+  <%= render 'categories' %>
+
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <h5>Your name</h5>
+    <%= f.text_field :name %>
+  </div>
+
+
+  <div class="field">
+    <h5>New password</h5>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Leave blank to keep current password" %>
+		<br>
+    <label>Confirm new password</label>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+	<hr>
+	
+    <h5>Save any changes above</h5>
+    <%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter current password" %>
   </div>
 
-  <%= render 'categories' %>
 
   <div class="actions">
-    <%= f.submit "Update", id: 'form-submit' %>
+    <%= f.submit "Update", id: 'form-submit', :class => "buy" %>
   </div>
 <% end %>
 
 
-<h2>Your plan</h2>
-<p>
-  <%= resource.subscription.plan.name %> <strong>$<%= resource.subscription.plan.price %></strong> / <%= resource.subscription.plan.interval_text %>
-</p>
-<% unless resource.subscription.plan.yearly? %>
-  <p>
-	  <%= link_to "Upgrade your plan", upgrade_plan_path %>
-  </p>
-<% end %>
+<div class="content" style="width: 660px; margin: 3em auto .5em; padding: 1em 2em; background-color: #f1f1f1; border-radius: .5em; box-sizing: border-box;">
+<h2 style="margin: 0;">Billing</h2>
 
+<h5>You're currently paying $<%= resource.subscription.plan.price %></strong> <%= resource.subscription.plan.interval_text %></h5>
+
+<p style="font-size: 14px;">Your next payment is on September 15, 2015. <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %> (ending: -<%= current_user.last4 %>)<br></p>
+<p style="margin: 2em auto;">
+<% unless resource.subscription.plan.yearly? %>
+	<%= link_to "Save $300 by switching to yearly billing", upgrade_plan_path, :class => "submit" %>
+<% end %>
+</p>
+<!--
 <h2>Credit Card</h2>
 <p>
   <strong>Last 4: </strong> <%= current_user.last4 %> <strong>Expiration:</strong> <%= "#{current_user.expiration_month} / #{current_user.expiration_year}" %>
 </p>
-<p>
-  <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %>
-</p>
+-->
 
 <% if resource.canceling? %>
 	<h3>Your account will be canceled at the end of the billing period</h3>
 	<p> <%= button_to "Reactivate my account", reactivate_subscription_path, class: 'submit', method: 'put' %></p>
 <% elsif resource.good_standing? %>
-	<h2>Cancel my account</h2>
-
-	<p>Unhappy?</p>
-	<p> <%= link_to "Cancel my account", cancel_subscription_path, class: 'submit' %></p>
+	<p style="font-size: 14px;"><%= link_to "Cancel account", cancel_subscription_path %></p>
 <% else %>
 	<h3>Your account is canceled or overdue.</h3>
 	<p>Please re-enter your credit card to reactivate your account.</p>
 <% end %>
-
-<%= link_to "Back", :back %> <br/>
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+</div>

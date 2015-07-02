@@ -16,8 +16,8 @@ $line-color:						$gray;
 $background-color:			$white;
 $alt-background-color: 	$off-white;
 
-$ui-font: 							"rooney-sans", "Lucida Grande", sans-serif;
-$header-font:						"sketchnote-square", Verdana, Helvetica, sans-serif;
+$ui-font: 							'Gotham SSm A', 'Gotham SSm B', Lucida grande, sans-serif;
+$header-font:						"rooney-sans", Lucida grande, sans-serif;
 
 
 $small-font-size: 			90%;
@@ -41,7 +41,17 @@ $ui-border-radius:			.4em;
 	font-family: $ui-font;
 }
 
-
+.lead-category { 
+	padding: 1em 0;
+	font-size: 16px; 
+	label {
+		font-family: $header-font;
+		letter-spacing: 0;
+	}
+	p {
+		font-size: 16px;
+	}
+}
 hr {
 	background-color: $line-color; 
 	border: 0; 
@@ -92,9 +102,9 @@ h1, h2, h3, h4, h5, h6 {
 	font: $header-type;
 	color: $header-color;
 	max-width: $paragraph-width;
-	font-weight: normal;
 	margin: 2.1em auto 1.1em;
 	letter-spacing: .01em;
+	font-weight: 600;
 }
 
 h3 {
@@ -118,6 +128,15 @@ h3 {
 			}
 		}
 	}
+}
+
+h5 {
+	font-size: 20px;
+	margin: 1em auto 0;
+}
+
+input + h5 {
+	margin: 1.5em auto 0;
 }
 
 nav {
@@ -225,11 +244,8 @@ code {
 }
 
 blockquote {
-	margin: 4em 0;
-	border-top: 1px dotted $line-color;
-	border-bottom: 1px dotted $line-color;
-	max-width: 100%;
-	text-indent: .9em;
+	margin: 2em auto;
+	font-family: $header-font;
 	padding: 0 2em;
 	h1, h2, h3 {
 		margin: .5em 0;
@@ -239,7 +255,8 @@ blockquote {
 	}
 	p, ul, ol {
 		line-height: 1.5;
-		font-size: $small-font-size;
+		font-family: $header-font;
+		color: $black;
 	}
 }
 
@@ -286,7 +303,18 @@ cite {
 
 /* Form UI */
 
-
+#error_explanation {
+	background-color: #fffdee;
+	padding: 1em;
+	h2 {
+		margin: 0;
+		font-size: 90%;
+	}
+	p, ul {
+		margin: 0;
+		font-size: 90%;
+	}
+}
 form {
 	max-width: $paragraph-width;
 	margin: auto;
@@ -294,6 +322,11 @@ form {
 
 .field {
 	margin: 3em 0 0;
+	
+	i {
+		font-style: normal;
+		font-size: 80%;
+	}
 }
 
 label {
@@ -301,6 +334,8 @@ label {
 	letter-spacing: .15em;
 	text-transform: uppercase;
 	font-weight: 700;
+	
+
 }
 
 .sub-label {
@@ -323,7 +358,7 @@ input[type="text"], input[type="password"], input[type="name"],  input[type="ema
   -ms-transition: all 0.2s ease;
   transition: all 0.2s ease;
   background-color: $white;
-  border: 1px dotted $line-color;
+  border: 2px solid $line-color;
   display: block;
   font-size: 14px;
   padding: 8px 8px;
@@ -332,11 +367,10 @@ input[type="text"], input[type="password"], input[type="name"],  input[type="ema
 	margin: 1em 0;
 
 	&:hover, &:active, &:focus {
-		border: 1px solid $link-hover;
+		border: 2px solid $link-hover;
 	}
 	&:focus {
-		border: 1px solid $link-color;
-		box-shadow: 0px 0px 8px $link-hover;
+		border: 2px solid $link-color;
 	}
 
 }
@@ -365,6 +399,11 @@ input[type=submit], a.submit {
 	}
 }
 
+.cancellation-letter {
+	p {
+		font-size: 16px;
+	}
+}
 
 /* C.A.L.M: The freelancer's guide to finding and winning better client work online */
 
@@ -376,7 +415,6 @@ input[type=submit], a.submit {
 		font: $header-font;
 		font-size: 3.25em;
 		letter-spacing: .01em;
-		font-weight: normal;
 		margin: 5em auto 0;
 		padding: 0;
 	}

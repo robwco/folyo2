@@ -2,7 +2,7 @@
       adapter: postgresql
       database: workshop_email_app_development
       pool: 5
-      username: robpraisejah
+      username: robertwilliams
       password: secret
       host: localhost
       port: 5432
@@ -11,7 +11,7 @@
       adapter: postgresql
       database: workshop_email_app_test
       pool: 5
-      username: robpraisejah
+      username: robertwilliams
       password: secret
       host: localhost
       port: 5432
@@ -20,7 +20,7 @@
       adapter: postgresql
       database: workshop_email_app_production
       pool: 5
-      username: robpraisejah
+      username: robertwilliams
       password: secret
       host: localhost
       port: 5432

@@ -77,6 +77,10 @@
 		<%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
+	
+	<% flash.each do |key, value| %>
+	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value %></div>
+	      <% end %>
 
 <%= yield %>
 

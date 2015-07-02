@@ -1,6 +1,6 @@
 unless Rails.env.production?
-  ENV['DRIP_API_KEY'] = 'pthdsoxoi9tgyndfmtsx'
-  ENV['DRIP_ACCOUNT_ID'] = '3764035'
+  ENV['DRIP_API_KEY'] = '4uxndsr6yzdqdozqumdx'
+  ENV['DRIP_ACCOUNT_ID'] = '7912110'
 end
 
 Drip::Client.class_eval do

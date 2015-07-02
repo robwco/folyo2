@@ -1,17 +1,20 @@
 <div class="category-wrap">
 	<h3>Latest <%= category %> leads:</h3>
-	<table>
-		<% leads.each do |lead| %>
-			<tr>
-				<td><a href="MAILTO:<%= lead.email %>"><%= image_tag lead.image.url(:thumb, timestamp: false), class: 'photo'  %></a></td>
-				<td>
-					<p>
-						<strong><a href="<%= lead.url %>"><%= lead.title %></a></strong><br>
-						<span class="name"><%= lead.name %>,</span> <span class="email"><a href="MAILTO:<%= lead.email %>"><%= lead.email %></a></span><br>
-						<% if lead.website.present? %><span class="twitter"><a href="<%= lead.website %>">Website</a></span><% end %> <% if lead.twitter.present? %><span class="twitter"><a href="<%= lead.twitter %>">Twitter</a></span><% end %> <% if lead.linkedin.present? %><span class="twitter"><a href="<%= lead.linkedin %>">Linkedin</a></span><% end %> <% if lead.budget.present? %><span class="twitter">Budget: $<%= lead.budget %></span><% end %>	<% if lead.notes.present? %><span class="twitter"><%= lead.notes %></span><% end %>	
-					</p>
-				</td>
-			</tr>
-		<% end %>
-	</table>
+	
+	<% leads.each do |lead| %>
+	  <div class="exclusive">
+	    <div class="image-wrap"><%= image_tag lead.image.url(:thumb, timestamp: false), :class => "image" %></div>
+	    <h1><%= lead.title %></h1>
+	    <h2><%= lead.notes %></h2>
+	    <p><strong>Company:</strong> <a href="<% lead.website %>"><%= lead.website %></a><br>
+	    <strong>Budget:</strong> $<%= lead.budget %><br>
+	    <strong>Name:</strong> <%= lead.name %></p>
+	    <p><strong>Description</strong><br>
+	    <%= h(lead.notes).gsub(/\n/, '<br/>').html_safe %></p>
+	    <p><strong>To apply</strong><br>
+	    <a class="email" href="MAILTO:<%= lead.email %>"><%= lead.email %></a></p>
+	    <hr>
+	  </div>
+	<% end %>
 </div>
+
