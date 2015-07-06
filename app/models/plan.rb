@@ -23,13 +23,13 @@ class Plan < ActiveRecord::Base
 	end
 
 	def interval_text
-		return self.interval if self.interval_count.blank? || self.interval_count <= 1 
+		return " per #{interval}" if interval_count.blank? || interval_count <= 1 
 
-		"every #{self.interval_count} #{self.interval}s"
+		"every #{ActionController::Base.helpers.pluralize(interval_count, interval)}"
 	end
 
 	def archive
-		self.published = false
+		@published = false
 		save
 	end
 end

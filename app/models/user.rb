@@ -61,6 +61,21 @@ class User < ActiveRecord::Base
 	  !(canceled? || past_due?)
   end
 
+  def update_card(card)
+	  self.last4 = card.last4
+	  self.expiration_month = card.exp_month
+	  self.expiration_year = card.exp_year
+  end
+
+  def update_card!(card)
+	  update_card card
+	  save!
+  end
+
+  def billing_period_end
+	  subscription.current_period_end.to_date.to_formatted_s(:long)
+  end
+
   private
   	def plan_has_trial?
 		subscription.plan.has_trial?

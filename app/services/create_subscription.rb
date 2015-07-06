@@ -41,6 +41,8 @@ class CreateSubscription
       end
 
       user.subscription.stripe_id = stripe_sub.id
+	  user.subscription.update_billing_period stripe_sub
+
 	  user.subscription.save
     rescue Stripe::StripeError => e
 	  category_ids = user.category_ids

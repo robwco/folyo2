@@ -21,6 +21,13 @@ StripeEvent.configure do |events|
 	user.overdue! if user.may_overdue?
   end
 
+  events.subscribe 'customer.subscription.updated' do |event|
+	subscription = event.data.object
+
+	user = User.with_stripe_id subscription.customer
+	user.subscription.update_billing_period! subscription
+  end
+
   events.subscribe 'customer.subscription.deleted' do |event|
 	subscription = event.data.object
 

@@ -12,6 +12,8 @@ class ChangePlan
 
       stripe_sub.plan = to_plan.stripe_id
       stripe_sub.save
+
+	  subscription.update_billing_period stripe_sub
       subscription.plan = to_plan
       subscription.save!
 

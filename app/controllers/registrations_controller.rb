@@ -13,6 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
 
 	if resource.update_with_password(account_update_params)
 		sign_in resource_name, resource, bypass: true
+		flash[:notice] = 'Your account was updated!'
 		respond_with resource, location: after_update_path_for(resource)
 	else
 		clean_up_passwords resource
