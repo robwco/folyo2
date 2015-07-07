@@ -131,6 +131,7 @@ class SubscriptionsController < ApplicationController
 	redirect_to edit_user_registration_path if @plan.blank?
 
 	if ChangePlan.call(current_user.subscription, @plan)
+		flash[:notice] = 'Your subscription was updated!'
 		redirect_to edit_user_registration_path
 	else
 		flash[:notice] = 'There was an error upgrading your subscription. Please try again later.'

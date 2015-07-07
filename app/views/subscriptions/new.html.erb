@@ -1,7 +1,7 @@
 <section class="loose-wrap">
 	<center>
 		<h1 style="margin: 2.1em 0 0;">Start your new Workshop account</h1>
-		<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> every 3 months. <a href="#">Switch to yearly</a>.</p>
+		<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> <%= @plan.interval_text %>. <a href="#">Switch to yearly</a>.</p>
 		<!-- 		<p style="font-size: 16px; margin: 0 0 2em;">Last week Workshop sent $<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %> worth of client work to members. Start landing projects and filling your pipeline with a risk-free account.</p>
 		
 
@@ -29,7 +29,7 @@
 		<% if @user.errors.any? || @user.subscription.errors.any? %>
 			<div id="error_explanation">
 
-			  <h2><%= pluralize(@user.errors.count, "error") %> occurred:</h2>
+			  <h2><%= pluralize(@user.errors.count + @user.subscription.errors.count, "error") %> occurred:</h2>
 
 			  <ul>
 				<% @user.errors.full_messages.each do |msg| %>
