@@ -1,14 +1,42 @@
-<h3>I don't get enough responses</h3>
+<div class="cancellation-letter">
+<h1>Not hearing back can be tough...</h1>
 
-<p>
-	Getting potential clients to respond to your emails is one of the toughest things to learn as a freelancer. It takes most years of trial and
-	error to become skilled enough to consistently land new clients. Luckily, I have put together a book to help you learn those skills in hours,
-	instead of years. 
+<p>Getting potential clients to respond to your emails is one of the toughest things to learn as a freelancer.</p> 
 
+<p>But the truth is most freelancers make the same 4-5 basic mistakes when emailing prospects and the ones who don't dominate.</p>
+
+<p>The good news is that means all you have to do is avoid a couple key things that will kill your response rate.</p>
+	
+<p>Usually it takes years of trial and error todo this... but after observing thousands of freelancer emails, I've put a book together that help you learn those skills in hours, instead of years. As a thank you for signing up for Workshop, I'd like to send this book to you.</p>
+
+<p>The thing is, you'll always need people to email so it doesn't make sense to cancel Workshop.</p>
+
+<p>Canceling now means you'll have to find those leads on your own making the chances of you actually building a pipeline much lower. I can't have that.</p>
+
+<p>Worse, the subscription you have now comes out to $<%= current_user.subscription.plan.price %>/<%= current_user.subscription.plan.interval %> and I don’t offer Workshop at that price anymore. Soon I’ll also be limiting the amount of members we let join, so I'd hate to see you not be able to get back in, especially if you fall into a dry spell.</p>
+ 
+<p>Currently, you're guaranteed your spot in Workshop at your current low price for as long as you're a member... but not if you cancel.</p>
+
+<p>That’s why this is sort of urgent.</p> 
+
+<h5>Use the coupon code: v34f9hk to get 50% off on <a href="http://emailsthatwin.com">Emails That Win You Clients</a><h5>
+	
+<p>As you go through the book I'd also encourage you to send your improved emails my way. You can also send them to <a href="MAILTO:julie@letsworkshop.com">Julie</a> who will help you improve them even more!</p>
+
+<p>Looking forward to having you as a customer!</p>
+
+<p>Regards,<br>
+	Robert<br>
+	<%= image_tag('rob-sig.png', :style => "width: 9em;") %>
 </p>
-<p><%= link_to 'Learn to write emails that win clients', 'http://www.emailsthatwin.com' %> </p>
 
-<%= button_to 'Click here to cancel your account', destroy_subscription_path, method: 'delete' %>
+</div>
+
+<center>
+	<%= link_to 'Save $_yearly_price_difference_ - Switch to yearly billing', root_path, :class => "submit" %><br><br>
+	_if already on yearly billing "stay signed up at a 5% discount "_
 <p>
-	<%= link_to 'Go back', edit_user_registration_path %>
+	<%= link_to 'No thanks, cancel my account', destroy_subscription_path, method: 'delete', :style => "color: #E44727;" %>
 </p>
+</center>
+

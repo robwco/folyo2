@@ -1,24 +1,24 @@
 <div class="cancellation-letter">
 <h1>Congratulations on landing work!</h1>
 
-<p>How far in advanced are you booked?</p> 
+<p>How far in advance are you booked? I ask because canceling means you lose out on over $_yearly_price_difference_ . See, the current pricing for Workshop is _current_price_ and it’s about to go up again.</p>
 
-<p>I ask because by canceling now you'll losing out on over $399. See, the current pricing for Workshop is over $99/month and it’s about to go up in price again as I release some big improvements and additional features.</p>
+<p>By canceling now it means you’ll be letting your locked-in introductory rate expire.</p>
 
-<h5>By canceling now it means you’ll be letting your introductory rate expire.</h5>
-
-<p>The <%= current_user.subscription.plan.interval %>ly subscription you have currently comes out to $<%= current_user.subscription.plan.price %>/<%= current_user.subscription.plan.interval %> and I don’t offer it anymore. Soon I’ll also be limiting the amount of members we let join, so I'd hate to see you not be able to get back in, especially if you fall into a dry spell.</p>
+<p>The subscription you have now comes out to $<%= current_user.subscription.plan.price %>/<%= current_user.subscription.plan.interval %> and I don’t offer it anymore. Soon I’ll also be limiting the amount of members we let join, so I'd hate to see you not be able to get back in, especially if you fall into a dry spell after you finish work just landed.</p>
  
-<h5>Currently you're guaranteed your spot at your current low price for as long as you're a member... but you won't be once you cancel.</h5>
+<p>Currently, you're guaranteed your spot in Workshop at your current low price for as long as you're a member... but not if you cancel.</p>
 
 
 <p>That’s why this is sort of urgent.</p> 
 
-<p>You might be fully-booked right now, and although it seems like it will last forever - the truth is dry spells happen because freelancers don’t keep looking for work during good times. That’s why I recommend if you’re not booked at least 6-12 months in advanced, you keep emailing at least one new lead every day.</p> 
+<p>You might be fully-booked right now, and although it seems like that will last forever–the truth is dry spells happen because freelancers don’t keep looking for opportunities when they have work.</p> 
 
-<h5>Staying signed up now that you're currently booked will also allow you to negotiate with prospects from a position of power instead of being desperate.</p>
+<p>That’s why I recommend if you’re not booked at least 6-12 months in advanced, you keep emailing at least one new lead every day regardless of if you're currently booked.</p> 
 
-<p>In fact, even if you don’t stay signed up for Workshop, I’d still recommend this habit.</p>
+<p>Staying signed up now during this time will also let you negotiate from a position of power instead of being necessity.</p>
+
+<p>In fact, even if cancel Workshop, I’d still recommend you find at least one lead to contact everyday.</p>
 
 <p>Looking forward to having you as a customer!</p>
 
@@ -30,8 +30,10 @@
 </div>
 
 <center>
+	<%= link_to 'Save $_yearly_price_difference_ - Switch to yearly billing', root_path, :class => "submit" %><br><br>
+	_if already on yearly billing "stay signed up at a 5% discount "_
 <p>
-	<%= link_to 'Cancel my account', destroy_subscription_path, method: 'delete', :style => "color: #E44727;" %>
+	<%= link_to 'No thanks, cancel my account', destroy_subscription_path, method: 'delete', :style => "color: #E44727;" %>
 </p>
 </center>
 
