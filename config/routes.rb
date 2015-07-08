@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get "/test_emails" => "subscriptions#test_email"
   get "/send_emails" => "subscriptions#send_email"
+  
+
 
   get "/welcome" => "subscriptions#welcome", as: :welcome
   get "/admins/welcome" => "admins#welcome", as: :admin_root
@@ -23,6 +25,9 @@ Rails.application.routes.draw do
   put "/subscriptions/reactivate" => "subscriptions#reactivate", as: :reactivate_subscription
   get "/subscriptions/categories" => "subscriptions#categories", as: :update_subscription_categories
   put "/subscriptions/categories_save" => "subscriptions#categories_save", as: :subscription_categories_save
+  
+  get "/categories/confirmed" => "subscriptions#updated_categories_confirmed", as: :subscription_categories_save_confirmation
+  
   get "/subscriptions/milestones" => "subscriptions#milestones", as: :update_subscription_milestones
   put "/subscriptions/milestones_save" => "subscriptions#milestones_save", as: :subscription_milestones_save
 

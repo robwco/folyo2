@@ -3,15 +3,17 @@
     <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
     <h1><%= exclusive.title %></h1>
     <h2><%= exclusive.category %></h2>
-    <strong>Company:</strong> <a href="<% exclusive.website %>"><%= exclusive.website %></a><br>
-    <strong>Budget:</strong> $<%= exclusive.budget %><br>
-    <strong>Name:</strong> <%= exclusive.name %></p>
+		<p>
+	    <strong>Name:</strong> <%= exclusive.name %><br>
+	    <strong>Company:</strong> <a href="<% exclusive.website %>"><%= exclusive.website %></a><br>
+	    <strong>Budget:</strong> $<%= exclusive.budget %>
+		</p>
     <p><strong>Description</strong><br>
     <%= h(exclusive.description).gsub(/\n/, '<br/>').html_safe %></p>
+		<h4>This lead was posted exclusively to Workshop, so you have a great chance of landing it.</h4>
     <p><strong>To apply</strong><br>
     <a class="email" href="MAILTO:<%= exclusive.email %>"><%= exclusive.email %></a></p>
-    <h4>This lead is only shown to Workshop members, so you have a great chance of landing it.</h4>
-    <hr>
+
   </div>
 <% end %>
 

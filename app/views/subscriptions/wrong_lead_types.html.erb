@@ -1,16 +1,14 @@
-<h3>Not the right type of leads for me</h3>
+<div class="cancellation-letter">
+<h1>What type of leads were you looking for?</h1>
 
-<p>
-	That’s too bad. What kind of leads are you looking for? 
-</p>
+<p>Please give me as much detail about what type of work you'd like to see that you're not getting. It will help me add more of what you're looking for if we currently don't offer it or I can point you in the right direction if we do.</p>
 
 <%= form_for(@cancellation, url: cancel_subscription_leads_followup_path, html: { method: :post }) do |f| %>
 
 	<%= f.text_area :requested_leads %>
 
-	<%= f.submit 'Help me with these leads' %>
+	<%= f.submit 'Next' %>
 <% end %>
 
-<p>
-	<%= link_to 'Go back', edit_user_registration_path %>
-</p>
+
+</div>
