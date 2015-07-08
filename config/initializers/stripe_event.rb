@@ -25,7 +25,8 @@ StripeEvent.configure do |events|
 	subscription = event.data.object
 
 	user = User.with_stripe_id subscription.customer
-	user.subscription.update_billing_period! subscription
+	user.subscription.update_billing_period subscription
+	user.subscription.save!
   end
 
   events.subscribe 'customer.subscription.deleted' do |event|
