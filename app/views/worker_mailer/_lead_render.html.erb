@@ -1,8 +1,8 @@
 <% @exclusives.most_recently_updated.this_week.each do |exclusive| %>
   <div class="exclusive">
     <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
-    <h1><%= exclusive.title %></h1>
-    <h2><%= exclusive.category %></h2>
+    <h4><%= exclusive.title %></h4>
+    <h5><%= exclusive.category %></h5>
 		<p>
 	    <strong>Name:</strong> <%= exclusive.name %><br>
 	    <strong>Company:</strong> <a href="<% exclusive.website %>"><%= exclusive.website %></a><br>
