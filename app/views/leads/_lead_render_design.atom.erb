@@ -1,18 +1,17 @@
-<% @exclusives.this_week.most_recently_updated.each do |exclusive| %>
-  <div class="exclusive">
-    <div class="image-wrap"><%= image_tag exclusive.pic.url(:thumb, timestamp: false), :class => "image" %></div>
-    <h1><%= exclusive.title %></h1>
-    <h2><%= exclusive.category %></h2>
-    <strong>Company:</strong> <a href="<% exclusive.website %>"><%= exclusive.website %></a><br>
-    <strong>Budget:</strong> $<%= exclusive.budget %><br>
-    <strong>Name:</strong> <%= exclusive.name %></p>
-    <p><strong>Description</strong><br>
-    <%= h(exclusive.description).gsub(/\n/, '<br/>').html_safe %></p>
-    <p><strong>To apply</strong><br>
-    <a class="email" href="MAILTO:<%= exclusive.email %>"><%= exclusive.email %></a></p>
-    <h4>This lead is only shown to Workshop members, so you have a great chance of landing it.</h4>
-    <hr>
-  </div>
+<% @exclusives.today.most_recently_updated.each do |exclusive| %>
+	<h3 style="text-transform: uppercase;"><%= exclusive.category %>:</h3>
+  <div style="margin: 2em 0; display: block;">
+		<%= image_tag exclusive.pic.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
+		<div style="display: table">
+			<h3 style="color: #a03f14;"><%= exclusive.name %> is looking for <%= exclusive.title %></h3>
+			<p class="more-info">
+				<%= link_to 'More info', exclusive %>
+				| <a href="<% exclusive.website %>">Website</a> | The budget is $<%= exclusive.budget %>. Perfect for a freelancer you know? <a HREF="mailto:yourfriend@email.com?subject=looking for work?&body=Hey there! I’m in Workshop (http://www.letsworkshop.com a service that sends me freelance leads) and I came across this one that I thought you’d be perfect for:%0D%0A%0D%0A<%= exclusive.title %>-<%= exclusive.description %>%0D%0A%0D%0AWhat you think?">Send to a friend</a>
+			</p>
+      	<p>
+					<a HREF="mailto:<%= exclusive.email %>?subject=<%= first_name exclusive.name %>, I'd like to help you {insert benefit e.g. design your website}&body=Hello <%= first_name exclusive.name %>,%0D%0A%0D%0AI read your article about {insert recent blog topic} and I noticed that you're looking to {insert stated goal for project e.g. optimize your website for conversions}.%0D%0A%0D%0AI've been doing {insert relevent work e.g. landing page optimization} for some great companies the past 3 years and I'd like to offer to help you {insert project description e.g. redesign your website and optimize it for conversions}.%0D%0A%0D%0AThat would make {insert 3 main benefits e.g. your users have a better experience, make you look more professional, get more conversions and leads, and you'd free up time that you could use to focus on creating new content X.}%0D%0A%0D%0AWe can discuss the details, of course, but first I wanted to see if this is something you might be interested in.%0D%0A%0D%0AIf so, give me a thumbs up and I'll send you a few ideas on how I could help. Sound good?">Send <%= first_name exclusive.name %> an email</a> (<a href="mailto:<%= exclusive.email %>"><%= exclusive.email %></a>)
+				</p>
+    </div>
 <% end %>
 
 <% @leads.today.most_recently_updated.design.group_by(&:category).each do |category, leads| %>

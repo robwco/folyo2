@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps
 
+
+  get "/preview" => "exclusives#preview"
   get "/connect" => "exclusives#connect"
   get "/build" => "exclusives#build"
   
