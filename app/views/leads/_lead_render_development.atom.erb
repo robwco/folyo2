@@ -1,9 +1,9 @@
 <% @exclusives.today.most_recently_updated.each do |exclusive| %>
-	<h3 style="text-transform: uppercase;"><%= exclusive.category %>:</h3>
+	<h3 style="text-transform: uppercase; margin: 2em 0 0;"><span style="color: #98ae2a;">Low Competition Lead -</span> <%= exclusive.category %>:</h3>
   <div style="margin: 2em 0; display: block;">
 		<%= image_tag exclusive.pic.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
 		<div style="display: table">
-			<h3 style="color: #a03f14;"><%= exclusive.name %> is looking for <%= exclusive.title %></h3>
+			<h3 style="color: #a03f14;"><%= exclusive.name %> is looking for a <%= exclusive.title %></h3>
 			<p class="more-info">
 				<%= link_to 'More info', exclusive %>
 				| <a href="<% exclusive.website %>">Website</a> | The budget is $<%= exclusive.budget %>. Perfect for a freelancer you know? <a HREF="mailto:yourfriend@email.com?subject=looking for work?&body=Hey there! I’m in Workshop (http://www.letsworkshop.com a service that sends me freelance leads) and I came across this one that I thought you’d be perfect for:%0D%0A%0D%0A<%= exclusive.title %>-<%= exclusive.description %>%0D%0A%0D%0AWhat you think?">Send to a friend</a>

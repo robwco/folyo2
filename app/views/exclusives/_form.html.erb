@@ -25,14 +25,14 @@
     <p class="sub-label">Where can a freelancer get a hold of you?</p>
   </div>
   <div class="field">
-    <%= f.label :title, 'Title Your Project' %><br>
-    <%= f.text_field :title %>
-    <p class="sub-label">A few words about what you're looking for, and what your company does.</p>
+    <%= f.label :title, "I'm looking for a..." %><br>
+    <%= f.text_field :title, :placeholder => 'Wordpress developer for my cooking and recipe website' %>
+    <p class="sub-label">What type of freelancer you're looking for, and what your company does.</p>
   </div>
   <div class="field">
-    <%= f.label :category, 'Type of Freelancer (if required)' %><br>
-    <%= f.text_field :category, :placeholder => 'Example: Wordpress development, UX design, ruby on rails, etc.' %>
-    <p class="sub-label">I'll send your project to a world-class freelancer in the specific area you need.</p>
+    <%= f.label :category, "They'll be doing..." %><br>
+    <%= f.text_field :category, :placeholder => 'Example: Wordpress Development, UX Design, Rails Development, etc.' %>
+    <p class="sub-label">I'll send your project to a world-class freelancer in that specific area.</p>
   </div>
   <div class="field">
     <%= f.label :website, 'Your Website' %><br>
@@ -40,7 +40,7 @@
   </div>
   <div class="field">
     <%= f.label :budget, 'Your Budget' %><br>
-    <span>$</span> <%= f.number_field :budget, :style => "width: 16em; display: inline;" %>
+    <span>$</span> <%= f.number_field :budget, :style => "width: 16em; display: inline;", :placeholder => "1000 minimum" %>
 	  <p class="sub-label"><a href="http://blog.folyo.me/how-much-does-a-website-cost-and-other-pricing-questions/">How much should my project cost?</a></p>
   </div>
   <div class="field">
@@ -50,6 +50,6 @@
   </div>
 
   <div class="actions" style="margin: 2em 0 0 0;">
-    <%= f.submit 'Feature my project', :class => "buy" %>
+    <%= f.submit 'Feature my project' %>
   </div>
 <% end %>

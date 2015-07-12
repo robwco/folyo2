@@ -4,8 +4,11 @@ atom_feed do |feed|
   @leads.most_recent.take(1).each do |lead|
     feed.entry lead do |entry|
       entry.title do |title|
-        entry.title "Meet #{lead.name} who's looking for #{lead.title}…"
-      end 	  
+        if @exclusives.this_week.exists? 
+          then entry.title "Meet #{exclusive.name} who's looking for #{exclusive.title}…" 
+          else entry.title "Meet #{lead.name} who's looking for #{lead.title}…" 
+        end
+      end	  
       entry.author do |author|
   	  	author.name lead.name
   	  end
