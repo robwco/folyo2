@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
 
   def self.with_stripe_id(stripe_id)
-	where("stripe_customer_id = ?", stripe_id)
+	where("users.stripe_customer_id = ?", stripe_id).first
   end
 
   def canceled?
