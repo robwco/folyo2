@@ -4,4 +4,4 @@ require 'clockwork'
 
 include Clockwork
 
-every(1.day, 'Queueing daily leads email', :at => '04:40') { Delayed::Job.enqueue DailyLeadsJob.new }
+every(1.day, 'Queueing daily leads email', :at => '12:00') { Delayed::Job.enqueue DailyLeadsJob.new }

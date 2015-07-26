@@ -85,6 +85,10 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  config.action_mailer.default_url_options = { :host => 'app.letsworkshop.com' }
+  config.action_controller.asset_host = 'app.letsworkshop.com'
+  config.action_mailer.asset_host = 'https://app.letsworkshop.com'
   
   config.action_mailer.delivery_method = :mandrill
   /*config.action_mailer.delivery_method = :smtp
@@ -97,6 +101,5 @@ Rails.application.configure do
   authentication: :plain
 
   }*/
-  config.action_mailer.default_url_options = { :host => 'letsworkshop.com' }
 
 end
