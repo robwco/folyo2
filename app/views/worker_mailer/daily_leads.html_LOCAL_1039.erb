@@ -86,8 +86,8 @@ p {
 	margin:1em 0px;
 }
 .image-wrap .image {
-	width: 100px;
-	border-radius: 100px;
+	width: 75px;
+	border-radius: 75px;
 }
 .photo {
 	width: 60px; 
@@ -154,6 +154,8 @@ margin: .5em 0 1em;
 
 <%= render 'worker_mailer/lead_milestones' %>
 
+
+<h1>Step 1: Choose one lead to contact</h1>
 <%= render 'worker_mailer/lead_render' %>
 
 <p class="small">
@@ -164,13 +166,38 @@ These leads have been hand-checked for quality. If you see something you don’t
 <%= render 'worker_mailer/lead_categories' %>	
 	
 
+<h1>Step 2: Find information about the company</h1>
+
+<ul>
+	<li>What do you genuinely love about them?</li>
+	<li>What's the name of a recent blog post they wrote that resonated with you? Why?</li>
+	<li>What can you help them with?</li>
+	<li>What can you give them that will help them immediately?</li>
+</ul>
+
+<h1>Step 3: Write your email</h1>
+
+
+
 <div style="padding: 2em 0;">
 
-	<%= image_tag("/images/julie.jpeg", style: "width: 100px; border-radius: 100px; margin: 2em 2em 5em 0;", align: 'left') %>
+<img src="/images/julie.jpg" style="width: 100px; border-radius: 100px; margin: 2em 2em 5em 0;" align="left"> 
 
 <h2>Hey I'm Julie, I can help...</h2>
 <p>
 How can I help you land these projects? Where are you currently getting stuck? Click the button below and let me know! Whether it's choosing a lead, writing something great or anything else, I'm here to help.<br><a href="MAILTO:julie@letsworkshop.com" class="button">Respond to Julie</a>
+</p>
+
+</div>
+
+
+<div style="padding: 2em 0;">
+
+<img src="/images/people.png" style="width: 100px; border-radius: 100px; margin: 2em 2em 5em 0;" align="left"> 
+
+<h2>Want to request a lead?</h2>
+<p>
+If you aren't seeing something that you'd like to see, you can request it the button below. You'll be taken to a  form where you can give me some specifications on what you'd like to see and I'll do my best to include it for you in the next email .<br><a href="http://wufoo.com" class="button">Request lead</a>
 </p>
 
 </div>

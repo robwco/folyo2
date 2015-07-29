@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
+
   devise_for :admins
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :people
 
   mount StripeEvent::Engine => '/stripe-events'
 
-  root "pages#home"
-
   get "/test_emails" => "subscriptions#test_email"
   get "/send_emails" => "subscriptions#send_email"
-  
 
+  root to: redirect("/users/edit")
 
   get "/welcome" => "subscriptions#welcome", as: :welcome
   get "/admins/welcome" => "admins#welcome", as: :admin_root

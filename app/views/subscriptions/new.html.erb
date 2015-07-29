@@ -1,7 +1,11 @@
 <section class="loose-wrap">
 	<center>
 		<h1 style="margin: 2.1em 0 0;">Start your new Workshop account</h1>
-		<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> <%= @plan.interval_text %>. <a href="#">Switch to yearly</a>.</p>
+		<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> <%= @plan.interval_text %>.
+		<% unless @plan.yearly? or !@yearly.present? %>
+			<a href="/subscriptions/new?plan=<%= @yearly.id %>">Switch to yearly</a>.
+		<% end %>
+		</p>
 		<!-- 		<p style="font-size: 16px; margin: 0 0 2em;">Last week Workshop sent $<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %> worth of client work to members. Start landing projects and filling your pipeline with a risk-free account.</p>
 		
 

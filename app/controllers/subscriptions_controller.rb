@@ -34,7 +34,8 @@ class SubscriptionsController < ApplicationController
 
   def new
 	@user = User.new
-	@plan = Plan.where(published: true, id: params[:plan]).first
+	@plan = Plan.active.find(params[:plan])
+	@yearly = Plan.active.where(interval: 'year').first
 
 	redirect_to '/' if @plan.nil?
 
@@ -42,12 +43,9 @@ class SubscriptionsController < ApplicationController
 	@coupon = params[:coupon]
   end
 
-  def edit
-  end
-
   def create
 	@user = User.new(sign_up_params)
-	@plan = Plan.where(published: true, id: params[:plan]).first
+	@plan = Plan.active.find(params[:plan])
 
 	redirect_to '/' if @plan.blank?
 
@@ -61,6 +59,9 @@ class SubscriptionsController < ApplicationController
 
   def update
 
+  end
+
+  def edit
   end
 
   def creditcard
