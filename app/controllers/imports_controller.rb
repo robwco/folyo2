@@ -1,4 +1,4 @@
-require 'Memberful'
+require 'memberful'
 
 class ImportsController < ApplicationController
   before_action :authenticate_admin!
