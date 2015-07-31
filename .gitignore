@@ -15,6 +15,4 @@
 /log/*.log
 /tmp
 .env
-*.swp
-*.swo
-*.swn
+*.sw?

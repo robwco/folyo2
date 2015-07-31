@@ -2,6 +2,13 @@
 	<h1>Welcome, Admin!</h1>
 
 	<% if current_admin.site_owner? %>
+		<h2>Subscriber Import</h2>
+		<ol style="margin-left: 25px">
+			<li><%= link_to 'Import Plans', import_plans_path %></li>
+			<li><%= link_to 'Import Customers', import_customers_path %></li>
+		</ol>
+		
+
 		<h2>Subscriptions</h2>
 		<ul>
 			<li><%= link_to 'View Plans', plans_path %></li>
