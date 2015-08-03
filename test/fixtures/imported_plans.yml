@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  memberful_id: 1
+  name: MyString
+  slug: MyString
+  renewal_period: MyString
+  interval_unit: MyString
+  interval_count: 1
+  plan_id: 
+
+two:
+  memberful_id: 1
+  name: MyString
+  slug: MyString
+  renewal_period: MyString
+  interval_unit: MyString
+  interval_count: 1
+  plan_id: 

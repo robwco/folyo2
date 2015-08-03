@@ -15,11 +15,12 @@ class CreatePlan
         name: options[:name],
       )
     rescue Stripe::StripeError => e
+		puts e.message.inspect
       plan.errors[:base] << e.message
       return plan
     end
 
-	plan.published = true
+	plan.published = true unless options.has_key? :published
 	plan.save
 
     return plan

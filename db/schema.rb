@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705005411) do
+ActiveRecord::Schema.define(version: 20150730004955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(version: 20150705005411) do
 
   add_index "categories_users", ["category_id"], name: "index_categories_users_on_category_id", using: :btree
   add_index "categories_users", ["user_id"], name: "index_categories_users_on_user_id", using: :btree
-
-  create_table "clients", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -107,6 +100,37 @@ ActiveRecord::Schema.define(version: 20150705005411) do
   end
 
   add_index "faqs", ["ancestry"], name: "index_faqs_on_ancestry", using: :btree
+
+  create_table "imported_plans", force: true do |t|
+    t.integer  "memberful_id"
+    t.string   "name"
+    t.string   "slug"
+    t.string   "renewal_period"
+    t.string   "interval_unit"
+    t.integer  "interval_count"
+    t.integer  "plan_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "price"
+  end
+
+  add_index "imported_plans", ["plan_id"], name: "index_imported_plans_on_plan_id", using: :btree
+
+  create_table "imported_subscriptions", force: true do |t|
+    t.integer  "memberful_id"
+    t.string   "name"
+    t.string   "email"
+    t.integer  "memberful_plan_id"
+    t.boolean  "renews"
+    t.string   "stripe_customer_id"
+    t.datetime "subscription_start"
+    t.datetime "subscription_end"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "imported_subscriptions", ["user_id"], name: "index_imported_subscriptions_on_user_id", using: :btree
 
   create_table "leads", force: true do |t|
     t.string   "photo"

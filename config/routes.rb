@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get "/test_emails" => "subscriptions#test_email"
   get "/send_emails" => "subscriptions#send_email"
 
+  get "/imports/plans" => "imports#plans", as: :import_plans
+  post "/imports/import_plans" => "imports#import_plans", as: :save_imported_plans
+  get "/imports/customers" => "imports#customers", as: :import_customers
+  post "/imports/import_customers" => "imports#import_customers", as: :save_imported_customers
+
   root to: redirect("/users/edit")
 
   get "/welcome" => "subscriptions#welcome", as: :welcome
