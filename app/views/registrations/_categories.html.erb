@@ -1,7 +1,7 @@
 <h5>What type of work should I send you?</h5>
 <%= hidden_field_tag("user[category_ids][]", nil) %>
 
-<table class="lead-category" style="border: 2px solid #d9d3cf; padding: 1em 2em 1em 0; margin: 1em 0 0; border-radius: .25em; box-sizing: border-box; width: 100%;">
+<table class="lead-category">
 	<% Category.all.each_slice(2) do |batch| %>
 		<tr>
 			<% batch.each do |c| %>
