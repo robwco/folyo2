@@ -28,6 +28,11 @@ class Plan < ActiveRecord::Base
 		"every #{ActionController::Base.helpers.pluralize(interval_count, interval)}"
 	end
 
+	def next_billing_date
+		return (interval_count.months).since(Time.now) if self.monthly?
+		return (interval_count.years).since(Time.now) 
+	end
+
 	def archive
 		@published = false
 		save

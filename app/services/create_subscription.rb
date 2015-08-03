@@ -17,6 +17,7 @@ class CreateSubscription
         customer = Stripe::Customer.create(
           source: token,
           email: user.email,
+          description: user.name,
           plan: plan.stripe_id,
 		  coupon: coupon_code
         )
