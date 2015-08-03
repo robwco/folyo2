@@ -17,7 +17,7 @@ $background-color:			$white;
 $alt-background-color: 	$off-white;
 
 $ui-font: 							'Gotham SSm A', 'Gotham SSm B', Lucida grande, sans-serif;
-$header-font:						"rooney-sans", Lucida grande, sans-serif;
+$header-font:						'Gotham SSm A', 'Gotham SSm B', Lucida grande, sans-serif;
 
 
 $small-font-size: 			90%;
@@ -25,9 +25,9 @@ $extra-small-font-size: 80%;
 
 /* font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit; */
 $header-type:						30px/1.3 $header-font ;
-$normal-type:						19px/1.6 $ui-font;
-$small-type:						90%/1.6 $ui-font;
-$extra-small-type:			80%/1.6 $ui-font;
+$normal-type:						17px/1.5 $ui-font;
+$small-type:						90%/1.4 $ui-font;
+$extra-small-type:			80%/1.4 $ui-font;
 
 $content-width:					53em;
 $paragraph-width:				660px;
@@ -64,9 +64,13 @@ hr {
 	max-width: 100%;
 }
 
+strong {
+	font-weight: 500;
+}
+
 p, ul, ol {
 	font: $normal-type;
-	font-weight: 400;
+	font-weight: 300;
 	color: $paragraph-color;
 	max-width: $paragraph-width;
 	margin: 0 auto 1.3em;
@@ -104,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: $paragraph-width;
 	margin: 2.1em auto 1.1em;
 	letter-spacing: .01em;
-	font-weight: 600;
+	font-weight: 400;
 }
 
 h3 {
@@ -222,8 +226,7 @@ ol > li:before {
     padding:2px;
     color: $paragraph-color;
     background: $off-white;
-    font-weight: 700;
-    font-family: "rooney-sans", Verdana, Helvetica, sans-serif;
+    font-weight: 400;
 		font-size: 14px;
     text-align:center;
 }
@@ -333,7 +336,7 @@ label {
 	font: $extra-small-type;
 	letter-spacing: .15em;
 	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 400;
 	
 
 }
@@ -382,7 +385,7 @@ input[type=submit], a.submit {
 	color: $white; 
 	padding: .75em 2em; 
 	margin: 1em 0; 
-	font-weight: 700;
+	font-weight: 500;
 	letter-spacing: .05em;
 	text-decoration: none;
 	font-size: 80%;
@@ -403,6 +406,22 @@ input[type=submit], a.submit {
 	p {
 		font-size: 16px;
 	}
+}
+
+.lead-category {
+	border: 2px solid $line-color; 
+	padding: 1em 2em 1em 0; 
+	margin: 1em 0 0; 
+	border-radius: .25em; 
+	box-sizing: border-box; 
+	width: 100%;
+		&:hover {
+			-webkit-transition: all 0.2s ease;
+		  -moz-transition: all 0.2s ease;
+		  -ms-transition: all 0.2s ease;
+		  transition: all 0.2s ease;
+			border: 2px solid $link-color;
+		}
 }
 
 /* C.A.L.M: The freelancer's guide to finding and winning better client work online */
@@ -454,9 +473,8 @@ input[type=submit], a.submit {
 		  margin-right: 3px;
 		  font-style: normal;
 			font-size: 90%;
-			font-weight: 700;
+			font-weight: 400;
 			text-transform: uppercase;
-		  font-family: "rooney-sans", Verdana, Helvetica, sans-serif;
 		}
 	}
 	.toc-menu {
@@ -507,8 +525,7 @@ input[type=submit], a.submit {
 	h2 {
 		margin: .5em 0 0;
 		color: #FFF;
-		font-family: "rooney-sans", "Lucida Grande", sans-serif;
-		font-weight: 600;
+		font-weight: 400;
 		font-size: 21px;
 	}
 	p {
@@ -522,7 +539,7 @@ input[type=submit], a.submit {
 	}
 	input[type=submit] {
 		font-size: 17px;
-		font-weight: 800;
+		font-weight: 500;
 		background-color: #ffc601;
 		color: #423300;
 		border-radius: $ui-border-radius;
