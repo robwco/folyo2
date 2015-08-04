@@ -1,4 +1,4 @@
-<h3 style="margin: 2em 0 0;"><%= category %>:</h3>
+<h3 style="margin: 2em 0 0;"><%= category.name %>:</h3>
   <% leads.each do |lead| %>
       <div style="margin: 2em 0; display: block;">
         <%= image_tag lead.image.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
