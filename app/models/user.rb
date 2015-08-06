@@ -73,6 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def billing_period_end
+	  return "" if subscription.current_period_end.nil?
 	  subscription.current_period_end.to_date.to_formatted_s(:long)
   end
 
