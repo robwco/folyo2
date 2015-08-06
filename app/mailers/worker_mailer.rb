@@ -1,5 +1,7 @@
 class WorkerMailer < ActionMailer::Base
   default :from => "robert@letsworkshop.com"
+  helper ApplicationHelper
+  helper UsersHelper
   
   def welcome_email(worker)
     @worker = worker
