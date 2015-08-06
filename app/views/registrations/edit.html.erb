@@ -87,7 +87,7 @@
 		<h3>Your account will be canceled at the end of the billing period</h3>
 		<p> <%= button_to "Reactivate my account", reactivate_subscription_path, class: 'submit', method: 'put' %></p>
 	<% elsif resource.good_standing? %>
-		<p style="font-size: 14px;"><%= link_to "Cancel account", cancel_subscription_path %></p>
+		<p style="font-size: 14px;"><%= link_to "Cancel account", cancel_subscription_path, :style => "color: #E44727;" %></p>
 	<% else %>
 		<h3>Your account is canceled or overdue.</h3>
 		<p>Please re-enter your credit card to reactivate your account.</p>

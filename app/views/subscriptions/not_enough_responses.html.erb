@@ -3,15 +3,17 @@
 
 <p>Getting potential clients to respond to your emails is one of the toughest things to learn as a freelancer.</p> 
 
-<p>But the truth is most freelancers make the same 4-5 basic mistakes when emailing prospects and the ones who don't dominate.</p>
+<p>But the truth is most freelancers make the same 4-5 basic mistakes when emailing prospects. Just avoiding those means you'll dominate.</p>
 
-<p>The good news is that means all you have to do is avoid a couple key things that will kill your response rate.</p>
+<p>The good news is these things are totally avoidable and easy to to 2x or 3x your response rate.</p>
 	
-<p>Usually it takes years of trial and error todo this... but after observing thousands of freelancer emails, I've put a book together that help you learn those skills in hours, instead of years. As a thank you for signing up for Workshop, I'd like to send this book to you.</p>
+<p>Usually it takes years of trial and error to do this... but after observing thousands of freelancer emails, I've put together a book that will help you learn those skills in hours, instead of years.</p>
 
-<p>The thing is, you'll always need people to email so it doesn't make sense to cancel Workshop.</p>
+<p>As a thank you for signing up for Workshop, I'd like to send this book to you.</p>
 
-<p>Canceling now means you'll have to find those leads on your own making the chances of you actually building a pipeline much lower. I can't have that.</p>
+<p>The thing is, you'll always need people to email so it doesn't make sense to cancel Workshop just yet.</p>
+
+<p>Canceling now means you'll have to find those leads on your own which makes the chances of you actually building a pipeline much lower. I can't have that.</p>
 
 <p>Worse, the subscription you have now comes out to $<%= current_user.subscription.plan.price %>/<%= current_user.subscription.plan.interval %> and I don’t offer Workshop at that price anymore. Soon I’ll also be limiting the amount of members we let join, so I'd hate to see you not be able to get back in, especially if you fall into a dry spell.</p>
  
@@ -19,9 +21,9 @@
 
 <p>That’s why this is sort of urgent.</p> 
 
-<h5>Use the coupon code: v34f9hk to get 50% off on <a href="http://emailsthatwin.com">Emails That Win You Clients</a><h5>
+<h5> <a href="https://gum.co/emails-that-win/v34f9hk">Use the coupon code: v34f9hk to get 50% off on Emails That Win You Clients</a><h5>
 	
-<p>As you go through the book I'd also encourage you to send your improved emails my way. You can also send them to <a href="MAILTO:julie@letsworkshop.com">Julie</a> who will help you improve them even more!</p>
+<p>As you go through the book I'd also encourage you to send your improved emails my way, for further critique. You can also send them to <a href="MAILTO:julie@letsworkshop.com">Julie</a> who will help you improve them even more!</p>
 
 <p>Looking forward to having you as a customer!</p>
 
@@ -33,10 +35,8 @@
 </div>
 
 <center>
-	<%= link_to 'Save $_yearly_price_difference_ - Switch to yearly billing', root_path, :class => "submit" %><br><br>
-	_if already on yearly billing "stay signed up at a 5% discount "_
 <p>
-	<%= link_to 'No thanks, cancel my account', destroy_subscription_path, method: 'delete', :style => "color: #E44727;" %>
+	<%= link_to "I'd still like to cancel my account", destroy_subscription_path, method: 'delete', :style => "color: #E44727;" %>
 </p>
 </center>
 

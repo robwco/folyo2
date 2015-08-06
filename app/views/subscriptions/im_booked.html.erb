@@ -1,14 +1,13 @@
 <div class="cancellation-letter">
 <h1>Congratulations on landing work!</h1>
 
-<p>How far in advance are you booked? I ask because canceling means you lose out on over $_yearly_price_difference_ . See, the current pricing for Workshop is _current_price_ and it’s about to go up again.</p>
+<p>How far in advance are you booked? I ask because canceling means you'll lose out on a bunch of money. See, the current pricing for Workshop is about to go up again.</p>
 
 <p>By canceling now it means you’ll be letting your locked-in introductory rate expire.</p>
 
-<p>The subscription you have now comes out to $<%= current_user.subscription.plan.price %>/<%= current_user.subscription.plan.interval %> and I don’t offer it anymore. Soon I’ll also be limiting the amount of members we let join, so I'd hate to see you not be able to get back in, especially if you fall into a dry spell after you finish work just landed.</p>
+<p>The subscription you have now comes out to $<%= current_user.subscription.plan.price %>/<%= current_user.subscription.plan.interval %> and soon I wont offer it anymore. I’ll also be limiting the amount of members I let join, so I'd hate to see you not be able to get back in, especially if you fall into a dry spell after you finish work just landed.</p>
  
 <p>Currently, you're guaranteed your spot in Workshop at your current low price for as long as you're a member... but not if you cancel.</p>
-
 
 <p>That’s why this is sort of urgent.</p> 
 
@@ -30,8 +29,6 @@
 </div>
 
 <center>
-	<%= link_to 'Save $_yearly_price_difference_ - Switch to yearly billing', root_path, :class => "submit" %><br><br>
-	_if already on yearly billing "stay signed up at a 5% discount "_
 <p>
 	<%= link_to 'No thanks, cancel my account', destroy_subscription_path, method: 'delete', :style => "color: #E44727;" %>
 </p>

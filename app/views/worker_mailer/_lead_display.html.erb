@@ -1,33 +1,20 @@
-<div class="category-wrap">
-	<h3>Latest <%= category %> leads:</h3>
-	
-	<% leads.each do |lead| %>
-	  <div class="exclusive">
-	    <div class="image-wrap"><%= image_tag lead.image.url(:medium, timestamp: false), :class => "image" %></div>
-	    <h1><%= lead.title %></h1>
-	    <h2><%= lead.notes %></h2>
-	    <p>
-	    	<strong>Name:</strong> <%= lead.name %><br>
-				<strong>Company:</strong> <a href="<% lead.website %>"><%= lead.website %></a><br>
-	    	<strong>Budget:</strong> $<%= lead.budget %><br>
-					<a href="<%= lead.url %>">View Posting</a> <% if lead.twitter.present? %> | <a href="<%= lead.twitter %>">Twitter</a><% end %> <% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> | <a href="MAILTO:yourfriend@email.com?subject=looking for work?&body=Hey there! I’m in Workshop (http://www.letsworkshop.com a service that sends me freelance leads) and I came across this one that I thought you’d be perfect for:%0D%0A
-						%0D%0A<%= lead.title %> - <%= lead.url %>%0D%0A %0D%0A
-					What you think?	">Send to a friend</a>
-			</p>
-
-	
-
-	    <p><strong>Description</strong><br>
-	    <%= h(lead.notes).gsub(/\n/, '<br/>').html_safe %>
-	
-	
-		
-	</p>
-		 	<p><strong>To apply</strong><br>
-		    <a class="email" href="MAILTO:<%= lead.email %>"><%= lead.email %></a><br>
-				<% if lead.notes.present? %><%= lead.notes %><% end %>
-			</p>
-	  </div>
-	<% end %>
-</div>
-
+<h3 style="margin: 2em 0 0;"><%= category.name %>:</h3>
+  <% leads.each do |lead| %>
+      <div style="margin: 2em 0; display: block;">
+        <%= image_tag lead.image.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
+				<div style="display: table">
+					<h3 style="color: #a03f14;"><%= lead.name %> is looking for a <%= lead.title %></h3>
+					<p class="more-info">
+						<a href="<%= lead.url %>">More info</a>
+						<% if lead.website.present? %> | <a href="<%= lead.website %>">Website</a> <% end %> 
+						<% if lead.twitter.present? %>| <a href="<%= lead.twitter %>">Twitter</a> <% end %> 
+						<% if lead.linkedin.present? %>| <a href="<%= lead.linkedin %>">Linkedin</a> <% end %> 
+						<% if lead.budget.present? %>| The budget is $<%= lead.budget %>.<% end %> 
+						<% if lead.notes.present? %><%= lead.notes %><% end %> 
+						Perfect for a freelancer you know? <a HREF="mailto:yourfriend@email.com?subject=looking for work?&body=Hey bud! I get freelance leads sent to me from Workshop (http://letsworkshop.com) and I came across this one that I thought was perfect for you:%0D%0A%0D%0A<%=lead.title%>-<%=lead.url%>%0D%0A%0D%0AWhat you think?">Send to a friend</a>
+					</p>
+        	<p>
+						<a HREF="mailto:<%= lead.email %>?subject=<%= first_name lead.name %>, I'd like to help you {insert benefit e.g. design your website}&body=Hello <%= first_name lead.name %>,%0D%0A%0D%0AI read your article about {insert recent blog topic} and I noticed that you're looking to {insert stated goal for project e.g. optimize your website for conversions}.%0D%0A%0D%0AI've been doing {insert relevent work e.g. landing page optimization} for some great companies the past 3 years and I'd like to offer to help you {insert project description e.g. redesign your website and optimize it for conversions}.%0D%0A%0D%0AThat would make {insert 3 main benefits e.g. your users have a better experience, make you look more professional, get more conversions and leads, and you'd free up time that you could use to focus on creating new content X.}%0D%0A%0D%0AWe can discuss the details, of course, but first I wanted to see if this is something you might be interested in.%0D%0A%0D%0AIf so, give me a thumbs up and I'll send you a few ideas on how I could help. Sound good?">Send <%= first_name lead.name %> an email</a> (<a href="mailto:<%= lead.email %>"><%= lead.email %></a>)
+					</p>
+      </div>
+  <% end %>
