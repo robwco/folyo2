@@ -77,17 +77,11 @@
 
 		<p style="font-size: 14px;">Your next payment is on <%= current_user.billing_period_end %>. <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %> (ending: -<%= current_user.last4 %>)<br></p>
 		<p style="margin: 2em auto;">
-		<% unless resource.subscription.plan.yearly? %>
-			<%= link_to "Save $300 by switching to yearly billing", upgrade_plan_path, :class => "submit" %>
+		<% unless resource.subscription.plan.yearly? || resource.subscription.plan.savings(Plan.annual.first) <= 0 %>
+			<%= link_to "Save $#{ resource.subscription.plan.savings(Plan.annual.first) } by switching to yearly billing", upgrade_plan_path, :class => "submit" %>
 		<% end %>
 		</p>
 	<% end %>
-	<!--
-	<h2>Credit Card</h2>
-	<p>
-	  <strong>Last 4: </strong> <%= current_user.last4 %> <strong>Expiration:</strong> <%= "#{current_user.expiration_month} / #{current_user.expiration_year}" %>
-	</p>
-	-->
 
 	<% if resource.canceling? %>
 		<h3>Your account will be canceled at the end of the billing period</h3>

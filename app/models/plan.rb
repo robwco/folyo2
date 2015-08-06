@@ -5,9 +5,16 @@ class Plan < ActiveRecord::Base
 	validates :name, presence: true
 
 	scope :active, -> { where(:published => true) }
+	scope :annual, -> { where(:published => true, :interval => 'year') }
 
 	def price
 		(amount / 100).round
+	end
+
+	def annual_price
+		return self.price if yearly?
+		return ((12 / self.interval_count) * self.price).round if monthly?
+		self.price
 	end
 
 	def monthly?
@@ -20,6 +27,13 @@ class Plan < ActiveRecord::Base
 
 	def has_trial?
 		trial_period_days > 0
+	end
+
+	def savings(plan)
+		puts plan.annual_price
+		puts self.annual_price
+		0 if plan.nil?
+		self.annual_price - plan.annual_price
 	end
 
 	def interval_text
