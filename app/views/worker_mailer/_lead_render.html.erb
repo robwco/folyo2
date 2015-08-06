@@ -15,5 +15,5 @@
 <% end %>
 
 <% @leads.today.most_recently_updated.group_by(&:category).each do |category, leads| %>
-<%= render :partial => 'lead_display', :locals => { :category => category, :leads => leads }   %>
+<%= render :partial => 'worker_mailer/lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>
