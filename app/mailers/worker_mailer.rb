@@ -23,7 +23,7 @@ class WorkerMailer < ActionMailer::Base
 		  @leads = Lead.eager_load(:category).most_recent.where("category_id IN (?)", category_ids)
 	  end
 
-	  @exclusives = Exclusive.most_recent
+	  @exclusives = Exclusive.today.most_recently_updated
 
 	  @categories = Category.all
 	  @milestones = Milestone.all
