@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get "/subscriptions/milestones" => "subscriptions#milestones", as: :update_subscription_milestones
   put "/subscriptions/milestones_save" => "subscriptions#milestones_save", as: :subscription_milestones_save
 
-  resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps, :subscriptions, :plans
+  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
 
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
 
