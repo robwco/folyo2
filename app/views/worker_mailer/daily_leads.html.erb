@@ -47,7 +47,7 @@ h3 {
 </head>
 <body style="padding: 3px 10px;">
 <%= render 'worker_mailer/lead_milestones' %>	
-<p>Hey <%= first_name current_user.name %>, here's today's leads.</p>
+<p>Hey <%= first_name @user.name %>, here's today's leads.</p>
 <%= render 'worker_mailer/lead_render' %>
 <%= render 'worker_mailer/lead_categories' %>
 <br>
