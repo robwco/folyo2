@@ -11,9 +11,10 @@ class CreateOnboarding
 		leads_fields = Hash.new
 
 		leads_fields["workshop_plan"] = user.subscription.plan.stripe_id
+		leads_fields["onboarding_source"] = "app"
 
 		leads.each.with_index(1) do|lead,index|
-			leads_fields["lead#{index}_photo"] = lead.photo
+			leads_fields["lead#{index}_photo"] = lead.image.url(:thumb, timestamp: false)
 			leads_fields["lead#{index}_title"] = lead.title
 			leads_fields["lead#{index}_url"] = lead.url
 			leads_fields["lead#{index}_name"] = lead.name
