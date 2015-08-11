@@ -12,6 +12,7 @@ class CreateOnboarding
 
 		leads_fields["workshop_plan"] = user.subscription.plan.stripe_id
 		leads_fields["onboarding_source"] = "app"
+		leads_fields["name"] = user.name
 
 		leads.each.with_index(1) do|lead,index|
 			leads_fields["lead#{index}_photo"] = lead.image.url(:thumb, timestamp: false)
