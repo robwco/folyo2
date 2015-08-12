@@ -10,7 +10,7 @@ class Lead < ActiveRecord::Base
 	scope :recent_onboard, -> { where(:created_at => ((Time.now - 3.days)..Time.now)) }
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "40x40>" }, :default_url => "/images/:style/missing.png"
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
-	scope :design, -> { where("category like '%DESIGN%'") }
+	scope :design, -> { where("category like '%DESIGN%' OR category ilike '%GRAPHIC%' OR category ilike '%MARKETING%' OR category ilike '%INTERACTION%' ") }
 	scope :development, -> { where("category like '%DEVELOPMENT%'") }
 	scope :rails, -> { where("category ilike '%RAILS%' OR category ilike '%RUBY%' OR title ilike '%RAILS%' OR title ilike '%RUBY%'") }
 	scope :drupal, -> { where("category ilike '%DRUPAL%' OR title ilike '%DRUPAL%'") }
