@@ -1,7 +1,7 @@
 <h3 style="margin: 2em 0 0;"><%= category.name %>:</h3>
   <% leads.each do |lead| %>
       <div style="margin: 2em 0; display: block;">
-        <%= image_tag lead.image.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
+        <%= image_tag lead.image.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 1.25em .5em 0 0;", :align => "left"  %>
 				<div style="display: table">
 					<h3 style="color: #a03f14;"><%= lead.name %> is looking for a <%= lead.title %></h3>
 					<p class="more-info">
