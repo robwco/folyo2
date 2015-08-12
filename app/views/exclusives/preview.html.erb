@@ -1,0 +1,30 @@
+<center>
+	
+	<section class="reading-wrap breathe-bottom">
+<h2><%= notice %></h2>
+<h2>Here's what your project will look like to freelancers in the next Workshop email:</h2>
+
+
+</center>
+
+
+  <div class="content" style="border: 2px solid #444; border-radius: 5px; padding: 20px 0px 50px 0px; margin: 4em auto;">
+    <p><%= image_tag @exclusive.pic.url(:thumb, timestamp: false), :class => "image", :style => "border-radius: 10em;" %></p>
+    <h2 style="margin:0 auto;"><%= @exclusive.title %></h2>
+    <h3 style="margin:0 auto;"><%= @exclusive.category %></h3>
+    <p><strong>Company:</strong> <a href="<%= @exclusive.website %>"><%= @exclusive.website %></a><br>
+    <strong>Budget:</strong> $<%= @exclusive.budget %><br>
+    <strong>Name:</strong> <%= @exclusive.name %></p>
+    <p><strong>Description</strong><br>
+    <%= h(@exclusive.description).gsub(/\n/, '<br/>').html_safe %></p>
+    <p><strong>To apply</strong><br>
+    <a href="MAILTO:<%= @exclusive.email %>"><%= @exclusive.email %></a></p>
+  </div>
+	<center>
+
+
+<p style="margin-bottom: 5em;"><%= link_to 'Perfect! All done', successful_featured_path, :class => 'submit', :style => 'text-align: right;' %> <span style="margin: 0 .5em;">or</span> <%= link_to 'Make a change', edit_exclusive_path(@exclusive), :class => 'emphasis' %></p>
+
+</section>
+
+</center>

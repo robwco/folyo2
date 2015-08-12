@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   mount StripeEvent::Engine => '/stripe-events'
 
+  get "/folyo_test" => "subscriptions#folyo"
   get "/test_emails" => "subscriptions#test_email"
   get "/send_emails" => "subscriptions#send_email"
 
