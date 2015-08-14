@@ -1,4 +1,4 @@
-<% @exclusives.today.most_recently_updated.each do |exclusive| %>
+<% @exclusives.this_month.most_recently_updated.each do |exclusive| %>
 	<h3 style="text-transform: uppercase; margin: 2em 0 0;"><span style="color: #98ae2a;">Low Competition Lead -</span> <%= exclusive.category %>:</h3>
   <div style="margin: 2em 0; display: block;">
 		<%= image_tag exclusive.pic.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
@@ -14,6 +14,6 @@
     </div>
 <% end %>
 
-<% @leads.today.most_recently_updated.group_by(&:category).each do |category, leads| %>
+<% @leads.this_month.most_recently_updated.group_by(&:category).each do |category, leads| %>
 <%= render :partial => 'lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>
