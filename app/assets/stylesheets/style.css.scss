@@ -586,3 +586,40 @@ input[type=submit], a.submit {
 		background-image:url('../images/clients.png');
 	}
 }
+
+.tabs {
+	border-bottom: 1px solid #ddd;
+	display: table;
+	width: 100%;
+	padding: 0;
+	li {	
+		float: left;
+		display: block;
+		padding: .25em .5em;
+		border: 1px solid $gray;
+		margin: 0 .25em -1px;
+	  border-radius: 4px 4px 0 0;
+	}
+}
+
+.tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+}
+.tabs > li.active > a,
+.tabs > li.active > a:hover,
+.tabs > li.active > a:focus {
+  color: #555;
+  cursor: default;
+  border-bottom-color: transparent;
+}
+
+.lead-feed {
+	a {
+	margin-left: 1em; font-size: 14px; color: #222; font-weight: 500;
+	 	&:visited {
+			color: #898989;
+		}
+	}
+}

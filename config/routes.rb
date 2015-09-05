@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   mount StripeEvent::Engine => '/stripe-events'
 
+
+  get "/processing" => "rss#processing"
+  
   get "/folyo_test" => "subscriptions#folyo"
   get "/test_emails" => "subscriptions#test_email"
   get "/send_emails" => "subscriptions#send_email"
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
   get "/subscriptions/milestones" => "subscriptions#milestones", as: :update_subscription_milestones
   put "/subscriptions/milestones_save" => "subscriptions#milestones_save", as: :subscription_milestones_save
 
-  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
+  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans, :rss
 
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
 
