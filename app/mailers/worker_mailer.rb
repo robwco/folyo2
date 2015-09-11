@@ -20,7 +20,7 @@ class WorkerMailer < ActionMailer::Base
 	  category_ids = @user.category_ids
 
 	  if category_ids.empty?
-		  @leads = Lead.eager_load(:category).most_recent.limit(10)
+		  @leads = Lead.eager_load(:category).most_recent
 	  else
 		  @leads = Lead.eager_load(:category).most_recent.where("category_id IN (?)", category_ids)
 	  end
