@@ -82,8 +82,12 @@
 <body>
 	
 	<% flash.each do |key, value| %>
+		<% if key == "undo"%>
+	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value.html_safe %></div>
+		<% else %>
 	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value %></div>
-	      <% end %>
+	    <% end %>
+	<% end %>
 
 <%= yield %>
 

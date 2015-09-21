@@ -1,13 +1,13 @@
 <ul class="tabs">
-  <li class="active"><a href="#">All RSS Leads</a></li>
+  <li><a href="/rss">All RSS Leads</a></li>
   <li><a href="#">Other Sites</a></li>
   <li><a href="#">Email Finder</a></li>
-  <li><a href="/approved_links">Approved (<%= ApprovedLink.visible.count %>)</a></li>
+  <li class="active"><a href="#">Approved (<%= @approved_links.count %>)</a></li>
 </ul>
 
 <script>
 	$(document).ready(function() {
-		/*$(".rss_links a.hide").on("click", function() {
+		/*$(".approved_links a.hide").on("click", function() {
 			var row = $(this).parents("tr");
 			row.next().remove();
 			row.remove();
@@ -17,10 +17,6 @@
 
 <div class="content">
 
-
-	<a  href="#" style="float: right; font-size: 80%; color: #aaa;">Add RSS Feed <i class="fa fa-cog"></i></a>
-	
-
 	<div style="display: table;width: 100%; text-align: left; margin: 0 0 1em; text-align: left;">
 
 		
@@ -28,25 +24,25 @@
 	<a href="#" style="border: 1px solid #ddd; margin: -.5em .25em 0; padding: .35em .5em .25em; border-radius: .4em; font-size: 80%; color: red; font-weight: 500;">Remove from Feed</a></p>
 	</div>
 
-	<table class="rss_links">
-		<% @rss_links.each do |rss_link| %>
+	<table class="approved_links">
+		<% @approved_links.each do |approved_link| %>
 			<tr>
 				<td style="padding-top:.5em; padding-right:.5em">
-					<input type="checkbox" name="lead" value="<%= rss_link.id %>"> 
+					<input type="checkbox" name="lead" value="<%= approved_link.id %>"> 
 				</td>
 				<td style="padding-top:.5em">
-					<a href="<%= rss_link.link %>" target="_blank"><%= rss_link.title %></a> 
-					<span style="font-size: 12px; color: #666;"><%= rss_link.pub_date.to_s %></span>
+					<a href="<%= approved_link.link %>" target="_blank"><%= approved_link.title %></a> 
+					<span style="font-size: 12px; color: #666;"><%= approved_link.pub_date.to_s %></span>
 				</td>
 				<td style="width:250px; padding-top:.5em">
-					<a href="/rss/approve?rss_link_id=<%= rss_link.id %>" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Add to Approved →</a>
-					<a href="/rss/hide?rss_link_id=<%= rss_link.id %>" class="hide" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; color: red;">Hide</a>
+					<a href="/leads/new?approved_link_id=<%= approved_link.id %>" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Create Lead →</a>
+					<a href="/approved_links/hide?approved_link_id=<%= approved_link.id %>" class="hide" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; color: red;">Hide</a>
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td colspan="2" style="border-bottom: 1px solid #ddd; padding-bottom: .5em; margin: .125em 0;">
-					<%= rss_link.description.html_safe %>
+					<%= approved_link.description.html_safe %>
 				</td>
 			</tr>
 		<% end %>

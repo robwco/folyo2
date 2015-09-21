@@ -1,24 +1,23 @@
-class RssController < ApplicationController
-  before_action :authenticate_admin!, except: [:upload]
-  before_action :set_lead, only: [:show, :edit, :update, :destroy]
+class ApprovedLinksController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
 	#process_opml
-	@rss_links = RssLink.visible.newest.most_recent
+	@approved_links = ApprovedLink.visible.most_recent
   end
 
   def hide
-	rss_link_id = params[:rss_link_id]
+	approved_link_id = params[:approved_link_id]
 
-	rss_link = RssLink.find(rss_link_id)
-	unless rss_link.blank?
-		if rss_link.hide!
-			flash[:undo] = "You have removed '#{rss_link.title}'. <a href=\"/rss/unhide?rss_link_id=#{rss_link.id}\">Undo</a>".html_safe
+	approved_link = ApprovedLink.find(approved_link_id)
+	unless approved_link.blank?
+		if approved_link.hide!
+			flash[:undo] = "You have removed '#{approved_link.title}'. <a href=\"/approved_links/unhide?approved_link_id=#{approved_link.id}\">Undo</a>".html_safe
 		end
 			
 	end
 
-	redirect_to "/rss"
+	redirect_to "/approved_links"
   end
 
   def unhide
@@ -28,21 +27,6 @@ class RssController < ApplicationController
 	unless rss_link.blank?
 		if rss_link.show!
 			flash[:undo] = "You have re-added '#{rss_link.title}'. <a href=\"/rss/hide?rss_link_id=#{rss_link.id}\">Undo</a>".html_safe
-		end
-			
-	end
-
-	redirect_to "/rss"
-  end
-
-  def approve
-	rss_link_id = params[:rss_link_id]
-
-	rss_link = RssLink.find(rss_link_id)
-	unless rss_link.blank?
-		if rss_link.approve
-			#flash[:undo] = "You have approved '#{rss_link.title}'. <a href=\"/rss/disapprove?rss_link_id=#{rss_link.id}\">Undo</a>".html_safe
-			flash[:notice] = "You have approved '#{rss_link.title}'."
 		end
 			
 	end

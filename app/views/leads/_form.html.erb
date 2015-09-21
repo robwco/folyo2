@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+
+  <% unless @approved_lead.nil? %>
+	<p>
+		This is an RSS lead: <a href="<%= @approved_lead.link %>" target="_blank">Click here to review</a>.
+		<input type="hidden" name="approved_link_id" value="<%= @approved_lead.id %>" />
+	</p>
+  <% end %>
+
+
   <div class="field">
     <%= image_tag @lead.image.url(:thumb, timestamp: false), :style => "border-radius: 3px; width:50px;"  %><br>
     <%= f.file_field :image %>

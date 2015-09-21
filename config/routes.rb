@@ -8,6 +8,13 @@ Rails.application.routes.draw do
 
 
   get "/processing" => "rss#processing"
+  get "/rss/hide" => "rss#hide"
+  get "/rss/unhide" => "rss#unhide"
+  get "/rss/approve" => "rss#approve"
+
+  get "/approved_links" => "approved_links#index"
+  get "/approved_links/hide" => "approved_links#hide"
+  get "/approved_links/unhide" => "approved_links#unhide"
   
   get "/folyo_test" => "subscriptions#folyo"
   get "/test_emails" => "subscriptions#test_email"
