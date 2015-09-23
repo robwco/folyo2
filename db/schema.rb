@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920230949) do
+ActiveRecord::Schema.define(version: 20150922235957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -259,6 +259,7 @@ ActiveRecord::Schema.define(version: 20150920230949) do
     t.boolean  "approved"
   end
 
+  add_index "rss_links", ["guid"], name: "index_rss_links_on_guid", using: :btree
   add_index "rss_links", ["rss_feed_id"], name: "index_rss_links_on_rss_feed_id", using: :btree
 
   create_table "sales", force: true do |t|
