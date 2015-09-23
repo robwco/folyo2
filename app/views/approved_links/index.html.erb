@@ -1,5 +1,5 @@
 <ul class="tabs">
-  <li><a href="/rss">All RSS Leads</a></li>
+	<li><a href="/rss">All RSS Leads (<%= @rss_count %>)</a></li>
   <li><a href="#">Other Sites</a></li>
   <li><a href="#">Email Finder</a></li>
   <li class="active"><a href="#">Approved (<%= @approved_links.count %>)</a></li>
@@ -17,12 +17,12 @@
 
 <div class="content">
 
-	<div style="display: table;width: 100%; text-align: left; margin: 0 0 1em; text-align: left;">
+	<!--div style="display: table;width: 100%; text-align: left; margin: 0 0 1em; text-align: left;">
 
 		
 		<p class="content">Selected leads:
 	<a href="#" style="border: 1px solid #ddd; margin: -.5em .25em 0; padding: .35em .5em .25em; border-radius: .4em; font-size: 80%; color: red; font-weight: 500;">Remove from Feed</a></p>
-	</div>
+	</div-->
 
 	<table class="approved_links">
 		<% @approved_links.each do |approved_link| %>
@@ -48,10 +48,10 @@
 		<% end %>
 	</table>
 
-	<div style="display: table;width: 100%; text-align: left; margin: 2em 0 1em; text-align: left;">
+	<!--div style="display: table;width: 100%; text-align: left; margin: 2em 0 1em; text-align: left;">
 		<p class="content">Selected leads:
 	<a href="#" style="border: 1px solid #ddd; margin: -.5em .25em 0; padding: .35em .5em .25em; border-radius: .4em; font-size: 80%; color: red; font-weight: 500;">Remove from Feed</a></p>
-	</div>
+	</div-->
 
 
 </div>

@@ -4,6 +4,7 @@ class ApprovedLinksController < ApplicationController
   def index
 	#process_opml
 	@approved_links = ApprovedLink.visible.most_recent
+	@rss_count = RssLink.visible.newest.most_recent.count
   end
 
   def hide

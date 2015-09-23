@@ -5,6 +5,7 @@ class RssController < ApplicationController
   def index
 	#process_opml
 	@rss_links = RssLink.visible.newest.most_recent
+	@rss_count = @rss_links.count
   end
 
   def hide
