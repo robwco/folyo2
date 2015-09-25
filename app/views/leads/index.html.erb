@@ -1,9 +1,29 @@
-
-<p>Preview emails: <%= link_to 'All Leads', upload_path %> <%= link_to 'Design Leads', upload_design_path %> <%= link_to 'Development Leads', upload_development_path %></p>
+<ul class="tabs">
+  <li><a href="/rss">Find Prospects</a></li>
+  <li><a href="/approved_links">Qualify Leads</a></li>
+  <li class="active"><a href="/leads">Nurture Clients</a></li>
+</ul>
+<script>
+	$(document).ready(function() {
+		/*$(".approved_links a.hide").on("click", function() {
+			var row = $(this).parents("tr");
+			row.next().remove();
+			row.remove();
+		});*/
+	});
+</script>
 
 <div class="content">
 
+
 <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, class: "submit" %> <%= link_to 'New Lead', new_lead_path, class: "submit" %> <%= link_to 'New RFP', new_rfp_path, class: "submit" %>
+
+<br><br><br>
+
+
+Today's Leads <i class="fa fa-long-arrow-right"></i> <a href="#">Past Leads</a> <i class="fa fa-long-arrow-right"></i> <a href="#">Clients</a>
+
+
 <h1>Workshop-exclusive leads</h1>
 
 <table>

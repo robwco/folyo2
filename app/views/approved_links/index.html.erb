@@ -1,10 +1,8 @@
 <ul class="tabs">
-	<li><a href="/rss">All RSS Leads (<%= @rss_count %>)</a></li>
-  <li><a href="#">Other Sites</a></li>
-  <li><a href="#">Email Finder</a></li>
-  <li class="active"><a href="#">Approved (<%= @approved_links.count %>)</a></li>
+  <li><a href="/rss">Find Prospects <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, .5); display: inline-block; text-align: center; vertical-align: 3px;"><%= @rss_count %></span></a></li>
+  <li class="active"><a href="#">Qualify Leads <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, 1); display: inline-block; text-align: center; vertical-align: 3px;"><%= ApprovedLink.visible.count %></span></a></li>
+  <li><a href="/leads">Nurture Clients</a></li>
 </ul>
-
 <script>
 	$(document).ready(function() {
 		/*$(".approved_links a.hide").on("click", function() {
@@ -27,22 +25,17 @@
 	<table class="approved_links">
 		<% @approved_links.each do |approved_link| %>
 			<tr>
-				<td style="padding-top:.5em; padding-right:.5em">
-					<input type="checkbox" name="lead" value="<%= approved_link.id %>"> 
-				</td>
-				<td style="padding-top:.5em">
-					<a href="<%= approved_link.link %>" target="_blank"><%= approved_link.title %></a> 
-					<span style="font-size: 12px; color: #666;"><%= approved_link.pub_date.to_s %></span>
+				<td style="padding: 1.5em 0 .25em;">
+					<a href="<%= approved_link.link %>" target="_blank" style="color: #000; font-size: 18px !important; font-weight: 500; line-height: 1.33;"><%= approved_link.title %></a>
 				</td>
 				<td style="width:250px; padding-top:.5em">
-					<a href="/leads/new?approved_link_id=<%= approved_link.id %>" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Create Lead →</a>
-					<a href="/approved_links/hide?approved_link_id=<%= approved_link.id %>" class="hide" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; color: red;">Hide</a>
+					<a href="/leads/new?approved_link_id=<%= approved_link.id %>" style="margin: -.35em .25em 0; padding: .5em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; background-color: #2996bf; color: #FFF;  width: 8em; text-align: center;">Add Lead</a>
+					<a href="/approved_links/hide?approved_link_id=<%= approved_link.id %>" class="hide" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Nevermind</a>
 				</td>
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
-				<td colspan="2" style="border-bottom: 1px solid #ddd; padding-bottom: .5em; margin: .125em 0;">
-					<%= approved_link.description.html_safe %>
+				<td colspan="2" style="border-bottom: 1px solid #ddd; padding: .25em 0 1.5em 0; margin: .25em 0;">
+						<span style="font-size: 12px; color: #666;"><%= approved_link.pub_date.strftime("%b %d at %I:%M %p").to_s %></span>
 				</td>
 			</tr>
 		<% end %>

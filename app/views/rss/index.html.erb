@@ -1,8 +1,7 @@
 <ul class="tabs">
-  <li class="active"><a href="#">All RSS Leads (<%= @rss_count %>)</a></li>
-  <li><a href="#">Other Sites</a></li>
-  <li><a href="#">Email Finder</a></li>
-  <li><a href="/approved_links">Approved (<%= ApprovedLink.visible.count %>)</a></li>
+  <li class="active"><a href="#">Find Prospects <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, 1); display: inline-block; text-align: center; vertical-align: 3px;"><%= @rss_count %></span></a></li>
+  <li><a href="/approved_links">Qualify Leads <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, .5); display: inline-block; text-align: center; vertical-align: 3px;"><%= ApprovedLink.visible.count %></span></a></li>
+  <li><a href="/leads">Nurture Clients</a></li>
 </ul>
 
 <script>
@@ -18,8 +17,9 @@
 <div class="content">
 
 
-	<a  href="#" style="float: right; font-size: 80%; color: #aaa;">Add RSS Feed <i class="fa fa-cog"></i></a>
+	<a  href="feeds" style="font-size: 80%; color: #aaa;"><i class="fa fa-cog"></i> Edit Feed List</a>
 	
+	<a href="#" style="margin-top: 1em; display: table; border: 1px solid #ddd; margin: 0 .25em 2em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Remove Selected Leads</a>
 
 	<div style="display: table;width: 100%; text-align: left; margin: 0 0 1em; text-align: left;">
 
@@ -28,25 +28,28 @@
 	<a href="#" style="border: 1px solid #ddd; margin: -.5em .25em 0; padding: .35em .5em .25em; border-radius: .4em; font-size: 80%; color: red; font-weight: 500;">Remove from Feed</a></p-->
 	</div>
 
-	<table class="rss_links">
+	<table class="rss_links" style="border-top: 1px solid #ddd;">
 		<% @rss_links.each do |rss_link| %>
 			<tr>
-				<td style="padding-top:.5em; padding-right:.5em">
-					<input type="checkbox" name="lead" value="<%= rss_link.id %>"> 
+				<td style="vertical-align: top; padding: 1em .5em 0 0;">
+					<input type="checkbox">
 				</td>
-				<td style="padding-top:.5em">
-					<a href="<%= rss_link.link %>" target="_blank"><%= rss_link.title %></a> 
-					<span style="font-size: 12px; color: #666;"><%= rss_link.pub_date.to_s %></span>
+				
+				
+				<td style="padding:1em 0 .25em;">
+					<a href="<%= rss_link.link %>" target="_blank" style="color: #000; font-size: 13px !important; font-weight: 500; margin-bottom: 1em;"><%= rss_link.title.first(100) %> - <%= rss_link.description.first(200).html_safe.to_s.strip %></a>
+					<br>
+					<span style="font-size: 12px; color: #666; display: table; margin-top: .5em;"><%= rss_link.pub_date.strftime("%b %d at %I:%M %p").to_s %></span>
+
 				</td>
-				<td style="width:250px; padding-top:.5em">
-					<a href="/rss/approve?rss_link_id=<%= rss_link.id %>" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Add to Approved →</a>
-					<a href="/rss/hide?rss_link_id=<%= rss_link.id %>" class="hide" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; color: red;">Hide</a>
-				</td>
+				
+					<td style="padding-top:1.5em; vertical-align: top;">
+						<a href="/rss/approve?rss_link_id=<%= rss_link.id %>" style="margin: -.35em .25em 0; padding: .5em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; background-color: #2996bf; color: #FFF;  width: 8em; text-align: center;">Add Prospect</a>
+					</td>
+
 			</tr>
 			<tr>
-				<td>&nbsp;</td>
-				<td colspan="2" style="border-bottom: 1px solid #ddd; padding-bottom: .5em; margin: .125em 0;">
-					<%= rss_link.description.html_safe %>
+				<td colspan="3" style="border-bottom: 1px solid #ddd; padding-bottom: .5em; margin: .125em 0;">
 				</td>
 			</tr>
 		<% end %>

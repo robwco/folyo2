@@ -592,13 +592,19 @@ input[type=submit], a.submit {
 	display: table;
 	width: 100%;
 	padding: 0;
+	font-size: 13px;
+	margin: 3em auto;
 	li {	
 		float: left;
 		display: block;
-		padding: .25em .5em;
+		padding: .5em .75em .45em;
 		border: 1px solid $gray;
 		margin: 0 .25em -1px;
 	  border-radius: 4px 4px 0 0;
+		background-color: #f5f1ef;
+	}
+	li.active {
+		background-color: #FFF;
 	}
 }
 
@@ -617,7 +623,7 @@ input[type=submit], a.submit {
 
 .lead-feed {
 	a {
-	margin-left: 1em; font-size: 14px; color: #222; font-weight: 500;
+	margin-left: 1em; font-size: 12px; color: #222; font-weight: 500;
 	 	&:visited {
 			color: #898989;
 		}
