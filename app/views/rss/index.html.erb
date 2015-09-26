@@ -2,6 +2,9 @@
   <li class="active"><a href="#">Find Prospects <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, 1); display: inline-block; text-align: center; vertical-align: 3px;"><%= @rss_count %></span></a></li>
   <li><a href="/approved_links">Qualify Leads <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, .5); display: inline-block; text-align: center; vertical-align: 3px;"><%= ApprovedLink.visible.count %></span></a></li>
   <li><a href="/leads">Nurture Clients</a></li>
+
+
+	<a  href="/users/edit" style="float: right; color: #aaa;"><i class="fa fa-cog"></i> Account Settings</a>
 </ul>
 
 <script>
@@ -44,7 +47,7 @@
 				</td>
 				
 					<td style="padding-top:1.5em; vertical-align: top;">
-						<a href="/rss/approve?rss_link_id=<%= rss_link.id %>" style="margin: -.35em .25em 0; padding: .5em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; background-color: #2996bf; color: #FFF;  width: 8em; text-align: center;">Add Prospect</a>
+						<a href="/rss/approve?rss_link_id=<%= rss_link.id %>" style="margin: -.35em .25em 0; padding: .5em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; background-color: #2996bf; color: #FFF;  width: 8em; text-align: center;">Create Prospect</a>
 					</td>
 
 			</tr>

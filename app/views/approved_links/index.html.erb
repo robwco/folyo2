@@ -2,6 +2,9 @@
   <li><a href="/rss">Find Prospects <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, .5); display: inline-block; text-align: center; vertical-align: 3px;"><%= @rss_count %></span></a></li>
   <li class="active"><a href="#">Qualify Leads <span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, 1); display: inline-block; text-align: center; vertical-align: 3px;"><%= ApprovedLink.visible.count %></span></a></li>
   <li><a href="/leads">Nurture Clients</a></li>
+
+
+	<a  href="/users/edit" style="float: right; color: #aaa;"><i class="fa fa-cog"></i> Account Settings</a>
 </ul>
 <script>
 	$(document).ready(function() {
@@ -29,7 +32,7 @@
 					<a href="<%= approved_link.link %>" target="_blank" style="color: #000; font-size: 18px !important; font-weight: 500; line-height: 1.33;"><%= approved_link.title %></a>
 				</td>
 				<td style="width:250px; padding-top:.5em">
-					<a href="/leads/new?approved_link_id=<%= approved_link.id %>" style="margin: -.35em .25em 0; padding: .5em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; background-color: #2996bf; color: #FFF;  width: 8em; text-align: center;">Add Lead</a>
+					<a href="/leads/new?approved_link_id=<%= approved_link.id %>" style="margin: -.35em .25em 0; padding: .5em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; background-color: #2996bf; color: #FFF;  width: 8em; text-align: center;">Create Lead</a>
 					<a href="/approved_links/hide?approved_link_id=<%= approved_link.id %>" class="hide" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Nevermind</a>
 				</td>
 			</tr>

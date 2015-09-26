@@ -58,6 +58,9 @@ Rails.application.routes.draw do
   get "/work" => "workers#work"
   get "/settings" => "workers#settings"
 
+  get "/feeds" => "rss#feeds"
+
+  get "/all" => "leads#all"
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"

@@ -347,7 +347,7 @@ label {
 	width: 100%;
 }
 
-input[type="text"], input[type="password"], input[type="name"],  input[type="email"], input[type="number"], select, textarea, input[type=file]  {
+input[type="text"], input[type="password"], input[type="name"], input[type="url"],   input[type="email"], input[type="rss"], input[type="number"], select, textarea, input[type=file]  {
 	font: 18px/1.552em $ui-font;
  	-webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -590,6 +590,7 @@ input[type=submit], a.submit {
 .tabs {
 	border-bottom: 1px solid #ddd;
 	display: table;
+	max-width: 850px;
 	width: 100%;
 	padding: 0;
 	font-size: 13px;
