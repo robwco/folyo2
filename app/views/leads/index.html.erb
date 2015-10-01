@@ -22,16 +22,18 @@
 .trash:hover {
 	color: red;
 }
+
 </style>
 	
 <ul class="tabs">
-  <li><a href="/rss">Find Prospects</a></li>
-  <li><a href="/approved_links">Qualify Leads</a></li>
-  <li class="active"><a href="/leads">Nurture Clients</a></li>
-
-
+  <li><a href="/rss">Find Prospects <% unless @rss_count == 0 %><span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, 1); display: inline-block; text-align: center; vertical-align: 3px;"><%= @rss_count %></span><% end %></a></li>
+  <li><a href="/approved_links">Qualify Leads <% unless ApprovedLink.visible.count == 0 %><span style="width: 10px; height: 10px; font-size: 8px; border-radius: 20px; padding: 3px; color: #FFF; background-color: rgba(219, 48, 30, .5); display: inline-block; text-align: center; vertical-align: 3px;"><%= ApprovedLink.visible.count %></span><% end %></a></li>
+  <li class="active"><a href="#">Email Clients</a></li>
 	<a  href="/users/edit" style="float: right; color: #aaa;"><i class="fa fa-cog"></i> Account Settings</a>
 </ul>
+
+
+
 <script>
 	$(document).ready(function() {
 		/*$(".approved_links a.hide").on("click", function() {
@@ -45,15 +47,19 @@
 <div class="content">
 
 <div style="display: table; margin: 1em 0 3em;">
-Admin Stuff: <a href="/all">View All Leads</a>  /  <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path  %>  /  <%= link_to 'New Lead', new_lead_path %>  /  <%= link_to 'New RFP', new_rfp_path %></div>
+<span style="font-size: 80%; margin-right: 1em; ">Admin Stuff:</span> <a href="/all" class="sub-menu" >View All Leads</a> <%= link_to 'New Workshop Exclusive Lead', new_exclusive_path, :class => "sub-menu"   %> <%= link_to 'New Lead', new_lead_path, :class => "sub-menu" %> <%= link_to 'New RFP', new_rfp_path, :class => "sub-menu" %></div>
 
 
-<a  href="feeds" style="font-size: 80%; color: #aaa;"><i class="fa fa-cog"></i> Edit Your Templates</a>
+<a class="sub-menu" href="#">Edit Email Templates</a>
+<a class="sub-menu" href="#">Follow ups</a>
+
+
+
 
 
 <table style="margin: 0 0 7em 0;">
   <tbody>
-    <th colspan="3"><h2>Leads you're emailing for the first time (Scheduled for 10:12 AM)</h2></th>
+    <th colspan="3"><h2>Leads I'm emailing today for the first time (Scheduled for 10:12 AM)</h2></th>
     <% @leads.most_recently_updated.limit(3).each do |lead| %>
       <tr>
         <td style="padding: 1em;" colspan="3"><%= image_tag lead.image.url(:thumb, timestamp: false), :style => "border-radius: 50px; width:20px; vertical-align: -5px; margin-right: .5em;"  %> <strong><%= lead.name %></strong> about the project '<%= link_to lead.title, edit_lead_path(lead) %>'...</td>
@@ -87,6 +93,44 @@ Admin Stuff: <a href="/all">View All Leads</a>  /  <%= link_to 'New Workshop Exc
   </tbody>
 </table>
 
+
+
+
+<table style="margin: 0 0 7em 0;">
+  <tbody>
+    <th colspan="3"><h2>Leads I've already emailed and need to follow up with</h2></th>
+    <% @leads.most_recently_updated.limit(3).each do |lead| %>
+      <tr>
+        <td style="padding: 1em;" colspan="3"><%= image_tag lead.image.url(:thumb, timestamp: false), :style => "border-radius: 50px; width:20px; vertical-align: -5px; margin-right: .5em;"  %> <strong><%= lead.name %></strong> about the project '<%= link_to lead.title, edit_lead_path(lead) %>'...</td>
+      </tr>
+			<tr>
+				<td colspan="3">
+					<div class="scheduled-email">
+						
+						<a href="#" class="trash"><i class="fa fa-trash-o"></i></a>
+						<p>Hey <%= lead.name %>,</p>
+
+						<p>I saw your job post looking for a freelancer. If you're not seeing the level of quality you want or are just flat out getting too many replies... I have something that might help.</p>
+
+						<p>It's a private job board that freelancers pay to use – so you spend less time choosing from a group of amateurs (as I’m sure you’ve also been inundated with garbage).</p>
+
+						<p>If you want to check it out here's the link: http://letsworkshop.com/connect</p>
+
+						<p>Robert</p>
+						
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="width: 500px;"></td>
+				<td style="padding: .5em 0 2em 0;">
+					<a href="#" style="margin: -.35em .25em 0; padding: .5em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right; background-color: #2996bf; color: #FFF;  width: 8em; text-align: center;">Change Email</a>
+					<a href="#" class="hide" style="border: 1px solid #ddd; margin: -.35em .25em 0; padding: .25em .5em .25em .75em; border-radius: .4em; font-size: 80%; font-weight: 500; float: right;">Don't Send Yet</a>
+				</td>
+			</tr>
+    <% end %>
+  </tbody>
+</table>
 
 
 

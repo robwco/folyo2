@@ -38,8 +38,8 @@
 			</blockquote>
 			
 
-			<h4>How do I cancel?</h4>
-			<p>You can instantly cancel your account at any time <%= link_to "using this link", cancel_subscription_path %>. You can also get to it by clicking 'Sign in' on the homepage or from the emails I'll be sending.</p>
+			<!--<h4>How do I cancel?</h4>
+			<p>You can instantly cancel your account at any time <%= link_to "using this link", cancel_subscription_path %>. You can also get to it by clicking 'Sign in' on the homepage or from the emails I'll be sending.</p>-->
 			<p>Your next charge will be $<%= current_user.subscription.plan.price %> on <%= current_user.billing_period_end %>. <%= link_to "Click here to update your credit card", update_subscription_creditcard_path %>.</p>
 
 			<h4>How many leads will I be getting?</h4>

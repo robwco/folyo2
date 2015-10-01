@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
   put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
   get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
+  get "/subscriptions/cancel_by_email" => "subscriptions#cancel_by_email", as: :cancel_subscription_by_email
   post "/subscriptions/cancel" => "subscriptions#cancel_post", as: :cancel_subscription_post
   post "/subscriptions/cancel_leads_followup" => "subscriptions#cancel_leads_followup", as: :cancel_subscription_leads_followup
   delete "/subscriptions/destroy" => "subscriptions#destroy", as: :destroy_subscription
