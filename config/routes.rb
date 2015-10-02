@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   root to: redirect("/users/edit")
 
   get "/welcome" => "subscriptions#welcome", as: :welcome
+  get "/welcome-next-step" => "subscriptions#welcome-next-step"
   get "/admins/welcome" => "admins#welcome", as: :admin_root
   get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
   put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
