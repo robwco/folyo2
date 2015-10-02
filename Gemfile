@@ -33,7 +33,7 @@ gem 'drip-ruby', :require => 'drip'
 gem 'mandrill_dm'
 gem 'delayed_job_active_record'
 gem 'clockwork'
-# gem 'puma'
+gem 'puma'
 
 group :development do
   gem 'stripe-ruby-mock'
