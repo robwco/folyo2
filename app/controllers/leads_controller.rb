@@ -1,10 +1,19 @@
 class LeadsController < ApplicationController
-  before_action :authenticate, :set_lead, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, except: [:upload]
+  before_action :set_lead, only: [:show, :edit, :update, :destroy]
+
   def index
     @leads = Lead.all
     @exclusives = Exclusive.all
+  	@approved_links = ApprovedLink.visible.most_recent
+  	@rss_count = RssLink.visible.newest.most_recent.count
   end
 
+  def all
+    @leads = Lead.all
+    @exclusives = Exclusive.all
+  end
+  
   def upload
     @leads = Lead.all
     @exclusives = Exclusive.all
@@ -33,6 +42,13 @@ class LeadsController < ApplicationController
 
   def new
     @lead = Lead.new
+
+	unless params[:approved_link_id].nil?
+		@approved_lead = ApprovedLink.find(params[:approved_link_id])
+
+		@lead.title = @approved_lead.title
+		@lead.url = @approved_lead.link	
+	end
   end
 
   def edit
@@ -43,7 +59,14 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
+		unless params[:approved_link_id].nil?
+			approved_lead = ApprovedLink.find(params[:approved_link_id])
+			approved_lead.hide!
+
+			format.html { redirect_to "/approved_links", notice: 'Lead was successfully created.' }
+		else
+			format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
+		end
         format.json { render :show, status: :created, location: @lead }
       else
         format.html { render :new }

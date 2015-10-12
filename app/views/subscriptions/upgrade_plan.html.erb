@@ -1,0 +1,28 @@
+<h2>Upgrade your Workshop plan</h2>
+
+<%= form_for(current_user, url: upgrade_save_path, html: { method: :put }) do |f| %>
+  <% if current_user.subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(current_user.subscription.errors.count, "error") %> prohibited your upgrade from being saved:</h2>
+
+      <ul>
+      <% current_user.subscription.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <ul style="list-style:none;">
+	<% @plans.each do |plan| %>
+		<li><label style="text-transform:none;font-weight:normal;"><input type="radio" name="plan" value="<%= plan.id %>" /> <strong><%= plan.name %></strong> for only $<%= plan.price %> / <%= plan.interval_text %></label></li>
+  	<% end %>
+  </ul>
+
+  <div class="actions">
+    <%= f.submit "Upgrade your plan" %>
+  </div>
+
+  <%= link_to "Back", edit_user_registration_path %> <br/>
+
+<% end %>

@@ -1,0 +1,26 @@
+<div class="content">
+	<h1>Why are you cancelling?</h1>
+
+	<%= form_for(@cancellation, url: cancel_subscription_post_path, html: { method: :post }) do |f| %>
+		<ul style="list-style:none;">
+			<li><label style="text-transform: none; font-weight: 300; letter-spacing: 0; font-size: 19px;"><input type="radio" name="cancel_reason" value="<%= Cancellation::NOT_ENOUGH_RESPONSES %>" style="margin-right: 1em; vertical-align: .25em;" /> I don't get enough responses to the leads I contact.</label></li>
+			
+			
+				<li><label style="text-transform: none; letter-spacing: 0; font-size: 19px; font-weight: 300;"><input type="radio" name="cancel_reason" value="<%= Cancellation::WRONG_LEAD_TYPES %>" style="margin-right: 1em; vertical-align: .25em;" /> You haven't sent me the right type of leads.</label></li>
+				
+				
+
+					<li><label style="text-transform: none; letter-spacing: 0; font-weight: 300; font-size: 19px;"><input type="radio" name="cancel_reason" value="<%= Cancellation::HIGHER_QUALITY_LEADS %>" style="margin-right: 1em; vertical-align: .25em;" /> I want higher quality leads.</label></li>
+
+			
+						<li><label style="text-transform: none; letter-spacing: 0; font-weight: 300; font-size: 19px;"><input type="radio" name="cancel_reason" value="<%= Cancellation::IM_BOOKED %>" style="margin-right: 1em; vertical-align: .25em;" /> I just landed work so I'm booked now.</label></li>
+						
+					
+		</ul>
+
+		<%= f.submit 'Next' %>
+	<% end %>
+	<p>
+		<%= link_to 'Go back', edit_user_registration_path %>
+	</p>
+</div>

@@ -1,0 +1,35 @@
+<div class="content">
+	<h1>Welcome, Admin!</h1>
+
+	<% if current_admin.site_owner? %>
+		<h2>Subscriber Import</h2>
+		<ol style="margin-left: 25px">
+			<li><%= link_to 'Import Plans', import_plans_path %></li>
+			<li><%= link_to 'Import Customers', import_customers_path %></li>
+		</ol>
+		
+
+		<h2>Subscriptions</h2>
+		<ul>
+			<li><%= link_to 'View Plans', plans_path %></li>
+			<li><%= link_to 'View Coupons', plans_path %></li>
+		</ul>
+
+		<h2>Workshop content</h2>
+		<ul>
+			<li><%= link_to 'View FAQs', faqs_path %></li>
+		</ul>
+	<% end %>
+
+	<h2>Leads</h2>
+	<ul>
+		<li><%= link_to 'RSS Feed', rss_index_path %></li>
+		<li><%= link_to 'View Leads', leads_path %></li>
+		<li><%= link_to 'View Exclusives', exclusives_path %></li>
+		<li><%= link_to 'View RFPs', rfps_path %></li>
+	</ul>
+
+	<% if admin_signed_in? %>
+		<p><%= link_to "Log out", destroy_admin_session_path, method: :delete %></p>
+	<% end %>
+</div>

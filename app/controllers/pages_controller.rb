@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @number_of_leads_this_month = Lead.this_month.distinct.count
     @sent_this_month = @leads.this_month.map{ |lead| lead.budget.to_i }.reduce((@number_of_leads_this_month * 1000), :+) + @exclusives.this_month.map{ |exclusive| exclusive.budget.to_i }.reduce(0, :+)
     if user_signed_in?
-      redirect_to people_url
+      redirect_to edit_user_registration_path
     end
 
     # Sales Links
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
       @sales_link = 'https://workshop.memberful.com/checkout?plan=2713'
       @coupon_message = '<p class="coupon_message">Happy New Year! As a special thank you, I&#39;m offering <strong>20% off and a free 30 day trial</strong> at the bottom of this page. Thanks again, you guys rock! – Robert</p>'.html_safe
     else
-      @sales_link = 'https://workshop.memberful.com/checkout?plan=5717'
+      @sales_link = '/subscriptions/new'
     end
   end
 

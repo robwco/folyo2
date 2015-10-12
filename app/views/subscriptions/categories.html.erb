@@ -1,0 +1,9 @@
+<div class="content">
+<%= form_for(@user, url: subscription_categories_save_path, html: { method: :put }) do |f| %>
+  <%= render 'registrations/categories' %>
+
+  <div class="actions">
+    <%= f.submit "Update Categories", id: 'form-submit' %>
+  </div>
+<% end %>
+</div>

@@ -75,8 +75,19 @@
 
 	</script>
 		<%= favicon_link_tag 'favicon.ico' %>
+		
+		<!-- Font awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
+	
+	<% flash.each do |key, value| %>
+		<% if key == "undo"%>
+	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value.html_safe %></div>
+		<% else %>
+	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value %></div>
+	    <% end %>
+	<% end %>
 
 <%= yield %>
 

@@ -23,9 +23,17 @@ gem 'mailman', require: false
 gem 'mail'
 gem 'devise', '~> 3.4.1'
 gem 'stripe', '~> 1.17.0'
+gem 'stripe_event'
 gem 'httparty'
 gem 'will_paginate', '~> 3.0.5'
 gem 'ancestry'
+gem 'aasm'
+gem 'paper_trail', '~> 3.0.6'
+gem 'drip-ruby', :require => 'drip'
+gem 'mandrill_dm'
+gem 'delayed_job_active_record'
+gem 'clockwork'
+gem 'puma'
 
 group :development do
   gem 'stripe-ruby-mock'

@@ -1,0 +1,9 @@
+<div class="content">
+<%= form_for(@user, url: subscription_milestones_save_path, html: { method: :put }) do |f| %>
+  <%= render 'subscriptions/milestone_list' %>
+
+  <div class="actions">
+    <%= f.submit "Update your progress", id: 'form-submit' %>
+  </div>
+<% end %>
+</div>

@@ -1,10 +1,56 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :admins
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :people
 
-  root "pages#home"
+  mount StripeEvent::Engine => '/stripe-events'
 
-  resources :exclusives, :leads, :workers, :sessions, :sales, :products, :prospects, :rfps
+
+  get "/processing" => "rss#processing"
+  get "/rss/hide" => "rss#hide"
+  get "/rss/unhide" => "rss#unhide"
+  get "/rss/approve" => "rss#approve"
+
+  get "/approved_links" => "approved_links#index"
+  get "/approved_links/hide" => "approved_links#hide"
+  get "/approved_links/unhide" => "approved_links#unhide"
+  
+  get "/folyo_test" => "subscriptions#folyo"
+  get "/test_emails" => "subscriptions#test_email"
+  get "/send_emails" => "subscriptions#send_email"
+
+  get "/imports/plans" => "imports#plans", as: :import_plans
+  post "/imports/import_plans" => "imports#import_plans", as: :save_imported_plans
+  get "/imports/customers" => "imports#customers", as: :import_customers
+  post "/imports/import_customers" => "imports#import_customers", as: :save_imported_customers
+
+  root to: redirect("/users/edit")
+
+  get "/welcome" => "subscriptions#welcome", as: :welcome
+  get "/welcome-next-step" => "subscriptions#welcome-next-step"
+  get "/admins/welcome" => "admins#welcome", as: :admin_root
+  get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
+  put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
+  get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
+  get "/subscriptions/cancel_by_email" => "subscriptions#cancel_by_email", as: :cancel_subscription_by_email
+  post "/subscriptions/cancel" => "subscriptions#cancel_post", as: :cancel_subscription_post
+  post "/subscriptions/cancel_leads_followup" => "subscriptions#cancel_leads_followup", as: :cancel_subscription_leads_followup
+  delete "/subscriptions/destroy" => "subscriptions#destroy", as: :destroy_subscription
+  get "/subscriptions/creditcard" => "subscriptions#creditcard", as: :update_subscription_creditcard
+  put "/subscriptions/creditcard_save" => "subscriptions#creditcard_save", as: :subscription_creditcard_save
+  put "/subscriptions/reactivate" => "subscriptions#reactivate", as: :reactivate_subscription
+  get "/subscriptions/categories" => "subscriptions#categories", as: :update_subscription_categories
+  put "/subscriptions/categories_save" => "subscriptions#categories_save", as: :subscription_categories_save
+  
+  get "/categories/confirmed" => "subscriptions#updated_categories_confirmed", as: :subscription_categories_save_confirmation
+  
+  get "/subscriptions/milestones" => "subscriptions#milestones", as: :update_subscription_milestones
+  put "/subscriptions/milestones_save" => "subscriptions#milestones_save", as: :subscription_milestones_save
+
+  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans, :rss
+
+  put "/plans/archive/:id" => "plans#archive", as: :archive_plan
 
 
   get "/preview" => "exclusives#preview"
@@ -16,6 +62,9 @@ Rails.application.routes.draw do
   get "/work" => "workers#work"
   get "/settings" => "workers#settings"
 
+  get "/feeds" => "rss#feeds"
+
+  get "/all" => "leads#all"
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
@@ -71,6 +120,9 @@ Rails.application.routes.draw do
 
   devise_scope :user do 
       match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
+  devise_scope :admin do 
+      match '/sessions/admin', to: 'devise/sessions#create', via: :post
   end
 
   
