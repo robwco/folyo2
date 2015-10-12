@@ -52,6 +52,8 @@ Rails.application.routes.draw do
 
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
 
+
+  get "/preview" => "exclusives#preview"
   get "/connect" => "exclusives#connect"
   get "/build" => "exclusives#build"
   

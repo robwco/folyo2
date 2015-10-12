@@ -17,6 +17,7 @@ class LeadsController < ApplicationController
   def upload
     @leads = Lead.all
     @exclusives = Exclusive.all
+    render layout: false
   end
 
   def onboard
@@ -27,11 +28,13 @@ class LeadsController < ApplicationController
   def upload_design
     @leads = Lead.all
     @exclusives = Exclusive.all
+    render layout: false
   end
 
   def upload_development
     @leads = Lead.all
     @exclusives = Exclusive.all
+    render layout: false
   end
 
   def show
