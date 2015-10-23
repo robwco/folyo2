@@ -1,4 +1,215 @@
 <style>
+.trash {
+	color: #aaa; font-size: 80%;
+}
+.trash:hover {
+	color: red;
+}
+</style>
+
+<div class="action-buttons" style="display: table; margin: 2em auto; width: 660px;">
+<a href="/all" class="sub-menu">View All Leads</a>
+<a href="#new-lead" class="sub-menu">Create Lead</a>
+<%= link_to 'Create Workshop Exclusive Lead', new_exclusive_path, :class => "sub-menu"  %>  
+<%= link_to 'Upload RFP', new_rfp_path, :class => "sub-menu"  %>
+</div>
+
+
+<div style="width: 845px; display: table; margin: 0 auto;">
+
+
+	<div style="width: 270px; height: 325px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px; display: inline-block; padding: 10px 20px; box-sizing: border-box; position: relative; float: left;">
+		<h3 style="font-size: 16px; margin: 0; text-align: center;">What we've found today</h3>
+
+		<div style="text-align: center;  border-radius: 5px; padding: .5em; width: 50px; margin: 0px 10px 0 0; float: left; box-sizing: border-box; width: 100%;">
+			<span style="font-weight: 600; font-size: 40px;">2<span style="font-size: 25px;"> / 18 total </span></span>
+		</div>
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3; border-radius: 5px; padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color: #aaa; font-weight: 600;">2<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #1ec87b;">Graphics</span>
+		</div>
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3;  border-radius: 5px; padding: .5em;  width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">1<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727;">Marketing</span>
+		</div>
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3; border-radius: 5px; padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">0<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727;">Inter.</span>
+		</div>
+
+		<div style="text-align: center; border: 1px solid #dae1e3; border-radius: 5px;  padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">0<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727;">PHP</span>
+		</div>
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3;  border-radius: 5px; padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">0<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727;">Javascript</span>
+		</div>
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3; border-radius: 5px; padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">0<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727;">Python</span>
+		</div>
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3; border-radius: 5px;  padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">0<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727;">Ruby</span>
+		</div>
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3; border-radius: 5px;  padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">0<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727;">Mobile</span>
+		</div>
+
+
+
+		<div style="text-align: center; border: 1px solid #dae1e3; border-radius: 5px;  padding: .5em; width: 66px; margin: 10px 10px 0 0; float: left; box-sizing: border-box;">
+			<span style="color:	#aaa; font-weight: 600;">0<span style="font-size: 12px;"> / 2</span></span><br>
+			<span style="font-size: 10px; color: #E44727; ">Full Stack</span>
+		</div>
+
+
+	</div>
+
+
+<div style="width: 270px; height: 325px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px; display: inline-block; padding: 10px 20px; box-sizing: border-box; position: relative; float: left;">
+	<h3 style="font-size: 16px; margin: 0; text-align: center;">Waiting for you</h3>
+	
+	<div style="height: 260px; overflow: hidden;">
+	
+	<p style="font-size: 12px; margin: 1em 0 0;">Need to be approved:</p>
+	<table style="margin: 0;">
+		<tr>
+			<td>
+			  <input type="checkbox" name="favorite1" value="chocolate" style="margin: 0 .5em 0 0;">
+			</td>
+			<td>
+				<p style="margin: 0; padding: 5px 0 0; font-size: 12px; width: 190px; height: 20px; white-space: nowrap;
+			  overflow: hidden; text-overflow: ellipsis;"><a href="http://letsworkshop.com">https://authenticjobs.com/rss/index.xml/project/20480/38494040</a></p>
+			</td>
+			<td><a href="#" class="trash"><i class="fa fa-trash-o"></i></a></td>
+		</tr>
+		<tr>
+			<td>
+			  <input type="checkbox" name="favorite1" value="chocolate" style="margin: 0 .5em 0 0;">
+			</td>
+			<td>
+				<p style="margin: 0; padding: 5px 0 0; font-size: 12px; width: 195px; height: 20px; white-space: nowrap;
+			  overflow: hidden; text-overflow: ellipsis;"><a href="http://letsworkshop.com">https://authenticjobs.com/rss/index.xml/project/20480/38494040</a></p>
+			</td>
+			<td><a href="#" class="trash"><i class="fa fa-trash-o"></i></a></td>
+		</tr>
+		<tr>
+			<td>
+			  <input type="checkbox" name="favorite1" value="chocolate" style="margin: 0 .5em 0 0;">
+			</td>
+			<td>
+				<p style="margin: 0; padding: 5px 0 0; font-size: 12px; width: 195px; height: 20px; white-space: nowrap;
+			  overflow: hidden; text-overflow: ellipsis;"><a href="http://letsworkshop.com">https://authenticjobs.com/rss/index.xml/project/20480/38494040</a></p>
+			</td>
+			<td><a href="#" class="trash"><i class="fa fa-trash-o"></i></a></td>
+		</tr>
+		<tr>
+			<td>
+			  <input type="checkbox" name="favorite1" value="chocolate" style="margin: 0 .5em 0 0;">
+			</td>
+			<td>
+				<p style="margin: 0; padding: 5px 0 0; font-size: 12px; width: 195px; height: 20px; white-space: nowrap;
+			  overflow: hidden; text-overflow: ellipsis;"><a href="http://letsworkshop.com">https://authenticjobs.com/rss/index.xml/project/20480/38494040</a></p>
+			</td>
+			<td><a href="#" class="trash"><i class="fa fa-trash-o"></i></a></td>
+		</tr>
+		<tr>
+			<td>
+			  <input type="checkbox" name="favorite1" value="chocolate" style="margin: 0 .5em 0 0;">
+			</td>
+			<td>
+				<p style="margin: 0; padding: 5px 0 0; font-size: 12px; width: 195px; height: 20px; white-space: nowrap;
+			  overflow: hidden; text-overflow: ellipsis;"><a href="http://letsworkshop.com">https://authenticjobs.com/rss/index.xml/project/20480/38494040</a></p>
+			</td>
+			<td><a href="#" class="trash"><i class="fa fa-trash-o"></i></a></td>
+		</tr>
+
+	</table>
+
+	
+	<p style="font-size: 12px; margin: 1em 0 0;">Needs additional info:</p>
+
+	<% @leads.this_week.most_recently_updated.group_by(&:category).each do |category, leads| %>
+	  <% leads.each do |lead| %>
+	      <div style="margin: .5em 0 0 0; display: table;">
+					<div style="display: table; height: 15px;">
+						<p style="margin: 0; font-size: 12px; width: 200px; height: 20px; white-space: nowrap;
+					  overflow: hidden; text-overflow: ellipsis;"><a href="<%= edit_lead_path(lead) %>"><%= lead.url %></a></p>
+					</div>
+				</div>
+	  <% end %>
+	
+		<% end %>
+	
+	</div>
+	
+	
+	<div style="position: absolute; bottom: 2px; width: 230px; height: 25px; box-sizing: content-box;">
+	<hr>
+	<center>
+	<a href="#" class="sub-menu">View all</a>
+	</center>
+	</div>
+
+</div>
+
+
+<div style="width: 270px; height: 325px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px; display: inline-block; padding: 10px 20px; box-sizing: border-box; position: relative; float: left;">
+	<h3 style="font-size: 16px; margin: 0; text-align: center;">Ready to send</h3>
+	
+	
+	<% @leads.this_week.most_recently_updated.group_by(&:category).each do |category, leads| %>
+	  <% leads.each do |lead| %>
+	      <div style="margin: .5em 0 0 0; display: table;">
+	        <%= image_tag lead.image.url(:thumb, timestamp: false), :style => "width: 20px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
+					<div style="display: table; height: 15px;">
+						<p style="margin: 0; font-size: 12px; width: 200px; height: 20px; white-space: nowrap;
+					  overflow: hidden; text-overflow: ellipsis;"><a href="<%= edit_lead_path(lead) %>"><%= lead.name %> is looking for a <%= lead.title %></a></p>
+					</div>
+				</div>
+	  <% end %>
+	
+		<% end %>
+	
+	<div style="position: absolute; bottom: 2px; width: 230px; height: 25px; box-sizing: content-box;">
+	<hr>
+	<center>
+	<a href="#" class="sub-menu">View all</a>
+	</center>
+	</div>
+
+</div>
+</div>
+
+
+
+
+<div id="new-lead">
+	<h1 style="margin: 1em auto .5em;">Create a new lead</h1>
+<%= render 'form' %>
+</div>
+
+</div>
+
+<!-- 
+<style>
 .scheduled-email {
 	margin: .5em 0; 
 	border-radius: 4px; 
@@ -135,4 +346,4 @@
 
 
 
-</div>
+</div>-->

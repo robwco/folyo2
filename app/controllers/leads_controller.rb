@@ -7,6 +7,8 @@ class LeadsController < ApplicationController
     @exclusives = Exclusive.all
   	@approved_links = ApprovedLink.visible.most_recent
   	@rss_count = RssLink.visible.newest.most_recent.count
+  	
+    @lead = Lead.new
   end
 
   def all

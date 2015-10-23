@@ -18,9 +18,13 @@
 	</p>
   <% end %>
 
-
-  <div class="field">
-    <%= image_tag @lead.image.url(:thumb, timestamp: false), :style => "border-radius: 3px; width:50px;"  %><br>
+	
+  <div style="margin: 0;">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field" style="margin: 0; width: 200px;">
+    <%= f.label "Upload a Photo" %><br>
     <%= f.file_field :image %>
   </div>
   <div class="field">
@@ -30,10 +34,6 @@
   <div class="field">
     <%= f.label :category %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category"} %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
