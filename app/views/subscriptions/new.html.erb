@@ -1,27 +1,39 @@
 <section class="loose-wrap">
 	<center>
-		<h1 style="margin: 2.1em 0 0;">Start your new Workshop account</h1>
+		<h1 style="margin: 2.1em 0 0;">See What Type of Projects We Send</h1>
 		<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> <%= @plan.interval_text %>.
 		<% unless @plan.yearly? or !@yearly.present? %>
 			<a href="/subscriptions/new?plan=<%= @yearly.id %>">Switch to yearly</a>.
 		<% end %>
 		</p>
-		<!-- 		<p style="font-size: 16px; margin: 0 0 2em;">Last week Workshop sent $<%= number_with_delimiter(@sent_this_week, :delimiter => ',') %> worth of client work to members. Start landing projects and filling your pipeline with a risk-free account.</p>
-		
-
-		. Last week we sent 
-		<p>Your account is risk-free for 30 days. Get your money back at any time.</p>
-		<table>
-		<tr>
-		<td><%= image_tag("rob.png", :align => "left", :style => "margin: 0 2em 5em 0; width: 6em; border-radius: 1em;" ) %></td>
-		<td>
-		<p>I'm Robert and I'm going to help you get set up so you can start landing projects using Workshop today.</p>
-		<p>To make sure Workshop is right for you, I'm going to setup your account by asking you a few questions then we can get started filling your pipeline.</p>
-	
-		</tr>
-		</table>
-		-->
+	</center>
 </section>
+
+<div style="display: table; margin: 0 auto; width: 800px;">
+	<div style="width: 300px; float: left;">
+		<h3>Every lead we send is:</h3>
+		<ul>
+			<li><i class="fa fa-certificate"></i> A project-based opportunity</li>
+			<li>Hand-checked for quality.</li>
+			<li>Worth a $1,000+ budget or more</li>
+			<li>Open to remote freelancers anywhere</li>
+		</ul>
+	</div>
+
+	<div style="width: 500px; float: left;">
+		<h3>The 8 project types we send are:<h3>
+			<ol>
+				<li>Clients building apps that need help with code</li>
+				<li>People looking for full-time help that might be better off hiring contractors</li>
+				<li>People building stores or shops where they sell stuff</li>
+				<li>People needing graphics for a marketing project</li>
+				<li>People building a content or marketing sites like a blog</li>
+				<li>People running design and development agencies that need help sub-contracting</li>
+				<li>People requesting proposals for big budget projects</li>
+				<li>People requesting proposals for government projects</li>
+			</ol>
+	</div>
+</div>
 
 <div class="reading-wrap buy-form">
 
@@ -30,6 +42,8 @@
 	
 	<%= form_for :user, url: subscriptions_path, id: 'new_user' do |f| %>
 
+	<h1 style="margin: 2.1em 0 0;">Start Your New Workshop Subscription</h1>
+	<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> <%= @plan.interval_text %>.
 		<% if @user.errors.any? || @user.subscription.errors.any? %>
 			<div id="error_explanation">
 

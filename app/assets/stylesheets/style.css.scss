@@ -16,8 +16,8 @@ $line-color:						$gray;
 $background-color:			$white;
 $alt-background-color: 	$off-white;
 
-$ui-font: 							"rooney-sans", Verdana, Sans-Serif;
-$header-font:						"rooney-sans", Verdana, Sans-Serif;
+$ui-font: 							'concourse_t3regular', Lucida Grande, sans-serif;
+$header-font:						'concourse_t3bold', Lucida Grande, Sans-Serif;
 
 
 $small-font-size: 			90%;
@@ -33,6 +33,28 @@ $content-width:					53em;
 $paragraph-width:				660px;
 
 $ui-border-radius:			.4em;
+
+@font-face {
+    font-family: 'concourse_t3bold';
+    src: url('../fonts/concourse_t3_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'concourse_t3regular';
+    src: url('../fonts/concourse_t3_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+font-family: Cortado-Web;
+src: url('../fonts/CortadoScript.eot');
+src: url('../fonts/CortadoScript.eot?#iefix') format('embedded-opentype'),
+url('../fonts/CortadoScript.woff') format('woff');
+}
 
 
 * {

@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_action :authenticate_admin!, except: [:upload]
+  before_action :authenticate_admin!, except: [:upload, :index]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
 
   def index
