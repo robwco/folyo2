@@ -16,6 +16,10 @@ class LeadsController < ApplicationController
     @exclusives = Exclusive.all
   end
   
+  def favorites
+    @leads = Lead.all
+  end
+  
   def upload
     @leads = Lead.all
     @exclusives = Exclusive.all

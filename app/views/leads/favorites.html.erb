@@ -1,4 +1,4 @@
-<% content_for :title, "Recent Leads" %>
+<% content_for :title, "Favorite Leads" %>
 
 <style>
 a.favorite {float: right; border: 1px solid #2996bf; padding: 0 .35em; border-radius: 4px;}
@@ -6,11 +6,18 @@ a.favorite:hover { background-color: #2996bf; color: white;}
 </style>
 
 
-
 <div style="width: 35em; margin: 0 auto 10em;">
 	<div style="margin: 1em 0; text-align: right;"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
 	
-	<h1>Now Hiring a Freelancer Like You...</h1>
+		<a href="/leads" style="margin: 5em auto 3em; display: table; font-size: 20px;"><i class="fa fa-long-arrow-left" style="font-size: 90%; margin-right: .25em;"></i> Back to Recent Leads</a>
+	
+	<h1>Leads You've Favorited
+			<span style="margin: -1.5em 0 0; display: table; width: 100%; text-align: right; font-size: 16px;"><a href="#">Download as CSV</a> (coming soon)</span>
+		</h1>
+	
+
+	
+	
 	<hr>
 	
 	<table style="margin: 0 0 1em 0; width: 100%;">
@@ -21,7 +28,7 @@ a.favorite:hover { background-color: #2996bf; color: white;}
 						
 
 
-						<h3 style="margin: 1em 0 0;"><%= lead.title %></h3>
+						<p style="margin: 1em 0 0; font-size: 22px;"><%= lead.title %></p>
 						<p style="color: #666; font-size: 14px; margin: .125em 0;"> Original Source: <a href="<%= lead.url %>"><%= lead.url %></a></p>
 						<p style="margin: .5em 0 0;"><%= lead.notes %></p>
 						
@@ -32,7 +39,7 @@ a.favorite:hover { background-color: #2996bf; color: white;}
 						<br>
 						</p>
 						
-												<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> <a href="#" class="favorite">Add to Favorites</a></p>
+												<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> <a href="#" style="color: #666; float:right;">Unfavorite</a></p>
 					</td>
 	      </tr>
 	    <% end %>
@@ -40,11 +47,7 @@ a.favorite:hover { background-color: #2996bf; color: white;}
 	</table>
 
 <div style="width: 100%;text-align:center; font-size: 23px; line-height: 5em;">
-<a href="/all">View All Leads</a>
-<hr>
-<a href="./favorites">Your Favorites</a>
-<hr>
-<a href="/users/edit">Edit Your Subscription</a>
+<a href="/leads"><i class="fa fa-long-arrow-left" style="font-size: 90%; margin-right: .25em;"></i> Back to Recent Leads</a>
 </div>
 
 

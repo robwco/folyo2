@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   get "/feeds" => "rss#feeds"
 
   get "/all" => "leads#all"
+  get "/favorites" => "leads#favorites"
   get "/upload" => "leads#upload"
   get "/upload_design" => "leads#upload_design"
   get "/upload_development" => "leads#upload_development"
