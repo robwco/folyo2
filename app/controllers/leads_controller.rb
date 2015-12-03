@@ -4,8 +4,10 @@ class LeadsController < ApplicationController
   before_filter :authenticate_any!, only: [:index]
 
   def index
-    @leads = Lead.includes(:category).limit(10).all unless params[:keyword].present? || params[:advanced].present?
-    @leads = Lead.includes(:category).keyword(params[:keyword]).with_category(params[:category_ids]).after(params[:after]) if params[:keyword].present? || params[:advanced].present?
+    @leads = Lead.includes(:category).limit(10).all unless params[:advanced].present?
+    @leads = Lead.includes(:category)
+		.keyword(params[:keyword]).with_category(params[:category_ids]).after(params[:after])
+	    .paginate(:page => params[:page], :per_page => 10) if params[:advanced].present?
 
 
     @exclusives = Exclusive.all

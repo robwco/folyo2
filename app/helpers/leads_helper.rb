@@ -5,9 +5,9 @@ module LeadsHelper
   def advanced_search?
     !params[:advanced].blank? && params[:advanced] == "true"
   end
-  def search_categories
-	return [] if params[:category_ids].nil?
-	params[:category_ids]
+  def category_checked?(c)
+	return true if params[:category_ids].nil?
+	params[:category_ids].include?(c.id.to_s)
   end
   def search_period_options 
 	[

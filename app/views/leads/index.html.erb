@@ -11,7 +11,13 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 	
 
 	<table style="margin: 0 0 1em 0; width: 35em;">
-			<%= render "search" %>	
+		<thead>
+			<tr>
+				<th>
+					<%= render "search" %>	
+				</th>
+			</tr>
+		</thead>
 
 	  <tbody>
 	    <% @leads.most_recently_updated.each do |lead| %>
@@ -32,6 +38,8 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 	    <% end %>
 	  </tbody>
 	</table>
+
+	<%= will_paginate @leads unless params[:advanced].blank? %>
 
 	<div style="width: 100%;text-align:center; font-size: 23px; line-height: 5em;">
 	<a href="/users/edit">Edit Your Subscription</a>
