@@ -1,6 +1,11 @@
 <div class="wrapper" style="width: 30em;">
 
-<p style="text-align: right; font-size: 14px; padding: 1em; margin: 1em auto;">Hey <%= first_name current_user.name %>, good to see you again! <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+
+<p style="text-align: right; font-size: 14px; padding: 1em; margin: 1em auto;">
+	<span style="float: left;display:inline-block;">
+		<%= link_to "All Leads", leads_path %>	
+	</span>
+	Hey <%= first_name current_user.name %>, good to see you again! <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
 
 <% if current_user.past_due? %>
 <p style="color:red;">Your account is not in good standing, please update your credit card to restore good standing.</p>

@@ -9,15 +9,7 @@ input.search-button {height: 30px; float: right; padding: 0; font-size: 14px !im
 
 <div class="wrapper" style="width: 35em; padding: 1em 0;">
 	
-	<div style="display: table; width: 100%; padding-bottom: 2em;">
-		<%= form_tag "/leads", method: :get do %>
-			<div style="display:table;  width: 100%;">
-				<%= submit_tag "Search", :class => "search-button" %>
-				<%= text_field_tag :keyword, params[:keyword], placeholder: "Search Leads", :class => "search-bar" %>
-			</div>
-		<% end -%>
-	</div>
-	
+	<%= render "search" %>	
 	<table style="margin: 1em 0 1em 0; width: 100%;">
 		<h1>Recent Leads</h1>
 		<hr>

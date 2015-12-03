@@ -62,13 +62,6 @@ ActiveRecord::Schema.define(version: 20151203040218) do
   add_index "categories_users", ["category_id"], name: "index_categories_users_on_category_id", using: :btree
   add_index "categories_users", ["user_id"], name: "index_categories_users_on_user_id", using: :btree
 
-  create_table "clients", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false

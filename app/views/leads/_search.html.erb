@@ -1,0 +1,39 @@
+<% if advanced_search? %>
+	<div style="display: table; width: 100%; padding-bottom: 2em;">
+		<%= form_tag leads_path, method: :get do %>
+			<input type="hidden" name="advanced" value="true" />
+
+			<div style="display:table;  width: 100%;">
+				<%= link_to "All Leads", leads_path %>
+				<%= link_to "Basic Search", leads_path, style: "margin-left: 10px;" %>
+			</div>
+			<h3>Advanced Search</h3>
+			<div style="display:table;  width: 100%;">
+				<ul class="lead-category">
+					<% Category.all.each do |c| %>
+						<li>
+							<%= check_box_tag "category_ids[#{c.id}]", c.id, search_categories.include?(c.id.to_s), :name => "category_ids[]" %>
+							<strong><%= label_tag "category_ids_#{c.id}", c.name, :style => "text-transform:none;" %></strong>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+			<div style="display:table;  width: 100%;">
+				<%= select_tag "after", options_for_select(search_period_options, params[:after]), allow_blank: true %>
+				<%= text_field_tag :keyword, params[:keyword], placeholder: "Search Leads", :class => "search-bar", style: "float:left !important" %>
+				<%= submit_tag "Search", :class => "search-button" %>
+			</div>
+		<% end -%>
+	</div>
+<% else %>
+	<div style="display: table; width: 100%; padding-bottom: 2em;">
+		<%= form_tag leads_path, method: :get do %>
+			<div style="display:table;  width: 100%;">
+				<%= link_to "All Leads", leads_path %>
+				<%= submit_tag "Search", :class => "search-button" %>
+				<%= text_field_tag :keyword, params[:keyword], placeholder: "Search Leads", :class => "search-bar" %>
+				<%= link_to "Advanced Search", leads_path(advanced: true), style: "margin-left: 10px;" %>
+			</div>
+		<% end -%>
+	</div>
+<% end %>

@@ -14,7 +14,7 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'rails_12factor', group: :production
-gem 'unicorn'
+#gem 'unicorn'
 gem 'aws-sdk', '~> 1.16.1'
 gem 'bcrypt'
 gem 'feedjira'
