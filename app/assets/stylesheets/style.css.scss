@@ -14,7 +14,6 @@ body, .ccjs-card {
 		font-family: 'concourse_t3italic', Lucida Grande, sans-serif;
 		font-style: normal;
 	}
-	
 	strong {
 		font-family: 'concourse_t4regular', Lucida Grande, sans-serif;
 		font-weight: normal;
@@ -135,7 +134,7 @@ body, .ccjs-card {
 			text-decoration: none;
 		}
 	}
-	input[type=submit] {
+	input[type=submit], .button {
 		background-color: #eaeae9;
 		border: 2px solid #ccc;
 		color: #222;
