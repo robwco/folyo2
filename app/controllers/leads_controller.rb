@@ -1,13 +1,14 @@
 class LeadsController < ApplicationController
   before_action :authenticate_admin!, except: [:upload, :index]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_any!, only: [:index]
 
   def index
-    @leads = Lead.all
+    @leads = Lead.includes(:category).limit(10).all unless params[:keyword].present?
+    @leads = Lead.includes(:category).keyword(params[:keyword]) if params[:keyword].present?
     @exclusives = Exclusive.all
   	@approved_links = ApprovedLink.visible.most_recent
   	@rss_count = RssLink.visible.newest.most_recent.count
-  	
     @lead = Lead.new
   end
 
@@ -111,7 +112,7 @@ class LeadsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def lead_params
-      params.require(:lead).permit(:photo, :title, :url, :name, :email, :website, :twitter, :linkedin, :budget, :notes, :category, :image, :category_id)
+      params.require(:lead).permit(:photo, :title, :url, :name, :email, :website, :twitter, :linkedin, :budget, :notes, :category, :image, :category_id, :description)
     end
     def authenticate
       authenticate_or_request_with_http_basic do |name, password|

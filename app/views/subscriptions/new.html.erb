@@ -1,41 +1,6 @@
-<section class="loose-wrap">
-	<center>
-		<h1 style="margin: 2.1em 0 0;">See What Type of Projects We Send</h1>
-		<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> <%= @plan.interval_text %>.
-		<% unless @plan.yearly? or !@yearly.present? %>
-			<a href="/subscriptions/new?plan=<%= @yearly.id %>">Switch to yearly</a>.
-		<% end %>
-		</p>
-	</center>
-</section>
 
-<div style="display: table; margin: 0 auto; width: 800px;">
-	<div style="width: 300px; float: left;">
-		<h3>Every lead we send is:</h3>
-		<ul>
-			<li><i class="fa fa-certificate"></i> A project-based opportunity</li>
-			<li>Hand-checked for quality.</li>
-			<li>Worth a $1,000+ budget or more</li>
-			<li>Open to remote freelancers anywhere</li>
-		</ul>
-	</div>
 
-	<div style="width: 500px; float: left;">
-		<h3>The 8 project types we send are:<h3>
-			<ol>
-				<li>Clients building apps that need help with code</li>
-				<li>People looking for full-time help that might be better off hiring contractors</li>
-				<li>People building stores or shops where they sell stuff</li>
-				<li>People needing graphics for a marketing project</li>
-				<li>People building a content or marketing sites like a blog</li>
-				<li>People running design and development agencies that need help sub-contracting</li>
-				<li>People requesting proposals for big budget projects</li>
-				<li>People requesting proposals for government projects</li>
-			</ol>
-	</div>
-</div>
-
-<div class="reading-wrap buy-form">
+<div class="wrapper">
 
 	<!--<h2>So today’s the day! Welcome, clients are waiting.</h2> 
 	<p>You picked a great day to join Workshop. You probably are looking for clients right away. Workshop can help with that. Pick the type of leads you’re most interested in seeing from the list below, pay, and we'll get started filling up your pipeline.</p>-->
@@ -43,7 +8,7 @@
 	<%= form_for :user, url: subscriptions_path, id: 'new_user' do |f| %>
 
 	<h1 style="margin: 2.1em 0 0;">Start Your New Workshop Subscription</h1>
-	<p  style="font-size: 16px; margin: .5em 0 3em;">Pay only <strong> $<%= @plan.price %></strong> <%= @plan.interval_text %>.
+	<p  style="text-align: center;">Pay only $<%= @plan.price %> <%= @plan.interval_text %>.
 		<% if @user.errors.any? || @user.subscription.errors.any? %>
 			<div id="error_explanation">
 
@@ -59,21 +24,21 @@
 			  </ul>
 			</div>
 		<% end %>		
-		<h5>Your email:</h5>
+		<p><strong>Your email:</strong></p>
 		<%= f.email_field :email, autofocus: true, placeholder: "your@email.com", :style => "padding: .75em;" %>
 		<p  style="font-size: 16px; margin: .25em 0 3em;">This is where we'll send your leads.</p>
 
 		<div style="margin: 3em 0 1em; display: table; width: 100%; box-sizing: border-box; border-radius: .5em; border:2px solid #F1F1F1; padding: 0 1.5em;">
-		<h5>Your name:</h5>
+		<p><strong>Your name:</strong></p>
 		<%= f.text_field :name, autofocus: true, placeholder: 'Your name'	%>
 
 
-		<h5>
+		<p><strong>
 		 Password:
 			<% if @validatable %>
 				<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
 			<% end %>
-		</h5>
+		</strong></p>
 		<%= f.password_field :password, autocomplete: "off", placeholder: 'Your password' %>
 
 		<%= render 'registrations/categories' %>
@@ -106,7 +71,7 @@
 			<table>
 				<tr>
 					<td>
-						<%= image_tag("testimonials/mcapacci.jpg", :style => "width:50px; border-radius:35px") %>
+						<%= image_tag("testimonials/mcapacci.jpg", :style => "margin-right: .5em; width:50px; border-radius:35px") %>
 					</td>
 
 					<td>
@@ -124,10 +89,3 @@
 	
 </div>
 		
-
-<section class="reading-wrap" style="margin: 4em auto 5em; max-width:950px;">
-	
-		<h5>“What if I don't like it?”</h5>
-		<p style="font-size: 16px;">No worries. You can cancel anytime. Workshop is pay-as-you-go, meaning there’s no contract and no long-term commitment.</p>
-
-</section>

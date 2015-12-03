@@ -1,4 +1,4 @@
-<h5>What type of work should I send you?</h5>
+<p><strong>What type of work should I send you?</strong></p>
 <%= hidden_field_tag("user[category_ids][]", nil) %>
 
 <table class="lead-category">
@@ -10,8 +10,8 @@
 					<%= check_box_tag "user[category_ids][#{c.id}]", c.id, @user.category_ids.include?(c.id), :name => "user[category_ids][]" %>
 				</td>
 				<td style="vertical-align: top; padding-right:0px;">
-					<p style="margin:0; padding:0; font-size:1.5em"><%= label_tag "user_category_ids_#{c.id}", c.name, :style => "text-transform:none;" %></p>
-					<hr>
+					<p style="margin:0; padding:0;"><strong><%= label_tag "user_category_ids_#{c.id}", c.name, :style => "text-transform:none;" %></strong></p>
+					<hr style="margin: .25em 0;">
 					<p>
 						<%= c.description.html_safe %>
 					</p>

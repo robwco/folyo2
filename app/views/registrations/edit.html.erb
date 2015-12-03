@@ -1,4 +1,6 @@
-<p style="text-align: right; font-size: 12px; padding: 1em; margin: 1em auto;">Hey <%= first_name current_user.name %>, good to see you again! <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+<div class="wrapper" style="width: 30em;">
+
+<p style="text-align: right; font-size: 14px; padding: 1em; margin: 1em auto;">Hey <%= first_name current_user.name %>, good to see you again! <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
 
 <% if current_user.past_due? %>
 <p style="color:red;">Your account is not in good standing, please update your credit card to restore good standing.</p>
@@ -9,7 +11,7 @@
 <% end %>
 
 <% unless current_user.past_due? || current_user.canceled? %>
-<h2>Edit your account</h2>
+<h2>Edit your settings</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <% if resource.errors.any? || (!resource.subscription.nil? && resource.subscription.errors.any?) %>
@@ -29,7 +31,7 @@
   <% end %>
 
   <div class="field">
-	<h5>Your email</h5>
+	<p><strong>Your email</strong></p>
 	<%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -42,38 +44,38 @@
 
 
   <div class="field">
-	<h5>Your name</h5>
+	<p><strong>Your name</strong></p>
 	<%= f.text_field :name %>
   </div>
 
 
   <div class="field">
-	<h5>New password</h5>
+	<p><strong>New password</strong></p>
 	<%= f.password_field :password, autocomplete: "off", placeholder: "Leave blank to keep current password" %>
-		<br>
-	<label>Confirm new password</label>
+
+	<p><strong>Confirm new password</strong></p>
 	<%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
 	<hr>
 	
-	<h5>Save any changes above</h5>
+	<p><strong>Save any changes above</strong></p>
 	<%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter current password" %>
   </div>
 
 
   <div class="actions">
-	<%= f.submit "Update", id: 'form-submit', :class => "buy" %>
+	<%= f.submit "Update", id: 'form-submit', :class => "buy", :style => "margin-left: 0;" %>
   </div>
 <% end %>
 
 
-<div class="content" style="width: 660px; margin: 3em auto .5em; padding: 1em 2em; background-color: #f1f1f1; border-radius: .5em; box-sizing: border-box;">
+<div class="content" style="width: 100%; margin: 3em auto .5em; padding: 1em 2em; background-color: #f1f1f1; border-radius: .5em; box-sizing: border-box;">
 <h2 style="margin: 0;">Billing</h2>
 
 <% unless resource.canceling? %>
-	<h5>You're currently paying $<%= resource.subscription.plan.price %></strong> <%= resource.subscription.plan.interval_text %></h5>
+	<p><strong>You're currently paying $<%= resource.subscription.plan.price %></strong> <%= resource.subscription.plan.interval_text %></strong></p>
 
 	<p style="font-size: 14px;">Your next payment is on <%= current_user.billing_period_end %>. <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %> (ending: -<%= current_user.last4 %>)<br></p>
 	<p style="margin: 2em auto;">
@@ -93,3 +95,5 @@
 <% end %>
 </div>
 <% end %>
+
+</div>

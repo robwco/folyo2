@@ -1,3 +1,4 @@
+<div class="wrapper">
 <section class="tight-wrap">
 
 
@@ -17,31 +18,27 @@
 
 </ol>
 
-<br>
+<ul>
 
+<li><h3>“When will I get billed again?”</h3> 
+<p>Your next charge will be $<%= current_user.subscription.plan.price %> on <%= current_user.billing_period_end %>.</p></li>
 
-
-
-<h3>“When will I get billed again?”</h3> 
-<p>Your next charge will be $<%= current_user.subscription.plan.price %> on <%= current_user.billing_period_end %>.</p>
-
-
-<h3>“How many leads will I be getting?”</h3>
+<li><h3>“How many leads will I be getting?”</h3>
 <p>You'll get one right now, then about 2 per category you selected every weekday.</p> 
-<p>Because everyone has different skill sets, members in Workshop all get different leads. The good news is you get these leads sent every single day and they are opportunities you wouldn't have known about otherwise.</p>
+<p>Because everyone has different skill sets, members in Workshop all get different leads. The good news is you get these leads sent every single day and they are opportunities you wouldn't have known about otherwise.</p></li>
+
+<li><h3>“How many leads should I email?”</h3>
+<p>I recommend no more than two per day. That way you can focus on sending a great email every single time you write to a lead. If you do that, you'll save time and outperform other people who are sending 100s of generic scripted emails on not hearing back at all.</p></li>
 
 
-<h3>“How many leads should I email?”</h3>
-<p>I recommend no more than two per day. That way you can focus on sending a great email every single time you write to a lead. If you do that, you'll save time and outperform other people who are sending 100s of generic scripted emails on not hearing back at all.</p>
+<li><h3>“How can I update the type of leads I get?”</h3>
+<p><%= link_to "Click here to update your settings", update_subscription_categories_path %> or click the turn on/off links from within the emails I send you.</p></li>
 
-
-<h3>“How can I update the type of leads I get?”</h3>
-<p><%= link_to "Click here to update your settings", update_subscription_categories_path %> or click the turn on/off links from within the emails I send you.</p>
-
-<h3>Anything else?</h3>
+<li><h3>Anything else?</h3>
 <p>Yea! We're stoked to have you. Julie (your new personal email specialist) will be reaching out with some 1-on-1 concierge help shortly to get you up to speed. We can't wait until you land your first client with Workshop! If you have any questions, <a href="MAILTO:julie@letsworkshop.com">send us an email</a>.</p>
-<p>Now check your inbox!</p>
+<p>Now check your inbox!</p></li>
 
+</ul>
 
 <blockquote style="margin:0em auto 1em; padding: 0; width: 700px; max-width: 100%;">
 	<table>

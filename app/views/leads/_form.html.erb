@@ -1,3 +1,28 @@
+<style>
+form {
+	margin-bottom: 5em;
+}
+#lead_title {
+	margin-bottom: 10px !important;
+}
+#lead_image {
+	background-color: #eaeae9;
+	margin: 1em 0 !important;
+	width: 200px !important;
+}
+input, select {
+	margin: 5px 0 !important;
+}
+input.short {
+	width: 190px !important;
+	display: inline-block !important;
+}
+input.short + input.short {
+	margin-left: .25em !important;
+}
+</style>
+
+
 <%= form_for @lead, html: { multipart: true } do |f| %>
   <% if @lead.errors.any? %>
     <div id="error_explanation">
@@ -18,52 +43,39 @@
 	</p>
   <% end %>
 
-	
-  <div style="margin: 0;">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="field" style="margin: 0; width: 200px;">
-    <%= f.label "Upload a Photo" %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category"} %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br>
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter %><br>
-    <%= f.text_field :twitter %>
-  </div>
-  <div class="field">
-    <%= f.label :linkedin %><br>
-    <%= f.text_field :linkedin %>
-  </div>
-  <div class="field">
-    <%= f.label :budget %><br>
-    <p>$ <%= f.text_field :budget, :style => "display:inline; width: 10em;" %></p>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_field :notes %>
-  </div>
-  <div class="actions">
+
+
+  <%= f.text_field :name, :placeholder => "Name", :class => "short" %>
+  <%= f.text_field :email, :placeholder => "Email", :class => "short", :style => "width: 301px !important;" %>
+
+  <%= f.text_field :website, :placeholder => "Website URL", :class => "short", :style => "margin-left: 0 !important;width: 182px !important;" %>
+  <%= f.text_field :twitter, :placeholder => "Twitter URL", :class => "short", :style => "width: 150px !important;"  %>
+  <%= f.text_field :linkedin, :placeholder => "Linkedin URL", :class => "short", :style => "width: 150px !important;"  %>
+
+
+				<strong>Photo:</strong> <%= f.file_field :image, :style => "display: inline-block; width: 449px;" %><br>
+
+
+
+
+		<br>
+		
+    <%= f.text_field :title, :placeholder => "Title of Lead (Type of project, company name, & company description)"  %>
+		<%= f.text_field :url, :placeholder => "URL of Lead" %>
+				<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category"}, :style => "width: 100% !important; display: inline-block; margin: 1em 0 !important;" %> 
+    
+
+		<strong>Budget:</strong> $ <%= f.text_field :budget, :style => "display:inline; width: 10em;", :placeholder => "10000" %>
+
+
+    <%= f.text_field :notes, :placeholder => "Notes (like phone number)", :class => "short", :style => "width: 250px !important; margin-left: .25em !important;" %>		
+
+		
+		<br>
+		   <%= f.text_area :description, :placeholder => "Project Description - What is the project? Who is the company?", :class => "short", :style => "width: 100% !important; margin-left: .25em !important; height: 300px;" %>	
+		
+		
+		<br><br>
     <%= f.submit %>
-  </div>
+
 <% end %>

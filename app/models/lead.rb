@@ -17,7 +17,9 @@ class Lead < ActiveRecord::Base
 	scope :ecommerce, -> { where("category ilike '%SHOPIFY%' OR category ilike '%MAGENTO%' OR category ilike '%STORE%' OR title ilike '%SHOPIFY%' OR title ilike '%MAGENTO%' OR title ilike '%STORE%' OR title ilike '%ECOMMERCE%' OR category ilike '%ECOMMERCE%'") }
 	scope :logo, -> { where("category ilike '%LOGO%' OR category ilike '%BRAND%' OR category ilike '%BRANDING%' OR title ilike '%LOGO%' OR title ilike '%BRAND%' OR title ilike '%BRANDING%' OR title ilike '%IDENTITY%'") }
 
-	def category_name
-		category.name
-	end
+	scope :keyword, -> (keyword) { where("title ILIKE ?", "%#{keyword}%") }
+	
+  def category_name
+         category.name unless category.blank?
+  end
 end

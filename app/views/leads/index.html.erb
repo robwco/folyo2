@@ -1,51 +1,48 @@
 <% content_for :title, "Recent Leads" %>
-
 <style>
 a.favorite {float: right; border: 1px solid #2996bf; padding: 0 .35em; border-radius: 4px;}
 a.favorite:hover { background-color: #2996bf; color: white;}
+input.search-bar { width: 175px !important; height: 30px; margin: 0 !important; float: right; margin-right: .25em;}
+input.search-button {height: 30px; float: right; padding: 0; font-size: 14px !important;}
+}
 </style>
 
-
-
-<div style="width: 35em; margin: 0 auto 10em;">
-	<div style="margin: 1em 0; text-align: right;"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
+<div class="wrapper" style="width: 35em; padding: 1em 0;">
 	
-	<h1>Now Hiring a Freelancer Like You...</h1>
-	<hr>
+	<div style="display: table; width: 100%; padding-bottom: 2em;">
+		<%= form_tag "/leads", method: :get do %>
+			<div style="display:table;  width: 100%;">
+				<%= submit_tag "Search", :class => "search-button" %>
+				<%= text_field_tag :keyword, params[:keyword], placeholder: "Search Leads", :class => "search-bar" %>
+			</div>
+		<% end -%>
+	</div>
 	
-	<table style="margin: 0 0 1em 0; width: 100%;">
+	<table style="margin: 1em 0 1em 0; width: 100%;">
+		<h1>Recent Leads</h1>
+		<hr>
 	  <tbody>
-	    <% @leads.most_recently_updated.limit(10).each do |lead| %>
+	    <% @leads.most_recently_updated.each do |lead| %>
 	      <tr>
 	        <td style="border-bottom: 1px solid #ccc;padding: 1em 0 2em;">
-						
-
-
 						<h3 style="margin: 1em 0 0;"><%= lead.title %></h3>
 						<p style="color: #666; font-size: 14px; margin: .125em 0;"> Original Source: <a href="<%= lead.url %>"><%= lead.url %></a></p>
-						<p style="margin: .5em 0 0;"><%= lead.notes %></p>
-						
+						<p style="margin: .5em 0 0;"><%= lead.description %></p>
 						<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
 						<p style="font-size: 16px; margin: .5em 0;">
 							Name: <%= lead.name %></strong>
 						<br>Email: <%= mail_to lead.email %>
 						<br>
 						</p>
-						
-												<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> <a href="#" class="favorite">Add to Favorites</a></p>
+						<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> <!--<a href="#" class="favorite">Favorite</a>--> </p>
 					</td>
 	      </tr>
 	    <% end %>
 	  </tbody>
 	</table>
 
-<div style="width: 100%;text-align:center; font-size: 23px; line-height: 5em;">
-<a href="/all">View All Leads</a>
-<hr>
-<a href="./favorites">Your Favorites</a>
-<hr>
-<a href="/users/edit">Edit Your Subscription</a>
-</div>
-
-
+	<div style="width: 100%;text-align:center; font-size: 23px; line-height: 5em;">
+	<a href="/users/edit">Edit Your Subscription</a>
+	</div>
+	
 </div>

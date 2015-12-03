@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/imports/customers" => "imports#customers", as: :import_customers
   post "/imports/import_customers" => "imports#import_customers", as: :save_imported_customers
 
-  root to: redirect("/users/edit")
+  root to: redirect("/leads")
 
   get "/welcome" => "subscriptions#welcome", as: :welcome
   get "/welcome-next-step" => "subscriptions#welcome-next-step"
