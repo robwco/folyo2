@@ -20,7 +20,7 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 		</thead>
 
 	  <tbody>
-	    <% @leads.most_recently_updated.each do |lead| %>
+	    <% @leads.most_recent.each do |lead| %>
 	      <tr>
 	        <td style="border-bottom: 1px solid #ccc;padding: 0 0 1em;">
 						<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= lead.title %></strong></p>

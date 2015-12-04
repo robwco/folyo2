@@ -14,7 +14,7 @@
 				</ul>
 			</div>
 			<div style="display:table;  width: 100%;">
-				<%= select_tag "after", options_for_select(search_period_options, params[:after]), allow_blank: true, :style => "width: 150px; display: inline-block; margin: 0 .5em 0 0;" %>
+				<%= select_tag "after", options_for_select(search_period_options, params[:after]), allow_blank: true, :style => "width: 145px; display: inline-block; margin: 0 .5em 0 0;" %>
 				<%= text_field_tag :keyword, params[:keyword], placeholder: "Keyword Search", :class => "search-bar", style: "display: inline-block;" %>
 				<%= submit_tag "Search", :class => "search-button" %>
 				<%= link_to "Clear Search", leads_path, style: "margin-left: 10px;" %>
