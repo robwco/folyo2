@@ -25,11 +25,9 @@
 <% else %>
 	<div style="display: table; width: 100%;">
 		<%= form_tag leads_path, method: :get do %>
-			<div style="display:table;  width: 100%;">
-				<center>
+			<div style="display:table;  width: 100%; text-align: center;">
 				<h1>Recent leads</h1>
-				<em>Looking for more? <%= link_to "Search All Leads", leads_path(advanced: true), :class => "button, search-button" %></em>
-				</center>
+				<p><em>Looking for more? <%= link_to "Search All Leads", leads_path(advanced: true), :class => "button, search-button" %></em></p>
 				<hr>
 			</div>
 		<% end -%>
@@ -38,4 +36,5 @@
 
 <% if @leads.blank? %>
 	<h2>No leads match your search terms.</h2>
+	<hr>
 <% end %>
