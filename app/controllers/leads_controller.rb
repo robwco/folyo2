@@ -1,15 +1,33 @@
 class LeadsController < ApplicationController
-  before_action :authenticate_admin!, except: [:upload, :index]
-  before_action :set_lead, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_any!, only: [:index]
+  before_action :authenticate_admin!, except: [:upload, :index, :favorites]
+  before_action :set_lead, only: [:show, :edit, :update, :destroy, :favorites]
+  before_filter :authenticate_any!, only: [:index, :favorites]
+
+    
+  # Add and remove favorite lead
+  # for current_user
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @lead
+      redirect_to favorites_path, notice: 'Added to Favorites'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@lead)
+      redirect_to :back, notice: 'Removed from Favorites'
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+  end
 
   def index
-    @leads = Lead.includes(:category).limit(10).all unless params[:advanced].present?
+    @leads = Lead.includes(:category).limit(20).all unless params[:advanced].present?
     @leads = Lead.includes(:category)
 		.keyword(params[:keyword]).with_category(params[:category_ids]).after(params[:after])
 	    .paginate(:page => params[:page], :per_page => 10) if params[:advanced].present?
-
-
+    
     @exclusives = Exclusive.all
   	#@approved_links = ApprovedLink.visible.most_recent
   	#@rss_count = RssLink.visible.newest.most_recent.count

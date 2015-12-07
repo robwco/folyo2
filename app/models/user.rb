@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   include AASM	
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :favorite_leads
+  has_many :favorites, through: :favorite_leads, source: :lead
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

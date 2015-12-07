@@ -1,7 +1,10 @@
 class Lead < ActiveRecord::Base
 	validates_presence_of :title, :url, :name, :email
 	belongs_to :category
-	
+
+	has_many :favorite_leads
+	has_many :favorited_by, through: :favorite_leads, source: :user
+	  
 	scope :most_recent, -> { order("leads.created_at desc")}
 	scope :most_recently_updated, -> { order("leads.updated_at desc")}
 	scope :today, -> { where(:created_at => ((Time.now - 24.hours)..Time.now)) }

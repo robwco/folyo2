@@ -1,7 +1,7 @@
 <% content_for :title, "Recent Leads" %>
 <style>
-a.favorite {float: right; border: 1px solid #2996bf; padding: 0 .35em; border-radius: 4px;}
-a.favorite:hover { background-color: #2996bf; color: white;}
+a.favorite {float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none;}
+a.favorite:hover { background-color: #222; color: white;}
 input.search-bar { width: 175px !important; height: 30px; margin: 0 !important;margin-right: .25em;}
 input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 }
@@ -9,6 +9,13 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 
 <div class="wrapper" style="width: 35em; padding: 2em 0;">
 	
+<% if admin_signed_in? %>
+	Admin Options:
+	<%= link_to "New Lead", new_lead_path, :class => "button" %>
+	<%= link_to "Upload RFP", new_rfp_path, :class => "button" %>
+	<hr>
+<% end %>
+
 
 	<table style="margin: 0; width: 35em;">
 		<thead style="font-weight: 300; text-align: left;">
@@ -35,7 +42,26 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 						<br>Email: <%= mail_to lead.email %>
 						<br>
 						</p>
-						<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> <!--<a href="#" class="favorite">Favorite</a>--> </p>
+						<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
+						
+						
+						
+						
+							<% if admin_signed_in? %>
+							<span style="float: right; color: #666; font-size: 14px;">
+								Admin Options: <%= link_to 'Edit', edit_lead_path(lead) %>, <%= link_to 'Delete', lead_path(lead), method: :delete, data: { confirm: 'Are you sure?' } %>
+							</span>
+							<% else %>
+							<% end %>
+								
+							<% if user_signed_in? %>
+								<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
+							<% else %>
+							<% end %>
+						
+							
+							
+						 </p>
 					</td>
 	      </tr>
 	    <% end %>
@@ -45,6 +71,10 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 	<%= will_paginate @leads unless params[:advanced].blank? %>
 
 	<div style="width: 100%;text-align:center; font-size: 23px; line-height: 5em;">
+	<a href="/favorites">Your Favorites</a>
+	</div>
+	<hr>
+	<div style="width: 100%;text-align:center; font-size: 23px; line-height: 3em;">
 	<a href="/users/edit">Edit Your Subscription</a>
 	</div>
 	

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :people
-
+  
+  resources :leads do
+    patch :favorite, on: :member
+  end
+  
   mount StripeEvent::Engine => '/stripe-events'
 
 
