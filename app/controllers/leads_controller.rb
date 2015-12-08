@@ -30,7 +30,7 @@ class LeadsController < ApplicationController
 		.keyword(params[:keyword]).with_category(params[:category_ids]).after(params[:after])
 	    .paginate(:page => params[:page], :per_page => 10) if params[:advanced].present?
     
-	@favorites = current_user.favorites.where(id: @leads.all)
+	@favorites = current_user.favorites.where(id: @leads.all) if user_signed_in?
     
     @exclusives = Exclusive.all
   	#@approved_links = ApprovedLink.visible.most_recent
