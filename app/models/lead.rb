@@ -25,6 +25,6 @@ class Lead < ActiveRecord::Base
 	scope :after, -> (after_date) { where("created_at >= ?", after_date) unless after_date.blank? }
 	
   def category_name
-         category.name unless category.blank?
+    category.name unless category.blank?
   end
 end
