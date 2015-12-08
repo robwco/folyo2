@@ -1,6 +1,6 @@
 class LeadsController < ApplicationController
   before_action :authenticate_admin!, except: [:upload, :index, :favorites]
-  before_action :set_lead, only: [:show, :edit, :update, :destroy, :favorites]
+  before_action :set_lead, only: [:show, :edit, :update, :destroy, :favorite]
   before_filter :authenticate_any!, only: [:index, :favorites]
 
     
@@ -9,7 +9,7 @@ class LeadsController < ApplicationController
   def favorite
     type = params[:type]
     if type == "favorite"
-      current_user.favorites << @lead
+      current_user.favorites << @lead unless current_user.favorites.exists?(@lead)
       redirect_to favorites_path, notice: 'Added to Favorites'
 
     elsif type == "unfavorite"
@@ -27,6 +27,8 @@ class LeadsController < ApplicationController
     @leads = Lead.includes(:category)
 		.keyword(params[:keyword]).with_category(params[:category_ids]).after(params[:after])
 	    .paginate(:page => params[:page], :per_page => 10) if params[:advanced].present?
+
+	@favorites = current_user.favorites.where(id: @leads.all)
     
     @exclusives = Exclusive.all
   	#@approved_links = ApprovedLink.visible.most_recent
@@ -40,7 +42,7 @@ class LeadsController < ApplicationController
   end
   
   def favorites
-    @leads = Lead.all
+    #@leads = Lead.all
   end
   
   def upload
