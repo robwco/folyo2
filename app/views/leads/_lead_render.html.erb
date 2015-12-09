@@ -1,7 +1,7 @@
 <% @exclusives.today.most_recently_updated.each do |exclusive| %>
 	<h3 style="text-transform: uppercase; margin: 2em 0 0;"><span style="color: #98ae2a;">Low Competition Lead -</span> <%= exclusive.category %>:</h3>
   <div style="margin: 2em 0; display: block;">
-		<%= image_tag exclusive.pic.url(:thumb, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
+		<%= image_tag exclusive.pic.url(:medium, timestamp: false), :style => "width: 50px; border-radius: 65px; margin: 0 .5em 0 0;", :align => "left"  %>
 		<div style="display: table">
 			<h3 style="color: #a03f14;"><%= exclusive.name %> is looking for a <%= exclusive.title %></h3>
 			<p class="more-info">
