@@ -52,12 +52,13 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 								Admin Options: <%= link_to 'Edit', edit_lead_path(lead) %>, <%= link_to 'Delete', lead_path(lead), method: :delete, data: { confirm: 'Are you sure?' } %>
 							</span>
 							<% else %>
+								<% unless current_user.favorites.include?(lead) %>
+									<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
+								<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
+								<% end %>
 							<% end %>
 								
-							<% unless current_user.favorites.include?(lead) %>
-								<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
-							<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
-							<% end %>
+
 						
 							
 							
