@@ -54,9 +54,9 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 							<% else %>
 							<% end %>
 								
-							<% if user_signed_in? %>
-								<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" unless @favorites.include? lead %>
-							<% else %>
+							<% unless current_user.favorites.include?(lead) %>
+								<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
+							<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
 							<% end %>
 						
 							
