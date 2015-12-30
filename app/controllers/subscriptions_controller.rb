@@ -27,7 +27,15 @@ class SubscriptionsController < ApplicationController
 		render plain: "Email delivered to #{current_user.email}"
 	end
 
-  def welcome
+  def welcome 
+    flash[:notice] = "Your credit card was successfully charged $#{current_user.subscription.plan.price}, and you are ready to go!"
+		@user = current_user
+		@leads = Lead.all
+  end
+
+
+  def welcome_next_step
+    flash[:notice] = "Your credit card was successfully charged $#{current_user.subscription.plan.price}, and you are ready to go!"
 		@user = current_user
 		@leads = Lead.all
   end

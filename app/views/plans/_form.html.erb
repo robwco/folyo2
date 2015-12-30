@@ -1,3 +1,9 @@
+<style>
+	.field { margin: 2.5em 0 1em;}
+	.field h3 { margin: .25em 0; }
+	.actions {margin: 2em 0 5em;}
+</style>
+
 <%= form_for @plan do |f| %>
   <% if @plan.errors.any? %>
     <div id="error_explanation">
@@ -10,35 +16,46 @@
       </ul>
     </div>
   <% end %>
+
   <div class="field">
-    <%= f.label :stripe_id, 'Stripe ID' %><br>
+    <h3>Stripe ID</h3>
+		<span style="font-size: 15px; line-height: 18px;">Creating a plan will automatically create one in Stripe. You just want to make sure it's unique ID. For reference, the first plans were called workshop-regular, workshop-premium, and workshop-annual. Add a v# for new plans.</span>
     <%= f.text_field :stripe_id %>
   </div>
+
   <div class="field">
-    <%= f.label :name, 'Name (visible to customers)' %><br>
+    <h3>Name (visible to customers)</h3>
+		<span style="font-size: 15px; line-height: 18px;">Format example: Workshop Regular (You pay every 3 months)</span>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
-    <%= f.label :description %><br>
+    <h3>Description (not visible to customers)</h3>
     <%= f.text_area :description %>
   </div>
+
   <div class="field">
-    <%= f.label :amount, 'Price (in cents)' %><br>
+    <h3>Price (in cents)</h3>
     <%= f.text_field :amount %>
   </div>
+
   <div class="field">
-    <%= f.label :interval_count, 'Interval Count (e.g. every X months)' %><br>
-    <%= f.text_field :interval_count %><br>
+    <h3>Interval Count (e.g. every X months)</h3>
+    <%= f.text_field :interval_count %>
   </div>
+
   <div class="field">
-    <%= f.label :interval %><br>
-    <%= f.collection_select :interval, ['month','year'], :to_s, :to_s, {promt: "Choose an interval"} %><br>
+ 		<h3>Interval</h3>
+    <%= f.collection_select :interval, ['month','year'], :to_s, :to_s, {promt: "Choose an interval"}, :style => "width: 10em;" %>
   </div>
+
   <div class="field">
-    <%= f.label :trial_period_days, 'Trial period length (in days)' %><br>
+    <h3>Trial period length (in days)</h3>
+		<span style="font-size: 15px; line-height: 18px;">Can't be left blank. Enter 0 for no trial.</span>
     <%= f.text_field :trial_period_days %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :style => "margin-left: 0;" %>
   </div>
 <% end %>

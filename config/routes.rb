@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   
   mount StripeEvent::Engine => '/stripe-events'
 
+  # Onboarding
+  get "/address" => "subscriptions#address"
+  get "/what-makes-a-good-lead" => "subscriptions#good_lead"
+  get "/how-favorites-work" => "subscriptions#favorite_tutorial"
 
   get "/processing" => "rss#processing"
   get "/rss/hide" => "rss#hide"
@@ -32,7 +36,7 @@ Rails.application.routes.draw do
   root to: redirect("/users/edit")
 
   get "/welcome" => "subscriptions#welcome", as: :welcome
-  get "/welcome-next-step" => "subscriptions#welcome-next-step"
+  get "/welcome_next_step" => "subscriptions#welcome_next_step"
   get "/admins/welcome" => "admins#welcome", as: :admin_root
   get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
   put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save

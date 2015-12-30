@@ -5,6 +5,9 @@ module LeadsHelper
   def advanced_search?
     !params[:advanced].blank? && params[:advanced] == "true"
   end
+  def tutorial?
+    !params[:tutorial].blank? && params[:tutorial] == "true"
+  end
   def category_checked?(c)
 	return true if params[:category_ids].nil?
 	params[:category_ids].include?(c.id.to_s)

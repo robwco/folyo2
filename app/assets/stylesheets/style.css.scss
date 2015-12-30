@@ -159,6 +159,21 @@ body, .ccjs-card {
 		}
 	}
 	
+	a.favorite {float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none;}
+	a.favorite:hover { background-color: #222; color: white;}
+	
+	
+	.next-step {
+		text-align: center; 
+		margin: 2em 0;
+		a {
+			font-size: 23px;
+		}
+		& + hr {
+			margin: 0;
+		}
+	}
+	
 	input[type="text"], input[type="password"], input[type="name"], input[type="url"],   input[type="email"], input[type="rss"], input[type="number"], select, textarea, input[type=file]  {
 		font: 17px/1.4em 'concourse_t3regular';
 	 	-webkit-box-sizing: border-box;

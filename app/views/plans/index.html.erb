@@ -3,12 +3,12 @@
 	form input[type=submit] { margin:0px; }
 	td.link { color: #888; padding-bottom: 45px; }
 </style>
-<div class="content">
+<div class="wrapper">
 	<p>
-	<%= link_to 'New Plan', new_plan_path, class: "submit" %>
+		<%= link_to 'New Plan', new_plan_path, class: "button" %>
 	</p>
 
-	<h1>Workshop Plans</h1>
+	<h1>Active Plans</h1>
 
 	<table style="margin: 0 0 7em 0;">
 	  <tbody>
@@ -30,7 +30,7 @@
 	  <tbody>
 		<tr>
 			<th colspan="3">
-				<p style="color: #888888; font-weight: normal; text-align: left;"><br>Archived Plans:</p>
+				<h1>Archived Plans:</h1>
 				<p style="text-align:left;">These plans are for current subscribers, but cannot be selected for upgrade</p>
 			</th>
 		</tr>

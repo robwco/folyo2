@@ -24,30 +24,35 @@
 			  </ul>
 			</div>
 		<% end %>		
-		<p><strong>Your email:</strong></p>
-		<%= f.email_field :email, autofocus: true, placeholder: "your@email.com", :style => "padding: .75em;" %>
-		<p  style="font-size: 16px; margin: .25em 0 3em;">This is where we'll send your leads.</p>
-
-		<div style="margin: 3em 0 1em; display: table; width: 100%; box-sizing: border-box; border-radius: .5em; border:2px solid #F1F1F1; padding: 0 1.5em;">
-		<p><strong>Your name:</strong></p>
-		<%= f.text_field :name, autofocus: true, placeholder: 'Your name'	%>
+		
 
 
-		<p><strong>
-		 Password:
+		<div style="margin: 3em auto 1.5em; display: table; width: 100%; width:500px; box-sizing: border-box; border-radius: .5em; border: 2px solid #F1F1F1; padding: 0 1.5em;">
+			
+			<p style="margin: 1em 0 0;"><strong>Your email:</strong></p>
+			<p  style="font-size: 16px; margin: .25em 0 1em;">This is where we'll send your leads.</p>
+			<%= f.email_field :email, autofocus: true, placeholder: "your@email.com" %>
+		
+			<p style="margin: 1em 0 0;"><strong>Your name:</strong></p>
+			<%= f.text_field :name, autofocus: true, placeholder: 'Your name'	%>
+
+
+		<p style="margin: 1em 0 0;"><strong>Password:
 			<% if @validatable %>
 				<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
 			<% end %>
 		</strong></p>
 		<%= f.password_field :password, autocomplete: "off", placeholder: 'Your password' %>
 
-		<%= render 'registrations/categories' %>
-
+		<div style="display: none;">
+			<%= render 'registrations/categories' %>
+		</div>
+		
 		<br>			
 		<center>
 			
 			
-				<h1 style="margin: 2.1em 0 0;">Your total: $<%= @plan.price %> <%= @plan.interval_text %></h1>
+				<h1 style="margin: 0 0;">Your total: $<%= @plan.price %> <%= @plan.interval_text %></h1>
 				<p  style="font-size: 16px; margin: 1em 0 3em;">Next payment will be on <%= @plan.next_billing_date.strftime("%B %e %Y") %>. Cancel anytime.</p>
 				
 
@@ -67,7 +72,7 @@
 
 		<a href="#"><%= f.submit "Show me my future clients", id: 'form-submit', style: 'margin: 2em 0;', class: 'buy', data: { :"drip-attribute" => 'sign-up-button' } %></a>
 		
-		<blockquote style="margin:0em 4em 3em; padding: 0;">
+		<blockquote style="margin:0 3em 3em; padding: 0;">
 			<table>
 				<tr>
 					<td>

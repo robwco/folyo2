@@ -1,11 +1,166 @@
 <% content_for :title, "Recent Leads" %>
 <style>
-a.favorite {float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none;}
+a.favorite {float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none; margin-top: -40px;}
 a.favorite:hover { background-color: #222; color: white;}
 input.search-bar { width: 175px !important; height: 30px; margin: 0 !important;margin-right: .25em;}
 input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
+
+td.lead:hover > .show-hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+td.lead {
+	padding: .5em 2em; margin: 2em 0; padding: .5em 2em; border-bottom: 1px solid #ccc;
+}
+
+<% if tutorial? %>
+td.lead:hover {
+	box-shadow: 0 2px 20px #ccc; 	border-radius: 10px;
+}
+<% end %>
+
+.show-hover {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.tooltip {
+	display:inline;
+  position:absolute;
+	background-color: #222;
+  color:#fff;
+	border-radius: 5px;
+  padding: 5px 10px;
+	font-size: 16px;
+}
+.bounce {
+  -webkit-animation: bounce .4s ease infinite alternate;
+  -moz-animation: bounce .4s ease infinite alternate;
+  -ms-animation: bounce .4s ease infinite alternate;
+  -o-animation: bounce .4s ease infinite alternate;
+  animation: bounce .4s ease infinite alternate;
+}
+
+.bounce-right {
+  -webkit-animation: bounce-right .4s ease infinite alternate;
+  -moz-animation: bounce-right .4s ease infinite alternate;
+  -ms-animation: bounce-right .4s ease infinite alternate;
+  -o-animation: bounce-right .4s ease infinite alternate;
+  animation: bounce-right .4s ease infinite alternate;
+}
+.tooltip span.left:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right:8px solid black;
+    left:-8px;
+    top:20px;
+}
+
+.tooltip span.right:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left:8px solid black;
+    right:-8px;
+    top:25px;
+}
+
+.tooltip span.bottom:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+		
+
+		border-width:8px 8px 0; 
+		border-style:solid; 
+		border-color: black transparent;
+
+    left: 45%;
+    bottom: -8px;
+}
+
+@-webkit-keyframes bounce { 
+    from { }
+    to { -webkit-transform: translateY(-5px); }
+}
+@-moz-keyframes bounce { 
+    from { }
+    to { -moz-transform: translateY(-5px); }
+}
+@-ms-keyframes bounce { 
+    from { }
+    to { -ms-transform: translateY(-5px); }
+}
+@-o-keyframes bounce { 
+    from { }
+    to { -o-transform: translateY(-5px); }
+}
+@keyframes bounce { 
+    from { }
+    to { transform: translateY(-5px); }
+}
+
+@-webkit-keyframes bounce-right { 
+    from { }
+    to { -webkit-transform: translateX(-5px); }
+}
+@-moz-keyframes bounce-right { 
+    from { }
+    to { -moz-transform: translateX(-5px); }
+}
+@-ms-keyframes bounce-right { 
+    from { }
+    to { -ms-transform: translateX(-5px); }
+}
+@-o-keyframes bounce-right { 
+    from { }
+    to { -o-transform: translateX(-5px); }
+}
+@keyframes bounce-right { 
+    from { }
+    to { transform: translateX(-5px); }
+}
+.popupContainer {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0,0,0, .8);
+	
+}
+.popup {
+	width: 700px;
+	height: 300px;
+	padding: 1em;
+	border-radius: .5em;
+	background-color: #FFF;
+	margin: 2em auto;
 }
 </style>
+
+<% if tutorial? %>
+<!--
+	<div class="popupContainer">
+		<div class="popup">
+			<h1>OK, How can I close deals quickly?</h1>
+			<%= image_tag "turn-lead-into-client.png", :style => "max-width: 100%;"  %>
+			<p style="font-size: 16px; background-color: #fffcda; padding: .25em .5em; margin: 0 auto;"><strong>Note:</strong> I've seen over 500 consultancies land clients in Workshop by following this formula. It works.</p>
+		</div>
+	</div>-->
+<% end %>
+
 
 <div class="wrapper" style="width: 35em; padding: 2em 0;">
 	
@@ -17,6 +172,7 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 <% end %>
 
 
+
 	<table style="margin: 0; width: 35em;">
 		<thead style="font-weight: 300; text-align: left;">
 			<tr>
@@ -26,26 +182,35 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 			</tr>
 		</thead>
 
+
+
 	  <tbody>
 	    <% @leads.most_recent.each do |lead| %>
 	      <tr>
-	        <td style="border-bottom: 1px solid #ccc; padding: 0 0 1em;">
+	        <td class="lead">
+						<% if tutorial? %>
+							<p class="tooltip show-hover" style="margin-left: 520px; margin-top: 7px; width: 130px !important; display: inline-block;"><span class="left"></span>Identify a client's expensive problem.</p>
+						<% end %>
+
+						
 						<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= lead.title %></strong></p>
 						<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= lead.url %>" style="color: #666;"><%= lead.url %></a></p>
 						<p style="margin: .5em 0 0;"><%= simple_format(lead.description) %></p>
-						<% if lead.image.file? %>
-						  <%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
-						<% else %>
-						<% end %>
-						<p style="font-size: 16px; margin: .5em 0;">
-							Name: <%= lead.name %></strong>
-						<br>Email: <%= mail_to lead.email %>
-						<br>
+						
+							<% if lead.image.file? %>
+								<% if tutorial? %>
+									<p class="tooltip show-hover" style="margin-left: -135px; margin-top: 10px; width: 100px !important;  display: inline-block;"><span class="right"></span>Look at clients directly in their human faces.</p>
+								<% end %>
+							<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+								<% else %>
+							<% end %>
+							
+						<p style="font-size: 16px; margin: .5em 0;"> Name: <%= lead.name %></strong>
+							<br>Email: <%= mail_to lead.email %>
+							<br>
 						</p>
+						
 						<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
-						
-						
-						
 						
 							<% if admin_signed_in? %>
 							<span style="float: right; color: #666; font-size: 14px;">
@@ -53,15 +218,13 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 							</span>
 							<% else %>
 								<% unless current_user.favorites.include?(lead) %>
+										<% if tutorial? %>
+											<p class="tooltip arrow bounce show-hover" style="margin-left: 450px; margin-top: -110px; width: 120px !important; display: inline-block;"><span class="bottom"></span>Add this lead to your follow-up list.</p>
+										<% end %>
 									<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
 								<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
 								<% end %>
 							<% end %>
-								
-
-						
-							
-							
 						 </p>
 					</td>
 	      </tr>
@@ -71,12 +234,56 @@ input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
 
 	<%= will_paginate @leads unless params[:advanced].blank? %>
 
-	<div style="width: 100%;text-align:center; font-size: 23px; line-height: 5em;">
-	<a href="/favorites">Your Favorites</a>
-	</div>
-	<hr>
-	<div style="width: 100%;text-align:center; font-size: 23px; line-height: 3em;">
-	<a href="/users/edit">Edit Your Subscription</a>
-	</div>
+<p class="next-step"><%= link_to "Search All Leads", leads_path(advanced: true), :class => "button, search-button" %></p>
+<hr>
+<p class="next-step"><a href="/favorites">Your Follow up List</a></p>
+<hr>
+<p class="next-step"><a href="/users/edit">Edit Your Subscription</a></p>
+<hr>
+<p class="next-step"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+
+
 	
+	
+	<p>It works. To begin landing deals, the first thing you have to do is identify leads that you want to contact. You should contact any lead that has an expensive problem you can solve.</p> 
+	<p>Remember: It’s your job to decide what the right solution is and present that. Workshop's leads are designed to help you identify these leads quickly. Each weekday you will get an email with about 10 leads I've found for you from the day before. Here’s what they'll look like.</p>
+	
+	<% if tutorial? %>
+		<div style="margin: 2em 0; box-shadow: 0 2px 20px #ccc; padding: .5em 2em; border-radius: 10px;">
+
+
+
+			<p style="margin: 1em 0 0; font-size: 20px;"><strong>Redesign DoubleYourFreelancing.com for conversion optimization</strong></p>
+			<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="https://twitter.com/brennandunn/status/669511966835277824" style="color: #666;">https://twitter.com/brennandunn/status/669511966835277824</a></p>
+			<p style="margin: .5em 0 0;">Looking for a blog / WP designer that really understands (and has a track record) of getting results conversions, CTAs, etc. My name is Brennan Dunn and I built Double Your Freelancing as a way to help freelancers and consultants earn more. I'm looking  for help optimizing my popular website. I'm focused on maximizing the traffic I have and need help figuring out how to keep growing my products and services. I have multiple courses on helping freelancers and the business is doing great.</p>
+			<%= image_tag "brennan.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+			<p style="font-size: 16px; margin: .5em 0;">
+			Name: Brennan Dunn</strong>
+			<br>Email: brennan+workshop@planscope.io
+			<br>
+			</p>
+			<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= Date.today.strftime("%b. %d %Y") %> in Interaction</span> 
+			<a href="#" class="favorite">Favorite</a>					
+			</p>
+		</div>
+		
+	<% end %>
+
+
+
+<p><strong>Pro-Tip:</strong> Don't look for 
+	
+	<hr>
+	
+	<p class="next-step" style="margin-bottom: 5em;"><a href="/leads">Got it! Let's go through some recent leads & favorite the matches.</a></p>
+
+
+	
+	<h1>OK, How can I close deals quickly?</h1>
+	<%= image_tag "turn-lead-into-client.png", :style => "max-width: 100%;"  %>
+	<p style="font-size: 16px; background-color: #fffcda; padding: .25em .5em; margin: 0 auto;"><strong>Note:</strong> I've seen over 500 consultancies land clients in Workshop by following this formula. It works.</p>
+	
+	
+	<p class="next-step" style="margin-bottom: 5em;"><a href="/favorites">Got it! Let's pick leads & start landing work</a> <span style="color: #e76025;"> &#8594;</span></p>
+
 </div>
