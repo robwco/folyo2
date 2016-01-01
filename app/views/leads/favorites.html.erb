@@ -55,13 +55,14 @@
 </style>
 
 
+
 <div class="wrapper">
 	<% unless current_user.favorites.blank? %>
-		<div style="display:table;  width: 100%; text-align: center;">
-			<h1>This is your follow-up list</h1>
-			<hr style="margin: 2em 0 0 0;">
-		</div>
-	
+
+		<div style="margin: 3em 0 3em; box-shadow: 0 2px 20px #ccc; padding: 1em 2em; border-radius: 10px; display:table;  width: 100%;">
+			<h1 style="text-align: center;">This is your follow-up list</h1> 
+
+			<h3 style="background-color: #fffcda; padding: .2em .5em .25em; margin-left: -4em;  border-right: 2px solid #fbcd68;">to contact: <span style="font-size: 16px; text-transform: none; margin-left: 1em;"><em>These leads are a match for the work you do. Email them soon.</em></span></h3>
 		<table style="margin: 0; width: 35em;">
 		  <tbody>
 		    <% @current_user.favorites.each do |lead| %>
@@ -86,6 +87,13 @@
 		  </tbody>
 		</table>
 		<%= will_paginate @leads unless params[:advanced].blank? %>
+		
+		<p>You'll receive a weekly email including these leads every monday.</p>
+		<h3 style="background-color: #ffddda; padding: .2em .5em .25em; margin-left: -4em;  border-right: 2px solid #ff7a6f;">waiting for reply: <span style="font-size: 16px; text-transform: none; margin-left: 1em;"><em>These are leads you've contacted. Follow up within 4 or 5 days.</em></span></h3>
+		
+		
+		<h3 style="background-color: #daffe1; padding: .2em .5em .25em; margin-left: -4em;  border-right: 2px solid #68fb8b;">follow up later: <span style="font-size: 16px; text-transform: none; margin-left: 1em;"><em>These leads are a match for the work you do. Email them soon.</em></span></h3>
+		</div>
 	<% else %>
 		
 			<div style="margin: 3em 0 3em; box-shadow: 0 2px 20px #ccc; padding: 1em 2em; border-radius: 10px;background-image:url('../images/favorites-empty.png'); background-size: 90%; background-position: center 80%;background-repeat: no-repeat; height: 450px;">

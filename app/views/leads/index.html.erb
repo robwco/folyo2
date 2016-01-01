@@ -133,117 +133,121 @@ td.lead:hover {
     from { }
     to { transform: translateX(-5px); }
 }
-.popupContainer {
-	width: 100%;
-	height: 100%;
+.overlay {
 	position: fixed;
-	background-color: rgba(0,0,0, .8);
-	
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 1001;
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: rgba(0, 0, 0, 0.9);
+   transition: opacity 500ms;
+   visibility: visible;
+   opacity: 1;
+}
+ .overlay:target {
+  visibility: hidden;
+  opacity: 0;
+  display:none
 }
 .popup {
-	width: 700px;
-	height: 300px;
-	padding: 1em;
-	border-radius: .5em;
-	background-color: #FFF;
-	margin: 2em auto;
+  margin: 10px auto;
+  padding: 20px;
+  background: #000;
+  border-radius: 5px;
+  width: 650px;
+  position: relative;
+  transition: all 5s ease-in-out;
 }
-.box {
-           width: 20%;
-           margin: 0 auto;
-           background: rgba(255, 255, 255, 0.2);
-           padding: 35px;
-           border: 2px solid #fff;
-           border-radius: 20px/50px;
-           background-clip: padding-box;
-           text-align: center;
-         }
-         .button {
-           font-size: 1em;
-           padding: 10px;
-           color: #fff;
-           border: 2px solid orange;
-           border-radius: 20px/50px;
-           text-decoration: none;
-           cursor: pointer;
-           transition: all 0.3s ease-out;
-         }
-         .button:hover {
-           background: orange;
-         }
-         .overlay {
-           position: absolute;
-           top: 0;
-           bottom: 0;
-           left: 0;
-           right: 0;
-           background: rgba(0, 0, 0, 0.7);
-           transition: opacity 500ms;
-           visibility: visible;
-           opacity: 1;
-         }
-         .overlay:target {
-           visibility: hidden;
-           opacity: 0;
-           display:none
-         }
-         .popup {
-           margin: 70px auto;
-           padding: 20px;
-           background: #fff;
-           border-radius: 5px;
-           width: 30%;
-           position: relative;
-           transition: all 5s ease-in-out;
-         }
-         .popup h2 {
-           margin-top: 0;
-           color: #333;
-           font-family: Tahoma, Arial, sans-serif;
-         }
-         .popup .close {
-           position: absolute;
-           top: 20px;
-           right: 30px;
-           transition: all 200ms;
-           font-size: 30px;
-           font-weight: bold;
-           text-decoration: none;
-           color: #333;
-         }
-         .popup .close:hover {
-           color: orange;
-         }
-         .popup .content {
-           max-height: 30%;
-           overflow: auto;
-         }
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: orange;
+}
+.popup .content {
+  overflow: auto;
+}
 </style>
 
 <% if tutorial? %>
-
 <div id="popup1" class="overlay">
 	<div class="popup" >
-		<h2>Here i am</h2>
 		<a class="close" href="#popup1">×</a>
-		<div class="content">
-			Thank to pop me out of that button, but now i'm done so you can close this window.
+
+		<h1 style="color: #FFF; text-align: center;">OK, How can I close deals quickly?</h1>
+			<%= image_tag "turn-lead-into-client.png", :style => "max-width: 100%; margin: 0 auto; text-align: center;"  %>
+
+				
+						<div class="content">
+			<table style="margin: 0; width: 35em;">
+			  <tbody>
+			    <% @leads.most_recent.first do %>
+			      <tr>
+			        <td class="lead">
+								<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= lead.title %></strong></p>
+								<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= lead.url %>" style="color: #666;"><%= lead.url %></a></p>
+								<p style="margin: .5em 0 0;"><%= simple_format(lead.description) %></p>
+
+								<% if lead.image.file? %>
+									<% if tutorial? %>
+										<p class="tooltip show-hover" style="margin-left: 65px; margin-top: 15px; width: 140px !important;  display: inline-block;"><span class="left"></span>Look at clients directly in their human faces.</p>
+									<% end %>
+								<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+									<% else %>
+								<% end %>
+
+								<p style="font-size: 16px; margin: .5em 0;"> Name: <%= lead.name %></strong>
+									<br>Email: <%= mail_to lead.email %>
+									<br>
+								</p>
+
+								<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
+
+							<% if admin_signed_in? %>
+							<span style="float: right; color: #666; font-size: 14px;">
+								Admin Options: <%= link_to 'Edit', edit_lead_path(lead) %>, <%= link_to 'Delete', lead_path(lead), method: :delete, data: { confirm: 'Are you sure?' } %>
+							</span>
+							<% else %>
+								<% unless current_user.favorites.include?(lead) %>
+										<% if tutorial? %>
+											<p class="tooltip arrow bounce show-hover" style="margin-left: 450px; margin-top: -110px; width: 120px !important; display: inline-block;"><span class="bottom"></span>Add this lead to your follow-up list.</p>
+										<% end %>
+									<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
+								<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
+								<% end %>
+							<% end %>
+						 </p>
+					</td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+			<p style="font-size: 16px; background-color: #fffcda; padding: .25em .5em; margin: 0 auto;"><strong>Note:</strong> I've seen over 500 consultancies land clients in Workshop by following this formula. It works.</p>
 		</div>
 	</div>
 </div>
-<!--
-	<div class="popupContainer">
-		<div class="popup">
-			<h1>OK, How can I close deals quickly?</h1>
-			<%= image_tag "turn-lead-into-client.png", :style => "max-width: 100%;"  %>
-			<p style="font-size: 16px; background-color: #fffcda; padding: .25em .5em; margin: 0 auto;"><strong>Note:</strong> I've seen over 500 consultancies land clients in Workshop by following this formula. It works.</p>
-		</div>
-	</div>-->
 <% end %>
 
-
 <div class="wrapper" style="width: 35em; padding: 2em 0;">
-	
 <% if admin_signed_in? %>
 	Admin Options:
 	<%= link_to "New Lead", new_lead_path, :class => "button" %>
@@ -310,7 +314,7 @@ td.lead:hover {
 	  </tbody>
 	</table>
 
-	<%= will_paginate @leads unless params[:advanced].blank? %>
+<%= will_paginate @leads unless params[:advanced].blank? %>
 
 <p class="next-step"><%= link_to "Search All Leads", leads_path(advanced: true), :class => "button, search-button" %></p>
 <hr>
@@ -319,49 +323,4 @@ td.lead:hover {
 <p class="next-step"><a href="/users/edit">Edit Your Subscription</a></p>
 <hr>
 <p class="next-step"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
-
-
-	
-	
-	<p>It works. To begin landing deals, the first thing you have to do is identify leads that you want to contact. You should contact any lead that has an expensive problem you can solve.</p> 
-	<p>Remember: It’s your job to decide what the right solution is and present that. Workshop's leads are designed to help you identify these leads quickly. Each weekday you will get an email with about 10 leads I've found for you from the day before. Here’s what they'll look like.</p>
-	
-	<% if tutorial? %>
-		<div style="margin: 2em 0; box-shadow: 0 2px 20px #ccc; padding: .5em 2em; border-radius: 10px;">
-
-
-
-			<p style="margin: 1em 0 0; font-size: 20px;"><strong>Redesign DoubleYourFreelancing.com for conversion optimization</strong></p>
-			<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="https://twitter.com/brennandunn/status/669511966835277824" style="color: #666;">https://twitter.com/brennandunn/status/669511966835277824</a></p>
-			<p style="margin: .5em 0 0;">Looking for a blog / WP designer that really understands (and has a track record) of getting results conversions, CTAs, etc. My name is Brennan Dunn and I built Double Your Freelancing as a way to help freelancers and consultants earn more. I'm looking  for help optimizing my popular website. I'm focused on maximizing the traffic I have and need help figuring out how to keep growing my products and services. I have multiple courses on helping freelancers and the business is doing great.</p>
-			<%= image_tag "brennan.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
-			<p style="font-size: 16px; margin: .5em 0;">
-			Name: Brennan Dunn</strong>
-			<br>Email: brennan+workshop@planscope.io
-			<br>
-			</p>
-			<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= Date.today.strftime("%b. %d %Y") %> in Interaction</span> 
-			<a href="#" class="favorite">Favorite</a>					
-			</p>
-		</div>
-		
-	<% end %>
-
-
-
-<p><strong>Pro-Tip:</strong> Don't look for 
-	
-	<hr>
-	
-	<p class="next-step" style="margin-bottom: 5em;"><a href="/leads">Got it! Let's go through some recent leads & favorite the matches.</a></p>
-
-
-	
-	<h1>OK, How can I close deals quickly?</h1>
-	<%= image_tag "turn-lead-into-client.png", :style => "max-width: 100%;"  %>
-	<p style="font-size: 16px; background-color: #fffcda; padding: .25em .5em; margin: 0 auto;"><strong>Note:</strong> I've seen over 500 consultancies land clients in Workshop by following this formula. It works.</p>
-	
-	
-	<p class="next-step" style="margin-bottom: 5em;"><a href="/favorites">Got it! Let's pick leads & start landing work</a> <span style="color: #e76025;"> &#8594;</span></p>
-
 </div>

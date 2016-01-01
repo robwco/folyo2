@@ -11,8 +11,8 @@ class LeadsController < ApplicationController
     if type == "favorite"
       @lead = Lead.find(params[:id])
       current_user.favorites << @lead unless current_user.favorites.exists?(@lead)
-      redirect_to :back, notice: 'Added to Favorites! <a href="/favorites" style="margin-left: .25em;">Go to Your Favorites</a>'
-
+      redirect_to :favorites, notice: 'Added to Favorites! <a href="/favorites" style="margin-left: .25em;">Go to Your Favorites</a>'
+    
     elsif type == "unfavorite"
       @lead = Lead.find(params[:id])
       current_user.favorites.delete(@lead)
