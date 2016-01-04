@@ -1,104 +1,115 @@
-<div class="wrapper" style="width: 30em;">
+
+	<div class="wrapper" style="width: 26em;">
+		<p class="next-step" style="font-size: 18px; margin-bottom: 2em;">
+			&larr; <a href="/leads" style="font-size: 18px;">Back to Leads</a>
+		</p>
+		<hr>
+
+			<% if current_user.past_due? %>
+				<p style="color:red;">The credit card you gave us didn't work when we tried to bill you. Please update your credit card to restore your account.</p>
+
+				<p><%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %></p>
+
+			<% elsif current_user.canceled? %>
+				<p style="color:red;">Your account was canceled, please reactivate your account to continue using Workshop.</p>
+
+				<p><%= link_to "Reactivate my account", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %></p>
+			<% end %>
+
+			<% unless current_user.past_due? || current_user.canceled? %>
+		
+		<center><h2>Update your settings</h2></center>
+
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+		  <% if resource.errors.any? || (!resource.subscription.nil? && resource.subscription.errors.any?) %>
+				<div id="error_explanation">
+				  <h2><%= pluralize(resource.errors.count + resource.subscription.errors.count, "error") %> occurred:</h2>
+
+				  <ul>
+					<% resource.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+					
+					<% resource.subscription.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				  </ul>
+				</div>
+		  <% end %>
+
+		  <div class="field">
+				<p style="margin: 2em 0 0;"><strong>Your email</strong> <span style="font-size: 16px;"><em> - This is where we send your leads.</em></span></p>
+
+				<%= f.email_field :email, autofocus: true %>
+		  </div>
+
+		  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+				<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+		  <% end %>
+
+		  <%= render 'categories' %>
+
+		  <div class="field">
+				<p style="margin: 2em 0 0;"><strong>Your name</strong></p>
+
+				<%= f.text_field :name %>
+		  </div>
 
 
-<p style="text-align: right; font-size: 14px; padding: 1em; margin: 1em auto;">
-	<span style="float: left;display:inline-block;">
-		<%= link_to "All Leads", leads_path %>	
-	</span>
-	Hey <%= first_name current_user.name %>, good to see you again! <%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+		  <div class="field">
+				<p style="margin: 2em 0 0;"><strong>New password</strong></p>
 
-<% if current_user.past_due? %>
-<p style="color:red;">Your account is not in good standing, please update your credit card to restore good standing.</p>
-<p><%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %></p>
-<% elsif current_user.canceled? %>
-<p style="color:red;">Your account was canceled, please reactivate your account to continue using Workshop.</p>
-<p><%= link_to "Reactivate my account", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %></p>
-<% end %>
+				<%= f.password_field :password, autocomplete: "off", placeholder: "Leave blank to keep current password" %>
 
-<% unless current_user.past_due? || current_user.canceled? %>
-<h2>Edit your settings</h2>
+				<p><strong>Confirm new password</strong></p>
+				
+				<%= f.password_field :password_confirmation, autocomplete: "off" %>
+		  </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <% if resource.errors.any? || (!resource.subscription.nil? && resource.subscription.errors.any?) %>
-	<div id="error_explanation">
+		  <div class="field">
+				<hr>
+			
+				<p style="margin: 2em 0 0;"><strong>Save any changes above</strong></p>
 
-	  <h2><%= pluralize(resource.errors.count + resource.subscription.errors.count, "error") %> occurred:</h2>
+				<%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter current password" %>
+		  </div>
 
-	  <ul>
-		<% resource.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
+
+		  <div class="actions">
+			<%= f.submit "Update", id: 'form-submit', :class => "buy", :style => "margin-left: 0;" %>
+		  </div>
 		<% end %>
-		<% resource.subscription.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
+
+
+		<div class="content" style="width: 100%; margin: 3em auto 1em; padding: 1em 2em .25em; background-color: #f1f1f1; border-radius: .5em; box-sizing: border-box;">
+			
+			<h2 style="margin: 0;">Billing</h2>
+
+			<% unless resource.canceling? %>
+				<p><strong>You're currently paying $<%= resource.subscription.plan.price %></strong> <%= resource.subscription.plan.interval_text %></strong></p>
+
+				<p style="font-size: 14px;">Your next payment is on <%= current_user.billing_period_end %>. <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %> (ending: -<%= current_user.last4 %>)<br></p>
+
+				<p style="margin: 2em auto;">
+					<% unless resource.subscription.plan.yearly? || resource.subscription.plan.savings(Plan.annual.first) <= 0 %>
+						<%= link_to "Save $#{ resource.subscription.plan.savings(Plan.annual.first) } by switching to yearly billing", upgrade_plan_path, :class => "button" %>
+					<% end %>
+				</p>
+			<% end %>
+
+				<% if resource.canceling? %>
+					<h3>Your account will be canceled at the end of the billing period</h3>
+					
+					<p><%= button_to "Reactivate my account", reactivate_subscription_path, class: 'submit', method: 'put' %></p>
+
+				<% elsif resource.good_standing? %>
+
+				<% else %>
+					<h3>Your account is canceled or overdue.</h3>
+
+					<p>Please re-enter your credit card to reactivate your account.</p>
+				<% end %>
+			</div>
 		<% end %>
-	  </ul>
 	</div>
-  <% end %>
-
-  <div class="field">
-	<p><strong>Your email</strong></p>
-	<%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-	<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-
-  <%= render 'categories' %>
-
-
-  <div class="field">
-	<p><strong>Your name</strong></p>
-	<%= f.text_field :name %>
-  </div>
-
-
-  <div class="field">
-	<p><strong>New password</strong></p>
-	<%= f.password_field :password, autocomplete: "off", placeholder: "Leave blank to keep current password" %>
-
-	<p><strong>Confirm new password</strong></p>
-	<%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-	<hr>
-	
-	<p><strong>Save any changes above</strong></p>
-	<%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter current password" %>
-  </div>
-
-
-  <div class="actions">
-	<%= f.submit "Update", id: 'form-submit', :class => "buy", :style => "margin-left: 0;" %>
-  </div>
-<% end %>
-
-
-<div class="content" style="width: 100%; margin: 3em auto .5em; padding: 1em 2em; background-color: #f1f1f1; border-radius: .5em; box-sizing: border-box;">
-<h2 style="margin: 0;">Billing</h2>
-
-<% unless resource.canceling? %>
-	<p><strong>You're currently paying $<%= resource.subscription.plan.price %></strong> <%= resource.subscription.plan.interval_text %></strong></p>
-
-	<p style="font-size: 14px;">Your next payment is on <%= current_user.billing_period_end %>. <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %> (ending: -<%= current_user.last4 %>)<br></p>
-	<p style="margin: 2em auto;">
-	<% unless resource.subscription.plan.yearly? || resource.subscription.plan.savings(Plan.annual.first) <= 0 %>
-		<%= link_to "Save $#{ resource.subscription.plan.savings(Plan.annual.first) } by switching to yearly billing", upgrade_plan_path, :class => "submit" %>
-	<% end %>
-	</p>
-<% end %>
-
-<% if resource.canceling? %>
-	<h3>Your account will be canceled at the end of the billing period</h3>
-	<p> <%= button_to "Reactivate my account", reactivate_subscription_path, class: 'submit', method: 'put' %></p>
-<% elsif resource.good_standing? %>
-<% else %>
-	<h3>Your account is canceled or overdue.</h3>
-	<p>Please re-enter your credit card to reactivate your account.</p>
-<% end %>
-</div>
-<% end %>
-
-</div>

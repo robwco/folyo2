@@ -27,9 +27,33 @@ class SubscriptionsController < ApplicationController
 		render plain: "Email delivered to #{current_user.email}"
 	end
 
-  def welcome 
-    flash[:notice] = "Your credit card was successfully charged $#{current_user.subscription.plan.price}, and you are ready to go!"
+	def test_weekly_emails
+		category_ids = current_user.category_ids
+
+		if category_ids.empty?
+			@leads = Lead.eager_load(:category).most_recent.limit(4)
+		else
+			@leads = Lead.eager_load(:category).most_recent.where("category_id IN (?)", category_ids)
+		end
+
+		@exclusives = Exclusive.most_recent
+		@categories = Category.all
+		@milestones = Milestone.all
+		@milestones_hash = Hash[ @milestones.map{ |m| [m.id, m.description] }]
+
 		@user = current_user
+
+		render 'worker_mailer/weekly_leads', layout: false
+	end
+
+
+	def send_weekly_emails
+		WorkerMailer.delay.weekly_leads(current_user)
+		render plain: "Email delivered to #{current_user.email}"
+	end
+
+  def welcome 
+  	@user = current_user
 		@leads = Lead.all
   end
 

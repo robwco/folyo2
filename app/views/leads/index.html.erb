@@ -1,9 +1,24 @@
 <% content_for :title, "Recent Leads" %>
 <style>
-a.favorite {float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none; margin-top: -40px;}
+
+a.favorite {
+	float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none; margin-top: -30px;
+}
+
 a.favorite:hover { background-color: #222; color: white;}
-input.search-bar { width: 175px !important; height: 30px; margin: 0 !important;margin-right: .25em;}
-input.search-button {height: 30px; padding: 0; font-size: 14px !important;}
+
+input.search-bar { 
+	width: 175px !important; 
+	height: 30px; 
+	margin: 0 !important;
+	margin-right: .25em;
+}
+
+input.search-button {
+	height: 30px; 
+	padding: 0; 
+	font-size: 14px !important;
+}
 
 td.lead:hover > .show-hover {
   visibility: visible;
@@ -11,14 +26,10 @@ td.lead:hover > .show-hover {
 }
 
 td.lead {
-	padding: .5em 2em; margin: 2em 0; padding: .5em 2em; border-bottom: 1px solid #ccc;
+	margin: 2em 0; padding: .5em 1em; border-bottom: 1px solid #ccc;
+	transition: box-shadow .1s linear;
 }
 
-<% if tutorial? %>
-td.lead:hover {
-	box-shadow: 0 2px 20px #ccc; 	border-radius: 10px;
-}
-<% end %>
 
 .show-hover {
   visibility: hidden;
@@ -35,6 +46,46 @@ td.lead:hover {
   padding: 5px 10px;
 	font-size: 16px;
 }
+
+.tooltip span.left:before{
+  content:'';
+  display:block;
+  width:0;
+  height:0;
+  position:absolute;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right:8px solid black;
+  left:-8px;
+  top:20px;
+}
+
+.tooltip span.right:before{
+  content:'';
+  display:block;
+  width:0;
+  height:0;
+  position:absolute;
+  border-bottom: 8px solid transparent;
+  border-top: 8px solid transparent;
+  border-left:8px solid black;
+  right:-8px;
+  top:20px;
+}
+
+.tooltip span.bottom:before{
+  content:'';
+  display:block;
+  width:0;
+  height:0;
+  position:absolute;
+	border-width:8px 8px 0; 
+	border-style:solid; 
+	border-color: black transparent;
+  left: 45%;
+  bottom: -8px;
+}
+
 .bounce {
   -webkit-animation: bounce .4s ease infinite alternate;
   -moz-animation: bounce .4s ease infinite alternate;
@@ -43,284 +94,166 @@ td.lead:hover {
   animation: bounce .4s ease infinite alternate;
 }
 
-.bounce-right {
-  -webkit-animation: bounce-right .4s ease infinite alternate;
-  -moz-animation: bounce-right .4s ease infinite alternate;
-  -ms-animation: bounce-right .4s ease infinite alternate;
-  -o-animation: bounce-right .4s ease infinite alternate;
-  animation: bounce-right .4s ease infinite alternate;
-}
-.tooltip span.left:before{
-    content:'';
-    display:block;
-    width:0;
-    height:0;
-    position:absolute;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right:8px solid black;
-    left:-8px;
-    top:20px;
-}
-
-.tooltip span.right:before{
-    content:'';
-    display:block;
-    width:0;
-    height:0;
-    position:absolute;
-    border-bottom: 8px solid transparent;
-    border-top: 8px solid transparent;
-    border-left:8px solid black;
-    right:-8px;
-    top:20px;
-}
-
-.tooltip span.bottom:before{
-    content:'';
-    display:block;
-    width:0;
-    height:0;
-    position:absolute;
-		
-
-		border-width:8px 8px 0; 
-		border-style:solid; 
-		border-color: black transparent;
-
-    left: 45%;
-    bottom: -8px;
-}
-
 @-webkit-keyframes bounce { 
-    from { }
-    to { -webkit-transform: translateY(-5px); }
+  from { }
+  to { -webkit-transform: translateY(-5px); }
 }
 @-moz-keyframes bounce { 
-    from { }
-    to { -moz-transform: translateY(-5px); }
+  from { }
+  to { -moz-transform: translateY(-5px); }
 }
 @-ms-keyframes bounce { 
-    from { }
-    to { -ms-transform: translateY(-5px); }
+  from { }
+  to { -ms-transform: translateY(-5px); }
 }
 @-o-keyframes bounce { 
-    from { }
-    to { -o-transform: translateY(-5px); }
+  from { }
+  to { -o-transform: translateY(-5px); }
 }
 @keyframes bounce { 
-    from { }
-    to { transform: translateY(-5px); }
+  from { }
+  to { transform: translateY(-5px); }
 }
 
-@-webkit-keyframes bounce-right { 
-    from { }
-    to { -webkit-transform: translateX(-5px); }
+.lead-title { margin: 1em 0 0; font-size: 20px; }
+
+.lead-url {color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;}
+
+.tip-one { margin-left: -160px; margin-top: 5px; width: 125px !important; display: inline-block;}
+
+.workflow-tab {
+	font-size: 16px; margin-left: .5em; padding: .25em 1em; margin-bottom: 2em; border-top-right-radius: 5px; border-top-left-radius: 5px; background-color: #eee; color: #888; font-family: 'concourse_c4regular', Lucida Grande, sans-serif;  text-transform: lowercase; text-decoration: none; vertical-align: 1px;
 }
-@-moz-keyframes bounce-right { 
-    from { }
-    to { -moz-transform: translateX(-5px); }
+.workflow-tab.active {
+	vertical-align: 0; background-color: #fff; color: #222;  bottom: -20px; border: 1px solid #ccc; border-bottom: 0;
 }
-@-ms-keyframes bounce-right { 
-    from { }
-    to { -ms-transform: translateX(-5px); }
-}
-@-o-keyframes bounce-right { 
-    from { }
-    to { -o-transform: translateX(-5px); }
-}
-@keyframes bounce-right { 
-    from { }
-    to { transform: translateX(-5px); }
-}
-.overlay {
-	position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   z-index: 1001;
-   position: fixed;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   background: rgba(0, 0, 0, 0.9);
-   transition: opacity 500ms;
-   visibility: visible;
-   opacity: 1;
-}
- .overlay:target {
-  visibility: hidden;
-  opacity: 0;
-  display:none
-}
-.popup {
-  margin: 10px auto;
-  padding: 20px;
-  background: #000;
-  border-radius: 5px;
-  width: 650px;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: orange;
-}
-.popup .content {
-  overflow: auto;
-}
+
+
 </style>
 
-<% if tutorial? %>
-<div id="popup1" class="overlay">
-	<div class="popup" >
-		<a class="close" href="#popup1">×</a>
 
-		<h1 style="color: #FFF; text-align: center;">OK, How can I close deals quickly?</h1>
-			<%= image_tag "turn-lead-into-client.png", :style => "max-width: 100%; margin: 0 auto; text-align: center;"  %>
+<div class="wrapper">
+	<% if admin_signed_in? %>
+		<p>
+			Admin Options:
+			<%= link_to "New Lead", new_lead_path, :class => "button" %>
 
-				
-						<div class="content">
-			<table style="margin: 0; width: 35em;">
-			  <tbody>
-			    <% @leads.most_recent.first do %>
-			      <tr>
-			        <td class="lead">
-								<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= lead.title %></strong></p>
-								<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= lead.url %>" style="color: #666;"><%= lead.url %></a></p>
-								<p style="margin: .5em 0 0;"><%= simple_format(lead.description) %></p>
+			<%= link_to "Upload RFP", new_rfp_path, :class => "button" %>
+			<hr>
+		</p>
+	<% end %>
 
-								<% if lead.image.file? %>
-									<% if tutorial? %>
-										<p class="tooltip show-hover" style="margin-left: 65px; margin-top: 15px; width: 140px !important;  display: inline-block;"><span class="left"></span>Look at clients directly in their human faces.</p>
-									<% end %>
-								<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
-									<% else %>
-								<% end %>
+	<% if advanced_search? %>
 
-								<p style="font-size: 16px; margin: .5em 0;"> Name: <%= lead.name %></strong>
-									<br>Email: <%= mail_to lead.email %>
-									<br>
-								</p>
 
-								<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
+		<p  style="margin: 1em 0; font-size: 15px; text-align: right; color: #666;">
+			<a style="margin-right: .5em" href="/users/edit">Account Settings</a> | 
+			<%= link_to "Log out", destroy_user_session_path, method: :delete, :style => "margin-left: .5em;" %></p>
+		</p>
 
-							<% if admin_signed_in? %>
-							<span style="float: right; color: #666; font-size: 14px;">
-								Admin Options: <%= link_to 'Edit', edit_lead_path(lead) %>, <%= link_to 'Delete', lead_path(lead), method: :delete, data: { confirm: 'Are you sure?' } %>
-							</span>
-							<% else %>
-								<% unless current_user.favorites.include?(lead) %>
-										<% if tutorial? %>
-											<p class="tooltip arrow bounce show-hover" style="margin-left: 450px; margin-top: -110px; width: 120px !important; display: inline-block;"><span class="bottom"></span>Add this lead to your follow-up list.</p>
-										<% end %>
-									<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
-								<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
-								<% end %>
+		<center>
+			<%= image_tag("consulting-leads-search.png", :style => "display: inline-block; margin: 1em auto 0; height: 90px;") %>
+			<p style="margin: 1em 0 2em;">Search through every lead I've ever sent <strong> - over 2600+ high-quality gigs.</strong></p>
+		</center>
+
+
+			<%= link_to "Most Recent", leads_path, :class => "workflow-tab" %>
+			<%= link_to "Search All Leads", leads_path(advanced: true), :class => "workflow-tab active" %>
+			<%= link_to "Your Follow-up List", favorites_path, :class => "workflow-tab" %>
+
+
+	<% else %>
+
+		<p  style="margin: 1em 0; font-size: 15px; text-align: right; color: #666;">
+			<a style="margin-right: .5em" href="/users/edit">Account Settings</a> | 
+			<%= link_to "Log out", destroy_user_session_path, method: :delete, :style => "margin-left: .5em;" %></p>
+		</p>
+
+		<center>
+			<%= image_tag("consulting-leads.png", :style => "display: inline-block; margin: 1em auto 0; height: 90px;") %>
+			<p style="margin: 1em 0 2em;">I find new leads daily & send them to you <strong> - every weekday at 8:00 am EST.</strong></p>
+		</center>
+
+
+			<%= link_to "Most Recent", leads_path, :class => "workflow-tab active" %>
+			<%= link_to "Search All Leads", leads_path(advanced: true), :class => "workflow-tab" %>
+			<%= link_to "Your Follow-up List", favorites_path, :class => "workflow-tab" %>
+
+	<% end %>
+
+
+
+
+<table style="margin: 0;" class="leads-index-wrapper">
+
+	<thead style="font-weight: 300; text-align: left;">
+		<tr>
+			<th style="font-weight: 300; padding: 0;">
+				<%= render "search" %>	
+			</th>
+		</tr>
+	</thead>
+
+  <tbody>
+    <% @leads.most_recent.each do |lead| %>
+      <tr>
+        <td class="lead">
+					<p class="lead-title"><strong><%= lead.title %></strong></p>
+
+					<p class="lead-url"> Original Source: <a href="<%= lead.url %>" style="color: #666;"><%= lead.url %></a></p>
+						
+					<p style="margin: .5em 0 0;"><%= simple_format(lead.description) %></p>
+					
+					<% if lead.image.file? %>
+
+					<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+					
+					<% else %>
+					<% end %>
+						
+					<p style="font-size: 16px; margin: .5em 0;"> Name: <%= lead.name %></strong>
+
+						<br>Email: <%= mail_to lead.email %>
+						<br>
+					</p>
+					
+					<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
+					
+						<% if admin_signed_in? %>
+							<span style="float: right; color: #666; font-size: 14px;"> Admin Options: <%= link_to 'Edit', edit_lead_path(lead) %>, <%= link_to 'Delete', lead_path(lead), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+						<% else %>
+
+							<% unless current_user.favorites.include?(lead) %>
+										
+								<p class="tooltip arrow bounce show-hover" style="margin-left: 500px; margin-top: -100px; width: 155px !important; display: inline-block;"><span class="bottom"></span>Interested? Add this lead to your follow-up list.</p>
+
+
+								<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
+
+							<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
 							<% end %>
-						 </p>
-					</td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
-
-			<p style="font-size: 16px; background-color: #fffcda; padding: .25em .5em; margin: 0 auto;"><strong>Note:</strong> I've seen over 500 consultancies land clients in Workshop by following this formula. It works.</p>
-		</div>
-	</div>
-</div>
-<% end %>
-
-<div class="wrapper" style="width: 35em; padding: 2em 0;">
-<% if admin_signed_in? %>
-	Admin Options:
-	<%= link_to "New Lead", new_lead_path, :class => "button" %>
-	<%= link_to "Upload RFP", new_rfp_path, :class => "button" %>
-	<hr>
-<% end %>
-
-
-
-	<table style="margin: 0; width: 35em;">
-		<thead style="font-weight: 300; text-align: left;">
-			<tr>
-				<th style="font-weight: 300;">
-					<%= render "search" %>	
-				</th>
-			</tr>
-		</thead>
-
-
-
-	  <tbody>
-	    <% @leads.most_recent.each do |lead| %>
-	      <tr>
-	        <td class="lead">
-						<% if tutorial? %>
-							<p class="tooltip show-hover" style="margin-left: -160px; margin-top: 5px; width: 125px !important; display: inline-block;"><span class="right"></span>Identify a client's expensive problem.</p>
 						<% end %>
-							<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= lead.title %></strong></p>
-							<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= lead.url %>" style="color: #666;"><%= lead.url %></a></p>
-						<p style="margin: .5em 0 0;"><%= simple_format(lead.description) %></p>
-						
-							<% if lead.image.file? %>
-								<% if tutorial? %>
-									<p class="tooltip show-hover" style="margin-left: 65px; margin-top: 15px; width: 140px !important;  display: inline-block;"><span class="left"></span>Look at clients directly in their human faces.</p>
-								<% end %>
-							<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
-								<% else %>
-							<% end %>
-							
-						<p style="font-size: 16px; margin: .5em 0;"> Name: <%= lead.name %></strong>
-							<br>Email: <%= mail_to lead.email %>
-							<br>
-						</p>
-						
-						<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
-						
-							<% if admin_signed_in? %>
-							<span style="float: right; color: #666; font-size: 14px;">
-								Admin Options: <%= link_to 'Edit', edit_lead_path(lead) %>, <%= link_to 'Delete', lead_path(lead), method: :delete, data: { confirm: 'Are you sure?' } %>
-							</span>
-							<% else %>
-								<% unless current_user.favorites.include?(lead) %>
-										<% if tutorial? %>
-											<p class="tooltip arrow bounce show-hover" style="margin-left: 450px; margin-top: -110px; width: 120px !important; display: inline-block;"><span class="bottom"></span>Add this lead to your follow-up list.</p>
-										<% end %>
-									<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
-								<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
-								<% end %>
-							<% end %>
-						 </p>
-					</td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+					</p>
 
-<%= will_paginate @leads unless params[:advanced].blank? %>
+				</td>
+      </tr>
+    <% end %>
+    	<tr>
+				<td><%= will_paginate @leads unless params[:advanced].blank? %></td>
+			</tr>
+  </tbody>
+
+</table>
+
 
 <p class="next-step"><%= link_to "Search All Leads", leads_path(advanced: true), :class => "button, search-button" %></p>
 <hr>
+
 <p class="next-step"><a href="/favorites">Your Follow up List</a></p>
 <hr>
+
 <p class="next-step"><a href="/users/edit">Edit Your Subscription</a></p>
 <hr>
+
 <p class="next-step"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
 </div>

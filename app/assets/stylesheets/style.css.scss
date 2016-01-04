@@ -14,8 +14,14 @@ body, .ccjs-card {
 		font-family: 'concourse_t3italic', Lucida Grande, sans-serif;
 		font-style: normal;
 	}
+	
 	strong {
 		font-family: 'concourse_t4regular', Lucida Grande, sans-serif;
+		font-weight: normal;
+	}
+
+	em strong, strong em {
+		font-family: 'concourse_t4italic', Lucida Grande, sans-serif;
 		font-weight: normal;
 	}
 	
@@ -30,7 +36,6 @@ body, .ccjs-card {
 			line-height: 3;
 		}
 	}
-	
 	
 	a {
 		color: #222;
@@ -60,6 +65,37 @@ body, .ccjs-card {
 		max-width: 37em;
 		margin: 0 auto;
 	}
+
+	.leads-index-wrapper {
+	width: 35em; 
+	margin: 3em 0 3em;
+	display:table;  
+	width: 100%;
+	border: 0;
+	border-top: 1px solid #ccc;
+}
+
+.pagination {
+	margin: 1.5em 0;
+	font-family: 'concourse_c4regular', Lucida Grande, sans-serif;
+	font-size: 14px;
+	word-spacing: .25em;
+	.current {
+		color: #FFF;
+		font-family: 'concourse_t4bold', Lucida Grande, sans-serif;
+		background-color: #222;
+		padding: 2px 7px;
+		height: 10px;
+		width: 10px;
+		border-radius: 100px;
+	}
+	.disabled {
+		color: #ccc;
+	}
+	a { text-decoration: none; 
+		color: #666;}
+}
+
 
 	.logo {
 		text-align: center;
@@ -103,37 +139,12 @@ body, .ccjs-card {
 		font-size: 26px;
 		line-height: 1.3;
 	}
+	
 	h3 {
 		font-family: 'concourse_c3bold';
 		font-size: 20px;
 	}
-
-	table.pricing {
-		margin: 2em 0;
-		box-shadow: 0 2px 20px #ccc;
-		
-		td {
-			line-height: 1.5;
-			padding: 1em 1.5em;
-			border: 1px solid #f7f8f9;
-		}
-		.bonus {
-			background-color: #f7f8f9;
-			font-weight: bold;
-		}
-		.bonus p {
-			font-weight: normal;
-		}
-		.check {
-			text-align: center;
-			color: #e66512;
-		}
-		.buy {
-			font-family: 'concourse_c4bold', Lucida Grande, sans-serif;
-			text-transform: lowercase;
-			text-decoration: none;
-		}
-	}
+	
 	input[type=submit], .button {
 		background-color: #eaeae9;
 		border: 2px solid #ccc;
@@ -161,7 +172,6 @@ body, .ccjs-card {
 	
 	a.favorite {float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none;}
 	a.favorite:hover { background-color: #222; color: white;}
-	
 	
 	.next-step {
 		text-align: center; 
@@ -205,9 +215,12 @@ body, .ccjs-card {
 	}
 
 	#error_explanation {
-			background-color: #fffbd8;
-			border-bottom: 2px solid #e6cb7a;
-			padding: 1em;
+			background-color: #222;
+			padding: .25em 1em;
+			text-align: center;
+			font-size: 16px;
+			font-family: 'concourse_t4regular', Lucida Grande, sans-serif !important;
+			color: #FFF;
 	}
 
 }

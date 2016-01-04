@@ -1,9 +1,9 @@
 <% if @user.category_ids.count >0 && @user.category_ids.count < @categories.count %>
-	<h3>You turned off these leads:</h3>		
+	<p style="margin: 1em 0 -.5em;"><strong>You turned off these leads:</strong></p>		
 	<p class="small">
 		<% @categories.each do |category| %>
 			<% unless @user.category_ids.include? category.id %>
-				<strike><%= category.name %></strike> <a href="<%= update_subscription_categories_url %>?category_id=<%= category.id %>">Turn on</a><br>
+				<strike><%= category.name %></strike> <a href="<%= update_subscription_categories_url %>?category_id=<%= category.id %>">Turn back on</a><br>
 			<% end %>
 		<% end %>
 	</p>

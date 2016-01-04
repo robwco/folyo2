@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   # Testing Emails
   get "/test_emails" => "subscriptions#test_email"
   get "/send_emails" => "subscriptions#send_email"
+  get "/test_weekly_emails" => "subscriptions#test_weekly_emails"
+  get "/send_weekly_emails" => "subscriptions#send_weekly_emails"
 
   # Plans and Billing
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
@@ -39,7 +41,7 @@ Rails.application.routes.draw do
   put "/subscriptions/categories_save" => "subscriptions#categories_save", as: :subscription_categories_save
 
   # Sign in
-  root to: redirect("/users/edit")
+  root to: redirect("/leads")
   get "/admins/welcome" => "admins#welcome", as: :admin_root
   
   # Email actions

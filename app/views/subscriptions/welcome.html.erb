@@ -1,10 +1,14 @@
-<div class="wrapper">
-<%= image_tag("confetti.png", :style => "margin: 1em 0 0; max-width: 100%;") %>
-<h2>Hello <%= first_name @user.name %> and welcome to the wonderful world of finding clients!</h2>
-<p>OK, maybe not so wonderful. Finding clients kinda sucks. It’s time-consuming and a pain in the butt. That’s why you’ve hired me. All day long you work with clients. They get to tell you what <em>they</em> want and <em>you</em> deliver them results.</p>
+<div class="wrapper" style="padding-bottom: 6em;">
+	<%= image_tag("confetti.png", :style => "margin: 0; max-width: 100%;") %>
+	<div style="width: 580px; margin: 0 auto; font-size: 21px;">
+		<center>
+			<h2 style="font-size: 40px;">Thanks for signing up!</h2>
 
-<h3>Now it’s your turn to be the client.</h3>
-<p>Now I deliver YOU results. I help you boost your revenue and end the feast or famine cycle forever. Your job is to reach out to one new lead I send you each day. By next month, you will have 20 potential new deals in your pipeline. That's less than one hour of work in exchange for possibly tens of thousands of dollars. Not bad. In fact, some customers close deals right away!</p> 
+			<p>I truly appreciate the support. Your subscription will automatically renew on <%= current_user.billing_period_end %>. The card we have on file will be charged $<%= current_user.subscription.plan.price %> at that time.</p>
 
-<p class="next-step" style="margin-bottom: 5em;"><a href="/address">Ready! Take me to my leads</a> <span style="color: #e76025;"> &#8594;</span></p>
+			<p>You can edit your subscription any time in <%= link_to "account settings", update_subscription_categories_path %></p>
+			<br>
+			<a href="/address" class="button">Launch lead app</a>
+		</center>
+	</div>
 </div>
