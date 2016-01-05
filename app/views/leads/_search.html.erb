@@ -7,7 +7,7 @@
 			<div style="display:table;  width: 100%;">
 				<ul class="lead-category" style="list-style-type: none; padding: 0; line-height: 2; margin: 0 0 2em 0;">
 					<% Category.all.each do |c| %>
-						<li style="display: inline-block; margin-right: .5em; width: 110px;">
+						<li style="display: inline-block; margin-right: .5em; width: 6.12em;">
 							<%= check_box_tag "category_ids[#{c.id}]", c.id, category_checked?(c), :name => "category_ids[]" %>
 							<strong><%= label_tag "category_ids_#{c.id}", c.name, :style => "text-transform:none;" %></strong>
 						</li>

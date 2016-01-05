@@ -8,7 +8,7 @@
   padding: 5px 10px 10px;
 	box-shadow: 1px 0px 5px #ccc;
 	font-size: 18px;
-	margin: 6em auto 0;
+	margin: 3.5em auto 0;
 	width: 420px;
   -webkit-animation: bounce .4s ease infinite alternate;
   -moz-animation: bounce .4s ease infinite alternate;
@@ -54,10 +54,10 @@
 
 
 .workflow-tab {
-	font-size: 16px; margin-left: .5em; padding: .25em 1em; margin-bottom: 2em; border-top-right-radius: 5px; border-top-left-radius: 5px; background-color: #eee; color: #888; font-family: 'concourse_c4regular', Lucida Grande, sans-serif;  text-transform: lowercase; text-decoration: none; vertical-align: 1px;
+	font-size: 16px; margin-left: .5em; padding: .25em 1em; margin-bottom: 2em; border-top-right-radius: 5px; border-top-left-radius: 5px; background-color: #eee; color: #888; font-family: 'concourse_c4regular', Lucida Grande, sans-serif;  text-transform: lowercase; text-decoration: none; vertical-align: 0px;
 }
 .workflow-tab.active {
-	vertical-align: 0; background-color: #fff; color: #222;  bottom: -20px; border: 1px solid #ccc; border-bottom: 0;
+	vertical-align: 0; background-color: #fff; color: #222;  bottom: -20px; border: 1px solid #ccc; border-bottom: 0; vertical-align: -1px;
 }
 
 </style>
@@ -86,7 +86,7 @@
 		<table style="margin: 0;" class="leads-index-wrapper">
 		  <tbody>
 		  	<th>
-		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">first contact <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Leads you favorite get added here.</em></span></h3>
+		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">first contact <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Leads you favorite get added here first.</em></span></h3>
 				</th>
 		    <% @current_user.favorites.each do |lead| %>
 		      <tr>
@@ -120,14 +120,17 @@
 		</table>
 		<%= will_paginate @leads unless params[:advanced].blank? %>
 
+		<!--
 		<h3 style="background-color: #ffddda; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">follow-up <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once you email to remember to follow-up within 7 days.</em></span></h3>
+		<p>Coming soon.</p>
 		
 		
 		<h3 style="background-color: #daffe1; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">touch-base <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once they cool off and want less frequent reminders to follow-up. <strong>(Sent monthly.)</strong></em></span></h3>
+		<p>Coming soon.</p>-->
 	<% else %>
 
 		
-			<div  class="leads-index-wrapper" style="margin: 0; background-image:url('../images/favorites-empty.png'); background-size: 95%; background-position: center 90%; background-repeat: no-repeat; height: 420px;">
+			<div  class="leads-index-wrapper" style="margin: 0; background-image:url('../images/favorites-empty.png'); background-size: 95%; background-position: center 90%; background-repeat: no-repeat; height: 480px;">
 				
 							<div class="tooltip arrow bounce" style="text-align:center;">
 								<h1 style="margin: .25em 0;">Keep all your deals on one page.</h1>
@@ -142,8 +145,5 @@
 
 		<% end %>
 
-		<p class="next-step"><a href="/users/edit">Edit Your Subscription</a></p>
-		<hr>
-		<p class="next-step"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
-
+	<%= render "footer" %>	
 </div>

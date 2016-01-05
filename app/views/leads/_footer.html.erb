@@ -1,0 +1,14 @@
+
+<p class="next-step"><%= link_to "Most Recent Leads", leads_path %></p>
+<hr>
+
+<p class="next-step"><%= link_to "Search All Leads", leads_path(advanced: true) %></p>
+<hr>
+
+<p class="next-step"><a href="/favorites">Your Follow-up List</a></p>
+<hr>
+
+<p class="next-step"><a href="/users/edit">Update Your Settings</a></p>
+<hr>
+
+<p class="next-step"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
