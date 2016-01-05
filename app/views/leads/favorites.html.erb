@@ -111,11 +111,11 @@
 
 							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
 
-								<%= link_to "Attempting to Reach", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %> 
+								<%= link_to "Mark as emailed", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %> 
 								
-								<%= link_to "In Conversation", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %> 
+								<%= link_to "Mark as replied", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
 								
-								<%= link_to "Touching Base", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
+								<%= link_to "Mark as follow-up", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
 								
 								<%= link_to "Remove from Favorites", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
 							</p>
