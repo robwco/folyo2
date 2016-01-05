@@ -86,7 +86,7 @@
 		<table style="margin: 0;" class="leads-index-wrapper">
 		  <tbody>
 		  	<th>
-		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">first contact <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Leads you favorite get added here first.</em></span></h3>
+		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">To Contact <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Leads you favorite get added here first.</em></span></h3>
 				</th>
 		    <% @current_user.favorites.each do |lead| %>
 		      <tr>
@@ -111,6 +111,12 @@
 
 							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
 
+								<%= link_to "Attempting to Reach", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %> 
+								
+								<%= link_to "In Conversation", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %> 
+								
+								<%= link_to "Touching Base", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
+								
 								<%= link_to "Remove from Favorites", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
 							</p>
 						</td>
@@ -120,13 +126,17 @@
 		</table>
 		<%= will_paginate @leads unless params[:advanced].blank? %>
 
-		<!--
-		<h3 style="background-color: #ffddda; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">follow-up <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once you email to remember to follow-up within 7 days.</em></span></h3>
+	
+		<h3 style="background-color: #ffddda; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">Attempting to Reach <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once you email to remember to follow-up within 7 days.</em></span></h3>
 		<p>Coming soon.</p>
 		
 		
-		<h3 style="background-color: #daffe1; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">touch-base <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once they cool off and want less frequent reminders to follow-up. <strong>(Sent monthly.)</strong></em></span></h3>
-		<p>Coming soon.</p>-->
+		<h3 style="background-color: #daffe1; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">In Conversation <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once they cool off and want less frequent reminders to follow-up. <strong>(Sent monthly.)</strong></em></span></h3>
+		<p>Coming soon.</p>
+
+
+		<h3 style="background-color: #d1e9ff; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">Touching Base <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Monthly reminders to follow-up. <strong>(Sent monthly.)</strong></em></span></h3>
+		<p>Coming soon.</p>
 	<% else %>
 
 		
