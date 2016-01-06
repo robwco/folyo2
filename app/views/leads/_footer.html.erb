@@ -1,14 +1,14 @@
 
-<p class="next-step"><%= link_to "Most Recent Leads", leads_path %></p>
-<hr>
+<div style="margin: 5em 0 3em;">
+<p style="text-align:center;"><strong>Hey there! What would you like to do?</strong></p>
+
+<p class="next-step"><%= link_to "See Recent Leads", leads_path %></p>
 
 <p class="next-step"><%= link_to "Search All Leads", leads_path(advanced: true) %></p>
-<hr>
 
-<p class="next-step"><a href="/favorites">Your Follow-up List</a></p>
-<hr>
+<p class="next-step"><a href="/favorites">Go to Your Follow-up List</a></p>
 
 <p class="next-step"><a href="/users/edit">Update Your Settings</a></p>
-<hr>
 
 <p class="next-step"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+</div>

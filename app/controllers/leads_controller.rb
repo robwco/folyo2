@@ -24,6 +24,14 @@ class LeadsController < ApplicationController
     end
   end
 
+  def contacted
+    render plain: "HERE HERE" and return
+    @lead = current_user.favorite_leads.where(lead_id: params[:id])
+    @lead.contact 
+    @lead.save
+    redirect_to :favorites, notice: 'Added to Favorites!'
+  end
+
   def index
     @leads = Lead.includes(:category).limit(20).all unless params[:advanced].present?
     @leads = Lead.includes(:category)

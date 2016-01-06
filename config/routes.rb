@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :leads do
     patch :favorite, on: :member
   end
-  
+
   resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans, :rss
 
   mount StripeEvent::Engine => '/stripe-events'
@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   
   # Leads
   get "/favorites" => "leads#favorites"
+  put "/contacted" => "leads#favorites", as: :contacted
+
 
   devise_scope :user do 
       match '/sessions/user', to: 'devise/sessions#create', via: :post
