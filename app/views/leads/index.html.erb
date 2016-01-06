@@ -2,21 +2,34 @@
 <style>
 
 a.favorite {
-	float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none; margin-top: -30px;
+	font-size: 16px;
+	font-family: 'concourse_c4regular', Lucida Grande, sans-serif;
+	text-transform: lowercase; 
+  border-radius: 8px;
+  padding: 7px 16px 8px 16px;
+	float: right;
+	text-align: center;
+	color:#666;
+	text-decoration: none;
+	margin-top: -3.5em;
+	background-color: #eee;
 }
 
-a.favorite:hover { background-color: #222; color: white;}
+a.favorite:hover { 
+	background-color: #e66125; 
+	color: white;
+}
 
 input.search-bar { 
 	width: 175px !important; 
 	height: 30px; 
 	margin: 0 !important;
 	margin-right: .25em;
+
 }
 
 input.search-button {
-	height: 30px; 
-	padding: 0; 
+	margin-left: .5em;
 	font-size: 14px !important;
 }
 
@@ -116,7 +129,7 @@ td.lead {
 
 .lead-title { margin: 1em 0 0; font-size: 20px; }
 
-.lead-url {color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;}
+.lead-url {color: #666; font-size: 14px; margin: .125em 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 51em;}
 
 .tip-one { margin-left: -160px; margin-top: 5px; width: 125px !important; display: inline-block;}
 
@@ -205,6 +218,7 @@ td.lead {
 						<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
 						
 						<% else %>
+								<%= image_tag "missing.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
 						<% end %>
 							
 						<p style="font-size: 16px; margin: .5em 0;"> Name: <%= lead.name %></strong>
@@ -221,12 +235,12 @@ td.lead {
 
 								<% unless current_user.favorites.include?(lead) %>
 											
-									<p class="tooltip arrow bounce show-hover" style="margin-left: 37.5em; margin-top: -100px; width: 155px !important; display: inline-block;"><span class="bottom"></span>Interested? Add this lead to your follow-up list.</p>
+									<p class="tooltip arrow bounce show-hover" style="margin-left: 33.5em; margin-top: -130px; width: 155px !important; display: inline-block;"><span class="bottom"></span>Interested? Add this lead to your follow-up list.</p>
 
 
-									<%= link_to "Favorite", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite" %>
+									<%= link_to "Add to Follow-up List", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite", target: '_blank' %>
 
-								<% else %><span style="float: right; color: #666; font-size: 14px;">Favorited</span>
+								<% else %><span style="float: right; color: #666; font-size: 14px;">Added to Follow-up List.</span>
 								<% end %>
 							<% end %>
 						</p>

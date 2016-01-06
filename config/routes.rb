@@ -56,7 +56,10 @@ Rails.application.routes.draw do
   
   # Leads
   get "/favorites" => "leads#favorites"
+  put "/need_to_email" => "leads#need_to_email", as: :need_to_email
   put "/contacted" => "leads#contacted", as: :contacted
+  put "/responded" => "leads#responded", as: :responded
+  put "/touch_base" => "leads#touch_base", as: :touch_base
 
 
   devise_scope :user do 

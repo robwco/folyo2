@@ -146,32 +146,29 @@ body, .ccjs-card {
 	}
 	
 	input[type=submit], .button {
-		background-color: #eaeae9;
-		border: 2px solid #ccc;
-		color: #222;
-		cursor: pointer;
-		margin: 0 0 0 .5em;
-		padding: .25em 1em .5em;
-		font-family: 'concourse_c4bold', Lucida Grande, sans-serif;
-		text-transform: lowercase;
+		font-size: 16px;
+		font-family: 'concourse_c4regular', Lucida Grande, sans-serif;
+		text-transform: lowercase; 
+	  border-radius: 8px;
+	  padding: 7px 16px 8px 16px;
+		text-align: center;
+		color:#666;
 		text-decoration: none;
+		margin-top: -3.5em;
+		background-color: #eee;
+		cursor: pointer;
 		outline: none;
-		border-radius: 5px;
-		font-size: 17px;
-		vertical-align: 2px;
+		border: none;
 	  -webkit-transition: all 0.2s ease;
 	  -moz-transition: all 0.2s ease;
 	  -ms-transition: all 0.2s ease;
 	  transition: all 0.2s ease;
 		&:hover {
+			background-color: #e66125; 
 			color: white;
-			border: 2px solid #e66512;
-			background-color: #e66512;
 		}
 	}
 	
-	a.favorite {float: right; border: 1px solid #222; padding: 0 .35em; border-radius: 4px; text-decoration: none;}
-	a.favorite:hover { background-color: #222; color: white;}
 	
 	.next-step {
 		text-align: center; 

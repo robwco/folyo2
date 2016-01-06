@@ -5,26 +5,29 @@ class FavoriteLead < ActiveRecord::Base
 
   aasm column: 'state' do
 		state :to_contact, initial: true
-		state :attempting_to_reach
+		state :waiting_to_hear_back
 		state :in_conversation
-		state :touching_base
+		state :staying_in_touch
 
-	event :favorite do
+	  event :move_to_to_contact do
       transitions :to => :to_contact
     end
 
-	event :contact do
-      transitions :to => :attempting_to_reach
+	  event :move_to_waiting_to_hear_back do
+      transitions :to => :waiting_to_hear_back
     end
 
-    event :receive_reply do
+    event :move_to_in_conversation do
       transitions :to => :in_conversation
     end
 
-    event :discuss do
-      transitions :to => :touching_base
+    event :move_to_staying_in_touch do
+      transitions :to => :staying_in_touch
     end
 	end
 
-	scope :contacting, -> { where(state: 'attempting_to_reach') }
+	scope :moved_to_to_contact, -> { where(state: 'to_contact') }
+  scope :moved_to_waiting_to_hear_back, -> { where(state: 'waiting_to_hear_back') }
+  scope :moved_to_in_conversation, -> { where(state: 'in_conversation') }
+  scope :moved_to_staying_in_touch, -> { where(state: 'staying_in_touch') }
 end

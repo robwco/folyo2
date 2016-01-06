@@ -8,7 +8,7 @@
   padding: 5px 10px 10px;
 	box-shadow: 1px 0px 5px #ccc;
 	font-size: 18px;
-	margin: 3.5em auto 0;
+	margin: 5em auto 0;
 	width: 420px;
   -webkit-animation: bounce .4s ease infinite alternate;
   -moz-animation: bounce .4s ease infinite alternate;
@@ -60,6 +60,61 @@
 	vertical-align: 0; background-color: #fff; color: #222;  bottom: -20px; border: 1px solid #ccc; border-bottom: 0; vertical-align: -1px;
 }
 
+.followup-list-action-button {
+		background-color: #eaeae9;
+		border-radius: 4px;	
+		color: #222;
+		cursor: pointer;
+		margin: 0 0 0 .5em;
+		padding: 0 .25em .125em;
+		font-family: 'concourse_c4bold', Lucida Grande, sans-serif;
+		text-transform: lowercase;
+		text-decoration: none;
+		outline: none;
+		font-size: 12px;
+		vertical-align: 2px;
+	  -webkit-transition: all 0.2s ease;
+	  -moz-transition: all 0.2s ease;
+	  -ms-transition: all 0.2s ease;
+	  transition: all 0.2s ease;
+
+}
+
+a.follow-up-list-action-button:hover {
+		color: white;
+		background-color:  #eaeae9 !important;
+}
+
+
+.followup-list-action-button.yellow {
+	background-color: #fffcb0;
+	color: #222;
+}
+
+.followup-list-action-button.red  {
+	background-color: #ffddda;
+	color: #222;
+}
+
+
+.followup-list-action-button.green {
+	background-color: #daffe1;
+	color: #222;
+}
+
+.followup-list-action-button.blue {
+	background-color: #d1e9ff;
+	color: #222;
+}
+
+.follow-up-list-actions-box {
+	float: right; 
+	display: inline-block; 
+	margin-top: -7.75em;
+	width: 400px;
+	line-height: .5;
+	color: #666; font-size: 14px;
+}
 </style>
 
 
@@ -86,49 +141,9 @@
 		<table style="margin: 0;" class="leads-index-wrapper">
 		  <tbody>
 		  	<th>
-		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">To Contact <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Leads you favorite get added here first.</em></span></h3>
+		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">To Contact </h3>
 				</th>
-		    <% @current_user.favorites.each do |lead| %>
-		      <tr>
-		        <td style="border-bottom: 1px solid #ccc;padding: 0 0 1em;">
-
-							<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= lead.title %></strong></p>
-
-							<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= lead.url %>" style="color: #666;"><%= lead.url %></a></p>
-
-							<p style="margin: .5em 0 0;"><%= simple_format(lead.description) %></p>
-
-							<% if lead.image.file? %>
-							  <%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
-							<% else %>
-							<% end %>
-
-							<p style="font-size: 16px; margin: .5em 0;">
-								Name: <%= lead.name %></strong>
-							<br>Email: <%= mail_to lead.email %>
-							<br>
-							</p>
-
-							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
-
-								<%= link_to "Mark as emailed", contacted_path(id: lead.id), method: 'put' %>
-								
-								<%= link_to "Remove from Favorites", favorite_lead_path(lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
-							</p>
-						</td>
-		      </tr>
-		    <% end %>
-		  </tbody>
-		</table>
-		<%= will_paginate @leads unless params[:advanced].blank? %>
-
-
-		<table style="margin: 0; border-top: 0;" class="leads-index-wrapper">
-		  <tbody>
-		  	<th>
-		  		<h3 style="background-color: #ffddda; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">Attempting to Reach <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once you email to remember to follow-up within 7 days.</em></span></h3>
-				</th>
-		    <% @current_user.favorite_leads.contacting.each do |favorite_lead| %>
+		    <% @current_user.favorite_leads.moved_to_to_contact.each do |favorite_lead| %>
 		      <tr>
 		        <td style="border-bottom: 1px solid #ccc;padding: 0 0 1em;">
 
@@ -141,6 +156,7 @@
 							<% if favorite_lead.lead.image.file? %>
 							  <%= image_tag favorite_lead.lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
 							<% else %>
+								<%= image_tag "missing.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
 							<% end %>
 
 							<p style="font-size: 16px; margin: .5em 0;">
@@ -149,16 +165,77 @@
 							<br>
 							</p>
 
-							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></span> 
 
-								<%= link_to "Mark as emailed", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :style => "float: right;" %> 
-								
-								<%= link_to "Mark as replied", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
-								
-								<%= link_to "Mark as follow-up", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
-								
-								<%= link_to "Remove from Favorites", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :style => "float: right;" %>
+							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></span> 
 							</p>
+
+							<div class="follow-up-list-actions-box">
+									<p style="text-align: right;">Contact already? 
+									<%= link_to "Move to Waiting to Hear Back", contacted_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button red" %></p>
+
+									<p style="text-align: right;">Did they respond?
+									<%= link_to "Move to In Conversation", responded_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button green" %></p>
+
+									<p style="text-align: right;">Wanna touch base later?
+									<%= link_to "Move to Stay In Touch", touch_base_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button blue" %></p>
+									
+									<p style="text-align: right;">Not interested?  
+									<%= link_to "Remove from Follow-up List", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :class => "followup-list-action-button" %></p>
+
+								</div>
+
+						</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
+
+		<table style="margin: 0; border-top: 0;" class="leads-index-wrapper">
+		  <tbody>
+		  	<th>
+		  		<h3 style="background-color: #ffddda; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">Waiting to Hear Back</h3>
+				</th>
+		    <% @current_user.favorite_leads.moved_to_waiting_to_hear_back.each do |favorite_lead| %>
+		      <tr>
+		        <td style="border-bottom: 1px solid #ccc;padding: 0 0 1em;">
+
+							<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= favorite_lead.lead.title %></strong></p>
+
+							<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= favorite_lead.lead.url %>" style="color: #666;"><%= favorite_lead.lead.url %></a></p>
+
+							<p style="margin: .5em 0 0;"><%= simple_format(favorite_lead.lead.description) %></p>
+
+							<% if favorite_lead.lead.image.file? %>
+							  <%= image_tag favorite_lead.lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+							<% else %>
+								<%= image_tag "missing.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+							<% end %>
+
+							<p style="font-size: 16px; margin: .5em 0;">
+								Name: <%= favorite_lead.lead.name %></strong>
+							<br>Email: <%= mail_to favorite_lead.lead.email %>
+							<br>
+							</p>
+
+							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></span></p>
+
+
+							<div class="follow-up-list-actions-box">
+									<p style="text-align: right;">Need to email? 
+									<%= link_to "Move to To Email", need_to_email_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button yellow" %></p>
+
+								<p style="text-align: right;">Did they respond?
+								<%= link_to "Move to In Conversation", responded_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button green" %></p>
+
+								<p style="text-align: right;">Wanna touch base later?
+								<%= link_to "Move to Stay In Touch", touch_base_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button blue" %></p>
+
+								<p style="text-align: right;">Not interested?  
+								<%= link_to "Remove from Follow-up List", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :class => "followup-list-action-button" %></p>
+
+							</div>
+
 						</td>
 		      </tr>
 		    <% end %>
@@ -166,12 +243,114 @@
 		</table>
 		
 		
-		<h3 style="background-color: #daffe1; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">In Conversation <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Move leads here once they cool off and want less frequent reminders to follow-up. <strong>(Sent monthly.)</strong></em></span></h3>
-		<p>Coming soon.</p>
+
+		<table style="margin: 0; border-top: 0;" class="leads-index-wrapper">
+		  <tbody>
+		  	<th>
+		  			<h3 style="background-color: #daffe1; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">In Conversation</h3>
+				</th>
+		    <% @current_user.favorite_leads.moved_to_in_conversation.each do |favorite_lead| %>
+		      <tr>
+		        <td style="border-bottom: 1px solid #ccc;padding: 0 0 1em;">
+
+							<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= favorite_lead.lead.title %></strong></p>
+
+							<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= favorite_lead.lead.url %>" style="color: #666;"><%= favorite_lead.lead.url %></a></p>
+
+							<p style="margin: .5em 0 0;"><%= simple_format(favorite_lead.lead.description) %></p>
+
+							<% if favorite_lead.lead.image.file? %>
+							  <%= image_tag favorite_lead.lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+							<% else %>
+								<%= image_tag "missing.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+							<% end %>
+
+							<p style="font-size: 16px; margin: .5em 0;">
+								Name: <%= favorite_lead.lead.name %></strong>
+							<br>Email: <%= mail_to favorite_lead.lead.email %>
+							<br>
+							</p>
+
+							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></span></p>
 
 
-		<h3 style="background-color: #d1e9ff; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">Touching Base <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><em>Monthly reminders to follow-up. <strong>(Sent monthly.)</strong></em></span></h3>
-		<p>Coming soon.</p>
+							<div class="follow-up-list-actions-box">
+									<p style="text-align: right;">Need to email? 
+									<%= link_to "Move to To Email", need_to_email_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button yellow" %></p>
+
+									<p style="text-align: right;">Ball in their court? 
+									<%= link_to "Move to Waiting to Hear Back", contacted_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button red" %></p>
+
+								<p style="text-align: right;">Wanna touch base later?
+								<%= link_to "Move to Stay In Touch", touch_base_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button blue" %></p>
+
+								<p style="text-align: right;">Not interested?  
+								<%= link_to "Remove from Follow-up List", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :class => "followup-list-action-button" %></p>
+
+							</div>
+
+						</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
+	
+		
+
+		<table style="margin: 0; border-top: 0;" class="leads-index-wrapper">
+		  <tbody>
+		  	<th>
+		  			<h3 style="background-color: #d1e9ff; text-align:left; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">Staying in touch <span style="font-size: 14px; text-transform: none; margin-left: 1em;"><strong>Note: I'll only send these leads the first monday of each month.</strong></span></h3>
+				</th>
+		    <% @current_user.favorite_leads.moved_to_staying_in_touch.each do |favorite_lead| %>
+		      <tr>
+		        <td style="border-bottom: 1px solid #ccc;padding: 0 0 1em;">
+
+							<p style="margin: 1em 0 0; font-size: 20px;"><strong><%= favorite_lead.lead.title %></strong></p>
+
+							<p style="color: #666; font-size: 14px; margin: .125em 0;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 560px;"> Original Source: <a href="<%= favorite_lead.lead.url %>" style="color: #666;"><%= favorite_lead.lead.url %></a></p>
+
+							<p style="margin: .5em 0 0;"><%= simple_format(favorite_lead.lead.description) %></p>
+
+							<% if favorite_lead.lead.image.file? %>
+							  <%= image_tag favorite_lead.lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+							<% else %>
+								<%= image_tag "missing.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+							<% end %>
+
+							<p style="font-size: 16px; margin: .5em 0;">
+								Name: <%= favorite_lead.lead.name %></strong>
+							<br>Email: <%= mail_to favorite_lead.lead.email %>
+							<br>
+							</p>
+
+							<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></span></p>
+
+
+							<div class="follow-up-list-actions-box">
+									<p style="text-align: right;">Need to email? 
+									<%= link_to "Move to To Email", need_to_email_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button yellow" %></p>
+
+									<p style="text-align: right;">Ball in their court? 
+									<%= link_to "Move to Waiting to Hear Back", contacted_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button red" %></p>
+
+								<p style="text-align: right;">Talking about a project?
+								<%= link_to "Move to In Conversation", responded_path(id: favorite_lead.lead.id), method: 'put', :class => "followup-list-action-button green" %></p>
+
+								<p style="text-align: right;">Not interested?  
+								<%= link_to "Remove from Follow-up List", favorite_lead_path(favorite_lead.lead, type: "unfavorite"), method: :patch, :class => "followup-list-action-button" %></p>
+
+							</div>
+
+						</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
+
+		<%= will_paginate @leads unless params[:advanced].blank? %>
 	<% else %>
 
 		
@@ -179,7 +358,7 @@
 				
 							<div class="tooltip arrow bounce" style="text-align:center;">
 								<h1 style="margin: .25em 0;">Keep all your deals on one page.</h1>
-								<p>Add leads by favoriting them & get reminded to stay in touch every week. You can even add your own clients. It’s like a waiting list of potential clients coming to you every week ... aka dry-spell kryptonite!</p>
+								<p>Add leads by favoriting them & get reminded to stay in touch every week. It’s like a waiting list of potential clients coming to you every week ... aka dry-spell kryptonite!</p>
 								<span class="bottom"></span>
 							</div>
 					<center>

@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
-  before_action :authenticate_admin!, except: [:upload, :index, :favorites, :favorite, :contacted]
+  before_action :authenticate_admin!, except: [:upload, :index, :favorites, :favorite, :contacted, :need_to_email, :responded, :touch_base]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_any!, only: [:index, :favorites, :contacted]
+  before_filter :authenticate_any!, only: [:index, :favorites, :contacted, :need_to_email, :responded, :touch_base]
 
     
   # Add and remove favorite lead
@@ -24,11 +24,32 @@ class LeadsController < ApplicationController
     end
   end
 
+  def responded
+    #render plain: "HERE HERE" and return
+    @lead = current_user.favorite_leads.where(lead_id: params[:id]).first
+    @lead.move_to_in_conversation! 
+    redirect_to :favorites, notice: "Added lead to In Conversation!"
+  end
+
   def contacted
     #render plain: "HERE HERE" and return
     @lead = current_user.favorite_leads.where(lead_id: params[:id]).first
-    @lead.contact! 
-    redirect_to :favorites, notice: 'Added to Favorites!'
+    @lead.move_to_waiting_to_hear_back! 
+    redirect_to :favorites, notice: "Added lead to Waiting to Hear Back!"
+  end
+
+  def need_to_email
+    #render plain: "HERE HERE" and return
+    @lead = current_user.favorite_leads.where(lead_id: params[:id]).first
+    @lead.move_to_to_contact! 
+    redirect_to :favorites, notice: "Added lead to To Contact!"
+  end
+
+  def touch_base
+    #render plain: "HERE HERE" and return
+    @lead = current_user.favorite_leads.where(lead_id: params[:id]).first
+    @lead.move_to_staying_in_touch! 
+    redirect_to :favorites, notice: "Added lead to Staying In Touch!"
   end
 
   def index
