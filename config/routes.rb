@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   
   # Leads
   get "/favorites" => "leads#favorites"
-  put "/contacted" => "leads#favorites", as: :contacted
+  put "/contacted" => "leads#contacted", as: :contacted
 
 
   devise_scope :user do 

@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
-  before_action :authenticate_admin!, except: [:upload, :index, :favorites, :favorite]
+  before_action :authenticate_admin!, except: [:upload, :index, :favorites, :favorite, :contacted]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_any!, only: [:index, :favorites]
+  before_filter :authenticate_any!, only: [:index, :favorites, :contacted]
 
     
   # Add and remove favorite lead
@@ -25,10 +25,9 @@ class LeadsController < ApplicationController
   end
 
   def contacted
-    render plain: "HERE HERE" and return
-    @lead = current_user.favorite_leads.where(lead_id: params[:id])
-    @lead.contact 
-    @lead.save
+    #render plain: "HERE HERE" and return
+    @lead = current_user.favorite_leads.where(lead_id: params[:id]).first
+    @lead.contact! 
     redirect_to :favorites, notice: 'Added to Favorites!'
   end
 

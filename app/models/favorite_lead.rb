@@ -9,20 +9,20 @@ class FavoriteLead < ActiveRecord::Base
 		state :in_conversation
 		state :touching_base
 
-		event :favorite do
-      transitions :from => :any, :to => :to_contact
+	event :favorite do
+      transitions :to => :to_contact
     end
 
-		event :contact do
-      transitions :from => :any, :to => :attempting_to_reach
+	event :contact do
+      transitions :to => :attempting_to_reach
     end
 
     event :receive_reply do
-      transitions :from => :any, :to => :in_conversation
+      transitions :to => :in_conversation
     end
 
     event :discuss do
-      transitions :from => :any, :to => :touching_base
+      transitions :to => :touching_base
     end
 	end
 
