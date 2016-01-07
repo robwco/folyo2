@@ -1,3 +1,4 @@
+<h3>New Leads:</h3>
 <% @exclusives.today.most_recently_updated.each do |exclusive| %>
 	<h3 style="text-transform: uppercase; margin: 2em 0 0;"><span style="color: #98ae2a;">Low Competition Lead -</span> <%= exclusive.category %>:</h3>
   <div style="margin: 2em 0; display: block;">
@@ -17,3 +18,5 @@
 <% @leads.today.most_recently_updated.group_by(&:category).each do |category, leads| %>
 	<%= render :partial => 'worker_mailer/lead_display', :locals => { :category => category, :leads => leads }   %>
 <% end %>
+
+<p style="margin: 1em 0 3em;"><strong>Note:</strong> These leads have been hand-checked for quality. If you see something you don&rsquo;t like, let me know. Mistakes happen but I want to know about anything you want removed. <a href="MAILTO:julie@letsworkshop.com?subject=RE: Workshop lead error?&body=Hello Julie! I didn't like seeing this lead: { insert lead } because it { insert reason for disatisfaction }. I'd prefer to get something that was more { insert relevant benefit }. Thank you!">Report an error</a></p>

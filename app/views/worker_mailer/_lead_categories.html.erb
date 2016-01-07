@@ -1,5 +1,5 @@
 <% if @user.category_ids.count >0 && @user.category_ids.count < @categories.count %>
-	<p style="margin: 1em 0 -.5em;"><strong>You turned off these leads:</strong></p>		
+	<h3>Leads categories you have turned off:</h3>		
 	<p class="small">
 		<% @categories.each do |category| %>
 			<% unless @user.category_ids.include? category.id %>

@@ -1,0 +1,14 @@
+<h3>Your Follow-up List Pipeline:</h3> 
+
+<p style="margin: 1em 0 3em;">
+	<span class="to-contact"><%= @current_user.favorite_leads.moved_to_to_contact.count %> need to contact</span>
+
+	<span class="contacted"><%= @current_user.favorite_leads.moved_to_waiting_to_hear_back.count %> waiting to hear back</span> 
+
+	<span class="following-up"><%= @current_user.favorite_leads.moved_to_in_conversation.count %> in conversation</span> 
+
+	<span class="staying-in-touch"><%= @current_user.favorite_leads.moved_to_staying_in_touch.count %> staying in touch</span>
+
+	<span style="display: block; margin-top: 1em;"><a href="http://app.letsworkshop.com/favorites">Go to your follow-up list &rarr;</a></span>
+</p>
+
