@@ -8,7 +8,7 @@
   padding: 5px 10px 10px;
 	box-shadow: 1px 0px 5px #ccc;
 	font-size: 18px;
-	margin: 5em auto 0;
+	margin: 3.75em auto 0;
 	width: 420px;
   -webkit-animation: bounce .4s ease infinite alternate;
   -moz-animation: bounce .4s ease infinite alternate;
@@ -116,14 +116,11 @@ a.follow-up-list-action-button:hover {
 }
 </style>
 
-
-
 <div class="wrapper">
 	<p  style="margin: 1em 0; font-size: 15px; text-align: right; color: #666;">
 		<a style="margin-right: .5em" href="/users/edit">Account Settings</a> | 
 		<%= link_to "Log out", destroy_user_session_path, method: :delete, :style => "margin-left: .5em;" %>
 	</p>
-
 
 	<center>
 		<%= image_tag("favorites-header.png", :style => "display: inline-block; margin: 1em auto 0; height: 90px;") %>
