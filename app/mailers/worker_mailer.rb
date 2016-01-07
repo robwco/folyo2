@@ -28,6 +28,7 @@ class WorkerMailer < ActionMailer::Base
 	  @exclusives = Exclusive.today.most_recently_updated
 
 	  @categories = Category.all
+	  
 	  @milestones = Milestone.all
 
 	  @milestones_hash = Hash[ @milestones.map{ |m| [m.id, m.description] }]
