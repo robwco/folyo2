@@ -48,7 +48,7 @@ class Plan < ActiveRecord::Base
 	end
 
 	def archive
-		@published = false
+		self.published = false
 		save
 	end
 end
