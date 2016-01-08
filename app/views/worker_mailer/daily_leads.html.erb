@@ -1,13 +1,11 @@
 <html lang="en"> 
 <head>
-	<style>
-		<%= render 'worker_mailer/worker_mailer_css' %>
-	</style>
+	<%= render 'worker_mailer/worker_mailer_css' %>
 </head>
 
 <body>
 	<center>
-		<%= image_tag("consulting-leads.png", :style => "text-align: center; display: inline-block; margin: 1em auto; height: 90px;") %>
+		<%= image_tag("consulting-leads.png", :class => ) %>
 	</center>
 
 	<%= render 'worker_mailer/follow_up_list_pipeline' %>	
@@ -16,7 +14,7 @@
 
 	<%= render 'worker_mailer/lead_categories' %>
 
-	<p style="padding: 1em 0; margin: 1em 0; font-size: 90%;"><a href="<%= edit_user_registration_url(only_path: false) %>">Update your account</a></p>
+	<p class="update-account"><a href="<%= edit_user_registration_url(only_path: false) %>">Update your account</a></p>
 </body>
 </html>
 

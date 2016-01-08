@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :leads do
     patch :favorite, on: :member
+    get :favorite, on: :member
   end
 
   resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans, :rss
