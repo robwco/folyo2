@@ -26,6 +26,7 @@ class FavoriteLead < ActiveRecord::Base
     end
 	end
 
+  scope :no_followups, where("moved_to_to_contact IS NULL")
 	scope :moved_to_to_contact, -> { where(state: 'to_contact') }
   scope :moved_to_waiting_to_hear_back, -> { where(state: 'waiting_to_hear_back') }
   scope :moved_to_in_conversation, -> { where(state: 'in_conversation') }
