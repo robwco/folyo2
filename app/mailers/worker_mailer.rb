@@ -11,7 +11,6 @@ class WorkerMailer < ActionMailer::Base
   def requested_leads(user, leads)
 	@user = user
 	@leads = leads
-
 	mail(to: 'robert@letsworkshop.com', subject: 'A cancelling user requested these types of leads')
   end
 
@@ -33,10 +32,19 @@ class WorkerMailer < ActionMailer::Base
 
 	  @milestones_hash = Hash[ @milestones.map{ |m| [m.id, m.description] }]
 
-	  subject = "Latest Gigs #{DateTime.now.strftime('%d %B %Y')}"
+	  subject = "New Consulting Leads #{DateTime.now.strftime('%d %B %Y')}"
 
 	  subject << " **exclusive lead inside**" if @exclusives.count > 0
 	  
 	  mail(to: user.email, subject: subject, from: "\"Robert Williams (from Workshop)\" <robert@letsworkshop.com>")
   end
+  
+  def weekly_leads(user)
+    @user = user
+
+    subject = "Your Follow-up List #{DateTime.now.strftime('%d %B %Y')}"
+        
+    mail(to: user.email, subject: subject, from: "\"Robert Williams (from Workshop)\" <robert@letsworkshop.com>")
+  end
+    
 end
