@@ -1,12 +1,17 @@
-<div class="wrapper">
-	<h1>Welcome, Admin!</h1>
-		<center>
+<div class="wrapper" style="max-width: 400px;">
+
+			<h1>Welcome, Admin!</h1>
+			
+			<p>There are currently <%= @users.active.count %> active customers and <%= @leads.today.count %> lead(s) posted in the last 24 hours.</p>
+			
+	
 			<% if current_admin.site_owner? %>
 					<h2>What would you like to do?</h2>
-					<%= link_to 'View Plans', plans_path %><br>
-					<%= link_to 'View Leads', leads_path %><br>
-					<%= link_to 'View Exclusives', exclusives_path %><br>
-					<%= link_to 'View RFPs', rfps_path %><br>
+					
+					
+					<%= link_to 'Leads', leads_path %><br>
+					<%= link_to 'Plans', plans_path %><br>
+					<%= link_to 'RFPs', rfps_path %><br>
 					<%= link_to 'Import Plans', import_plans_path %><br>
 					<%= link_to 'Import Customers', import_customers_path %>
 			<% end %>
@@ -14,5 +19,5 @@
 			<% if admin_signed_in? %>
 				<p><%= link_to "Log out", destroy_admin_session_path, method: :delete %></p>
 			<% end %>
-	</center>	
+
 </div>
