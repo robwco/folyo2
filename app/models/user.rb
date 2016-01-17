@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :milestone, dependent: :destroy
 
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
+  scope :with_favorites, -> { where("favorite_leads is not null") }
+  scope :following_ruby, -> { where("category_id=1 is not null") }
 
   def self.with_stripe_id(stripe_id)
 		where("users.stripe_customer_id = ?", stripe_id).first

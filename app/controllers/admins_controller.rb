@@ -5,6 +5,7 @@ class AdminsController < ApplicationController
 	def welcome
     @users = User.all
     @leads = Lead.all
+    @categories = Category.all
 	end
 
 end

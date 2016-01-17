@@ -1,23 +1,74 @@
-<div class="wrapper" style="max-width: 400px;">
+<style>
+table {
+	width: 100%;
+	margin: 1em 0;
+}
+th {
+	color: #666;
+	padding: 0 0 1em;
+	font-family: 'concourse_c3regular';
+	font-size: 15px;
+	text-align: center;
+	text-transform: lowercase;
+	border-bottom: 1px solid #ccc;
+}
+tr:nth-child(2) td {
+	padding: 1em 0 .25em;
+}
+
+td {
+	padding: .25em 0;
+	text-align: center;
+}
+.link-options {
+	margin: 1em 0;
+}
+.link-options a {
+	margin: 0 .5em 0 0;
+	font-size: 15px; color: #666;
+	text-decoration: none;
+}
+</style>
+
+
+<div class="wrapper" style="max-width: 600px;">
 
 			<h1>Welcome, Admin!</h1>
 			
-			<p>There are currently <%= @users.active.count %> active customers and <%= @leads.today.count %> lead(s) posted in the last 24 hours.</p>
-			
-	
-			<% if current_admin.site_owner? %>
-					<h2>What would you like to do?</h2>
-					
-					
-					<%= link_to 'Leads', leads_path %><br>
-					<%= link_to 'Plans', plans_path %><br>
-					<%= link_to 'RFPs', rfps_path %><br>
-					<%= link_to 'Import Plans', import_plans_path %><br>
+			<p>There are currently <%= @users.active.count %> active customers and <%= @leads.today.count %> lead(s) posted in the last 24 hours. This week we've posted <%= @leads.this_week.count %> leads.</p>
+
+
+		<table cellspacing=0>
+			<tr>
+				<th>Category</th>
+				<th>Users Following</th>
+				<th>Leads Today</th>
+			</tr>
+
+			<% @categories.each do |category| %>
+				<tr>
+					<td><%= category.name %></td>
+					<td><%= category.users.count %></td>
+					<td><%= category.lead.today.count %></td>
+				</tr>
+			<% end %>
+		</table>
+
+	 
+		<div style="margin: 2em 0 3em;">
+				<h3>Admin options</h3>
+					<%= link_to 'New Lead', new_lead_path, :class => "button" %>
+					<%= link_to 'New RFP', new_rfp_path, :class => "button" %>
+					<%= link_to 'New Plan', new_plan_path, :class => "button" %><br><br>
+
+				<span class="link-options">
+					<%= link_to 'View Leads', leads_path %> 
+					<%= link_to 'View Plans', plans_path %>
+					<%= link_to 'View RFPs', rfps_path %> 
+					<%= link_to 'Import Plans', import_plans_path %> 
 					<%= link_to 'Import Customers', import_customers_path %>
-			<% end %>
-	
-			<% if admin_signed_in? %>
-				<p><%= link_to "Log out", destroy_admin_session_path, method: :delete %></p>
-			<% end %>
+					<%= link_to "Log out", destroy_admin_session_path, method: :delete %>
+				</span>
+		</div>
 
 </div>
