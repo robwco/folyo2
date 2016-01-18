@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :job_sources
+
   devise_for :admins
   devise_for :users, :controllers => { registrations: 'registrations' }
 
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
     get :favorite, on: :member
   end
 
-  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans, :rss
+  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
 
   mount StripeEvent::Engine => '/stripe-events'
 
@@ -61,7 +63,6 @@ Rails.application.routes.draw do
   put "/contacted" => "leads#contacted", as: :contacted
   put "/responded" => "leads#responded", as: :responded
   put "/touch_base" => "leads#touch_base", as: :touch_base
-
 
   devise_scope :user do 
       match '/sessions/user', to: 'devise/sessions#create', via: :post

@@ -1,0 +1,36 @@
+<style>
+.job-source-wrapper {
+width:500px; 
+margin: 0 auto;
+display: block;
+}
+</style>
+
+<div class="wrapper" style="width: 600px;">
+  <p class="next-step" style="font-size: 18px; margin-bottom: 2em;">
+    &larr; <a href="/leads" style="font-size: 18px;">Back to Leads</a>
+  </p>
+  <hr>
+
+<center>
+  <%= image_tag("job_source_header.png", :style => "display: inline-block; margin: 2em auto 0; height: 110px;") %>
+  <p style="margin: 1em 0 3em;">Workshop currently monitors <%= @job_sources.count %> different job boards, forums, and industry websites for you. Want to add to the list? <a href="MAILTO:julie@letsworkshop.com">Let us know about a website you want us to monitor.</a></p>
+</center>
+
+
+  <% @job_sources.each do |job_source| %>
+    <p style="margin: .5em auto; width: 400px;">
+      <img src="http://www.google.com/s2/favicons?domain_url=<%= job_source.url %>" align="left" style="margin-right: .5em; padding: 3px 0 0;">
+      <a href="<%= job_source.url %>" style="font-size: 16px; color: #666; text-decoration: none; display: block;"><%= truncate(job_source.url, :length => 50) %></a>
+    </p>
+  <% end %>
+
+<br>
+
+<% if admin_signed_in? %>
+  <%= link_to 'New Job source', new_job_source_path, :class => "button" %>
+<% end %>
+
+<p>Want to update the leads you receive? <a href="/users/edit">Go to your account</a>.</p>
+
+</div>

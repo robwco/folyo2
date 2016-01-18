@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104230201) do
+ActiveRecord::Schema.define(version: 20160117050922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,13 @@ ActiveRecord::Schema.define(version: 20160104230201) do
   end
 
   add_index "imported_subscriptions", ["user_id"], name: "index_imported_subscriptions_on_user_id", using: :btree
+
+  create_table "job_sources", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "leads", force: true do |t|
     t.string   "photo"
