@@ -75,28 +75,6 @@ class LeadsController < ApplicationController
     #@leads = Lead.all
   end
   
-  def upload
-    @leads = Lead.all
-    @exclusives = Exclusive.all
-    render layout: false
-  end
-
-  def onboard
-    @leads = Lead.all
-    @exclusives = Exclusive.all
-  end
-
-  def upload_design
-    @leads = Lead.all
-    @exclusives = Exclusive.all
-    render layout: false
-  end
-
-  def upload_development
-    @leads = Lead.all
-    @exclusives = Exclusive.all
-    render layout: false
-  end
 
   def show
   end
@@ -115,19 +93,23 @@ class LeadsController < ApplicationController
   def edit
   end
 
-  def create
+ def create
     @lead = Lead.new(lead_params)
-
+ 
     respond_to do |format|
+      domain = URI(@lead.url).host.downcase
+      job_source = JobSource.where(url: domain).first
+      @lead.job_source = JobSource.new(url: domain) if job_source.blank?
+      @lead.job_source = job_source unless job_source.blank?
       if @lead.save
-		unless params[:approved_link_id].nil?
-			approved_lead = ApprovedLink.find(params[:approved_link_id])
-			approved_lead.hide!
+        unless params[:approved_link_id].nil?
+            approved_lead = ApprovedLink.find(params[:approved_link_id])
+            approved_lead.hide!
 
-			format.html { redirect_to "/approved_links", notice: 'Lead was successfully created.' }
-		else
-			format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
-		end
+            format.html { redirect_to "/approved_links", notice: 'Lead was successfully created.' }
+        else
+            format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
+        end
         format.json { render :show, status: :created, location: @lead }
       else
         format.html { render :new }

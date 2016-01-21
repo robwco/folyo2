@@ -28,6 +28,8 @@ class WorkerMailer < ActionMailer::Base
 
 	  @categories = Category.all
 	  
+	  @job_sources = JobSource.all
+	  
 	  @milestones = Milestone.all
 
 	  @milestones_hash = Hash[ @milestones.map{ |m| [m.id, m.description] }]

@@ -1,6 +1,7 @@
 class Lead < ActiveRecord::Base
 	validates_presence_of :title, :url, :name, :email
 	belongs_to :category
+	belongs_to :job_source
 
 	has_many :favorite_leads
 	has_many :favorited_by, through: :favorite_leads, source: :user

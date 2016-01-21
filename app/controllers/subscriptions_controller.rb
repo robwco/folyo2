@@ -4,6 +4,8 @@ class SubscriptionsController < ApplicationController
 
 	def test_email
 		category_ids = current_user.category_ids
+		
+	  @job_sources = JobSource.all
 
 		if category_ids.empty?
 			@leads = Lead.eager_load(:category).most_recent.limit(4)

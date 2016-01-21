@@ -7,21 +7,30 @@ display: block;
 </style>
 
 <div class="wrapper" style="width: 600px;">
+
+
+<% if user_signed_in? %>
   <p class="next-step" style="font-size: 18px; margin-bottom: 2em;">
     &larr; <a href="/leads" style="font-size: 18px;">Back to Leads</a>
   </p>
   <hr>
+<% end %>
 
 <center>
   <%= image_tag("job_source_header.png", :style => "display: inline-block; margin: 2em auto 0; height: 110px;") %>
-  <p style="margin: 1em 0 3em;">Workshop currently monitors <%= @job_sources.count %> different job boards, forums, and industry websites for you. Want to add to the list? <a href="MAILTO:julie@letsworkshop.com">Let us know about a website you want us to monitor.</a></p>
+  <p style="margin: 1em 0 3em;">Workshop currently monitors <%= @job_sources.count %> different job boards, forums, and industry websites for high quality consulting leads. Want to add one? <br> <a href="MAILTO:julie@letsworkshop.com">Let us know about a website you'd like us to monitor.</a></p>
 </center>
 
-
-  <% @job_sources.each do |job_source| %>
-    <p style="margin: .5em auto; width: 400px;">
+  <% @job_sources.by_most_leads.each do |job_source| %>
+    <p style="margin: .5em auto; width: 300px;">
       <img src="http://www.google.com/s2/favicons?domain_url=<%= job_source.url %>" align="left" style="margin-right: .5em; padding: 3px 0 0;">
-      <a href="<%= job_source.url %>" style="font-size: 16px; color: #666; text-decoration: none; display: block;"><%= truncate(job_source.url, :length => 50) %></a>
+      <a href="http://<%= job_source.url %>" style="font-size: 18px; line-height: 1.5; color: #666; text-decoration: none; display: block;"><%= truncate(job_source.url, :length => 50) %>
+      <% if admin_signed_in? %>
+        (<%= job_source.leads_count %>)
+      <% end %>
+      </a>
+
+
     </p>
   <% end %>
 
@@ -31,6 +40,6 @@ display: block;
   <%= link_to 'New Job source', new_job_source_path, :class => "button" %>
 <% end %>
 
-<p>Want to update the leads you receive? <a href="/users/edit">Go to your account</a>.</p>
+<p style="margin-bottom: 5em; text-align:center;">Want to update the leads you receive? <a href="/users/edit">Go to your settings</a>.</p>
 
 </div>

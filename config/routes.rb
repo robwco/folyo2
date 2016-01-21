@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :job_sources
+  resources :job_sources, :path => "monitoring"
 
   devise_for :admins
   devise_for :users, :controllers => { registrations: 'registrations' }
