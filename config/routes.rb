@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     get :favorite, on: :member
   end
 
-  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
-
   mount StripeEvent::Engine => '/stripe-events'
 
   # Onboarding
@@ -71,6 +69,8 @@ Rails.application.routes.draw do
   devise_scope :admin do 
       match '/sessions/admin', to: 'devise/sessions#create', via: :post
   end
+
+  resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
 
   get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
