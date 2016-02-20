@@ -43,6 +43,7 @@ td {
 				<th>Category</th>
 				<th>Users Following</th>
 				<th>Leads Today</th>
+				<th>Leads Total</th>
 			</tr>
 
 			<% @categories.each do |category| %>
@@ -50,6 +51,7 @@ td {
 					<td><%= category.name %></td>
 					<td><%= category.users.count %></td>
 					<td><%= category.lead.today.count %></td>
+					<td><%= category.lead.count %></td>
 				</tr>
 			<% end %>
 		</table>
