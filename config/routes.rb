@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :sales
+
+  resources :products
+
   resources :job_sources, :path => "monitoring"
 
   devise_for :admins

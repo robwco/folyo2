@@ -61,7 +61,8 @@ td {
 				<h3>Admin options</h3>
 					<%= link_to 'New Lead', new_lead_path, :class => "button" %>
 					<%= link_to 'New RFP', new_rfp_path, :class => "button" %>
-					<%= link_to 'New Plan', new_plan_path, :class => "button" %><br><br>
+					<%= link_to 'New Plan', new_plan_path, :class => "button" %>
+					<%= link_to 'New Product', new_product_path, :class => "button" %><br><br>
 
 				<span class="link-options">
 					<%= link_to 'View Leads', leads_path %> 
@@ -74,3 +75,10 @@ td {
 		</div>
 
 </div>
+
+@leads.group("DATE_TRUNC('month', created_at)").count
+
+
+
+Leads.count(:group=>"date_trunc('month', created_at)")
+

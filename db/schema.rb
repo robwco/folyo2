@@ -127,37 +127,6 @@ ActiveRecord::Schema.define(version: 20160121013655) do
     t.string   "state"
   end
 
-  create_table "imported_plans", force: true do |t|
-    t.integer  "memberful_id"
-    t.string   "name"
-    t.string   "slug"
-    t.string   "renewal_period"
-    t.string   "interval_unit"
-    t.integer  "interval_count"
-    t.integer  "plan_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "price"
-  end
-
-  add_index "imported_plans", ["plan_id"], name: "index_imported_plans_on_plan_id", using: :btree
-
-  create_table "imported_subscriptions", force: true do |t|
-    t.integer  "memberful_id"
-    t.string   "name"
-    t.string   "email"
-    t.integer  "memberful_plan_id"
-    t.boolean  "renews"
-    t.string   "stripe_customer_id"
-    t.datetime "subscription_start"
-    t.datetime "subscription_end"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "imported_subscriptions", ["user_id"], name: "index_imported_subscriptions_on_user_id", using: :btree
-
   create_table "job_sources", force: true do |t|
     t.string   "name"
     t.string   "url"
@@ -312,8 +281,6 @@ ActiveRecord::Schema.define(version: 20160121013655) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "coupon_code"
-    t.datetime "current_period_start"
-    t.datetime "current_period_end"
   end
 
   add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id", using: :btree
@@ -335,10 +302,6 @@ ActiveRecord::Schema.define(version: 20160121013655) do
     t.string   "name"
     t.string   "stripe_customer_id"
     t.string   "state"
-    t.boolean  "canceling"
-    t.string   "last4"
-    t.integer  "expiration_month"
-    t.integer  "expiration_year"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
