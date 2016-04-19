@@ -1,5 +1,5 @@
 class Lead < ActiveRecord::Base
-	validates_presence_of :title, :url, :name, :email
+	validates_presence_of :title, :url
 	belongs_to :category
 	belongs_to :job_source
 
