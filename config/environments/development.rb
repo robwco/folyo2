@@ -43,5 +43,5 @@ Rails.application.configure do
   config.action_controller.asset_host = ENV['ASSET_HOST'] || 'localhost:3000'
   config.action_mailer.asset_host = 'http://localhost:3000'
 
-  config.action_mailer.delivery_method = :mandrill
+  config.action_mailer.delivery_method = :smtp
 end

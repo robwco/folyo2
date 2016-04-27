@@ -6,4 +6,4 @@ include Clockwork
 
 every(1.day, 'Queueing daily leads email', :at => '17:00') { Delayed::Job.enqueue DailyLeadsJob.new }
 every(1.day, 'Queueing weekly leads email', :at => '12:00') { Delayed::Job.enqueue WeeklyLeadsJob.new }
-every(15.minutes, 'Loading new RSS leads') { Delayed::Job.enqueue ProcessRssFeeds.new }
+#every(15.minutes, 'Loading new RSS leads') { Delayed::Job.enqueue ProcessRssFeeds.new }
