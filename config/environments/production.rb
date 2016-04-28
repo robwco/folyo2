@@ -90,6 +90,6 @@ Rails.application.configure do
   config.action_controller.asset_host = 'app.letsworkshop.com'
   config.action_mailer.asset_host = 'https://app.letsworkshop.com'
   
-  config.action_mailer.delivery_method = :mandrill
+  config.action_mailer.delivery_method = :smtp
 
 end
