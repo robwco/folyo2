@@ -55,7 +55,7 @@ td {
 
 
 	<h3>Leads this week</h3>
-	<p>There are currently <%= @leads.today.count %> lead(s) posted in the last 24 hours. This week we've posted <%= @leads.this_week.count %> leads.</p>
+	<p>In the last 4 weeks we've sent <%= sprintf '%.2f', Lead.where("leads.created_at > ?", Date.today - 4.weeks).count / 4.0 %> leads per week. On average we're sending <%= sprintf '%.2f', Lead.count / ((Time.now.to_date - Lead.minimum(:created_at).to_date) / 7.0) %> leads per week. There are currently <%= @leads.today.count %> lead(s) posted in the last 24 hours. This week we've posted <%= @leads.this_week.count %> leads.</p>
 
 		<table cellspacing=0>
 			<tr>
