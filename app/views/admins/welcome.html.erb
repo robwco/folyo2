@@ -33,8 +33,28 @@ td {
 
 <div class="wrapper" style="max-width: 1000px;">
 
+	 
+		<div style="margin: 2em 0 3em;">
+				<h3>Admin options</h3>
+					<%= link_to 'New Lead', new_lead_path, :class => "button" %>
+					<%= link_to 'New Exclusive', new_exclusive_path, :class => "button" %>
+					<%= link_to 'New RFP', new_rfp_path, :class => "button" %>
+					<%= link_to 'New Plan', new_plan_path, :class => "button" %>
+					<%= link_to 'New Product', new_product_path, :class => "button" %><br><br>
 
-	<h1>Leads this week</h1>
+				<span class="link-options">
+					<%= link_to 'View Leads', leads_path %> 
+					<%= link_to 'View Plans', plans_path %>
+					<%= link_to 'View RFPs', rfps_path %> 
+					<%= link_to 'Import Plans', import_plans_path %> 
+					<%= link_to 'Import Customers', import_customers_path %>
+					<%= link_to "Log out", destroy_admin_session_path, method: :delete %>
+				</span>
+		</div>
+
+
+
+	<h3>Leads this week</h3>
 	<p>There are currently <%= @leads.today.count %> lead(s) posted in the last 24 hours. This week we've posted <%= @leads.this_week.count %> leads.</p>
 
 		<table cellspacing=0>
@@ -57,11 +77,11 @@ td {
 
 
 
-	<h1 style="margin-top: 4em;">Our users</h1>
+	<h3 style="margin-top: 4em;">Our users</h3>
 	<p>There are currently <%= @users.active.count %> active customers. There have been <%= @users.count %> customers ever.</p>
 
 
-		<table cellspacing=0>
+		<table cellspacing=0 style="margin-bottom: 5em;">
 			<tr>
 				<th>User</th>
 				<th>Email</th>
@@ -73,11 +93,11 @@ td {
 
 
 
-			<% @users.each do |user| %>
+			<% @users.order("users.state asc").each do |user| %>
 				<tr>
 					<td style="text-align:left; font-size: 80%;"><%= user.name %></td>
 					<td style="text-align:left; font-size: 80%;"><%= user.email %></td>
-					<td style="text-align:left; font-size: 80%;"><%= user.subscription.plan.name if user.subscription %></td>
+					<td style="text-align:left; font-size: 60%;"><%= user.subscription.plan.name if user.subscription %></td>
 					<td style="text-align:center; font-size: 80%;"><%= user.created_at.strftime("%_m/%-d/%Y") %></td>
 					
 					<td style="text-align:center; font-size: 80%;"><%= user.subscription.current_period_end.strftime("%_m/%-d/%Y") if user.canceled? %></td>
@@ -87,29 +107,5 @@ td {
 			<% end %>
 		</table>
 
-	 
-		<div style="margin: 2em 0 3em;">
-				<h3>Admin options</h3>
-					<%= link_to 'New Lead', new_lead_path, :class => "button" %>
-					<%= link_to 'New RFP', new_rfp_path, :class => "button" %>
-					<%= link_to 'New Plan', new_plan_path, :class => "button" %>
-					<%= link_to 'New Product', new_product_path, :class => "button" %><br><br>
-
-				<span class="link-options">
-					<%= link_to 'View Leads', leads_path %> 
-					<%= link_to 'View Plans', plans_path %>
-					<%= link_to 'View RFPs', rfps_path %> 
-					<%= link_to 'Import Plans', import_plans_path %> 
-					<%= link_to 'Import Customers', import_customers_path %>
-					<%= link_to "Log out", destroy_admin_session_path, method: :delete %>
-				</span>
-		</div>
 
 </div>
-
-@leads.group("DATE_TRUNC('month', created_at)").count
-
-
-
-Leads.count(:group=>"date_trunc('month', created_at)")
-
