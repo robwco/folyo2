@@ -6,6 +6,8 @@ class AdminsController < ApplicationController
     @users = User.all
     @leads = Lead.all
     @categories = Category.all
+    @plans = Plan.all
+    @subscriptions = Subscription.all
 	end
 
 end
