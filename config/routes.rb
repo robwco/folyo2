@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :projects
+
   resources :sales
 
   resources :products

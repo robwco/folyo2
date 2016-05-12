@@ -8,7 +8,8 @@ body, .ccjs-card {
 	line-height: 1.40;
 	color: #222;
 	padding: 0;
-	margin: 0;
+	margin: 0 auto;
+	width: 1000px; 
 
 	em {
 		font-family: 'concourse_t3italic', Lucida Grande, sans-serif;
@@ -32,7 +33,6 @@ body, .ccjs-card {
 			font-family: 'concourse_c4regular', Lucida Grande, sans-serif;
 			font-weight: normal;
 			font-style: normal !important;
-			text-transform: lowercase;
 			line-height: 3;
 		}
 	}
@@ -135,7 +135,6 @@ body, .ccjs-card {
 	h2 {
 		font-family: 'concourse_c4bold', Lucida Grande, sans-serif;
 		font-weight: normal;
-		text-transform: lowercase;
 		font-size: 26px;
 		line-height: 1.3;
 	}
@@ -148,7 +147,6 @@ body, .ccjs-card {
 	input[type=submit], .button {
 		font-size: 16px;
 		font-family: 'concourse_c4regular', Lucida Grande, sans-serif;
-		text-transform: lowercase; 
 	  border-radius: 8px;
 	  padding: 7px 16px 8px 16px;
 		text-align: center;
@@ -221,6 +219,17 @@ body, .ccjs-card {
 
 }
 
+
+.uppercase, h2, input[type=submit], .button  { 
+	text-transform: uppercase;
+  -moz-font-feature-settings: 'case=1';
+  -moz-font-feature-settings: 'case' 1;
+  -webkit-font-feature-settings: 'case' 1;
+  -o-font-feature-settings: 'case' 1;
+  -ms-font-feature-settings: 'case' 1;
+  font-feature-settings: 'case' 1;
+  letter-spacing: .075em;
+}
 
 
 @font-face {

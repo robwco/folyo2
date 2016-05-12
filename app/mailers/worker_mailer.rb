@@ -48,5 +48,13 @@ class WorkerMailer < ActionMailer::Base
         
     mail(to: user.email, subject: subject, from: "\"Robert Williams (from Workshop)\" <robert@letsworkshop.com>")
   end
-    
+
+  def exclusive_lead(user)
+  	@user = user
+
+  	subject = "Now hiring on Workshop"
+
+  	mail(to:user.email, subject: subject, from: "\"Robert Williams (from Workshop)\" <robert@letsworkshop.com>")
+  end
+   
 end

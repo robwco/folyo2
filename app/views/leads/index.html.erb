@@ -2,9 +2,8 @@
 <style>
 
 a.favorite {
-	font-size: 16px;
-	font-family: 'concourse_c4regular', Lucida Grande, sans-serif;
-	text-transform: lowercase; 
+	font-size: 14px;
+	font-family: Helvetica;
   border-radius: 8px;
   padding: 7px 16px 8px 16px;
 	float: right;
@@ -188,8 +187,8 @@ td.lead {
 
 
 			<%= link_to "Most Recent", leads_path, :class => "workflow-tab active" %>
-			<%= link_to "Search All Leads", leads_path(advanced: true), :class => "workflow-tab" %>
-			<%= link_to "Your Follow-up List", favorites_path, :class => "workflow-tab" %>
+			<%= link_to "Around the Web", leads_path(advanced: true), :class => "workflow-tab" %>
+			<%= link_to "Favorites", favorites_path, :class => "workflow-tab" %>
 
 	<% end %>
 
@@ -240,7 +239,7 @@ td.lead {
 									<p class="tooltip arrow bounce show-hover" style="margin-left: 33.5em; margin-top: -130px; width: 155px !important; display: inline-block;"><span class="bottom"></span>Interested? Add this lead to your follow-up list.</p>
 
 
-									<%= link_to "Add to Follow-up List", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite", target: '_blank' %>
+									<%= link_to "Add to Follow-up List", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite uppercase", target: '_blank' %>
 
 								<% else %><span style="float: right; color: #666; font-size: 14px;">Added to Follow-up List.</span>
 								<% end %>

@@ -1,3 +1,17 @@
+
+<div class="index-leads wrap">
+    <p class="recent uppercase">Recent projects <span class="updates uppercase"><a href="./signup.html">Get email updates</a></span></p>
+
+  <% @exclusives.each do |exclusive| %>
+
+    <p class="job"><a href="./post-live.html"><%= exclusive.title %> <span class="company uppercase"><%= exclusive.name %></span></a></p>
+
+  <% end %>
+
+    <p class="job" style="padding-top: .75em;"><strong><a href="./more.html">See more projects &rarr;</a></strong></p>
+</div>
+
+
 <h1>Listing exclusives</h1>
 
 <table>
@@ -37,6 +51,9 @@
     <% end %>
   </tbody>
 </table>
+
+
+
 
 <br>
 
