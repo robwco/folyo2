@@ -1,0 +1,9 @@
+<div class="reading wrap">
+	<%= form_for(current_user, url: charge_payment_project_path, html: { method: :put }) do |f| %>
+		<%= render 'registrations/creditcard' %>
+
+		<center>
+			<%= f.submit "Update credit card", id: 'form-submit', class: "button" %>
+		</center>
+	<% end %>
+</div>

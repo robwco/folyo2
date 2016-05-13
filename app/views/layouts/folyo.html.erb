@@ -4,7 +4,7 @@
   
   <title><%= (yield(:title).empty? ? "Workshop - The best freelance job leads emailed to you daily." : yield(:title)) %></title>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application-folyo', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 	<!-- Typekit -->
@@ -13,10 +13,10 @@
 	<!-- Typography.com -->
 	<link rel="stylesheet" type="text/css" href="//cloud.typography.com/7135732/630226/css/fonts.css" />
 	<%= render_google_analytics %>
-		<%= favicon_link_tag 'favicon.ico' %>
-		
-		<!-- Font awesome -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<%= favicon_link_tag 'favicon.ico' %>
+	
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 	
@@ -28,6 +28,16 @@
 	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value.html_safe unless value.blank? %></div>
 	    <% end %>
 	<% end %>
+
+<section class="top-menu">
+	<a href="./good.html">How it works</a>
+	<a href="./signup.html">Post a project</a>
+	<a href="./home-signed-in.html">Login</a>
+</section>
+	
+<header class="logo">
+  <span class="logo-helper"></span><span style="font-size: 16px; color: #FFF;">Workshop</span>
+</header>
 
 <%= yield %>
 

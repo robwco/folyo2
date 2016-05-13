@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511221236) do
+ActiveRecord::Schema.define(version: 20160513211015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,13 +61,6 @@ ActiveRecord::Schema.define(version: 20160511221236) do
 
   add_index "categories_users", ["category_id"], name: "index_categories_users_on_category_id", using: :btree
   add_index "categories_users", ["user_id"], name: "index_categories_users_on_user_id", using: :btree
-
-  create_table "clients", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -190,6 +183,15 @@ ActiveRecord::Schema.define(version: 20160511221236) do
 
   add_index "leads", ["job_source_id"], name: "index_leads_on_job_source_id", using: :btree
 
+  create_table "listing_packages", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "active"
+  end
+
   create_table "milestones", force: true do |t|
     t.text "description"
   end
@@ -244,6 +246,19 @@ ActiveRecord::Schema.define(version: 20160511221236) do
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
+  create_table "project_sales", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "listing_package_id"
+    t.string   "stripe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_sales", ["listing_package_id"], name: "index_project_sales_on_listing_package_id", using: :btree
+  add_index "project_sales", ["project_id"], name: "index_project_sales_on_project_id", using: :btree
+  add_index "project_sales", ["user_id"], name: "index_project_sales_on_user_id", using: :btree
+
   create_table "projects", force: true do |t|
     t.string   "title"
     t.string   "category"
@@ -258,7 +273,20 @@ ActiveRecord::Schema.define(version: 20160511221236) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "spirit_animal"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "company_logo_file_name"
+    t.string   "company_logo_content_type"
+    t.integer  "company_logo_file_size"
+    t.datetime "company_logo_updated_at"
+    t.integer  "listing_package_id"
+    t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "prospects", force: true do |t|
     t.string   "name"

@@ -1,0 +1,13 @@
+<div class="reading wrap">
+	<%= render 'wizard', step: 'preview' %>
+	<section>
+		<h2 class="uppercase">Preview Your Project</h2>
+		<p style="text-align:center; display: block; margin: 1.5em 0 2em;"><a class="button" href="#">Looks great! Continue to Step 3 &rarr;</a>  <span style="margin:0 .5em">or</span> <%= link_to "make some changes", edit_project_path(@project) %></p>
+	</section>
+
+	<div class="preview">
+		<%= render 'project' %>
+	</div>
+
+	<p style="text-align:center; display: block; margin: 1.5em 0 2em;"><a class="button" href="#">Looks great! Continue to Step 3 &rarr;</a>  <span style="margin:0 .5em">or</span> <%= link_to "make some changes", edit_project_path(@project) %></p>
+</div>
