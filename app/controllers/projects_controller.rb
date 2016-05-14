@@ -8,12 +8,23 @@ class ProjectsController < ApplicationController
 	  render layout: "folyo"
   end
 
+  def active
+	  render layout: "folyo"
+  end
+
+  def yours
+	  render layout: "folyo"
+  end
+
   def index
     @projects = Project.all
     respond_with(@projects)
   end
 
   def show
+	@reply = @project.reply_from(current_user)
+	@reply = Reply.new unless @reply
+	@message = Message.new
 	render layout: "folyo"
   end
 

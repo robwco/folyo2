@@ -1,0 +1,15 @@
+<div class="wrap reading reply" style="clear:both">
+<%= form_for([@reply, @message]) do |f| %>
+	<h4 style="margin:2em auto 0;">Want to talk? Send <%= first_name name %> a message now.</h4>
+	<%= f.text_area :message, style: "margin: 1em auto; width: 100%; height: 4em;" %>
+
+	<span style="float: right;">
+		<%= f.submit "Send message", class: "button", style: "margin: 0 0 6em;" %>
+		<% if @reply.project.user == current_user %>
+			<span style="margin:0 .5em">or</span>
+			<a href="#">Dismiss</a>
+		<% end %>
+	</span>
+<% end %>
+</div>
+

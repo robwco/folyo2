@@ -1,0 +1,32 @@
+<div class="index-leads wrap">
+		<p class="recent uppercase">In conversation</p>
+
+		<% Project.in_conversation(current_user).each do |project| %>
+			<%= render "projects/quick_view", project: project %>
+		<% end %>
+
+		<p class="job" style="padding-top: .75em;"></p>
+</div>
+
+<div class="index-leads wrap" style="margin-top: -2.5em;">
+		<p class="recent uppercase">Active projects you've replied to</p>
+
+		<% Project.replied_by(current_user).each do |project| %>
+			<%= render "projects/quick_view", project: project %>
+		<% end %>
+
+		<p class="job" style="padding-top: .75em;"></p>
+</div>
+
+<div class="index-leads wrap" style="margin-top: -2.5em;">
+		<p class="recent uppercase">Other projects</p>
+
+		<% Project.recent.each do |project| %>
+			<%= render "projects/quick_view", project: project %>
+		<% end %>
+
+		<p class="job" style="padding-top: .75em;"></p>
+</div>
+
+		<p class="footer-menu"><a href="#">About</a> <a href="#">Guides</a> <a href="#">Press</a> <a href="#">Partners</a> <a href="#">Blog</a> <a href="#">Relaunch</a> <span style="color: #aaa;">© 2011-2016 Folyo</span></p>
+</div>

@@ -1,25 +1,21 @@
 <div class="reading wrap">
 	<div style="text-align: center;">
-		<p class="intro">Finds the right freelance or agency partner for your project.<br> <strong><a href="./post.html">Post your project</a></strong> or <strong><a href="./good.html">See why we're so good</a></strong></p>
+		<p class="intro">
+			Finds the right freelance or agency partner for your project.<br> 
+			<strong><%= link_to "Post your project", new_project_path %></strong> or 
+			<strong><a href="./good.html">See why we're so good</a></strong>
+		</p>
 	</div>
 </div>
 
 <div class="index-leads wrap">
 		<p class="recent uppercase">Recent projects <span class="updates uppercase"><a href="./signup.html">Get email updates</a></span></p>
 
-		<p class="job"><a href="./post-live.html">Ruby development for a simple email app MVP <img src="./images/portfolio1.jpg" class="portfolio-piece" /> <img src="./images/portfolio-2.jpg" class="portfolio-piece" /> <img src="./images/portfolio-3.png" class="portfolio-piece" /> <span class="company uppercase">Talk to Your Customers</span></a></p>
+		<% Project.all.order(created_at: :desc).limit(5).each do |project| %>
+			<%= render "projects/quick_view", project: project %>
+		<% end %>
 
-		<p class="job"><a href="./post-live.html">MyAccount (customer portal) redesign <img src="./images/portfolio-4.png" class="portfolio-piece" /> <img src="./images/portfolio-5.jpg" class="portfolio-piece" /> <span class="company uppercase">Baremetrics</span></a></p>
-
-		<p class="job"><a href="./post-live.html">Designer with mobile experience for complex data app <img src="./images/portfolio-6.jpg" class="portfolio-piece" /><span class="company uppercase"><img src="./images/mule.png" class="company-logo" /> Mule</span></a></p>
-
-		<p class="job"><a href="./post-live.html">Construct a scalable AdaptMyPlanet.com site <span class="company uppercase">Adapt my Planet</span></a></p>
-
-		<p class="job"><a href="./post-live.html">Design a new UI for a one-page analytics dashboard <span class="company uppercase"><img src="./images/stripe-logo.png" class="company-logo" /> Stripe</span></a></p>
-
-		<p class="job"><a href="./post-live.html">Ongoing Freelance designer for Website and Marketing Assets <img src="./images/portfolio-5.jpg" class="portfolio-piece" /> <img src="./images/portfolio-3.png" class="portfolio-piece" />  <span class="company uppercase">Florida Sea Cruises</span></a></p>
-
-		<p class="job" style="padding-top: .75em;"><strong><a href="./more.html">See more projects &rarr;</a></strong></p>
+		<p class="job" style="padding-top: .75em;"><strong><%= link_to "See more projects", projects_path %></strong></p>
 </div>
 
 
@@ -28,7 +24,7 @@
 		
 		<p style="margin: 0;" class="offer">If you don't find the right partner for your project, we'll refund your entire purchase and give you a 20% discount on next time. Posting on Folyo is easy and we'll send your project to 944 high-quality freelancers and agencies instantly.</p>
 
-		<p class="job" style="text-align: center; margin: 2em 0 0;"><strong><a href="./post.html">Post your project</a></strong> or <strong><a href="./good.html">see pricing and what you get</a></strong></p>
+		<p class="job" style="text-align: center; margin: 2em 0 0;"><strong><%= link_to "Post your project", new_project_path %></strong> or <strong><a href="./good.html">see pricing and what you get</a></strong></p>
 
 		<center><%= image_tag "risk-free.png", style: "margin: 2em 0 3em; width: 130px;" %></center>
 

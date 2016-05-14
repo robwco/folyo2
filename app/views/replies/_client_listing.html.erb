@@ -1,0 +1,9 @@
+<div class="reading wrap" style="padding-bottom: 5em;">
+	<section>
+		<h2 class="uppercase">Replies</h2>
+	</section>
+
+	<% @project.replies.each do |reply| %>
+		<%= render "replies/client_reply_view", reply: reply %>
+	<% end %>
+</div>

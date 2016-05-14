@@ -1,12 +1,24 @@
 Rails.application.routes.draw do
 
+  resources :messages
+
+  resources :replies do
+	  get "preview", on: :member
+	  put "post", on: :member
+	  resources :messages
+  end
+
   resources :projects do
 	get "home", on: :collection
+	get "active", on: :collection
+	get "yours", on: :collection
 	get "preview", on: :member
 	get "payment", on: :member
 	put "select_payment", on: :member
 	get "collect_payment", on: :member
 	put "charge_payment", on: :member
+
+	resources :replies
   end
 
   resources :sales

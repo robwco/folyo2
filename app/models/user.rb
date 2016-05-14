@@ -82,6 +82,22 @@ class User < ActiveRecord::Base
 	  subscription.current_period_end.to_date.to_formatted_s(:long)
   end
 
+  def can_reply_to_project?(project)
+	project.user != self
+  end
+
+  def can_see_project_replies?(project)
+	project.user == self
+  end
+
+  def can_see_messages?(reply)
+	reply.project.user == self || reply.user == self
+  end
+
+  def can_send_message?(reply)
+	reply.project.user == self || (reply.user == self && reply.messages.count > 0)
+  end
+
   private
   	def plan_has_trial?
 		subscription.plan.has_trial?

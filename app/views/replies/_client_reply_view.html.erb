@@ -1,0 +1,21 @@
+<div class="project-reply">
+	<table>
+		<tr>
+			<td>
+				<img src="./images/jason.jpeg" class="photo reply">
+			</td>
+			<td>
+				<span class="name"><strong><%= reply.user.name %></strong></span>
+			</td>
+			<td>
+				<p>
+					<%= truncate reply.message, length: 75 %> 	
+					<%= link_to "View reply", reply %> or <a href="#">Dismiss</a>
+				</p>
+			</td>
+			<td>
+				<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece-project-listing", align: "right", style: "width: 90px;") if reply.portfolio_image.present? %>
+			</td>
+		</tr>
+	</table>
+</div>

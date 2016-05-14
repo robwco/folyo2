@@ -1,0 +1,21 @@
+<div class="index-leads wrap">
+		<p class="recent uppercase">Your project(s)</p>
+
+		<% if Project.owned_by(current_user).any? %>
+			<% Project.owned_by(current_user).each do |project| %>
+				<%= render "projects/quick_view", project: project %>
+			<% end %>
+		<% else %>
+			<p class="job"><%= link_to "You currently have no open projects. Start one.", new_project_path %></p>	
+		<% end %>
+
+		<p class="job" style="padding-top: .75em;"></p>
+</div>
+
+<div class="client-project-index wrap">
+		<p class="your-projects uppercase">Recent replies</p>
+
+		<% Reply.replied_to(current_user).limit(10).each do |reply| %>
+			<%= render "replies/client_reply_view", reply: reply %>
+		<% end %>
+</div>

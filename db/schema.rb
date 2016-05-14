@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513211015) do
+ActiveRecord::Schema.define(version: 20160514052830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,19 @@ ActiveRecord::Schema.define(version: 20160513211015) do
     t.boolean  "active"
   end
 
+  create_table "messages", force: true do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "reply_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["project_id"], name: "index_messages_on_project_id", using: :btree
+  add_index "messages", ["reply_id"], name: "index_messages_on_reply_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
   create_table "milestones", force: true do |t|
     t.text "description"
   end
@@ -295,6 +308,23 @@ ActiveRecord::Schema.define(version: 20160513211015) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "replies", force: true do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.string   "portfolio_message"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "published",                    default: false
+    t.string   "portfolio_image_file_name"
+    t.string   "portfolio_image_content_type"
+    t.integer  "portfolio_image_file_size"
+    t.datetime "portfolio_image_updated_at"
+  end
+
+  add_index "replies", ["project_id"], name: "index_replies_on_project_id", using: :btree
+  add_index "replies", ["user_id"], name: "index_replies_on_user_id", using: :btree
 
   create_table "rfps", force: true do |t|
     t.string   "name"

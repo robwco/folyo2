@@ -1,0 +1,7 @@
+<div class="reading wrap" <%= 'style="padding-bottom: 8em;"'.html_safe if extra_padding %>>
+	<div class="chat-dialoge" style="display: table; width: 100%; box-sizing: border-box;">
+		<% reply.messages.each do |message| %>
+			<%= render "messages/message", message: message %>
+		<% end %>
+	</div>
+</div>

@@ -1,37 +1,32 @@
-<div class="reading-wrap">
+<h1 class="post-title">Needed: <%= @project.title %></h1>
 
-	<h1 class="post-title">Needed: <%= @project.title %></h1>
+<p class="by-line">
+	<%= image_tag(@project.photo.url, class: "photo") if @project.photo.present? %>
+	<%= @project.name %>, <%= link_to @project.organization, @project.website %>
+</p>
 
-	<p class="by-line">
-		<%= image_tag(@project.photo.url, class: "photo") if @project.photo.present? %>
-		<%= @project.name %>, <%= link_to @project.organization, @project.website %>
-	</p>
+<section class="post-company-info">	
+	<%= image_tag(@project.company_logo.url, class: "logo") if @project.company_logo.present? %>
+	
+	<h2 class="label-left uppercase">Company name</h2>
+	
+	<p class="company-info-right"><%= @project.organization %></p>
+	
+	<h2 class="label-left uppercase">Company website</h2>
+	
+	<p class="company-info-right"><%= link_to @project.website %></p>
+	
+	<h2 class="label-left uppercase">Company spirit animal</h2>
+	
+	<p class="company-info-right"><%= @project.spirit_animal %></p>
+</section>
 
-	<section class="post-company-info">	
-		<%= image_tag(@project.company_logo.url, class: "logo") if @project.company_logo.present? %>
-		
-		<h2 class="label-left uppercase">Company name</h2>
-		
-		<p class="company-info-right"><%= @project.organization %></p>
-		
-		<h2 class="label-left uppercase">Company website</h2>
-		
-		<p class="company-info-right"><%= link_to @project.website %></p>
-		
-		<h2 class="label-left uppercase">Company spirit animal</h2>
-		
-		<p class="company-info-right"><%= @project.spirit_animal %></p>
-	</section>
+<p><%= @project.goals %></p>
 
-	<div>
-		<p><%= @project.goals %></p>
+<p>Some examples I like are <%= @project.examples %></p>
 
-		<p>Some examples I like are <%= @project.examples %></p>
+<p><%= @project.deadline %></p>
 
-		<p><%= @project.deadline %></p>
+<p><strong>My budget is about $<%= @project.budget %>.</strong></p>
 
-		<p><strong>My budget is about $<%= @project.budget %>.</strong></p>
-
-		<p><%= @project.deliverables %></p>
-	</div>
-</div>
+<p><%= @project.deliverables %></p>

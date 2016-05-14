@@ -1,0 +1,23 @@
+<div class="reading wrap">
+	<p class="reply-photo-left">
+		<img src="./images/jason.jpeg" class="photo reply">
+	</p>	
+
+	<p class="preview-message">
+		<span style="margin:0 0 .5em 0; display:block;">
+			<strong><%= @reply.user.name %></strong>
+			<span style="font-size: 70%; color:#666;">
+				<span style="margin: 0 .5em; color: #ddd;">|</span>
+				<%= @reply.user.email %>
+			</span>
+		</span>
+		<%= h(@reply.message).gsub("\n", "<br>").html_safe %>
+	
+		<% if allow_edit %>
+			<br><br>
+			<%= link_to "Edit your message", edit_reply_path(@reply), class: "message-preview-edit uppercase" %>
+		<% end %>
+		<br><br><br>
+	</p>
+</div>
+

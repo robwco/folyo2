@@ -1,0 +1,19 @@
+<div class="reading wrap">
+	<section>
+		<h2 class="uppercase"><%= link_to "&larr;".html_safe, @reply.project %> Message from <%= @reply.user.name %></h2>
+	</section>
+</div>
+
+
+<div class="reading wrap">
+	<%= render "replies/reply_message", allow_edit: false %>
+	<%= render "replies/portfolio_message" %>
+</div>
+
+<% if current_user.can_see_messages?(@reply) %>
+	<%= render "messages/listing", extra_padding: false, reply: @reply %>
+<% end %>
+
+<% if current_user.can_send_message?(@reply) %>
+	<%= render "messages/client_send", name: message_recipient(@reply) %>
+<% end %>
