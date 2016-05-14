@@ -5,6 +5,7 @@ class Plan < ActiveRecord::Base
 	validates :name, presence: true
 
 	scope :active, -> { where(:published => true) }
+	scope :monthly, -> { where(:published => true, :interval => 'month') }
 	scope :annual, -> { where(:published => true, :interval => 'year') }
 
 	def price

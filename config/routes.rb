@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   put "/subscriptions/reactivate" => "subscriptions#reactivate", as: :reactivate_subscription
   get "/subscriptions/categories" => "subscriptions#categories", as: :update_subscription_categories
   put "/subscriptions/categories_save" => "subscriptions#categories_save", as: :subscription_categories_save
+  get "/subscriptions/choose" => "subscriptions#choose", as: :choose_subscription
 
   # Sign in
   root to: redirect("/leads")

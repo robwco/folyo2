@@ -66,6 +66,10 @@ class SubscriptionsController < ApplicationController
 		@leads = Lead.all
   end
 
+  def choose
+	render layout: "folyo"
+  end
+
   def new
 	@user = User.new
 	@plan = Plan.active.find(params[:plan])

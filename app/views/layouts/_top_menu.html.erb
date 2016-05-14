@@ -1,0 +1,13 @@
+<section class="top-menu">
+	<% if user_signed_in? %>
+		<a href="./good.html">How it works</a>
+		<%= link_to "Post a project", new_project_path %>
+		<%= link_to "Your projects", yours_projects_path %>
+		<%= link_to "Active projects", active_projects_path %>
+		<%= link_to "Home", home_projects_path %>
+	<% else %>
+		<a href="./good.html">How it works</a>
+		<%= link_to "Post a project", new_project_path %>
+		<%= link_to "Log in", new_user_session_path %>
+	<% end %>
+</section>

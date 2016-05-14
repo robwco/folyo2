@@ -29,17 +29,13 @@
 	    <% end %>
 	<% end %>
 
-<section class="top-menu">
-	<a href="./good.html">How it works</a>
-	<a href="./signup.html">Post a project</a>
-	<a href="./home-signed-in.html">Login</a>
-</section>
-	
-<header class="logo">
-  <span class="logo-helper"></span><span style="font-size: 16px; color: #FFF;">Workshop</span>
-</header>
+	<%= render "layouts/top_menu" %>
 
-<%= yield %>
+	<header class="logo">
+	  <span class="logo-helper"></span><span style="font-size: 16px; color: #FFF;">Workshop</span>
+	</header>
+
+	<%= yield %>
 
 
 <!-- Drip -->
