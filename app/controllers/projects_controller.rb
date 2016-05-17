@@ -51,9 +51,17 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update(payment_package_params)
-        format.html { 
-			redirect_to collect_payment_project_path(@project) 
-		}
+
+		if @project.listing_package.price > 0
+			format.html { 
+				redirect_to collect_payment_project_path(@project) 
+			}
+		else
+			@project.publish
+			format.html { 
+				redirect_to @project, notice: "Your project has been posted."
+			}
+		end
       else
         format.html { redirect_to payment_project_path(@project), notice: "The package you selected was invalid." }
       end
