@@ -5,6 +5,7 @@ class Plan < ActiveRecord::Base
 	validates :name, presence: true
 
 	scope :active, -> { where(:published => true) }
+	scope :not_free, -> { where("amount > 0") }
 	scope :monthly, -> { where(:published => true, :interval => 'month') }
 	scope :annual, -> { where(:published => true, :interval => 'year') }
 
@@ -51,5 +52,18 @@ class Plan < ActiveRecord::Base
 	def archive
 		self.published = false
 		save
+	end
+
+	def allow_portfolio_replies?
+		puts "HEREHERHER #{self.portfolio_replies?}"
+		self.portfolio_replies?
+	end
+
+	def allow_leads?
+		self.leads?
+	end
+
+	def allow_replies_to_projects?
+		self.unlimited_replies?
 	end
 end

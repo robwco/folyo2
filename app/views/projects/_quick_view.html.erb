@@ -1,5 +1,6 @@
 <p class="job">
-	<a href="<%= url_for project %>"><%= project.title %> 
+	<a href="<%= project.published? ? url_for(project) : preview_project_url(project) %>"><%= project.title %> 
+		<%= "(draft)" unless project.published? %>
 		<% project.replies.where.not(portfolio_message: nil).limit(4).each do |reply| %>
 			<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece") %>
 		<% end %>

@@ -4,8 +4,12 @@ class Project < ActiveRecord::Base
 	belongs_to :listing_package
 	has_many :replies
 
+	before_save :add_protocol_to_website
+
 	has_attached_file :company_logo, :styles => { :medium => "190x190>", :thumb => "190x190>" }
+	validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }
+	validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 	validates :title, presence: { message: "'What kind of help do you need?' is required." }
 	validates :goals, presence: { message: "'What are you trying to accomplish?' is required." }
@@ -18,7 +22,9 @@ class Project < ActiveRecord::Base
 	validates :organization, presence: { message: "Your organization name is required." }
 	validates :website, presence: { message: "Your website is required." }
 
-	scope :recent, -> (limit_to = nil) { all.order(created_at: :desc).limit(limit_to ? limit_to : 5) }
+	scope :published, -> { where(published: true) }
+	scope :drafted, -> { where(published: false) }
+	scope :recent, -> (limit_to = nil) { order(created_at: :desc).limit(limit_to ? limit_to : 5) }
 	scope :owned_by, -> (user) { where(user_id: user.id) }
 	scope :in_conversation, -> (user) { joins(replies: :messages).where("replies.user_id = ?", user.id).distinct }
 	scope :replied_by, -> (user) { joins(:replies).where("replies.user_id = ?", user.id).distinct }
@@ -29,5 +35,23 @@ class Project < ActiveRecord::Base
 
 	def reply_from?(user)
 		self.reply_from(user).present?
+	end
+
+	def publish
+		self.published = true
+		save
+	end
+
+	def allow_replies_from?(user)
+		self.user != user
+	end
+
+	def allow_portfolio_replies?
+		self.listing_package.allow_portfolio_replies?
+	end
+
+private
+	def add_protocol_to_website
+		self.website = "http://#{self.website}" unless self.website.start_with? "http"
 	end
 end

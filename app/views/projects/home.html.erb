@@ -11,7 +11,7 @@
 <div class="index-leads wrap">
 		<p class="recent uppercase">Recent projects <span class="updates uppercase"><a href="./signup.html">Get email updates</a></span></p>
 
-		<% Project.all.order(created_at: :desc).limit(5).each do |project| %>
+		<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
 			<%= render "projects/quick_view", project: project %>
 		<% end %>
 

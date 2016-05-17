@@ -13,6 +13,7 @@ class ChargeProject
 			listing_package: project.listing_package,
 			stripe_id:  charge.id
 		  )
+		  project.publish
 		  return true
 		rescue Stripe::CardError => e
 		  # The card has been declined or

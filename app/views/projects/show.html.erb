@@ -5,12 +5,12 @@
 <div class="wrap">
 	<h3>Portfolio replies sent to this project:</h3>
 	<% @project.replies.where.not(portfolio_message: nil).each do |reply| %>
-		<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece") %>
+		<%= image_tag(reply.portfolio_image.url(:thumb), class: "portfolio-piece") %>
 	<% end %>
 	<p style="color: #8f8f8f;">...and <%= @project.replies.count - @project.replies.where.not(portfolio_message: nil).count %> other replies sent without a portfolio</p>
 </div>
 
-<% if current_user.can_reply_to_project? @project %>
+<% if @project.allow_replies_from?(current_user) %>
 	<div class="wrap reading reply">
 		<% if @project.reply_from?(current_user) %>
 			<%= render "replies/reply" %>	

@@ -1,0 +1,18 @@
+<h2 class="uppercase">Attach a Portfolio piece to your message</h2>
+
+<div class="row">
+	<p class="label-left uppercase">Upload Artwork</p>
+	<%= f.file_field :portfolio_image, style: "margin: 0;" %><br>
+
+	<p class="label-left-help-text">Your artwork will appear next to your message.
+		190px wide is optimal. We'll resize automatically if it's wider than 190px.</p>
+</div>
+
+<div class="row">
+	<p class="label-left uppercase">Why did you pick this portfolio piece?</p>
+
+	<%= f.text_area :portfolio_message, style: "margin: 1em auto; width: 565px;", placeholder: "On this project..." %>
+
+	<p class="label-left-help-text">Tip: Try answering how this work shows you can help the client on their project.</p>
+</div>
+

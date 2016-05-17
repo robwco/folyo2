@@ -29,8 +29,7 @@ class RepliesController < ApplicationController
   end
 
   def post
-	@reply.published = true
-	@reply.save
+	@reply.publish
 	redirect_to @reply.project
   end
 
@@ -38,6 +37,11 @@ class RepliesController < ApplicationController
     @reply = Reply.new(reply_params)
 	@reply.project = Project.find(params[:project_id])
 	@reply.user = current_user
+
+	unless current_user.can_reply_with_portfolio?(@reply.project)
+		@reply.portfolio_message = nil
+		@reply.portfolio_image = nil
+	end
 
     respond_to do |format|
       if @reply.save
@@ -54,7 +58,12 @@ class RepliesController < ApplicationController
     respond_to do |format|
 		if @reply.update(reply_params)
 			format.html { 
-				redirect_to preview_reply_path(@reply), notice: 'Project reply was successfully updated.' 
+				if params[:send]
+					@reply.publish
+					redirect_to @reply.project
+				else
+					redirect_to preview_reply_path(@reply), notice: 'Project reply was successfully updated.' 
+				end
 			}
 		else
 			format.html { render :edit, notice: "Please correct the errors below.", layout: "folyo" }
@@ -73,6 +82,6 @@ class RepliesController < ApplicationController
     end
 
     def reply_params
-      params.require(:reply).permit(:message, :portfolio_message, :project_id)
+      params.require(:reply).permit(:message, :portfolio_message, :project_id, :portfolio_image)
     end
 end

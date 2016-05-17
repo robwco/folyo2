@@ -158,7 +158,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def upgrade_plan
-	@plans = Plan.active
+	@plans = Plan.active.not_free
 	redirect_to edit_user_registration_path unless @plans.any?
   end
 

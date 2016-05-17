@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :destroy]
+  before_action :set_project, only: [:show]
+  before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :destroy]
   before_filter :authenticate_any!, except: [:show]
 
   respond_to :html
@@ -78,6 +79,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+	@project.user = current_user
 
     respond_to do |format|
       if @project.save
@@ -110,6 +112,10 @@ class ProjectsController < ApplicationController
   private
     def set_project
       @project = Project.find(params[:id])
+    end
+
+    def set_project_with_owner
+      @project = Project.owned_by(current_user).find(params[:id])
     end
 
     def project_params

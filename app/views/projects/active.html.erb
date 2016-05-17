@@ -21,7 +21,7 @@
 <div class="index-leads wrap" style="margin-top: -2.5em;">
 		<p class="recent uppercase">Other projects</p>
 
-		<% Project.recent.each do |project| %>
+		<% Project.published.recent.each do |project| %>
 			<%= render "projects/quick_view", project: project %>
 		<% end %>
 

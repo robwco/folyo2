@@ -20,39 +20,68 @@
   <div class="field">
     <h3>Stripe ID</h3>
 		<span style="font-size: 15px; line-height: 18px;">Creating a plan will automatically create one in Stripe. You just want to make sure it's unique ID. For reference, the first plans were called workshop-regular, workshop-premium, and workshop-annual. Add a v# for new plans.</span>
-    <%= f.text_field :stripe_id %>
+    <%= f.text_field :stripe_id, disabled: @plan.persisted? ? "disabled" : false %>
   </div>
 
   <div class="field">
     <h3>Name (visible to customers)</h3>
 		<span style="font-size: 15px; line-height: 18px;">Format example: Workshop Regular (You pay every 3 months)</span>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, disabled: @plan.persisted? ? "disabled" : false %>
   </div>
 
   <div class="field">
     <h3>Description (not visible to customers)</h3>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, disabled: @plan.persisted? ? "disabled" : false %>
   </div>
 
   <div class="field">
     <h3>Price (in cents)</h3>
-    <%= f.text_field :amount %>
+    <%= f.text_field :amount, disabled: @plan.persisted? ? "disabled" : false %>
   </div>
 
   <div class="field">
     <h3>Interval Count (e.g. every X months)</h3>
-    <%= f.text_field :interval_count %>
+    <%= f.text_field :interval_count, disabled: @plan.persisted? ? "disabled" : false %>
   </div>
 
   <div class="field">
  		<h3>Interval</h3>
-    <%= f.collection_select :interval, ['month','year'], :to_s, :to_s, {promt: "Choose an interval"}, :style => "width: 10em;" %>
+    <%= f.collection_select :interval, ['month','year'], :to_s, :to_s, {promt: "Choose an interval"}, :style => "width: 10em;", disabled: @plan.persisted? ? "disabled" : false %>
   </div>
 
   <div class="field">
     <h3>Trial period length (in days)</h3>
 		<span style="font-size: 15px; line-height: 18px;">Can't be left blank. Enter 0 for no trial.</span>
-    <%= f.text_field :trial_period_days %>
+    <%= f.text_field :trial_period_days, disabled: @plan.persisted? ? "disabled" : false %>
+  </div>
+
+  <div class="field">
+    <h3>Offer Description (visible to customers)</h3>
+    <%= f.text_area :offer_description %>
+  </div>
+
+  <div class="field">
+    <h3>Allow subscribers to get leads?</h3>
+    <%= f.radio_button :leads, true %> <%= f.label :leads_true, "Yes" %>
+    <%= f.radio_button :leads, false %> <%= f.label :leads_false, "No" %>
+  </div>
+
+  <div class="field">
+    <h3>Allow subscribers to reply with portfolios?</h3>
+    <%= f.radio_button :portfolio_replies, true %> <%= f.label :portfolio_replies_true, "Yes" %>
+    <%= f.radio_button :portfolio_replies, false %> <%= f.label :portfolio_replies_false, "No" %>
+  </div>
+
+  <div class="field">
+    <h3>Allow subscribers to reply to unlimited offers?</h3>
+    <%= f.radio_button :unlimited_replies, true %> <%= f.label :unlimited_replies_true, "Yes" %>
+    <%= f.radio_button :unlimited_replies, false %> <%= f.label :unlimited_replies_false, "No" %>
+  </div>
+
+  <div class="field">
+    <h3>Allow subscribers to view reply counts on project postings?</h3>
+	<%= f.radio_button :view_reply_count, true %> <%= f.label :view_reply_count_true, "Yes" %>
+	<%= f.radio_button :view_reply_count, false %> <%= f.label :view_reply_count_false, "No" %>
   </div>
 
   <div class="actions">

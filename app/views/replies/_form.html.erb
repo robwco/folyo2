@@ -1,6 +1,10 @@
 <%= form_for([@project, @reply]) do |f| %>
 	<%= f.text_area :message, style: "margin: 1em auto; width: 100%;" %>
 
+	<% if current_user.can_reply_with_portfolio?(@reply.project) %>
+		<%= render "replies/portfolio_upload_form", f: f %>
+	<% end %>
+
 	<p style="margin: 0; font-size: 18px; color: #666;"><a href="#" style="color: #666;"><strong>How to send a great message</strong></a></p>
 
 	<%= f.submit class: "button", style: "float: right; margin: -1em 0 6em;" %>

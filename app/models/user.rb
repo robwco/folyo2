@@ -83,7 +83,15 @@ class User < ActiveRecord::Base
   end
 
   def can_reply_to_project?(project)
-	project.user != self
+	project.allow_replies_from?(self) && (self.subscription.allow_replies_to_projects? || project.allow_portfolio_replies? || enough_time_since_last_reply?)
+  end
+
+  def can_reply_with_portfolio?(project)
+	project.allow_portfolio_replies? || self.subscription.allow_portfolio_replies?	
+  end
+
+  def can_see_leads?
+	self.subscription.allow_leads?
   end
 
   def can_see_project_replies?(project)
@@ -91,6 +99,7 @@ class User < ActiveRecord::Base
   end
 
   def can_see_messages?(reply)
+	return false if reply.blank?
 	reply.project.user == self || reply.user == self
   end
 
@@ -101,6 +110,10 @@ class User < ActiveRecord::Base
   private
   	def plan_has_trial?
 		subscription.plan.has_trial?
+	end
+
+	def enough_time_since_last_reply?
+		(Reply.replies_from(self).maximum(:published_at) + 1.week) < Time.now
 	end
 
 end

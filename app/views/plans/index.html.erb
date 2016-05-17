@@ -16,7 +16,7 @@
 		<% @plans.each do |plan| %>
 		  <% if plan.published? %>
 			<tr>
-				<td style="padding-right: 2em;"><span style="color: #19963C; font-size: 14px; font-weight: 500;">Active!</span> <%= plan.name %></td>
+				<td style="padding-right: 2em;"><span style="color: #19963C; font-size: 14px; font-weight: 500;">Active!</span> <%= link_to plan.name, edit_plan_path(plan) %></td>
 				<td>$<%= plan.price %> / <%= plan.interval_text %></td>
 				<td rowspan="2" style="vertical-align:top"><%= button_to 'Archive', archive_plan_path(plan), method: 'put' %></td>
 			</tr>
@@ -37,7 +37,7 @@
 		<% @plans.each do |plan| %>
 		  <% unless plan.published? %>
 			<tr>
-				<td style="padding-right: 2em;"> <%= plan.name %></td>
+				<td style="padding-right: 2em;"> <%= link_to plan.name, edit_plan_path(plan) %></td>
 				<td>$<%= plan.price %> / <%= plan.interval_text %></td>
 			</tr>
 		  <% end %>

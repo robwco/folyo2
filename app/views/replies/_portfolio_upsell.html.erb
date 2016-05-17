@@ -1,0 +1,12 @@
+<div class="comfortable wrap portfolio-message" style="font-size: 90%; border: 2px solid #ccc; padding: 1em 2em 2em; margin: 0em auto 4em; box-sizing: border-box; display: table;">
+	<section>
+		<h2 class="uppercase" style="margin: 0; border: 0; color: #222; padding: 0;"><span style="color: #fff; background-color: #54b61c; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 4px;">PRO</span> Help your message stand out</h2>
+
+		<%= image_tag "portfolio2.png", align: "left", style: "margin: 1em 1.5em 1em 0; width: 150px;" %>
+
+		<p style="margin: 2em 0;">Upgrade to pro for only $29/month and send your best portfolio piece with this message. Messages from pro accounts stand out above the rest! <a href="#" style="display: block; margin: .5em 0;"><strong> See what else you get with a PRO account</strong></a></p>
+
+		<a class="button" href="<%= url_for upgrade_plan_path %>">Upgrade to pro + add a portfolio piece to this message</a> <span style="margin:0 .5em">or</span> 
+		<%= link_to "No thanks, send my message", post_reply_path(@reply), method: :put %>
+  </section>
+</div>

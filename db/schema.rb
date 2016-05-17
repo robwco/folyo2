@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514203035) do
+ActiveRecord::Schema.define(version: 20160516232556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,10 @@ ActiveRecord::Schema.define(version: 20160514203035) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active"
+    t.boolean  "unlimited_portfolio_replies", default: false
+    t.boolean  "send_to_twitter",             default: false
+    t.boolean  "send_to_email_list",          default: false
+    t.boolean  "done_for_you",                default: false
   end
 
   create_table "messages", force: true do |t|
@@ -242,6 +246,10 @@ ActiveRecord::Schema.define(version: 20160514203035) do
     t.integer  "trial_period_days"
     t.integer  "interval_count"
     t.string   "offer_description"
+    t.boolean  "portfolio_replies", default: false
+    t.boolean  "leads",             default: false
+    t.boolean  "unlimited_replies", default: false
+    t.boolean  "view_reply_count",  default: false
   end
 
   create_table "products", force: true do |t|
@@ -298,6 +306,7 @@ ActiveRecord::Schema.define(version: 20160514203035) do
     t.datetime "company_logo_updated_at"
     t.integer  "listing_package_id"
     t.integer  "user_id"
+    t.boolean  "published"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
@@ -322,6 +331,7 @@ ActiveRecord::Schema.define(version: 20160514203035) do
     t.string   "portfolio_image_content_type"
     t.integer  "portfolio_image_file_size"
     t.datetime "portfolio_image_updated_at"
+    t.datetime "published_at"
   end
 
   add_index "replies", ["project_id"], name: "index_replies_on_project_id", using: :btree
