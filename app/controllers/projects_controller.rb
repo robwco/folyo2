@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
   before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :destroy]
-  before_filter :authenticate_any!, except: [:show]
+  before_filter :authenticate_any!, except: [:show, :home]
 
   respond_to :html
 
