@@ -6,15 +6,12 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def home
-	  render layout: "folyo"
   end
 
   def active
-	  render layout: "folyo"
   end
 
   def yours
-	  render layout: "folyo"
   end
 
   def index
@@ -26,21 +23,17 @@ class ProjectsController < ApplicationController
 	@reply = @project.reply_from(current_user)
 	@reply = Reply.new unless @reply
 	@message = Message.new
-	render layout: "folyo"
   end
 
   def new
     @project = Project.new
-	render layout: "folyo"
   end
 
   def preview
-	render layout: "folyo"
   end
 
   def payment
 	  @packages = ListingPackage.active.order(:price)
-	render layout: "folyo"
   end
 
   def select_payment
@@ -70,19 +63,17 @@ class ProjectsController < ApplicationController
   end
 
   def collect_payment
-	render layout: "folyo"
   end
 
   def charge_payment
 	  if ChargeProject.call params[:stripeToken], @project
 		redirect_to @project, notice: "Your payment was accepted."	
       else
-        format.html { render :collect_payment, notice: "Please correct the errors below.", layout: "folyo" }
+        format.html { render :collect_payment, notice: "Please correct the errors below." }
       end
   end
 
   def edit
-	render layout: "folyo"
   end
 
   def create

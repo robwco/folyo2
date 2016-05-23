@@ -1,12 +1,15 @@
 <div class="reading wrap">
-	<div style="text-align: center;">
+	<div>
+		<%= image_tag "workshop-logo-placeholder.png", style: "max-width: 100%; margin: 2em 0 0;" %>
+
 		<p class="intro">
-			Finds the right freelance or agency partner for your project.<br> 
-			<strong><%= link_to "Post your project", new_project_path %></strong> or 
-			<strong><a href="./good.html">See why we're so good</a></strong>
+			Quality freelancers for your company's next project.  Meet your match on Workshop free. <strong><a href="./how-it-works">Here's how it works...</a></strong>
 		</p>
 	</div>
 </div>
+
+
+
 
 <div class="index-leads wrap">
 		<p class="recent uppercase">Recent projects <span class="updates uppercase"><a href="./signup.html">Get email updates</a></span></p>
@@ -20,13 +23,18 @@
 
 
 <div class="reading wrap">
-		<h4 class="uppercase" style="margin:2em 0 .5em;">Try Folyo risk-free with our 120% money-back guarantee</h4>
+		<h4 class="uppercase" style="margin:2em 0 .5em;">Get high-quality proposals, guaranteed.</h4>
 		
-		<p style="margin: 0;" class="offer">If you don't find the right partner for your project, we'll refund your entire purchase and give you a 20% discount on next time. Posting on Folyo is easy and we'll send your project to 944 high-quality freelancers and agencies instantly.</p>
+		<p style="margin: 0;" class="offer">
+			Post your project briefWe make sure your project brief attracts top freelance firms from all over the web. That means you'll find the right partner for your project in less than 7 days, gauaranteed. You get complete peace of mind posting on Workshop with our 100% money back guarantee. <strong><a href="./good.html">Get started now</a></strong>
+		</p>
 
-		<p class="job" style="text-align: center; margin: 2em 0 0;"><strong><%= link_to "Post your project", new_project_path %></strong> or <strong><a href="./good.html">see pricing and what you get</a></strong></p>
 
-		<center><%= image_tag "risk-free.png", style: "margin: 2em 0 3em; width: 130px;" %></center>
+		<center>
+			<a href="./good">
+				<%= image_tag "risk-free.png", style: "margin: 2em 0 3em; width: 130px;" %>
+			</a>
+		</center>
 
-		<p class="footer-menu"><a href="#">About</a> <a href="#">Guides</a> <a href="#">Press</a> <a href="#">Partners</a> <a href="#">Blog</a> <a href="#">Relaunch</a> <span style="color: #aaa;">© 2011-2016 Folyo</span></p>
+		<p class="footer-menu"><a href="#">About</a> <a href="#">Guides</a> <a href="#">Press</a> <a href="#">Partners</a> <a href="#">Blog</a> <a href="#">Relaunch</a> <span style="color: #aaa;">© 2011-<%= Time.now.year %> Workshop</span></p>
 </div>

@@ -37,6 +37,9 @@ Rails.application.routes.draw do
 
   mount StripeEvent::Engine => '/stripe-events'
 
+  # Post a project marketing
+
+  
   # Onboarding
   get "/welcome" => "subscriptions#welcome", as: :welcome
   get "/address" => "subscriptions#address"

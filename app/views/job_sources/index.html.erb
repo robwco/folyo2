@@ -18,7 +18,7 @@ display: block;
 
 <center>
   <%= image_tag("job_source_header.png", :style => "display: inline-block; margin: 2em auto 0; height: 110px;") %>
-  <p style="margin: 1em 0 3em;">Workshop currently monitors <%= @job_sources.count %> different job boards, forums, and industry websites for our customers. We find 10+ high quality consulting leads everyday and send them to our customers. <a href="http://letsworkshop.com">Join today</a>.</p>
+  <p style="margin: 1em 0 3em;">These are the websites Workshop has found high-quality leads on. We save freelancers time by sending them 10+ leads everyday. <a href="http://letsworkshop.com">Join today</a>.</p>
 </center>
 
   <% @job_sources.by_most_leads.each do |job_source| %>

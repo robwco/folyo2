@@ -1,120 +1,5 @@
 <% content_for :title, "Favorite Leads" %>
 
-<style>
-.tooltip {
-	background-color: #222;
-  color:#fff;
-	border-radius: 5px;
-  padding: 5px 10px 10px;
-	box-shadow: 1px 0px 5px #ccc;
-	font-size: 18px;
-	margin: 3.75em auto 0;
-	width: 420px;
-  -webkit-animation: bounce .4s ease infinite alternate;
-  -moz-animation: bounce .4s ease infinite alternate;
-  -ms-animation: bounce .4s ease infinite alternate;
-  -o-animation: bounce .4s ease infinite alternate;
-  animation: bounce .4s ease infinite alternate;
-}
-.tooltip p {
-	margin: 0;
-}
-.tooltip span.bottom:before{
-    content:'';
-    display:block;
-    width:0;
-    height:0;
-    position:relative;
-		border-width:8px 8px 0; 
-		border-style:solid; 
-		border-color: black transparent;
-    left: 50%;
-    bottom: -18px;
-}
-@-webkit-keyframes bounce { 
-    from { }
-    to { -webkit-transform: translateY(-5px); }
-}
-@-moz-keyframes bounce { 
-    from { }
-    to { -moz-transform: translateY(-5px); }
-}
-@-ms-keyframes bounce { 
-    from { }
-    to { -ms-transform: translateY(-5px); }
-}
-@-o-keyframes bounce { 
-    from { }
-    to { -o-transform: translateY(-5px); }
-}
-@keyframes bounce { 
-    from { }
-    to { transform: translateY(-5px); }
-}
-
-
-.workflow-tab {
-	font-size: 16px; margin-left: .5em; padding: .25em 1em; margin-bottom: 2em; border-top-right-radius: 5px; border-top-left-radius: 5px; background-color: #eee; color: #888; font-family: 'concourse_c4regular', Lucida Grande, sans-serif;  text-transform: lowercase; text-decoration: none; vertical-align: 0px;
-}
-.workflow-tab.active {
-	vertical-align: 0; background-color: #fff; color: #222;  bottom: -20px; border: 1px solid #ccc; border-bottom: 0; vertical-align: -1px;
-}
-
-.followup-list-action-button {
-		background-color: #eaeae9;
-		border-radius: 4px;	
-		color: #222;
-		cursor: pointer;
-		margin: 0 0 0 .5em;
-		padding: 0 .25em .125em;
-		font-family: 'concourse_c4bold', Lucida Grande, sans-serif;
-		text-transform: lowercase;
-		text-decoration: none;
-		outline: none;
-		font-size: 12px;
-		vertical-align: 2px;
-	  -webkit-transition: all 0.2s ease;
-	  -moz-transition: all 0.2s ease;
-	  -ms-transition: all 0.2s ease;
-	  transition: all 0.2s ease;
-}
-
-a.follow-up-list-action-button:hover {
-		color: white;
-		background-color:  #eaeae9 !important;
-}
-
-
-.followup-list-action-button.yellow {
-	background-color: #fffcb0;
-	color: #222;
-}
-
-.followup-list-action-button.red  {
-	background-color: #ffddda;
-	color: #222;
-}
-
-
-.followup-list-action-button.green {
-	background-color: #daffe1;
-	color: #222;
-}
-
-.followup-list-action-button.blue {
-	background-color: #d1e9ff;
-	color: #222;
-}
-
-.follow-up-list-actions-box {
-	float: right; 
-	display: inline-block; 
-	margin-top: -7.75em;
-	width: 400px;
-	line-height: .5;
-	color: #666; font-size: 14px;
-}
-</style>
 
 <div class="wrapper">
 	<p  style="margin: 1em 0; font-size: 15px; text-align: right; color: #666;">
@@ -136,7 +21,7 @@ a.follow-up-list-action-button:hover {
 		<table style="margin: 0;" class="leads-index-wrapper">
 		  <tbody>
 		  	<th>
-		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px; text-transform: lowercase;">To Contact </h3>
+		  		<h3 style="text-align:left; background-color: #fffbb4; margin: 1em 0 0 -2em; padding: .2em 1em .25em; border-radius: 5px; font-size: 18px;">To Contact </h3>
 				</th>
 		    <% @current_user.favorite_leads.moved_to_to_contact.each do |favorite_lead| %>
 		      <tr>
