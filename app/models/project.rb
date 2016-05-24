@@ -30,10 +30,12 @@ class Project < ActiveRecord::Base
 	scope :replied_by, -> (user) { joins(:replies).where("replies.user_id = ?", user.id).distinct }
 
 	def reply_from(user)
+		return nil if user.nil?
 		self.replies.where(user_id: user.id).first
 	end
 
 	def reply_from?(user)
+		return nil if user.nil?
 		self.reply_from(user).present?
 	end
 

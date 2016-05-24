@@ -20,7 +20,7 @@
 		<% end %>
 	</div>
 
-	<% if current_user.can_see_messages?(@project.reply_from(current_user)) %>
+	<% if current_user.present? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
 		<%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
 
 		<% if current_user.can_send_message?(@reply) %>
@@ -29,6 +29,6 @@
 	<% end %>
 <% end %>
 
-<% if current_user.can_see_project_replies? @project %>
+<% if current_user.present? && current_user.can_see_project_replies?(@project) %>
 	<%= render "replies/client_listing" %>
 <% end %>
