@@ -1,4 +1,4 @@
-<h1 class="post-title">Needed: <%= @project.title %></h1>
+<h1 class="post-title"><%= @project.title %></h1>
 
 <p class="by-line">
 	<%= image_tag(@project.photo.url, class: "photo") if @project.photo.present? %>

@@ -1,9 +1,21 @@
-<p class="job">
-	<a href="<%= project.published? ? url_for(project) : preview_project_url(project) %>"><%= project.title %> 
-		<%= "(draft)" unless project.published? %>
-		<% project.replies.where.not(portfolio_message: nil).limit(4).each do |reply| %>
-			<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece") %>
-		<% end %>
-		<span class="company uppercase"><%= project.organization %></span>
-	</a>
-</p>
+<a class="job" href="<%= project.published? ? url_for(project) : preview_project_url(project) %>">
+	
+		<span class="project-title-quick-view" style="display: inline-block; width: 550px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;">
+			<%= project.title %>
+			
+			<%= "(draft)" unless project.published? %>
+		</span>
+		
+		<span class="project-portfolio-replies-quick-view" style="display: inline-block; white-space: nowrap !important; overflow: hidden !important;font-size: 12px; margin-left: 1em;">
+			<% project.replies.where.not(portfolio_message: nil).limit(3).each do |reply| %>
+				<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece") %>
+			<% end %>
+			<span style=" vertical-align: -7px;  margin-left: .25em; margin-right: 1.em; color: #666;"><%= project.replies.count %> Replies</span>
+		</span>
+		
+		
+			<span class="company uppercase"  style="display: inline-block; width: 200px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;"><%= project.organization %></span>
+
+
+</a>	
+		

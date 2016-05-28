@@ -11,7 +11,7 @@ class Reply < ActiveRecord::Base
   scope :replies_from, -> (user) { published.where(user_id: user.id) }
 
   def publish
-	self.publised = true
+	self.published = true
 	self.published_at = Time.now
 	save
   end

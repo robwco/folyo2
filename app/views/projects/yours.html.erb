@@ -1,6 +1,9 @@
-<div class="index-leads wrap">
-		<p class="recent uppercase">Your project(s)</p>
+<%= render "layouts/top_menu" %>
 
+<div class="index-leads reading wrap">
+		<p class="recent uppercase">Your projects</p>
+
+		<div style="box-shadow: #ccc 0px 0px 10px; border-radius: 5px;">
 		<% if Project.owned_by(current_user).any? %>
 			<% Project.owned_by(current_user).each do |project| %>
 				<%= render "projects/quick_view", project: project %>
@@ -8,14 +11,14 @@
 		<% else %>
 			<p class="job"><%= link_to "You currently have no open projects. Start one.", new_project_path %></p>	
 		<% end %>
+		</div>
 
+
+<!-- 
 		<p class="job" style="padding-top: .75em;"></p>
-</div>
-
-<div class="client-project-index wrap">
 		<p class="your-projects uppercase">Recent replies</p>
 
 		<% Reply.replied_to(current_user).limit(10).each do |reply| %>
 			<%= render "replies/client_reply_view", reply: reply %>
-		<% end %>
+		<% end %> -->
 </div>

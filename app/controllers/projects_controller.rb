@@ -86,7 +86,7 @@ class ProjectsController < ApplicationController
 			redirect_to preview_project_path(@project), notice: 'Project was successfully created.' 
 		}
       else
-        format.html { render :new, notice: "Please correct the errors below.", layout: "folyo" }
+        format.html { render :new, notice: "Please correct the errors below." }
       end
     end
   end
@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
 			redirect_to preview_project_path(@project), notice: 'Project was successfully edited.' 
 		}
       else
-        format.html { render :new, notice: "Please correct the errors below.", layout: "folyo" }
+        format.html { render :new, notice: "Please correct the errors below." }
       end
     end
   end

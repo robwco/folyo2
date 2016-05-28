@@ -15,10 +15,8 @@
 	<% if advanced_search? %>
 
 
-		<p  style="margin: 1em 0; font-size: 15px; text-align: right; color: #666;">
-			<a style="margin-right: .5em" href="/users/edit">Account Settings</a> | 
-			<%= link_to "Log out", destroy_user_session_path, method: :delete, :style => "margin-left: .5em;" %></p>
-		</p>
+	<%= render "layouts/top_menu" %>
+
 
 		<center>
 			<%= image_tag("consulting-leads-search.png", :style => "display: inline-block; margin: 1em auto 0; height: 90px;") %>
@@ -33,14 +31,11 @@
 
 	<% else %>
 
-		<p  style="margin: 1em 0; font-size: 15px; text-align: right; color: #666;">
-			<a style="margin-right: .5em" href="/users/edit">Account Settings</a> | 
-			<%= link_to "Log out", destroy_user_session_path, method: :delete, :style => "margin-left: .5em;" %></p>
-		</p>
+	<%= render "layouts/top_menu" %>
 
 		<center>
 			<%= image_tag("consulting-leads.png", :style => "display: inline-block; margin: 1em auto 0; height: 90px;") %>
-			<p style="margin: 1em 0 2em;">I find new leads daily & send them to you <strong> - every weekday at 8:00 am EST.</strong></p>
+			<p style="margin: 1em 0 2em;"><i class="fa fa-check-circle" aria-hidden="true" style="color: #75b350;"></i> You're subscribed to PRO Leads. We save you time by building you a list of leads to contact everyday from every marketplace on the web.</p>
 		</center>
 
 

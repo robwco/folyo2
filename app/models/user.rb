@@ -86,8 +86,8 @@ class User < ActiveRecord::Base
 	project.allow_replies_from?(self) && (self.subscription.allow_replies_to_projects? || project.allow_portfolio_replies? || enough_time_since_last_reply?)
   end
 
-  def can_reply_with_portfolio?(project)
-	project.allow_portfolio_replies? || self.subscription.allow_portfolio_replies?	
+	def can_reply_with_portfolio?(project)
+    (project.present? && project.allow_portfolio_replies?) || self.subscription.allow_portfolio_replies?    
   end
 
   def can_see_leads?
@@ -113,7 +113,9 @@ class User < ActiveRecord::Base
 	end
 
 	def enough_time_since_last_reply?
-		(Reply.replies_from(self).maximum(:published_at) + 1.week) < Time.now
-	end
+        latest_reply = Reply.replies_from(self).maximum(:published_at)
+        return true if latest_reply.blank?
+        (latest_reply + 1.week) < Time.now
+   end
 
 end

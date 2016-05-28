@@ -1,5 +1,7 @@
-<section class="wrapper" style="max-width: 15em; margin-top: 5em;">
-<h2>Login to Workshop</h2>
+
+
+<section class="sign-in-form">
+<h1>Log in to Workshop</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -10,21 +12,24 @@
 
 
 
+		<%= render "devise/shared/links" %>
 
-	  <% if devise_mapping.rememberable? -%>
 
-	      <%= f.check_box :remember_me, :style => "margin-right: .6em;" %>
-	      <%= f.label "Remember me on this computer", :style => "font-size: 14px; font-weight: normal; text-transform: none; letter-spacing: 0;" %>
-
-	  <% end -%>
  	</div>
 
   <div class="actions" style="margin: 1em 0;">
     <%= f.submit "Log in", :style => "margin-left: 0;" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <% if devise_mapping.rememberable? -%>
+
+      <%= f.check_box :remember_me, :style => "margin-right: .6em;" %>
+      <%= f.label "Remember me on this computer", :style => "font-size: 14px; font-weight: normal; text-transform: none; letter-spacing: 0;" %>
+
+  <% end -%>
+<% end %>
 
 
 </section>
+
+<div class="new-sign-up"> New to Workshop <a href="/subscriptions/new?plan=2">Sign up</a></div>

@@ -1,6 +1,6 @@
 <%= form_for(@project) do |f| %>
 	<section class="basic-info">
-		<h2 class="uppercase">Project goals</h2>
+		<h2 class="uppercase" style="margin: 5em 0 -2em;">Project goals</h2>
 		
 		<p class="question">What kind of help do you need?</p>
 		<p class="example">Example: We need a designer with mobile experience that can do branding and interface design.</p>
@@ -8,11 +8,11 @@
 
 		<p class="question">What are you trying to accomplish?</p>
 		<p class="example">Example: We've noticed a lot of people are using our site from their mobile phones but not buying our product, so we've decided to build a mobile app to convert more of this audience into customers.</p>
-		<%= f.text_area :goals, style: "height: 300px;" %>
+		<%= f.text_area :goals, style: "height: 250px;" %>
 		<p class="question-helper">Here's where you get deep. Picture your company benefitting from this project in a year. What problem will you have solved? What will you be able to do? How will you measure success? The more detail, the better.</p>
 
 		<p class="question">What are some examples (logos, sites, apps, etc.) that you like? </p>
-		<%= f.text_area :examples, style: "height: 90px" %>
+		<%= f.text_area :examples, style: "height: 150px" %>
 		<p class="question-helper">Most importantly, include what you like about them.</p>
 	</section>
 

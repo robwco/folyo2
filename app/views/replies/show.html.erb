@@ -1,6 +1,6 @@
 <div class="reading wrap">
 	<section>
-		<h2 class="uppercase"><%= link_to "&larr;".html_safe, @reply.project %> Message from <%= @reply.user.name %></h2>
+		<h2 class="uppercase"><%= link_to "&larr;".html_safe, @reply.project, :class => "back-arrow" %> Message from <%= @reply.user.name %></h2>
 	</section>
 </div>
 

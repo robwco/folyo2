@@ -2,8 +2,6 @@
 
 	<%= form_for :user, url: subscriptions_path, id: 'new_user' do |f| %>
 
-	<h1 style="margin: 2.1em 0 0;">Start Your New Workshop Subscription</h1>
-	<p  style="text-align: center;">Pay only $<%= @plan.price %> <%= @plan.interval_text %>.
 		<% if @user.errors.any? || @user.subscription.errors.any? %>
 			<div id="error_explanation">
 
@@ -22,26 +20,26 @@
 		
 
 
-		<div style="margin: 3em auto 1.5em; display: table; width: 100%; width:500px; box-sizing: border-box; border-radius: .5em; border: 2px solid #F1F1F1; padding: 0 1.5em;">
+		<div style="margin: 3em auto 1.5em; display: table; width: 100%; width:350px; box-sizing: border-box; border-radius: .5em; border: 2px solid #F1F1F1; padding: 0 1.5em;">
 			
-			<p style="margin: 1em 0 0;"><strong>Your email:</strong></p>
-			<p  style="font-size: 16px; margin: .25em 0 1em;">This is where we'll send your leads.</p>
-			<%= f.email_field :email, autofocus: true, placeholder: "your@email.com" %>
+			<h1 style="margin: 1em 0 .5em; font-size: 30px; text-align: left;">Sign up</h1>
+
+			<%= f.text_field :name, autofocus: true, placeholder: 'Name'	%>
 		
-			<p style="margin: 1em 0 0;"><strong>Your name:</strong></p>
-			<%= f.text_field :name, autofocus: true, placeholder: 'Your name'	%>
+			<%= f.email_field :email, autofocus: true, placeholder: "Email" %>
 
 
-		<p style="margin: 1em 0 0;"><strong>Password:
+
+		<p style="margin:0;">
 			<% if @validatable %>
 				<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
 			<% end %>
-		</strong></p>
-		<%= f.password_field :password, autocomplete: "off", placeholder: 'Your password' %>
+		</p>
+		
+		<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
 
-		<div style="display: none;">
+
 			<%= render 'registrations/categories' %>
-		</div>
 		
 		<br>			
 		<center>

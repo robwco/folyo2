@@ -9,7 +9,7 @@ body, .ccjs-card {
 	color: #222;
 	padding: 0;
 	margin: 0 auto;
-	width: 1000px; 
+	width: 1000px;
 
 	em {
 		font-family: Helvetica, sans-serif;
@@ -45,11 +45,10 @@ body, .ccjs-card {
 	  transition: all 0.2s ease;
 		i {
 			color: #e66125;
-			font-size: 10px !important;
 			vertical-align: 5px;
 		}
 		&:hover {
-			color: #e66125;
+			color: #222;
 		}
 	}
 	
@@ -73,6 +72,7 @@ body, .ccjs-card {
 	width: 100%;
 	border: 0;
 	border-top: 1px solid #ccc;
+	background-color: #FFF;
 }
 
 .pagination {
@@ -142,7 +142,8 @@ body, .ccjs-card {
 	}
 	
 	input[type=submit], .button {
-		font-size: 16px;
+		font-family: Helvetica;
+		font-size: 14px;
 	  border-radius: 8px;
 	  padding: 7px 16px 8px 16px;
 		text-align: center;
@@ -158,11 +159,61 @@ body, .ccjs-card {
 	  -ms-transition: all 0.2s ease;
 	  transition: all 0.2s ease;
 		&:hover {
-			background-color: #e66125; 
+			background-color: #222; 
 			color: white;
 		}
 	}
 	
+	.sign-in-form {
+		max-width: 350px; 
+		margin: 2em auto 0; 
+		padding: 1em;
+		border-top: 2px solid #e4e4e4;
+		border-right: 2px solid #e4e4e4;
+		border-left: 2px solid #e4e4e4;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
+		box-sizing: border-box;
+		
+		h1 {
+			margin: 0 0 .5em;
+			text-align: left;
+			font-size: 30px;
+		}
+		
+		input[type=submit] {
+			display: block;
+			width: 100%;
+		}
+		
+
+	}
+	
+	form.new_user {margin:0;}
+	
+	.new-sign-up {
+		font-size: 15px;
+		text-align: center;
+		background-color: #fffbf2;
+		border-top: 1px solid #fbfbfb;
+		width: 100%;
+		display: block;
+		box-sizing: border-box;
+		max-width: 350px; 
+		margin: 0 auto; 
+		padding: 1em;
+		border: 1px solid #ddd;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		border-top: 2px solid #eadfc5;
+		border-bottom: 2px solid #e4e4e4;
+		border-right: 2px solid #e4e4e4;
+		border-left: 2px solid #e4e4e4;
+	}
+		.new-sign-up a {
+			text-decoration: none;
+			color: #a4863f;
+		}
 	
 	.next-step {
 		text-align: center; 
@@ -525,11 +576,11 @@ hr {
 .top-menu {
     text-align: right;
     padding: .5em 1em 0 0;
-  font-size: 60%;
+  	font-size: 60%;
 }
  
 .top-menu a {
-    margin: 0 .5em;
+    margin: 0 1em;
     text-decoration: none;
 }
  
@@ -674,13 +725,14 @@ li {
     font-size: 150%;
     color: #aaa;
     margin: 0 .5em 0 -1.25em;
+    text-decoration: none;
 }
  
  
 /* Homepage */
 p.intro {
   margin: 1em 0 3em;
-    font-size: 150%;
+    font-size: 115%;
 }
  
 .recent {
@@ -689,16 +741,25 @@ p.intro {
 }
  
 .index-leads .job {
-    padding: .5em 1em;
+    padding: .5em 1em .3em;
     font-size: 90%;
     margin: 0;
     border-top: 1px solid #ccc;
+width: 100%;
+display: block;
+box-sizing: border-box;
+text-decoration: none;
 }
  
 .index-leads .job a {
     text-decoration: none;
 }
- 
+
+a.job:hover {
+	background-color: #fffbf2;
+	color: #222;
+} 
+
 .updates a {
     margin-left: 1em;
     font-size: 70%;
@@ -727,6 +788,7 @@ p.intro {
     border-radius: 3px; 
     vertical-align: text-top;
     margin: 0 0 0 .25em;
+		border: 1px solid #eee;
 }
  
 .portfolio-piece-project-listing {
@@ -743,14 +805,28 @@ p.intro {
 .top-menu a {
     font-family:  Helvetica, sans-serif;
     color: #444;
-    margin: 0 .2em;
-    text-decoration: underline;
+    margin: 0 .5em;
 }
- 
+
+
 .top-menu a:hover {
     color: #7e7e7e;
 }
- 
+
+.top-menu a.button {
+	background-color: #4b9de1;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 10px;
+	padding: .25em .75em;
+	border-radius: 20px;
+}
+
+.top-menu a.button:hover {
+	color: #FFF;
+	background-color: #222;
+}
+
 .footer-menu {
     margin: 2em 0 3em;
     font-size: 75%;
@@ -878,7 +954,7 @@ textarea {
 }
  
 section h2 {
-    margin: 5em 0 0;
+    margin: 1em 0 0;
     font-size: 20px;
     color: #666;
     letter-spacing: .1em;
@@ -1022,7 +1098,7 @@ p.company-info-right {
     margin-right: .25em;
 }
 .reply {
-    margin-top: 3em;
+    margin-top: 1em;
     border-top: 1px solid #eee;
 }
  
@@ -1072,19 +1148,24 @@ a.message-preview-edit {
  
 /* Client project replies  page */
 .project-reply:hover {
-    background: #ecf6fa;
+    background: #fffdf3;
 }
  
 .project-reply {
+	font-size: 15px;
     display: table;
     border-bottom: 1px solid #ccc;
-    padding: 1.5em 1em 1em;
+    padding: 0 .75em;
     width: 100%;
     box-sizing: border-box;
 }
- 
+
+.project-reply:last-child  {
+	border: 0;
+}
+
 .project-reply .photo.reply {
-    width:42; 
+    width: 42px; 
     border-radius: 42px;
     margin: .3em .75em 0 0;
     float: left;
@@ -1154,6 +1235,14 @@ a.message-preview-edit {
     display: inline;
 }
  
+.portfolio-piece {
+	width: 190px;
+	margin: .25em .25em 0 0;
+	border-radius: 5px;
+	border: 1px solid #eee;
+	box-sizing: border-box;
+}
+
 .pro {
     color: #fff; 
     background-color: #54b61c; 

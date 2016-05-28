@@ -11,7 +11,6 @@ class RepliesController < ApplicationController
 
   def show
 	  @message = Message.new
-	render layout: "folyo"
   end
 
   def new
@@ -21,11 +20,9 @@ class RepliesController < ApplicationController
 
   def edit
 	@project = @reply.project
-	render layout: "folyo"
   end
 
   def preview
-	render layout: "folyo"
   end
 
   def post

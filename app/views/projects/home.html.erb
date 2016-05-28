@@ -1,40 +1,70 @@
-<div class="reading wrap">
-	<div>
-		<%= image_tag "workshop-logo-placeholder.png", style: "max-width: 100%; margin: 2em 0 0;" %>
+<%= render "layouts/top_menu" %>
 
-		<p class="intro">
-			Quality freelancers for your company's next project.  Meet your match on Workshop free. <strong><a href="./how-it-works">Here's how it works...</a></strong>
-		</p>
-	</div>
+<div class="reading wrap" style="padding: 2em 0 0;">
+
+	<table>
+		<tr>
+			<td valign="top">
+				<a href="./tour">
+					<%= image_tag "workshop-placeholder-logo.png", style: "margin: -1em 1.5em 0 0; width: 170px;" %>
+				</a>
+			</td>
+
+			<td>
+				
+				<p style="margin: 0;" class="intro">
+					Hire a better freelancer today. Make your project a success. Free to try for a limited time! Post in minutes.<strong><%= link_to "Start a project", tour_path, :class => "button", :style => "background-color: #54a8ed; color: #fff; display:inline-block; margin-top: 1em;" %> <%= link_to "See how it works", tour_path, :class => "button" %></strong>
+				</p>
+			</td>
+		</tr>
+	</table>
+
 </div>
 
 
-
-
-<div class="index-leads wrap">
-		<p class="recent uppercase">Recent projects <span class="updates uppercase"><a href="./signup.html">Get email updates</a></span></p>
+<div class="index-leads wrap" style="margin-bottom: 2em; box-shadow: #ccc 0px 0px 10px; padding: .25em 0; border-radius: 7px; background-color: #FFF;">
+	<div style="height: 50px;">
+		<%= image_tag "now-hiring.png", style: "width: 140px; display: block; padding: .25em 1em;", align: "left" %> 
+		<%= link_to "Get projects emailed to you", projects_path, :style => "padding: 1.15em 0; display: inline-block; color:#666; text-decoration: none; font-size: 13px; font-weight: bold;", :class => "uppercase"  %>
+	</div>	
 
 		<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
 			<%= render "projects/quick_view", project: project %>
 		<% end %>
 
-		<p class="job" style="padding-top: .75em;"><strong><%= link_to "See more projects", projects_path %></strong></p>
+		<p class="job" style="padding-top: .75em; font-size: 14px; padding-left: 1.25em;"><strong><%= link_to "See more projects →", projects_path, :style => "color: #aaa;" %></strong></p>
 </div>
 
-
 <div class="reading wrap">
-		<h4 class="uppercase" style="margin:2em 0 .5em;">Get high-quality proposals, guaranteed.</h4>
+
+
+
+
+
+<center>
+	<h4 class="uppercase" style="margin:3em 0 .5em;">We're trusted by</h4>
+
+	<%= image_tag "trusted-by-company-logos.png", style: "margin: 1em 0; width: 100%;" %>
+</center>
+
+<!-- 
+<table style="margin: 3em 0;">
+	<tr>
+		<td style="width: 160px;"> 
+			<p style="font-size: 13px;"><span class="quote-apostraphe" style="font-size: 50px; line-height: 0; vertical-align: bottom; margin: 0 .15em 0 -.5em;">&ldquo;</span>I had everything in place to build the app that existed in my head — except someone to build it.MARCELLA CHAMORRO</p>
+		</td>
+		<td>
+			<%= image_tag "marcie-placeholder2.png", style: "margin: 0em 1em 0 0; width: 300px;" %>
+		</td>
 		
-		<p style="margin: 0;" class="offer">
-			Post your project briefWe make sure your project brief attracts top freelance firms from all over the web. That means you'll find the right partner for your project in less than 7 days, gauaranteed. You get complete peace of mind posting on Workshop with our 100% money back guarantee. <strong><a href="./good.html">Get started now</a></strong>
-		</p>
+		<td>
+			<h1>Get started in minutes</h1>
+			<%= link_to "See how it works", tour_path, :class => "button" %>
+		</td>
+	</tr>
+</table>-->
 
 
-		<center>
-			<a href="./good">
-				<%= image_tag "risk-free.png", style: "margin: 2em 0 3em; width: 130px;" %>
-			</a>
-		</center>
+<%= render "layouts/footer_menu" %>
 
-		<p class="footer-menu"><a href="#">About</a> <a href="#">Guides</a> <a href="#">Press</a> <a href="#">Partners</a> <a href="#">Blog</a> <a href="#">Relaunch</a> <span style="color: #aaa;">© 2011-<%= Time.now.year %> Workshop</span></p>
 </div>

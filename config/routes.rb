@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   # Onboarding
   get "/welcome" => "subscriptions#welcome", as: :welcome
   get "/address" => "subscriptions#address"
+  get "/tour" => "projects#tour"
   
   # Testing Emails
   get "/test_emails" => "subscriptions#test_email"
