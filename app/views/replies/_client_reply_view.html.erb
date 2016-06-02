@@ -2,26 +2,26 @@
 
 		<a href="/replies/<%= reply.id %>" style="text-decoration: none;">
 			
-			<div style="height: 40px; padding: 0;">
+			<div style="height: 50px; padding: 0;">
 				
 				<div style="display: inline-block; color: #eee; vertical-align: 10px; padding: 0; margin: 0 .5em 0 0;">
-					<%= image_tag 'star.png', :style => "width: 15px; padding: 13px 0 0;" %>
+					<%= image_tag 'star.png', :style => "width: 15px; padding:16px 0 0;" %>
 				</div>
 			
-				<div style="width: 30px; display: inline-block; padding: 0; vertical-align: 5px;">
+				<div style="width: 30px; display: inline-block; padding: 0; vertical-align: 2px;">
 					<%= image_tag 'rob.png', :style => "height: 25px; border-radius: 25px; margin:0;" %>
 				</div>
 			
-				<div style="width: 150px; display: inline-block; margin-left: .25em; vertical-align: 13px;">
+				<div style="width: 175px; display: inline-block; margin-left: .25em; vertical-align: 10px; font-size: 16px;">
 					<span class="name" style="color: #999;"><strong><%= reply.user.name %></strong></span>
 				</div>
 			
-				<div style="width: 500px; display:inline-block; vertical-align: 13px;">
-					<%= truncate reply.message, length: 70 %>
+				<div style="width: 620px; display:inline-block; vertical-align: 10px;">
+					<%= truncate reply.message, length: 65 %>
 					
 				</div>
 			
-				<div style="display:inline-block; float: right; padding: 5px;">
+				<div style="display:inline-block; float: right; padding-top: 5px;">
 					<% if reply.portfolio_image.present? %>
 					
 						<i class="fa fa-paperclip" aria-hidden="true" style="color: #CCC; font-size: 25px !important; margin-right: -7px;"></i>
@@ -29,7 +29,7 @@
 						
 					<% end %>
 					
-					<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece-project-listing", align: "right", style: "width: 45px; border: 1px solid #eee;") if reply.portfolio_image.present? %>
+					<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece-project-listing", align: "right", style: "width: 60px; border: 1px solid #eee;") if reply.portfolio_image.present? %>
 				</div>
 
 			</div>

@@ -1,11 +1,18 @@
-<div class="reading wrap">
-	<section>
-		<h2 class="uppercase"><%= link_to "&larr;".html_safe, @reply.project, :class => "back-arrow" %> Message from <%= @reply.user.name %></h2>
+<%= render "layouts/top_menu" %>
+
+<div class="index-leads wrap" style="padding-bottom: 5em; ">
+
+	<section style="margin-top: -9px;">
+		<h2 class="uppercase">
+			<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #ddd; vertical-align: 1px; margin-right: .5em;"></i>'.html_safe, project_path(@project) %> <%= @reply.user.name %></h2>
+			
+			
+			<%= link_to '<i class="fa fa-times" aria-hidden="true" style="margin-right: .5em; font-size: 16px; color: #eaeaea; vertical-align: 0px;"></i>Dismiss this reply'.html_safe, projects_path, :style => "padding: 1em 0; display: inline-block; color:#666; float: right; display: inline-block; font-size: 15px; margin-top: -60px;"  %>
 	</section>
-</div>
 
 
-<div class="reading wrap">
+
+<div style="box-sizing: border-box;  margin: 0 auto;">
 	<%= render "replies/reply_message", allow_edit: false %>
 	<%= render "replies/portfolio_message" %>
 </div>

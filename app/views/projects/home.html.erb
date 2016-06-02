@@ -13,27 +13,35 @@
 			<td>
 				
 				<p style="margin: 0;" class="intro">
-					Hire a better freelancer today. Make your project a success. Free to try for a limited time! Post in minutes.<strong><%= link_to "Start a project", tour_path, :class => "button", :style => "background-color: #54a8ed; color: #fff; display:inline-block; margin-top: 1em;" %> <%= link_to "See how it works", tour_path, :class => "button" %></strong>
+					Hire a better freelancer today. Make your project a success. Free to try for a limited time! Post in minutes.</p>
+					
+				<p>
+					<strong><%= link_to "Start a project", new_project_path, :class => "button" %> <%= link_to "See how it works", tour_path, :class => "button" %></strong>
 				</p>
 			</td>
 		</tr>
 	</table>
 
+
 </div>
 
 
-<div class="index-leads wrap" style="margin-bottom: 2em; box-shadow: #ccc 0px 0px 10px; padding: .25em 0; border-radius: 7px; background-color: #FFF;">
-	<div style="height: 50px;">
-		<%= image_tag "now-hiring.png", style: "width: 140px; display: block; padding: .25em 1em;", align: "left" %> 
-		<%= link_to "Get projects emailed to you", projects_path, :style => "padding: 1.15em 0; display: inline-block; color:#666; text-decoration: none; font-size: 13px; font-weight: bold;", :class => "uppercase"  %>
+	<div style="height: 50px; margin: 2em 0 .25em;">
+		<%= image_tag "now-hiring.png", style: "height:40px; display: block; padding: .25em 1em;", align: "left" %> 
+		<%= link_to '<i class="fa fa-envelope" aria-hidden="true" style="margin-right: .5em; font-size: 16px; color: #eaeaea; vertical-align: 0px;"></i>Get projects emailed to you'.html_safe, projects_path, :style => "vertical-align: -5px; padding: 1em 0; display: inline-block; color:#666; float: right; display: inline-block; font-size: 15px;"  %>
 	</div>	
+
+<div class="index-leads wrap" style="margin: 0; box-shadow: #ccc 0px 0px 10px; padding:0; border-radius: 7px; background-color: #FFF;">
+
 
 		<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
 			<%= render "projects/quick_view", project: project %>
 		<% end %>
 
-		<p class="job" style="padding-top: .75em; font-size: 14px; padding-left: 1.25em;"><strong><%= link_to "See more projects →", projects_path, :style => "color: #aaa;" %></strong></p>
 </div>
+
+
+		<p class="job" style="padding-top:0em; font-size: 14px; padding-left: 1.25em;"><strong><%= link_to "See more projects →", projects_path, :style => "color: #aaa;" %></strong></p>
 
 <div class="reading wrap">
 
@@ -42,7 +50,7 @@
 
 
 <center>
-	<h4 class="uppercase" style="margin:3em 0 .5em;">We're trusted by</h4>
+	<h4 class="uppercase" style="margin:3em 0 .5em;">Trusted by</h4>
 
 	<%= image_tag "trusted-by-company-logos.png", style: "margin: 1em 0; width: 100%;" %>
 </center>

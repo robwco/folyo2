@@ -1,9 +1,14 @@
 <section class="top-menu">
-	<% if user_signed_in? %>
+	<% if admin_signed_in? %>
+		<%= link_to "Start a project", new_project_path %>
+		<%= link_to "PRO Leads",  leads_path(advanced: true) %>
+		<%= link_to "New Lead", new_lead_path %>
+		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
+	<% elsif user_signed_in? %>
 		<%= link_to "Start a project", new_project_path %>
 		<%= link_to "Your projects", yours_projects_path %>
 		<%= link_to "Projects", active_projects_path %>
-		<%= link_to "PRO Leads", leads_path %>
+		<%= link_to "PRO Leads",  leads_path(advanced: true) %>
 		<%= link_to "Account", edit_user_registration_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% else %>	

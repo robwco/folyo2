@@ -83,8 +83,8 @@ body, .ccjs-card {
 	.current {
 		color: #FFF;
 		font-family: Helvetica, sans-serif;
-		background-color: #222;
-		padding: 2px 7px;
+		background-color: #4697ed;
+		padding: 2px 6px;
 		height: 10px;
 		width: 10px;
 		border-radius: 100px;
@@ -168,11 +168,6 @@ body, .ccjs-card {
 		max-width: 350px; 
 		margin: 2em auto 0; 
 		padding: 1em;
-		border-top: 2px solid #e4e4e4;
-		border-right: 2px solid #e4e4e4;
-		border-left: 2px solid #e4e4e4;
-		border-top-right-radius: 5px;
-		border-top-left-radius: 5px;
 		box-sizing: border-box;
 		
 		h1 {
@@ -195,20 +190,13 @@ body, .ccjs-card {
 		font-size: 15px;
 		text-align: center;
 		background-color: #fffbf2;
-		border-top: 1px solid #fbfbfb;
 		width: 100%;
 		display: block;
 		box-sizing: border-box;
 		max-width: 350px; 
 		margin: 0 auto; 
 		padding: 1em;
-		border: 1px solid #ddd;
-		border-bottom-right-radius: 5px;
-		border-bottom-left-radius: 5px;
-		border-top: 2px solid #eadfc5;
-		border-bottom: 2px solid #e4e4e4;
-		border-right: 2px solid #e4e4e4;
-		border-left: 2px solid #e4e4e4;
+		border-radius: 5px;
 	}
 		.new-sign-up a {
 			text-decoration: none;
@@ -479,10 +467,9 @@ td.lead {
 		border-radius: 4px;	
 		color: #222;
 		cursor: pointer;
-		margin: 0 0 0 .5em;
-		padding: 0 .25em .125em;
+		margin: 0 0 0 .25em;
+		padding: .25em .5em;
 		font-family: Helvetica, sans-serif;
-		text-transform: lowercase;
 		text-decoration: none;
 		outline: none;
 		font-size: 12px;
@@ -745,20 +732,36 @@ p.intro {
     font-size: 90%;
     margin: 0;
     border-top: 1px solid #ccc;
-width: 100%;
-display: block;
-box-sizing: border-box;
-text-decoration: none;
+		width: 100%;
+		display: block;
+		box-sizing: border-box;
+		text-decoration: none;
 }
+
+.index-leads .job:first-child {
+	border-top: 0 !important;
+}
+
  
 .index-leads .job a {
     text-decoration: none;
 }
 
 a.job:hover {
-	background-color: #fffbf2;
 	color: #222;
+	background: #fffdf3;
+	border-radius: 0px;
+}
+
+a.job:first-child:hover {
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
 } 
+
+a.job:last-child:hover {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
 
 .updates a {
     margin-left: 1em;
@@ -1146,13 +1149,17 @@ a.message-preview-edit {
     width: 50px;
 }
  
+
 /* Client project replies  page */
 .project-reply:hover {
     background: #fffdf3;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
 }
+
  
 .project-reply {
-	font-size: 15px;
+		font-size: 20px;
     display: table;
     border-bottom: 1px solid #ccc;
     padding: 0 .75em;
@@ -1160,8 +1167,12 @@ a.message-preview-edit {
     box-sizing: border-box;
 }
 
+
+
 .project-reply:last-child  {
 	border: 0;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 .project-reply .photo.reply {
@@ -1297,6 +1308,13 @@ a.message-preview-edit {
     display: table;
  
 }
+
+.job:first-child {
+	border-top: 0 !important;
+}
+
+
+
 .client-project-index .job  h1 {
     margin: 1.5em 0 .1em;
     font-size: 110%;
@@ -1457,7 +1475,7 @@ h5 + p {
 }
 
 form {
-  margin-bottom: 5em;
+  margin-bottom: 1em;
 }
 #lead_title {
   margin-bottom: 10px !important;

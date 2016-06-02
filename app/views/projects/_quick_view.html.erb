@@ -1,20 +1,41 @@
 <a class="job" href="<%= project.published? ? url_for(project) : preview_project_url(project) %>">
 	
+	
+	
+
+	
 		<span class="project-title-quick-view" style="display: inline-block; width: 550px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;">
 			<%= project.title %>
 			
 			<%= "(draft)" unless project.published? %>
 		</span>
+
 		
-		<span class="project-portfolio-replies-quick-view" style="display: inline-block; white-space: nowrap !important; overflow: hidden !important;font-size: 12px; margin-left: 1em;">
+		<span class="project-portfolio-replies-quick-view" style="display: inline-block; white-space: nowrap !important; overflow: hidden !important; margin-left: 2em;">
 			<% project.replies.where.not(portfolio_message: nil).limit(3).each do |reply| %>
-				<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece") %>
+				<% if reply.portfolio_message.present? %>
+					<%= image_tag(reply.portfolio_image.url, class: "portfolio-piece") %>
+				<% end %>
 			<% end %>
-			<span style=" vertical-align: -7px;  margin-left: .25em; margin-right: 1.em; color: #666;"><%= project.replies.count %> Replies</span>
+			
+
+			
+						<div style="display: inline-block; font-size: 12px; margin-top: -2em; vertical-align: 0;  margin-left: .5em; margin-right: 1.em; color: #666;"><%= project.replies.count %> Replies</div>
+
+
 		</span>
 		
 		
-			<span class="company uppercase"  style="display: inline-block; width: 200px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;"><%= project.organization %></span>
+		
+		<% unless project.replies(current_user).empty? %>
+
+			<i class="fa fa-check-circle" title="You've replied to this project" aria-hidden="true" style="margin: 0; font-size: 15px; color: #75b350; vertical-align: 10px;"></i>
+
+		<% end %>
+		
+		
+		
+			<span class="company uppercase"  style="display: inline-block; width: 150px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;"><%= project.organization %></span>
 
 
 </a>	

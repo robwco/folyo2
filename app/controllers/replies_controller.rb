@@ -11,6 +11,7 @@ class RepliesController < ApplicationController
 
   def show
 	  @message = Message.new
+	  @project = @reply.project
   end
 
   def new

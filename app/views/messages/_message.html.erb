@@ -1,7 +1,7 @@
 <div class="client-message" style="<%= message_color message %> border-radius: 5px; padding: .25em;  display: block; width: 100%; box-sizing: border-box; margin-top: 20px;">
 	<p style="margin: 0;">
 		<strong><%= message_sender message %></strong> 
-		<span style="font-size: 70%; color:#666;"><%= message.created_at.strftime("%l:%M%P %m/%d/%Y") %></span><br>
+		<span style="font-size: 70%; color:#666;"><%= message.created_at.strftime("%l:%M %p %m/%d/%Y") %></span><br>
 		<%= message.message %>
 	</p>
 </div>

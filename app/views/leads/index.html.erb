@@ -1,7 +1,7 @@
 <% content_for :title, "Recent Leads" %>
 
 
-<div class="wrapper">
+<div class="index-leads-wrapper">
 	<% if admin_signed_in? %>
 		<p>
 			Admin Options:
@@ -12,104 +12,72 @@
 		</p>
 	<% end %>
 
-	<% if advanced_search? %>
-
 
 	<%= render "layouts/top_menu" %>
 
+		
+		<p style="font-size: 16px; margin: 0 0 1em 0; padding:0 0 1.5em;">
+			<%= image_tag "pro-leads.png", style: "height:40px; display: inline-block; padding: .25em 1em; margin: 2em 0 -1em;  vertical-align: -5px;" %>
+			<span style=" padding: 2.5em 0 0;">
+			<i class="fa fa-check-circle" aria-hidden="true" style="color: #75b350;"></i> You're subscribed to PRO Leads. We save you time by building you a list of leads to contact everyday.
+			</span>
+		</p>
+				
+		
+		<div style="width: 900px; margin: 0 auto;">
 
-		<center>
-			<%= image_tag("consulting-leads-search.png", :style => "display: inline-block; margin: 1em auto 0; height: 90px;") %>
-			<p style="margin: 1em 0 2em;">Search through every lead I've ever sent <strong> - over 2600+ high-quality gigs.</strong></p>
-		</center>
-
-
-			<%= link_to "Most Recent", leads_path, :class => "workflow-tab" %>
-			<%= link_to "Search All Leads", leads_path(advanced: true), :class => "workflow-tab active" %>
-			<%= link_to "Your Follow-up List", favorites_path, :class => "workflow-tab" %>
-
-
-	<% else %>
-
-	<%= render "layouts/top_menu" %>
-
-		<center>
-			<%= image_tag("consulting-leads.png", :style => "display: inline-block; margin: 1em auto 0; height: 90px;") %>
-			<p style="margin: 1em 0 2em;"><i class="fa fa-check-circle" aria-hidden="true" style="color: #75b350;"></i> You're subscribed to PRO Leads. We save you time by building you a list of leads to contact everyday from every marketplace on the web.</p>
-		</center>
-
-
-			<%= link_to "Most Recent", leads_path, :class => "workflow-tab active" %>
-			<%= link_to "Around the Web", leads_path(advanced: true), :class => "workflow-tab" %>
+			<%= link_to "PRO Leads", leads_path(advanced:true), :class => "workflow-tab active" %>
 			<%= link_to "Favorites", favorites_path, :class => "workflow-tab" %>
+			<hr style="margin: 0;">
+			<%= render "search" %>
+				
+		</div>		
+		
+		
+		
+				<div class="index-leads wrap" style="margin: 1em 0 0; box-shadow: #ccc 0px 0px 10px; padding:0; border-radius: 7px; background-color: #FFF;">		
+					
+		    	<% @leads.most_recent.each do |lead| %>
+		
 
-	<% end %>
-
-	<table style="margin: 0;" class="leads-index-wrapper">
-
-		<thead style="font-weight: 300; text-align: left;">
-			<tr>
-				<th style="font-weight: 300; padding: 0;">
-					<%= render "search" %>	
-				</th>
-			</tr>
-		</thead>
-
-	  <tbody>
-	    <% @leads.most_recent.each do |lead| %>
-	      <tr>
-	        <td class="lead">
-						<p class="lead-title"><strong><%= lead.title %></strong></p>
-
-						<p class="lead-url">
-							<img src="http://www.google.com/s2/favicons?domain_url=<%= lead.url %>" align="left" style="margin-right: .5em; padding: 3px 0 0;"> <a href="<%= lead.url %>" style="color: #666;"><%= lead.url %></a>
-						</p>
 						
-						<p style="margin: .5em 0 0;"><%= simple_format(lead.description) %></p>
-						
-						<% if lead.image.file? %>
-
-						<%= image_tag lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
-						
-						<% else %>
-								<%= image_tag "missing.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
-						<% end %>
+						<a class="job" href="<%= url_for(lead) %>" style="height: 50px; padding-top: .65em;">
 							
-						<p style="font-size: 16px; margin: .5em 0;"> Name: <%= lead.name %></strong>
-
-							<br>Email: <%= mail_to lead.email %>
-							<br>
-						</p>
-						
-						<p style=" margin: .5em 0;"><span style="color: #666; font-size: 14px;">Posted on <%= lead.created_at.strftime("%b. %d %Y") %> in <%= lead.category_name %></span> 
-						
+							
 							<% if admin_signed_in? %>
-								<span style="float: right; color: #666; font-size: 14px;"> Admin Options: <%= link_to 'Edit', edit_lead_path(lead) %>, <%= link_to 'Delete', lead_path(lead), method: :delete, data: { confirm: 'Are you sure?' } %></span>
 							<% else %>
-
 								<% unless current_user.favorites.include?(lead) %>
-											
-									<p class="tooltip arrow bounce show-hover" style="margin-left: 33.5em; margin-top: -130px; width: 155px !important; display: inline-block;"><span class="bottom"></span>Interested? Add this lead to your follow-up list.</p>
+									<%= image_tag 'star.png', :style => "vertical-align: 5px; width: 15px; padding:0 0; margin-right: .5em;" %>
+								<% else %>								
+									<%= image_tag 'starred.png', :style => "vertical-align: 5px; width: 15px; padding:0 0; margin-right: .5em;", :title => "You favorited this lead" %>
 
-
-									<%= link_to "Add to Follow-up List", favorite_lead_path(lead, type: "favorite"), method: :patch, :class => "favorite uppercase", target: '_blank' %>
-
-								<% else %><span style="float: right; color: #666; font-size: 14px;">Added to Follow-up List.</span>
 								<% end %>
 							<% end %>
-						</p>
+							
+							
+							
+							<span style="display: inline-block; width: 750px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; font-size: 16px;"><%= lead.title %></span>
+							
 
-					</td>
-	      </tr>
-	    <% end %>
-	    <% unless params[:advanced].blank? %>
-	    	<tr>
-					<td style="border-bottom: 1px solid #ccc;"><%= will_paginate @leads %></td>
-				</tr>
-			<% end %>
-	  </tbody>
+							
+							
+							<span class="company"  style="display: inline-block;"><img src="http://www.google.com/s2/favicons?domain_url=<%= lead.url %>" align="left" style="margin-right: .5em; padding: 1px 0 0;"> <%= lead.created_at.strftime("%b. %d %Y") %></span>
+						
+							
+						</a>
+						
+					<% end %>
+				</div>				
+			
+				
+		    <% unless params[:advanced].blank? %>
+		    	<tr>
+						<td style="border-bottom: 1px solid #ccc;"><%= will_paginate @leads %></td>
+					</tr>
+				<% end %>
+	
+	
+	
 
-	</table>
-
-	<%= render "footer" %>	
+	<%= render "layouts/footer_menu" %>
 </div>

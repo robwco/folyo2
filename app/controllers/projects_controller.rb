@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
   before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :destroy]
-  before_filter :authenticate_any!, except: [:show, :home]
+  before_filter :authenticate_any!, except: [:show, :home, :portal]
 
   respond_to :html
 
@@ -12,6 +12,9 @@ class ProjectsController < ApplicationController
   end
 
   def yours
+  end
+  
+  def portal
   end
 
   def index
@@ -107,6 +110,8 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_with(@project)
   end
+  
+  
 
   private
     def set_project

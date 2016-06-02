@@ -1,9 +1,12 @@
 <%= render "layouts/top_menu" %>
 
 <div class="index-leads reading wrap">
-		<p class="recent uppercase">Your projects</p>
+	
+	<section>
+		<%= image_tag "your-projects.png", style: "height: 40px; display: block; margin: -.35em 1em .25em; ", align: "left" %> 
+	</section>
 
-		<div style="box-shadow: #ccc 0px 0px 10px; border-radius: 5px;">
+		<div style="box-shadow: #ccc 0px 0px 10px; border-radius: 5px; margin:  0 0; display: inline-block; width: 100%;">
 		<% if Project.owned_by(current_user).any? %>
 			<% Project.owned_by(current_user).each do |project| %>
 				<%= render "projects/quick_view", project: project %>
@@ -13,6 +16,11 @@
 		<% end %>
 		</div>
 
+
+<div style="margin: 3em 0; text-align:center;">
+	<h3 style="font-size: 30px;">Starting a new project?</h3>
+	<%= link_to 'Create new project', new_project_path, :class => "button" %>
+</div>
 
 <!-- 
 		<p class="job" style="padding-top: .75em;"></p>

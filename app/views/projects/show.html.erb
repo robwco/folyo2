@@ -1,25 +1,31 @@
+<%= render "layouts/top_menu" %>
 
 <% if current_user.present? && current_user.can_see_project_replies?(@project) %>
 	<%= render "replies/client_listing" %>
+	
+	
+	
+	
 
 <% else %>	
 
+<section style="width: 300px;">
+	<h2 class="uppercase">
+		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #ddd; vertical-align: 1px; margin-right: .5em;"></i>'.html_safe, home_projects_path %> More projects</h2>	
+</section>
+
+
 	<div class="reading wrap post">
-		<p style="font-size: 13px; width: 100%; text-align: left; color:#666;" class="top-menu">
-			
-			<%= link_to "← Back to more projects", home_projects_path, :style => "color: #666;" %>
-			
-		</p>
 	
 			<%= image_tag "now-hiring.png", style: "width: 140px; display: block; padding: 1em 0 0; margin: .5em auto -1em;" %>
-			<%= render 'project' %>
+				<%= render 'project' %>
 	</div>
 
 	<div class="reading wrap" style="padding: 1em 0 0;">
 		<% @project.replies.where.not(portfolio_message: nil).each do |reply| %>
 			<%= image_tag(reply.portfolio_image.url(:medium), class: "portfolio-piece") %>
 		<% end %>
-		<p style="color: #8f8f8f; margin: 1em 0 0;"><%= @project.replies.count %> people have replied to this project</p>
+		<p style="color: #8f8f8f; margin: 0;"><%= @project.replies.count %> people have replied to this project</p>
 	</div>
 
 	<% if @project.allow_replies_from?(current_user) %>
@@ -44,3 +50,5 @@
 
 	
 <% end %>
+
+<div style="padding: 2em 0; display: table;">

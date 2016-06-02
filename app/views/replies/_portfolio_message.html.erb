@@ -1,9 +1,16 @@
 <% if @reply.portfolio_message.present? %>
-	<div class="portfolio-individual" style="display: table; border: 3px solid #eee; padding: .75em; box-sizing: border-box; border-radius: 5px; margin: 0 0 2em;">
+<div style="padding: 0 0 2.25em;">
+
+
+	<div class="portfolio-individual" style="display: table; box-shadow: #ccc 0px 0px 10px; border-radius: 5px;  padding: .75em; box-sizing: border-box; border-radius: 13px; margin: 0 auto;">
+
+
 		<%= image_tag(@reply.portfolio_image.url, class: "photo", align: "left", style: "margin: 0 1em 0 0; height: 200px;border-radius: 5px;") if @reply.portfolio_image.present? %>
-		<h5 class="uppercase" style="margin: 0 0 .5em 0;">Check out my project</h5>
+
+		<h5 class="uppercase" style="margin: 1em 0 .5em 0; font-size: 14px;">Check out this portfolio piece</h5>
 		<p style="margin: 0;">
 			<%= h(@reply.portfolio_message).gsub("\n", "<br>").html_safe %>
 		</p>
 	</div>
+</div>
 <% end %>

@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine => '/stripe-events'
 
   # Post a project marketing
+  get "/choose-project-type" => "projects#portal"
+  
 
   
   # Onboarding

@@ -1,16 +1,10 @@
-<div class="reading wrap">
+<div style="margin: 0; padding: 1.5em 2em 2.5em 2em;" >
 	<p class="reply-photo-left">
-		<img src="./images/jason.jpeg" class="photo reply">
+		<%= image_tag 'rob.png', :style => "height: 80px; border-radius: 80px; margin:.5em .5em 0 2.5em;" %>
 	</p>	
 
-	<p class="preview-message">
-		<span style="margin:0 0 .5em 0; display:block;">
-			<strong><%= @reply.user.name %></strong>
-			<span style="font-size: 70%; color:#666;">
-				<span style="margin: 0 .5em; color: #ddd;">|</span>
-				<%= @reply.user.email %>
-			</span>
-		</span>
+	<p class="preview-message" style="padding: 0 3em 0 0; margin: 0;">
+
 		<%= h(@reply.message).gsub("\n", "<br>").html_safe %>
 	
 		<% if allow_edit %>

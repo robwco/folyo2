@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
-  before_action :authenticate_admin!, except: [:upload, :index, :favorites, :favorite, :contacted, :need_to_email, :responded, :touch_base]
+  before_action :authenticate_admin!, except: [:show, :upload, :index, :favorites, :favorite, :contacted, :need_to_email, :responded, :touch_base]
   before_action :set_lead, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_any!, only: [:index, :favorites, :contacted, :need_to_email, :responded, :touch_base]
+  before_filter :authenticate_any!, only: [:index, :show, :favorites, :contacted, :need_to_email, :responded, :touch_base]
 
     
   # Add and remove favorite lead

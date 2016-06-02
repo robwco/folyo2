@@ -1,63 +1,66 @@
-<section class="wrapper">
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Category:</strong>
-  <%= @lead.category_id %>
-</p>
 
-<p>
-  <strong>Photo:</strong>
+<div class="index-leads-wrapper" style="margin: 2em auto 4em; width: 600px;">
+	<% if admin_signed_in? %>
+		<p>
+			Admin Options:
+			<%= link_to "New Lead", new_lead_path, :class => "button" %>
 
-  <%= image_tag @lead.image.url(:thumb, timestamp: false)  %>
-  <%= @lead.photo %>
-</p>
+			<%= link_to "Upload RFP", new_rfp_path, :class => "button" %>
+			<hr>
+		</p>
+	<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @lead.title %>
-</p>
+	
+	<p class="next-step" style="font-size: 18px; margin: 2em 0 1em;">
+		&larr; 
+		<%= link_to "Back to Leads",  leads_path(advanced: true) %>
+	</p>
+	
+	
+		<div class="lead" style="margin: 2em 0 0;box-shadow: #ccc 0px 0px 10px; border-radius: 5px;  width: 100%; box-sizing: border-box; padding: .5em 2em;">
+			<p class="lead-title"><strong><%= @lead.title %></strong></p>
+			<p class="lead-url">
+				<img src="http://www.google.com/s2/favicons?domain_url=<%= @lead.url %>" align="left" style="margin-right: .5em; padding: 3px 0 0;"> <a href="<%= @lead.url %>" style="color: #666;"><%= @lead.url %></a>
+			</p>
+			
+			<p style="margin: .5em 0 0;">
+				<%= simple_format(@lead.description, :style => "font-size: 17px;") %></p>
+			
+			<% if @lead.image.file? %>
 
-<p>
-  <strong>Job Posting Url:</strong>
-  <%= @lead.url %>
-</p>
+			<%= image_tag @lead.image.url(:medium, timestamp: false), :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @lead.name %>
-</p>
+			<% else %>
+					<%= image_tag "missing.png", :style => "width: 50px; height: 50px; border-radius: 65px; margin: 1em 0 0;"  %>
+			<% end %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @lead.email %>
-</p>
+			<p style="font-size: 16px; margin: .5em 0;"> Name: <%= @lead.name %></strong>
 
-<p>
-  <strong>Website:</strong>
-  <%= @lead.website %>
-</p>
+				<br>Email: <%= mail_to @lead.email %>
+				<br>
+			</p>
+			
+			<% if admin_signed_in? %>
+				<span style="float: right; color: #666; font-size: 14px;"> Admin Options: <%= link_to 'Edit', edit_lead_path(@lead) %>, <%= link_to 'Delete', lead_path(@lead), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+			<% else %>
 
-<p>
-  <strong>Twitter URL:</strong>
-  <%= @lead.twitter %>
-</p>
+				<% unless current_user.favorites.include?(@lead) %>
 
-<p>
-  <strong>Linkedin URL:</strong>
-  <%= @lead.linkedin %>
-</p>
+					<p class="tooltip arrow bounce show-hover" style="margin-left: 33.5em; margin-top: -130px; width: 155px !important; display: inline-block;"><span class="bottom"></span>Interested? Add this lead to your follow-up list.</p>
 
-<p>
-  <strong>Budget:</strong>
-  <%= @lead.budget %>
-</p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @lead.notes %>
-</p>
+					<%= link_to 'Add to Follow-up List'.html_safe, favorite_lead_path(@lead, type: "favorite"), method: :patch, :class => "favorite uppercase", target: '_blank' %>
 
-<%= link_to 'Leads', leads_path %> |
-<%= link_to 'Edit', edit_lead_path(@lead) %> |
-<%= link_to 'Back', leads_path %>
-</section>
+				<% else %>
+					<span style="float: right; color: #666; font-size: 14px; margin-top: -3em;">									<%= image_tag 'starred.png', :style => "vertical-align: 0; width: 15px; padding:0 0; margin-right: .5em;", :title => "You favorited this lead" %> Added to Follow-up List.</span>
+				<% end %>
+			<% end %>
+
+		</div>
+	
+<% if admin_signed_in? %>
+	<span style="float: right; color: #666; font-size: 14px;"> Admin Options: <%= link_to 'Edit', edit_lead_path(@lead) %>, <%= link_to 'Delete', lead_path(@lead), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+<% end %>
+
+
+</div>
