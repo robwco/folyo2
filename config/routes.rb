@@ -40,6 +40,10 @@ Rails.application.routes.draw do
   # Post a project marketing
   get "/choose-project-type" => "projects#portal"
   
+  # New account differences 
+  get "/pro-signup" => "subscriptions#new_pro"
+  get "/pro-leads-signup" => "subscriptions#new_pro_leads"
+
 
   
   # Onboarding

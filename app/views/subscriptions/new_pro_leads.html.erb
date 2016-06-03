@@ -2,21 +2,6 @@
 
 	<%= form_for :user, url: subscriptions_path, id: 'new_user' do |f| %>
 
-		<% if @user.errors.any? || @user.subscription.errors.any? %>
-			<div id="error_explanation">
-
-			  <h2><%= pluralize(@user.errors.count + @user.subscription.errors.count, "error") %> occurred:</h2>
-
-			  <ul>
-				<% @user.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-				<% @user.subscription.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-			  </ul>
-			</div>
-		<% end %>		
 		
 
 		<%= image_tag "workshop-placeholder-logo.png", style: "margin: 3em auto 0; display: block; width: 120px;" %>
@@ -24,7 +9,7 @@
 
 		<div style="margin: 1em auto 1.5em; display: table; width: 100%; width:350px; box-sizing: border-box; border-radius: .5em; border: 2px solid #F1F1F1; padding: 0 1.5em 1em;">
 			
-			<h1 style="margin: 1em 0 .5em; font-size: 28px; text-align: left;">Create a free account</h1>
+			<h1 style="margin: 1em 0 .5em; font-size: 26px; text-align: left;">Create a <span style="background-color: #fff677; padding: 0 .25em;">PRO Leads</span> account: $199/month</h1>
 
 			<%= f.text_field :name, autofocus: true, placeholder: 'Name'	%>
 		
@@ -40,15 +25,18 @@
 		
 		<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %><br>
 
+		<%= render 'registrations/categories' %>
+
+		<%= render 'registrations/creditcard' %>
 
 
-<div style="margin: 1em 0;">
+	<div style="margin: 1em 0;">
 
-		<a href="#" style="margin: 1em 0;"><%= f.submit "Sign up", id: 'form-submit', class: 'button', data: { :"drip-attribute" => 'sign-up-button' } %></a>
+		<a href="#" style="margin: 1em 0;"><%= f.submit "Sign up + pay", id: 'form-submit', class: 'button', data: { :"drip-attribute" => 'sign-up-button' } %></a>
 	</div>
 		
 
-		<p>Have an account? <a href="/users/sign_in">Log in</a></p>
+		<p>Already have an account? <a href="/users/sign_in">Log in</a></p>
 
 		</div>
 	<% end %>

@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
 	before_filter :load_plans
-	before_filter :authenticate_user!, except: [:new, :create]
+	before_filter :authenticate_user!, except: [:new, :create, :new_pro, :new_pro_leads]
 
 	def test_email
 		category_ids = current_user.category_ids

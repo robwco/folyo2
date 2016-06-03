@@ -163,7 +163,17 @@ body, .ccjs-card {
 			color: white;
 		}
 	}
+
+	.blue {
+		color: #fff;
+		background-color: #4697ed;
+
+	}
 	
+	.blue:hover {
+		background-color: #222;
+	}
+
 	.sign-in-form {
 		max-width: 350px; 
 		margin: 2em auto 0; 
