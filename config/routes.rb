@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :projects do
 	get "home", on: :collection
+	get "tour", on: :collection
 	get "active", on: :collection
 	get "yours", on: :collection
 	get "preview", on: :member
@@ -49,7 +50,6 @@ Rails.application.routes.draw do
   # Onboarding
   get "/welcome" => "subscriptions#welcome", as: :welcome
   get "/address" => "subscriptions#address"
-  get "/tour" => "projects#tour"
   
   # Testing Emails
   get "/test_emails" => "subscriptions#test_email"
