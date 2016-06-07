@@ -1,7 +1,7 @@
 
 <div style="width: 800px; margin: 0 auto;">
 
-<section class="sign-in" style="margin: 2em 2em 0 0; float: left; width: 300px;">
+<section class="sign-in" style="margin: 2em 2em 0 0; float:right; width: 300px;">
 <h1 style="font-size: 40px; margin: 1em 0 .5em; text-align: left;">Log in</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -33,14 +33,14 @@
 <hr style="margin: 1em 0;">
 
 <span style="font-size: 16px; margin: 0;">New to Workshop</span>
-<%= link_to 'Create free account', leads_path, :class => "button blue", :style => "margin-top: 1em; display: inline-block;" %>
+<%= link_to 'Create free account', new_subscription_path(plan:2), :class => "button blue", :style => "margin-top: 1em; display: inline-block;" %>
 
 
 </section>
 
-<section class="create-new-account" style="margin: 3em 2em 0 0; float: left; width: 350px;">
+<section style="margin: 3em 2em 0 0; float: left; width: 350px;">
 	
-	<div style="margin: 5em -5em 0 20em; display: inline-block; font-size: 16px;width: 200px; " class="sign-in-quote">
+	<div style="margin: 5em 0 0 -7em; display: inline-block; font-size: 16px;width: 200px; " class="sign-in-quote">
 		<span style="font-size: 40px; margin-left: -.4em; vertical-align: -15px; line-height: 0;">&ldquo;</span>
 		I found the perfect fit for my business on Workshop.
 	</div>
