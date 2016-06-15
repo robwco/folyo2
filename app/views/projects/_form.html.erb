@@ -8,8 +8,8 @@ $(document).ready(function(){
 	<section class="basic-info" style="margin 1em 0; padding: .5em 0 0;">
 		
 		<form>
-			<%= f.text_area :title, :autofocus => true, :placeholder => "We need...", :style => "margin-top: 2em; margin-bottom: 0; text-align: center; min-height: auto !important;" %>
-				<p class="question" style="text-align:center;">1. What kind of help do you need? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: We need a designer with mobile experience that can do branding and interface design." ></i></p>
+				<p class="question" style="text-align:center !important; display:block !important;">1. What kind of help do you need? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: We need a designer with mobile experience that can do branding and interface design." ></i></p>
+				<%= f.text_area :title, :autofocus => true, :placeholder => "We need...", :style => "margin-top: 2em; margin-bottom: 0; text-align: center; min-height: auto !important;", class: "answer" %>
 			
 
 		</form>
@@ -27,20 +27,20 @@ $(document).ready(function(){
 		
 		<div style="width: 600px;">
 		<form>
-				<%= f.text_area :goals, :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;" %>
 						<p class="question">2. What are you trying to accomplish? <i class="fa fa-question-circle" aria-hidden="true" alt="Example: We've noticed a lot of people are using our site from their mobile phones but not buying our product, so we've decided to build a mobile app to convert more of this audience into customers." ></i></p>
+						<%= f.text_area :goals, :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;", class: "answer" %>
 			</form>
 
 			<form>
 
-		<%= f.text_area :examples, :placeholder => "If we're able to achieve our goals...", :style => "font-size: 19px;"  %>
 				<p class="question">3. What does success look like for this project? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: If we're able to overhaul the system and solve these problems, it would be a 20% increase in conversions. A 20% increase would bring an additional 10 customers a month. The lifetime value of a customer for us is $2,000." ></i></p>
+				<%= f.text_area :examples, :placeholder => "If we're able to achieve our goals...", :style => "font-size: 19px;", class: "answer"  %>
 
 	</form>
 	
 	<form>
-		<%= f.text_area :deadline,  :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;"  %>
 			<p class="question">4. Why are you moving forward with this project now? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: We want to launch in 3 months because that's when fantasy football season starts." ></i></p>
+			<%= f.text_area :deadline,  :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;", class: "answer"  %>
 	</form>
 
 </div>

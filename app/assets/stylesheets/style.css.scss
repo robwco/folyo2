@@ -280,7 +280,7 @@ form.new_project textarea {
 		float: left;
 }
 
-form form .question {
+form p.question {
 	opacity: .4;
 	padding: 0 !important;
 	display: inline-block !important;
@@ -293,7 +293,7 @@ textarea:focus {
  opacity: 1 !important;
 }
 
-textarea:focus + .question {
+form p.question.focused {
  opacity: 1;
 	
  -webkit-transition: all 0.2s ease;
