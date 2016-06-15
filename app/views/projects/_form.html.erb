@@ -1,74 +1,49 @@
+<script>
+$(document).ready(function(){
+  $('textarea, input').autosize();
+});
+</script>
+
 <%= form_for(@project) do |f| %>
-	<section class="basic-info">
-		<h2 class="uppercase" style="margin: 5em 0 -2em;">Project goals</h2>
+	<section class="basic-info" style="margin 1em 0; padding: .5em 0 0;">
 		
-		<p class="question">What kind of help do you need?</p>
-		<p class="example">Example: We need a designer with mobile experience that can do branding and interface design.</p>
-		<%= f.text_field :title, class: "two-sentence" %>
+		<form>
+			<%= f.text_area :title, :autofocus => true, :placeholder => "We need...", :style => "margin-top: 2em; margin-bottom: 0; text-align: center; min-height: auto !important;" %>
+				<p class="question" style="text-align:center;">1. What kind of help do you need? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: We need a designer with mobile experience that can do branding and interface design." ></i></p>
+			
 
-		<p class="question">What are you trying to accomplish?</p>
-		<p class="example">Example: We've noticed a lot of people are using our site from their mobile phones but not buying our product, so we've decided to build a mobile app to convert more of this audience into customers.</p>
-		<%= f.text_area :goals, style: "height: 250px;" %>
-		<p class="question-helper">Here's where you get deep. Picture your company benefitting from this project in a year. What problem will you have solved? What will you be able to do? How will you measure success? The more detail, the better.</p>
-
-		<p class="question">What are some examples (logos, sites, apps, etc.) that you like? </p>
-		<%= f.text_area :examples, style: "height: 150px" %>
-		<p class="question-helper">Most importantly, include what you like about them.</p>
-	</section>
-
-	<section class="extra-info">
-		<h2 class="uppercase">Scope</h2>
-
-		<p class="question">What is the target deadline and why?</p>
-		<p class="example">Example: We want to launch in 3 months because that's when fantasy football season starts.</p>
-		<%= f.text_field :deadline, class: "two-sentence" %>
-
-
-		<p class="question">What type of budget do you have for this project?</p>
-
-		<div style="margin: .5em 0 1em;" class="budget-question-container">
-			<div class="budget-option">
-				<h4> $1K budget</h4>
-
-			<p class="radio-option">
-				<strong>Estimated reach: 10%</strong> <%= image_tag "reach1.png", style: "width: 16px; vertical-align: 0px;" %><br>
-				<span style="color: #666;">Great for test projects</span>
+		</form>
+		
+		<!--
+		<form>
+			<p class="question" style="text-align:center; font-size: 16px; color: #666; margin: 0;">
+			
+					<%= f.file_field :photo,  style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;" %>, 
+					<%= f.text_area :name, placeholder: "Your name", style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;" %>,
+					<%= f.text_area :organization, class: "one-sentence", style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;", :placeholder => "Company" %>
 			</p>
+		</form>-->
+		
+		
+		<div style="width: 600px;">
+		<form>
+				<%= f.text_area :goals, :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;" %>
+						<p class="question">2. What are you trying to accomplish? <i class="fa fa-question-circle" aria-hidden="true" alt="Example: We've noticed a lot of people are using our site from their mobile phones but not buying our product, so we've decided to build a mobile app to convert more of this audience into customers." ></i></p>
+			</form>
 
-			<%= f.radio_button :budget, "1k" %>
-		  </div>
+			<form>
 
-		  <div class="budget-option">
-			<h4>$10K budget</h4>
+		<%= f.text_area :examples, :placeholder => "If we're able to achieve our goals...", :style => "font-size: 19px;"  %>
+				<p class="question">3. What does success look like for this project? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: If we're able to overhaul the system and solve these problems, it would be a 20% increase in conversions. A 20% increase would bring an additional 10 customers a month. The lifetime value of a customer for us is $2,000." ></i></p>
 
-			<p class="radio-option">
-				<strong>Estimated reach: 50%</strong> <%= image_tag "reach2.png", style: "width: 16px; vertical-align: 0px;" %> <br>
-				<span style="color: #666;">Great for finding freelancers</span>
-			</p>
+	</form>
+	
+	<form>
+		<%= f.text_area :deadline,  :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;"  %>
+			<p class="question">4. Why are you moving forward with this project now? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: We want to launch in 3 months because that's when fantasy football season starts." ></i></p>
+	</form>
 
-			<%= f.radio_button :budget, "10k" %>
-		  </div>
-
-		  <div class="budget-option">
-			<h4>$100k+ budget</h4>
-
-			<p class="radio-option">
-				<strong>Estimated reach: 100%</strong> <%= image_tag "reach3.png", style: "width: 16px; vertical-align: 0px;" %><br>
-				<span style="color: #666;">Great for finding an agency</span>
-			</p>
-
-			<%= f.radio_button :budget, "100k" %>
-		  </div>
-		</div>
-
-		<p style="font-size: 17px;">Got a different budget? Choose the closest option. Ideally, your freelancer will help you decide on the right amount. For more info on budgets, you can also check out <a href="http://letsworkshop.com/">our survey of web design prices</a>.</p>
-
-		<p class="question">What kind of deliverables do you expect?</p>
-
-		<p class="example">Example: We need a mobile app designed, built, and launched. We have 5 core features we need, including live video chat. We'd like a full brand identity including vector logos.</p>
-		<%= f.text_area :deliverables, style: "height: 120px" %>
-		<p class="question-helper">Deliverables are things you'll receive once the project is done like a logo, graphic, web page, or app feature.</p>
-
+</div>
 	</section>
 
 
@@ -76,13 +51,7 @@
 	<section class="client-info">
 		<h2 class="uppercase">Your profile</h2>
 
-		<p class="label-left">Photo of you</p>
-		<%= f.file_field :photo, style: "margin: 0;" %><br>
-		<p class="label-left-help-text">Optional — Your mug will appear at the top of your listing.
-190px wide is optimal. We'll resize automatically if it's wider than 190px.</p>
 
-		<p class="label-left">Your name</p>
-		<%= f.text_field :name, class: "one-sentence", placeholder: "Namey McNamerson", style: "width: 400px;" %><br>	
 
 		<p class="label-left">Your email</p>
 		<%= f.text_field :email, class: "one-sentence", placeholder: "namey@comparoony.com", style: "width: 500px;" %><br>

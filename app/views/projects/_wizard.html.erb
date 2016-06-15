@@ -1,5 +1,7 @@
-<p class="steps uppercase">
-	<span><span class="number <%= 'active' if step == "project"%>">1</span> Your project</span> &rarr; 
-	<span><span class="number <%= 'active' if step == "preview"%>">2</span> Preview</span> &rarr; 
-	<span><span class="number <%= 'active' if step == "payment"%>">3</span> Payment</span>
-</p>
+<div style="width: 100%; text-align:center; margin: 2em 0 0;">
+	<p class="steps">
+		<span><span class="number <%= 'active' if step == "project"%>">Step 1: Write your brief</span></span> 
+		<span><span class="number <%= 'active' if step == "preview"%>">Step 2: Preview your project</span></span>  
+		<span><span class="number <%= 'active' if step == "payment"%>">Step 3: Pay for your listing</span></span>
+	</p>
+</div>

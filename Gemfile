@@ -34,6 +34,7 @@ gem 'mandrill_dm'
 gem 'delayed_job_active_record'
 gem 'clockwork'
 gem 'puma'
+gem 'autosize-rails'
 
 group :development do
   gem 'stripe-ruby-mock'

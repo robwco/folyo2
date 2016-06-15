@@ -264,6 +264,48 @@ body, .ccjs-card {
 }
 
 
+
+form.new_project form {
+	margin:5em 0 !important;
+}
+
+form.new_project textarea {
+	border: 0;
+	font-size: 30px;
+	height: 20px;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	opacity: .4;
+		float: left;
+}
+
+form form .question {
+	opacity: .4;
+	padding: 0 !important;
+	display: inline-block !important;
+	vertical-align: text-top !important;
+	clear: both;
+}
+
+
+textarea:focus {
+ opacity: 1 !important;
+}
+
+textarea:focus + .question {
+ opacity: 1;
+	
+ -webkit-transition: all 0.2s ease;
+ -moz-transition: all 0.2s ease;
+ -ms-transition: all 0.2s ease;
+ transition: all 0.2s ease;
+}
+
+
+
+
+
 .uppercase, h2, input[type=submit], .button  { 
 	text-transform: uppercase;
   -moz-font-feature-settings: 'case=1';
@@ -857,15 +899,44 @@ a.job:last-child:hover {
 }
  
 /* Job Post Form */
- 
+i[alt] {
+	
+}
+
+i[alt]:after {
+	opacity: 0;
+	
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -ms-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+i[alt]:hover:after {
+	opacity: 1;
+  content: attr(alt);
+	margin-top: -1em;
+  position: absolute;
+	color: #444;
+	background-color: rgba(255,255,255, .95);
+  font-family:  Helvetica, sans-serif;
+	text-align: left;
+	font-size: 16px;
+	line-height: 1.4;
+	padding: .25em .5em;
+	border-radius: 4px;
+	border: 1px solid #eee;
+	box-shadow: 0px 0px 5px #eee;
+}
+
+
 .steps {
-    background-color: #f5f5f5;
     font-size: 60%;
-    margin: -.5em 0 2em;
+    margin: 0 auto;
     color: #888;
-    padding: .5em 1em .5em .25em;
-    border-radius: 30px;
-    float: right;
+    padding: 0 0 1em;
+		display: inline-block;
+		border-bottom: 1px solid #eee;
+	
 }
  
 .steps span {
@@ -874,34 +945,39 @@ a.job:last-child:hover {
 }
  
 .steps span.number {
-    background-color: #ddd;
-    font-family:  Helvetica, sans-serif;
+	color: #545048;
     display: inline-block;
-    height: 20px;
-    width: 20px;
-    padding: 3px 0 0 2px;
+    padding: 1px .75em 3px;
     text-align: center;
-    border-radius: 25px;
-    font-size: 10px;
-    margin: 0 .75em 0 0;
+    font-size: 15px;
+    margin: 0 .25em 0 0;
     vertical-align: top;
     box-sizing: border-box;
+		opacity: .4;
+		border-radius: 2px;
+		font-weight: 600;
+
 }
  
 .steps span.number.active {
-    color: #FFF;
-    background-color: #55aaf1;
+		opacity: 1;
 }
  
 .basic-info, .extra-info, .client-info {
-    margin: 2em 0 0;
+    margin: 0;
 }
  
  
 p.question {
     font-family:  Helvetica, sans-serif;
-    font-size: 23px;
+    font-size: 20px;
     margin: 1.5em 0 .25em; 
+		color: #545048;
+		font-weight: bold;
+		
+		i {
+			color: #bbb !important;
+		}
 }
  
 p.example {
@@ -918,7 +994,7 @@ p.question-helper {
     font-size: 16px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    margin: 0 0 2em;
+    margin: 0;
     padding: .6em .75em .75em;
     width: 100%;
     box-sizing: border-box;
@@ -964,6 +1040,7 @@ textarea {
     height: 150px;
     border-radius: 5px;
     width: 700px;
+ 		resize: none;
 }
  
 section h2 {
