@@ -1,7 +1,9 @@
-<div style="width: 100%; text-align:center; margin: 2em 0 0;">
+<div style="width: 100%; margin: 1em 0 0;">
 	<p class="steps">
-		<span><span class="number <%= 'active' if step == "project"%>">Step 1: Write your brief</span></span> 
-		<span><span class="number <%= 'active' if step == "preview"%>">Step 2: Preview your project</span></span>  
-		<span><span class="number <%= 'active' if step == "payment"%>">Step 3: Pay for your listing</span></span>
+		<span class="<%= 'active' if step == "project"%>">1. Write your brief</span>
+		
+		<span class="<%= 'active' if step == "preview"%>">2. Preview your project</span>
+		
+		<span class="<%= 'active' if step == "payment"%>">3. Publish and pay</span>
 	</p>
 </div>

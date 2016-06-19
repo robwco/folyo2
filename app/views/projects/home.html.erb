@@ -1,47 +1,130 @@
-<%= render "layouts/top_menu" %>
+<div class="active-now-callout" style="display: none;">
+	<div class="bubble">
+		<p>124 freelancers get project emails...</p>
+		<p><a href="#">Join them</a><br>
+	</div>
+	
+	<span class="bubble-tip"></span>
+	
+	<div class="photos-wrap">
+		<img src="./images/mark.jpg">
+		<img src="./images/jason.jpeg">
+		<img src="./images/meneo.jpg">
+		<img src="./images/mule.png">
+		<img src="./images/rob.jpg">
+		<img src="./images/jason.jpeg">
+		<img src="./images/meneo.jpg">
+		<img src="./images/rob.jpg">
+		<img src="./images/mark.jpg">
+		<img src="./images/mule.png">
+	</div>
+	<p style="font-size: 15px; text-align:center;">or <a href="#">Log in</a></p>
+</div>
 
-<div class="reading wrap" style="padding: 2em 0 0; text-align:center;">
+
+<%= image_tag 'folyo.png', :class => "logo" %>
 
 
-				
-				<p style="margin: .5em 0 0; font-size: 45px; font-weight: 600;" class="intro">
-				Find someone you love working with.</p>
-					
-				<p>
-					<strong><%= link_to "Post a project", tour_projects_path, :class => "button blue" %> <%= link_to "Find work", new_subscription_path, :class => "button" %></strong>
+	<div class="letter-wrap" style="max-width: 800px; width: 100%; margin: 4em auto; text-align:center;">	
+		<h1>Find a freelancer you love working with.</h1>
+			
+		<p><%= link_to "See a sample project", tour_attract_path %> or <%= link_to "Post your project for $99", new_project_path %></p>
+	</div>
+
+
+	
+	<div class="project-index-wrap" style="max-width: 900px; width: 100%; border-top: 1px solid #bbb; border-bottom: 1px solid #bbb; text-align: center; margin: 2em auto 4em; padding: 1em 0 2em;">
+		<h3>There are no public projects at this time</h3>
+		
+		<p><%= link_to "You can see a sample project though", tour_attract_path, :class => "button" %></p>
+		
+		<div style="display: none;">	
+			<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
+				<%= render "projects/quick_view", project: project %>
+			<% end %>
+		</div>		
+	</div>
+
+
+
+	<div class="letter-wrap" style="max-width: 800px; width: 100%; margin: 0em auto; display: table;">
+		
+		
+	
+		<h2 style="Text-align: center; margin: 0;">Folyo helped Jason create a project guaranteed to improve his business. Sign up for free now.</h2>
+
+		<%= image_tag 'ben.png', :style => "width: 350px; margin:4em 0em 0 0;", :align => "left", :class => "jason-image" %>
+		
+		<div class="new-account-form-wrap" style="margin: 4em 0 0 auto; ">
+
+			<%= form_for :user, url: subscriptions_path, id: 'new_user', class: 'form-focus' do |f| %>
+
+			<h3>Your name</h3>
+			<p class="required">You know, that thing everyone calls you</p>
+			<%= f.text_field :name, autofocus: true, placeholder: 'Name'	%>
+
+			<h3>Your work email</h3>
+			<p class="required">Won't be shown publicly</p>
+			<%= f.email_field :email, placeholder: "Email" %>
+
+			<div class="upload-photo-wrap" style="display: table; width: 100%;">
+
+
+				<div class="upload-photo">
+					<h3>Your picture</h3>
+					<p class="required">(Optional) but we do like seeing fresh faces</p>
+				</div>
+
+				<div class="preview-photo" style="margin: .5em 0 .5em; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 1.25em 0 1.5em; width: 100%; box-sizing: border-box;">
+					<div id="target"></div>
+					<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
+				</div>
+
+
+			</div>
+
+
+
+			<h3>Create a password</h3>
+			<p class="required">Must have at least 6 characters</p>
+				<p style="margin:0;">
+					<% if @validatable %>
+						<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
+					<% end %>
 				</p>
 
-</div>
+				<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %><br>
+
+			<div class="opt-in">
+				<input type="checkbox" checked> Send me new projects when they're posted (free)
+			</div>
+
+			<div style="margin: 1em 0;">
+				<a href="#">
+					<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
+				</a>
+			</div>
 
 
-	<div style="height: 50px; margin: 2em 0 .25em;">
-		<%= image_tag "now-hiring.png", style: "height:40px; display: block; padding: .25em 1em;", align: "left" %> 
-		<%= link_to '<i class="fa fa-envelope" aria-hidden="true" style="margin-right: .5em; font-size: 16px; color: #eaeaea; vertical-align: 0px;"></i>Get projects emailed to you'.html_safe, new_subscription_path, :style => "vertical-align: -5px; padding: 1em 0; display: inline-block; color:#666; float: right; display: inline-block; font-size: 15px;"  %>
-	</div>	
+				<p>Have an account? <a href="/users/sign_in">Log in</a></p>
 
-<div class="index-leads wrap" style="margin: 0; box-shadow: #ccc 0px 0px 10px; padding:0; border-radius: 7px; background-color: #FFF;">
+				</div>
+			<% end %>
 
-
-		<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
-			<%= render "projects/quick_view", project: project %>
-		<% end %>
-
-</div>
-
-
-		<p class="job" style="padding-top:0em; font-size: 14px; padding-left: 1.25em;"><strong><%= link_to "See more projects →", projects_path, :style => "color: #aaa;" %></strong></p>
-
-<div class="reading wrap">
-
-
-
-		<section class="freelancer">
-		<center>	
-			<h2 class="freelancer_product_tag" style="margin: 4em 0 0;">Want to see every productized service?</h2>
-			<a class="freelancer_url" target="_blank" href="https://www.getdrip.com/forms/5093472/submissions/new"><p class="freelancer_product_name">Get the complete list here for free</p></a>
-			</center>
-		</section>
-
+		</div>
+		
+		
+		<!--
+		<p>He wanted to create a project brief but he didn't know where to start. All he knew was he needed a freelancer who would deliver lasting value to his software business.</p>
+		<p>Jason is a software developer and founder of Rigbooks, a startup web-app that helps truckers keep track of their books.</p>
+		<p>He needed to find a designer to help him improve conversions on his site.</p>
+		<p><%= link_to "See Jason's sample project", tour_attract_path %></p>-->
+		</div>
+	</div>
+	
+	<div style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; margin: 2em auto; display: block; padding:1em 0; width: 100%; max-width: 900px; text-align: center;">
+		<h2><%= link_to "See how Jason connected with 8400 freelancers", tour_attract_path %> &rarr;</h2>
+	</div>
 
 <%= render "layouts/footer_menu" %>
 

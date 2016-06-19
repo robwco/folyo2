@@ -1,26 +1,21 @@
-
-	<p class="footer-menu" style="margin: 5em 0;">
+<p class="footer-menu" style="margin: 5em 0; text-align: center;">
 	<% if admin_signed_in? %>
 		<%= link_to "Start a project", new_project_path %>
-		<%= link_to "PRO Leads",  leads_path(advanced: true) %>
-		<%= link_to "New Lead", new_lead_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% elsif user_signed_in? %>
-			<%= link_to "Start a project", new_project_path %>
-			<%= link_to "Your projects", yours_projects_path %>
-			<%= link_to "Projects", active_projects_path %>
-			<%= link_to "PRO Leads",  leads_path(advanced: true) %>
-			<%= link_to "Favorites", favorites_path %>
-			<%= link_to "Account", edit_user_registration_path %>
-			<%= link_to "Log out", destroy_user_session_path, method: :delete%>
+		<%= link_to "Start a project", new_project_path %>
+		<%= link_to "Your projects", yours_projects_path %>
+		<%= link_to "All projects", active_projects_path %>
+		<%= link_to "Account", edit_user_registration_path %>
+		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% else %>	
-			<a href="http://letsworkshop.com/learn">Learn</a> 
-			<a href="http://letsworkshop.com/press">About</a> 
-			<a href="http://emailsthatwin.com">Book</a> 
-			<a href="#">Partners</a> 
-			<a href="http://letsworkshop.com/signup">PRO Leads</a>  
-			<a href="http://letsworkshop.com/terms">Terms of service</a> 
+		<a href="http://letsworkshop.com/learn">Learn</a> 
+		<a href="http://letsworkshop.com/press">About</a> 
+		<a href="http://emailsthatwin.com">Book</a> 
+		<a href="#">Partners</a> 
+		<a href="http://letsworkshop.com/signup">PRO Leads</a>  
+		<a href="http://letsworkshop.com/terms">Terms of service</a> 
 	<% end %>
 
-	<span style="color: #aaa;">© <%= Time.now.year %> Workshop</span>
+	<span style="color: #aaa;">© <%= Time.now.year %> Folyo</span>
 </p>

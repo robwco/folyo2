@@ -1,4 +1,103 @@
+<script>
+$(function() {
+  $('#pictureInput').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    // here's the file size
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.src = file.target.result;
+      $('#target').html(img);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+</script>
 
+
+<h1 style="text-align: center;">Let's get you started with a free account</h1>
+<div class="new-account-form-wrap">
+	
+	<%= form_for :user, url: subscriptions_path, id: 'new_user', class: 'form-focus' do |f| %>
+
+		<% if @user.errors.any? || @user.subscription.errors.any? %>
+			<div id="error_explanation">
+			  <h2><%= pluralize(@user.errors.count + @user.subscription.errors.count, "error") %> occurred:</h2>
+
+			  <ul>
+				<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				
+				<% @user.subscription.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				
+			  </ul>
+			</div>
+		<% end %>		
+		
+	<h3>Your name</h3>
+	<p class="required">You know, that thing everyone calls you</p>
+	<%= f.text_field :name, autofocus: true, placeholder: 'Name'	%>
+	
+	<h3>Your work email</h3>
+	<p class="required">Won't be shown publicly</p>
+	<%= f.email_field :email, placeholder: "Email" %>
+
+	<div class="upload-photo-wrap" style="display: table; width: 100%;">
+
+		
+		<div class="upload-photo">
+			<h3>Your picture</h3>
+			<p class="required">(Optional) but we do like seeing fresh faces</p>
+		</div>
+	
+		<div class="preview-photo" style="margin: .5em 0 .5em; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 1.25em 0 1.5em; width: 100%; box-sizing: border-box;">
+			<div id="target"></div>
+			<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
+		</div>
+		
+
+	</div>
+
+	
+			
+	<h3>Create a password</h3>
+	<p class="required">Must have at least 6 characters</p>
+		<p style="margin:0;">
+			<% if @validatable %>
+				<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
+			<% end %>
+		</p>
+		
+		<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %><br>
+
+	<div class="opt-in">
+		<input type="checkbox" checked> Send me new projects when they're posted (free)
+	</div>
+
+	<div style="margin: 1em 0;">
+		<a href="#">
+			<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
+		</a>
+	</div>
+		
+
+		<p>Have an account? <a href="/users/sign_in">Log in</a></p>
+
+		</div>
+	<% end %>
+	
+
+
+
+
+<!--
 <div style="width: 800px; margin: 0 auto;">
 
 <section class="sign-in" style="margin: 2em 2em 0 0; float:right; width: 300px;">
@@ -78,5 +177,5 @@
 </section>
 
 </div>
-
-
+-->
+</div>

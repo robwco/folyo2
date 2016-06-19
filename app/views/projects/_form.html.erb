@@ -1,81 +1,146 @@
 <script>
 $(document).ready(function(){
-  $('textarea, input').autosize();
+  $('textarea').autosize();
 });
 </script>
 
 <%= form_for(@project) do |f| %>
-	<section class="basic-info" style="margin 1em 0; padding: .5em 0 0;">
-		
-		<form>
-				<p class="question" style="text-align:center !important; display:block !important;">1. What kind of help do you need? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: We need a designer with mobile experience that can do branding and interface design." ></i></p>
-				<%= f.text_area :title, :autofocus => true, :placeholder => "We need...", :style => "margin-top: 2em; margin-bottom: 0; text-align: center; min-height: auto !important;", class: "answer" %>
+		<div class="project-brief-category-choice-option">
+			<fieldset class="half-left">
+				<h3>The project involves:<br>
+					<span class="required">(select all that apply)</span>
+				</h3>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> Web software & website
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> Redesign of existing site or app
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> Mobile or tablet app
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> Site & Branding strategy
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> Content strategy
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> Optimization
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> Other
+				</div>
+			</fieldset>
 			
-
-		</form>
+			<fieldset class="half-right">
+				<h3>What are you planning?<br>
+					<span class="required">(select all that apply)</span>
+				</h3>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> We need to launch a website
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> We need to redesign a website
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> We need to rethink a website
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> We need to build a product
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> We need to rethink a product
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> We need strategic help
+				</div>
+				
+				<div class="project-category-checkbox-wrap">
+					<input type="checkbox"> We don't know what we need. Let's talk!
+				</div>
+			</fieldset>
+		</div>
 		
-		<!--
-		<form>
-			<p class="question" style="text-align:center; font-size: 16px; color: #666; margin: 0;">
-			
-					<%= f.file_field :photo,  style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;" %>, 
-					<%= f.text_area :name, placeholder: "Your name", style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;" %>,
-					<%= f.text_area :organization, class: "one-sentence", style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;", :placeholder => "Company" %>
-			</p>
-		</form>-->
+
+	<section class="project-brief-question-wrap">
+		<h3 class="project-brief-question">What kind of help do you need?</h3>
+		<p>
+			Example: "We need a designer with mobile experience that can do branding and interface design."
+		</p>
+	</section>
+		
+	<div class="textarea-wrap">
+		<%= f.text_area :title, :autofocus => true, :placeholder => "We need..." %>
+	</div>
+
+	<section class="project-brief-question-wrap">
+		<h3 class="project-brief-question">What are you trying to accomplish?</h3>
+		
+		<p style="margin: 0 0 .5em;">You may want to include things like:</p> 
+		<ul style="margin: 0;">
+			<li>What problem will you have solved?</li>
+			<li>What will you be able to do?</li> 
+			<li>How will you measure success?</li>
+		</ul>
+		<p style="margin-bottom: 2em;">Example: "We've noticed a lot of people are using our site from their mobile phones but not buying our product, so we've decided to build a mobile app to convert more of this audience into customers. If we can convert 5% more mobile visitors into customers, we'll see a meaningful increase in revenue that we can invest in marketing the company."</p>
+	</section>
+				
+	<div class="textarea-wrap">
+		<%= f.text_area :goals, :placeholder => "We want to...", class: "answer no_border" %>
+	</div>
+
+	<section class="project-brief-question-wrap">
+		<h3 class="project-brief-question">What does success look like for this project?</h3>
 		
 		
-		<div style="width: 600px;">
-		<form>
-						<p class="question">2. What are you trying to accomplish? <i class="fa fa-question-circle" aria-hidden="true" alt="Example: We've noticed a lot of people are using our site from their mobile phones but not buying our product, so we've decided to build a mobile app to convert more of this audience into customers." ></i></p>
-						<%= f.text_area :goals, :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;", class: "answer" %>
-			</form>
-
-			<form>
-
-				<p class="question">3. What does success look like for this project? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: If we're able to overhaul the system and solve these problems, it would be a 20% increase in conversions. A 20% increase would bring an additional 10 customers a month. The lifetime value of a customer for us is $2,000." ></i></p>
-				<%= f.text_area :examples, :placeholder => "If we're able to achieve our goals...", :style => "font-size: 19px;", class: "answer"  %>
-
-	</form>
+		<p style="margin: 0 0 .5em;">You may want to include things like:</p> 
+		<ul style="margin: 0;">
+			<li>How will you know whether or not a project is successful?</li>
+			<li>Why is this how you'll measure success?</li>
+		</ul>
+		
+		<p>Example: "If we're able to overhaul the system and solve these problems, it would be a 20% increase in conversions. A 20% increase would bring an additional 10 customers a month. The lifetime value of a customer for us is $2,000."</p>
+	</section>
 	
-	<form>
-			<p class="question">4. Why are you moving forward with this project now? <i class="fa fa-info-circle" aria-hidden="true" alt="Example: We want to launch in 3 months because that's when fantasy football season starts." ></i></p>
-			<%= f.text_area :deadline,  :placeholder => "We want to...", :style => "font-size: 19px; min-height: 20px !important; margin: 0 !important; padding: 0;", class: "answer"  %>
-	</form>
-
-</div>
+	<div class="textarea-wrap">
+		<%= f.text_area :examples, :placeholder => "If we achieve our goals..."  %>
+	</div>
+	
+	<section class="project-brief-question-wrap">
+		<h3 class="project-brief-question">Why are you moving forward with this project now?</h3>
+		
+		<p style="margin: 0 0 .5em;">You may want to include things like:</p> 
+		<ul style="margin: 0;">
+			<li>Is this a new problem or an old one?</li>
+			<li>Why didn't you do this project six months ago?</li> 
+			<li>How has the problem changed and evolved over time?</li>
+		</ul>
+		
+		<p>Example: "We want to launch our betting app in 3 months because that's the start of fantasy football season. Last year at this time, we saw a huge spike in traffic and new users (12%+)."</p>
 	</section>
+	
+	<div class="textarea-wrap">
+		<%= f.text_area :deadline,  :placeholder => "We're moving forward now because..." %>
+	</div>
 
 
-
-	<section class="client-info">
-		<h2 class="uppercase">Your profile</h2>
-
-
-
-		<p class="label-left">Your email</p>
-		<%= f.text_field :email, class: "one-sentence", placeholder: "namey@comparoony.com", style: "width: 500px;" %><br>
-
-
-		<p class="label-left">Company logo</p>
-		<%= f.file_field :company_logo, style: "margin: 0;" %><br>
-		<p class="label-left-help-text">Also optional — Your logo will appear on Workshop's homepage and in your company info section.	300px wide is optimal. We'll resize automatically if it's wider than 300px.</p>
-
-		<p class="label-left">Organization name</p>
-		<%= f.text_field :organization, class: "one-sentence", style: "width: 500px;" %><br>	
-		<p class="label-left">Your website</p>
-		<%= f.text_field :website, class: "one-sentence", style: "width: 500px;" %><br>	
-	</section>
-
-
-	<section class="funny-info">
-		<h2 class="uppercase">The million dollar question</h2>
-
-		<p class="question">What's your company's spirit animal?</p>
-		<%= f.text_field :spirit_animal, class: "one-sentence" %><br>	
-	</section>
-
-	<p style="text-align:center; display: block; margin: 3em 0 5em;">
-		<%= f.submit "All done? Preview Your Ad", class: "button" %>
-	</p>
+	<div style="text-align:center;">
+		<%= f.submit "All done? Preview Your Project" %>
+		
+		<p>You'll still be able to change your answers.</p>
+	</div>
 <% end %>

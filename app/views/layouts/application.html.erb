@@ -2,21 +2,26 @@
 <html>
 <head>
   
-  <title><%= (yield(:title).empty? ? "Workshop - The best freelance job leads emailed to you daily." : yield(:title)) %></title>
+  <title><%= (yield(:title).empty? ? "Folyo - Find a freelancer you love working with." : yield(:title)) %></title>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 	<!-- Typekit -->
 	<script type="text/javascript" src="//use.typekit.net/adx2xiv.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
 	<!-- Typography.com -->
 	<link rel="stylesheet" type="text/css" href="//cloud.typography.com/7135732/630226/css/fonts.css" />
+	
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	
 	<%= render_google_analytics %>
-		<%= favicon_link_tag 'favicon.ico' %>
-		
-		<!-- Font awesome -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	
+	<%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
 	

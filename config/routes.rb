@@ -48,8 +48,8 @@ Rails.application.routes.draw do
 
   
   # Onboarding
-  get "/welcome" => "subscriptions#welcome", as: :welcome
-  get "/address" => "subscriptions#address"
+  get "/tour/attract" => "tour#writing"
+  get "/tour/great-responses" => "tour#responses"
   
   # Testing Emails
   get "/test_emails" => "subscriptions#test_email"
@@ -78,7 +78,7 @@ Rails.application.routes.draw do
   get "/subscriptions/choose" => "subscriptions#choose", as: :choose_subscription
 
   # Sign in
-  root to: redirect("/leads")
+  root to: redirect("/projects/home")
   get "/admins/welcome" => "admins#welcome", as: :admin_root
   
   # Email actions
