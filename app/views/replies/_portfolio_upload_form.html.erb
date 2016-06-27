@@ -1,18 +1,24 @@
-<h2 class="uppercase">Attach a Portfolio piece to your message</h2>
+<h3 style="margin-top: 3em;">Add a portfolio piece to your message:</h3>
 
-<div class="row">
-	<p class="label-left uppercase">Upload Artwork</p>
-	<%= f.file_field :portfolio_image, style: "margin: 0;" %><br>
-
-	<p class="label-left-help-text">Your artwork will appear next to your message.
-		190px wide is optimal. We'll resize automatically if it's wider than 190px.</p>
+<div style="width: 200px; height: 150px; display: inline-block; border: 3px solid #eee; text-align: center; border-radius: 15px; vertical-align: top;  box-sizing: border-box; color: #aaa; text-decoration: none; margin: 0 .5em; font-size: 12px; line-height: 1.5; padding: .5em 2em; background-color: #fff; margin: 2em 0 0; display: inline-block;">
+	<h3 style="margin: .5em 0 .25em;">Upload artwork</h3>
+	
+	<p style="margin: 0 0 .5em;">It will appear next to your message. 600x800 wide is optimal. We'll resize automatically if it's wider.</p>
+	
+	<%= f.file_field :portfolio_image, style: "width:170px; text-align: center; margin: 0 auto; display: block; cursor: pointer !important;" %>
 </div>
 
-<div class="row">
-	<p class="label-left uppercase">Why did you pick this portfolio piece?</p>
 
-	<%= f.text_area :portfolio_message, style: "margin: 1em auto; width: 565px;", placeholder: "On this project..." %>
+<div style="width:550px; margin: 0 0 0 2em; display: inline-block;">	
+	<p>Why did you pick this portfolio piece?<br>
+		<small>Tip: Try answering how this work shows you're perfect for the project.</small></p>
 
-	<p class="label-left-help-text">Tip: Try answering how this work shows you can help the client on their project.</p>
+	<div class="textarea-wrap">
+		<%= f.text_area :portfolio_message, placeholder: "On this project..." %>
+		
+		<span style="font-size: 12px; color: #e15980; text-align: right; display: block; width: 100%:">200 words left</span>
+	</div>
+
 </div>
+
 

@@ -5,11 +5,14 @@ $(document).ready(function(){
 </script>
 
 <%= form_for(@project) do |f| %>
+
+	<h3>Project Type</h3>
+	<p>Make it easy for freelancers to find your project when browsing our website by picking the best fit below.</p>
 		<div class="project-brief-category-choice-option">
 			<fieldset class="half-left">
-				<h3>The project involves:<br>
+				<p><strong>The project involves:</strong><br>
 					<span class="required">(select all that apply)</span>
-				</h3>
+				</p>
 				
 				<div class="project-category-checkbox-wrap">
 					<input type="checkbox"> Web software & website
@@ -41,9 +44,9 @@ $(document).ready(function(){
 			</fieldset>
 			
 			<fieldset class="half-right">
-				<h3>What are you planning?<br>
+				<p><strong>What are you planning?</strong><br>
 					<span class="required">(select all that apply)</span>
-				</h3>
+				</p>
 				
 				<div class="project-category-checkbox-wrap">
 					<input type="checkbox"> We need to launch a website
@@ -84,7 +87,7 @@ $(document).ready(function(){
 	</section>
 		
 	<div class="textarea-wrap">
-		<%= f.text_area :title, :autofocus => true, :placeholder => "We need..." %>
+		<%= f.text_area :title, :placeholder => "We need..." %>
 	</div>
 
 	<section class="project-brief-question-wrap">

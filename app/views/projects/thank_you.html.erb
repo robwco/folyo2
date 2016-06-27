@@ -1,0 +1,61 @@
+<style>
+.thank-you-wrap {
+	line-height: 1;
+	padding: .5em 1em 1em;
+	margin: 1em 0;
+	border-radius: 12px;
+	border: 3px solid #9d82c8;
+}
+.thank-you-wrap h3 {
+	margin: .5em 0 0;
+}
+
+.thank-you-wrap small ul {
+	margin: 0;
+}
+.thank-you-wrap small ul li {
+	margin: 0;
+} 
+</style>
+<div class="wrap800" style="max-width:600px; margin: 0 auto 5em;">
+	
+<h1><%= image_tag 'upsell.png', :style => "width: 45px; vertical-align: -5px;margin-right: .15em;" %> Thank you!</h1>
+<p>Your project has been posted and looks great. We hope you find the right fit and create a project that is super valuable.</p>
+
+
+<div class="thank-you-wrap">
+	<h3>Here's your project's URL</h3>
+	
+	<p>You can find your project at:</p>
+	
+	<input type="text" value="http://folyo.me/projects/394">
+	
+	<p>Your listing will stay online until Feb 22, 2015.</p>
+	
+	<small>
+		
+		
+		<hr>
+
+		<p><strong>Want to make a change?</strong><br>
+			<ul>
+				<li><%= link_to 'Click here make changes to your project anytime you like', edit_project_path(2) %></li>
+			</ul>
+		</p>
+
+		<p><strong>Want to post another project?</strong><br>
+			<ul>
+				<li><%= link_to 'Creating a new project anytime', new_project_path %></li>
+			</ul>
+		</p>
+	</small>
+</div>
+
+
+
+
+
+<p>Thanks again and we hope you find the person you're looking for.</p>
+<p>- Folyo</p>
+
+</div>

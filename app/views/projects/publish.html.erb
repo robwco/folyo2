@@ -1,0 +1,59 @@
+<style>
+	p.onboarding-checklist {
+		border-top: 1px solid #ccc;
+		padding: 1em .5em;
+		display: table;
+		margin: auto;
+		width: 100%;
+		
+	}
+	
+	.onboarding-checklist:last-child {
+		border-bottom: 1px solid #ccc;
+		padding: 1em .5em;
+	}
+	
+	.onboarding-checklist span {
+		display: block;
+		margin: .25em 0 0;
+		line-height: 1.5;
+		font-size: 16px;
+	}
+	
+	.onboarding {
+		width: 600px;
+	}
+
+</style>
+
+<div class="wrap800 onboarding" style="max-width: 500px; margin: 0 auto;">
+	<h1 style="margin: 1em 0 0;">Amplify your reach</h1>
+
+	<p>Great applicants can come from your audience. There's people following your company who love your brand and would be excited to hear about your project.</p>
+	
+	<p class="onboarding-checklist">
+		<%= image_tag 'email.png', :align => "left", :style => "width:50px; margin: 0 1.5em; vertical-align: middle;" %>
+		<a href="#">Email your mailing list</a><br>
+		Estimated reach: <%= image_tag 'reach3.png', :style => "width:20px;" %>
+	</p>
+
+	<p class="onboarding-checklist" style="display: table;">
+		<%= image_tag 'medium.png', :align => "left", :style => "width:50px; margin: 0 1.5em; vertical-align: middle;" %>
+		<a href="#">Publish an article on Medium</a><br>
+		Estimated reach: <%= image_tag 'reach3.png', :style => "width:20px;" %>
+	</p>
+		
+	<p class="onboarding-checklist">
+		<%= image_tag 'linkedin.png', :align => "left",  :style => "width:50px; margin: 0 1.5em; vertical-align: middle;" %>
+		<a href="#">Post to Linkedin</a><br>
+		Estimated reach: <%= image_tag 'reach2.png', :style => "width:20px;" %>
+	</p>
+	
+	<p class="onboarding-checklist">
+		<%= image_tag 'twitter.png', :align => "left",  :style => "width:50px; margin: 0 1.5em; vertical-align: middle;" %>
+		<a href="#">Tweet your project out</a><br>
+		Estimated reach: <%= image_tag 'reach1.png', :style => "width:20px;" %>
+	</p>
+		
+
+</div>

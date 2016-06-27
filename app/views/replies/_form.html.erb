@@ -1,12 +1,32 @@
+<script>
+$(document).ready(function(){
+  $('textarea').autosize();
+});
+</script>
+
+
+
+<div style="padding: 0 0 5em 0;">
 <%= form_for([@project, @reply]) do |f| %>
-	<%= f.text_area :message, style: "margin: 1em auto; width: 100%;" %>
+	<div class="textarea-wrap" style="margin: 0 auto 2em;">
+		<%= f.text_area :message, :placeholder => "Write your message here..." %>
+		
+		<span style="font-size: 12px; color: #e15980; text-align: right; display: block; width: 100%:">250 words left</span>
+	</div>
+	
+	<p style="margin: 0 0 1em; color: #666; display: inline-block;">
+		<small>
+			<a href="http://emailsthatwin.com" style="color: #666;">
+		How to write a client-winning message</a>
+		</small>
+	</p>
+	
 
 	<% if current_user.present? && current_user.can_reply_with_portfolio?(@reply.project) %>
 		<%= render "replies/portfolio_upload_form", f: f %>
 	<% end %>
-
-	<p style="margin: 0; width: 250px; font-size: 13px; color: #666; display: inline-block;"><a href="http://emailsthatwin.com" style="color: #666;"><strong>
-		How to write a client-winning message</strong></a></p>
-
-	<%= f.submit 'Send message', class: "button blue", style: "float: right; margin: -5em 0 10em; display: inline-block;" %>
+		<div style="margin:0; display: table; float: right;width: 200px; text-align:center; line-height: 1;">
+			<%= f.submit 'Send message', class: "button", :style => "margin: .25em 0;" %>
+		</div>
 <% end %>
+</div>

@@ -6,6 +6,14 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def home
+    
+  end
+  
+  def company 
+  end
+  
+  
+  def thank_you
   end
 
   def active
@@ -17,6 +25,11 @@ class ProjectsController < ApplicationController
   def portal
   end
 
+  
+  def publish
+  end
+  
+  
   def index
     @projects = Project.all
     respond_with(@projects)

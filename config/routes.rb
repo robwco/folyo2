@@ -10,9 +10,12 @@ Rails.application.routes.draw do
 
   resources :projects do
 	get "home", on: :collection
+	get "company", on: :collection
+	get "thank_you", on: :collection
 	get "tour", on: :collection
 	get "active", on: :collection
 	get "yours", on: :collection
+	get "publish", on: :collection
 	get "preview", on: :member
 	get "payment", on: :member
 	put "select_payment", on: :member
@@ -44,7 +47,6 @@ Rails.application.routes.draw do
   # New account differences 
   get "/pro-signup" => "subscriptions#new_pro"
   get "/pro-leads-signup" => "subscriptions#new_pro_leads"
-
 
   
   # Onboarding

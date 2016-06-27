@@ -2,31 +2,27 @@
 
 <p class="by-line">
 	<%= image_tag(@project.photo.url, class: "photo") if @project.photo.present? %>
-	<%= @project.name %>, <%= link_to @project.organization, @project.website %>
+	
+	<%= @project.name %>, <%= @project.organization %>
 </p>
 
-<section class="post-company-info">	
-	<%= image_tag(@project.company_logo.url, class: "logo") if @project.company_logo.present? %>
-	
-	<h2 class="label-left uppercase">Company name</h2>
-	
-	<p class="company-info-right"><%= @project.organization %></p>
-	
-	<h2 class="label-left uppercase">Company website</h2>
-	
-	<p class="company-info-right"><%= link_to @project.website, @project.website, target: "_blank" %></p>
-	
-	<h2 class="label-left uppercase">Company spirit animal</h2>
-	
-	<p class="company-info-right"><%= @project.spirit_animal %></p>
-</section>
 
-<p><%= @project.goals %></p>
+<div class="wrap800" style="max-width: 600px; padding: 0; margin: 3em auto 0;">
+	<p><%= @project.goals %></p>
 
-<p>Some examples I like are <%= @project.examples %></p>
+	<p><%= @project.examples %></p>
 
-<p><%= @project.deadline %></p>
+	<p><%= @project.deadline %></p>
 
-<p><strong>My budget is about $<%= @project.budget %>.</strong></p>
+	<p><%= @project.deliverables %></p>
+	
+	<div style="border-bottom: 1px solid #eee; border-top: 1px solid #eee; padding: .5em 1em 1em; box-sizing:border-box; margin: .5em auto 2em;">					
+			<%= image_tag 'generic.png', :class => "preview-logo", :align => "left" %>
 
-<p><%= @project.deliverables %></p>
+			<h3 style="font-size: 16px; margin: .25em 0 .25em;">SkyStats</h3>
+			
+			<p style="margin: 0; font-size: 16px;">We're an air-fare travel and booking app, that gives customers the metrics they need to make great buying decisions.</p>
+				
+			<a href="#" style="margin: 1em 0 0; font-size: 16px;">View our website</a>
+		</div>
+</div>

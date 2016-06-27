@@ -1,74 +1,28 @@
+<div class="wrap800" style="text-align: center;">	
+	<h1><%= @project.title %></h1>
+</div>
 
-<div class="index-leads wrap" style="padding-bottom: 5em;">
-	
-
-	<section style="margin-top: -9px;">
+<div class="project-list-wrap" style="padding: 0 0 5em;">
+		<h3 class="action-header" style="margin: -1em 0 1em;">
+			<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .5em; margin-left: -.25em;"></i>'.html_safe, home_projects_path %> Replies
 		
-		<h2 class="uppercase" id="replies">
-			<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #ddd; vertical-align: 1px; margin-right: .5em;"></i>'.html_safe, yours_projects_path %> Replies</h2>
-			
-			<span style="float: right; display: inline-block; margin:-2.5em 0 0; font-size: 15px;">
-				<%= link_to 'View your project'.html_safe, project_path %>
-			</span>
-	</section>
+			<span style="margin: .25em 0 0; float: right; font-size: 15px;">
+				<%= link_to 'View your project'.html_safe, preview_project_path %>
+			</span>	
+		</h3>
 
-	<div>
 		<% if @project.replies.empty? %>
-			<p style="margin: 0 0 3em; height: 50px; font-size: 20px; padding: .5em 1em; display: inline-block;box-shadow: #ccc 0px 0px 10px; border-radius: 5px;  width: 100%; box-sizing: border-box;">You have no replies yet to this project.</p>
+			<p style="margin: 0 0 3em; font-size: 20px; padding: .5em 1em; display: inline-block; border-top: 1px solid #eee; border-bottom: 1px solid #eee; width: 100%; box-sizing: border-box;">No replies yet. Share it: <input type="text" value="<%= @project %>" style="font-size: 16px;  height: 30px;"> </p>
 		
-			<div style="margin: 0; text-align: center;">
-				<h2>Get more replies</h2>
-
-				<div style="width: 450px; height: 200px; box-sizing: border-box; padding: .5em .75em .5em; margin: .25em .25em 0 0; text-align:center; display: inline-block;">
-					<p style="text-align: center; margin: 0;"><i class="fa fa-twitter" aria-hidden="true" style="color: #eee; font-size: 40px;"></i></p>
-					<h3 style="margin: .5em 0 .25em;">Send a tweet out!</h3>
-					<p style="font-size: 14px; margin: 0 0 1em;">Designers, developers, are involved on twitter!</p>
-
-					<div style="vertical-align: -5px; display: inline-block;">
-						<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://app.letsworkshop.com/projects/<%= @project.id %>" data-text="We're hiring: <%= @project.title %>" data-via="letsworkshop" data-size="large">Tweet</a> 		
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-					</div>
-				</div>
-
-				<div style="width: 450px; height: 200px; box-sizing: border-box; padding: .5em .75em .5em; margin: .25em .25em 0 0; text-align:center; display: inline-block;">
-					<p style="text-align: center; margin: 0;"><i class="fa fa-envelope-o" aria-hidden="true" style="color: #eee; font-size: 40px;"></i></p>
-					<h3 style="margin: .5em 0 .25em;">Email your list!</h3>
-					<p style="font-size: 14px; margin: 0 0 1em;">Designers, developers, are involved on twitter!</p>
-
-					<div style="vertical-align: -5px; display: inline-block;">
-						<%= link_to 'Email your list', project_path %>
-					</div>
-				</div>
-
-
-			</div>
-			
 		<% else %>
 
-		<div style="margin: 0; border-radius: 5px;box-shadow: #ccc 0px 0px 10px;">
+		<div style="margin: 0;">
 			<% @project.replies.each do |reply| %>
 				<%= render "replies/client_reply_view", reply: reply %>
 			<% end %>
 		</div>
 		
-		<div style="margin: 4em auto 0; display: block; width:700px; text-align: center;">
-			<h2>Want more replies?</h2>
-
-			<div style="border-radius: 5px; width: 300px; height: 200px; box-sizing: border-box; padding: .5em .75em .2em; margin: .25em .25em 0 0; text-align:center; display: inline-block;">
-				<p style="text-align: center; margin: 0;"><i class="fa fa-twitter" aria-hidden="true" style="color: #eee; font-size: 40px;"></i></p>
-				<h3 style="margin: .5em 0 .25em;">Tweet a link to your post!</h3>
-				<p style="font-size: 14px; margin: 0 0 1em;">Your audience loves your company, share your project with them!</p>
- 
-				<div style="vertical-align: -5px; display: inline-block;">
-					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://app.letsworkshop.com/projects/<%= @project.id %>" data-text="We're hiring: <%= @project.title %>" data-via="letsworkshop" data-size="large">Tweet</a> 		
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-				</div>
-			</div>
-		</div>
-		
 		<% end %>
-		
-
 	</div>
 
 

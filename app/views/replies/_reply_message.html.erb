@@ -1,9 +1,4 @@
-<div style="margin: 0; padding: 1.5em 2em 2.5em 2em;" >
-	<p class="reply-photo-left">
-		<%= image_tag 'rob.png', :style => "height: 80px; border-radius: 80px; margin:.5em .5em 0 2.5em;" %>
-	</p>	
-
-	<p class="preview-message" style="padding: 0 3em 0 0; margin: 0;">
+	<p class="preview-message">
 
 		<%= h(@reply.message).gsub("\n", "<br>").html_safe %>
 	
@@ -11,6 +6,5 @@
 			<br><br>
 			<%= link_to "Edit your message", edit_reply_path(@reply), class: "message-preview-edit uppercase" %>
 		<% end %>
-		<br><br><br>
+		<br><br>
 	</p>
-</div>

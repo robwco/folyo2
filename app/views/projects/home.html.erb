@@ -1,131 +1,171 @@
-<div class="active-now-callout" style="display: none;">
-	<div class="bubble">
-		<p>124 freelancers get project emails...</p>
-		<p><a href="#">Join them</a><br>
-	</div>
-	
-	<span class="bubble-tip"></span>
-	
-	<div class="photos-wrap">
-		<img src="./images/mark.jpg">
-		<img src="./images/jason.jpeg">
-		<img src="./images/meneo.jpg">
-		<img src="./images/mule.png">
-		<img src="./images/rob.jpg">
-		<img src="./images/jason.jpeg">
-		<img src="./images/meneo.jpg">
-		<img src="./images/rob.jpg">
-		<img src="./images/mark.jpg">
-		<img src="./images/mule.png">
-	</div>
-	<p style="font-size: 15px; text-align:center;">or <a href="#">Log in</a></p>
-</div>
-
-
 <%= image_tag 'folyo.png', :class => "logo" %>
 
+	<div class="wrap800" style="text-align: center;">	
+		<h1>Find someone you love working with.</h1>
+		
+		<p><%= link_to "Post your project for free", company_projects_path %></p>
+	</div>
 
-	<div class="letter-wrap" style="max-width: 800px; width: 100%; margin: 4em auto; text-align:center;">	
-		<h1>Find a freelancer you love working with.</h1>
+<% if admin_signed_in? %>
+
+<% elsif user_signed_in? %>
+
+	<% if Project.owned_by(current_user).any? %>
+
+		<div class="upsell" style="padding: .5em 2em 1em; background-color: #f3ecff; border-radius: 15px; max-width: 790px; margin: 0 auto; box-sizing: border-box;">
+			<h3 style=" text-align:center;"><%= image_tag 'upsell.png', :style => "width: 50px;" %><br>
+				Great job! Your project has over 10 replies!</h3>
 			
-		<p><%= link_to "See a sample project", tour_attract_path %> or <%= link_to "Post your project for $99", new_project_path %></p>
+			<p>We know what you're thinking. "Oh great, now I have to sort through all of those!" Well have no fear! We're here to offer additional help in choosing the right partner.</p> 
+			<p><strong>We offer a match-making add-on service for $99, that will save  HOURS:</strong></p>
+			<ul>
+				<li>We'll review your specific project's goals</li>
+				<li>Analyze and rank every single applicant based on your needs</li>
+				<li>Give you our top 3 recommendations</li>
+				<li>Provide a brief summary of why we chose them</li>
+			</ul>
+			<p>It's like having a full-service agency in your corner. We guarantee you'll find you love working with or your money back. Get started now! (Guaranteed turnaround in 5 business days.)</p>
+			
+			<p style="text-align:center;"><%= link_to 'Buy match-making add-on', new_project_path, :class => "button" %>
+			
+			<p style="text-align:center;"><%= link_to "No thanks! Close this offer" %></p>
+		</div>
+
+		<h3 class="action-header">Projects you've posted</h3>
+		<div class="project-list-wrap">
+			<div class="project-list">
+				<% Project.owned_by(current_user).each do |project| %>
+					<%= render "projects/quick_view", project: project %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+
+	<% if Project.owned_by(current_user).any? %>
+			
+		<h3 class="action-header">Recent replies to your projects</h3>
+
+		<div class="project-list-wrap">
+			<div class="project-list">
+				<% Reply.replied_to(current_user).limit(10).each do |reply| %>
+					<%= render "replies/client_reply_view", reply: reply %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+
+	<h3 class="action-header">All projects on Folyo</h3>
+
+	<div class="project-list-wrap">
+		<% if Project.nil? %>
+			<h3>There are no public projects at this time</h3>
+
+			<p><%= link_to "You can create a project though", new_project_path, :class => "button" %></p>
+		<% else %>
+			<div class="project-list">
+				<% Project.published.order(created_at: :desc).each do |project| %>
+			
+					<%= render "projects/quick_view", project: project %>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
 
-
+<% else %>
+	<h3 class="action-header">Recent projects
+				
+		<span style="margin: .25em 0 0; float: right; font-size: 15px;">
+			<%= link_to 'See all projects', new_user_session_path %>
+		</span>
+	</h3>
 	
-	<div class="project-index-wrap" style="max-width: 900px; width: 100%; border-top: 1px solid #bbb; border-bottom: 1px solid #bbb; text-align: center; margin: 2em auto 4em; padding: 1em 0 2em;">
-		<h3>There are no public projects at this time</h3>
-		
-		<p><%= link_to "You can see a sample project though", tour_attract_path, :class => "button" %></p>
-		
-		<div style="display: none;">	
-			<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
-				<%= render "projects/quick_view", project: project %>
-			<% end %>
-		</div>		
+	<div class="project-list-wrap">
+		<% if Project.nil? %>
+			<h3>There are no public projects at this time</h3>
+
+			<p><%= link_to "You post a project though", new_project_path, :class => "button" %></p>
+		<% else %>
+			<div class="project-list">
+				<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
+				
+					<%= render "projects/quick_view", project: project %>
+				<% end %>
+			</div>
+		<% end %>
 	</div>
-
-
-
-	<div class="letter-wrap" style="max-width: 800px; width: 100%; margin: 0em auto; display: table;">
-		
-		
 	
-		<h2 style="Text-align: center; margin: 0;">Folyo helped Jason create a project guaranteed to improve his business. Sign up for free now.</h2>
 
-		<%= image_tag 'ben.png', :style => "width: 350px; margin:4em 0em 0 0;", :align => "left", :class => "jason-image" %>
-		
+	
+	<div class="wrap800" style="display: table;">
+		<h2 style="text-align: center; margin: 0;">
+			Folyo helps you create a project guaranteed to improve your business. Sign up for free now.
+		</h2>
+
+		<%= image_tag 'ben.png', :align => "left", :class => "jason-image" %>
+
 		<div class="new-account-form-wrap" style="margin: 4em 0 0 auto; ">
+			<script>
+			$(function() {
+			  $('#pictureInput').on('change', function(event) {
+			    var files = event.target.files;
+			    var image = files[0]
+			    // here's the file size
+			    console.log(image.size);
+			    var reader = new FileReader();
+			    reader.onload = function(file) {
+			      var img = new Image();
+			      console.log(file);
+			      img.src = file.target.result;
+			      $('#target').html(img);
+			    }
+			    reader.readAsDataURL(image);
+			    console.log(files);
+			  });
+			});
+			</script>
 
-			<%= form_for :user, url: subscriptions_path, id: 'new_user', class: 'form-focus' do |f| %>
+				<%= form_for :user, url: subscriptions_path, id: 'new_user', class: 'form-focus' do |f| %>	
 
-			<h3>Your name</h3>
-			<p class="required">You know, that thing everyone calls you</p>
-			<%= f.text_field :name, autofocus: true, placeholder: 'Name'	%>
+				<h3>Your name</h3>
+				<p class="required">You know, that thing everyone calls you</p>
+				<%= f.text_field :name, placeholder: 'Name'	%>
 
-			<h3>Your work email</h3>
-			<p class="required">Won't be shown publicly</p>
-			<%= f.email_field :email, placeholder: "Email" %>
+				<h3>Your work email</h3>
+				<p class="required">Won't be shown publicly</p>
+				<%= f.email_field :email, placeholder: "Email" %>
 
-			<div class="upload-photo-wrap" style="display: table; width: 100%;">
+				<h3>Create a password</h3>
+				<p class="required">Must have at least 6 characters</p>
+					<p style="margin:0;">
+						<% if @validatable %>
+							<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
+						<% end %>
+					</p>
 
+					<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %><br>
 
-				<div class="upload-photo">
-					<h3>Your picture</h3>
-					<p class="required">(Optional) but we do like seeing fresh faces</p>
+				<div class="opt-in">
+					<input type="checkbox" checked> Send me new projects when they're posted (free)
 				</div>
 
-				<div class="preview-photo" style="margin: .5em 0 .5em; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 1.25em 0 1.5em; width: 100%; box-sizing: border-box;">
-					<div id="target"></div>
-					<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
+				<div style="margin: 1em 0;">
+					<a href="#">
+						<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
+					</a>
 				</div>
 
 
-			</div>
+					<p>Have an account? <a href="/users/sign_in">Log in</a></p>
 
-
-
-			<h3>Create a password</h3>
-			<p class="required">Must have at least 6 characters</p>
-				<p style="margin:0;">
-					<% if @validatable %>
-						<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
-					<% end %>
-				</p>
-
-				<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %><br>
-
-			<div class="opt-in">
-				<input type="checkbox" checked> Send me new projects when they're posted (free)
-			</div>
-
-			<div style="margin: 1em 0;">
-				<a href="#">
-					<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
-				</a>
-			</div>
-
-
-				<p>Have an account? <a href="/users/sign_in">Log in</a></p>
-
-				</div>
-			<% end %>
-
-		</div>
-		
-		
-		<!--
-		<p>He wanted to create a project brief but he didn't know where to start. All he knew was he needed a freelancer who would deliver lasting value to his software business.</p>
-		<p>Jason is a software developer and founder of Rigbooks, a startup web-app that helps truckers keep track of their books.</p>
-		<p>He needed to find a designer to help him improve conversions on his site.</p>
-		<p><%= link_to "See Jason's sample project", tour_attract_path %></p>-->
+					</div>
+				<% end %>
+			
 		</div>
 	</div>
-	
+
 	<div style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; margin: 2em auto; display: block; padding:1em 0; width: 100%; max-width: 900px; text-align: center;">
-		<h2><%= link_to "See how Jason connected with 8400 freelancers", tour_attract_path %> &rarr;</h2>
+		<h2><%= link_to "Start building your next project free", new_project_path %></h2>
 	</div>
+<% end %>
 
 <%= render "layouts/footer_menu" %>
-
-</div>
