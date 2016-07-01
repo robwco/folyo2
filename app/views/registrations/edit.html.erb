@@ -1,7 +1,11 @@
 
 	<div class="wrapper" style="width: 26em;">
 		<p class="next-step" style="font-size: 18px; margin-bottom: 2em;">
-			&larr; <a href="/leads" style="font-size: 18px;">Back to Leads</a>
+			<% if current_user.can_see_leads? %>
+				&larr; <a href="/leads" style="font-size: 18px;">Back to Leads</a>
+			<% else %>
+				&larr; <%= link_to "Back", :back %>
+			<% end %>
 		</p>
 		<hr>
 
@@ -20,7 +24,7 @@
 		
 		<center><h2>Update your settings</h2></center>
 
-		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
 
 		  <% if resource.errors.any? || (!resource.subscription.nil? && resource.subscription.errors.any?) %>
 				<div id="error_explanation">
@@ -44,11 +48,29 @@
 				<%= f.email_field :email, autofocus: true %>
 		  </div>
 
+		  <div class="upload-photo-wrap" style="display: table; width: 100%;">
+
+
+			<div class="upload-photo">
+				<h3>Your picture</h3>
+				<p class="required">(Optional) but we do like seeing fresh faces</p>
+			</div>
+
+			<div class="preview-photo">
+				<div id="target">
+					<%= image_tag current_user.photo.url, :style => "height: 60px; width: 60px; border-radius: 60px; margin:0 .5em 0 0; vertical-align: middle;" %>
+				</div>
+				<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
+			</div>
+		  </div>
+
 		  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 				<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
 		  <% end %>
 
-		  <%= render 'categories' %>
+		  <% if current_user.can_see_leads? %>
+		  		<%= render 'categories' %>
+		  <% end %>
 
 		  <div class="field">
 				<p style="margin: 2em 0 0;"><strong>Your name</strong></p>

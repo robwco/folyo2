@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516232556) do
+ActiveRecord::Schema.define(version: 20160701113909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,13 +61,6 @@ ActiveRecord::Schema.define(version: 20160516232556) do
 
   add_index "categories_users", ["category_id"], name: "index_categories_users_on_category_id", using: :btree
   add_index "categories_users", ["user_id"], name: "index_categories_users_on_user_id", using: :btree
-
-  create_table "clients", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -431,6 +424,11 @@ ActiveRecord::Schema.define(version: 20160516232556) do
     t.string   "last4"
     t.integer  "expiration_month"
     t.integer  "expiration_year"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.boolean  "project_alerts"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

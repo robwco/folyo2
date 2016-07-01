@@ -6,6 +6,11 @@ class CreateSubscription
     )
 
 	return false unless user.save
+	if plan.amount.zero?
+		user.subscribe
+		user.save
+		return true
+	end
 
 	coupon_code = nil if coupon_code.blank?
 	customer_created = false

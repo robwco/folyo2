@@ -71,6 +71,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
+	session[:last_page] = request.env['HTTP_REFERER'] || yours_projects_url
+
 	@user = User.new
 	@plan = Plan.active.find(params[:plan])
 	@yearly = Plan.active.where(interval: 'year').first
@@ -82,6 +84,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+	  #render plain: params.inspect and return
 	@user = User.new(sign_up_params)
 	@plan = Plan.active.find(params[:plan])
 
@@ -89,7 +92,7 @@ class SubscriptionsController < ApplicationController
 
 	if CreateSubscription.call(@plan, @user, params[:stripeToken], params[:coupon_code])
 		sign_in('user', @user)
-		redirect_to welcome_path	
+		redirect_to session[:last_page]	
 	else
 		render :new
 	end
@@ -233,7 +236,7 @@ class SubscriptionsController < ApplicationController
   private
 
 	  def sign_up_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation, {:category_ids => []})
+		params.require(:user).permit(:name, :email, :photo, :password, :password_confirmation, {:category_ids => []})
 	  end
 
 	  def update_categories_params

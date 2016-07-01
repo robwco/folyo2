@@ -28,7 +28,7 @@ class Plan < ActiveRecord::Base
 	end
 
 	def has_trial?
-		trial_period_days > 0
+		trial_period_days && trial_period_days > 0
 	end
 
 	def savings(plan)
