@@ -16,13 +16,5 @@
 
 	<p><%= @project.deliverables %></p>
 	
-	<div style="border-bottom: 1px solid #eee; border-top: 1px solid #eee; padding: .5em 1em 1em; box-sizing:border-box; margin: .5em auto 2em;">					
-			<%= image_tag 'generic.png', :class => "preview-logo", :align => "left" %>
-
-			<h3 style="font-size: 16px; margin: .25em 0 .25em;">SkyStats</h3>
-			
-			<p style="margin: 0; font-size: 16px;">We're an air-fare travel and booking app, that gives customers the metrics they need to make great buying decisions.</p>
-				
-			<a href="#" style="margin: 1em 0 0; font-size: 16px;">View our website</a>
-		</div>
+	<%= render "profile_card" %>
 </div>

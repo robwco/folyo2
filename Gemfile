@@ -35,6 +35,7 @@ gem 'delayed_job_active_record'
 gem 'clockwork'
 gem 'puma'
 gem 'autosize-rails'
+gem 'wicked'
 
 group :development do
   gem 'stripe-ruby-mock'

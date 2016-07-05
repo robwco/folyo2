@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 	put "charge_payment", on: :member
 
 	resources :replies
+	resources :wizard, controller: :project_steps
   end
 
   resources :sales

@@ -103,64 +103,7 @@
 
 		<%= image_tag 'ben.png', :align => "left", :class => "jason-image" %>
 
-		<div class="new-account-form-wrap" style="margin: 4em 0 0 auto; ">
-			<script>
-			$(function() {
-			  $('#pictureInput').on('change', function(event) {
-			    var files = event.target.files;
-			    var image = files[0]
-			    // here's the file size
-			    console.log(image.size);
-			    var reader = new FileReader();
-			    reader.onload = function(file) {
-			      var img = new Image();
-			      console.log(file);
-			      img.src = file.target.result;
-			      $('#target').html(img);
-			    }
-			    reader.readAsDataURL(image);
-			    console.log(files);
-			  });
-			});
-			</script>
-
-				<%= form_for :user, url: subscriptions_path, id: 'new_user', class: 'form-focus' do |f| %>	
-
-				<h3>Your name</h3>
-				<p class="required">You know, that thing everyone calls you</p>
-				<%= f.text_field :name, placeholder: 'Name'	%>
-
-				<h3>Your work email</h3>
-				<p class="required">Won't be shown publicly</p>
-				<%= f.email_field :email, placeholder: "Email" %>
-
-				<h3>Create a password</h3>
-				<p class="required">Must have at least 6 characters</p>
-					<p style="margin:0;">
-						<% if @validatable %>
-							<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
-						<% end %>
-					</p>
-
-					<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %><br>
-
-				<div class="opt-in">
-					<input type="checkbox" checked> Send me new projects when they're posted (free)
-				</div>
-
-				<div style="margin: 1em 0;">
-					<a href="#">
-						<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
-					</a>
-				</div>
-
-
-					<p>Have an account? <a href="/users/sign_in">Log in</a></p>
-
-					</div>
-				<% end %>
-			
-		</div>
+		<%= render "subscriptions/form" %>
 	</div>
 
 	<div style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; margin: 2em auto; display: block; padding:1em 0; width: 100%; max-width: 900px; text-align: center;">

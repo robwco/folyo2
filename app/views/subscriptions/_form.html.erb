@@ -21,7 +21,7 @@
 
 	<%= form_for :user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>	
 
-		<% if @user.errors.any? %>
+		<% if @user && @user.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
 
@@ -81,7 +81,7 @@
 
 		<p>Have an account? <a href="/users/sign_in">Log in</a></p>
 
-		<%= hidden_field_tag "plan", @plan.id %>
+		<%= hidden_field_tag "plan", @plan ? @plan.id : 2 %>
 	<% end %>
 	
 </div>

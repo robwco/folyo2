@@ -44,4 +44,7 @@ Rails.application.configure do
   config.action_mailer.asset_host = 'http://localhost:3000'
 
   config.action_mailer.delivery_method = :smtp
+
+  Paperclip.options[:image_magick_path] = "/Applications/MAMP/Library/bin"
+  Paperclip.options[:command_path] = "/Applications/MAMP/Library/bin"
 end
