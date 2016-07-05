@@ -84,7 +84,7 @@ If user has active project with replies and has completed all onboarding items:
 
 	<div style="margin: 3em 0; text-align:center;">
 		<h3 style="font-size: 30px;">Ready to start a new project?</h3>
-		<%= link_to 'Create new project', new_project_path, :class => "button" %>
+		<%= link_to 'Create new project', new_project_wizard_path(project_id: :new), :class => "button" %>
 	</div>
 
 		<h3>Recent replies</h3>
