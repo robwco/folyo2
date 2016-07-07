@@ -12,7 +12,9 @@
 		</h3>
 
 		<% if @project.replies.empty? %>
-			<p style="margin: 0 0 3em; font-size: 20px; padding: .5em 1em; display: inline-block; border-top: 1px solid #eee; border-bottom: 1px solid #eee; width: 100%; box-sizing: border-box;">No replies yet. Share it: <input type="text" value="<%= @project %>" style="font-size: 16px;  height: 30px;"> </p>
+			<p style="margin: 0 0 3em; font-size: 20px; padding: .5em 1em; display: inline-block; border-top: 1px solid #eee; border-bottom: 1px solid #eee; width: 100%; box-sizing: border-box;">No replies yet. Share it: 
+				<input type="text" value="<%= project_url(@project) %>" style="font-size: 16px;  height: 30px;"> 
+			</p>
 		
 		<% else %>
 

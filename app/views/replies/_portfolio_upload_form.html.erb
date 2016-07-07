@@ -14,9 +14,9 @@
 		<small>Tip: Try answering how this work shows you're perfect for the project.</small></p>
 
 	<div class="textarea-wrap">
-		<%= f.text_area :portfolio_message, placeholder: "On this project..." %>
+		<%= f.text_area :portfolio_message, placeholder: "On this project...", data: { max_characters: 1000 } %>
 		
-		<span style="font-size: 12px; color: #e15980; text-align: right; display: block; width: 100%:">200 words left</span>
+		<span class="counter" style="font-size: 12px; color: #e15980; text-align: right; display: block; width: 100%:">1000 characters left</span>
 	</div>
 
 </div>
