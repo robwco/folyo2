@@ -71,7 +71,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
-	session[:last_page] = request.env['HTTP_REFERER'] || yours_projects_url
+	session[:last_page] = request.env['HTTP_REFERER'] || home_projects_url
 
 	@user = User.new
 	@plan = Plan.active.find(params[:plan])

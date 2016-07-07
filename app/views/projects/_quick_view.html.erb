@@ -1,11 +1,7 @@
 <div class="project-reply">
-	<a class="job" href="<%= project.published? ? url_for(project) : preview_project_url(project) %>">
+	<a class="job" href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
 		<div class="avatar">
-			<% if project.company_logo.present? %>
-				<%= image_tag(project.company_logo.url, class: "photo") %>
-			<% else %>
-				<%= image_tag 'company.png' %>
-			<% end %>
+			<%= image_tag(project.company_logo.url, class: "photo") %>
 		</div>
 		
 		<div class="info">

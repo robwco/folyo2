@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
 	before_save :add_protocol_to_website
 
 	#company profile step
-	has_attached_file :company_logo, :styles => { :medium => "190x190>", :thumb => "190x190>" }
+	has_attached_file :company_logo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'company.png'
 	validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 	validates :organization, presence: { message: "Your organization name is required." }, if: :company_profile_or_published?
