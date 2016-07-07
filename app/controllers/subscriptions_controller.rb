@@ -92,7 +92,7 @@ class SubscriptionsController < ApplicationController
 
 	if CreateSubscription.call(@plan, @user, params[:stripeToken], params[:coupon_code])
 		sign_in('user', @user)
-		redirect_to session[:last_page]	
+		redirect_to session[:last_page]	|| home_projects_url
 	else
 		render :new
 	end
