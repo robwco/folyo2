@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :categories, dependent: :destroy
   has_and_belongs_to_many :milestone, dependent: :destroy
 
-  has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }
+  has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   scope :active, -> { where(:state => ['trialing','active','past_due']) }

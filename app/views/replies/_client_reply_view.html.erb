@@ -1,7 +1,7 @@
 <div class="project-reply <%= 'premium' if reply.portfolio_image.present? %>">
 	<a class="job" href="/replies/<%= reply.id %>" style="text-decoration: none;">
 		<div class="avatar">
-			<%= image_tag 'default-avatar.png', :style => "margin: .5em 0 0;" %>
+			<%= image_tag reply.user.photo.url, :style => "margin: .5em 0 0;" %>
 		</div>
 	
 		<div class="info narrow">

@@ -3,6 +3,7 @@ class ProjectStepsController < ApplicationController
 
   steps :company_profile, :project_brief
 
+  before_filter :authenticate_any!
   before_action :set_project_with_owner, except: [:new]
 
   def show

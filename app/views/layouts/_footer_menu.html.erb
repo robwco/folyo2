@@ -1,13 +1,10 @@
 <p class="footer-menu" style="margin: 5em 0; text-align: center;">
 	<% if admin_signed_in? %>
-		<%= link_to "Start a project", new_project_path %>
+		<%= link_to "Start a project", new_project_wizard_path(project_id: :new) %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% elsif user_signed_in? %>
-	
-	<%= link_to "Dashboard", edit_user_registration_path %>
+		<%= link_to "Dashboard", home_projects_path %>
 		<%= link_to "Start a project", new_project_wizard_path(project_id: :new) %>
-		<%= link_to "Your projects", yours_projects_path %>
-		<%= link_to "All projects", active_projects_path %>
 		<%= link_to "Account", edit_user_registration_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% else %>

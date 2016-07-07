@@ -79,7 +79,7 @@ If user has active project with replies and has completed all onboarding items:
 				<%= render "projects/quick_view", project: project %>
 			<% end %>
 		<% else %>
-			<p class="job"><%= link_to "You currently have no open projects. Start one.", new_project_path %></p>	
+			<p class="job"><%= link_to "You currently have no open projects. Start one.", new_project_wizard_path(project_id: :new) %></p>	
 		<% end %>
 
 	<div style="margin: 3em 0; text-align:center;">

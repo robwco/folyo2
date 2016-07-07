@@ -3,7 +3,7 @@
 	<div class="wrap800" style="text-align: center;">	
 		<h1>Find someone you love working with.</h1>
 		
-		<p><%= link_to "Post your project for free", company_projects_path %></p>
+		<p><%= link_to "Post your project for free", new_project_wizard_path(project_id: :new) %></p>
 	</div>
 
 <% if admin_signed_in? %>
@@ -26,7 +26,7 @@
 			</ul>
 			<p>It's like having a full-service agency in your corner. We guarantee you'll find you love working with or your money back. Get started now! (Guaranteed turnaround in 5 business days.)</p>
 			
-			<p style="text-align:center;"><%= link_to 'Buy match-making add-on', new_project_path, :class => "button" %>
+			<p style="text-align:center;"><%= link_to 'Buy match-making add-on', new_project_wizard_path(project_id: :new), :class => "button" %>
 			
 			<p style="text-align:center;"><%= link_to "No thanks! Close this offer" %></p>
 		</div>
@@ -36,6 +36,19 @@
 			<div class="project-list">
 				<% Project.owned_by(current_user).each do |project| %>
 					<%= render "projects/quick_view", project: project %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+
+	<% if Message.sent_to(current_user).any? %>
+			
+		<h3 class="action-header">Recent Messages</h3>
+
+		<div class="project-list-wrap">
+			<div class="project-list">
+				<% Message.sent_to(current_user).limit(10).each do |message| %>
+					<%= render "messages/standalone_message", message: message %>
 				<% end %>
 			</div>
 		</div>
@@ -54,13 +67,27 @@
 		</div>
 	<% end %>
 
+	<% unless Project.in_conversation(current_user).empty? %>
+
+		<h3 class="action-header">Projects you've replied to</h3>
+	
+		<div class="project-list-wrap">
+			<div class="project-list">
+				<% Project.in_conversation(current_user).each do |project| %>
+					<%= render "projects/quick_view", project: project %>
+				<% end %>
+			</div>
+		</div>
+
+	<% end %>
+
 	<h3 class="action-header">All projects on Folyo</h3>
 
 	<div class="project-list-wrap">
 		<% if Project.nil? %>
 			<h3>There are no public projects at this time</h3>
 
-			<p><%= link_to "You can create a project though", new_project_path, :class => "button" %></p>
+			<p><%= link_to "You can create a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
 		<% else %>
 			<div class="project-list">
 				<% Project.published.order(created_at: :desc).each do |project| %>
@@ -83,7 +110,7 @@
 		<% if Project.nil? %>
 			<h3>There are no public projects at this time</h3>
 
-			<p><%= link_to "You post a project though", new_project_path, :class => "button" %></p>
+			<p><%= link_to "You post a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
 		<% else %>
 			<div class="project-list">
 				<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
@@ -107,7 +134,7 @@
 	</div>
 
 	<div style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; margin: 2em auto; display: block; padding:1em 0; width: 100%; max-width: 900px; text-align: center;">
-		<h2><%= link_to "Start building your next project free", new_project_path %></h2>
+		<h2><%= link_to "Start building your next project free", new_project_wizard_path(project_id: :new) %></h2>
 	</div>
 <% end %>
 
