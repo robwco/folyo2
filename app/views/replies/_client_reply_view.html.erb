@@ -1,20 +1,25 @@
-<div class="project-reply <%= 'premium' if reply.portfolio_image.present? %>">
-	<a class="job" href="/replies/<%= reply.id %>" style="text-decoration: none;">
-		<div class="avatar">
-			<%= image_tag reply.user.photo.url, :style => "margin: .5em 0 0;" %>
-		</div>
-	
-		<div class="info narrow">
-			<span class="name" style="color: #222; font-size: 16px;"><strong><%= reply.user.name %></strong></span><br>
-						
-			<%= truncate reply.message, length: 200 %>
-		</div>
+<div class="project-listing"> 
+	<a href="/replies/<%= reply.id %>" class="reply">
 
+		<div class="avatar">		
+			<%= image_tag reply.user.photo.url %>
+		</div>
+		
+		<div class="name">	
+			<%= reply.user.name %>
+		</div>
+		
+		<div class="message">
+			<%= truncate reply.message, length: 78 %>
+		</div>
 		
 		<% if reply.portfolio_image.present? %>
-			<div class="portfolio large" style="background-image: url(<%= asset_path(reply.portfolio_image.url) %>)">
+			<div class="portfolio" style="background-image: url(<%= asset_path(reply.portfolio_image.url) %>)">
+			</div>
+			
+			<div class="portfolio-message">
+				<%= truncate reply.message, length: 55 %>
 			</div>
 		<% end %>
 	</a>
 </div>
-

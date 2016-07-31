@@ -1,15 +1,16 @@
-<div class="project-reply">
-	<a class="job" href="<%= reply_path(message.reply) %>" style="text-decoration: none;">
-		<div class="avatar">
-			<%= image_tag message.user.photo.url, :style => "margin: .5em 0 0;" %>
+<div class="project-listing"> 
+	<a href="/replies/<%= message.id %>" class="reply">
+
+		<div class="avatar">		
+			<%= image_tag message.user.photo.url %>
 		</div>
-	
-		<div class="info narrow">
-			<span class="name" style="color: #222; font-size: 16px;"><strong><%= message.user.name %></strong></span>
-			<span style="font-size: 70%; color:#666;"><%= message.created_at.strftime("%l:%M %p %m/%d/%Y") %></span>
-			<br>
-						
-			<%= truncate message.message, length: 200 %>
+		
+		<div class="name">	
+			<%= message.user.name %>
+		</div>
+		
+		<div class="message">
+			<%= truncate message.message, length: 120 %>
 		</div>
 	</a>
 </div>

@@ -1,112 +1,99 @@
-<%= image_tag 'folyo.png', :class => "logo" %>
 
-	<div class="wrap800" style="text-align: center;">	
+<%= render "layouts/top_menu" %>
+
+
+
+	<!--<div class="wrap800" style="text-align: center;">	
 		<h1>Find someone you love working with.</h1>
 		
 		<p><%= link_to "Post your project for free", new_project_wizard_path(project_id: :new) %></p>
-	</div>
+	</div>-->
 
 <% if admin_signed_in? %>
+
+
+	<div class="project-list-wrap" style="width: 815px;">
+		<div class="project-list">
+			<% Project.all.order(created_at: :desc).each do |project| %>
+
+				<%= render "projects/quick_view", project: project %>
+			<% end %>
+		</div>
+	</div>
 
 <% elsif user_signed_in? %>
 
 	<% if Project.owned_by(current_user).any? %>
 
-		<div class="upsell" style="padding: .5em 2em 1em; background-color: #f3ecff; border-radius: 15px; max-width: 790px; margin: 0 auto; box-sizing: border-box;">
-			<h3 style=" text-align:center;"><%= image_tag 'upsell.png', :style => "width: 50px;" %><br>
-				Great job! Your project has over 10 replies!</h3>
-			
-			<p>We know what you're thinking. "Oh great, now I have to sort through all of those!" Well have no fear! We're here to offer additional help in choosing the right partner.</p> 
-			<p><strong>We offer a match-making add-on service for $99, that will save  HOURS:</strong></p>
-			<ul>
-				<li>We'll review your specific project's goals</li>
-				<li>Analyze and rank every single applicant based on your needs</li>
-				<li>Give you our top 3 recommendations</li>
-				<li>Provide a brief summary of why we chose them</li>
-			</ul>
-			<p>It's like having a full-service agency in your corner. We guarantee you'll find you love working with or your money back. Get started now! (Guaranteed turnaround in 5 business days.)</p>
-			
-			<p style="text-align:center;"><%= link_to 'Buy match-making add-on', new_project_wizard_path(project_id: :new), :class => "button" %>
-			
-			<p style="text-align:center;"><%= link_to "No thanks! Close this offer" %></p>
-		</div>
-
-		<h3 class="action-header">Projects you've posted</h3>
-		<div class="project-list-wrap">
+		<h3 class="action-header">Your projects</h3>
+		<div class="project-list-wrap" style="max-width:810px;">
 			<div class="project-list">
 				<% Project.owned_by(current_user).each do |project| %>
 					<%= render "projects/quick_view", project: project %>
 				<% end %>
 			</div>
 		</div>
-	<% end %>
-
-	<% if Message.sent_to(current_user).any? %>
-			
-		<h3 class="action-header">Recent Messages</h3>
-
-		<div class="project-list-wrap">
-			<div class="project-list">
-				<% Message.sent_to(current_user).limit(10).each do |message| %>
-					<%= render "messages/standalone_message", message: message %>
-				<% end %>
-			</div>
-		</div>
-	<% end %>
-
-	<% if Project.owned_by(current_user).any? %>
-			
-		<h3 class="action-header">Recent replies to your projects</h3>
-
-		<div class="project-list-wrap">
-			<div class="project-list">
-				<% Reply.replied_to(current_user).limit(10).each do |reply| %>
-					<%= render "replies/client_reply_view", reply: reply %>
-				<% end %>
-			</div>
-		</div>
-	<% end %>
-
-	<% unless Project.in_conversation(current_user).empty? %>
-
-		<h3 class="action-header">Projects you've replied to</h3>
+		
+		
+		<p style="text-align:center;">Got more work? Put it on Folyo!<br><br>
+		<a href="#" class="button">+ Project</a>
+		</p>
+		
+	<% else %>	
+		<h3 class="action-header">Projects for 
+				<select style="font-size: 20px; vertical-align: 3px;">
+		  		<option value="volvo">UX design</option>
+		  		<option value="saab">Saab</option>
+		  		<option value="mercedes">Mercedes</option>
+		  		<option value="audi">Audi</option>
+				</select>
+				in <input type="location" placeholder="Chicago, IL, USA" style="font-size: 20px;"></input> & remote
+		</h3>
 	
-		<div class="project-list-wrap">
-			<div class="project-list">
-				<% Project.in_conversation(current_user).each do |project| %>
-					<%= render "projects/quick_view", project: project %>
-				<% end %>
-			</div>
+		<div class="project-list-wrap" style="width: 815px;">
+			<% if Project.nil? %>
+				<h3>There are no public projects at this time</h3>
+
+				<p><%= link_to "You post a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
+			<% else %>
+				<div class="project-list">
+					<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
+				
+						<%= render "projects/quick_view", project: project %>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
+		
 
+		
 	<% end %>
+	
+	
 
-	<h3 class="action-header">All projects on Folyo</h3>
 
-	<div class="project-list-wrap">
-		<% if Project.nil? %>
-			<h3>There are no public projects at this time</h3>
 
-			<p><%= link_to "You can create a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
-		<% else %>
-			<div class="project-list">
-				<% Project.published.order(created_at: :desc).each do |project| %>
-			
-					<%= render "projects/quick_view", project: project %>
-				<% end %>
-			</div>
-		<% end %>
-	</div>
+	
 
 <% else %>
-	<h3 class="action-header">Recent projects
+	<!--<h3 class="action-header">Recent projects
 				
 		<span style="margin: .25em 0 0; float: right; font-size: 15px;">
 			<%= link_to 'See all projects', new_user_session_path %>
 		</span>
+	</h3>-->
+	
+	<h3 class="action-header">Projects for 
+			<select style="font-size: 20px; vertical-align: 3px;">
+	  		<option value="volvo">UX design</option>
+	  		<option value="saab">Saab</option>
+	  		<option value="mercedes">Mercedes</option>
+	  		<option value="audi">Audi</option>
+			</select>
+			in <input type="location" placeholder="Chicago, IL, USA" style="font-size: 20px;"></input> & remote
 	</h3>
 	
-	<div class="project-list-wrap">
+	<div class="project-list-wrap" style="width: 815px;">
 		<% if Project.nil? %>
 			<h3>There are no public projects at this time</h3>
 
@@ -120,22 +107,19 @@
 			</div>
 		<% end %>
 	</div>
-	
+		
+		
+		<div style="background-color: #fff; width:810px; margin: 0 auto; text-align: center;">
+			<h1 style="margin: 0;">Find someone you love working with.</h1>
+			
+			<p style="margin: 0 0 2em;">We'll help you do the best work of your life. Sign up for free now.</p>
 
-	
-	<div class="wrap800" style="display: table;">
-		<h2 style="text-align: center; margin: 0;">
-			Folyo helps you create a project guaranteed to improve your business. Sign up for free now.
-		</h2>
-
-		<%= image_tag 'ben.png', :align => "left", :class => "jason-image" %>
-
-		<%= render "subscriptions/form" %>
-	</div>
-
-	<div style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; margin: 2em auto; display: block; padding:1em 0; width: 100%; max-width: 900px; text-align: center;">
-		<h2><%= link_to "Start building your next project free", new_project_wizard_path(project_id: :new) %></h2>
-	</div>
+			<a href="#" class="button">Post your project</a>
+			
+			<a href="#" class="button" style="background-color: #eaeaea; color: #666 !important;">Find work</a>
+			
+		</div>
+		
 <% end %>
 
 <%= render "layouts/footer_menu" %>

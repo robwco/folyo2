@@ -1,23 +1,70 @@
-<div class="project-reply">
-	<a class="job" href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
+<div class="project-listing">
+	<div class="info">
+		<a href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
+			<%= truncate project.title, length: 55 %> <%= "(draft)" unless project.published? %>
+		</a>
+		
+		<% if admin_signed_in? %>
+		  <%= link_to 'Remove',  project,  method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :style => "padding: 0px 5px 1px !important; font-size: 13px; margin: .25em; background-color: #dd8687;" %>
+		<% end %>
+
+		<br>
+		
+		<%= truncate project.goals, length: 125 %> <%= "(not published)" unless project.published? %><br>
+		
+		<div class="skills">
+			Needed: <a class="badge" href="#">HTML/CSS/JS</a> <a class="badge" href="3">UX/UI</a>
+		</div>
+	</div>
+	
+	<div class="client-profile">
 		<div class="avatar">
 			<%= image_tag(project.company_logo.url, class: "photo") %>
 		</div>
-		
-		<div class="info">
-			<span class="name" style="color: #222; font-size: 16px;"><strong><%= project.organization %></strong></span><br>
-			<%= truncate project.title, length: 75 %> <%= "(draft)" unless project.published? %>
+	
+		<div class="client-info">
+			<a href="#">
+				<strong><%= project.name %><br>
+			
+				<span style="font-size: 13px;"><%= truncate project.organization, length: 17 %></span></strong><br>
+			</a>
+			
+			Temecula, CA, USA<br>
+			
+			<em>Created 2 projects</em>
 		</div>
+	</div>
+	
+	<div class="status">			
 		
+		  <% unless project.published? %> 
+			
+				<span style='color:#7b8d99;'><i style='color: #4e9fc4;' class='fa fa-pencil' aria-hidden='true'></i> Draft</span><br>
+			
+			<% else %>
+			
+			<% if	user_signed_in? %>
+			
+				<% if Project.owned_by(current_user) %>
+					<span style="color:#7b8d99;"><%= project.replies.count %> Replies</span>
+			
+					<% else %>
+						<span style="color:#7b8d99;"><i style="color: #86d259;" class="fa fa-check-circle" aria-hidden="true"></i> Seeking Freelancers</span><br>
+					<!--<i style="color: #86d259;" class="fa fa-check-circle" aria-hidden="true"></i> Accepted, In Progress<br>
+					<span style="color: #8C3622;">Completed</span><br>
+					<span style="color: #666;">5 replies</span><br>-->
+			
+				<% end %>
+			<% end %>
 		
 
-		<% project.replies.where.not(portfolio_message: nil).limit(1).each do |reply| %>
-			<% if reply.portfolio_message.present? %>
-				<div class="portfolio" style="background-image: url(<%= asset_path(reply.portfolio_image.url) %>);">
-				</div>
+			
 			<% end %>
-		<% end %>
-	</a>
+			
+
+	</div>
+	
+
 </div>
 		
 

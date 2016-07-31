@@ -1,33 +1,174 @@
-<div class="wrap800" style="text-align: center;">	
-	<h1><%= @project.title %></h1>
+
+<div class="project-list-wrap" style="padding: 2em 0; margin: 0 auto; width:810px;">
+
+	
+	<div class="project-listing">
+		
+		
+		
+		
+		<div class="info" style="max-width: 500px;">
+			<h3 style="margin: 0 0 .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h3>
+
+			<%= truncate @project.goals, length: 135 %> <%= "(draft)" unless @project.published? %><br>
+
+			<div class="skills">Project status: 
+				<span style="margin: .25em 0 0;font-size: 12px;">
+					<select style="font-size: 16px;">
+			  		<option value="volvo">Seeking freelancers</option>
+			  		<option value="saab">Accepted, in progress</option>
+			  		<option value="mercedes">Completed</option>
+					</select>
+				</span>
+			</div>
+		</div>
+
+		<div class="client-profile">
+			<div class="avatar">
+				<%= image_tag(@project.company_logo.url, class: "photo") %>
+			</div>
+
+			<div class="client-info">
+				<a href="#">
+					<strong><%= @project.name %><br>
+
+					<span style="font-size: 13px;"><%= truncate @project.organization, length: 17 %></span></strong><br>
+				</a>
+
+				Temecula, CA, USA<br>
+
+				<em>Created 2 projects</em>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	
+	<div class="project-list-wrap" style="padding: 0; margin: 0 auto;">
+		<h3 class="action-header" style="margin: 1em 0 0;">
+			Replies
+		</h3>
+	</div>
 </div>
 
-<div class="project-list-wrap" style="padding: 0 0 5em;">
-		<h3 class="action-header" style="margin: -1em 0 1em;">
-			<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .5em; margin-left: -.25em;"></i>'.html_safe, home_projects_path %> Replies
-		
-			<span style="margin: .25em 0 0; float: right; font-size: 15px;">
-				<%= link_to 'View your project'.html_safe, preview_project_path %>
-			</span>	
-		</h3>
-
 		<% if @project.replies.empty? %>
-			<p style="margin: 0 0 3em; font-size: 20px; padding: .5em 1em; display: inline-block; border-top: 1px solid #eee; border-bottom: 1px solid #eee; width: 100%; box-sizing: border-box;">No replies yet. Share it: 
+			<p style="margin: 0 0 3em; font-size: 20px; padding: .5em 1em; display: inline-block;  width: 100%; box-sizing: border-box;">No replies yet. Share it: 
 				<input type="text" value="<%= project_url(@project) %>" style="font-size: 16px;  height: 30px;"> 
 			</p>
 		
 		<% else %>
+		
+		<style>
+		
+		/* Replies */
 
-		<div style="margin: 0;">
+		.project-listing {
+			margin: 0;
+			padding: 0;
+		}
+		.project-listing a.reply {
+			margin: 0;
+			font-weight: 500;
+			box-sizing: border-box;
+			color: #545048;
+			text-decoration: none;
+			width: 100%;
+			height: auto;
+			display: table;
+			padding: 1.25em 1em 0em;
+			vertical-align: text-top;
+			box-sizing: border-box;
+		}
+
+		.project-listing:first-child a.reply {
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+
+
+		.project-listing:last-child a.reply:last-child {
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+
+
+		.project-listing a.reply:hover {
+			background: #f9f9f9;
+			box-sizing: border-box;
+		}
+
+		.project-listing a.reply .name {
+			display: inline-block;
+			width: 150px;
+			font-weight: bold;
+			font-size: 14px;
+			padding:  0 0;
+			margin: 0;
+			vertical-align: .75em;
+			vertical-align: middle;
+		}
+
+		.project-listing a.reply .avatar {
+			display: inline-block;
+			margin:  0 .5em 0 0;
+			vertical-align: middle;
+		}
+
+		.project-listing a.reply .avatar img {
+			height: 45px;
+			width: 45px; 
+			border-radius: 45px;
+			background-color: #f9f9f9; 
+			display: middle;
+		}
+
+		.project-listing a.reply .message {
+			display: inline-block;
+			 width: 275px;
+			font-size: 15px;
+			margin: 0;
+			padding: 0;
+			vertical-align: middle;
+		}
+		
+
+		.project-listing a.reply .portfolio-message {
+			display: inline-block;
+			 width: 200px;
+			font-size: 15px;
+			margin: 0;
+			padding: 0;
+			vertical-align: middle;
+		}
+
+
+		.project-listing .portfolio {
+			width: 50px;
+			height: 37.5px;
+			background-color: #f3f3f3;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			border-radius: 4px;
+			box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .1);
+			display: inline-block;
+			margin: 0 1em;
+			vertical-align: middle;
+		}
+
+		.project-listing .portfolio.large {
+			width: 100px !important;
+			height: 80px;
+			vertical-align: middle;
+		}
+
+		</style>
+		
+		<div class="project-list-wrap"  style="margin: 0; margin: 0 auto; padding: 1em 1em 2em;">
 			<% @project.replies.each do |reply| %>
 				<%= render "replies/client_reply_view", reply: reply %>
 			<% end %>
 		</div>
 		
 		<% end %>
-	</div>
 
-
-
-
-</div>

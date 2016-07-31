@@ -1,13 +1,37 @@
 
-	<div class="wrapper" style="width: 26em;">
-		<p class="next-step" style="font-size: 18px; margin-bottom: 2em;">
-			<% if current_user.can_see_leads? %>
-				&larr; <a href="/leads" style="font-size: 18px;">Back to Leads</a>
-			<% else %>
-				&larr; <%= link_to "Back", :back %>
-			<% end %>
-		</p>
-		<hr>
+<%= render "layouts/top_menu" %>
+
+<script>
+$(function() {
+  $('#pictureInput').on('change', function(event) {
+	var files = event.target.files;
+	var image = files[0]
+	// here's the file size
+	console.log(image.size);
+	var reader = new FileReader();
+	reader.onload = function(file) {
+	  var img = new Image();
+	  console.log(file);
+	  img.src = file.target.result;
+	  $('#target').html(img);
+	}
+	reader.readAsDataURL(image);
+	console.log(files);
+  });
+});
+</script>
+
+
+<div style="width: 450px; margin: 0 auto;">
+	<p style="text-align: center;">
+	<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .25em; margin-left: -.25em; margin-top: 0;"></i> Back to Projects'.html_safe, home_projects_path, :style => "text-decoration: none; color:#666;" %>
+	</p>
+	
+	<h3 class="action-header" style="margin: 1em auto 0;">
+		Update your profile</h3>
+
+<section class="sign-in" style="margin: 0 auto 2em; width: 350px;">
+	
 
 			<% if current_user.past_due? %>
 				<p style="color:red;">The credit card you gave us didn't work when we tried to bill you. Please update your credit card to restore your account.</p>
@@ -22,7 +46,7 @@
 
 			<% unless current_user.past_due? || current_user.canceled? %>
 		
-		<center><h2>Update your settings</h2></center>
+
 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
 
@@ -42,71 +66,61 @@
 				</div>
 		  <% end %>
 
-		  <div class="field">
-				<p style="margin: 2em 0 0;"><strong>Your email</strong> <span style="font-size: 16px;"><em> - This is where we send your leads.</em></span></p>
 
-				<%= f.email_field :email, autofocus: true %>
-		  </div>
-
-		  <div class="upload-photo-wrap" style="display: table; width: 100%;">
-
-
-			<div class="upload-photo">
-				<h3>Your picture</h3>
-				<p class="required">(Optional) but we do like seeing fresh faces</p>
-			</div>
-
-			<div class="preview-photo">
-				<div id="target">
-					<%= image_tag current_user.photo.url, :style => "height: 60px; width: 60px; border-radius: 60px; margin:0 .5em 0 0; vertical-align: middle;" %>
-				</div>
-				<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
-			</div>
-		  </div>
+			<h3 class="form-header">Your name</h3>
+			<%= f.text_field :name, autofocus: true %>
 
 		  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 				<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
 		  <% end %>
 
-		  <% if current_user.can_see_leads? %>
-		  		<%= render 'categories' %>
-		  <% end %>
-
-		  <div class="field">
-				<p style="margin: 2em 0 0;"><strong>Your name</strong></p>
-
-				<%= f.text_field :name %>
-		  </div>
-
-
-		  <div class="field">
-				<p style="margin: 2em 0 0;"><strong>New password</strong></p>
-
-				<%= f.password_field :password, autocomplete: "off", placeholder: "Leave blank to keep current password" %>
-
-				<p><strong>Confirm new password</strong></p>
-				
-				<%= f.password_field :password_confirmation, autocomplete: "off" %>
-		  </div>
-
-		  <div class="field">
-				<hr>
+			<h3 class="form-header">Your email</h3>
+			<%= f.email_field :email %>
 			
-				<p style="margin: 2em 0 0;"><strong>Save any changes above</strong></p>
 
-				<%= f.password_field :current_password, autocomplete: "off", placeholder: "Enter current password" %>
+
+
+			<script>
+			$(document).ready(function(){
+			  $('textarea').autosize();
+			});
+			</script>
+
+			<h3 class="form-header">Who are you, and what do you do?</h3>
+			<%= f.text_area :name %>
+			
+			
+		  <div class="upload-photo-wrap" style="display: table; width: 100%;">
+				<div class="upload-photo">
+					<h3 class="form-header">Your picture</h3>
+				
+				</div>
+
+				<div class="preview-photo">
+					<div id="target">
+						<%= image_tag current_user.photo.url, :style => "height: 60px; width: 60px; border-radius: 60px; margin:0 .5em 0 0; vertical-align: middle;" %>
+					</div>
+			
+					<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
+				</div>
 		  </div>
 
+			
+			<h3 class="form-header">New password</h3>
+			<%= f.password_field :password, autocomplete: "off", placeholder: "Leave blank to keep current password" %>
 
-		  <div class="actions">
-			<%= f.submit "Update", id: 'form-submit', :class => "buy", :style => "margin-left: 0;" %>
+			<h3 class="form-header">Confirm new password</h3>
+			<%= f.password_field :password_confirmation, autocomplete: "off" %>
+			
+
+			<%= f.submit "Save your profile", id: 'form-submit', :style => "margin: 1em 0;" %>
 		  </div>
 		<% end %>
 
 
-		<div class="content" style="width: 100%; margin: 3em auto 1em; padding: 1em 2em .25em; background-color: #f7f7f7; border-radius: .5em; box-sizing: border-box;">
+		<div class="wrap800" style="max-width: 400px; width: 100%; margin: 3em auto 1em; padding: 1em 2em .25em; background-color: #f7f7f7; border-radius: .5em; box-sizing: border-box;">
 			
-			<h2 style="margin: 0;">Billing</h2>
+			<h2 style="margin: 0;">Pro Billing</h2>
 
 			<% unless resource.canceling? %>
 				<p><strong>You're currently paying $<%= resource.subscription.plan.price %></strong> <%= resource.subscription.plan.interval_text %></strong></p>
@@ -134,4 +148,5 @@
 				<% end %>
 			</div>
 		<% end %>
+	</section>
 	</div>

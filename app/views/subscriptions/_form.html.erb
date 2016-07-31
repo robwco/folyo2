@@ -1,4 +1,4 @@
-<div class="new-account-form-wrap" style="margin: 4em 0 0 auto; ">
+
 	<script>
 	$(function() {
 	  $('#pictureInput').on('change', function(event) {
@@ -34,19 +34,18 @@
 		<% end %>
 
 
-		<h3>Your name</h3>
-		<p class="required">You know, that thing everyone calls you</p>
+		<h3 class="form-header">Your name</h3>
 		<%= f.text_field :name, placeholder: 'Name'	%>
 
-		<h3>Your work email</h3>
+		<h3 class="form-header">Your work email</h3>
 		<p class="required">Won't be shown publicly</p>
 		<%= f.email_field :email, placeholder: "Email" %>
 
+
+<!--
 		<div class="upload-photo-wrap" style="display: table; width: 100%;">
-
-
 			<div class="upload-photo">
-				<h3>Your picture</h3>
+				<h3 class="form-header">Your picture</h3>
 				<p class="required">(Optional) but we do like seeing fresh faces</p>
 			</div>
 
@@ -54,11 +53,11 @@
 				<div id="target"></div>
 				<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
 			</div>
-		</div>
+		</div>-->
 
 
 
-		<h3>Create a password</h3>
+		<h3 class="form-header">Create a password</h3>
 		<p class="required">Must have at least 8 characters</p>
 			<p style="margin:0;">
 				<% if @validatable %>
@@ -68,10 +67,6 @@
 
 			<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %><br>
 
-		<div class="opt-in">
-			<label><%= f.check_box :project_alerts, checked: true %> I want to see new projects when they're posted. </label>
-		</div>
-
 		<div style="margin: 1em 0;">
 			<a href="#">
 				<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
@@ -79,11 +74,9 @@
 		</div>
 
 
-		<p>Have an account? <a href="/users/sign_in">Log in</a></p>
+		<p style="font-size: 14px;">Already have an account? <a href="/users/sign_in">Log in</a></p>
 
 		<%= hidden_field_tag "plan", @plan ? @plan.id : 2 %>
 	<% end %>
 	
-</div>
-
 

@@ -5,144 +5,119 @@ $(document).ready(function(){
 </script>
 
 <%= form_for(@project) do |f| %>
+	
+<h3 class="action-header" style="margin:  1em 0;">First, some overall stuff:</h3>
 
-	<h3>Project Type</h3>
-	<p>Make it easy for freelancers to find your project when browsing our website by picking the best fit below.</p>
+<div style="width: 770px; margin: 0 auto;">
+
+<h3 class="form-header">Summary</h3>
+
+	<div style="margin: .5em auto 1em;">
+		<%= f.text_area :title, data: { max_characters: 1250 }, placeholder: "We're looking to redesign our website, and we need a freelancer to help with mockups and delivery." %>
+		
+		<div style="font-size: 15px; width: 255px; float:right;">
+			1-2 sentences about the project itself. This will appear on the full listing. Focus on outcomes, not exactly what's needed!
+		</div>
+	</div>
+
+	<h3 class="form-header">Long description</h3>
+
+		<div style="margin: .5em auto 1em;">
+			<%= f.text_area :goals, placeholder: "Four score...", :style => "min-height: 200px;" %>
+
+			<div style="font-size: 15px; width: 255px; float:right;">
+				This is where you go into as much detail as possible about what you need. Write as much as you want – the longer, the better.
+			</div>
+		</div>
+	</div>
+		
+
+<h3 class="action-header" style="margin:  1em 0;">Then, the details:</h3>
+
+
+<div style="width: 770px; margin: 0 auto;">
+<h3 class="form-header">What does a home run look like for this project?</h3>
+
+	<div style="margin: .5em auto 1em;">
+		<%= f.text_area :goals, placeholder: "Doubled revenue, more customers, more page views, a boost to our mailing list, etc..." %>
+
+		<div style="font-size: 15px; width: 255px; float:right;">
+			Keep this one brief. Freelancers love knowing what your expectations are going into the project.
+		</div>
+	</div>
+
+
+	<h3 class="form-header">What's your budget for this project?</h3>
+
+		<div style="margin: .5em auto 1em;">
+			USD $ <%= f.text_field :budget, placeholder: "500", :style => "width: 300px;" %>
+			
+
+			<div style="font-size: 15px; width: 400px; float:right; margin-top: -.25em;">
+				<strong>Budgets must be above $500.</strong> Folyo is only for paid work. You need to pay your freelancer for the work.
+			</div>
+		</div>	
+
+	<h3 class="form-header">Skills needed</h3>
+
 		<div class="project-brief-category-choice-option">
-			<fieldset class="half-left">
-				<p><strong>The project involves:</strong><br>
-					<span class="required">(select all that apply)</span>
-				</p>
-				
+			<fieldset class="half-left">				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Web software & website
+					<input type="checkbox"> Front-end (HTML/CSS)
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Redesign of existing site or app
+					<input type="checkbox"> Graphic design/mockups
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Mobile or tablet app
+					<input type="checkbox"> Front-end development (JS)
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Site & Branding strategy
+					<input type="checkbox"> UX/UI/Product development
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Content strategy
+					<input type="checkbox"> Illustration
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Optimization
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Other
+					<%= f.text_field :budget, placeholder: "Other skills...", :style => "width: 200px;" %>
 				</div>
 			</fieldset>
 			
-			<fieldset class="half-right">
-				<p><strong>What are you planning?</strong><br>
-					<span class="required">(select all that apply)</span>
-				</p>
-				
+			<fieldset class="half-right">				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> We need to launch a website
+					<input type="checkbox"> PHP
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> We need to redesign a website
+					<input type="checkbox"> Ruby
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> We need to rethink a website
+					<input type="checkbox"> Rails
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> We need to build a product
+					<input type="checkbox"> Python
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> We need to rethink a product
+					<input type="checkbox"> .NET
 				</div>
 				
 				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> We need strategic help
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> We don't know what we need. Let's talk!
+					<input type="checkbox"> Mobile (iOS / Android)
 				</div>
 			</fieldset>
 		</div>
+</div>
 		
 
-	<section class="project-brief-question-wrap">
-		<h3 class="project-brief-question">What kind of help do you need?</h3>
-		<p>
-			Example: "We need a designer with mobile experience that can do branding and interface design."
-		</p>
-	</section>
-		
-	<div class="textarea-wrap">
-		<%= f.text_area :title, :placeholder => "We need..." %>
-	</div>
-
-	<section class="project-brief-question-wrap">
-		<h3 class="project-brief-question">What are you trying to accomplish?</h3>
-		
-		<p style="margin: 0 0 .5em;">You may want to include things like:</p> 
-		<ul style="margin: 0;">
-			<li>What problem will you have solved?</li>
-			<li>What will you be able to do?</li> 
-			<li>How will you measure success?</li>
-		</ul>
-		<p style="margin-bottom: 2em;">Example: "We've noticed a lot of people are using our site from their mobile phones but not buying our product, so we've decided to build a mobile app to convert more of this audience into customers. If we can convert 5% more mobile visitors into customers, we'll see a meaningful increase in revenue that we can invest in marketing the company."</p>
-	</section>
-				
-	<div class="textarea-wrap">
-		<%= f.text_area :goals, :placeholder => "We want to...", class: "answer no_border" %>
-	</div>
-
-	<section class="project-brief-question-wrap">
-		<h3 class="project-brief-question">What does success look like for this project?</h3>
-		
-		
-		<p style="margin: 0 0 .5em;">You may want to include things like:</p> 
-		<ul style="margin: 0;">
-			<li>How will you know whether or not a project is successful?</li>
-			<li>Why is this how you'll measure success?</li>
-		</ul>
-		
-		<p>Example: "If we're able to overhaul the system and solve these problems, it would be a 20% increase in conversions. A 20% increase would bring an additional 10 customers a month. The lifetime value of a customer for us is $2,000."</p>
-	</section>
-	
-	<div class="textarea-wrap">
-		<%= f.text_area :examples, :placeholder => "If we achieve our goals..."  %>
-	</div>
-	
-	<section class="project-brief-question-wrap">
-		<h3 class="project-brief-question">Why are you moving forward with this project now?</h3>
-		
-		<p style="margin: 0 0 .5em;">You may want to include things like:</p> 
-		<ul style="margin: 0;">
-			<li>Is this a new problem or an old one?</li>
-			<li>Why didn't you do this project six months ago?</li> 
-			<li>How has the problem changed and evolved over time?</li>
-		</ul>
-		
-		<p>Example: "We want to launch our betting app in 3 months because that's the start of fantasy football season. Last year at this time, we saw a huge spike in traffic and new users (12%+)."</p>
-	</section>
-	
-	<div class="textarea-wrap">
-		<%= f.text_area :deadline,  :placeholder => "We're moving forward now because..." %>
-	</div>
-
-
-	<div style="text-align:center;">
-		<%= f.submit "All done? Preview Your Project" %>
+	<div style="text-align:center; margin: 0 0 5em;">
+		<%= f.submit "Create your project" %>
 		
 		<p>You'll still be able to change your answers.</p>
 	</div>

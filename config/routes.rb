@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	get "tour", on: :collection
 	get "active", on: :collection
 	get "yours", on: :collection
+	get "inbox", on: :collection
 	get "publish", on: :collection
 	get "preview", on: :member
 	get "payment", on: :member

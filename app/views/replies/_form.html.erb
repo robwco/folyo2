@@ -6,18 +6,45 @@ $(document).ready(function(){
 
 
 
+
 <div style="padding: 0 0 5em 0;">
 <%= form_for([@project, @reply]) do |f| %>
-	<div class="textarea-wrap" style="margin: 0 auto 2em;">
-		<%= f.text_area :message, :placeholder => "Write your message here...", data: { max_characters: 1250 } %>
+
+
+<h3 class="form-header">Who are you, and what do you do?</h3>
+	<div style="margin: .5em auto 1em;">
+		<%= f.text_area :message, :value => "Hello! My name is Tuesday Bassen. I'm an illustrator and designer from NYC. I've previously worked for CB2 & run a store in the Lower East Side.", data: { max_characters: 1250 } %>
 		
-		<span class="counter" style="font-size: 12px; color: #e15980; text-align: right; display: block; width: 100%:">1250 characters left</span>
+		<div style="font-size: 17px; width: 275px; float:right;">
+			This is your normal bio, but you can edit it just for this reply if you want.
+		</div>
 	</div>
-	
+
+
+
+	<h3 class="form-header">Why would you be a good fit for this project?</h3>
+		<div style="margin: .5em auto 1em;">
+			<%= f.text_area :message, data: { max_characters: 1250 } %>
+			
+			<div style="font-size: 17px; width: 275px; float:right;">
+				This is where you go into detail about what you can do.
+			</div>
+		</div>
+		
+
+	<h3 class="form-header">What next steps should the client take?</h3>
+		<div style="margin: .5em auto 1em;">
+			<%= f.text_area :message, data: { max_characters: 1250 } %>
+			
+			<div style="font-size: 17px; width: 275px; float:right;">
+				What do you need from a client in order to kick off? What's next?
+			</div>
+		</div>
+		
 	<p style="margin: 0 0 1em; color: #666; display: inline-block;">
 		<small>
 			<a href="http://emailsthatwin.com" style="color: #666;">
-		How to write a client-winning message</a>
+				How to write a client-winning message</a>
 		</small>
 	</p>
 	
@@ -26,8 +53,8 @@ $(document).ready(function(){
 		<%= render "replies/portfolio_upload_form", f: f %>
 	<% end %>
 
-	<div style="margin:0; display: table; float: right;width: 200px; text-align:center; line-height: 1;">
-		<%= f.submit 'Send message', class: "button", :style => "margin: .25em 0;" %>
+	<div style="margin:0; display: table; line-height: 1;">
+		<%= f.submit 'Send your reply', class: "button", :style => "margin: .25em 0;" %>
 	</div>
 <% end %>
 </div>

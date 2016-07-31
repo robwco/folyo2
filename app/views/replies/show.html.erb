@@ -5,32 +5,30 @@ $(document).ready(function(){
 
 </script>
 
-<div class="wrap800" style="margin: 0 auto; padding: 1em 0 5em;">
-	<h2><%= image_tag @reply.user.photo.url, :style => "height: 60px; width: 60px; border-radius: 60px; margin:0 .5em 0 0; vertical-align: middle;" %> <%= @reply.user.name %> <span style="font-weight: normal;">wrote this on <%= @reply.created_at.strftime("%B %e") %></span></h2>
+<div class="wrap800" style="width:600px; margin: 0 auto; padding: 0 0 5em;">
+	<div style="display: table; width: 100%;">
+		<%= link_to 'Archive', root_path, :class => "button", :style => "font-size: 13px; font-weight: normal; background: #eee; color: #444 !important; float: right; vertical-align: middle; margin: 1em auto 0;padding: 5px 10px 6px;"  %>
+	</div>	
 	
-	<div style="box-sizing: border-box;  margin: 0 auto; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
-		<%= render "replies/reply_message", allow_edit: false %>
+	<h3><%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #dee5e9; vertical-align: 1px; margin-right: .5em; margin-left: -.25em;"></i>'.html_safe, reply_path %> <%= image_tag @reply.user.photo.url, :style => "height: 50px; width: 50px; border-radius: 50px; margin:0 .5em 0 0; vertical-align: middle; background-color: #f9f9f9;" %> <%= @reply.user.name %> <span style="font-weight: normal;">wrote this on <%= @reply.created_at.strftime("%B %e") %></span></h3>
+	
+	<div style="box-sizing: border-box;  margin: 0 auto;">
 		
 		<%= render "replies/portfolio_message" %>
+		
+		<%= render "replies/reply_message", allow_edit: false %>
+
 	</div>
 	
 	<% if current_user.can_see_messages?(@reply) %>
 		<%= render "messages/listing", extra_padding: false, reply: @reply %>
 	<% end %>
 
-	<% if current_user.can_send_message?(@reply) %>
-		<p style="text-align:center;">
-			<a href="#" onclick="toggle_visibility('client-reply-modal');" class="button">Write back</a> 
-			<%= link_to 'Dismiss reply', root_path, :class => "button", :style => "background: #eee; color: #444 !important;"  %>
-		</p>
-	
-		<div id="client-reply-modal">
-			<div class="wrap800">
-				<a href="#" onclick="toggle_visibility('client-reply-modal');">Back</a> 
-				
-				<%= render "messages/client_send", name: message_recipient(@reply) %>	
-			</div>
+	<% if current_user.can_send_message?(@reply) %>	
+		<div class="wrap800" style="margin: 0; width: 100%;">				
+			<%= render "messages/client_send", name: message_recipient(@reply) %>	
 		</div>
+
 	<% end %>
 </div>
 

@@ -29,6 +29,9 @@ class ProjectsController < ApplicationController
   def publish
   end
   
+  def inbox
+  end
+  
   
   def index
     @projects = Project.all
