@@ -4,7 +4,7 @@
 
 			
 <h3 class="action-header" style="margin: 0 auto 1em;">
-	Your inbox
+	Your inbox (new and unread messages)
 </h3>
 
 
@@ -113,6 +113,12 @@
 	vertical-align: middle;
 }
 
+.project-list-wrap .sub-action-heading {
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #888;
+}
+
 </style>
 
 
@@ -120,6 +126,7 @@
 <% if Message.sent_to(current_user).any? %>
 
 	<div class="project-list-wrap" style="padding: 0; margin: 0 auto; width:810px;">
+		
 
 			<% Message.sent_to(current_user).limit(10).each do |message| %>
 				<%= render "messages/standalone_message", message: message %>

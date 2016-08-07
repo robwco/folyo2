@@ -1,0 +1,61 @@
+<section class="top-menu">
+		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
+		
+		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
+</section>
+
+
+<div style="width: 700px; margin: 0 auto;">
+	<div style="margin: 2.5em auto 2em; width: 600px; box-sizing: border-box;">
+		<h1 style="margin: 1em 0 .5em; text-align: center;">Welcome to Folyo, <%= first_name current_user.name %>!</h1>
+		<p style="margin: 0;">We're thrilled to have you! First off, we want you to answer a few questions about why you're here today. Let's start with the easiest:</p>
+	</div>
+	
+		<div style="text-align:center; height: 200px;">
+			<div class="account-type-option">
+				<h2>Want work?</h2>
+			<%= image_tag('default-avatar.png' ) %>
+				<%= link_to "I'm a freelancer", projects_path, :class => "button"  %>
+			</div>
+			
+			<div style="height: 200px; display: table; width: auto; padding: 3em 0 0;margin: 0 30px; display: inline-block; vertical-align: middle; text-align: left;">or</div>
+		
+			<div class="account-type-option">
+				<h2>Got a project?</h2>
+				<%= image_tag('company.png' ) %>
+				<%= link_to "I'm a client", projects_path, :class => "button"  %>
+			</div>
+		</div>
+	
+			<p style="Text-align:center; margin: 1em 0 2em; ">You can change this at any time.</p>
+		</section>
+</div>
+
+
+<style>
+.account-type-option {
+	height: 200px;
+	width:300px;
+	display:inline-block;
+	box-sizing: border-box;
+	text-align: center;
+	padding: 1em 1em;
+	border-radius: 10px;
+	margin:  0;
+	background-color: #f9f9f9;
+	border: 1px solid #dee5e9;
+}
+
+.account-type-option h2 {
+	margin: .25em 0 0;
+}
+
+.account-type-option img {
+	margin: 0 auto .5em;
+	width: 50px;
+	display: block;
+}
+
+.account-type
+
+</style>
