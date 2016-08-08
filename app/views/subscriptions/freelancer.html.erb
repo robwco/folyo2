@@ -1,0 +1,115 @@
+<script>
+$(document).ready(function(){
+  $('textarea').autosize();
+});
+</script>
+
+<section class="top-menu">
+		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
+		
+		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
+</section>
+
+<div class="reading wrap" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 0 2em;">
+	<h1 style="margin: 1em 0; text-align:center;">Tell us a little bit about yourself...</h1>	
+
+	<%= form_for :user, url: subscriptions_path, id: 'new_user', class: 'form-focus' do |f| %>	
+	
+	
+		<h3 class="action-header" style="width: 725px; margin: 0 auto 1em;">Your freelance info</h3>
+	
+	
+	<div class="form-question-horizontal">
+		<div class="label-left" style="width:250px; margin:  0 auto 0 5.25em;">
+			<p>Who are you, and what<br> do you do?</p>
+		</div>
+
+		<div class="input-right">
+			<%= f.text_area :deadline, :style => "max-width: 400px;", :placeholder => "I'm..." %>
+			
+			<p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Include what you do for your clients and a little about yourself.</p>
+		</div>
+	</div>
+	
+	
+		<div class="form-question-horizontal">
+			<div class="label-left">
+				<p>Profile picture</p>
+			</div>
+	
+			<div class="input-right">
+	 			<%= f.file_field :logo, :id => "pictureInput", :style => "width: 200px; margin: 1.5em 0 0;"	%>
+				<p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Your picture will appear next to your replies. Square images work best. 190 pixels wide is optimal.</p>
+			</div>
+		</div>
+		
+
+		<div class="form-question-horizontal">
+			<div class="label-left">
+				<p>Location</p>
+			</div>
+
+			<div class="input-right">
+				<%= f.text_field :website, placeholder: 'Chicago, IL, USA'	%>
+			</div>
+		</div>
+
+	
+	<div class="form-question-horizontal">
+		<div class="label-left" style="width:250px; margin:  0 auto 0 5.25em;">
+			<p>Your freelance skills</p>
+		</div>
+
+		<div class="input-right">
+			
+			<div class="skills">
+				<a href="#" class="badge">Rails <i class="fa fa-times-circle" aria-hidden="true"></i></a> 
+				<a href="#" class="badge">PHP <i class="fa fa-times-circle" aria-hidden="true"></i></a>
+				<a href="#" class="badge">HTML/CSS <i class="fa fa-times-circle" aria-hidden="true"></i></a>
+			</div>
+			
+			<p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Get emailed when a project is posted in a category you follow.</p>
+			
+			
+			<div class="deactive-skills" style="font-size: 14px;"><br>
+				<span style="font-size: 11px; color: #7b8d99; text-transform: uppercase; font-weight: 600;">Not following:</span><br>
+			
+				Graphic design/mockups <a href="#" class="follow">Follow</a><br>
+				Front-end development (JS) <a href="#" class="follow">Follow</a><br>
+				UX/UI/Product development <a href="#" class="follow">Follow</a><br>
+				Illustration <a href="#" class="follow">Follow</a><br>
+				Ruby <a href="#" class="follow">Follow</a><br>
+				Python <a href="#" class="follow">Follow</a><br>
+				.NET <a href="#" class="follow">Follow</a><br>
+				Mobile (iOS / Android) <a href="#" class="follow">Follow</a><br>
+			</div>
+			
+			<style>
+			.deactive-skills a.follow {
+				font-size: 11px;
+				text-transform: uppercase;
+				text-decoration: none;
+				border:1px solid #4ea0c4;
+				border-radius: 3px;
+				padding: 0 .25em;
+				margin: 0 .15em;
+				line-height: 1;
+				
+			}
+			</style>
+			
+		</div>
+	</div>
+
+
+	
+		<div style="text-align:center; display:table; width: 100%; margin: 2em 0;">
+			<%= link_to 'Save and continue', new_project_path, :class => "button" %>
+			
+			
+			<p>You'll still be able to change your answers.</p>
+		</div>
+
+		</div>
+	<% end %>
+</div>

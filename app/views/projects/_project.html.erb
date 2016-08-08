@@ -10,11 +10,9 @@
 <div class="wrap800 project-listing" style="border-top: 0; max-width: 600px; padding: 0; margin: 0em auto 0;">
 	<p><%= @project.goals %></p>
 
-	<p><%= @project.examples %></p>
-
-	<p><%= @project.deadline %></p>
-
 	<p><%= @project.deliverables %></p>
+	
+	<p><strong>We think this project should cost somewhere around $<%= @project.budget %>.</strong></p>
 	
 	<div class="skills" style="margin:0 0 2em;">
 		Needed: <a class="badge" href="#">HTML/CSS/JS</a> <a class="badge" href="3">UX/UI</a>
