@@ -23,6 +23,18 @@ class SubscriptionsController < ApplicationController
 		render 'worker_mailer/daily_leads', layout: false
 		
 	end
+	
+	def new_account_type
+	  
+	end
+	
+	def new_finish_reply
+	
+	end
+	
+	def freelancer
+	  
+	end
 
 	def send_email
 		WorkerMailer.delay.daily_leads(current_user)

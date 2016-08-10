@@ -49,6 +49,9 @@ Rails.application.routes.draw do
   # New account differences 
   get "/pro-signup" => "subscriptions#new_pro"
   get "/pro-leads-signup" => "subscriptions#new_pro_leads"
+  get "/account-type" => "subscriptions#new_account_type"
+  get "/finish-reply" => "subscriptions#new_finish_reply"
+  get "/freelancer-details" => "subscriptions#freelancer"
 
   
   # Onboarding

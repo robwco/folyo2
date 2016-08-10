@@ -1,12 +1,50 @@
-<div class="comfortable wrap portfolio-message" style="font-size: 90%; border: 2px solid #ccc; padding: 1em 2em 2em; margin: 0em auto 4em; box-sizing: border-box; display: table;">
+<div class="comfortable wrap portfolio-message" style="font-size: 90%; border: 3px solid #ccc; padding: 1em 2em 2em; margin: 0em auto 4em; box-sizing: border-box; display: table; border-radius: 0px;">
 	<section>
-		<h2 class="uppercase" style="margin: 0; border: 0; color: #222; padding: 0;"><span style="color: #fff; background-color: #54b61c; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 4px;">PRO</span> Help your message stand out</h2>
+		<h2 class="uppercase" style="text-align: center; margin: 0; border: 0; color: #222; padding: 0;"><span style="color: #fff; background-color: #54b61c; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 4px;">PRO</span> Help your message stand out above the rest!</h2>
+		
+		<hr>
 
-		<%= image_tag "portfolio2.png", align: "left", style: "margin: 1em 1.5em 1em 0; width: 150px;" %>
+		<div style="padding: 0em; display: table; height: 350px; width: 150px; float: left;">
+			<%= image_tag "portfolio2.png", align: "left", style: "margin: 3em 3em 1em 1em; width: 150px;" %>
+		</div>
 
-		<p style="margin: 2em 0;">Upgrade to pro for only $29/month and send your best portfolio piece with this message. Messages from pro accounts stand out above the rest! <a href="#" style="display: block; margin: .5em 0;"><strong> See what else you get with a PRO account</strong></a></p>
 
-		<a class="button" href="<%= url_for upgrade_plan_path %>">Upgrade to pro + add a portfolio piece to this message</a> <span style="margin:0 .5em">or</span> 
-		<%= link_to "No thanks, send my message", post_reply_path(@reply), method: :put %>
+
+		
+		
+		
+	  <div style="float: right; width: 500px;">
+	
+			<p style="margin: 1em 0;">Get a 70%+ increase in your chance of winning this project:</p>
+
+			<p style="margin: 0 0 .5em;"><strong>Sign up for PRO and:</strong></p>
+
+				<ul style="margin: 0; padding: 0 1em; display: table;">	
+					<li>Appear at the top of this client's inbox!</li>
+					<li>Attach a portfolio piece to your message!</li> 
+					<li>Get (600 characters) additional space to write!</li> 
+				</ul> 
+
+
+			<p>Upgrade to pro now and get all of these features on every project. Messages from pro accounts stand out above the rest!</p>
+	
+			
+			<div style="padding: 0 0 0em; text-align:center;">
+				<h1 style="text-align: center;">$39/month</h1>
+				
+				<%= render 'registrations/creditcard', :number_required => false  %>			
+			</div>
+			
+			<div style="line-height: 4; text-align:center;">
+				
+				<a class="button" href="<%= url_for upgrade_plan_path %>">Upgrade to pro + add your portfolio</a><br>
+				
+				
+				<span style="margin:0 .5em">or</span> 
+				<%= link_to "No thanks, send my message", post_reply_path(@reply), method: :put %>
+			</div>		
+		</div>
+	
+
   </section>
 </div>
