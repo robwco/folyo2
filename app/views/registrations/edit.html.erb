@@ -18,6 +18,25 @@ $(function() {
 	reader.readAsDataURL(image);
 	console.log(files);
   });
+
+  function toggleAccountType(selected_type) {
+    $('.account-type a').each(function() {
+      if ($(this).data('account-type') == selected_type) {
+        $(this).removeClass('inactive');
+        $(this).find('i').show();
+      } else {
+        $(this).addClass('inactive');
+        $(this).find('i').hide();
+      }
+    });
+    $('.account-type input[type=hidden]').val(selected_type);
+  } 
+
+  $('.account-type').on('click', 'a', function() {
+    if ($(this).is('.inactive')) {
+      toggleAccountType($(this).data('account-type'));
+    } 
+  });
 });
 </script>
 
@@ -50,23 +69,6 @@ $(function() {
 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
 
-		  <% if resource.errors.any? || (!resource.subscription.nil? && resource.subscription.errors.any?) %>
-				<div id="error_explanation">
-				  <h2><%= pluralize(resource.errors.count + resource.subscription.errors.count, "error") %> occurred:</h2>
-
-				  <ul>
-					<% resource.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-					<% end %>
-					
-					<% resource.subscription.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-					<% end %>
-				  </ul>
-				</div>
-		  <% end %>
-
-
 			<h3 class="form-header">Your name</h3>
 			<%= f.text_field :name, autofocus: true %>
 
@@ -90,9 +92,10 @@ $(function() {
         <h3 class="action-header" style="margin: 1em auto 0;">
           Why are you on Folyo?</h3>
 
-        <section class="sign-in" style="margin: 0 auto 2em; width: 350px; padding: 1em;">
-          <a href="#" class="button" style="margin-right: .5em;"><i class="fa fa-check" aria-hidden="true"></i> I'm a freelancer</a>
-          <a href="#" class="button" style="background-color: #eee; color: #222 !important;">I'm a client</a>
+        <section class="account-type sign-in" style="margin: 0 auto 2em; width: 350px; padding: 1em;">
+          <%= f.hidden_field :account_type %>
+          <a href="javascript:" class="button <%= 'inactive' if !f.object.freelancer? %>" data-account-type="freelancer" style="margin-right: .5em;"><i <%= 'style=display:none;' if !f.object.freelancer? %> class="fa fa-check" aria-hidden="true"></i> I'm a freelancer</a>
+          <a href="javascript:" class="button <%= 'inactive' if f.object.freelancer? %>" data-account-type="client"><i <%= 'style=display:none;' if f.object.freelancer? %> class="fa fa-check" aria-hidden="true"></i> I'm a client</a>
         
         </section>
       </div>

@@ -10,30 +10,29 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-	self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
 
-	if resource.update_with_password(account_update_params)
-		sign_in resource_name, resource, bypass: true
-		flash[:notice] = 'Your account was updated!'
-		respond_with resource, location: after_update_path_for(resource)
-	else
-		clean_up_passwords resource
-    @selected_categories = Category.find(@user.category_ids)
-		render 'edit'
-	end
+    if resource.update_without_password(account_update_params)
+      sign_in resource_name, resource, bypass: true
+      flash[:notice] = 'Your account was updated!'
+      respond_with resource, location: after_update_path_for(resource)
+    else
+      clean_up_passwords resource
+      @selected_categories = Category.find(@user.category_ids)
+      render 'edit'
+    end
   end
 
   private
+    def sign_up_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, {:category_ids => []})
+    end
 
-  def sign_up_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, {:category_ids => []})
-  end
+    def account_update_params
+      params.require(:user).permit(:name, :email, :biography, :photo, :location, :account_type, :password, :password_confirmation, {:category_ids => []})
+    end
 
-  def account_update_params
-    params.require(:user).permit(:name, :email, :photo, :password, :password_confirmation, :current_password, {:category_ids => []})
-  end
-
-  def set_selected_categories
-      @selected_categories = Category.find(@user.category_ids)
-  end
+    def set_selected_categories
+        @selected_categories = Category.find(@user.category_ids)
+    end
 end

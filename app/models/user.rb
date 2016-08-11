@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates :name, presence: { message: "can't be blank" }  
-  validates :biography, presence: { message: "can't be blank" }, if: :has_name?
+  validates :biography, presence: { message: "can't be blank" }, if: :freelancer_has_name?
 
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
   scope :with_favorites, -> { where("favorite_leads is not null") }
@@ -128,8 +128,8 @@ class User < ActiveRecord::Base
       (latest_reply + 1.week) < Time.now
     end
 
-    def has_name?
-      self.name.present?
+    def freelancer_has_name?
+      self.freelancer? && self.name.present?
     end
 
 end
