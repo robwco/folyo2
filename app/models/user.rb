@@ -2,58 +2,54 @@ class User < ActiveRecord::Base
   include AASM	
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :favorite_leads
-  has_many :favorites, through: :favorite_leads, source: :lead
-  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   aasm column: 'state' do
-	state :pending, initial: true
-	state :trialing
-	state :active
-	state :past_due
-	state :overdue_canceled
-	state :user_canceled
-	state :trial_canceled
+    state :pending, initial: true
+    state :trialing
+    state :active
+    state :past_due
+    state :overdue_canceled
+    state :user_canceled
+    state :trial_canceled
 
-	event :subscribe do
-		transitions from: :pending, to: :trialing, if: :plan_has_trial?
-		transitions from: :pending, to: :active, unless: :plan_has_trial?
-  	end
+    event :subscribe do
+      transitions from: :pending, to: :trialing, if: :plan_has_trial?
+      transitions from: :pending, to: :active, unless: :plan_has_trial?
+      end
 
-	event :overdue do
-		transitions from: :active, to: :past_due
-		transitions from: :trialing, to: :trial_canceled
-	end
+    event :overdue do
+      transitions from: :active, to: :past_due
+      transitions from: :trialing, to: :trial_canceled
+    end
 
-	event :pay do
-		transitions from: :trialing, to: :active
-		transitions from: :past_due, to: :active
-	end
+    event :pay do
+      transitions from: :trialing, to: :active
+      transitions from: :past_due, to: :active
+    end
 
-	event :reactivate do
-		transitions from: :overdue_canceled, to: :active
-		transitions from: :user_canceled, to: :active
-		transitions from: :trial_canceled, to: :active
-	end
+    event :reactivate do
+      transitions from: :overdue_canceled, to: :active
+      transitions from: :user_canceled, to: :active
+      transitions from: :trial_canceled, to: :active
+    end
 
-	event :cancel do
-		transitions from: :trialing, to: :trial_canceled
-		transitions from: :active, to: :user_canceled
-		transitions from: :past_due, to: :overdue_canceled
-	end
+    event :cancel do
+      transitions from: :trialing, to: :trial_canceled
+      transitions from: :active, to: :user_canceled
+      transitions from: :past_due, to: :overdue_canceled
+    end
   end
          
   has_one :subscription, dependent: :destroy
-  has_many :people
   has_and_belongs_to_many :categories, dependent: :destroy
-  has_and_belongs_to_many :milestone, dependent: :destroy
 
   has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates :name, presence: { message: "can't be blank" }  
+  validates :biography, presence: { message: "can't be blank" }, if: :has_name?
 
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
   scope :with_favorites, -> { where("favorite_leads is not null") }
@@ -85,6 +81,10 @@ class User < ActiveRecord::Base
   def update_account_type(account_type)
     self.account_type = account_type
     save
+  end
+
+  def freelancer?
+    self.account_type == "freelancer"
   end
 
   def billing_period_end
@@ -126,6 +126,10 @@ class User < ActiveRecord::Base
       latest_reply = Reply.replies_from(self).maximum(:published_at)
       return true if latest_reply.blank?
       (latest_reply + 1.week) < Time.now
+    end
+
+    def has_name?
+      self.name.present?
     end
 
 end

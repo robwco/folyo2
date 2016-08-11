@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :set_selected_categories, only: [:edit]
 
   def new
     redirect_to new_subscription_path
@@ -17,6 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
 		respond_with resource, location: after_update_path_for(resource)
 	else
 		clean_up_passwords resource
+    @selected_categories = Category.find(@user.category_ids)
 		render 'edit'
 	end
   end
@@ -29,5 +31,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     params.require(:user).permit(:name, :email, :photo, :password, :password_confirmation, :current_password, {:category_ids => []})
+  end
+
+  def set_selected_categories
+      @selected_categories = Category.find(@user.category_ids)
   end
 end

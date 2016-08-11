@@ -205,7 +205,7 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 .field_with_errors {
-	input {
+	input, textarea {
 		border: 1px solid #ff0000;
 	}
 }
@@ -576,7 +576,7 @@ width: 120px; margin: 2em auto .5em; display: block;
 	font-size: 10px;
 	padding: .25em .5em;
 	border-radius: 2px;
-	margin-right: .1em;
+	margin-right: .3em;
 	text-decoration: none;
 	text-transform: uppercase;
 	letter-spacing: .075em;

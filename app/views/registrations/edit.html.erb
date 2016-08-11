@@ -82,26 +82,26 @@ $(function() {
 
 			<h3 class="form-header">Confirm new password</h3>
 			<%= f.password_field :password_confirmation, autocomplete: "off" %>
-			
+
+      <%= render("registrations/freelancer_details", f: f) if resource.freelancer? %>
+
+      <div style="width: 450px; margin: 0 auto;">
+
+        <h3 class="action-header" style="margin: 1em auto 0;">
+          Why are you on Folyo?</h3>
+
+        <section class="sign-in" style="margin: 0 auto 2em; width: 350px; padding: 1em;">
+          <a href="#" class="button" style="margin-right: .5em;"><i class="fa fa-check" aria-hidden="true"></i> I'm a freelancer</a>
+          <a href="#" class="button" style="background-color: #eee; color: #222 !important;">I'm a client</a>
+        
+        </section>
+      </div>
+
 
 			<%= f.submit "Save your profile", id: 'form-submit', :style => "margin: 1em 0;" %>
 		  </div>
 		<% end %>
 		
-		
-		
-		<div style="width: 450px; margin: 0 auto;">
-
-		<h3 class="action-header" style="margin: 1em auto 0;">
-			Why are you on Folyo?</h3>
-
-	<section class="sign-in" style="margin: 0 auto 2em; width: 350px; padding: 1em;">
-			<a href="#" class="button" style="margin-right: .5em;"><i class="fa fa-check" aria-hidden="true"></i> I'm a freelancer</a>
-			<a href="#" class="button" style="background-color: #eee; color: #222 !important;">I'm a client</a>
-		
-		</section>
-</div>
-
 
 		<div class="wrap800" style="max-width: 400px; width: 100%; margin: 3em auto 1em; padding: 1em 2em .25em; background-color: #f7f7f7; border-radius: .5em; box-sizing: border-box;">
 			
@@ -112,11 +112,6 @@ $(function() {
 
 				<p style="font-size: 14px;">Your next payment is on <%= current_user.billing_period_end %>. <%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %> (ending: -<%= current_user.last4 %>)<br></p>
 
-				<p style="margin: 2em auto;">
-					<% unless resource.subscription.plan.yearly? || resource.subscription.plan.savings(Plan.annual.first) <= 0 %>
-						<%= link_to "Save $#{ resource.subscription.plan.savings(Plan.annual.first) } by switching to yearly billing", upgrade_plan_path, :class => "button" %>
-					<% end %>
-				</p>
 			<% end %>
 
 				<% if resource.canceling? %>

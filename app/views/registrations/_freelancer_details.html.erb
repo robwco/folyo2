@@ -1,0 +1,111 @@
+<style>
+  .deactive-skills a.follow {
+    font-size: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border:1px solid #4ea0c4;
+    border-radius: 3px;
+    padding: 0 .25em;
+    margin: 0 .15em;
+    line-height: 1;
+    
+  }
+</style>
+<script>
+  $(document).ready(function(){
+    $('textarea').autosize();
+
+    $(document).on('click', '.follow', function() {
+      var category = $(this).data('category');
+      var category_id = $(this).data('category-id');
+
+      var badge = $('<a href="javascript:" class="badge" data-category="'+category+'" data-category-id="'+category_id+'">' + category + ' <i class="fa fa-times-circle" aria-hidden="true"></i></a>')
+        .append($('<input type="hidden" name="user[category_ids][]" value="' + category_id + '" />'));
+
+      $('.skills').append(badge).append(" ");
+
+      $(this).parents("span").hide();
+    });
+
+    $(document).on('click', '.badge', function() {
+      var category = $(this).data('category');
+      var category_id = $(this).data('category-id');
+
+      var follow_link = $('<span>'+category+' <a href="javascript:" data-category="'+category+'" data-category-id="'+category_id+'" class="follow">Follow</a><br/></span>');
+
+      $('.deactive-skills').find('[data-category-id="'+category_id+'"]').parents('span').show();
+
+      $(this).remove();
+    });
+  });
+</script>
+
+<h3 class="action-header" style="width: 725px; margin: 0 auto 1em;">Your freelance info</h3>
+
+
+<div class="form-question-horizontal">
+  <div class="label-left" style="width:250px; margin:  0 auto 0 5.25em;">
+    <p>Who are you, and what<br> do you do?</p>
+  </div>
+
+  <div class="input-right">
+    <%= f.text_area :biography, :style => "max-width: 400px;", :placeholder => "I'm..." %>
+    
+    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Include what you do for your clients and a little about yourself.</p>
+  </div>
+</div>
+
+
+<div class="form-question-horizontal">
+  <div class="label-left">
+    <p>Profile picture</p>
+  </div>
+
+  <div class="input-right">
+    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px; margin: 1.5em 0 0;"	%>
+    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Your picture will appear next to your replies. Square images work best. 190 pixels wide is optimal.</p>
+  </div>
+</div>
+
+
+<div class="form-question-horizontal">
+  <div class="label-left">
+    <p>Location</p>
+  </div>
+
+  <div class="input-right">
+    <%= f.text_field :location, placeholder: 'Chicago, IL, USA'	%>
+  </div>
+</div>
+
+
+<div class="form-question-horizontal">
+  <div class="label-left" style="width:250px; margin:  0 auto 0 5.25em;">
+    <p>Your freelance skills</p>
+  </div>
+
+  <div class="input-right">
+    
+    <div class="skills">
+      <% @selected_categories.each do |category| %>
+        <a href="javascript:" class="badge" data-category="<%= category.name %>" data-category-id="<%= category.id %>">
+          <%= category.name %> <i class="fa fa-times-circle" aria-hidden="true"></i>
+          <input type="hidden" name="user[category_ids][]" value="<%= category.id %>" />
+        </a> 
+      <% end %>  
+    </div>
+    
+    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Get emailed when a project is posted in a category you follow.</p>
+    
+    
+    <div class="deactive-skills" style="font-size: 14px;"><br>
+      <span style="font-size: 11px; color: #7b8d99; text-transform: uppercase; font-weight: 600;">Not following:</span><br>
+    
+      <% Category.all.each do |category| %>
+        <span <%= 'style=display:none;' if @user.category_ids.include?(category.id) %>><%= category.name %> <a href="javascript:" data-category="<%= category.name %>" data-category-id="<%= category.id %>" class="follow">Follow</a><br/></span>
+      <% end %>
+    </div>
+    
+    
+  </div>
+</div>

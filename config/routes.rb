@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   put "/update-account-type/:type" => "subscriptions#update_account_type", as: :update_account_type
   get "/finish-reply" => "subscriptions#new_finish_reply"
   get "/freelancer-details" => "subscriptions#freelancer", as: :freelancer_details
+  put "/freelancer-details" => "subscriptions#update_freelancer", as: :update_freelancer_details
 
   
   # Onboarding

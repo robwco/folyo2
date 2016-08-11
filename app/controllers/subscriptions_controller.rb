@@ -17,14 +17,25 @@ class SubscriptionsController < ApplicationController
     end
 	end
 	
+	def freelancer
+    @user = current_user
+    @selected_categories = Category.find(current_user.category_ids)
+	end
+
+  def update_freelancer
+    @user = current_user
+    if @user.update(details_params)
+      redirect_to home_projects_path
+    else
+      @selected_categories = Category.find(@user.category_ids)
+      render :freelancer
+    end
+  end
+
 #	def new_finish_reply
 #	
 #	end
 #	
-#	def freelancer
-#	  
-#	end
-#
 #  def welcome 
 #  	@user = current_user
 #		@leads = Lead.all
@@ -196,7 +207,11 @@ class SubscriptionsController < ApplicationController
   private
 
 	  def sign_up_params
-      params.require(:user).permit(:name, :email, :photo, :password, :password_confirmation, {:category_ids => []})
+      params.require(:user).permit(:name, :email, :password)
+	  end
+
+	  def details_params
+      params.require(:user).permit(:biography, :photo, :location, {:category_ids => []})
 	  end
 
 	  def update_categories_params
