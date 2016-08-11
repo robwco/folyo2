@@ -32,6 +32,18 @@ $(document).ready(function(){
 	
 	
 		<h3 class="action-header" style="width: 725px; margin: 0 auto 1em;">Ready? Now enter your company info</h3>
+		
+		<div class="form-question-horizontal">
+			<div class="label-left">
+				<p>Profile picture</p>
+			</div>
+	
+			<div class="input-right">
+	 			<%= f.file_field :logo, :id => "pictureInput", :style => "width: 200px; margin: 1.5em 0 0;"	%>
+				<p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Your picture will appear next to your project. Square images work best. 190 pixels wide is optimal.</p>
+			</div>
+		</div>
+		
 	
 		<div class="form-question-horizontal">
 			<div class="label-left">
