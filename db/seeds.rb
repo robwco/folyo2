@@ -21,3 +21,9 @@ if Category.all.count == 0
 		{name: 'Mobile (iOS / Android)', description: ''}
   ])
 end
+
+if Plan.count == 0
+  Plan.create(
+    { name: "Folyo", stripe_id: "folyo-free", amount: 0, published: true }
+  )
+end
