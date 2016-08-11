@@ -9,22 +9,22 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
-	get "home", on: :collection
-	get "company", on: :collection
-	get "thank_you", on: :collection
-	get "tour", on: :collection
-	get "active", on: :collection
-	get "yours", on: :collection
-	get "inbox", on: :collection
-	get "publish", on: :collection
-	get "preview", on: :member
-	get "payment", on: :member
-	put "select_payment", on: :member
-	get "collect_payment", on: :member
-	put "charge_payment", on: :member
+    get "home", on: :collection
+    get "company", on: :collection
+    get "thank_you", on: :collection
+    get "tour", on: :collection
+    get "active", on: :collection
+    get "yours", on: :collection
+    get "inbox", on: :collection
+    get "publish", on: :collection
+    get "preview", on: :member
+    get "payment", on: :member
+    put "select_payment", on: :member
+    get "collect_payment", on: :member
+    put "charge_payment", on: :member
 
-	resources :replies
-	resources :wizard, controller: :project_steps
+    resources :replies
+    resources :wizard, controller: :project_steps
   end
 
   resources :sales
@@ -49,9 +49,10 @@ Rails.application.routes.draw do
   # New account differences 
   get "/pro-signup" => "subscriptions#new_pro"
   get "/pro-leads-signup" => "subscriptions#new_pro_leads"
-  get "/account-type" => "subscriptions#new_account_type"
+  get "/account-type" => "subscriptions#new_account_type", as: :account_type
+  put "/update-account-type/:type" => "subscriptions#update_account_type", as: :update_account_type
   get "/finish-reply" => "subscriptions#new_finish_reply"
-  get "/freelancer-details" => "subscriptions#freelancer"
+  get "/freelancer-details" => "subscriptions#freelancer", as: :freelancer_details
 
   
   # Onboarding

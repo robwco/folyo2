@@ -204,6 +204,12 @@ input[type=text], input[type=email], input[type=password] {
 	box-sizing: border-box;
 }
 
+.field_with_errors {
+	input {
+		border: 1px solid #ff0000;
+	}
+}
+
 @media only screen and (max-width: 800px) {
 	input[type=text], input[type=email], input[type=password] {
 		font-size: 12px;

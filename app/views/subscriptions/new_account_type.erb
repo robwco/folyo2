@@ -15,7 +15,7 @@
 			<div class="account-type-option">
 				<h2>Want work?</h2>
 			<%= image_tag('default-avatar.png' ) %>
-				<%= link_to "I'm a freelancer", projects_path, :class => "button"  %>
+				<%= link_to "I'm a freelancer", update_account_type_path(type: :freelancer), method: :put, :class => "button"  %>
 			</div>
 			
 			<div style="height: 200px; display: table; width: auto; padding: 3em 0 0;margin: 0 30px; display: inline-block; vertical-align: middle; text-align: left;">or</div>

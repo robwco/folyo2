@@ -53,6 +53,8 @@ class User < ActiveRecord::Base
   has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  validates :name, presence: { message: "can't be blank" }  
+
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
   scope :with_favorites, -> { where("favorite_leads is not null") }
   scope :following_ruby, -> { where("category_id=1 is not null") }
@@ -80,13 +82,18 @@ class User < ActiveRecord::Base
 	  save!
   end
 
+  def update_account_type(account_type)
+    self.account_type = account_type
+    save
+  end
+
   def billing_period_end
 	  return "" if subscription.current_period_end.nil?
 	  subscription.current_period_end.to_date.to_formatted_s(:long)
   end
 
   def can_reply_to_project?(project)
-	project.allow_replies_from?(self) && (self.subscription.allow_replies_to_projects? || project.allow_portfolio_replies? || enough_time_since_last_reply?)
+    project.allow_replies_from?(self) && (self.subscription.allow_replies_to_projects? || project.allow_portfolio_replies? || enough_time_since_last_reply?)
   end
 
   def can_reply_with_portfolio?(project)
@@ -94,31 +101,31 @@ class User < ActiveRecord::Base
   end
 
   def can_see_leads?
-	self.subscription.allow_leads?
+    self.subscription.allow_leads?
   end
 
   def can_see_project_replies?(project)
-	project.user == self
+    project.user == self
   end
 
   def can_see_messages?(reply)
-	return false if reply.blank?
-	reply.project.user == self || reply.user == self
+    return false if reply.blank?
+    reply.project.user == self || reply.user == self
   end
 
   def can_send_message?(reply)
-	reply.project.user == self || (reply.user == self && reply.messages.count > 0)
+    reply.project.user == self || (reply.user == self && reply.messages.count > 0)
   end
 
   private
   	def plan_has_trial?
-		subscription.plan.has_trial?
-	end
+      subscription.plan.has_trial?
+    end
 
-	def enough_time_since_last_reply?
-        latest_reply = Reply.replies_from(self).maximum(:published_at)
-        return true if latest_reply.blank?
-        (latest_reply + 1.week) < Time.now
-   end
+    def enough_time_since_last_reply?
+      latest_reply = Reply.replies_from(self).maximum(:published_at)
+      return true if latest_reply.blank?
+      (latest_reply + 1.week) < Time.now
+    end
 
 end
