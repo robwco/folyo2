@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  validates :name, presence: { message: "can't be blank" }  
+  validates :name, presence: { message: "Enter your name" }  
   validates :biography, presence: { message: "can't be blank" }, if: :freelancer_has_name?
 
   scope :active, -> { where(:state => ['trialing','active','past_due']) }

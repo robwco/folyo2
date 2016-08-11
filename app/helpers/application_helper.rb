@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def form_error_for(object, field)
+    "
+      <p style=\"color:#d9666a; margin-left: .25em; font-weight: 400; font-size: 13px; margin: -.25em 0 0;\">#{object.errors[field].join(", ")}</p>
+    ".html_safe if object && object.errors.include?(field)
+  end
+
   def formatted_price(amount)
     sprintf("$%0.2f", amount / 100.0)
   end

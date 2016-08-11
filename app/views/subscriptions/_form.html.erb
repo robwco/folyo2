@@ -27,13 +27,13 @@
 	<%= form_for :user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>	
 
 		<h3 class="form-header">Your name</h3>
-		<%= f.text_field :name, placeholder: 'Name', :style => "border: 1px solid #dd8687 !important;"	%>
-		<p style="color:#d9666a; margin-left: .25em; font-weight: 400; font-size: 13px; margin: -.25em 0 0;">Enter your name</p>
+		<%= f.text_field :name, placeholder: 'Name'	%>
+    <%= form_error_for(@user, :name) %>
 
 		<h3 class="form-header">Your work email</h3>
 		<p class="required">Won't be shown publicly</p>
-		<%= f.email_field :email, placeholder: "Email", :style => "border: 1px solid #dd8687 !important;" %>
-		<p style="color:#d9666a; margin-left: .25em; font-weight: 400; font-size: 13px; margin: -.25em 0 0;">Enter your email</p>
+		<%= f.email_field :email, placeholder: "Email" %>
+    <%= form_error_for(@user, :email) %>
 
 <!--
 		<div class="upload-photo-wrap" style="display: table; width: 100%;">
@@ -58,8 +58,8 @@
 				<% end %>
 			</p>
 
-			<%= f.password_field :password, autocomplete: "off", placeholder: 'Password', :style => "border: 1px solid #dd8687 !important;" %>
-					<p style="color:#d9666a; margin-left: .25em; font-weight: 400; font-size: 13px; margin: -.25em 0 0;">Create a password with at least 8 characters</p>
+			<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+      <%= form_error_for(@user, :password) %>
 
 		<div style="margin: 1em 0;">
 			<a href="#">

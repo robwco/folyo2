@@ -206,7 +206,7 @@ input[type=text], input[type=email], input[type=password] {
 
 .field_with_errors {
 	input, textarea {
-		border: 1px solid #ff0000;
+		border: 1px solid #dd8687 !important;
 	}
 }
 
@@ -236,11 +236,17 @@ input[type=submit], a.button {
 
 input[type=submit]:hover, a.button:hover {
 	background: #222;
+	color: #FFF !important;
   
 }
 
 input[type=submit]:active, a.button:active {
 	color: #000;
+}
+
+.button.inactive {
+	background-color: #eee; 
+	color: #222 !important;
 }
 
 
@@ -581,11 +587,6 @@ width: 120px; margin: 2em auto .5em; display: block;
 	text-transform: uppercase;
 	letter-spacing: .075em;
 	display: inline-block;
-}
-
-.button.inactive {
-	background-color: #eee; 
-	color: #222 !important;
 }
 
 

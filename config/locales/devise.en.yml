@@ -58,3 +58,14 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Enter your email"
+            password:
+              confirmation: "Your confirmation doesn't match your password"
+              too_short: "Enter a password with at least 8 characters"            
+              blank: "Enter a password with at least 8 characters"            
