@@ -13,8 +13,6 @@
 
 <h3 class="form-header">Who are you, and what do you do?</h3>
 	<div style="margin: .5em auto 1em;">
-		<%= f.text_area :biography, data: { max_characters: 1250 } %>
-		
 		<div style="font-size: 17px; width: 275px; float:right;">
       <% if current_user.present? %>
         This is your normal bio, but you can edit it just for this reply if you want.
@@ -22,17 +20,19 @@
         Introduce yourself and any relevant work experience you have that relates to this project.
       <% end %>
 		</div>
+
+		<%= f.text_area :biography, data: { max_characters: 300 } %>
 	</div>
 
 
 
 	<h3 class="form-header">Why would you be a good fit for this project?</h3>
 		<div style="margin: .5em auto 1em;">
-			<%= f.text_area :message, data: { max_characters: 1250 } %>
-			
 			<div style="font-size: 17px; width: 275px; float:right;">
 				This is where you go into detail about what you can do.
 			</div>
+
+			<%= f.text_area :message, data: { max_characters: 300 } %>
 		</div>
 		
 		
@@ -44,11 +44,10 @@
 
 	<h3 class="form-header">What next steps should the client take?</h3>
 		<div style="margin: .5em auto 1em;">
-			<%= f.text_area :next_steps, data: { max_characters: 1250 } %>
-			
 			<div style="font-size: 17px; width: 275px; float:right;">
 				What do you need from a client in order to kick off? What's next?
 			</div>
+			<%= f.text_area :next_steps, data: { max_characters: 300 } %>
 		</div>
 		
 	<p style="margin: 0 0 1em; color: #666; display: inline-block;">
