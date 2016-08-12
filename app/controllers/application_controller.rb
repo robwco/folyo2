@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  def after_sign_in_path_for(resource)
+    if session[:unsent_reply_biography]
+      return complete_replies_path
+    end
+    stored_location_for(resource) || root_path
+  end
+
 private
 	def current_worker
 		@current_worker ||= Worker.find(session[:worker_id]) if session[:worker_id]

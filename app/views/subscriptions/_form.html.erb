@@ -71,6 +71,8 @@
 		<p style="font-size: 14px;">Already have an account? <a href="/users/sign_in">Log in</a></p>
 
 		<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
+		<%= f.hidden_field :account_type %>
+		<%= f.hidden_field :biography %>
 	<% end %>
 	
 

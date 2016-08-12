@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811173805) do
+ActiveRecord::Schema.define(version: 20160812000249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,12 +329,14 @@ ActiveRecord::Schema.define(version: 20160811173805) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "published",                    default: false
+    t.boolean  "published",                                default: false
     t.string   "portfolio_image_file_name"
     t.string   "portfolio_image_content_type"
     t.integer  "portfolio_image_file_size"
     t.datetime "portfolio_image_updated_at"
     t.datetime "published_at"
+    t.string   "biography",                    limit: 300
+    t.string   "next_steps",                   limit: 300
   end
 
   add_index "replies", ["project_id"], name: "index_replies_on_project_id", using: :btree

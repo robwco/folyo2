@@ -50,11 +50,12 @@ class Project < ActiveRecord::Base
 	end
 
 	def allow_replies_from?(user)
+    return true if user.blank?
 		self.user != user
 	end
 
 	def allow_portfolio_replies?
-		self.listing_package.allow_portfolio_replies?
+		self.listing_package.allow_portfolio_replies? if self.listing_package
 	end
 
 	def company_profile_or_published?

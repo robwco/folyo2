@@ -1,0 +1,22 @@
+<div style="width: 600px; margin: 0 auto;">
+	<h1 style="text-align:center;">You're almost done!</h1>
+
+	
+	
+	<h3 class="action-header">Preview your message</h3>
+	
+	
+	<div style="width: 560px; border-bottom: 1px solid #dee5e9; border-top: 1px solid #dee5e9; margin: 2em auto 2em; padding: .5em; box-sizing: border-box;">
+		
+		<p style="margin: 0;"><%= session[:unsent_reply_biography] %></p> 
+		<p><%= session[:unsent_reply_message] %></p>
+		<p><%= session[:unsent_reply_next_steps] %></p>
+	</div>
+	
+	
+	<h3 class="action-header">Now, finish sending by creating a free account</h3>
+	
+	<section style="margin: 2em auto 2em; width: 300px;">
+		<%= render "subscriptions/form" %>
+	</section>
+</div>

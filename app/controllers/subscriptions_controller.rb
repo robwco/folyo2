@@ -25,7 +25,11 @@ class SubscriptionsController < ApplicationController
   def update_freelancer
     @user = current_user
     if @user.update(details_params)
-      redirect_to home_projects_path
+      if session[:unsent_reply_biography]
+        redirect_to complete_replies_path
+      else
+        redirect_to home_projects_path
+      end
     else
       @selected_categories = Category.find(@user.category_ids)
       render :freelancer
@@ -84,7 +88,11 @@ class SubscriptionsController < ApplicationController
 
     if CreateSubscription.call(@plan, @user, params[:stripeToken], params[:coupon_code])
       sign_in('user', @user)
-      redirect_to account_type_path
+      if @user.account_type.blank?
+        redirect_to account_type_path
+      else
+        redirect_to freelancer_details_path
+      end
     else
       render :new
     end
@@ -207,7 +215,7 @@ class SubscriptionsController < ApplicationController
   private
 
 	  def sign_up_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :email, :password, :account_type, :biography)
 	  end
 
 	  def details_params

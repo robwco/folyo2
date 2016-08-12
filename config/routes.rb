@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :messages
 
   resources :replies do
+	  get "without_user", on: :collection
+	  get "complete", on: :collection
 	  get "preview", on: :member
 	  put "post", on: :member
 	  resources :messages
@@ -23,7 +25,9 @@ Rails.application.routes.draw do
     get "collect_payment", on: :member
     put "charge_payment", on: :member
 
-    resources :replies
+    resources :replies do
+      get 'new_user', on: :new
+    end
     resources :wizard, controller: :project_steps
   end
 

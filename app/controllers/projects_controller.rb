@@ -39,9 +39,18 @@ class ProjectsController < ApplicationController
   end
 
   def show
-	@reply = @project.reply_from(current_user)
-	@reply = Reply.new unless @reply
-	@message = Message.new
+    @reply = @project.reply_from(current_user)
+    if @reply.blank?
+      @reply = Reply.new
+      @reply.biography = current_user.biography if current_user
+
+      if session[:unsent_reply_biography]
+        @reply.biography = session[:unsent_reply_biography]
+        @reply.message = session[:unsent_reply_message]
+        @reply.next_steps = session[:unsent_reply_next_steps]
+      end
+    end
+    @message = Message.new
   end
 
   def new
@@ -56,10 +65,10 @@ class ProjectsController < ApplicationController
   end
 
   def select_payment
-	unless ListingPackage.active.find(payment_package_params[:listing_package_id])
-	  redirect_to payment_project_path(@project) 
-	  return
-	end
+    unless ListingPackage.active.find(payment_package_params[:listing_package_id])
+      redirect_to payment_project_path(@project) 
+      return
+    end
 
     respond_to do |format|
       if @project.update(payment_package_params)
@@ -86,10 +95,10 @@ class ProjectsController < ApplicationController
 
   def charge_payment
 	  if ChargeProject.call params[:stripeToken], @project
-		redirect_to @project, notice: "Your payment was accepted."	
-      else
-        format.html { render :collect_payment, notice: "Please correct the errors below." }
-      end
+      redirect_to @project, notice: "Your payment was accepted."	
+    else
+      format.html { render :collect_payment, notice: "Please correct the errors below." }
+    end
   end
 
   def edit
@@ -97,13 +106,13 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-	@project.user = current_user
+    @project.user = current_user
 
     respond_to do |format|
       if @project.save
         format.html { 
-			redirect_to preview_project_path(@project), notice: 'Project was successfully created.' 
-		}
+          redirect_to preview_project_path(@project), notice: 'Project was successfully created.' 
+        }
       else
         format.html { render :new, notice: "Please correct the errors below." }
       end
@@ -114,8 +123,8 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.update(project_params)
         format.html { 
-			redirect_to preview_project_path(@project), notice: 'Project was successfully edited.' 
-		}
+          redirect_to preview_project_path(@project), notice: 'Project was successfully edited.' 
+        }
       else
         format.html { render :new, notice: "Please correct the errors below." }
       end

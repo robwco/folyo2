@@ -1,7 +1,7 @@
 <script>
-$(document).ready(function(){
-  $('textarea').autosize();
-});
+  $(document).ready(function(){
+    $('textarea').autosize();
+  });
 </script>
 
 
@@ -13,10 +13,14 @@ $(document).ready(function(){
 
 <h3 class="form-header">Who are you, and what do you do?</h3>
 	<div style="margin: .5em auto 1em;">
-		<%= f.text_area :message, :value => "Hello! My name is Tuesday Bassen. I'm an illustrator and designer from NYC. I've previously worked for CB2 & run a store in the Lower East Side.", data: { max_characters: 1250 } %>
+		<%= f.text_area :biography, data: { max_characters: 1250 } %>
 		
 		<div style="font-size: 17px; width: 275px; float:right;">
-			This is your normal bio, but you can edit it just for this reply if you want.
+      <% if current_user.present? %>
+        This is your normal bio, but you can edit it just for this reply if you want.
+      <% else %>
+        Introduce yourself and any relevant work experience you have that relates to this project.
+      <% end %>
 		</div>
 	</div>
 
@@ -32,15 +36,15 @@ $(document).ready(function(){
 		</div>
 		
 		
-		<div style="border: 3px solid #9d82c8; font-size: 15px; width: 100%; border-radius: 10px;  margin: 1em 0 2em; padding: 0 2em 1em; box-sizing: border-box;">
 		<% if current_user.present? && current_user.can_reply_with_portfolio?(@reply.project) %>
-			<%= render "replies/portfolio_upload_form", f: f %>
+      <div style="border: 3px solid #9d82c8; font-size: 15px; width: 100%; border-radius: 10px;  margin: 1em 0 2em; padding: 0 2em 1em; box-sizing: border-box;">
+        <%= render "replies/portfolio_upload_form", f: f %>
+      </div>
 		<% end %>
-		</div>
 
 	<h3 class="form-header">What next steps should the client take?</h3>
 		<div style="margin: .5em auto 1em;">
-			<%= f.text_area :message, data: { max_characters: 1250 } %>
+			<%= f.text_area :next_steps, data: { max_characters: 1250 } %>
 			
 			<div style="font-size: 17px; width: 275px; float:right;">
 				What do you need from a client in order to kick off? What's next?
