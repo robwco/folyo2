@@ -1,6 +1,7 @@
 class RepliesController < ApplicationController
   before_action :set_reply, only: [:show, :edit, :preview, :post, :update, :destroy]
   before_filter :authenticate_any! , except: [:create, :without_user]
+  after_filter :mark_messages_read, only: [:show]
 
   respond_to :html
 
@@ -45,18 +46,28 @@ class RepliesController < ApplicationController
 
     @reply.user = current_user
 
-    unless current_user.can_reply_with_portfolio?(@reply.project)
+    can_reply_with_portfolio = current_user.can_reply_with_portfolio?(@reply.project)
+
+    unless can_reply_with_portfolio
       @reply.portfolio_message = nil
       @reply.portfolio_image = nil
+    else
+      @reply.published = true
     end
 
     respond_to do |format|
       if @reply.save
         format.html { 
-          redirect_to preview_reply_path(@reply), notice: 'Project reply was successfully created.' 
+          if can_reply_with_portfolio
+            redirect_to @reply.project, notice: "Your message was sent!"
+          else
+            redirect_to preview_reply_path(@reply) 
+          end
         }
       else
-        format.html { render :new, notice: "Please correct the errors below.", layout: "folyo" }
+        @project = @reply.project
+        flash[:error] = "Please correct the errors below." 
+        format.html { render "projects/show" }
       end
     end
   end
@@ -120,5 +131,9 @@ class RepliesController < ApplicationController
 
     def reply_params
       params.require(:reply).permit(:project_id, :biography, :message, :next_steps, :portfolio_message, :portfolio_image)
+    end
+
+    def mark_messages_read
+      @project.read_messages(current_user) 
     end
 end

@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :listing_package
 	has_many :replies
+	has_many :messages
 
 	before_save :add_protocol_to_website
 
@@ -65,6 +66,10 @@ class Project < ActiveRecord::Base
 	def project_brief_or_published?
 		self.status == "project_brief" || published?
 	end
+
+  def read_messages(user)
+    self.messages.sent_to(user).update_all(message_read: true)
+  end
 
 private
 	def add_protocol_to_website

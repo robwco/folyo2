@@ -1,5 +1,9 @@
-<div class="project-listing"> 
-	<a href="/replies/<%= message.id %>" class="reply">
+<div class="project-listing <%= 'unread' if message.unread? %>"> 
+	<a href="<%= url_for message.reply %>" class="reply">
+
+		<!--div class="archive">	
+      <%= link_to "archive", archive_message_path(message), remote: true, method: :put %>
+		</div-->
 
 		<div class="avatar">		
 			<%= image_tag message.user.photo.url %>
@@ -10,6 +14,10 @@
 		</div>
 		
 		<div class="message">
+      <p style="margin-top: 0px;">
+        <strong><%= truncate(message.project.title, length: 50) if message.project %></strong>
+      </p>
+     
 			<%= truncate message.message, length: 120 %>
 		</div>
 	</a>

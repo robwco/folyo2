@@ -3,7 +3,7 @@ $(document).ready(function(){
 	  var max = parseInt(text.data('max-characters'),10);
 	  var chars = text.val().length;
 
-	  counter.text(max - chars);
+	  counter.text((max - chars) + " characters left");
 
 	  if ((max - chars) < 0) {
 		counter.css('color', '#d9666a');
@@ -13,7 +13,7 @@ $(document).ready(function(){
 	}
 
 	$("[data-max-characters]").each(function(){
-	  var counterElem = $("<div style='text-align:right;'></div>");
+	  var counterElem = $("<div class='counter'></div>");
 	  counterElem.width($(this).width()).css('padding', $(this).css('padding')).css('margin', $(this).css('margin'));
 	  counterElem.css('padding-top', '0px').css('padding-bottom','0px');
 

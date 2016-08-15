@@ -210,6 +210,12 @@ input[type=text], input[type=email], input[type=password] {
 	}
 }
 
+.counter {
+	font-size: 12px; 
+	color: #7c8d99; 
+	text-align: right;
+}
+
 @media only screen and (max-width: 800px) {
 	input[type=text], input[type=email], input[type=password] {
 		font-size: 12px;
@@ -595,7 +601,7 @@ width: 120px; margin: 2em auto .5em; display: block;
 .project-listing a:hover {
 }
 
-.project-listing .avatar {
+.project-listing .avatar, .project-listing .archive {
 	height: 70px;
 	width: 50px;
 	border-radius: 80px;
@@ -611,6 +617,10 @@ width: 120px; margin: 2em auto .5em; display: block;
 
 .project-listing .info.narrow {
 	max-width: 600px;
+}
+
+.unread {
+	border-left: 2px solid #ddd;
 }
 
 

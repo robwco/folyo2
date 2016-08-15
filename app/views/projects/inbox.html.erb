@@ -5,6 +5,12 @@
 			
 <h3 class="action-header" style="margin: 0 auto 1em;">
 	Your inbox (new and unread messages)
+
+  <% if params[:archived] %>
+    <%= link_to "Hide archived", inbox_projects_path, style: "float:right;" %>
+  <% else %>
+    <%= link_to "Show archived", inbox_projects_path(archived: true), style: "float:right;" %>
+  <% end %>
 </h3>
 
 
@@ -121,23 +127,19 @@
 
 </style>
 
-
-
-<% if Message.sent_to(current_user).any? %>
+<% if @messages.any? %>
 
 	<div class="project-list-wrap" style="padding: 0; margin: 0 auto; width:810px;">
 		
-
-			<% Message.sent_to(current_user).limit(10).each do |message| %>
+			<% @messages.each do |message| %>
 				<%= render "messages/standalone_message", message: message %>
 			<% end %>
 
 	</div>
 	
-	<% else %>
-	
+<% else %>
 	<p style="text-align:center;">You have no new messages yet.<br>
-	<%= link_to 'Reply to a project'.html_safe, home_projects_path, :class => "button", :style => "margin: .5em 0;" %>
+    <%= link_to 'Reply to a project'.html_safe, home_projects_path, :class => "button", :style => "margin: .5em 0;" %>
 	</p>
 <% end %>
 

@@ -30,6 +30,11 @@ class ProjectsController < ApplicationController
   end
   
   def inbox
+    if params[:archived]
+      @messages = Message.sent_to(current_user).limit(10)
+    else
+      @messages = Message.sent_to(current_user).unarchived.limit(10)
+    end
   end
   
   

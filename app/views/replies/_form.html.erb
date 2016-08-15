@@ -5,8 +5,6 @@
 </script>
 
 
-
-
 <div style="padding: 0 0 5em 0;">
 <%= form_for([@project, @reply]) do |f| %>
 
@@ -60,7 +58,8 @@
 
 
 	<div style="margin:0; display: table; line-height: 1;">
-		<%= f.submit 'Send your reply', class: "button", :style => "margin: .25em 0;" %>
+		<%= f.submit 'Send your reply', class: "button", :style => "margin: .25em 0;", 
+      data: { confirm: "Are you sure you want to send this? You won't be able to change your reply." } %>
 	</div>
 <% end %>
 </div>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :messages
+  resources :messages do
+    put "archive", on: :member
+  end
 
   resources :replies do
 	  get "without_user", on: :collection

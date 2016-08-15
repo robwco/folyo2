@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812000249) do
+ActiveRecord::Schema.define(version: 20160815175055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,6 +204,8 @@ ActiveRecord::Schema.define(version: 20160812000249) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "to_user_id"
+    t.boolean  "message_read", default: false
+    t.boolean  "archived",     default: false
   end
 
   add_index "messages", ["project_id"], name: "index_messages_on_project_id", using: :btree
@@ -323,9 +325,9 @@ ActiveRecord::Schema.define(version: 20160812000249) do
   end
 
   create_table "replies", force: true do |t|
-    t.text     "message"
+    t.string   "message",                      limit: 300
     t.integer  "user_id"
-    t.string   "portfolio_message"
+    t.string   "portfolio_message",            limit: 600
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -337,6 +339,8 @@ ActiveRecord::Schema.define(version: 20160812000249) do
     t.datetime "published_at"
     t.string   "biography",                    limit: 300
     t.string   "next_steps",                   limit: 300
+    t.boolean  "message_read",                             default: false
+    t.boolean  "archived",                                 default: false
   end
 
   add_index "replies", ["project_id"], name: "index_replies_on_project_id", using: :btree
