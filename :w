@@ -157,7 +157,6 @@ class SubscriptionsController < ApplicationController
       redirect_to edit_reply_path(reply_id: params[:reply_id])
     else
       flash[:notice] = 'There was an error upgrading your subscription. Please try again later.'
-      @reply = Reply.find(params[:reply_id])
       render 'replies/preview'
     end
   end

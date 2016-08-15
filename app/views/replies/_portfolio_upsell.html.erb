@@ -1,3 +1,12 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".upsell.button").click(function() {
+      $("#upsell-container").show();
+      $("#upsell-trigger").hide();
+    });
+  });
+</script>
+
 <div class="comfortable wrap portfolio-message" style="font-size: 90%; border: 3px solid #ccc; padding: 1em 2em 2em; margin: 0em auto 4em; box-sizing: border-box; display: table; border-radius: 0px;">
 	<section>
 		<h2 class="uppercase" style="text-align: center; margin: 0; border: 0; color: #222; padding: 0;"><span style="color: #fff; background-color: #54b61c; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 4px;">PRO</span> Help your message stand out above the rest!</h2>
@@ -28,16 +37,28 @@
 
 			<p>Upgrade to pro now and get all of these features on every project. Messages from pro accounts stand out above the rest!</p>
 	
-			
-			<div style="padding: 0 0 0em; text-align:center;">
-				<h1 style="text-align: center;">$39/month</h1>
+		  <div id="upsell-container" style="display:none;">	
+        <%= form_for(current_user, url: upgrade_save_path(reply_id: @reply.id), html: { method: :post }) do |f| %>
+          <div style="padding: 0 0 0em; text-align:center;">
+            <h1 style="text-align: center;">$39/month</h1>
+            
+            <%= render 'registrations/creditcard', :number_required => false  %>			
+          </div>
+          
+          <div style="line-height: 4; text-align:center;">
+            
+            <%= f.submit "Upgrade to pro + add your portfolio", class: "button" %><br>
+            
+            
+            <span style="margin:0 .5em">or</span> 
+            <%= link_to "No thanks, send my message", post_reply_path(@reply), method: :put %>
+          </div>		
+          <% end %>
+      </div>		
+
+			<div id="upsell-trigger" style="line-height: 4; text-align:center;">
 				
-				<%= render 'registrations/creditcard', :number_required => false  %>			
-			</div>
-			
-			<div style="line-height: 4; text-align:center;">
-				
-				<a class="button" href="<%= url_for upgrade_plan_path %>">Upgrade to pro + add your portfolio</a><br>
+				<a class="upsell button" href="javascript:">Upgrade to pro + add your portfolio</a><br>
 				
 				
 				<span style="margin:0 .5em">or</span> 

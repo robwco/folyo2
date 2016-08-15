@@ -106,15 +106,11 @@ class RepliesController < ApplicationController
     respond_to do |format|
       if @reply.update(reply_params)
         format.html { 
-          if params[:send]
-            @reply.publish
-            redirect_to @reply.project
-          else
-            redirect_to preview_reply_path(@reply), notice: 'Project reply was successfully updated.' 
-          end
+          @reply.publish
+          redirect_to @reply.project, notice: 'Your message was sent!'
         }
       else
-        format.html { render :edit, notice: "Please correct the errors below.", layout: "folyo" }
+        format.html { render :edit, notice: "Please correct the errors below." }
       end
     end
   end

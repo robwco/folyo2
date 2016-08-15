@@ -33,11 +33,7 @@ Rails.application.routes.draw do
     resources :wizard, controller: :project_steps
   end
 
-  resources :sales
-
   resources :products
-
-  resources :job_sources, :path => "monitoring"
 
   devise_for :admins
   devise_for :users, :controllers => { registrations: 'registrations' }
@@ -54,7 +50,6 @@ Rails.application.routes.draw do
   
   # New account differences 
   get "/pro-signup" => "subscriptions#new_pro"
-  get "/pro-leads-signup" => "subscriptions#new_pro_leads"
   get "/account-type" => "subscriptions#new_account_type", as: :account_type
   put "/update-account-type/:type" => "subscriptions#update_account_type", as: :update_account_type
   get "/finish-reply" => "subscriptions#new_finish_reply"
@@ -74,12 +69,8 @@ Rails.application.routes.draw do
 
   # Plans and Billing
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
-  get "/imports/plans" => "imports#plans", as: :import_plans
-  post "/imports/import_plans" => "imports#import_plans", as: :save_imported_plans
-  get "/imports/customers" => "imports#customers", as: :import_customers
-  post "/imports/import_customers" => "imports#import_customers", as: :save_imported_customers
   get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
-  put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
+  post "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
   get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
   get "/subscriptions/cancel_by_email" => "subscriptions#cancel_by_email", as: :cancel_subscription_by_email
   post "/subscriptions/cancel" => "subscriptions#cancel_post", as: :cancel_subscription_post
