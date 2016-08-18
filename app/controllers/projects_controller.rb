@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
   def home
     @projects =  Project.published.page(params[:page]).order(created_at: :desc)
+    @projects = @projects.joins(:categories).where({ categories: { id: params[:category_id] } }) if params[:category_id]
   end
   
   def thank_you
