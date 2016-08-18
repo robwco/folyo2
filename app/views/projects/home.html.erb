@@ -39,12 +39,8 @@
 		
 	<% else %>	
 		<h3 class="action-header">Projects for 
-				<select style="font-size: 20px; vertical-align: 3px;">
-		  		<option value="volvo">UX design</option>
-		  		<option value="saab">Saab</option>
-		  		<option value="mercedes">Mercedes</option>
-		  		<option value="audi">Audi</option>
-				</select>
+      <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
+        prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
 		</h3>
 	
 		<div class="project-list-wrap" style="width: 815px;">
@@ -84,7 +80,7 @@
 	</h3>-->
 	
 	<h3 class="action-header">Projects for 
-    <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), 
+    <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
       prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
 	</h3>
 	
