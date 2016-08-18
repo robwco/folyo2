@@ -2,7 +2,7 @@
 
 
 <% if current_user.present? %>
-	<p style="font-size: 16px; border-bottom: 3px solid #dee5e9; padding-bottom: 1em;">
+	<p style="font-size: 16px; padding-bottom: 1em;">
 		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .25em; margin-left: -.25em; margin-top: 0;"></i> See more projects'.html_safe, home_projects_path, :style => "text-decoration: none; color:#666;" %>
 		
 		
@@ -10,7 +10,7 @@
 	</p>
 <% else %>	
 
-	<p style="font-size: 16px; text-align:center; border-bottom: 3px solid #dee5e9; padding-bottom: 1em;">
+	<p style="font-size: 16px; text-align:center; padding-bottom: 1em;">
 		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .25em; margin-left: -.25em; margin-top: 0;"></i> See more projects'.html_safe, home_projects_path, :style => "text-decoration: none; color:#666;" %>
 	</p>
 <% end %>
@@ -18,15 +18,13 @@
 
 
 
-<h2 style="text-align:center; color: #888; font-weight: 400; margin: 1em 0 0;">
+<h2 style="text-align:center;margin: 1em 0 0;">
 	<%= image_tag @project.company_logo.url, :style => "width:60px; border-radius:0px; vertical-align: -10px; margin-right: 0px;" %>
 </h2>
 
 <h1 class="post-title"><%= @project.title %></h1>
 
 <p class="by-line">
-	<%= image_tag(@project.photo.url, class: "photo") if @project.photo.present? %>
-	
 	<%= image_tag 'rob.png', :style => "width:30px; border-radius: 30px;  vertical-align: -10px; margin-right: 2px;" %> <%= @project.name %>Robert Williams, <a href="#"><%= @project.organization %></a>
 </p>
 
@@ -34,7 +32,6 @@
 <div class="wrap800 project-listing" style="border-top: 0; max-width: 600px; padding: 0; margin: 0em auto 0;">
 	<p><%= @project.goals %></p>
 
-	<p><%= @project.deliverables %></p>
 	
 	<p><strong>We think this project should cost around $<%= @project.budget %>.</strong></p>
 	

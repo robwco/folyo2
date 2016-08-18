@@ -1,22 +1,24 @@
-<div style="width: 660px; margin: 0 auto;">
-	<h1 style="text-align:center;">You're almost done! <%= image_tag 'emoji/1f484.svg', :class => "emoji-big" %> <%= image_tag 'emoji/1f485.svg', :class => "emoji-big" %> <%= image_tag 'emoji/1f44c.svg', :class => "emoji-big" %> </h1>
-	
-	<h3 class="action-header">Preview your message</h3>
-	
-	
-	<div style="width: 640px; margin: 1em auto 1em; padding: 0 .5em; box-sizing: border-box;">
+<div style="width: 700px; margin: 2em auto;  border: 3px solid #8b6eb9; border-radius: 16px;">
+	<h3 style="text-align:center; margin: 1em 0 0; margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffef3;">
+		Create your profile to finish sending your message!</h3>
 		
-		<%= image_tag 'avatar.png'%>
+	<%= form_for @user, url: update_freelancer_details_path, method: :put, id: 'new_user', class: 'form-focus' do |f| %>	
 		
-		<p style="margin: 0;"><%= session[:unsent_reply_biography] %></p> 
-		<p><%= session[:unsent_reply_message] %></p>
-		<p><%= session[:unsent_reply_next_steps] %></p>
+		
+		<div style="text-align:center;">
+	    <%= image_tag(f.object.photo.url, :style => "width:90px; border-radius: 90px; margin: 2em 0 0;") if f.object.photo(:thumb) %>
+
+			<h3 class="form-header" style="margin-top: .25em;">Upload a profile pic</h3>
+	    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 100px; margin: 0 auto 0;"	%>
+	    <p class="required" style="width:400px; font-size: 14px; margin: 0 auto;">
+	      Your picture will appear next to your replies. Square images work best. 190 pixels wide is optimal.
+	    </p>
+		</div>
+
+		<section style="margin: 1em auto 2em; width: 300px;">
+			<%= render "subscriptions/form" %>
+		</section>
 	</div>
 	
+	<% end %>
 	
-	<h3 class="action-header">Now, finish sending by creating a free account</h3>
-	
-	<section style="margin: 2em auto 2em; width: 300px;">
-		<%= render "subscriptions/form" %>
-	</section>
-</div>

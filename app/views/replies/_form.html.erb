@@ -8,7 +8,7 @@
 <div style="padding: 0;">
 <%= form_for([@project, @reply]) do |f| %>
 
-<h3 class="form-header">Who are you, and what do you do?</h3>
+<h3 class="form-header" style="padding-left: .5em;">Who are you, and what do you do?</h3>
 	<div style="margin: .5em auto 1em;">
 		<div style="font-size: 14px; width: 170px; float:right;">
       <% if current_user.present? %>
@@ -23,7 +23,7 @@
 
 
 
-	<h3 class="form-header">Why would you be a good fit for this project?</h3>
+	<h3 class="form-header" style="padding-left: .5em;">Why would you be a good fit for this project?</h3>
 		<div style="margin: .5em auto 1em;">
 			<div style="font-size: 14px; width: 170px; float:right;">
 				This is where you go into detail about what you can do for this project.
@@ -40,7 +40,7 @@
       </div>
 		<% end %>
 
-	<h3 class="form-header">What next steps should the client take?</h3>
+	<h3 class="form-header" style="padding-left: .5em;">What next steps should the client take?</h3>
 		<div style="margin: .5em auto 1em;">
 			<div style="font-size: 14px; width: 170px; float:right;">
 				What do you need from a client in order to kick off? What's next?
@@ -50,10 +50,10 @@
 		
 	<div style="text-align:center; width:100%; padding: 0 0;">
 		<div style="margin:0; display: table; line-height: 1; text-align:center; width: 100%;">
-			<%= f.submit 'Preview your reply', class: "button", :style => "margin: .25em 0 0;", 
+			<%= f.submit 'Preview + Create Account', class: "button", :style => "margin: .25em 0 0;", 
 	      data: { confirm: "Are you sure you want to send this? You won't be able to change your reply." } %>
 		</div>
-		<p style="margin: .5em 0 .25em;"><small>You'll still be able to edit your message.</small></p>
+		<p style="margin: .5em 0 .5em;"><small>You'll still be able to edit your message.</small></p>
 	</div>
 <% end %>
 </div>

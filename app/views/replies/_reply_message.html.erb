@@ -1,4 +1,9 @@
-	<p class="preview-message">
+	<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 13px; border-top-right-radius: 13px;  background-color: #fffddf;"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
+	
+	<span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;">You sent this on July 1, 2016</span>
+	</h3>
+	
+	<p class="preview-message" style="padding: 0 1em;">
 
 		<%= h([@reply.biography, @reply.message, @reply.next_steps].join("\n\n")).gsub("\n", "<br>").html_safe %>
 	
