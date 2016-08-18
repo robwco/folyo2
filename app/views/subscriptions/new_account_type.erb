@@ -23,7 +23,7 @@
 			<div class="account-type-option">
 				<h2>Got a project?</h2>
 				<%= image_tag('company.png' ) %>
-				<%= link_to "I'm a client", projects_path, :class => "button"  %>
+				<%= link_to "I'm a client", update_account_type_path(type: :client), method: :put, :class => "button"  %>
 			</div>
 		</div>
 	

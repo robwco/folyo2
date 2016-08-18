@@ -13,17 +13,18 @@ $(document).ready(function(){
 <h3 class="form-header">Summary</h3>
 
 	<div style="margin: .5em auto 1em;">
-		<%= f.text_area :title, data: { max_characters: 1250 }, placeholder: "We're looking to redesign our website, and we need a freelancer to help with mockups and delivery." %>
-		
 		<div style="font-size: 15px; width: 255px; float:right;">
 			1-2 sentences about the project itself. This will appear on the full listing. Focus on outcomes, not exactly what's needed!
 		</div>
+
+		<%= f.text_area :title, data: { max_characters: 1250 }, placeholder: "We're looking to redesign our website, and we need a freelancer to help with mockups and delivery." %>
+
 	</div>
 
 	<h3 class="form-header">Long description</h3>
 
 		<div style="margin: .5em auto 1em;">
-			<%= f.text_area :goals, placeholder: "Four score...", :style => "min-height: 200px;" %>
+			<%= f.text_area :long_description, placeholder: "Four score...", :style => "min-height: 200px;" %>
 
 			<div style="font-size: 15px; width: 255px; float:right;">
 				This is where you go into as much detail as possible about what you need. Write as much as you want – the longer, the better.
@@ -61,63 +62,30 @@ $(document).ready(function(){
 	<h3 class="form-header">Skills needed</h3>
 
 		<div class="project-brief-category-choice-option">
-			<fieldset class="half-left">				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Front-end (HTML/CSS)
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Graphic design/mockups
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Front-end development (JS)
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> UX/UI/Product development
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Illustration
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<%= f.text_field :budget, placeholder: "Other skills...", :style => "width: 200px;" %>
-				</div>
-			</fieldset>
+
+    <% first = true %>
+    <% Category.all.in_groups(2, false) do |batch| %>
+			
+      <fieldset class="half-<%= first ? 'left' : 'right' %>">				
+
+        <% batch.each do |c| %>
+          <div class="project-category-checkbox-wrap">
+            <%= check_box_tag "project[category_ids][#{c.id}]", c.id, @project.category_ids.include?(c.id), :name => "project[category_ids][]" %>
+            <%= label_tag "project_category_ids_#{c.id}", c.name, :style => "text-transform:none;" %>
+          </div>
+        <% end %>
+      </fieldset>
+      <% first = false %>
+    <% end %>
 			
 			<fieldset class="half-right">				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> PHP
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Ruby
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Rails
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Python
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> .NET
-				</div>
-				
-				<div class="project-category-checkbox-wrap">
-					<input type="checkbox"> Mobile (iOS / Android)
-				</div>
 			</fieldset>
 		</div>
 </div>
 		
 
 	<div style="text-align:center; margin: 0 0 5em;">
-		<%= f.submit "Create your project" %>
+		<%= f.submit %>
 		
 		<p>You'll still be able to change your answers.</p>
 	</div>

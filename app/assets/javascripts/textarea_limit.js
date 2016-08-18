@@ -1,4 +1,4 @@
-$(document).ready(function(){
+function on_ready() {
 	function countChars(text, counter) {
 	  var max = parseInt(text.data('max-characters'),10);
 	  var chars = text.val().length;
@@ -24,4 +24,7 @@ $(document).ready(function(){
 		countChars($(this), counterElem);
 	  });
 	});
-});
+}
+
+$(document).ready(on_ready);
+$(document).on('page:load', on_ready);

@@ -62,9 +62,11 @@
   </div>
 
   <div class="input-right">
-  <%= image_tag(f.object.photo.url) if f.object.photo %>
+    <%= image_tag(f.object.photo.url) if f.object.photo(:thumb) %>
     <%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px; margin: 1.5em 0 0;"	%>
-    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Your picture will appear next to your replies. Square images work best. 190 pixels wide is optimal.</p>
+    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">
+      Your picture will appear next to your replies. Square images work best. 190 pixels wide is optimal.
+    </p>
   </div>
 </div>
 

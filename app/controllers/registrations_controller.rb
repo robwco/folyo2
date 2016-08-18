@@ -29,7 +29,9 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def account_update_params
-      params.require(:user).permit(:name, :email, :biography, :photo, :location, :account_type, :password, :password_confirmation, {:category_ids => []})
+      params.require(:user).permit(:name, :email, :biography, :photo, :location, :account_type, 
+          :password, :password_confirmation, :company_logo, :company_name, :company_website, :company_biography, 
+          {:category_ids => []})
     end
 
     def set_selected_categories

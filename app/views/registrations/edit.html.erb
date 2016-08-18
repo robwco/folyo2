@@ -86,6 +86,7 @@ $(function() {
 			<%= f.password_field :password_confirmation, autocomplete: "off" %>
 
       <%= render("registrations/freelancer_details", f: f) if resource.freelancer? %>
+      <%= render("registrations/client_details", f: f) if resource.client? %>
 
       <div style="width: 450px; margin: 0 auto;">
 

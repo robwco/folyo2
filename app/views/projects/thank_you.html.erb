@@ -30,7 +30,7 @@
 <div class="thank-you-wrap">
 	<h3>Here's your project's URL:</h3>
 	
-	<input type="text" value="http://folyo.me/projects/394" style="margin: 0;">
+	<input type="text" value="<%= project_url(@project) %>" style="margin: 0;">
 	
 	<p>Your listing will stay online until your mark it as complete from your project dashboard.</p>
 	
@@ -41,7 +41,7 @@
 
 		<p><strong>Want to make a change?</strong><br>
 			<ul>
-				<li><%= link_to 'Click here make changes to your project anytime you like', edit_project_path(2) %></li>
+				<li><%= link_to 'Click here make changes to your project anytime you like', edit_project_path(@project) %></li>
 			</ul>
 		</p>
 
