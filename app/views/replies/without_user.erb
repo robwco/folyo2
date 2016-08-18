@@ -1,12 +1,12 @@
-<div style="width: 600px; margin: 0 auto;">
-	<h1 style="text-align:center;">You're almost done!</h1>
-
-	
+<div style="width: 660px; margin: 0 auto;">
+	<h1 style="text-align:center;">You're almost done! <%= image_tag 'emoji/1f484.svg', :class => "emoji-big" %> <%= image_tag 'emoji/1f485.svg', :class => "emoji-big" %> <%= image_tag 'emoji/1f44c.svg', :class => "emoji-big" %> </h1>
 	
 	<h3 class="action-header">Preview your message</h3>
 	
 	
-	<div style="width: 560px; border-bottom: 1px solid #dee5e9; border-top: 1px solid #dee5e9; margin: 2em auto 2em; padding: .5em; box-sizing: border-box;">
+	<div style="width: 640px; margin: 1em auto 1em; padding: 0 .5em; box-sizing: border-box;">
+		
+		<%= image_tag 'avatar.png'%>
 		
 		<p style="margin: 0;"><%= session[:unsent_reply_biography] %></p> 
 		<p><%= session[:unsent_reply_message] %></p>

@@ -3,7 +3,7 @@ $(document).ready(function(){
 	  var max = parseInt(text.data('max-characters'),10);
 	  var chars = text.val().length;
 
-	  counter.text((max - chars) + " characters left");
+	  counter.text((max - chars) + "");
 
 	  if ((max - chars) < 0) {
 		counter.css('color', '#d9666a');

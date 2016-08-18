@@ -1,15 +1,8 @@
-
-<div class="project-list-wrap" style="padding: 2em 0; margin: 0 auto; width:810px;">
-
-	
-	<div class="project-listing">
-		
-		
-		
-		
+<div class="project-list-wrap" style="padding: 2em 0; margin: 0 auto; width:810px;">	
+	<div class="project-listing">		
 		<div class="info" style="max-width: 500px;">
 			<h3 style="margin: 0 0 .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h3>
-
+			
 			<%= truncate @project.goals, length: 135 %> <%= "(draft)" unless @project.published? %><br>
 
 			<div class="skills">Project status: 
@@ -19,8 +12,7 @@
 			  		<option value="saab">Accepted, in progress</option>
 			  		<option value="mercedes">Completed</option>
 					</select>
-				</span>
-				
+				</span>			
 			</div>
 		</div>
 
@@ -67,6 +59,7 @@
 			margin: 0;
 			padding: 0;
 		}
+		
 		.project-listing a.reply {
 			margin: 0;
 			font-weight: 500;
@@ -86,12 +79,10 @@
 			border-top-right-radius: 10px;
 		}
 
-
 		.project-listing:last-child a.reply:last-child {
 			border-bottom-left-radius: 10px;
 			border-bottom-right-radius: 10px;
 		}
-
 
 		.project-listing a.reply:hover {
 			background: #f9f9f9;
@@ -131,7 +122,6 @@
 			padding: 0;
 			vertical-align: middle;
 		}
-		
 
 		.project-listing a.reply .portfolio-message {
 			display: inline-block;
@@ -141,7 +131,6 @@
 			padding: 0;
 			vertical-align: middle;
 		}
-
 
 		.project-listing .portfolio {
 			width: 50px;

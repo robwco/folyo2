@@ -1,4 +1,3 @@
-<%= render "layouts/top_menu" %>
 
 	<% if current_user.present? && current_user.can_see_project_replies?(@project) %>
 	
@@ -11,14 +10,37 @@
 		</div>
 
 	
-	<div class="wrap800" style="margin: 0 auto 0;">
+
+	<div class="wrap800">
+			<p style="margin: 0 0 1em .5em; color: #888;"><strong>Reply to this project</strong> 
+
+				<a href="http://emailsthatwin.com" style="float:right;"><span style="font-weight: normal; font-size: 14px;">How to write a client-winning message</span></a>
+				</p>
 		<% if @project.allow_replies_from?(current_user) %>
-			<div class="wrap reading reply">
-				<% if @project.reply_from?(current_user) %>
-					<%= render "replies/reply" %>	
-				<% else %>
-					<h2 id="send-message-now">Reply to this Project</h2>
-					<%= render "replies/form" %>
+			<div class="wrap reading reply" style="margin-top: 0;">
+
+					
+
+					<div style="margin: .5em auto 3em; border: 3px solid #8b6eb9; padding: .5em 0; box-sizing: border-box; border-radius: 16px;">
+						<% if @project.reply_from?(current_user) %>
+							<%= render "replies/reply" %>	
+						<% else %>
+
+							<% if current_user.present? %>
+								<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9;"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
+									
+									
+									</h3>
+							<% else %>
+								<h3 id="send-message-now" style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9;">Send your message free!
+									
+									
+									</h3>
+								
+							<% end %>
+					
+							<div style="padding: .5em 1.25em;"><%= render "replies/form" %></div>
+						</div>
 				<% end %>
 			</div>
 

@@ -177,7 +177,7 @@ fieldset {
 textarea {
 	box-sizing: border-box;
 	width: 100%;
-	max-width: 500px;
+	max-width: 550px;
 	font-size: 17px;
 	border: 1px solid #dee5e9;
 	border-radius: 5px;
@@ -212,7 +212,7 @@ input[type=text], input[type=email], input[type=password] {
 
 .counter {
 	font-size: 12px; 
-	color: #7c8d99; 
+	color: #748f9f !important; 
 	text-align: right;
 }
 
@@ -291,6 +291,9 @@ input[type=submit]:active, a.button:active {
 	border-bottom-left-radius: 8px;
 }
 
+.emoji-big {
+	width: 30px !important;
+}
 
 /* Create account */
 
@@ -304,6 +307,7 @@ input[type=submit]:active, a.button:active {
 h3.form-header {
 	margin: 1em 0 .25em;
 	font-size: 16px;
+	padding: 0 0 0 .5em;
 }
 
 .required {
@@ -412,7 +416,7 @@ a.job {
 
 /* Navigation menus */
 .logo {
-width: 120px; margin: 2em auto .5em; display: block;
+width: 120px; margin: 3em auto 1.5em; display: block;
 }
 
 @media only screen and (max-width: 800px) {
@@ -485,7 +489,8 @@ width: 120px; margin: 2em auto .5em; display: block;
 
 .by-line {
 	text-align:center;
-	font-size: 16px;
+	font-size: 18px;
+	color: #888;
 }
 
 .post-company-info {
@@ -546,8 +551,6 @@ width: 120px; margin: 2em auto .5em; display: block;
 }
 
 .project-listing .client-profile {
-	background-color: #f9f9f9;
-	border: 1px solid #dee5e9;
 	width: 240px;
 	height: auto;
 	margin: 0 0 auto auto;
@@ -612,7 +615,6 @@ width: 120px; margin: 2em auto .5em; display: block;
 .project-listing .avatar img {
 	height: 50px;
 	width: 50px;
-	border-radius: 50px;
 }
 
 .project-listing .info.narrow {

@@ -6,10 +6,10 @@ class Reply < ActiveRecord::Base
   has_attached_file :portfolio_image, :styles => { :medium => "800x600>", :thumb => "200x150>" }
   validates_attachment_content_type :portfolio_image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  validates :biography, presence: { message: "Enter your name" }, length: { maximum: 300 }
-  validates :message, presence: { message: "Enter your name" }, length: { maximum: 300 }
-  validates :next_steps, presence: { message: "Enter your name" }, length: { maximum: 300 }
-  validates :portfolio_message, length: { maximum: 600 }
+  validates :biography, presence: { message: "Enter your name" }, length: { maximum: 200 }
+  validates :message, presence: { message: "Enter your name" }, length: { maximum: 200 }
+  validates :next_steps, presence: { message: "Enter your name" }, length: { maximum: 200 }
+  validates :portfolio_message, length: { maximum: 300 }
 
   scope :published, -> { where(published: true) }
   scope :replied_to, -> (user) { joins(:project).published.where(projects: { user_id: user.id }).order(created_at: :desc) }
