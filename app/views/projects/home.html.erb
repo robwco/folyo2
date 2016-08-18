@@ -34,7 +34,7 @@
 		
 		
 		<p style="text-align:center;">Got more work? Put it on Folyo!<br><br>
-		<a href="#" class="button">+ Project</a>
+      <%= link_to "+ Project", new_project_path, class: "button" %>
 		</p>
 		
 	<% else %>	
@@ -49,17 +49,20 @@
 		</h3>
 	
 		<div class="project-list-wrap" style="width: 815px;">
-			<% if Project.nil? %>
+			<% if @projects.blank? %>
 				<h3>There are no public projects at this time</h3>
 
 				<p><%= link_to "You post a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
 			<% else %>
 				<div class="project-list">
-					<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
-				
+					<% @projects.each do |project| %>
 						<%= render "projects/quick_view", project: project %>
 					<% end %>
 				</div>
+        <div style="text-align:center">
+          <%= will_paginate @projects %>
+        </div>
+        
 			<% end %>
 		</div>
 		
@@ -92,17 +95,19 @@
 	</h3>
 	
 	<div class="project-list-wrap" style="width: 815px;">
-		<% if Project.nil? %>
+		<% if @projects.blank? %>
 			<h3>There are no public projects at this time</h3>
 
 			<p><%= link_to "You post a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
 		<% else %>
 			<div class="project-list">
-				<% Project.published.order(created_at: :desc).limit(5).each do |project| %>
-				
+				<% @projects.each do |project| %>
 					<%= render "projects/quick_view", project: project %>
 				<% end %>
 			</div>
+      <div style="text-align:center">
+        <%= will_paginate @projects %>
+      </div>
 		<% end %>
 	</div>
 		

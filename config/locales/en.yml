@@ -25,3 +25,6 @@ en:
           reply:
               create: "Preview your message" 
               update: "Save your message"
+          project: 
+              create: "Create your project"
+              update: "Update your project"

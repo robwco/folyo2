@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :projects do
     get "home", on: :collection
     get "company", on: :collection
-    get "thank_you", on: :collection
+    get "thank_you", on: :member
     get "tour", on: :collection
     get "active", on: :collection
     get "yours", on: :collection
@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   get "/finish-reply" => "subscriptions#new_finish_reply"
   get "/freelancer-details" => "subscriptions#freelancer", as: :freelancer_details
   put "/freelancer-details" => "subscriptions#update_freelancer", as: :update_freelancer_details
+  get "/client-details" => "subscriptions#client", as: :client_details
+  put "/client-details" => "subscriptions#update_client", as: :update_client_details
 
   
   # Onboarding

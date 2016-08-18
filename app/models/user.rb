@@ -48,8 +48,12 @@ class User < ActiveRecord::Base
   has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  has_attached_file :company_logo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
+  validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   validates :name, presence: { message: "Enter your name" }  
   validates :biography, presence: { message: "can't be blank" }, if: :freelancer_has_name?
+  validates :company_name, presence: { message: "can't be blank" }, if: :client_has_name?
 
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
   scope :with_favorites, -> { where("favorite_leads is not null") }
@@ -85,6 +89,10 @@ class User < ActiveRecord::Base
 
   def freelancer?
     self.account_type == "freelancer"
+  end
+
+  def client?
+    self.account_type == "client"
   end
 
   def billing_period_end
@@ -130,6 +138,10 @@ class User < ActiveRecord::Base
 
     def freelancer_has_name?
       self.freelancer? && self.name.present?
+    end
+
+    def client_has_name?
+      self.client? && self.name.present?
     end
 
 end

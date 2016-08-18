@@ -12,13 +12,13 @@ class ProjectStepsController < ApplicationController
 
 
   def update
-	@project.status = step.to_s
-	case step
-	when :company_profile
-		@project.update_attributes(company_profile_params)
-	when :project_brief
-		@project.update_attributes(project_brief_params)
-	end
+    @project.status = step.to_s
+    case step
+    when :company_profile
+      @project.update_attributes(company_profile_params)
+    when :project_brief
+      @project.update_attributes(project_brief_params)
+    end
 
     render_wizard @project
   end
@@ -26,7 +26,10 @@ class ProjectStepsController < ApplicationController
 
   def new
     @project = Project.create(user: current_user)
-    redirect_to wizard_path(steps.first, :project_id => @project.id)
+    next_step = steps.first
+    next_step = steps.last if current_user.company_name.present?
+
+    redirect_to wizard_path(next_step, :project_id => @project.id) 
   end
 
   private
@@ -40,7 +43,7 @@ class ProjectStepsController < ApplicationController
       params.require(:project).permit(:title, :category, :goals, :examples, :deadline, :budget, :deliverables, :photo, 
 									  :name, :email, :spirit_animal)
     end
-	def finish_wizard_path
-		preview_project_path(@project)	
-	end
+    def finish_wizard_path
+      preview_project_path(@project)	
+    end
 end

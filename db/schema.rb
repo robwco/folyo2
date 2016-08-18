@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815175055) do
+ActiveRecord::Schema.define(version: 20160817234603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20160815175055) do
     t.datetime "updated_at"
     t.text     "description"
   end
+
+  create_table "categories_projects", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "project_id"
+  end
+
+  add_index "categories_projects", ["category_id", "project_id"], name: "index_categories_projects_on_category_id_and_project_id", using: :btree
+  add_index "categories_projects", ["project_id"], name: "index_categories_projects_on_project_id", using: :btree
 
   create_table "categories_users", id: false, force: true do |t|
     t.integer "category_id"
@@ -286,23 +294,14 @@ ActiveRecord::Schema.define(version: 20160815175055) do
 
   create_table "projects", force: true do |t|
     t.string   "title"
-    t.string   "category"
     t.text     "goals"
-    t.text     "examples"
-    t.string   "deadline"
     t.string   "budget"
-    t.text     "deliverables"
     t.string   "name"
     t.string   "email"
     t.string   "organization"
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "spirit_animal"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
     t.string   "company_logo_file_name"
     t.string   "company_logo_content_type"
     t.integer  "company_logo_file_size"
@@ -312,6 +311,8 @@ ActiveRecord::Schema.define(version: 20160815175055) do
     t.boolean  "published"
     t.string   "status"
     t.string   "company_description"
+    t.text     "long_description"
+    t.text     "long_description_html"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
@@ -414,12 +415,12 @@ ActiveRecord::Schema.define(version: 20160815175055) do
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                              default: "", null: false
-    t.string   "encrypted_password",                 default: "", null: false
+    t.string   "email",                                 default: "", null: false
+    t.string   "encrypted_password",                    default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",                         default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -439,8 +440,15 @@ ActiveRecord::Schema.define(version: 20160815175055) do
     t.datetime "photo_updated_at"
     t.boolean  "project_alerts"
     t.string   "account_type"
-    t.string   "biography",              limit: 300
+    t.string   "biography",                 limit: 300
     t.string   "location"
+    t.string   "company_name"
+    t.string   "company_website"
+    t.string   "company_biography",         limit: 500
+    t.string   "company_logo_file_name"
+    t.string   "company_logo_content_type"
+    t.integer  "company_logo_file_size"
+    t.datetime "company_logo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

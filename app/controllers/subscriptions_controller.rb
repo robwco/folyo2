@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
       if params[:type] == "freelancer"
         redirect_to freelancer_details_path
       else
-
+        redirect_to client_details_path
       end
     else
       render :new_account_type
@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
 
   def update_freelancer
     @user = current_user
-    if @user.update(details_params)
+    if @user.update(freelancer_details_params)
       if session[:unsent_reply_biography]
         redirect_to complete_replies_path
       else
@@ -33,6 +33,19 @@ class SubscriptionsController < ApplicationController
     else
       @selected_categories = Category.find(@user.category_ids)
       render :freelancer
+    end
+  end
+
+  def client
+    @user = current_user
+  end
+
+  def update_client
+    @user = current_user
+    if @user.update(client_details_params)
+        redirect_to new_project_path
+    else
+      render :client
     end
   end
 
@@ -219,8 +232,12 @@ class SubscriptionsController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :account_type, :biography)
 	  end
 
-	  def details_params
+	  def freelancer_details_params
       params.require(:user).permit(:biography, :photo, :location, {:category_ids => []})
+	  end
+
+	  def client_details_params
+      params.require(:user).permit(:company_logo, :company_name, :company_website, :company_biography, :photo)
 	  end
 
 	  def update_categories_params

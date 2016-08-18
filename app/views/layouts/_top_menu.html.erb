@@ -1,14 +1,14 @@
 <section class="top-menu">
 	<% if admin_signed_in? %>
-		<%= link_to "Start a project", new_project_wizard_path(project_id: :new) %>
+		<%= link_to "Start a project", new_project_path %>
 		<%= link_to "New Lead", new_lead_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% elsif user_signed_in? %>
 	
 		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
 		
-		<% if Project.owned_by(current_user).any? %>
-			<%= link_to "+ Project", new_project_wizard_path(project_id: :new), :class => "button" %>
+		<% if current_user.present? && current_user.client? %>
+			<%= link_to "+ Project", new_project_path, :class => "button" %>
 		<% end %>
 		
 		<%= link_to "<i class='fa fa-envelope' aria-hidden='true' style='margin-right: .5em; color: #d6dfe4;'></i>Inbox (#{Message.sent_to(current_user).unread.count})".html_safe, inbox_projects_path %>
@@ -17,7 +17,7 @@
 
 	<% else %>
 	
-		<%= link_to 'Sign up', new_subscription_path(plan:2) %>
+		<%= link_to 'Sign up', new_subscription_path %>
 		<%= link_to "Log in", new_user_session_path %>
 		
 		<%= link_to image_tag('folyo.png', :class => "logo"), url_for(root_path) %>

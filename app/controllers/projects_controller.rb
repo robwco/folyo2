@@ -1,17 +1,13 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
-  before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :destroy]
+  before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :thank_you, :destroy]
   before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
 
   respond_to :html
 
   def home
-    
+    @projects =  Project.published.page(params[:page]).order(created_at: :desc)
   end
-  
-  def company 
-  end
-  
   
   def thank_you
   end
@@ -58,13 +54,6 @@ class ProjectsController < ApplicationController
     @message = Message.new
   end
 
-  def new
-    @project = Project.new
-  end
-
-  def preview
-  end
-
   def payment
 	  @packages = ListingPackage.active.order(:price)
   end
@@ -106,29 +95,48 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def new
+    if current_user.present? && current_user.company_name.blank?
+      redirect_to client_details_path and return
+    end
+
+    @project = Project.new
+  end
+
   def edit
   end
 
   def create
+    #render plain: params.inspect and return
     @project = Project.new(project_params)
     @project.user = current_user
+    @project.organization = current_user.company_name
+    @project.name = current_user.name
+    @project.website = current_user.company_website
+    @project.company_logo = current_user.company_logo
+    @project.company_description = current_user.company_biography
+    @project.published = true
 
     respond_to do |format|
       if @project.save
         format.html { 
-          redirect_to preview_project_path(@project), notice: 'Project was successfully created.' 
+          redirect_to thank_you_project_path(@project), notice: 'Project was successfully created.' 
         }
       else
-        format.html { render :new, notice: "Please correct the errors below." }
+        flash[:error] = "Please correct the errors below."
+        format.html { render :new }
       end
     end
   end
+
+  #def preview
+  #end
 
   def update
     respond_to do |format|
       if @project.update(project_params)
         format.html { 
-          redirect_to preview_project_path(@project), notice: 'Project was successfully edited.' 
+          redirect_to edit_project_path(@project), notice: 'Project was saved.' 
         }
       else
         format.html { render :new, notice: "Please correct the errors below." }
@@ -138,7 +146,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    respond_with(@project)
+    redirect_to home_projects_path, notice: "Your project was deleted."
   end
   
   
@@ -153,8 +161,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:title, :category, :goals, :examples, :deadline, :budget, :deliverables, :photo, 
-									  :name, :email, :company_logo, :organization, :website, :spirit_animal)
+      params.require(:project).permit(:title, :long_description, :goals, :deadline, :budget, { category_ids: [] } )
     end
 
     def payment_package_params

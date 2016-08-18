@@ -19,7 +19,11 @@
 	
 	<div class="client-profile">
 		<div class="avatar">
-			<%= image_tag(project.company_logo.url, class: "photo") %>
+      <% if project.company_logo? %>
+        <%= image_tag(project.company_logo.url, class: "photo") %>
+      <% else %>
+        <%= image_tag(project.user.photo.url, class: "photo") %>
+      <% end %>
 		</div>
 	
 		<div class="client-info">
