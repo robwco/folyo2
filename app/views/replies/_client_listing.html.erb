@@ -8,7 +8,7 @@
 			<div class="skills">Project status: 
 				<span style="margin: .25em 0 0; font-size: 12px;">
           <%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true) do |f| %>
-            <%= f.select :status, options_for_select(Project.status_with_label, @project.status), {}, 
+            <%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, 
                     { style: "font-size: 16px;", data: { status_update: true } } %>
           <% end %>
 				</span>			

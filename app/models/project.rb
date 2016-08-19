@@ -1,8 +1,5 @@
 class Project < ActiveRecord::Base
-  enum status: [:seeking_freelancer, :accepted, :complete]
-  def self.status_with_label
-    [["Seeking freelancers", :seeking_freelancer], ["Accepted, in progress", :accepted], ["Completed", :complete]]
-  end
+  include AASM
 
 	belongs_to :user
 	belongs_to :listing_package
@@ -31,6 +28,26 @@ class Project < ActiveRecord::Base
 	scope :replied_by, -> (user) { joins(:replies).where("replies.user_id = ?", user.id).distinct }
 
   self.per_page = 5  
+
+  aasm(:status) do
+    state :seeking_freelancer, initial: true
+    state :accepted
+    state :completed
+
+    event :seek do
+      transitions from: [:accepted, :completed], to: :seeking_freelancer, after: :unarchive_project
+    end
+    event :accept do
+      transitions from: [:seeking_freelancer, :completed], to: :accepted, after: :unarchive_project
+    end
+    event :complete do
+      transitions from: [:seeking_freelancer, :accepted], to: :completed, after: :archive_project
+    end
+  end
+
+  def self.statuses_with_labels
+    [["Seeking freelancers", :seeking_freelancer], ["Accepted, in progress", :accepted], ["Completed", :completed]]
+  end
 
 	def reply_from(user)
 		return nil if user.nil?
@@ -66,4 +83,10 @@ private
 			self.website = "http://#{self.website}" unless self.website.start_with? "http"
 		end
 	end
+  def archive_project
+    self.archived = true
+  end
+  def unarchive_project
+    self.archived = false
+  end
 end

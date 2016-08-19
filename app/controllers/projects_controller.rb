@@ -147,7 +147,17 @@ class ProjectsController < ApplicationController
 
   def update_status
     respond_to do |format|
-      if @project.update(project_status_params)
+      
+      project_status = project_status_params[:status]
+      if project_status == "completed"
+        @project.complete
+      elsif project_status == "accepted"
+        @project.accept
+      elsif project_status == "seeking_freelancer"
+        @project.seek
+      end
+
+      if @project.save
         format.html { 
           redirect_to @project, notice: 'Project status was updated!.' 
         }
