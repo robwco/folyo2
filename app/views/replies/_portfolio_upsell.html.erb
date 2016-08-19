@@ -7,65 +7,70 @@
   });
 </script>
 
-<div class="comfortable wrap portfolio-message" style="font-size: 90%; border: 3px solid #ccc; padding: 1em 2em 2em; margin: 0em auto 4em; box-sizing: border-box; display: table; border-radius: 0px;">
-	<section>
-		<h2 class="uppercase" style="text-align: center; margin: 0; border: 0; color: #222; padding: 0;"><span style="color: #fff; background-color: #54b61c; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 4px;">PRO</span> Help your message stand out above the rest!</h2>
+<div class="comfortable wrap portfolio-message" style="font-size: 90%; border: 3px solid #8c6eb9; padding:0; margin: 0em auto 2em; box-sizing: border-box; display: table; border-radius: 16px;">
+	
+	<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffddf;"><span style="color: #fff; background-color: #54b61c; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 0px;">PRO</span> Help your messages stand out above the rest!
 		
-		<hr>
+		</h3>
+		
+		
+	<section style="padding: 0 3em;">
 
-		<div style="padding: 0em; display: table; height: 350px; width: 150px; float: left;">
-			<%= image_tag "portfolio2.png", align: "left", style: "margin: 3em 3em 1em 1em; width: 150px;" %>
+		<div style="padding: 0em; display: table; width: 150px; float: left;">
+			<%= image_tag "portfolio2.png", align: "left", style: "margin: 1em 3em 1em 1em; width: 150px;" %>
 		</div>
-
-
-
 		
-		
-		
-	  <div style="float: right; width: 500px;">
+	  <div style="float: right; width: 450px;">
 	
-			<p style="margin: 1em 0;">Get a 70%+ increase in your chance of winning this project:</p>
 
-			<p style="margin: 0 0 .5em;"><strong>Sign up for PRO and:</strong></p>
-
-				<ul style="margin: 0; padding: 0 1em; display: table;">	
-					<li>Appear above everyone else!</li>
-					<li>Add a portfolio piece that shows why you're perfect!</li> 
-					<li>Write longer messages!</li> 
-				</ul> 
-
-
-			<p>Upgrade to pro now and get all of these features on every project. Messages from pro accounts stand out above the rest!</p>
-	
 		  <div id="upsell-container" style="display:none;">	
         <%= form_for(current_user, url: upgrade_save_path(reply_id: @reply.id), html: { method: :post }) do |f| %>
-          <div style="padding: 0 0 0em; text-align:center;">
-            <h1 style="text-align: center;">$39/month</h1>
+          <div style="padding: 0;">
+            <h1>Become a PRO for just: $39/month</h1>
             
-            <%= render 'registrations/creditcard', :number_required => false  %>			
+            <%= render 'registrations/creditcard', :number_required => false  %>	
+
+							<p style="Text-align: center;"><%= image_tag 'visa.png',  :style => "width:32px;" %> <%= image_tag 'mastercard.png',  :style => "width:32px;" %> <%= image_tag 'amex.png',  :style => "width:32px;" %> <%= image_tag 'discover.png',  :style => "width:32px;" %> <%= image_tag 'diners.png',  :style => "width:32px;" %> <%= image_tag 'jcb.png',  :style => "width:32px;" %>
+							</p>
+								
           </div>
           
-          <div style="line-height: 4; text-align:center;">
+          <div style="line-height: 4; padding: 0 0 1em;">
             
-            <%= f.submit "Upgrade to pro + add your portfolio", class: "button" %><br>
-            
-            
-            <span style="margin:0 .5em">or</span> 
-            <%= link_to "No thanks, send my message", post_reply_path(@reply), method: :put %>
+          	<%= f.submit "Upgrade to pro + add your portfolio", class: "button" %><br>
+						
+						<p style="margin:0;"><small style="margin:0;">We use <a href="http://stripe.com">Stripe</a> which is just crazy secure.</small></p>
+           
           </div>		
           <% end %>
       </div>		
 
-			<div id="upsell-trigger" style="line-height: 4; text-align:center;">
+			<div id="upsell-trigger" style=" margin: 1em 0; line-height: 1.8; padding: 0 0 1em;">
+				<p style="margin: 1em 0;">Get a 70%+ boost in your chances of winning this project.</p>
+
+					<p>
+						<i class="fa fa-check-circle" aria-hidden="true" style="color:#5ab52a; margin-right: .5em;"></i> Show up above everyone else<br>
+						<i class="fa fa-check-circle" aria-hidden="true" style="color:#5ab52a; margin-right: .5em;"></i> Add your portfolio<br>
+						<i class="fa fa-check-circle" aria-hidden="true" style="color:#5ab52a; margin-right: .5em;"></i> Write a longer message and make a better case
+					</p>
+				
 				
 				<a class="upsell button" href="javascript:">Upgrade to pro + add your portfolio</a><br>
 				
 				
-				<span style="margin:0 .5em">or</span> 
-				<%= link_to "No thanks, send my message", post_reply_path(@reply), method: :put %>
 			</div>		
 		</div>
+		
+		
 	
 
   </section>
+
+
 </div>
+
+
+<p style="text-align:center;">
+<span style="margin:0 .5em 0">or</span> 
+<%= link_to "No thanks, send my message for free", post_reply_path(@reply), method: :put %>
+</p>

@@ -47,7 +47,7 @@
 			<% if @projects.blank? %>
 				<h3>There are no public projects at this time</h3>
 
-				<p><%= link_to "You post a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
+				<p><%= link_to "Create a project", new_project_wizard_path(project_id: :new), :class => "button" %></p>
 			<% else %>
 				<div class="project-list">
 					<% @projects.each do |project| %>
@@ -81,14 +81,14 @@
 	
 	<h3 class="action-header">Projects for 
     <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
-      prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
+      prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
 	</h3>
 	
 	<div class="project-list-wrap" style="width: 815px;">
 		<% if @projects.blank? %>
-			<h3>There are no public projects at this time</h3>
+			<p>There are no active projects for this category right now.</p>
 
-			<p><%= link_to "You post a project though", new_project_wizard_path(project_id: :new), :class => "button" %></p>
+			<p><%= link_to "Notify me", new_subscription_path, :class => "button" %></p>
 		<% else %>
 			<div class="project-list">
 				<% @projects.each do |project| %>

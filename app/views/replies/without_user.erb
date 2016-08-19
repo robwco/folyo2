@@ -6,12 +6,12 @@
 		
 		
 		<div style="text-align:center;">
-	    <%= image_tag(f.object.photo.url, :style => "width:90px; border-radius: 90px; margin: 2em 0 0;") if f.object.photo(:thumb) %>
+	    <%= image_tag(f.object.photo.url, :style => "width:90px; border-radius: 90px; margin: 2em 0 .5em;") if f.object.photo(:thumb) %>
 
-			<h3 class="form-header" style="margin-top: .25em;">Upload a profile pic</h3>
+			<h3 class="form-header" style="margin-top: .25em;">Upload a profile picture</h3>
 	    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 100px; margin: 0 auto 0;"	%>
-	    <p class="required" style="width:400px; font-size: 14px; margin: 0 auto;">
-	      Your picture will appear next to your replies. Square images work best. 190 pixels wide is optimal.
+	    <p class="required" style="width:350px; font-size: 14px; margin: 0 auto;">
+	      Your picture will appear next to your reply. Square images work best. 200 pixels wide is optimal.
 	    </p>
 		</div>
 
