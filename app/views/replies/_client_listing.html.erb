@@ -7,11 +7,10 @@
 
 			<div class="skills">Project status: 
 				<span style="margin: .25em 0 0; font-size: 12px;">
-					<select style="font-size: 16px;">
-			  		<option value="volvo">Seeking freelancers</option>
-			  		<option value="saab">Accepted, in progress</option>
-			  		<option value="mercedes">Completed</option>
-					</select>
+          <%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true) do |f| %>
+            <%= f.select :status, options_for_select(Project.status_with_label, @project.status), {}, 
+                    { style: "font-size: 16px;", data: { status_update: true } } %>
+          <% end %>
 				</span>			
 			</div>
 		</div>
@@ -155,7 +154,7 @@
 		</style>
 		
 		<div class="project-list-wrap"  style="margin: 0; margin: 0 auto; padding: 1em 1em 2em;">
-			<% @project.replies.each do |reply| %>
+			<% @project.replies.unarchived.each do |reply| %>
 				<%= render "replies/client_reply_view", reply: reply %>
 			<% end %>
 		</div>

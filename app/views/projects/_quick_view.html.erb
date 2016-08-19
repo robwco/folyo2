@@ -15,7 +15,7 @@
 		<div class="skills">
 			Needed:  
       <% project.categories.each do |category| %>
-        <a class="badge" href="#"><%= category.name %></a> 
+        <a class="badge" href="<%= home_projects_path(category_id: category.id) %>"><%= category.name %></a> 
       <% end %>
 		</div>
 	</div>

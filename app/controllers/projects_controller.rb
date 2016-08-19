@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
-  before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :thank_you, :destroy]
+  before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :update_status, :thank_you, :destroy]
   before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
 
   respond_to :html
@@ -145,6 +145,25 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update_status
+    respond_to do |format|
+      if @project.update(project_status_params)
+        format.html { 
+          redirect_to @project, notice: 'Project status was updated!.' 
+        }
+        format.js {
+          render plain: "Project status was updated!", status: :ok
+        }
+      else
+        format.html { render :new, notice: "Please correct the errors below." }
+        format.js { 
+          puts @project.errors.inspect
+          render plain: "An error occurred."
+        }
+      end
+    end
+  end
+
   def destroy
     @project.destroy
     redirect_to home_projects_path, notice: "Your project was deleted."
@@ -163,6 +182,10 @@ class ProjectsController < ApplicationController
 
     def project_params
       params.require(:project).permit(:title, :long_description, :goals, :deadline, :budget, { category_ids: [] } )
+    end
+
+    def project_status_params
+      params.require(:project).permit(:status)
     end
 
     def payment_package_params

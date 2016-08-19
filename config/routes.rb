@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 	  get "complete", on: :collection
 	  get "preview", on: :member
 	  put "post", on: :member
+	  put "archive", on: :member
 	  resources :messages
   end
 
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     put "select_payment", on: :member
     get "collect_payment", on: :member
     put "charge_payment", on: :member
+    put "update_status", on: :member
 
     resources :replies do
       get 'new_user', on: :new

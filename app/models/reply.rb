@@ -22,4 +22,9 @@ class Reply < ActiveRecord::Base
     self.published_at = Time.now
     save
   end
+
+  def archive
+    self.archived = true
+    save
+  end
 end

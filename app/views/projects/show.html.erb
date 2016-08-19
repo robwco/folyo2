@@ -32,7 +32,7 @@
 							<%= render "replies/reply" %>	
 						<% else %>
 
-							<% if current_user.present? %>
+							<% if user_signed_in? %>
 								<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffddf;"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
 									
 									

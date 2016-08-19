@@ -1,4 +1,8 @@
 class Project < ActiveRecord::Base
+  enum status: [:seeking_freelancer, :accepted, :complete]
+  def self.status_with_label
+    [["Seeking freelancers", :seeking_freelancer], ["Accepted, in progress", :accepted], ["Completed", :complete]]
+  end
 
 	belongs_to :user
 	belongs_to :listing_package

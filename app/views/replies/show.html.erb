@@ -6,11 +6,13 @@ $(document).ready(function(){
 </script>
 
 <div class="wrap800" style="width:600px; margin: 0 auto; padding: 0 0 5em;">
-	<div style="display: table; width: 100%;">
-		<%= link_to 'Archive', root_path, :class => "button", :style => "font-size: 13px; font-weight: normal; background: #eee; color: #444 !important; float: right; vertical-align: middle; margin: 1em auto 0;padding: 5px 10px 6px;"  %>
-	</div>	
+  <% if user_signed_in? && current_user == @reply.project.user %>
+    <div style="display: table; width: 100%;">
+      <%= link_to 'Archive', archive_reply_path(@reply), method: :put, :class => "button", :style => "font-size: 13px; font-weight: normal; background: #eee; color: #444 !important; float: right; vertical-align: middle; margin: 1em auto 0;padding: 5px 10px 6px;"  %>
+    </div>	
+  <% end %>
 	
-	<h3><%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #dee5e9; vertical-align: 1px; margin-right: .5em; margin-left: -.25em;"></i>'.html_safe, reply_path %> <%= image_tag @reply.user.photo.url, :style => "height: 50px; width: 50px; border-radius: 50px; margin:0 .5em 0 0; vertical-align: middle; background-color: #f9f9f9;" %> <%= @reply.user.name %> <span style="font-weight: normal;">wrote this on <%= @reply.created_at.strftime("%B %e") %></span></h3>
+	<h3><%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #dee5e9; vertical-align: 1px; margin-right: .5em; margin-left: -.25em;"></i>'.html_safe, @reply.project %> <%= image_tag @reply.user.photo.url, :style => "height: 50px; width: 50px; border-radius: 50px; margin:0 .5em 0 0; vertical-align: middle; background-color: #f9f9f9;" %> <%= @reply.user.name %> <span style="font-weight: normal;">wrote this on <%= @reply.created_at.strftime("%B %e") %></span></h3>
 	
 	<div style="box-sizing: border-box;  margin: 0 auto;">
 		
