@@ -11,4 +11,8 @@ module MessagesHelper
 		return "background-color: #ecf6fa;" if message.user == current_user
 		"background-color: #f1f1f1;"
 	end
+	def message_align(message)
+		return "text-align: right;" if message.user == current_user
+		"text-align: left;"
+	end
 end

@@ -11,7 +11,7 @@
 			<%= link_to "+ Project", new_project_path, :class => "button" %>
 		<% end %>
 		
-		<%= link_to "<i class='fa fa-envelope' aria-hidden='true' style='margin-right: .5em; color: #d6dfe4;'></i>Inbox (#{Message.sent_to(current_user).unread.count})".html_safe, inbox_projects_path %>
+		<%= link_to "<i class='fa fa-envelope' aria-hidden='true' style='margin-right: .5em; color:#f1f1f1;'></i>Inbox (#{Message.sent_to(current_user).unread.count})".html_safe, inbox_projects_path %>
 		<%= link_to "Profile", edit_user_registration_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 

@@ -3,7 +3,7 @@
 
 <% if current_user.present? %>
 	<p style="font-size: 16px; padding-bottom: 1em;">
-		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .25em; margin-left: -.25em; margin-top: 0;"></i> See more projects'.html_safe, home_projects_path, :style => "text-decoration: none; color:#666;" %>
+		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .25em; margin-left: -.25em; margin-top: 0;"></i> See more projects'.html_safe, home_projects_path, :style => "text-decoration: none; color:#7c8d99;" %>
 		
 		
 		<%= link_to "Log out", destroy_user_session_path, method: :delete, :style => "float: right;" %>
@@ -11,7 +11,7 @@
 <% else %>	
 
 	<p style="font-size: 16px; text-align:center; padding-bottom: 1em;">
-		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .25em; margin-left: -.25em; margin-top: 0;"></i> See more projects'.html_safe, home_projects_path, :style => "text-decoration: none; color:#666;" %>
+		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin-right: .25em; margin-left: -.25em; margin-top: 0;"></i> See more projects'.html_safe, home_projects_path, :style => "text-decoration: none; color:#7c8d99;" %>
 	</p>
 <% end %>
 
@@ -25,7 +25,7 @@
 <h1 class="post-title"><%= @project.title %></h1>
 
 <p class="by-line">
-	<%= image_tag 'rob.png', :style => "width:30px; border-radius: 30px;  vertical-align: -10px; margin-right: 2px;" %> <%= @project.name %>Robert Williams, <a href="#"><%= @project.organization %></a>
+	<%= image_tag @project.user.photo.url, :class => "photo" %> <%= @project.name %>Robert Williams, <a href="#"><%= @project.organization %></a>
 </p>
 
 

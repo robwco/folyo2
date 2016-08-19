@@ -445,7 +445,7 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 
 
 .top-menu a {
-	color: #777166;
+	color: #7c8d99;
 	margin-left: 1.5em;
 	text-decoration: none;
 }
@@ -458,11 +458,13 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 }
 
 .footer-menu a {
-	color: #777166;
+	color: #7c8d99;
 	margin: 0 .25em;
 	font-size: 16px;
 	text-decoration: none;
 }
+
+
 
 
 
@@ -481,16 +483,17 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 }
 
 .by-line .photo {
-	width: 40px;
-	border-radius: 40px;
-	vertical-align: -10px;
-	margin-right: .25em;
+	width:30px; 
+	border-radius: 30px;  
+	vertical-align: -10px; 
+	margin-right: 4px;
 }
 
 .by-line {
 	text-align:center;
-	font-size: 18px;
-	color: #535353;
+	font-size: 16px;
+	color: #7c8d99;
+
 }
 
 .post-company-info {
@@ -547,7 +550,7 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 .project-listing .skills {
 	margin: .5em 0 0;
 	font-size: 14px;
-	color: #888;
+	color: #7c8d99;
 }
 
 .project-listing .client-profile {
@@ -559,7 +562,7 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 	border-radius: 5px;
 	font-size: 12px;
 	padding: 1em 2em 1em .5em;
-	color: #667;
+	color: #545048;
 	line-height: 19px;
 	box-sizing: border-box;
 }

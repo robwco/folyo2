@@ -1,7 +1,53 @@
-<div class="client-message" style="<%= message_color message %> border-radius: 5px; padding: .25em;  display: block; width: 100%; box-sizing: border-box; margin-top: 20px;">
-	<p style="margin: 0;">
-		<strong><%= message_sender message %></strong> 
-		<span style="font-size: 70%; color:#666; vertical-align: 1px;"><%= message.created_at.strftime("%l:%M%P") %></span><br>
+<style>
+.message-wrap {
+	border-radius: 5px; 
+	padding: .25em;  
+	display: table; 
+	width: 100%; 
+	box-sizing: border-box; 
+	margin-top: 20px;
+}
+
+.message-photo {
+	width: 40px; 
+	height: 40px;
+	border-radius: 40px; 
+	float: left; 
+	margin: .5em 1em 0 .5em;
+}
+
+.message-time {
+	margin: 0 .5em 0 0;
+	font-size: 70%; 
+	color: #7c8d99; 
+	vertical-align: 1px;
+	display: table;
+	width: 50px;
+}
+.message-name {
+	color: #302f29;
+	font-weight: 600;
+	margin: .25em 0 0;
+	display: block;
+}
+.message-text {
+	color: #545048;
+	margin: 0;
+	display: table;
+}
+
+</style>
+
+<div class="message-wrap" style="">
+	<%= image_tag message.user.photo.url, :class => "message-photo" %>
+	<p class="message-text">
+		<span class="message-name"><%= message_sender message %></span>
 		<%= message.message %>
+		
+		<% if message.created_at < 1.day.ago %>
+			<span class="message-time"><%= message.created_at.strftime("%b%_m") %></span>
+		<% else %>
+			<span class="message-time"><%= message.created_at.strftime("%l:%M%P") %></span>
+		<% end %>
 	</p>
 </div>

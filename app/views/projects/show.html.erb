@@ -13,9 +13,9 @@
 
 	<div class="wrap800" style="margin: 2em auto;">
 		<% if @project.reply_from?(current_user) %>
-			<p style="margin: 0 0 1em .5em; color: #535353;"><strong><i class="fa fa-check" aria-hidden="true" style="color:#5ab52a;"></i> You've replied to this project.</strong></p>
+			<p style="margin: 0 0 1em .5em; color: ##545048;"><strong><i class="fa fa-check" aria-hidden="true" style="color:#5ab52a;"></i> You've replied to this project.</strong></p>
 		<% else %>
-			<p style="margin: 0 0 1em .5em; color: #535353;"><strong>Reply to this project</strong> 
+			<p style="margin: 0 0 1em .5em; color: #545048;"><strong>Reply to this project</strong> 
 			
 			<a href="http://emailsthatwin.com" style="float:right;"><span style="font-weight: normal; font-size: 14px;">How to write a client-winning message</span></a>
 				</p>
@@ -55,7 +55,10 @@
 				<%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
 
 				<% if current_user.can_send_message?(@reply) %>
-					<%= render "messages/send", name: message_recipient(@reply) %>
+				
+					<a href="#" class="button">Write a message to Rob</a>
+				<!--
+					<%= render "messages/send", name: message_recipient(@reply) %>-->
 				<% end %>
 			<% end %>
 		<% end %>
