@@ -1,5 +1,5 @@
 class RepliesController < ApplicationController
-  before_action :set_reply, only: [:show, :edit, :preview, :post, :update, :archive, :destroy]
+  before_action :set_reply, only: [:show, :edit, :preview, :post, :update, :archive, :destroy, :message]
   before_filter :authenticate_any! , except: [:create, :without_user]
   after_filter :mark_messages_read, only: [:show]
 
@@ -119,6 +119,11 @@ class RepliesController < ApplicationController
     @reply.archive
     redirect_to @reply.project, notice: "Reply was archived!"
   end
+  
+  def message
+	  @message = Message.new
+
+  end 
 
   def destroy
     @reply.destroy

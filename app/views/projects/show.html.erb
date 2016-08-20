@@ -1,3 +1,7 @@
+<div style="max-width: 860px; margin: 0 auto; border-bottom: 1px solid #dee5e9;">
+<%= render "layouts/top_menu" %>
+</div>
+
 
 	<% if current_user.present? && current_user.can_see_project_replies?(@project) %>
 	
@@ -9,13 +13,11 @@
 			<%= render 'projects/project' %>
 		</div>
 
-	
-
 	<div class="wrap800" style="margin: 2em auto;">
 		<% if @project.reply_from?(current_user) %>
-			<p style="margin: 0 0 1em .5em; color: ##545048;"><strong><i class="fa fa-check" aria-hidden="true" style="color:#5ab52a;"></i> You've replied to this project.</strong></p>
+			<p style="margin: 0 0 1em .5em; color: #7c8d99;"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
 		<% else %>
-			<p style="margin: 0 0 1em .5em; color: #545048;"><strong>Reply to this project</strong> 
+			<p style="margin: 0 0 1em .5em; color: #7c8d99;">Reply to this project
 			
 			<a href="http://emailsthatwin.com" style="float:right;"><span style="font-weight: normal; font-size: 14px;">How to write a client-winning message</span></a>
 				</p>
@@ -24,9 +26,6 @@
 
 		<% if @project.allow_replies_from?(current_user) %>
 			<div class="wrap reading reply" style="margin-top: 0;">
-
-					
-
 					<div style="margin: .5em auto 3em; border: 3px solid #8b6eb9; padding:  0; box-sizing: border-box; border-radius: 16px;">
 						<% if @project.reply_from?(current_user) %>
 							<%= render "replies/reply" %>	
@@ -56,9 +55,13 @@
 
 				<% if current_user.can_send_message?(@reply) %>
 				
-					<a href="#" class="button">Write a message to Rob</a>
-				<!--
-					<%= render "messages/send", name: message_recipient(@reply) %>-->
+				<div class="wrap800" style="margin: 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
+					<div class="wrap800" style="margin: 0 auto; width: 750px;">
+					<%= render "messages/send", name: message_recipient(@reply) %>
+					</div>
+				</div>
+
+
 				<% end %>
 			<% end %>
 		<% end %>

@@ -11,15 +11,16 @@
 			<%= link_to "+ Project", new_project_path, :class => "button" %>
 		<% end %>
 		
-		<%= link_to "<i class='fa fa-envelope' aria-hidden='true' style='margin-right: .5em; color:#f1f1f1;'></i>Inbox (#{Message.sent_to(current_user).unread.count})".html_safe, inbox_projects_path %>
+		<%= link_to "<i class='fa fa-envelope' aria-hidden='true' style='color:#dee5e9;margin-right: .5em;'></i>Inbox (#{Message.sent_to(current_user).unread.count})".html_safe, inbox_projects_path %>
 		<%= link_to "Profile", edit_user_registration_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 
 	<% else %>
 	
+		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
+			
 		<%= link_to 'Sign up', new_subscription_path %>
 		<%= link_to "Log in", new_user_session_path %>
 		
-		<%= link_to image_tag('folyo.png', :class => "logo"), url_for(root_path) %>
 	<% end %>
 </section>

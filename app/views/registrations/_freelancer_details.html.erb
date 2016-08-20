@@ -40,55 +40,26 @@
   });
 </script>
 
-<h3 class="action-header" style="width: 725px; margin: 0 auto 1em;">Your freelance info</h3>
 
 
 <div class="form-question-horizontal">
-  <div class="label-left" style="width:250px; margin:  0 auto 0 5.25em;">
-    <p>Who are you, and what<br> do you do?</p>
+  <div class="label-left">
+    <p>Who are you, and what do you do?</p>
   </div>
 
   <div class="input-right">
-    <%= f.text_area :biography, :style => "max-width: 400px;", :placeholder => "I'm..." %>
+    <%= f.text_area :biography, :style => "max-width: 600px;", :placeholder => "I'm..." %>
     
-    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Include what you do for your clients and a little about yourself.</p>
+    <p class="required">Include what you do for your clients and a little about yourself.</p>
   </div>
 </div>
-
 
 <div class="form-question-horizontal">
   <div class="label-left">
-    <p>Profile picture</p>
-  </div>
-
-  <div class="input-right">
-    <%= image_tag(f.object.photo.url) if f.object.photo(:thumb) %>
-    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px; margin: 1.5em 0 0;"	%>
-    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">
-      Your picture will appear next to your replies. Square images work best. 190 pixels wide is optimal.
-    </p>
-  </div>
-</div>
-
-
-<div class="form-question-horizontal">
-  <div class="label-left">
-    <p>Location</p>
-  </div>
-
-  <div class="input-right">
-    <%= f.text_field :location, placeholder: 'Chicago, IL, USA'	%>
-  </div>
-</div>
-
-
-<div class="form-question-horizontal">
-  <div class="label-left" style="width:250px; margin:  0 auto 0 5.25em;">
     <p>Your freelance skills</p>
   </div>
 
   <div class="input-right">
-    
     <div class="skills">
       <% @selected_categories.each do |category| %>
         <a href="javascript:" class="badge" data-category="<%= category.name %>" data-category-id="<%= category.id %>">
@@ -98,7 +69,7 @@
       <% end %>  
     </div>
     
-    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Get emailed when a project is posted in a category you follow.</p>
+    <p class="required" style="margin: .5em 0 0;">Get emailed when a project is posted in a category you follow.</p>
     
     
     <div class="deactive-skills" style="font-size: 14px;"><br>
@@ -108,7 +79,5 @@
         <span <%= 'style=display:none;' if @user.category_ids.include?(category.id) %>><%= category.name %> <a href="javascript:" data-category="<%= category.name %>" data-category-id="<%= category.id %>" class="follow">Follow</a><br/></span>
       <% end %>
     </div>
-    
-    
   </div>
 </div>

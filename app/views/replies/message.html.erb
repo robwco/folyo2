@@ -1,0 +1,23 @@
+<div class="wrap800" style="width:800px; margin: 0 auto; padding: 0 0 5em;">
+	
+	<p style="padding:  1em 0; text-align: center;">
+		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #dee5e9; vertical-align: 1px; margin-right: .5em; margin-left: -.25em;"></i> Cancel'.html_safe, @reply, :style => "text-decoration: none; color: #7c8d99;" %>
+	</p>
+	
+	<div style="box-sizing: border-box;  margin: 0 auto;margin: .5em auto 3em; border: 3px solid #8b6eb9; padding:  0; box-sizing: border-box; border-radius: 16px;">
+		<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 13px; border-top-right-radius: 13px;  background-color: #fffddf;">
+			
+			
+			<%= image_tag @reply.user.photo.url, :style => "width:50px; border-radius: 50px; vertical-align:-8px; margin-right: .5em; float:left;" %> 
+			
+				<div style="display: table; line-height: 1;">RE: <%= truncate @reply.message, length: 60 %><br>
+					<span style="font-size: 16px; font-weight: 400; color: #545048;"><%= @reply.user.name %></span>
+				</div>
+		</h3>
+	
+		<div class="wrap800" style="margin: 0; padding: 1em; box-sizing: border-box; width: 100%;">				
+			<%= render "messages/client_send", name: message_recipient(@reply) %>	
+		</div>
+	</div>
+	
+</div>

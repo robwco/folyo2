@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 	  get "without_user", on: :collection
 	  get "complete", on: :collection
 	  get "preview", on: :member
+	  get "message", on: :member
 	  put "post", on: :member
 	  put "archive", on: :member
 	  resources :messages

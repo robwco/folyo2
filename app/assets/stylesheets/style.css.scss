@@ -235,13 +235,23 @@ input[type=submit], a.button {
 	padding: 8px 20px 10px;
 	line-height: 1;
 	cursor: pointer;
-  background: #56b718;
+  background: #88cf60;
 	transition: background 0.1s ease;
+	
+	width: auto; 
+	display: inline-block; 
+	text-align:center; 
+	padding: 1em 3em; 
+	margin: 0 auto;
+}
+
+.danger {
+	background-color: #db8688 !important;
 }
 
 
 input[type=submit]:hover, a.button:hover {
-	background: #222;
+	background: #222 !important;
 	color: #FFF !important;
   
 }
@@ -364,8 +374,8 @@ h3.form-header {
 	box-sizing: border-box;
 	max-width: 860px; 
 	width: 100%;
-	margin: 0 auto 4em; 
-	padding: 1.25em 0 2em;
+	margin: 0 auto 1em; 
+	padding: 1.25em 0 1em;
 	
 	h3 {
 	}
@@ -436,7 +446,7 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 .top-menu {
 	max-width: 860px; 
 	width: 100%; 
-	margin: 1em auto;
+	margin: 2em auto 1em;
 	text-align: right;
 	font-size: 16px;
 	display: table;
@@ -454,7 +464,7 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 	padding: 5px 10px 7px;
 	font-size: 15px;
 	border-radius: 5px;
-  background: #56b718;
+  background: #88cf60;
 }
 
 .footer-menu a {
@@ -632,7 +642,7 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 /* Company step */
 
 .form-question-horizontal {
-	width: 900px;
+	max-width: 900px;
 	display: table;
 	margin: 0 auto;
 	box-sizing: border-box;

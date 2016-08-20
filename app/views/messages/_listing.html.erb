@@ -1,4 +1,4 @@
-<div <%= 'style="padding-bottom: 8em;"'.html_safe if extra_padding %>>
+<div <%= 'style="padding-bottom: 2em;"'.html_safe if extra_padding %>>
 	<div>
 		<% reply.messages.each do |message| %>
 			<%= render "messages/message", message: message %>

@@ -1,10 +1,13 @@
+<script>
+  $(document).ready(function(){
+    $('textarea').autosize();
+  });
+</script>
+
 <%= form_for([@reply, @message]) do |f| %>
-	<h3 class="form-header">Send <%= first_name name %> a message</h3>
+		<%= f.text_area :message, :placeholder => "Write your message...", :autofocus => "true", :style => "height: auto; max-width: 100% !important; margin: .5em 0; min-height: 150px;" %>
 	
-		<%= f.text_area :message, :placeholder => "Write your message...", :autofocus => "true", :style => "height: auto; max-width: 100% !important; margin: .5em 0;" %>
-	
-		<%= f.submit "Send message", class: "button", style: "margin: 0 0 6em;" %>
-			
+		<%= f.submit "Send message", class: "button", style: "margin: 0;" %>	
 <% end %>
 
 

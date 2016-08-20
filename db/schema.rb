@@ -312,8 +312,8 @@ ActiveRecord::Schema.define(version: 20160819181100) do
     t.string   "company_description"
     t.text     "long_description"
     t.text     "long_description_html"
-    t.string   "status",                    default: "0"
     t.boolean  "archived",                  default: false
+    t.string   "status"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree

@@ -4,12 +4,12 @@
 
 			
 <h3 class="action-header" style="margin: 0 auto 1em;">
-	Your inbox (new and unread messages)
+	Your inbox
 
   <% if params[:archived] %>
-    <%= link_to "Hide archived", inbox_projects_path, style: "float:right;" %>
+    <%= link_to "New and Unread", inbox_projects_path, style: "float:right; font-size: 16px; text-decoration: none; margin-top:3px;" %>
   <% else %>
-    <%= link_to "Show archived", inbox_projects_path(archived: true), style: "float:right;" %>
+    <%= link_to "Archived", inbox_projects_path(archived: true), style: "float:right; font-size: 16px; text-decoration: none; margin-top:3px;" %>
   <% end %>
 </h3>
 
@@ -138,6 +138,7 @@
 	</div>
 	
 <% else %>
+
 	<p style="text-align:center;">You have no new messages yet.<br>
     <%= link_to 'Reply to a project'.html_safe, home_projects_path, :class => "button", :style => "margin: .5em 0;" %>
 	</p>
