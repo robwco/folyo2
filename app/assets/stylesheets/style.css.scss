@@ -291,14 +291,18 @@ input[type=submit]:active, a.button:active {
 /* In-app messages */
 
 .alert {
-	width: 100%;
-	max-width: 1000px;
-  background: #c8efb1;
-	color: #28391e;
-	padding: .5em 1.5em;
-	margin: 0 auto;
-	border-bottom-right-radius: 8px;
-	border-bottom-left-radius: 8px;
+	position: fixed;
+	font-size: 16px;
+	margin: 1em auto 0;
+	padding: .1em 2em .25em 1em;
+	border-radius: 3rem;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #fff;
+	position: fixed;
+  top: 5%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
 }
 
 .emoji-big {

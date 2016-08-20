@@ -28,9 +28,13 @@
 	
 	<% flash.each do |key, value| %>
 		<% if key == "undo"%>
-	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value.html_safe %></div>
+			<div style="width:100%;">
+	      <div class="alert alert-<%= key %>" id="error_explanation"><i class="fa fa-check" aria-hidden="true" style="color:#86d15a; margin-right:.25em;"></i> <%= value.html_safe %></div>
+			</div>
 		<% else %>
-	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value.html_safe unless value.blank? %></div>
+			<div style="width:100%;">
+	    	<div class="alert alert-<%= key %>" id="error_explanation"><i class="fa fa-check" aria-hidden="true" style="color:#86d15a; margin-right:.25em;"></i> <%= value.html_safe unless value.blank? %></div>
+			</div>
 	    <% end %>
 	<% end %>
 
