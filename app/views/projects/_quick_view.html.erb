@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	
-	<div class="client-profile">
+	<div class="client-profile" style="margin: -.5em 0 0;">
 		<div class="avatar">
       <% if project.company_logo? %>
         <%= image_tag(project.company_logo.url, class: "photo") %>
@@ -30,15 +30,13 @@
 		</div>
 	
 		<div class="client-info">
-			<a href="#">
-				<strong><%= project.name %><br>
+			<p>
+				<strong><%= project.user.name %></strong>
+			</p>
 			
-				<span style="font-size: 13px;"><%= truncate project.organization, length: 17 %></span></strong><br>
-			</a>
-			
-			Temecula, CA, USA<br>
-			
-			<em>Created 2 projects</em>
+			<p>
+				<%= truncate project.organization, length: 17 %>
+			</p>
 		</div>
 	</div>
 	

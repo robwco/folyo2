@@ -7,31 +7,18 @@
 
 			<div class="skills">Project posted <%= @project.created_at.strftime("%b%_m") %>
 				 
-				<span style="margin:1em 0 0; font-size: 12px; display: block;">
-          <%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true) do |f| %>
-            <%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, 
-                    { style: "font-size: 16px;", data: { status_update: true } } %>
-          <% end %>
-				</span>			
+		
 			</div>
 		</div>
 
-		<div class="client-profile">
-			<div class="avatar">
-				<%= image_tag(@project.company_logo.url, class: "photo") %>
-			</div>
-
-			<div class="client-info">
-				<a href="#">
-					<strong><%= @project.name %><br>
-
-					<span style="font-size: 13px;"><%= truncate @project.organization, length: 17 %></span></strong><br>
-				</a>
-
-				Temecula, CA, USA<br>
-
-				<em>Created 2 projects</em>
-			</div>
+		<div class="client-profile" style="padding: 0; margin: 0;">
+			<h3 style="margin: 0; color: #302f29;">Project status</h3>
+			<span style="margin:1em 0 0; font-size: 12px; display: block;">
+        <%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true) do |f| %>
+          <%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, 
+                  { style: "font-size: 16px;", data: { status_update: true } } %>
+        <% end %>
+			</span>
 		</div>
 	</div>
 	</div>
@@ -48,12 +35,10 @@
 			<p style="margin: 0 0 3em; font-size: 20px; padding: .5em 1em; display: inline-block;  width: 100%; box-sizing: border-box;">No replies yet. Share it: 
 				<input type="text" value="<%= project_url(@project) %>" style="font-size: 16px;  height: 30px;"> 
 			</p>
-		
 		<% else %>
 		
-		<style>
-		
-		/* Replies */
+	<style>
+	/* Replies */
 
 		.project-listing {
 			margin: 0;
@@ -151,14 +136,13 @@
 			height: 80px;
 			vertical-align: middle;
 		}
-
-		</style>
+	</style>
 		
-		<div class="project-list-wrap"  style="margin: 0; margin: 0 auto; padding: 1em 1em 2em;">
+		<div class="project-list-wrap"  style="margin: 0 auto; padding: 1em 1em 5em; width: 100%; display: table;">
 			<% @project.replies.unarchived.each do |reply| %>
 				<%= render "replies/client_reply_view", reply: reply %>
 			<% end %>
 		</div>
 		
-		<% end %>
+	<% end %>
 

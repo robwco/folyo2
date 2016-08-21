@@ -13,11 +13,11 @@ $(document).ready(function(){
 <h3 class="form-header">Summary</h3>
 
 	<div style="margin: .5em auto 1em;">
-		<div style="font-size: 15px; width: 255px; float:right;">
+		<div style="font-size: 14px; width: 195px; float:right; color: #7c8d99;">
 			1-2 sentences about the project itself. This will appear on the full listing. Focus on outcomes, not exactly what's needed!
 		</div>
 
-		<%= f.text_area :title, data: { max_characters: 1250 }, placeholder: "We're looking to redesign our website, and we need a freelancer to help with mockups and delivery." %>
+		<%= f.text_area :title, data: { max_characters: 120 }, placeholder: "We're looking to redesign our website, and we need a freelancer to help with mockups and delivery." %>
 
 	</div>
 
@@ -26,7 +26,7 @@ $(document).ready(function(){
 		<div style="margin: .5em auto 1em;">
 			<%= f.text_area :long_description, placeholder: "Four score...", :style => "min-height: 200px;" %>
 
-			<div style="font-size: 15px; width: 255px; float:right;">
+			<div style="font-size: 14px; width: 195px; float:right; color: #7c8d99;">
 				This is where you go into as much detail as possible about what you need. Write as much as you want – the longer, the better.
 			</div>
 		</div>
@@ -42,7 +42,7 @@ $(document).ready(function(){
 	<div style="margin: .5em auto 1em;">
 		<%= f.text_area :goals, placeholder: "Doubled revenue, more customers, more page views, a boost to our mailing list, etc..." %>
 
-		<div style="font-size: 15px; width: 255px; float:right;">
+		<div style="font-size: 14px; width: 195px; float:right; color: #7c8d99;">
 			Keep this one brief. Freelancers love knowing what your expectations are going into the project.
 		</div>
 	</div>

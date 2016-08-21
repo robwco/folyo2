@@ -1,15 +1,8 @@
 <% if @reply.portfolio_message.present? %>
-<div style="padding: 0 ;">
-	<div class="portfolio-individual" style="display: table;  border-radius: 5px;  padding: .75em 0; box-sizing: border-box; border-radius: 13px; margin: -1.5em auto 0;">
-		
-		<%= image_tag(@reply.portfolio_image.url, class: "photo", align: "left", style: "margin: 1.5em 1em 0 0; height:150px; width: 200px;border-radius: 5px;") if @reply.portfolio_image.present? %>
-		
-		
-		<p class="message" style="display: table;">
-			<small><strong>This project shows why I'm great for yours:</strong></small><br>
+	<%= image_tag(@reply.portfolio_image.url, class: "portfolio", style: "margin: 1.5em 0 0; width: 100%; border-radius: 5px; border:1px solid #dee5e9;") if @reply.portfolio_image.present? %>
 
-			<%= h(@reply.portfolio_message).gsub("\n", "<br>").html_safe %>
-		</p>
-	</div>
-</div>
+	<%= image_tag 'portfolios-folyo.png', :style => "margin: 1em 0 0; width:100%; border-radius:5px; border: 1px solid #dee5e9;" %>
+
+	<p>
+		<%= h(@reply.portfolio_message).gsub("\n\n", "</p>").html_safe %>
 <% end %>

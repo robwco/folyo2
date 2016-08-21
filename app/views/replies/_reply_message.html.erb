@@ -1,13 +1,25 @@
-	<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 13px; border-top-right-radius: 13px;  background-color: #fffddf;"><%= image_tag @reply.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %>
+<style>
+.reply p {
+	margin: .25em 0 .5em;
+}
+</style>
+
+	<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 13px; border-top-right-radius: 13px;  background-color: #fffddf;">
+		<%= image_tag @reply.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %>
 	
-	<span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;">Sent on July 1, 2016</span>
+	<span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;">Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></span>
 	</h3>
 	
-	<p class="preview-message" style="padding: 0 1em;">
-
-		<%= h([@reply.biography, @reply.message, @reply.next_steps].join("\n\n")).gsub("\n", "<br>").html_safe %>
+	<div style="padding: 1em 2em;" class="reply">
+		<p><%= h([@reply.biography].join("\n")).gsub("\n", "</p>").html_safe %>
+		
+		<p><%= h([@reply.message].join("\n")).gsub("\n", "</p>").html_safe %>
+		
+		<%= render "replies/portfolio_message" %>
+		
+		<p><%= h([@reply.next_steps].join("\n")).gsub("\n", "</p>").html_safe %>
 	
 		<% if allow_edit %>
 			<%= link_to "Edit your message", edit_reply_path(@reply), class: "message-preview-edit uppercase", :style => "text-transform: uppercase; font-size: 11px; font-weight: 600;" %>
 		<% end %>
-	</p>
+	</div>

@@ -1,22 +1,70 @@
-<h3 style="margin-top: 1em;">Add a portfolio piece to your message:</h3>
+<style>
+.portfolio {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
 
-<div style="width: 200px; height: 150px; display: inline-block; border: 3px solid #eee; text-align: center; border-radius: 15px; vertical-align: top;  box-sizing: border-box; color: #aaa; text-decoration: none; margin: 0 .5em; font-size: 12px; line-height: 1.5; padding: .5em 2em; background-color: #fff; margin: 2em 0 0; display: inline-block;">
-	<h3 style="margin: .5em 0 .25em;">Upload artwork</h3>
+.portfolio + label {
+  display: inline-block;
+	margin: 0 auto;
+	color: #FFF !important;
+	font-family: 'rooney-sans', -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+	border: 0;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 5px;
+	font-size: 18px;
+	margin: 0;
+	padding: 8px 20px 10px;
+	line-height: 1;
+	cursor: pointer;
+  background: #8c6eb9;
+	transition: background 0.1s ease;
+	width: auto; 
+	display: inline-block; 
+	text-align:center; 
+	padding: .5em 1em; 
+	margin: 0 auto;
+}
+
+.portfolio:focus + label,
+.portfolio + label:hover {
+	background: #302f29;
+}
+
+.portfolio + label {
+	cursor: pointer; /* "hand" cursor */
+}
+</style>
+
+
+<div style="width:100%; display: block; text-align: center; border-radius: 15px; vertical-align: top;  box-sizing: border-box; color: #aaa; text-decoration: none; margin: 0 .5em 3em; font-size: 12px; line-height: 1.5; padding: .25em 2em 1em; background-color: #f1f1f1; margin: 2em 0;">
 	
-	<p style="margin: 0 0 .5em;">It will appear next to your message. 600x800 wide is optimal. We'll resize automatically if it's wider.</p>
+	<h3 style="margin-top: 1em;" class="form-header"><span style="color: #fff; background-color: #86d15a; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 2px;">PRO</span> Add a 300x900 image portfolio piece to your message:</h3>
 	
-	<%= f.file_field :portfolio_image, style: "width:170px; text-align: center; margin: 0 auto; display: block; cursor: pointer !important;" %>
+	<div id="" style="margin: .5em 0 1em;font-size: 14px; color:#7c8d99;">300x900 wide is optimal. We'll resize automatically if it's wider.</div>
+	
+	<div style="margin: 1em 0; width:100%; text-align:center;">
+		<%= f.file_field :portfolio_image, :name => "portfolio", :class => "portfolio", :id => "portfolio", style: "width:170px; text-align: center; margin: 0 auto; display: block; cursor: pointer !important;" %>
+	
+		<label for="portfolio">Upload a portfolio piece...</label>
+	</div>
 </div>
 
 
-<div style="width:500px; margin: 0 0 0 2em; display: inline-block;">	
-	<p style="margin-bottom: 0;">Why did you pick this portfolio piece?<br>
-		<small>Tip: Try answering how this work shows you're perfect for the project.</small></p>
+<div style="">
+	<%= image_tag 'portfolios-folyo.png', :style => "width:100%; border-radius:5px; border: 1px solid #dee5e9;" %>
+	<p style="text-align:center; margin: 0;"><%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Remove portfolio'.html_safe, root_path, method: :put, :style => "color: #db8688; font-size: 14px; text-decoration: none; margin: 0 0 1.5em;"  %></p>
+	
+	<h3 class="form-header" style="margin:1em 0 .5em 0;">Why did you pick this portfolio piece?</h3>
+	
+	<div style="font-size: 14px; width: 170px; float:right; color:#7c8d99;">Tip: Try answering how this work shows you're perfect for the project.</div>
 
-	<div class="textarea-wrap">
-		<%= f.text_area :portfolio_message, placeholder: "On this project...", data: { max_characters: 600 } %>
-	</div>
-
+	<%= f.text_area :portfolio_message, placeholder: "On this project...", data: { max_characters: 300 } %>
 </div>
 
 
