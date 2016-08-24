@@ -14,6 +14,7 @@ class Reply < ActiveRecord::Base
   scope :published, -> { where(published: true) }
   scope :replied_to, -> (user) { joins(:project).published.where(projects: { user_id: user.id }).order(created_at: :desc) }
   scope :replies_from, -> (user) { published.where(user_id: user.id) }
+  scope :read, -> { where(message_read: true) }
   scope :unread, -> { where(message_read: false) }
   scope :unarchived, -> { where(archived: false) }
 
@@ -27,4 +28,17 @@ class Reply < ActiveRecord::Base
     self.archived = true
     save
   end
+
+  def unread?
+    !self.message_read
+  end
+
+  def mark_read(user)
+    if self.project.user == user
+      self.message_read = true
+      self.save
+    end
+    self.messages.sent_to(user).update_all(message_read: true)
+  end
+
 end

@@ -410,6 +410,20 @@ h3.form-header {
 	}
 }
 
+i.fa {
+	color:#dee5e9;
+	margin-right: .5em;
+}
+i.fa.unread {
+	color: #9d82c8 !important;
+}
+
+.message-wrap.unread {
+	-webkit-transition-property:background; 
+	-webkit-transition-duration: 1s; 
+	-webkit-transition-timing-function: ease-in;
+}
+
 /* Project quick view */
 
 a.job {
@@ -642,11 +656,6 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 .project-listing .info.narrow {
 	max-width: 600px;
 }
-
-.unread {
-	border-left: 2px solid #ddd;
-}
-
 
 /* Company step */
 

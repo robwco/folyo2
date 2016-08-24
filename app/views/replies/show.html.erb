@@ -1,6 +1,26 @@
 <script>
 $(document).ready(function(){
+  function highlight(elem, color, wait) {
+    var current = $(elem).css('background-color');
+    $(elem).css('background-color', color);
+    setTimeout(function () {
+      $(elem).css('background-color', current);
+    }, wait);
+  }
+
   $('textarea').autosize();
+
+  <% if @reply.messages.present? && @reply.messages.count > 0 %>
+    var completed = false;
+    $('html, body').animate({ scrollTop: $(document).height()-$(window).height()}, "slow", function() {
+      if (!completed) {
+        $(".message-wrap.unread").each(function() {
+          highlight($(this), "#fffddf", 2000);
+        });
+      }
+      completed = true;
+    });
+  <% end %>
 });
 </script>
 

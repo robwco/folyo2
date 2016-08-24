@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819181100) do
+ActiveRecord::Schema.define(version: 20160823210413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -343,6 +343,7 @@ ActiveRecord::Schema.define(version: 20160819181100) do
     t.string   "next_steps",                   limit: 300
     t.boolean  "message_read",                             default: false
     t.boolean  "archived",                                 default: false
+    t.boolean  "has_portfolio",                            default: false
   end
 
   add_index "replies", ["project_id"], name: "index_replies_on_project_id", using: :btree

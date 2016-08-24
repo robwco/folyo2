@@ -1,0 +1,24 @@
+<style>
+.reply-message:hover {
+	border: 3px solid #8c6eb9 !important;
+}
+</style>
+
+<div class="reply-message <%= 'unread' if reply.unread? %>" style="float:left; width:194px; border: 3px solid #dee5e9; border-radius: 13px; box-sizing: border-box; margin: .25em; padding: .5em; font-size: 16px; text-align: center;"> 
+	<a href="<%= url_for reply %>" class="reply" style="text-decoration: none;">
+		
+		<div class="avatar" style="margin: 0 auto; display: block;">		
+			<%= image_tag reply.user.photo.url, :style => "width: 40px; border-radius: 40px; margin: .5em auto 0; display: block;" %>
+		</div>
+		
+		
+			<div class="name" style="color: #222 !important; font-weight: 600;">	
+				<%= reply.user.name %>
+			</div>
+
+			<div class="message" style="color: #545048 !important; height: 50px; overflow: hidden; font-size: 14px;">
+				&ldquo;<%= truncate reply.message, length: 48 %>&rdquo;
+			</div>
+
+	</a>
+</div>

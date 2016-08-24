@@ -38,7 +38,7 @@
 
 </style>
 
-<div class="message-wrap" style="">
+<div class="message-wrap <%= "unread" if @unread_messages && @unread_messages.include?(message) %>" style="">
 	<%= image_tag message.user.photo.url, :class => "message-photo" %>
 	<p class="message-text">
 		<span class="message-name"><%= message_sender message %></span>

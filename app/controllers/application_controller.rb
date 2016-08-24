@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter -> { flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] && flash[:notice] }
+  before_action -> { flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] && flash[:notice] }
+  before_action :set_unread_message_count
 
 
   def authenticate_any!
@@ -29,4 +30,11 @@ private
 	def authorize
 		redirect_to sessions_url, alert: "Not logged in" if current_worker.nil?
 	end
+
+  def set_unread_message_count
+    @unread_message_count = 0
+    if user_signed_in?
+      @unread_message_count = (Message.sent_to(current_user).unread.count + Reply.replied_to(current_user).unread.count) || 0
+    end
+  end
 end

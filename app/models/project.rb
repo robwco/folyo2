@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :listing_package
-	has_many :replies
+	has_many :replies, -> { order({has_portfolio: :desc}, :created_at) }
 	has_many :messages
   has_and_belongs_to_many :categories
 
@@ -72,10 +72,6 @@ class Project < ActiveRecord::Base
 	def allow_portfolio_replies?
 		self.listing_package.allow_portfolio_replies? if self.listing_package
 	end
-
-  def read_messages(user)
-    self.messages.sent_to(user).update_all(message_read: true)
-  end
 
 private
 	def add_protocol_to_website

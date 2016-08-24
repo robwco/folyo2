@@ -127,12 +127,13 @@
 
 </style>
 
-<% if @messages.any? %>
+<% if @all_messages.any? %>
 
 	<div class="project-list-wrap" style="padding: 0; margin: 0 auto; width:810px;">
 		
-			<% @messages.each do |message| %>
-				<%= render "messages/standalone_message", message: message %>
+			<% @all_messages.each do |message| %>
+				<%= render("messages/standalone_message", message: message) if message.class.to_s == "Message" %>
+				<%= render("replies/standalone_reply", reply: message) if message.class.to_s == "Reply" %>
 			<% end %>
 
 	</div>

@@ -1,7 +1,6 @@
 class RepliesController < ApplicationController
   before_action :set_reply, only: [:show, :edit, :preview, :post, :update, :archive, :destroy, :message]
   before_filter :authenticate_any! , except: [:create, :without_user]
-  after_filter :mark_messages_read, only: [:show]
 
   respond_to :html
 
@@ -13,6 +12,8 @@ class RepliesController < ApplicationController
   def show
 	  @message = Message.new
 	  @project = @reply.project
+    @unread_messages = @reply.messages.select{|m| m.unread? && m.sent_to?(current_user)}
+    update_read_count
   end
 
   def new
@@ -52,6 +53,7 @@ class RepliesController < ApplicationController
       @reply.portfolio_message = nil
       @reply.portfolio_image = nil
     else
+      @reply.has_portfolio = true
       @reply.published = true
     end
 
@@ -139,7 +141,8 @@ class RepliesController < ApplicationController
       params.require(:reply).permit(:project_id, :biography, :message, :next_steps, :portfolio_message, :portfolio_image)
     end
 
-    def mark_messages_read
-      @project.read_messages(current_user) 
+    def update_read_count
+      @reply.mark_read(current_user) 
+      set_unread_message_count
     end
 end

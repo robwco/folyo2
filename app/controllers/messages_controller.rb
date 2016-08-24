@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.html { 
-          redirect_to @reply, notice: 'Message was sent!' 
+          redirect_to @reply, notice: 'Your message was sent!' 
         }
       else
         format.html { render :new, notice: "Please correct the errors below.", layout: "folyo" }

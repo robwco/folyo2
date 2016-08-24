@@ -28,10 +28,15 @@ class ProjectsController < ApplicationController
   
   def inbox
     if params[:archived]
-      @messages = Message.sent_to(current_user).limit(10)
+      @messages = Message.sent_to(current_user).read
+      @replies = Reply.replied_to(current_user).read
     else
-      @messages = Message.sent_to(current_user).unarchived.limit(10)
+      @messages = Message.sent_to(current_user).unread.limit(10)
+      @replies = Reply.replied_to(current_user).unread.limit(10)
     end
+
+    @all_messages = @messages + @replies
+    @all_messages.sort_by(&:created_at)
   end
   
   
