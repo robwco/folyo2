@@ -17,10 +17,11 @@
 		<% if @project.reply_from?(current_user) %>
 			<p style="margin: 0 0 1em .5em; color: #7c8d99;"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
 		<% else %>
-			<p style="margin: 0 0 1em .5em; color: #7c8d99;">Reply to this project
-			
-			<a href="http://emailsthatwin.com" style="float:right;"><span style="font-weight: normal; font-size: 14px;">How to write a client-winning message</span></a>
+      <% if @project.allow_replies_from?(current_user) %>
+        <p style="margin: 0 0 1em .5em; color: #7c8d99;">Reply to this project
+          <a href="http://emailsthatwin.com" style="float:right;"><span style="font-weight: normal; font-size: 14px;">How to write a client-winning message</span></a>
 				</p>
+      <% end %>
 		<% end %>
 
 

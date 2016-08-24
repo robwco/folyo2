@@ -65,6 +65,7 @@ class Project < ActiveRecord::Base
 	end
 
 	def allow_replies_from?(user)
+    return false if self.archived
     return true if user.blank?
 		self.user != user
 	end
