@@ -37,6 +37,8 @@ class RepliesController < ApplicationController
     @reply = Reply.new(reply_params)
     @reply.project = Project.find(params[:project_id])
 
+    redirect_to(root_path) and return if @reply.project.archived
+
     if current_user.blank?
       session[:unsent_reply_biography] = @reply.biography
       session[:unsent_reply_message] = @reply.message
