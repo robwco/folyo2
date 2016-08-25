@@ -5,12 +5,14 @@
 <h1 class="post-title"><%= @project.title %></h1>
 
 <p class="by-line">
-	<%= image_tag @project.user.photo.url, :class => "photo" %> <%= @project.name %>Robert Williams, <a href="#"><%= @project.organization %></a>
+	<%= image_tag @project.user.photo.url, :class => "photo" %> <%= @project.name %>, <a href="#"><%= @project.organization %></a>
 </p>
 
 
 <div class="wrap800 project-listing" style="border-top: 0; max-width: 600px; padding: 0; margin: 0em auto 0;">
 	<p><%= @project.goals %></p>
+
+  <%= @project.long_description_html.html_safe %>
 
 	
 	<p><strong>We think this project should cost around $<%= @project.budget %>.</strong></p>

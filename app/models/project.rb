@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
 	before_save :add_protocol_to_website
+	before_save :parse_long_description
 
 	#company profile step
 	has_attached_file :company_logo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'company.png'
@@ -85,5 +86,9 @@ private
   end
   def unarchive_project
     self.archived = false
+  end
+  def parse_long_description
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new,{})
+    self.long_description_html = markdown.render(ERB::Util.html_escape(self.long_description))
   end
 end
