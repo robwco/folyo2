@@ -1,11 +1,11 @@
 <h2 style="text-align:center;margin: 1em 0 0;">
-	<%= image_tag @project.company_logo.url, :style => "width:60px; border-radius:0px; vertical-align: -10px; margin-right: 0px;" %>
+	<%= image_tag @project.user.company_logo.url, :style => "width:60px; border-radius:0px; vertical-align: -10px; margin-right: 0px;" %>
 </h2>
 
 <h1 class="post-title"><%= @project.title %></h1>
 
 <p class="by-line">
-	<%= image_tag @project.user.photo.url, :class => "photo" %> <%= @project.name %>, <a href="#"><%= @project.organization %></a>
+	<%= image_tag @project.user.photo.url, :class => "photo" %> <%= @project.user.name %>, <a href="<%= @project.user.company_website %>"><%= @project.user.company_name %></a>
 </p>
 
 

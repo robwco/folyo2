@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823210413) do
+ActiveRecord::Schema.define(version: 20160825011311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -296,10 +296,6 @@ ActiveRecord::Schema.define(version: 20160823210413) do
     t.string   "title"
     t.text     "goals"
     t.string   "budget"
-    t.string   "name"
-    t.string   "email"
-    t.string   "organization"
-    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "company_logo_file_name"
@@ -309,7 +305,6 @@ ActiveRecord::Schema.define(version: 20160823210413) do
     t.integer  "listing_package_id"
     t.integer  "user_id"
     t.boolean  "published"
-    t.string   "company_description"
     t.text     "long_description"
     t.text     "long_description_html"
     t.boolean  "archived",                  default: false

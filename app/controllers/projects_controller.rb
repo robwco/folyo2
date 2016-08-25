@@ -116,11 +116,6 @@ class ProjectsController < ApplicationController
     #render plain: params.inspect and return
     @project = Project.new(project_params)
     @project.user = current_user
-    @project.organization = current_user.company_name
-    @project.name = current_user.name
-    @project.website = current_user.company_website
-    @project.company_logo = current_user.company_logo
-    @project.company_description = current_user.company_biography
     @project.published = true
 
     respond_to do |format|

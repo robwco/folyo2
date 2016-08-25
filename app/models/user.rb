@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
   has_one :subscription, dependent: :destroy
   has_and_belongs_to_many :categories, dependent: :destroy
 
+	before_save :add_protocol_to_website
+
   has_attached_file :photo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
@@ -144,4 +146,9 @@ class User < ActiveRecord::Base
       self.client? && self.name.present?
     end
 
+    def add_protocol_to_website
+      if self.company_website
+        self.company_website = "http://#{self.company_website}" unless self.company_website.start_with? "http"
+      end
+    end
 end

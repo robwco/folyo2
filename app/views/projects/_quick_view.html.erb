@@ -22,8 +22,8 @@
 	
 	<div class="client-profile" style="margin: -.5em 0 0;">
 		<div class="avatar">
-      <% if project.company_logo? %>
-        <%= image_tag(project.company_logo.url, class: "photo") %>
+      <% if project.user.company_logo? %>
+        <%= image_tag(project.user.company_logo.url, class: "photo") %>
       <% else %>
         <%= image_tag(project.user.photo.url, class: "photo") %>
       <% end %>
@@ -35,7 +35,7 @@
 			</p>
 			
 			<p>
-				<%= truncate project.organization, length: 17 %>
+				<%= truncate project.user.company_name, length: 17 %>
 			</p>
 		</div>
 	</div>

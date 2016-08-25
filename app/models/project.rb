@@ -7,21 +7,12 @@ class Project < ActiveRecord::Base
 	has_many :messages
   has_and_belongs_to_many :categories
 
-	before_save :add_protocol_to_website
 	before_save :parse_long_description
-
-	#company profile step
-	has_attached_file :company_logo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'company.png'
-	validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
-	validates :organization, presence: { message: "Your organization name is required." }
-	validates :website, presence: { message: "Your website is required." }
-	validates :company_description, presence: { message: "Your description is required." }
 
 	validates :title, presence: { message: "'What kind of help do you need?' is required." }
 	validates :budget, presence: { message: "'What type of budget do you have for this project?' is required." }
 
-	scope :published, -> { where(published: true) }
+	scope :published, -> { where(published: true, archived: false) }
 	scope :drafted, -> { where(published: false) }
 	scope :recent, -> (limit_to = nil) { order(created_at: :desc).limit(limit_to ? limit_to : 5) }
 	scope :owned_by, -> (user) { where(user_id: user.id) }
@@ -76,11 +67,6 @@ class Project < ActiveRecord::Base
 	end
 
 private
-	def add_protocol_to_website
-		if self.website
-			self.website = "http://#{self.website}" unless self.website.start_with? "http"
-		end
-	end
   def archive_project
     self.archived = true
   end

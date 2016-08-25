@@ -1,9 +1,9 @@
 <div style="border-bottom: 1px solid #DEE5E9;; border-top: 1px solid #DEE5E9; padding: .5em 1em 1em; box-sizing:border-box; margin: .5em auto 2em; display: table; width: 100%;">					
-	<%= image_tag @project.company_logo.url, :class => "preview-logo", :align => "left" %>
+	<%= image_tag @project.user.company_logo.url, :class => "preview-logo", :align => "left" %>
 
-	<h3 style="font-size: 16px; margin: .25em 0 .25em;"><%= @project.organization %></h3>
+	<h3 style="font-size: 16px; margin: .25em 0 .25em;"><%= @project.user.company_name %></h3>
 	
-	<p style="margin: 0; font-size: 16px;"><%= @project.company_description %></p>
+	<p style="margin: 0; font-size: 16px;"><%= @project.user.company_biography %></p>
 		
-	<a target="_blank" href="<%= @project.website %>" style="margin: 1em 0 0; font-size: 16px;">View our website</a>
+	<a target="_blank" href="<%= @project.user.company_website %>" style="margin: 1em 0 0; font-size: 16px;">View our website</a>
 </div>
