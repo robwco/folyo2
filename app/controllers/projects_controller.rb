@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
-  before_action :set_project_with_owner, only: [:preview, :payment, :select_payment, :charge_payment, :collect_payment, :edit, :update, :update_status, :thank_you, :destroy]
+  before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :destroy]
   before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
 
   respond_to :html
@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
   def show
     @reply = @project.reply_from(current_user)
     if @reply.blank?
-      @reply = Reply.new
+      @reply = Reply.new(project: @project)
       @reply.biography = current_user.biography if current_user
 
       if session[:unsent_reply_biography]
@@ -60,44 +60,14 @@ class ProjectsController < ApplicationController
     @message = Message.new
   end
 
-  def payment
-	  @packages = ListingPackage.active.order(:price)
-  end
-
-  def select_payment
-    unless ListingPackage.active.find(payment_package_params[:listing_package_id])
-      redirect_to payment_project_path(@project) 
-      return
-    end
-
-    respond_to do |format|
-      if @project.update(payment_package_params)
-
-		if @project.listing_package.price > 0
-			format.html { 
-				redirect_to collect_payment_project_path(@project) 
-			}
-		else
-			@project.publish
-			format.html { 
-				redirect_to @project, notice: "Your project has been posted."
-			}
-		end
-      else
-        format.html { redirect_to payment_project_path(@project), notice: "The package you selected was invalid." }
-      end
-    end
-
-  end
-
-  def collect_payment
-  end
-
   def charge_payment
+    @project.listing_package = ListingPackage.active.first
+    @project.save
+
 	  if ChargeProject.call params[:stripeToken], @project
-      redirect_to @project, notice: "Your payment was accepted."	
+      redirect_to @project, notice: "Your payment was accepted!"	
     else
-      format.html { render :collect_payment, notice: "Please correct the errors below." }
+      format.html { render :preview, error: "Please correct the errors below." }
     end
   end
 
@@ -121,6 +91,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         format.html { 
+          Delayed::Job.enqueue NewProjectJob.new(@project.id)
           redirect_to thank_you_project_path(@project), notice: 'Project was successfully created.' 
         }
       else
@@ -130,8 +101,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  #def preview
-  #end
+  def preview
+  end
 
   def update
     respond_to do |format|

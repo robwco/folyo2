@@ -66,6 +66,14 @@ class Project < ActiveRecord::Base
 		self.listing_package.allow_portfolio_replies? if self.listing_package
 	end
 
+  def slug
+    self.title.downcase.gsub(" ","-").gsub(/[._\/<>()'"]/,"")
+  end
+
+  def to_param
+    "#{self.id}-#{self.slug}"
+  end
+
 private
   def archive_project
     self.archived = true

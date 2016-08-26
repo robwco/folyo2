@@ -9,9 +9,9 @@ class WorkerMailer < ActionMailer::Base
   end
 
   def requested_leads(user, leads)
-	@user = user
-	@leads = leads
-	mail(to: 'robert@letsworkshop.com', subject: 'A cancelling user requested these types of leads')
+    @user = user
+    @leads = leads
+    mail(to: 'robert@letsworkshop.com', subject: 'A cancelling user requested these types of leads')
   end
 
   def daily_leads(user)

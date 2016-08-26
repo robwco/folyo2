@@ -25,8 +25,6 @@ Rails.application.routes.draw do
     get "publish", on: :collection
     get "preview", on: :member
     get "payment", on: :member
-    put "select_payment", on: :member
-    get "collect_payment", on: :member
     put "charge_payment", on: :member
     put "update_status", on: :member
 

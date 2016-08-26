@@ -60,6 +60,7 @@ class User < ActiveRecord::Base
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
   scope :with_favorites, -> { where("favorite_leads is not null") }
   scope :following_ruby, -> { where("category_id=1 is not null") }
+  scope :freelancers, -> { where(account_type: "freelancer") }
 
   def self.with_stripe_id(stripe_id)
 		where("users.stripe_customer_id = ?", stripe_id).first

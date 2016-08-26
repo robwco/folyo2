@@ -2,16 +2,16 @@ class ChargeProject
 	def self.call(token, project)
 		begin
 		  charge = Stripe::Charge.create(
-			amount:      (project.listing_package.price * 100).to_i,
-			currency:    "usd",
-			source:      token,
-			description: "Project listing id: #{project.id}"
+        amount:      (project.listing_package.price * 100).to_i,
+        currency:    "usd",
+        source:      token,
+        description: "Project listing id: #{project.id}"
 		  )
 		  @sale = ProjectSale.create!(
-			user:      project.user,
-			project:	project,
-			listing_package: project.listing_package,
-			stripe_id:  charge.id
+        user:      project.user,
+        project:	project,
+        listing_package: project.listing_package,
+        stripe_id:  charge.id
 		  )
 		  project.publish
 		  return true

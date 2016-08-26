@@ -1,64 +1,9 @@
 <div class="wrap800" style="margin: 0 auto 5em;">
-	<%= render 'wizard', step: 'preview' %>
 
 	<div class="preview" style="padding: .5em 0 0;">
 		<%= render 'project' %>
 	</div>
 	
+  <%= render "projects/project_upsell" %>
 	
-
-	
-	<div class="form-question-horizontal">
-		<div class="label-left">
-			<p>Post it on Medium</p>
-		</div>
-	
-		<div class="input-right">
-			<%= link_to 'Connect to Medium', new_project_path, :class => "button" , :style => "background: #01ac6b; color: #fff; font-size: 16px; padding: .5em 1em; border-radius: 6px; margin: .5em 0 0 0;" %>
-			<p class="required" style="width:400px; font-size: 14px;">Connecting your Medium account will publish a new story about your project. Estimated boost in replies: <%= image_tag 'reach2.png', :style => "width: 15px;" %></p>
-		</div>
-	</div>
-	
-	<div class="form-question-horizontal">
-		<div class="label-left">
-			<p>Tweet your project</p>
-		</div>
-	
-		<div class="input-right">
-			<%= link_to 'Connect to Twitter', new_project_path, :class => "button", :style => "background: #1da2f2; color: #fff; font-size: 16px; padding: .5em 1em; border-radius: 6px; margin: .5em 0 0 0;"  %>
-			<p class="required" style="width:400px; font-size: 14px;">Connecting your Twitter account will publish a one-time tweet that links back to your project. Estimated boost in replies: <%= image_tag 'reach1.png', :style => "width: 15px;" %></p>
-		</div>
-	</div>
-	
-	
-	<div class="form-question-horizontal">
-		<div class="label-left">
-			<p>Post to Facebook</p>
-		</div>
-	
-		<div class="input-right">
-			<%= link_to 'Connect to Facebook', new_project_path, :class => "button", :style => "background: #3b5a98; color: #fff; font-size: 16px; padding: .5em 1em; border-radius: 6px; margin: .5em 0 0 0;"  %>
-			<p class="required" style="width:400px; font-size: 14px;">Connecting your Facebook account will create a new post about your project on your news feed. Estimated boost in replies: <%= image_tag 'reach2.png', :style => "width: 15px;" %></p>
-		</div>
-	</div>
-	
-	
-	<div class="form-question-horizontal">
-		<div class="label-left">
-			<p>Update on Linkedin</p>
-		</div>
-	
-		<div class="input-right">
-			<%= link_to 'Connect to Linkedin', new_project_path, :class => "button", :style => "background: #0077b4; color: #fff; font-size: 16px; padding: .5em 1em; border-radius: 6px; margin: .5em 0 0 0;"  %>
-			<p class="required" style="width:400px; font-size: 14px;">Connecting your Linkedin account will create a one-time post about your project on your news feed. Estimated boost in replies: <%= image_tag 'reach3.png', :style => "width: 15px;" %></p>
-		</div>
-	</div>
-	
-	
-
-
-	<p style="text-align:center; display: block; margin: 1.5em 0 2em;">
-		<%= link_to "All set! Publish my project".html_safe, payment_project_path, class: "button" %>
-		<%= link_to "Edit my project", edit_project_path(@project), :class => "button", :style => "color: #444 !important; background: #eee !important;" %>
-	</p>
 </div>
