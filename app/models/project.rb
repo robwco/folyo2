@@ -74,6 +74,10 @@ class Project < ActiveRecord::Base
     "#{self.id}-#{self.slug}"
   end
 
+  def pro?
+    self.listing_package.present?
+  end
+
 private
   def archive_project
     self.archived = true

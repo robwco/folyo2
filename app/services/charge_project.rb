@@ -14,6 +14,8 @@ class ChargeProject
         stripe_id:  charge.id
 		  )
 		  project.publish
+      project.priority = 1
+      project.priority_start = DateTime.now
 		  return true
 		rescue Stripe::CardError => e
 		  # The card has been declined or

@@ -6,8 +6,8 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def home
-    @projects =  Project.published.page(params[:page]).order(created_at: :desc)
-    @projects = @projects.joins(:categories).where({ categories: { id: params[:category_id] } }) if params[:category_id]
+    @projects =  Project.published.page(params[:page]).order(priority: :desc, created_at: :desc)
+    @projects = @projects.joins(:categories).where({ categories: { id: params[:category_id] } }).order(priority: :desc, created_at: :desc) if params[:category_id]
   end
   
   def thank_you
