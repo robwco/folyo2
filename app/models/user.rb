@@ -140,10 +140,12 @@ class User < ActiveRecord::Base
     end
 
     def freelancer_has_name?
+      return false if self.account_type_was.blank?
       self.freelancer? && self.name.present?
     end
 
     def client_has_name?
+      return false if self.account_type_was.blank?
       self.client? && self.name.present?
     end
 

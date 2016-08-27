@@ -13,6 +13,7 @@ class SubscriptionsController < ApplicationController
         redirect_to client_details_path
       end
     else
+      puts current_user.errors.inspect
       render :new_account_type
     end
 	end
@@ -229,7 +230,7 @@ class SubscriptionsController < ApplicationController
   private
 
 	  def sign_up_params
-      params.require(:user).permit(:name, :email, :password, :account_type, :biography)
+      params.require(:user).permit(:name, :email, :password, :account_type, :biography, :photo)
 	  end
 
 	  def freelancer_details_params

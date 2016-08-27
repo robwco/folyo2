@@ -1,20 +1,17 @@
 
 <script>
 $(function() {
-  $('#pictureInput').on('change', function(event) {
-	var files = event.target.files;
-	var image = files[0]
-	// here's the file size
-	console.log(image.size);
-	var reader = new FileReader();
-	reader.onload = function(file) {
-	  var img = new Image();
-	  console.log(file);
-	  img.src = file.target.result;
-	  $('#target').html(img);
-	}
-	reader.readAsDataURL(image);
-	console.log(files);
+  $('#photo').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    // here's the file size
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      $('#target').attr('src', file.target.result);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
   });
 
   function toggleAccountType(selected_type) {
@@ -125,10 +122,10 @@ $(function() {
 			<% unless current_user.past_due? || current_user.canceled? %>-->
 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
-			<%= image_tag(f.object.photo.url, :style => "width: 100px; border-radius: 100px; display: block; margin: 0 auto;") if f.object.photo(:thumb) %>
+			<%= image_tag(f.object.photo.url, :style => "width: 100px; border-radius: 100px; display: block; margin: 0 auto;", id: "target") if f.object.photo? %>
 
 			<div style="margin: 1em 0; width:100%; text-align:center;">
-				<%= f.file_field :photo, :name => "photo", :class => "photo", :id => "photo" %>
+				<%= f.file_field :photo, :class => "photo", :id => "photo" %>
 			
 				<label for="photo">Change your photo</label>
 			</div>		
