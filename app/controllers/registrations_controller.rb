@@ -9,6 +9,9 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to new_subscription_path
   end
 
+  def show
+  end
+
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
 
