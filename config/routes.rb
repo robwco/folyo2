@@ -119,7 +119,7 @@ Rails.application.routes.draw do
 
   resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
 
-  get '*path' => redirect('/')
+  get '*path' => redirect('/') if Rails.env.production?
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
