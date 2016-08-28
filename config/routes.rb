@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :messages do
     put "archive", on: :member
   end
@@ -108,7 +109,8 @@ Rails.application.routes.draw do
   put "/touch_base" => "leads#touch_base", as: :touch_base
 
   devise_scope :user do 
-      match '/sessions/user', to: 'devise/sessions#create', via: :post
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+    get "/profile/:id" => "registrations#show"
   end
   
   devise_scope :admin do 
@@ -117,7 +119,7 @@ Rails.application.routes.draw do
 
   resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
 
-  get '*path' => redirect('/')
+  #get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

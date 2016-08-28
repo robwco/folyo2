@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_action :set_user, only: [:show]
   before_filter :set_selected_categories, only: [:edit]
 
   def new
@@ -39,5 +40,9 @@ class RegistrationsController < Devise::RegistrationsController
 
     def set_selected_categories
         @selected_categories = Category.find(@user.category_ids)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
 end
