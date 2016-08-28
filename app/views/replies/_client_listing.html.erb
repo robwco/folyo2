@@ -1,148 +1,47 @@
-<div class="project-list-wrap" style="padding: 2em 0; margin: 0 auto; width:810px;">	
+<div class="wrap w810">	
 	<div class="project-listing">		
 		<div class="info" style="max-width: 500px;">
-			<h3 style="margin: 0 0 .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h3>
+			<h2 style="margin-bottom: .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h2>
 			
 			<%= truncate @project.goals, length: 135 %> <%= "(draft)" unless @project.published? %><br>
 
-			<div class="skills">Project posted <%= @project.created_at.strftime("%b%_m") %>
-				 
+			<small>Project posted <%= @project.created_at.strftime("%b%_m") %></small>
+		</div>
 		
-			</div>
-		</div>
-
 		<div class="client-profile" style="padding: 0; margin: 0;">
-			<h3 style="margin: 0; color: #302f29;">Project status</h3>
-			<span style="margin:1em 0 0; font-size: 12px; display: block;">
-        <%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true) do |f| %>
-          <%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, 
-                  { style: "font-size: 16px;", data: { status_update: true } } %>
-        <% end %>
-			</span>
+			<% unless @project.replies.empty? %>
+				<p style="margin: .65em 0 .25em;"><small><strong>Want more replies?</strong></small></p>
+			
+				<%= link_to 'Upgrade to a pro listing', project_path, :class => "button" %>
+			<% end %>
+			
+			<p style="margin: .65em 0 .25em;"><small><strong>Project status</strong></small></p>
+      
+			<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true) do |f| %>
+      	<%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, { style: "font-size: 16px;", data: { status_update: true } } %>
+      <% end %>
 		</div>
-	</div>
-	</div>
-	
-	
-	<div class="project-list-wrap" style="padding: 0; margin: 0 auto;">
-		<h3 class="action-header" style="margin: 0 0;">
-			Replies
-		</h3>
 	</div>
 </div>
+	
+<div class="wrap w860">
+	<h2 class="action-header">
+		Replies
+	</h2>
+</div>
 
-		<% if @project.replies.empty? %>
-			<p style="margin: 0 0 3em; font-size: 20px; padding: .5em 1em; display: inline-block;  width: 100%; box-sizing: border-box;">No replies yet. Share it: 
-				<input type="text" value="<%= project_url(@project) %>" style="font-size: 16px;  height: 30px;"> 
-			</p>
-		<% else %>
+<% if @project.replies.empty? %>
+	<div class="wrap w860">
+		<p style="text-align:center; padding-top: 2em;">
+			No replies yet. Get more replies and make your project stand out!</p>
 		
-	<style>
-	/* Replies */
-
-		.project-listing {
-			margin: 0;
-			padding: 0;
-		}
-		
-		.project-listing a.reply {
-			margin: 0;
-			font-weight: 500;
-			box-sizing: border-box;
-			color: #545048;
-			text-decoration: none;
-			width: 100%;
-			height: auto;
-			display: table;
-			padding: 1.25em 1em 0em;
-			vertical-align: text-top;
-			box-sizing: border-box;
-		}
-
-		.project-listing:first-child a.reply {
-			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
-		}
-
-		.project-listing:last-child a.reply:last-child {
-			border-bottom-left-radius: 10px;
-			border-bottom-right-radius: 10px;
-		}
-
-		.project-listing a.reply:hover {
-			background: #f9f9f9;
-			box-sizing: border-box;
-		}
-
-		.project-listing a.reply .name {
-			display: inline-block;
-			width: 150px;
-			font-weight: bold;
-			font-size: 14px;
-			padding:  0 0;
-			margin: 0;
-			vertical-align: .75em;
-			vertical-align: middle;
-		}
-
-		.project-listing a.reply .avatar {
-			display: inline-block;
-			margin:  0 .5em 0 0;
-			vertical-align: middle;
-		}
-
-		.project-listing a.reply .avatar img {
-			height: 45px;
-			width: 45px; 
-			border-radius: 45px;
-			background-color: #f9f9f9; 
-			display: middle;
-		}
-
-		.project-listing a.reply .message {
-			display: inline-block;
-			 width: 275px;
-			font-size: 15px;
-			margin: 0;
-			padding: 0;
-			vertical-align: middle;
-		}
-
-		.project-listing a.reply .portfolio-message {
-			display: inline-block;
-			 width: 200px;
-			font-size: 15px;
-			margin: 0;
-			padding: 0;
-			vertical-align: middle;
-		}
-
-		.project-listing .portfolio {
-			width: 50px;
-			height: 37.5px;
-			background-color: #f3f3f3;
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			border-radius: 4px;
-			box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .1);
-			display: inline-block;
-			margin: 0 1em;
-			vertical-align: middle;
-		}
-
-		.project-listing .portfolio.large {
-			width: 100px !important;
-			height: 80px;
-			vertical-align: middle;
-		}
-	</style>
-		
-		<div class="project-list-wrap"  style="margin: 0 auto; padding: 1em 1em 5em; width: 100%; display: table;">
-			<% @project.replies.unarchived.each do |reply| %>
-				<%= render "replies/client_reply_view", reply: reply %>
-			<% end %>
-		</div>
-		
-	<% end %>
+			<p style="text-align:center;"><%= link_to 'Upgrade to a pro listing', project_path, :class => "button" %></p>
+	</div>	
+<% else %>
+	<div class="project-list-wrap inbox">
+		<% @project.replies.unarchived.each do |reply| %>
+			<%= render "replies/client_reply_view", reply: reply %>
+		<% end %>
+	</div>
+<% end %>
 

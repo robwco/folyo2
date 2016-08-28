@@ -1,15 +1,6 @@
-
 <%= render "layouts/top_menu" %>
 
-	<!--<div class="wrap800" style="text-align: center;">	
-		<h1>Find someone you love working with.</h1>
-		
-		<p><%= link_to "Post your project for free", new_project_wizard_path(project_id: :new) %></p>
-	</div>-->
-
 <% if admin_signed_in? %>
-
-
 	<div class="project-list-wrap" style="width: 815px;">
 		<div class="project-list">
 			<% Project.all.order(created_at: :desc).each do |project| %>
@@ -18,12 +9,11 @@
 			<% end %>
 		</div>
 	</div>
-
+	
 <% elsif user_signed_in? %>
-
+	
 	<% if Project.owned_by(current_user).any? %>
-
-		<h3 class="action-header">Your projects</h3>
+		<h2 class="action-header">Your projects</h3>
 		<div class="project-list-wrap" style="max-width:810px;">
 			<div class="project-list">
 				<% Project.owned_by(current_user).each do |project| %>
@@ -32,13 +22,12 @@
 			</div>
 		</div>
 		
-		
 		<p style="text-align:center;">Got more work? Put it on Folyo!<br><br>
       <%= link_to "+ Project".html_safe, new_project_path, class: "button" %>
 		</p>
 		
 	<% else %>	
-		<h3 class="action-header">Projects for 
+		<h2 class="action-header">Projects for 
       <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
         prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
 		</h3>
@@ -60,26 +49,10 @@
         
 			<% end %>
 		</div>
-		
-
-		
 	<% end %>
-	
-	
 
-
-
-	
-
-<% else %>
-	<!--<h3 class="action-header">Recent projects
-				
-		<span style="margin: .25em 0 0; float: right; font-size: 15px;">
-			<%= link_to 'See all projects', new_user_session_path %>
-		</span>
-	</h3>-->
-	
-	<h3 class="action-header">Projects for 
+<% else %>	
+	<h2 class="action-header">Projects for 
     <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
       prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
 	</h3>
@@ -100,16 +73,14 @@
       </div>
 		<% end %>
 	</div>
+
+	<div style="width:810px; margin: 0 auto; text-align: center;">
+		<h1 style="margin: 0;">Find someone you love working with</h1>
 		
+		<p style="margin: 0 0 2em;">Connect with the best clients and freelancers on the web absolutely free.</p>
 		
-		<div style="width:810px; margin: 0 auto; text-align: center;">
-			<h1 style="margin: 0;">Find someone you love working with</h1>
-			
-			<p style="margin: 0 0 2em;">Connect with the best clients and freelancers on the web absolutely free.</p>
-			
-			<p><%= link_to "Post your project", new_subscription_path %> or <%= link_to "get projects emailed to you", new_subscription_path %> for free</p>
-		</div>
-		
+		<p><%= link_to "Post your project", new_subscription_path %> or <%= link_to "get projects emailed to you", new_subscription_path %> for free</p>
+	</div>
 <% end %>
 
 <%= render "layouts/footer_menu" %>

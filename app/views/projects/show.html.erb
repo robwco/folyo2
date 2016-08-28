@@ -1,72 +1,63 @@
-<div style="max-width: 860px; margin: 0 auto; border-bottom: 1px solid #dee5e9;">
-<%= render "layouts/top_menu" %>
+<div class="wrap w860 nav-border">
+	<%= render "layouts/top_menu" %>
 </div>
 
+<% if current_user.present? && current_user.can_see_project_replies?(@project) %>
+	<%= render "replies/client_listing" %>	
+<% else %>	
+	
+<div class="wrap w800">
+	<%= render 'projects/project' %>
+</div>
 
-	<% if current_user.present? && current_user.can_see_project_replies?(@project) %>
-	
-		<%= render "replies/client_listing" %>
-	
-	<% else %>	
-	
-		<div class="wrap800" style="padding: 0; margin: 0 auto 0;">
-			<%= render 'projects/project' %>
+<div class="wrap w800" style="margin: 2em auto;">
+	<% if @project.reply_from?(current_user) %>
+		<p style="margin: 0 0 1em .5em; color: #7c8d99;"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
+	<% else %>
+     <% if @project.allow_replies_from?(current_user) %>
+       <p style="margin: 0 0 1em .5em; color: #7c8d99;">Reply to this project
+         <a href="http://folyo.me/write" style="float:right;"><span style="font-weight: normal; font-size: 14px;">How to write a client-winning message</span></a>
+			</p>
+     <% end %>
+	<% end %>
+
+	<% if @project.allow_replies_from?(current_user) %>
+		<div class="wrap w800 reply" style="margin-top: 0;">
+				<div style="margin: .5em auto 3em; border: 3px solid #8b6eb9; padding:  0; box-sizing: border-box; border-radius: 16px;">
+					<% if @project.reply_from?(current_user) %>
+						<%= render "replies/reply" %>	
+					<% else %>
+
+						<% if user_signed_in? %>
+							<h2 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffddf;"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
+								<% if current_user.present? && current_user.can_reply_with_portfolio?(@reply.project) %>
+								<span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span>
+								<% end %>
+								
+								</h2>
+						<% else %>
+							<h2 id="send-message-now" style="margin: 0; padding: .75em 1em .75em; border-bottom: 3px solid #8b6eb9; background-color:#fffddf; border-top-left-radius: 13px; box-sizing: border-box; border-top-right-radius: 13px;">Send your message free! <span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;">You'll need to create an account first.</span></h2>
+							
+						<% end %>
+				
+						<div style="padding: .5em 1.25em;"><%= render "replies/form" %></div>
+					</div>
+			<% end %>
 		</div>
 
-	<div class="wrap800" style="margin: 2em auto;">
-		<% if @project.reply_from?(current_user) %>
-			<p style="margin: 0 0 1em .5em; color: #7c8d99;"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
-		<% else %>
-      <% if @project.allow_replies_from?(current_user) %>
-        <p style="margin: 0 0 1em .5em; color: #7c8d99;">Reply to this project
-          <a href="http://emailsthatwin.com" style="float:right;"><span style="font-weight: normal; font-size: 14px;">How to write a client-winning message</span></a>
-				</p>
-      <% end %>
-		<% end %>
+		<% if current_user.present? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
+			
+			<%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
 
-
-		<% if @project.allow_replies_from?(current_user) %>
-			<div class="wrap reading reply" style="margin-top: 0;">
-					<div style="margin: .5em auto 3em; border: 3px solid #8b6eb9; padding:  0; box-sizing: border-box; border-radius: 16px;">
-						<% if @project.reply_from?(current_user) %>
-							<%= render "replies/reply" %>	
-						<% else %>
-
-							<% if user_signed_in? %>
-								<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffddf;"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
-									<% if current_user.present? && current_user.can_reply_with_portfolio?(@reply.project) %>
-									<span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span>
-									<% end %>
-									
-									</h3>
-							<% else %>
-								<h3 id="send-message-now" style="margin: 0; padding: .75em 1em .75em; border-bottom: 3px solid #8b6eb9; background-color:#fffddf; border-top-left-radius: 13px; box-sizing: border-box; border-top-right-radius: 13px;">Send your message free! <span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;">You'll need to create an account first.</span>
-									
-									
-									</h3>
-								
-							<% end %>
-					
-							<div style="padding: .5em 1.25em;"><%= render "replies/form" %></div>
-						</div>
-				<% end %>
-			</div>
-
-			<% if current_user.present? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
-				
-				<%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
-
-				<% if current_user.can_send_message?(@reply) %>
-				
-				<div class="wrap800" style="margin: 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
-					<div class="wrap800" style="margin: 0 auto; width: 750px;">
-					<%= render "messages/send", name: message_recipient(@reply) %>
-					</div>
+			<% if current_user.can_send_message?(@reply) %>
+			
+			<div class="wrap800" style="margin: 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
+				<div class="wrap800" style="margin: 0 auto; width: 750px;">
+				<%= render "messages/send", name: message_recipient(@reply) %>
 				</div>
-
-
-				<% end %>
+			</div>
 			<% end %>
 		<% end %>
-	</div>
+	<% end %>
+</div>
 <% end %>

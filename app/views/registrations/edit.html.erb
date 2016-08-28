@@ -169,10 +169,9 @@ $(function() {
 				<%= f.password_field :password_confirmation, autocomplete: "off" %>
 		  </div>
 		</div>
-		
-		
+	
 	  <%= render("registrations/freelancer_details", f: f) if resource.freelancer? %>
-
+	
 		<%= render("registrations/client_details", f: f) if resource.client? %>
 		
 		<div class="form-question-horizontal">

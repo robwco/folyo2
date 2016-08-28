@@ -1,63 +1,20 @@
-<style>
-.thank-you-wrap {
-	padding: .5em 1em 1em;
-	margin: 1em 0;
-	border-radius: 12px;
-	border: 3px solid #9d82c8;
-}
+<div class="wrap w860 nav-border">
+	<%= render "layouts/top_menu" %>
+</div>
 
-.thank-you-wrap small {
-	line-height: 1;
-}
+<div class="wrap w860">
+	<h2 class="notice-header"><%= image_tag 'upsell.png', :style => "width: 25px; vertical-align: -5px;margin-right: .15em;" %> Thank you for posting your project! Here's what it looks like:</h2>
 
-.thank-you-wrap h3 {
-	margin: .5em 0;
-}
-
-.thank-you-wrap small ul {
-	margin: 0;
-}
-.thank-you-wrap small ul li {
-	margin: 0;
-} 
-</style>
-<div class="wrap800" style="max-width:600px; margin: 0 auto 5em;">
+	<div class="wrap w800">
+		<%= render 'projects/project' %>
 	
-<h1 style="margin: 1.5em 0 .25em;"><%= image_tag 'upsell.png', :style => "width: 45px; vertical-align: -5px;margin-right: .15em;" %> Thank you!</h1>
-<p style="margin: 0 0 1.5em;">Your project has been posted and looks great. We hope it solves a valuable problem for your business!</p>
+		<p class="decision">
+			<%= link_to 'Looks great! Go to dashboard'.html_safe, root_path,  :class => "button", :style => "float: left;" %>
 
-
-<div class="thank-you-wrap">
-	<h3>Here's your project's URL:</h3>
-	
-	<input type="text" value="<%= project_url(@project) %>" style="margin: 0;">
-	
-	<p>Your listing will stay online until your mark it as complete from your project dashboard.</p>
-	
-	<small>
-		
-		
-		<hr>
-
-		<p><strong>Want to make a change?</strong><br>
-			<ul>
-				<li><%= link_to 'Click here make changes to your project anytime you like', edit_project_path(@project) %></li>
-			</ul>
+		  <%= link_to 'Edit your project', edit_project_path(@project), :class => "button danger", :style => "float:right;"  %>
 		</p>
-
-		<p><strong>Want to post another project?</strong><br>
-			<ul>
-				<li><%= link_to 'Create a new project', new_project_path %></li>
-			</ul>
-		</p>
-	</small>
+	</div>
 </div>
 
 
 
-
-
-<p>Thanks again and we hope you find the person you're looking for.</p>
-<p>- Folyo</p>
-
-</div>

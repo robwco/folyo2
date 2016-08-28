@@ -1,78 +1,36 @@
-
-	<script>
-	$(function() {
-	  $('#pictureInput').on('change', function(event) {
-		var files = event.target.files;
-		var image = files[0]
-		// here's the file size
-		console.log(image.size);
-		var reader = new FileReader();
-		reader.onload = function(file) {
-		  var img = new Image();
-		  console.log(file);
-		  img.src = file.target.result;
-		  $('#target').html(img);
-		}
-		reader.readAsDataURL(image);
-		console.log(files);
-	  });
-	});
-	</script>
+<%= form_for :user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>
 	
-	<style>
-		
-	
-	</style>
+	<p class="question-header"><strong>Your name</strong></p>
+	<%= f.text_field :name, placeholder: 'Name'	%>
+   <%= form_error_for(@user, :name) %>
 
-	<%= form_for :user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>	
+	<p class="question-header"><strong>Your work email</strong><br>
+	<small class="form-helper">Won't be shown publicly</small></p>
+	<%= f.email_field :email, placeholder: "Email" %>
+   <%= form_error_for(@user, :email) %>
 
-		<h3 class="form-header">Your name</h3>
-		<%= f.text_field :name, placeholder: 'Name'	%>
-    <%= form_error_for(@user, :name) %>
+	<p class="question-header"><strong>Create a password</strong><br>
+	<small class="form-helper">Must have at least 8 characters</small></p>
+		<p style="margin:0;">
+			<% if @validatable %>
+				<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
+			<% end %>
+		</p>
 
-		<h3 class="form-header">Your work email</h3>
-		<p class="required">Won't be shown publicly</p>
-		<%= f.email_field :email, placeholder: "Email" %>
-    <%= form_error_for(@user, :email) %>
+	<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+   <%= form_error_for(@user, :password) %>
 
-<!--
-		<div class="upload-photo-wrap" style="display: table; width: 100%;">
-			<div class="upload-photo">
-				<h3 class="form-header">Your picture</h3>
-				<p class="required">(Optional) but we do like seeing fresh faces</p>
-			</div>
+	<div style="margin: 1em 0;">
+		<a href="#">
+			<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
+		</a>
+	</div>
 
-			<div class="preview-photo">
-				<div id="target"></div>
-				<%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;"	%>
-			</div>
-		</div>-->
+	<p><small>Already have an account? <a href="/users/sign_in">Log in</a></small></p>
 
-
-
-		<h3 class="form-header">Create a password</h3>
-		<p class="required">Must have at least 8 characters</p>
-			<p style="margin:0;">
-				<% if @validatable %>
-					<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
-				<% end %>
-			</p>
-
-			<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
-      <%= form_error_for(@user, :password) %>
-
-		<div style="margin: 1em 0;">
-			<a href="#">
-				<%= f.submit "Sign up", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
-			</a>
-		</div>
-
-
-		<p style="font-size: 14px;">Already have an account? <a href="/users/sign_in">Log in</a></p>
-
-		<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
-		<%= f.hidden_field :account_type %>
-		<%= f.hidden_field :biography %>
-	<% end %>
+	<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
+	<%= f.hidden_field :account_type %>
+	<%= f.hidden_field :biography %>
+<% end %>
 	
 

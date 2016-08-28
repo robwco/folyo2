@@ -6,9 +6,9 @@
 		<%= link_to "Projects", home_projects_path %>
 		<%= link_to "New project", new_project_path %>
 		<%= link_to "Account", edit_user_registration_path %>
+		<%= mail_to "robert@folyo.me", "Help" %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
-	<% else %>
-	
+	<% else %>	
 		<%= link_to 'Sign up', new_subscription_path(plan:2) %>
 		<%= link_to "Log in", new_user_session_path %>
 		<a href="http://letsworkshop.com/press">About</a>
@@ -16,5 +16,5 @@
 		<a href="http://letsworkshop.com/terms">Terms</a> 
 	<% end %>
 
-	<span style="color: #7c8d99; opacity: .5; font-size: 16px;">© <%= Time.now.year %> Folyo</span>
+	<span style="color: #7c8d99; opacity: .65;">© <%= Time.now.year %> Folyo</span>
 </p>

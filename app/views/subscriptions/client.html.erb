@@ -11,19 +11,6 @@ $(document).ready(function(){
 	
 	<p style="margin: 0 0 2em;  text-align:center;">This helps freelancers get familiar with what makes your company great.</p>
 
-	<h3 class="action-header" style="width: 725px; margin: 0 auto 1em;">Here's an example of what your company info will look like:</h3>
-		
-	<div class="wrap800" style="width: 650px; padding: .5em 1em 1em; box-sizing:border-box; margin: .5em auto 2em; border-top: 1px solid #d6dfe4; border-bottom: 1px solid #d6dfe4;">			
-		
-		<%= image_tag 'generic.png', :class => "preview-logo", :align => "left" %>
-
-		<h3 style="font-size: 16px; margin: .25em 0 .25em;">SkyStats</h3>
-			
-		<p style="margin: 0; font-size: 16px;">We know who we are. We're an air-fare travel and booking app, that cares about our customers and are focused on giving them the metrics they need to make a great buying decision.</p>
-				
-		<a href="#" style="margin: 1em 0 0; font-size: 16px;">View our website</a>
-	</div>
-
 	<%= form_for @user, url: update_client_details_path, method: :put, id: 'new_user', class: 'form-focus' do |f| %>	
 	
     <%= render "registrations/client_details", f: f %>

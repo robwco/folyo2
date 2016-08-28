@@ -1,20 +1,19 @@
 <section class="top-menu">
-		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
+	<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
 		
-		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
+	<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 </section>
 
 
 <div style="width: 700px; margin: 0 auto;">
-	<div style="margin: 2.5em auto 2em; width: 600px; box-sizing: border-box;">
+	<div style="margin: 0em auto 2em; width: 600px; box-sizing: border-box;">
 		<h1 style="margin: 1em 0 .5em; text-align: center;">Welcome to Folyo, <%= first_name current_user.name %>!</h1>
 		<p style="margin: 0;">We're thrilled to have you! First off, we want you to answer a few questions about why you're here today. Let's start with the easiest:</p>
 	</div>
 	
-		<div style="text-align:center; height: 200px;">
+		<div style="text-align:center;">
 			<div class="account-type-option">
 				<h2>Want work?</h2>
-			<%= image_tag('default-avatar.png' ) %>
 				<%= link_to "I'm a freelancer", update_account_type_path(type: :freelancer), method: :put, :class => "button"  %>
 			</div>
 			
@@ -22,7 +21,6 @@
 		
 			<div class="account-type-option">
 				<h2>Got a project?</h2>
-				<%= image_tag('company.png' ) %>
 				<%= link_to "I'm a client", update_account_type_path(type: :client), method: :put, :class => "button"  %>
 			</div>
 		</div>
@@ -34,12 +32,11 @@
 
 <style>
 .account-type-option {
-	height: 200px;
 	width:300px;
 	display:inline-block;
 	box-sizing: border-box;
 	text-align: center;
-	padding: 1em 1em;
+	padding: 1em 1em 1.5em;
 	border-radius: 10px;
 	margin:  0;
 	background-color: #f9f9f9;
@@ -47,7 +44,7 @@
 }
 
 .account-type-option h2 {
-	margin: .25em 0 0;
+	margin: 0 0 .5em;
 }
 
 .account-type-option img {
@@ -55,7 +52,5 @@
 	width: 50px;
 	display: block;
 }
-
-.account-type
 
 </style>

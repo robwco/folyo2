@@ -6,84 +6,77 @@ $(document).ready(function(){
 
 <%= form_for(@project) do |f| %>
 	
-<h3 class="action-header" style="margin:  1em 0;">First, some overall stuff:</h3>
-
-<div style="width: 770px; margin: 0 auto;">
-
-<h3 class="form-header">Summary</h3>
-
-	<div style="margin: .5em auto 1em;">
-		<div style="font-size: 14px; width: 195px; float:right; color: #7c8d99;">
-			1-2 sentences about the project itself. This will appear on the full listing. Focus on outcomes, not exactly what's needed!
+<h2 class="action-header">First, some overall stuff:</h2>
+	<div class="form-wrap">
+		<div class="form-question-wrap">
+			<p class="question-header"><strong>Summary</strong></p>
+			
+			<small class="form-helper-push-right">
+				1-2 sentences about the project itself. This will appear on the full listing. Focus on outcomes, not exactly what's needed!
+			</small>
+			
+			<%= f.text_area :title, data: { max_characters: 120 }, placeholder: "We're looking to redesign our website, and we need a freelancer to help with mockups and delivery." %>
 		</div>
-
-		<%= f.text_area :title, data: { max_characters: 120 }, placeholder: "We're looking to redesign our website, and we need a freelancer to help with mockups and delivery." %>
-
-	</div>
-
-	<h3 class="form-header">Long description</h3>
-
-		<div style="margin: .5em auto 1em;">
-			<%= f.text_area :long_description, placeholder: "Four score...", :style => "min-height: 200px;" %>
-
-			<div style="font-size: 14px; width: 195px; float:right; color: #7c8d99;">
+		
+		<div class="form-question-wrap">
+			<p class="question-header"><strong>Long description</strong></p>
+			
+			<small class="form-helper-push-right">
 				This is where you go into as much detail as possible about what you need. Write as much as you want – the longer, the better.
-			</div>
+			</small>
+
+			<%= f.text_area :long_description, placeholder: "Four score...", :style => "min-height: 200px;" %>
 		</div>
 	</div>
 		
+<h2 class="action-header" style="margin-top:2em;">Then, the details:</h2>
+	<div class="form-wrap">
+		<div class="form-question-wrap">
+				<p class="question-header"><strong>What does a home run look like for this project?</strong></p>
+				
+				<small class="form-helper-push-right">
+					Keep this one brief. Freelancers love knowing what your expectations are going into the project.
+				</small>
 
-<h3 class="action-header" style="margin:  1em 0;">Then, the details:</h3>
-
-
-<div style="width: 770px; margin: 0 auto;">
-<h3 class="form-header">What does a home run look like for this project?</h3>
-
-	<div style="margin: .5em auto 1em;">
-		<%= f.text_area :goals, placeholder: "Doubled revenue, more customers, more page views, a boost to our mailing list, etc..." %>
-
-		<div style="font-size: 14px; width: 195px; float:right; color: #7c8d99;">
-			Keep this one brief. Freelancers love knowing what your expectations are going into the project.
+				<%= f.text_area :goals, placeholder: "Doubled revenue, more customers, more page views, a boost to our mailing list, etc..." %>
 		</div>
-	</div>
-
-
-	<h3 class="form-header">How much do you think this project should cost?</h3>
-
-		<div style="margin: .5em auto 1em;">
-			USD $ <%= f.text_field :budget, placeholder: "500", :style => "width: 300px;" %>
+		
+		<div class="form-question-wrap">
+			<p class="question-header" style="margin-bottom: 1em;"><strong>How much do you think this project should cost?</strong></p>
 			
+			<small class="form-helper-push-right budget"> 
+				<strong>Must be above $500.</strong> 
+				Folyo is only for high-value paid work. You need to pay your freelancer for the work they do.
+			</small>
 
-			<div style="border: 3px solid #9d82c8; font-size: 15px; width: 370px; border-radius: 10px; float:right; margin-top: -2em; padding: .5em 1em; box-sizing: border-box;">
-				<strong>Keep this number above $500.</strong><br> Folyo is only for high-value paid work. You need to pay your freelancer for the work they do.
-			</div>
+				USD $ <%= f.text_field :budget, placeholder: "500+", :style => "width: 120px;" %>
 		</div>	
-
-	<h3 class="form-header">Skills needed</h3>
-
-		<div class="project-brief-category-choice-option">
-
-    <% first = true %>
-    <% Category.all.in_groups(2, false) do |batch| %>
-			
-      <fieldset class="half-<%= first ? 'left' : 'right' %>">				
-
-        <% batch.each do |c| %>
-          <div class="project-category-checkbox-wrap">
-            <%= check_box_tag "project[category_ids][#{c.id}]", c.id, @project.category_ids.include?(c.id), :name => "project[category_ids][]" %>
-            <%= label_tag "project_category_ids_#{c.id}", c.name, :style => "text-transform:none;" %>
-          </div>
-        <% end %>
-      </fieldset>
-      <% first = false %>
-    <% end %>
-			
-			<fieldset class="half-right">				
-			</fieldset>
-		</div>
-</div>
 		
+		<div class="form-question-wrap">
+			<p class="question-header"><strong>Skills needed</strong></p>
 
+		<div class="project-brief-category-choice-option">		
+	    <% first = true %>
+	    <% Category.all.in_groups(2, false) do |batch| %>
+	
+	      <fieldset class="half-<%= first ? 'left' : 'right' %>">				
+	        <% batch.each do |c| %>
+	          <div class="project-category-checkbox-wrap">
+	            <%= check_box_tag "project[category_ids][#{c.id}]", c.id, @project.category_ids.include?(c.id), :name => "project[category_ids][]" %>
+
+	            <%= label_tag "project_category_ids_#{c.id}", c.name, :style => "text-transform:none;" %>
+	          </div>
+	        <% end %>
+	      </fieldset>
+	      <% first = false %>
+	    <% end %>
+			
+				<fieldset class="half-right">				
+				</fieldset>
+			</div>
+		</div>
+	</div>
+		
 	<div style="text-align:center; margin: 0 0 5em;">
 		<%= f.submit %>
 		

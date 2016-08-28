@@ -9,7 +9,6 @@
 		<% end %>
 
 		<br>
-		
 		<%= truncate project.goals, length: 125 %> <%= "(not published)" unless project.published? %><br>
 		
 		<div class="skills">
@@ -30,46 +29,30 @@
 		</div>
 	
 		<div class="client-info">
-			<p>
-				<strong><%= project.user.name %></strong>
-			</p>
-			
-			<p>
-				<%= truncate project.user.company_name, length: 17 %>
+			<p style="line-height: 1;">
+				<small><strong><%= project.user.name %></strong><br>
+				<%= truncate project.user.company_name, length: 17 %></small>
 			</p>
 		</div>
 	</div>
 	
-	<div class="status">			
-		
-		  <% unless project.published? %> 
-			
-				<span style='color:#7b8d99;'><i style='color: #4e9fc4;' class='fa fa-pencil' aria-hidden='true'></i> Draft</span><br>
-			
-			<% else %>
-			
+	<div class="status">				
+		<% unless project.published? %> 
+			<span style='color:#7b8d99;'><i style='color: #4e9fc4;' class='fa fa-pencil' aria-hidden='true'></i> Draft</span><br>
+		<% else %>
 			<% if	user_signed_in? %>
-			
 				<% if Project.owned_by(current_user) %>
 					<span style="color:#7b8d99;"><%= project.replies.count %> Replies</span>
 			
-					<% else %>
-						<span style="color:#7b8d99;"><i style="color: #86d259;" class="fa fa-check-circle" aria-hidden="true"></i> Seeking Freelancers</span><br>
+				<% else %>
+					<span style="color:#7b8d99;"><i style="color: #86d259;" class="fa fa-check-circle" aria-hidden="true"></i> Seeking Freelancers</span><br>
 					<!--<i style="color: #86d259;" class="fa fa-check-circle" aria-hidden="true"></i> Accepted, In Progress<br>
 					<span style="color: #8C3622;">Completed</span><br>
 					<span style="color: #666;">5 replies</span><br>-->
-			
 				<% end %>
-			<% end %>
-		
-
-			
-			<% end %>
-			
-
+			<% end %>			
+		<% end %>
 	</div>
-	
-
 </div>
 		
 
