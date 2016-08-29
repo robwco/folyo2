@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
 
   def update_account_type(account_type)
     self.account_type = account_type
-    save
+    save(validate: false)
   end
 
   def freelancer?

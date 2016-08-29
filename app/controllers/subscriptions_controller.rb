@@ -13,7 +13,6 @@ class SubscriptionsController < ApplicationController
         redirect_to client_details_path
       end
     else
-      puts current_user.errors.inspect
       render :new_account_type
     end
 	end
