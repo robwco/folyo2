@@ -383,23 +383,21 @@ input[type=text], input[type=email], input[type=password] {
 
 
 input[type=submit], a.button {
-	color: #FFF !important;
-	font-family: 'rooney-sans', -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
-	border: 0;
-	text-decoration: none;
-	display: inline-block;
-	border-radius: 5px;
-	line-height: 1;
-	cursor: pointer;
-  background: #88cf60;
-	transition: background 0.1s ease;
-	width: auto; 
-	display: inline-block; 
-	text-align:center; 
-	padding: .6em 1em; 
-	margin: 0 auto;
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	font-size: 19px;
-}
+  color:#555;
+  font-weight: 500;
+  background: #bee1f9;
+  padding: .5em 1em .6em;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0 0 3px 0 #aaa;
+  box-shadow: 0 3px 0 0 #88a7b8;
+  margin: 1em 0;
+	cursor: pointer;
+	border: 0;
+	transition: background 0.1s ease;
+  }
 
 a.button.icon-right {
 padding: .75em 1em .75em 2em;
@@ -407,9 +405,12 @@ padding: .75em 1em .75em 2em;
 
 .danger {
 	background-color: #db8688 !important;
+	color: #FFF !important;
+	box-shadow: 0 3px 0 0 #b64e54 !important;
 }
 
 .purple {
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	color: #FFF !important;
   background-color: #8c6eb9 !important;
 	transition: background 0.1s ease;
@@ -418,6 +419,7 @@ padding: .75em 1em .75em 2em;
 input[type=submit]:hover, a.button:hover {
 	background: #222 !important;
 	color: #FFF !important;
+  box-shadow: 0 3px 0 0 #000;
   
 }
 
@@ -429,7 +431,6 @@ input[type=submit]:active, a.button:active {
 	background-color: #b19ece !important; 
 	color: #f1e7ff !important;
 }
-
 
 
 @media only screen and (max-width: 800px) {
