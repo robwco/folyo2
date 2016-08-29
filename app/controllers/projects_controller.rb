@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
     @project.save
 
 	  if ChargeProject.call params[:stripeToken], @project
-      redirect_to @project, notice: "Your payment was accepted!"	
+      redirect_to thank_you_project_path(@project), notice: "Your payment was accepted!"	
     else
       format.html { render :preview, error: "Please correct the errors below." }
     end
@@ -92,7 +92,7 @@ class ProjectsController < ApplicationController
       if @project.save
         format.html { 
           Delayed::Job.enqueue NewProjectJob.new(@project.id)
-          redirect_to thank_you_project_path(@project), notice: 'Project was successfully created.' 
+          redirect_to preview_project_path(@project), notice: 'Project was successfully created.' 
         }
       else
         flash[:error] = "Please correct the errors below."
