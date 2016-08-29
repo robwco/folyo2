@@ -7,45 +7,83 @@
   });
 </script>
 
-<div style="display: table; margin: 1em auto;">
-	<h1 style="text-align:center;"><span class="pro-badge">PRO</span> Help your project stand out!</h1>
-	<p>You want to attract the best freelancers on the web.</p> 
+<div class="wrap w600" style="display: table; margin: 2em auto 0; text-align:center;">
+
+	<p style="margin: 1em 0 0; ">Upgrade your listing to <span class="pro-badge">PRO</span></p>
+	<h1 style="margin: 0 0 .5em;">Make your project stand out for only $79!</h1> 
+
 	
-		 <div id="upsell-container" style="display:none;">	
+	<%= image_tag 'pro-project.png', :style => "margin: 1em 0;" %>
+</div>
+
+<div class="wrap w500" style="display: table; margin: 0 auto;">
+
+	<div class="project-upsell-detail">
+		<div style="height: 100%; float:left;">
+			<i class="fa fa-check" aria-hidden="true"></i>
+		</div>
+		
+		<div style="height: 100%; display:table;">
+		<p style="margin: .5em 0 0;"><strong>Get featured and receive 50% more responses</strong></p>
+		
+		<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>We'll highlight your project for 7 days.</small></p>
+		</div>
+	</div>
+	
+	
+	<div class="project-upsell-detail">
+		<div style="height: 100%; float:left;">
+			<i class="fa fa-check" aria-hidden="true"></i>
+		</div>
+		
+		<div style="height: 100%; display:table;">
+		<p style="margin: .5em 0 0;"><strong>See real work and find the perfect fit</strong></p>
+		
+		<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>Freelancers will be able to attach a portfolio to their reply.</small></p>
+		</div>
+	</div>
+	
+	
+	<div class="project-upsell-detail">
+		<div style="height: 100%; float:left;">
+			<i class="fa fa-check" aria-hidden="true"></i>
+		</div>
+		
+		<div style="height: 100%; display:table;">
+		<p style="margin: .5em 0 0;"><strong>Send your project directly to top freelancers</strong></p>
+		
+		<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>Get more responses whenever you want with one click.</small></p>
+		</div>
+	</div>
+	
+
+	
+		 <div id="upsell-container" style="display:none;">
+			
+			<p style="text-align:center;">You'll be charged $79 and get an email receipt.</p>
+				
         <%= form_for(@project, url: charge_payment_project_path(@project), html: { method: :put }) do |f| %>
-          <div>	
-            
+
+          <div>	            
             <%= render 'registrations/creditcard', :number_required => false  %>	
 
-							<p style="Text-align: center;"><%= image_tag 'visa.png',  :style => "width:32px;" %> <%= image_tag 'mastercard.png',  :style => "width:32px;" %> <%= image_tag 'amex.png',  :style => "width:32px;" %> <%= image_tag 'discover.png',  :style => "width:32px;" %> <%= image_tag 'diners.png',  :style => "width:32px;" %> <%= image_tag 'jcb.png',  :style => "width:32px;" %>
+						<p style="margin: 0; text-align: center;"><%= image_tag 'visa.png',  :style => "width:32px;" %> <%= image_tag 'mastercard.png',  :style => "width:32px;" %> <%= image_tag 'amex.png',  :style => "width:32px;" %> <%= image_tag 'discover.png',  :style => "width:32px;" %> <%= image_tag 'diners.png',  :style => "width:32px;" %> <%= image_tag 'jcb.png',  :style => "width:32px;" %>
 							</p>
 								
+								<p style="margin:0; text-align:center;"><small style="margin:0;">We use <a href="http://stripe.com">Stripe</a> which is just crazy secure.</small></p>
           </div>
           
-          <div style="line-height: 4; padding: 0 0 1em;text-align:center;">
-            
-          	<%= f.submit "Upgrade to pro + add your portfolio", class: "button" %><br>
-						
-						<p style="margin:0;"><small style="margin:0;">We use <a href="http://stripe.com">Stripe</a> which is just crazy secure.</small></p>
-           
-          </div>		
+          <div style="text-align:center;">
+          	<p style="margin:0;"><%= f.submit "Buy a PRO listing", class: "button" %></p>
+						<p style="margin:0;"><%= link_to "Nevermind, post for free", @project %></p>
+					</div>		
           <% end %>
       </div>		
 
 			<div id="upsell-trigger">
-
-				
 				<div style="text-align:center;">
-				<a class="upsell button" href="javascript:">Upgrade to pro + add your portfolio</a>
-				</div>
-					
+					<p style="margin: 1.5em 0;"><a class="upsell button" href="javascript:">Upgrade your project to PRO </a></p>
+					<p><%= link_to "No thanks, post for free", @project %></p>
+				</div>					
 			</div>
-
-
 </div>
-
-
-<p style="text-align:center;">
-<span style="margin:0 .5em 0">or</span> 
-<%= link_to "No thanks, send my project for free", @project %>
-</p>

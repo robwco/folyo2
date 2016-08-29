@@ -23,9 +23,12 @@
 <% elsif user_signed_in? %>
 	
 	<% if Project.owned_by(current_user).any? %>
-		<h2 class="action-header">Your projects</h3>
-		<div class="project-list-wrap" style="max-width:810px;">
-			<div class="project-list">
+	
+	<div class="wrap w860">
+		<h2 class="action-header">Your projects</h2>
+	</div>
+		<div class="project-list-wrap wrap w810">
+			<div class="wrap w810">
 				<% Project.owned_by(current_user).each do |project| %>
 					<%= render "projects/quick_view", project: project %>
 				<% end %>
@@ -36,19 +39,21 @@
       <%= link_to "+ Project".html_safe, new_project_path, class: "button" %>
 		</p>
 		
-	<% else %>	
+	<% else %>
+	<div class="wrap w860">	
 		<h2 class="action-header">Projects for 
       <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
         prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
 		</h3>
+	</div>
 	
-		<div class="project-list-wrap" style="width: 815px;">
+		<div class="wrap w810">
 			<% if @projects.blank? %>
-				<h3>There are no public projects at this time</h3>
+				<h2>There are no public projects at this time</h2>
 
 				<p><%= link_to "Create a project", new_project_wizard_path(project_id: :new), :class => "button" %></p>
 			<% else %>
-				<div class="project-list">
+				<div  class="wrap w810">
 					<% @projects.each do |project| %>
 						<%= render "projects/quick_view", project: project %>
 					<% end %>
@@ -61,24 +66,27 @@
 		</div>
 	<% end %>
 
-<% else %>	
+<% else %>
+
+<div class="wrap w860">
 	<h2 class="action-header">Projects for 
     <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
       prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
-	</h3>
+	</h2>
+</div>
 	
-	<div class="project-list-wrap" style="width: 815px;">
+	<div class="wrap w810">
 		<% if @projects.blank? %>
 			<p>There are no active projects for this category right now.</p>
 
 			<p><%= link_to "Notify me", new_subscription_path, :class => "button" %></p>
 		<% else %>
-			<div class="project-list">
+			<div  class="wrap w810">
 				<% @projects.each do |project| %>
 					<%= render "projects/quick_view", project: project %>
 				<% end %>
 			</div>
-      <div style="text-align:center">
+      <div class="wrap w810" style="text-align:center">
         <%= will_paginate @projects, previous_label: "&lsaquo; Back", next_label: "Forward &rsaquo;" %>
       </div>
 		<% end %>

@@ -114,6 +114,19 @@ h2.notice-header {
 	max-width: 300px;
 }
 
+.wrap.w400 {
+	max-width: 400px;
+}
+
+.wrap.w450 {
+	max-width: 450px;
+}
+
+
+.wrap.w500 {
+	max-width: 500px;
+}
+
 .wrap.w600 {
 	max-width: 600px;
 }
@@ -229,7 +242,6 @@ small.budget {
 	border-bottom: 1px solid #ccc;
 	padding: 1em 0;
 	text-align: center;
-	font-size: 16px;
 }
 
 .checked {
@@ -281,7 +293,6 @@ small.budget {
 fieldset {
 	padding: .5em 0;
 	border: 0;
-	font-size: 16px;
 	display: inline-block;
 	width: auto;
 	box-sizing: border-box;
@@ -385,7 +396,7 @@ input[type=text], input[type=email], input[type=password] {
 input[type=submit], a.button {
 	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	font-size: 19px;
-  color:#555;
+  color:#555 !important;
   font-weight: 500;
   background: #bee1f9;
   padding: .5em 1em .6em;
@@ -639,10 +650,11 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 }
 
 .top-menu a.button {
-	padding: 5px 10px 7px;
+	padding: 4px 10px 5px;
 	font-size: 15px;
 	border-radius: 5px;
-  background: #88cf60;
+	
+  box-shadow: 0 2px 0 0 #88a7b8;
 }
 
 .footer-menu a {
@@ -660,7 +672,6 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 /* Project Page */
 .post-title {
 	text-align:center;
-	line-height: 1.2;
 }
 
 .by-line .photo {
@@ -691,6 +702,22 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 }
 
 
+.project-upsell-detail {
+	padding:0 .75em .25em; 
+	display: table; 
+	width:100%;
+	height:auto; 
+	box-sizing: border-box; 
+	margin: 0;
+	text-align: left;
+}
+
+.project-upsell-detail i {
+	padding: 0 .25em 0 0; 
+	font-size: 20px; 
+	vertical-align: -10px; 
+	color: #86d15b;
+}
 
 
 
@@ -811,8 +838,6 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 }
 
 .project-listing .info {
-	font-size: 16px;
-	line-height: 23px;
 	max-width: 470px;
 	width: auto;
 	display: inline-block;
@@ -821,8 +846,6 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 
 .project-listing .info a {
 	font-weight: 600;
-	font-size: 18px;
-	line-height: 1.5;
 	color: #4E9FC4;
 	
 }
@@ -862,9 +885,10 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 }
 
 .project-listing .client-profile a {
-	font-size: 16px;
 	color: #4E9FC4;
 }
+
+
 
 .project-listing .status {
 	display: inline-block;
