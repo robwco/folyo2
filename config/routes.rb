@@ -110,7 +110,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do 
     match '/sessions/user', to: 'devise/sessions#create', via: :post
-    get "/profile/:id" => "registrations#show"
+    get "/profile/:id" => "registrations#show", as: :profile
   end
   
   devise_scope :admin do 

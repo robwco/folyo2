@@ -1,15 +1,30 @@
 <style>
+  .deactive-skills {
+	line-height: 1.5;
+	font-size: 19px;
+}
   .deactive-skills a.follow {
-    font-size: 11px;
+    font-size: 14px;
     text-transform: uppercase;
     text-decoration: none;
     border:1px solid #4ea0c4;
     border-radius: 3px;
     padding: 0 .25em;
-    margin: 0 .15em;
+    margin: 0;
     line-height: 1;
-    
   }
+
+.badge {
+	font-size: 14px !important;
+}
+
+.skills a.badge {
+	padding-right: 0;
+}
+.badge i {
+	color: #9a9c77;
+	
+}
 </style>
 <script>
   $(document).ready(function(){
@@ -41,6 +56,41 @@
 </script>
 
 
+<h2 class="action-header" style="width: 725px; margin: 1.5em auto 1em;">Your freelancer info</h2>
+
+
+<% unless @user.subscription.allow_portfolio_replies? %>
+
+	<div class="form-question-horizontal" style="margin-bottom: .5em;">
+	  <div class="label-left">
+	    <p><span class="pro-badge">PRO</span> Status</p>
+			<small><%= link_to 'See what benefits you get', projects_path %></small>
+	  </div>
+
+	  <div class="input-right">
+	    <%= link_to "Upgrade to pro", upgrade_plan_path, class: "button purple", :style => "margin-top: .65em;" %>
+	  </div>
+	</div>
+	
+<% else %>
+
+
+	<div class="form-question-horizontal" style="margin-bottom: .5em;">
+	  <div class="label-left">
+	    <p><span class="pro-badge">PRO</span> Status</p>
+			<small><%= link_to 'See what benefits you get', projects_path %></small>
+	  </div>
+
+	  <div class="input-right" style="margin-top: .5em;">
+			<i class="fa fa-check" aria-hidden="true" style="color: #88cf60;"></i> You're a pro<br>
+	    
+	<%= link_to "Cancel your subscription", upgrade_plan_path, class: "button danger", :style => "margin-top: 1em; font-size: 14px;" %>
+	  </div>
+	</div>
+
+<% end %>
+
+
 
 <div class="form-question-horizontal">
   <div class="label-left">
@@ -53,6 +103,8 @@
     <p class="required">Include what you do for your clients and a little about yourself.</p>
   </div>
 </div>
+
+
 
 <div class="form-question-horizontal">
   <div class="label-left">
@@ -72,8 +124,8 @@
     <p class="required" style="margin: .5em 0 0;">Get emailed when a project is posted in a category you follow.</p>
     
     
-    <div class="deactive-skills" style="font-size: 14px;"><br>
-      <span style="font-size: 11px; color: #7b8d99; text-transform: uppercase; font-weight: 600;">Not following:</span><br>
+    <div class="deactive-skills"><br>
+      <span style="color: #7b8d99; text-transform: uppercase; font-weight: 600;">Not following:</span><br>
     
       <% Category.all.each do |category| %>
         <span <%= 'style=display:none;' if @user.category_ids.include?(category.id) %>><%= category.name %> <a href="javascript:" data-category="<%= category.name %>" data-category-id="<%= category.id %>" class="follow">Follow</a><br/></span>

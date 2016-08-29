@@ -5,7 +5,7 @@
 	<% elsif user_signed_in? %>
 		<%= link_to "Projects", home_projects_path %>
 		<%= link_to "New project", new_project_path %>
-		<%= link_to "Account", edit_user_registration_path %>
+		<%= link_to 'Profile', profile_path(current_user) %>
 		<%= mail_to "robert@folyo.me", "Help" %>
 		<a href="http://letsworkshop.com/press">About</a>
 		<a href="#">Partners</a>

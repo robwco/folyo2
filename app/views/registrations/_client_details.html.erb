@@ -1,4 +1,20 @@
-<h2 class="action-header" style="width: 725px; margin: 0 auto 1em;">Your company info</h3>
+<h2 class="action-header" style="width: 725px; margin: 1.5em auto 1em;">Your company info</h2>
+
+<!--
+ 
+<div class="form-question-horizontal">
+  <div class="label-left">
+    <p>Account type</p>
+  </div>
+
+  <div class="input-right" style="margin-top:.25em;">
+  	<i class="fa fa-check" style="color: #79c84e; margin-right: .25em;" aria-hidden="true"></i> <strong>You're a client</strong><br>
+
+		<small><a href="javascript:" class="button danger" data-account-type="freelancer" style="display: inline-block; margin: 2em 0; font-size: 14px;">Switch to freelancer without saving</a></small>
+  </div>
+</div>-->
+
+
 
 <div class="form-question-horizontal">
   <div class="label-left">
@@ -6,9 +22,11 @@
   </div>
 
   <div class="input-right">
-    <%= image_tag(f.object.photo.url(:thumb)) if f.object.photo %>
-    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px; margin: 1.5em 0 0;"	%>
-    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Your picture will appear next to your project. Square images work best. 190 pixels wide is optimal.</p>
+    <%= image_tag(f.object.photo.url(:thumb), :class => "profile-photo", :style => "width:100px; height: 100px; margin: 0 !important;") if f.object.photo %><br>
+
+    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 200px;margin: .5em 0 1em;"	%>
+
+    <p class="required" style="width:400px; font-size: 14px; margin-top: .5em;">Your picture will appear with your project. Square images work best. 200 pixels wide is optimal.</p>
   </div>
 </div>
 
@@ -20,6 +38,7 @@
 
   <div class="input-right">
     <%= f.text_field :company_name, placeholder: 'Sky Stats'	%>
+
     <%= form_error_for(@user, :company_name) %>
   </div>
 </div>
@@ -41,18 +60,10 @@
   </div>
 
   <div class="input-right">
-    <%= image_tag(f.object.company_logo.url(:thumb)) if f.object.company_logo %>
-    <%= f.file_field :company_logo, :id => "pictureInput", :style => "width: 200px; margin: 1.5em 0 0;"	%>
-    <p class="required" style="width:400px; font-size: 14px;">Your logo and company info will appear below your project. Square images work best. 190 pixels wide is optimal.</p>
-  </div>
-</div>
+    <%= image_tag(f.object.company_logo.url(:thumb), :class => "profile-photo", :style => "width:100px; height: 100px; margin: 0; border-radius: 0;") if f.object.company_logo %><br>
 
-<div class="form-question-horizontal">
-  <div class="label-left" style="width:250px; margin:  0 auto 0 5.25em;">
-    <p>Why will someone love working with you?</p>
-  </div>
+    <%= f.file_field :company_logo, :id => "pictureInput", :style => "width: 200px;margin: .5em 0 1em;"	%>
 
-  <div class="input-right">
-    <%= f.text_area :company_biography,  :placeholder => "Type here about your company..." %>
+    <p class="required" style="width:400px; font-size: 14px;">Your logo and company info will appear with your project. Square images work best. 200 pixels wide is optimal.</p>
   </div>
 </div>

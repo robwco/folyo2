@@ -4,23 +4,16 @@
 		<%= link_to "New Lead", new_lead_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% elsif user_signed_in? %>
-	
 		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
-		
-		<% if current_user.present? && current_user.client? %>
-			<%= link_to "+ Project", new_project_path, :class => "button" %>
-		<% end %>
-		
-		<%= link_to "<i class='fa fa-envelope #{ "unread" if @unread_message_count > 0}' aria-hidden='true'></i>Inbox (#{@unread_message_count})".html_safe, inbox_projects_path %>
-		<%= link_to "Profile", edit_user_registration_path %>
+			<% if current_user.present? && current_user.client? %>
+				<%= link_to "+ Project", new_project_path, :class => "button" %>
+			<% end %>
+		<%= link_to "<i class='fa fa-envelope #{ "unread" if @unread_message_count > 0}' aria-hidden='true'></i>Inbox (#{@unread_message_count})".html_safe, inbox_projects_path %>		
+		<%= link_to 'Profile', profile_path(current_user) %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
-
 	<% else %>
-	
-		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
-			
+		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>		
 		<%= link_to 'Sign up', new_subscription_path %>
 		<%= link_to "Log in", new_user_session_path %>
-		
 	<% end %>
 </section>
