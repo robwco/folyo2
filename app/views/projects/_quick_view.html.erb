@@ -1,7 +1,7 @@
 <div class="project-listing">
 	<div class="info">
 		<a href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
-			<%= truncate project.title, length: 55 %> <%= "(draft)" unless project.published? %>
+			<%= truncate project.title, length: 50 %> <%= "(draft)" unless project.published? %>
 		</a>
 		
 		<% if admin_signed_in? %>
@@ -9,7 +9,7 @@
 		<% end %>
 
 		<br>
-		<%= truncate project.goals, length: 125 %> <%= "(not published)" unless project.published? %><br>
+		<%= truncate project.goals, length: 110 %> <%= "(not published)" unless project.published? %><br>
 		
 		<div class="skills">
 			Needed:  

@@ -418,14 +418,13 @@
 	-moz-box-sizing: content-box;
 	-ms-box-sizing: content-box;
 	box-sizing: content-box;
-	background: #fafafa;
 	font-size: 14px;
-	font-family: 'Gotham SSm A', 'Gotham SSm B', Lucida grande, sans-serif;
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	text-align: left;
 	position: relative;
 	z-index: 10000;
 	margin: 1em auto;
-	border: 1px solid #dbdbdb
+	border: 3px solid #9d82c8;
 }
 .ccjs-card,.ccjs-card .ccjs-csc-diagram,.ccjs-card .ccjs-csc-diagram-amex {
 	width: 30em!important;

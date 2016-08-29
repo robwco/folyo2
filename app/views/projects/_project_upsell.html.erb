@@ -7,70 +7,83 @@
   });
 </script>
 
-<div class="comfortable wrap portfolio-message" style="font-size: 90%; border: 3px solid #8c6eb9; padding:0; margin: 0em auto 2em; box-sizing: border-box; display: table; border-radius: 16px;">
-	
-	<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffddf;"><span style="color: #fff; background-color: #54b61c; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 0px;">PRO</span> Help your messages stand out above the rest!
-		
-		</h3>
-		
-		
-	<section style="padding: 0 3em;">
+<div class="wrap w600" style="display: table; margin: 2em auto 0; text-align:center;">
 
-		<div style="padding: 0em; display: table; width: 150px; float: left;">
-			<%= image_tag "portfolio2.png", align: "left", style: "margin: 1em 3em 1em 1em; width: 150px;" %>
+	<p style="margin: 1em 0 0; ">Upgrade your listing to <span class="pro-badge">PRO</span></p>
+	<h1 style="margin: 0 0 .5em;">Make your project stand out for only $79!</h1> 
+
+	
+	<%= image_tag 'pro-project.png', :style => "margin: 1em 0;" %>
+</div>
+
+<div class="wrap w500" style="display: table; margin: 0 auto;">
+
+	<div class="project-upsell-detail">
+		<div style="height: 100%; float:left;">
+			<i class="fa fa-check" aria-hidden="true"></i>
 		</div>
 		
-	  <div style="float: right; width: 450px;">
+		<div style="height: 100%; display:table;">
+		<p style="margin: .5em 0 0;"><strong>Get featured and receive 50% more responses</strong></p>
+		
+		<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>We'll highlight your project for 7 days.</small></p>
+		</div>
+	</div>
+	
+	
+	<div class="project-upsell-detail">
+		<div style="height: 100%; float:left;">
+			<i class="fa fa-check" aria-hidden="true"></i>
+		</div>
+		
+		<div style="height: 100%; display:table;">
+		<p style="margin: .5em 0 0;"><strong>See real work and find the perfect fit</strong></p>
+		
+		<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>Freelancers will be able to attach a portfolio to their reply.</small></p>
+		</div>
+	</div>
+	
+	
+	<div class="project-upsell-detail">
+		<div style="height: 100%; float:left;">
+			<i class="fa fa-check" aria-hidden="true"></i>
+		</div>
+		
+		<div style="height: 100%; display:table;">
+		<p style="margin: .5em 0 0;"><strong>Send your project directly to top freelancers</strong></p>
+		
+		<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>Get more responses whenever you want with one click.</small></p>
+		</div>
+	</div>
 	
 
-		  <div id="upsell-container" style="display:none;">	
+	
+		 <div id="upsell-container" style="display:none;">
+			
+			<p style="text-align:center;">You'll be charged $79 and get an email receipt.</p>
+				
         <%= form_for(@project, url: charge_payment_project_path(@project), html: { method: :put }) do |f| %>
-          <div style="padding: 0;">
-            <h1>Become a PRO for just: $39/month</h1>
-            
+
+          <div>	            
             <%= render 'registrations/creditcard', :number_required => false  %>	
 
-							<p style="Text-align: center;"><%= image_tag 'visa.png',  :style => "width:32px;" %> <%= image_tag 'mastercard.png',  :style => "width:32px;" %> <%= image_tag 'amex.png',  :style => "width:32px;" %> <%= image_tag 'discover.png',  :style => "width:32px;" %> <%= image_tag 'diners.png',  :style => "width:32px;" %> <%= image_tag 'jcb.png',  :style => "width:32px;" %>
+						<p style="margin: 0; text-align: center;"><%= image_tag 'visa.png',  :style => "width:32px;" %> <%= image_tag 'mastercard.png',  :style => "width:32px;" %> <%= image_tag 'amex.png',  :style => "width:32px;" %> <%= image_tag 'discover.png',  :style => "width:32px;" %> <%= image_tag 'diners.png',  :style => "width:32px;" %> <%= image_tag 'jcb.png',  :style => "width:32px;" %>
 							</p>
 								
+								<p style="margin:0; text-align:center;"><small style="margin:0;">We use <a href="http://stripe.com">Stripe</a> which is just crazy secure.</small></p>
           </div>
           
-          <div style="line-height: 4; padding: 0 0 1em;">
-            
-          	<%= f.submit "Upgrade to pro + add your portfolio", class: "button" %><br>
-						
-						<p style="margin:0;"><small style="margin:0;">We use <a href="http://stripe.com">Stripe</a> which is just crazy secure.</small></p>
-           
-          </div>		
+          <div style="text-align:center;">
+          	<p style="margin:0;"><%= f.submit "Buy a PRO listing", class: "button" %></p>
+						<p style="margin:0;"><%= link_to "Nevermind, post for free", @project %></p>
+					</div>		
           <% end %>
       </div>		
 
-			<div id="upsell-trigger" style=" margin: 1em 0; line-height: 1.8; padding: 0 0 1em;">
-				<p style="margin: 1em 0;">Get a 70%+ boost in your chances of winning this project.</p>
-
-					<p>
-						<i class="fa fa-check-circle" aria-hidden="true" style="color:#5ab52a; margin-right: .5em;"></i> Show up above everyone else<br>
-						<i class="fa fa-check-circle" aria-hidden="true" style="color:#5ab52a; margin-right: .5em;"></i> Add your portfolio<br>
-						<i class="fa fa-check-circle" aria-hidden="true" style="color:#5ab52a; margin-right: .5em;"></i> Write a longer message and make a better case
-					</p>
-				
-				
-				<a class="upsell button" href="javascript:">Upgrade to pro + add your portfolio</a><br>
-				
-				
-			</div>		
-		</div>
-		
-		
-	
-
-  </section>
-
-
+			<div id="upsell-trigger">
+				<div style="text-align:center;">
+					<p style="margin: 1.5em 0;"><a class="upsell button" href="javascript:">Upgrade your project to PRO </a></p>
+					<p><%= link_to "No thanks, post for free", @project %></p>
+				</div>					
+			</div>
 </div>
-
-
-<p style="text-align:center;">
-<span style="margin:0 .5em 0">or</span> 
-<%= link_to "No thanks, send my project for free", @project %>
-</p>

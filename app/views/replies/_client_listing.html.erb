@@ -12,7 +12,7 @@
 			<% unless @project.replies.empty? %>
 				<p style="margin: .65em 0 .25em;"><small><strong>Want more replies?</strong></small></p>
 			
-				<%= link_to 'Upgrade to a pro listing', project_path, :class => "button" %>
+				<%= link_to 'Upgrade to a pro listing', preview_project_path, :class => "button" %>
 			<% end %>
 			
 			<p style="margin: .65em 0 .25em;"><small><strong>Project status</strong></small></p>
@@ -35,7 +35,7 @@
 		<p style="text-align:center; padding-top: 2em;">
 			No replies yet. Get more replies and make your project stand out!</p>
 		
-			<p style="text-align:center;"><%= link_to 'Upgrade to a pro listing', project_path, :class => "button" %></p>
+			<p style="text-align:center;"><%= link_to 'Upgrade to a pro listing', preview_project_path, :class => "button" %></p>
 	</div>	
 <% else %>
 	<div class="project-list-wrap inbox">
