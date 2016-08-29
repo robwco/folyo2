@@ -83,7 +83,7 @@ class SubscriptionsController < ApplicationController
         redirect_to(root_path) and return
       end
     else
-      @plan = Plan.active.where(amount: 0).first
+      @plan = Plan.active.free.first
     end
 
     @yearly = Plan.active.where(interval: 'year').first

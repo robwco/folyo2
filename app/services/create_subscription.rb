@@ -1,15 +1,16 @@
 class CreateSubscription
-  def self.call(plan, user, token, coupon_code)
+  def self.call(plan, user, token = nil, coupon_code = nil)
     if user.subscription.blank?
       user.subscription = Subscription.new(
         plan: plan,
         user: user
       )
+      return false unless user.save
     else
       user.subscription.plan = plan
+      return false unless user.subscription.save
     end
 
-    return false unless user.save
     if plan.amount.zero?
       user.subscribe
       user.save
