@@ -31,7 +31,7 @@
 		<%= f.text_area :message, data: { max_characters: 200 } %>
 	</div>
 
-	<% if current_user.present? && current_user.can_reply_with_portfolio?(@reply.project) %>
+	<% if (user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project)) || @reply.project.allow_portfolio_replies? %>
 	  <%= render "replies/portfolio_upload_form", f: f %>
 	<% end %>
 

@@ -2,7 +2,7 @@
 	<%= render "layouts/top_menu" %>
 </div>
 
-<% if current_user.present? && current_user.can_see_project_replies?(@project) %>
+<% if user_signed_in? && current_user.can_see_project_replies?(@project) %>
 	<%= render "replies/client_listing" %>	
 <% else %>	
 	
@@ -30,7 +30,7 @@
 
 						<% if user_signed_in? %>
 							<h2 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffddf;"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
-								<% if current_user.present? && current_user.can_reply_with_portfolio?(@reply.project) %>
+								<% if user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project) %>
 								<span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span>
 								<% end %>
 								
@@ -45,7 +45,7 @@
 			<% end %>
 		</div>
 
-		<% if current_user.present? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
+		<% if user_signed_in? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
 			
 			<%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
 

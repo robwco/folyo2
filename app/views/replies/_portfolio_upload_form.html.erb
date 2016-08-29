@@ -41,8 +41,37 @@
 }
 </style>
 
+<script>
+$(function() {
+  $('#portfolio').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    // here's the file size
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      $("#portfolio-selection").hide();
+      $("#portfolio-display").show();
+      $('#portfolio-image').attr('src', file.target.result);
+      $("#reply_portfolio_message").val($("#reply_portfolio_message").data('reply-content'));
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
 
-<div style="width:100%; display: block; text-align: center; border-radius: 15px; vertical-align: top;  box-sizing: border-box; color: #aaa; text-decoration: none; margin: 0 .5em 3em; line-height: 1.5; padding: .25em 2em 1em; background-color: #f1f1f1; margin: 2em 0;">
+  $("#remove-portfolio").click(function () {
+      $("#portfolio-selection").show();
+      $("#portfolio-display").hide();
+      $("#reply_portfolio_message").data('reply-content',$("#reply_portfolio_message").val());
+      $("#reply_portfolio_message").val("");
+      $('#portfolio').val("");
+  });
+
+});
+</script>
+
+
+<div id="portfolio-selection" style="width:100%; display: block; text-align: center; border-radius: 15px; vertical-align: top;  box-sizing: border-box; color: #aaa; text-decoration: none; margin: 0 .5em 3em; line-height: 1.5; padding: .25em 2em 1em; background-color: #f1f1f1; margin: 2em 0;">
 	
 	<p style="margin-top: 1em;" class="question-header"><strong><span style="color: #fff; background-color: #86d15a; border-radius: 3px; padding: .2em .5em; font-size: 60%; margin-right: .5em; vertical-align: 2px;">PRO</span> Add a 300x900 portfolio piece image to your message:</strong></p>
 	
@@ -56,9 +85,9 @@
 </div>
 
 
-<div style="">
-	<%= image_tag 'portfolios-folyo.png', :style => "width:100%; border-radius:5px; border: 1px solid #dee5e9;" %>
-	<p style="text-align:center; margin: 0;"><%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Remove portfolio'.html_safe, root_path, method: :put, :style => "color: #db8688; font-size: 14px; text-decoration: none; margin: 0 0 1.5em;"  %></p>
+<div id="portfolio-display" style="display:none;">
+	<%= image_tag 'portfolios-folyo.png', id: "portfolio-image", :style => "width:100%; border-radius:5px; border: 1px solid #dee5e9;" %>
+	<p style="text-align:center; margin: 0;"><a href="javascript:" id="remove-portfolio" style="color: #db8688; font-size: 14px; text-decoration: none; margin: 0 0 1.5em;"><i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Remove portfolio</a></p>
 	
 	<p class="question-header" style="margin:1em 0 .5em 0;"><strong>Why did you pick this portfolio piece?</strong></p>
 	
