@@ -74,7 +74,8 @@ Rails.application.routes.draw do
   # Plans and Billing
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
   get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
-  post "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
+  put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
+  put "/subscriptions/freelancer_upsell_save" => "subscriptions#freelancer_upsell_save", as: :freelancer_upsell_save
   get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
   get "/subscriptions/cancel_by_email" => "subscriptions#cancel_by_email", as: :cancel_subscription_by_email
   post "/subscriptions/cancel" => "subscriptions#cancel_post", as: :cancel_subscription_post

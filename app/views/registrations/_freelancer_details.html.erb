@@ -59,7 +59,7 @@
 <h2 class="action-header" style="width: 725px; margin: 1.5em auto 1em;">Your freelancer info</h2>
 
 
-<% unless @user.subscription.allow_portfolio_replies? %>
+<% if !@user.subscription.allow_portfolio_replies? %>
 
 	<div class="form-question-horizontal" style="margin-bottom: .5em;">
 	  <div class="label-left">
@@ -72,8 +72,22 @@
 	  </div>
 	</div>
 	
-<% else %>
+<% elsif @user.canceling? %>
 
+	<div class="form-question-horizontal" style="margin-bottom: .5em;">
+	  <div class="label-left">
+	    <p><span class="pro-badge">PRO</span> Status</p>
+			<small><%= link_to 'See what benefits you get', projects_path %></small>
+	  </div>
+
+	  <div class="input-right" style="margin-top: .5em;">
+			<i class="fa fa-check" aria-hidden="true" style="color: #88cf60;"></i> Your PRO subscription is set to cancel.<br>
+	    
+	<%= link_to "Reactivate your subscription", reactivate_subscription_path, method: :put, class: "button danger", :style => "margin-top: 1em; font-size: 14px;" %>
+	  </div>
+	</div>
+
+<% else %>
 
 	<div class="form-question-horizontal" style="margin-bottom: .5em;">
 	  <div class="label-left">
@@ -84,7 +98,7 @@
 	  <div class="input-right" style="margin-top: .5em;">
 			<i class="fa fa-check" aria-hidden="true" style="color: #88cf60;"></i> You're a pro<br>
 	    
-	<%= link_to "Cancel your subscription", upgrade_plan_path, class: "button danger", :style => "margin-top: 1em; font-size: 14px;" %>
+	<%= link_to "Cancel your subscription", destroy_subscription_path, method: :delete, class: "button danger", :style => "margin-top: 1em; font-size: 14px;" %>
 	  </div>
 	</div>
 

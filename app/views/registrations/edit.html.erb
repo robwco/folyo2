@@ -113,7 +113,7 @@ $(function() {
 			<p><%= link_to "Update credit card", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %></p>
 
 			<% elsif current_user.canceled? %>
-				<p style="color:red;">Your account was canceled, please reactivate your account to continue using Workshop.</p>
+				<p style="color:red;">Your account was canceled, please reactivate your account to continue using Folyo.</p>
 
 				<p><%= link_to "Reactivate my account", update_subscription_creditcard_path, data: { 'no-turbolink' => '' } %></p>
 			<% end %>
