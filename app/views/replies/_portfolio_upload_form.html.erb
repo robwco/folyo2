@@ -54,6 +54,7 @@ $(function() {
       $("#portfolio-display").show();
       $('#portfolio-image').attr('src', file.target.result);
       $("#reply_portfolio_message").val($("#reply_portfolio_message").data('reply-content'));
+      $("#portfolio-display .counter").width($("#reply_portfolio_message").width());
     }
     reader.readAsDataURL(image);
     console.log(files);
