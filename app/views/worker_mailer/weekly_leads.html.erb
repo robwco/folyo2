@@ -10,9 +10,9 @@
 
 	<%= render 'worker_mailer/follow_up_list_pipeline' %>	
 
-	<h3>Your Follow-up List:</h3>
+	<h2>Your Follow-up List:</h2>
 	
-	<h3 class="followup to-contact">To Contact</h3>
+	<h2 class="followup to-contact">To Contact</h2>
 		<% @user.favorite_leads.moved_to_to_contact.each do |favorite_lead| %>
 			<p class="lead-title"><strong><%= favorite_lead.lead.title %></strong></p>
 
@@ -48,7 +48,7 @@
 			<p class="lead-posted-on">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></p>
 		<% end %>
 
-	<h3 class="followup contacted">Waiting to Hear Back</h3>
+	<h2 class="followup contacted">Waiting to Hear Back</h2>
   	<% @user.favorite_leads.moved_to_waiting_to_hear_back.each do |favorite_lead| %>
 			<p class="lead-title"><strong><%= favorite_lead.lead.title %></strong></p>
 
@@ -84,7 +84,7 @@
 			<p class="lead-posted-on">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></p>
   <% end %>
 
-	<h3 class="followup following-up">In Conversation</h3>
+	<h2 class="followup following-up">In Conversation</h2>
   	<% @user.favorite_leads.moved_to_in_conversation.each do |favorite_lead| %>
 
 				<p class="lead-title"><strong><%= favorite_lead.lead.title %></strong></p>
@@ -119,7 +119,7 @@
 				<p class="lead-posted-on">Posted on <%= favorite_lead.lead.created_at.strftime("%b. %d %Y") %> in <%= favorite_lead.lead.category_name %></p>
   		<% end %>
 
-		<h3 class="followup staying-in-touch">Staying in Touch</h3>
+		<h2 class="followup staying-in-touch">Staying in Touch</h2>
   		<% @user.favorite_leads.moved_to_staying_in_touch.each do |favorite_lead| %>
 				<p class="lead-title"><strong><%= favorite_lead.lead.title %></strong></p>
 

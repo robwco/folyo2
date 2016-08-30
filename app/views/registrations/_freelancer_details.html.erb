@@ -73,8 +73,6 @@
 	</div>
 	
 <% else %>
-
-
 	<div class="form-question-horizontal" style="margin-bottom: .5em;">
 	  <div class="label-left">
 	    <p><span class="pro-badge">PRO</span> Status</p>
@@ -84,10 +82,9 @@
 	  <div class="input-right" style="margin-top: .5em;">
 			<i class="fa fa-check" aria-hidden="true" style="color: #88cf60;"></i> You're a pro<br><br>
 	    
-	<%= link_to "Cancel your subscription", upgrade_plan_path, class: "button danger", :style => "font-size: 14px;" %>
+			<%= link_to "Cancel your subscription", upgrade_plan_path, class: "button danger", :style => "font-size: 14px;" %>
 	  </div>
 	</div>
-
 <% end %>
 
 

@@ -1,4 +1,4 @@
-<h2 style="text-align:center;">
+<h2 style="text-align:center; margin: 2em 0;">
 	<%= image_tag @project.user.company_logo.url, :style => "width:60px; border-radius:0px; vertical-align: -10px; margin-right: 0px;" %>
 </h2>
 
@@ -8,13 +8,10 @@
 	<%= image_tag @project.user.photo.url, :class => "photo" %> <%= @project.user.name %>, <a href="<%= @project.user.company_website %>"><%= @project.user.company_name %></a>
 </p>
 
-
 <div class="wrap w600">
-
   <%= @project.long_description_html.html_safe %>
 
 	<p><%= @project.goals %></p>
 	
 	<p><strong>We think this project should cost around $<%= @project.budget %>.</strong></p>
-	<!-- <%= render "projects/profile_card" %>-->
 </div>

@@ -1,104 +1,85 @@
-
+<!--
 
 <h2 style="text-align:center; background-color: #4d616d; margin: 0; padding: 1em; font-weight: 300;">
 	<a style="color: #e8f4f9; background-color: #5e707b; padding: .25em .5em; border-radius: 5px; text-decoration: none;" href="http://medium.com/letsworkshop"><span style="color:#FFF;font-weight: 600;"><em>New!</em></span> <%= image_tag 'upsell.png', :style => "width: 25px; vertical-align: -5px;margin:0 .15em;" %> We relaunched Folyo! Take a tour of the place...</a>
-</h2>
+</h2>-->
 
 
-
-<%= render "layouts/top_menu" %>
-
-
-
-<% if admin_signed_in? %>
-	<div class="project-list-wrap" style="width: 815px;">
-		<div class="project-list">
-			<% Project.all.order(created_at: :desc).each do |project| %>
-
-				<%= render "projects/quick_view", project: project %>
-			<% end %>
-		</div>
-	</div>
+<div class="wrap w860">
+	<%= render "layouts/top_menu" %>
 	
-<% elsif user_signed_in? %>
+	<% if user_signed_in? %>
 	
-	<% if Project.owned_by(current_user).any? %>
-	
-	<div class="wrap w860">
-		<h2 class="action-header">Your projects</h2>
-	</div>
-		<div class="project-list-wrap wrap w810">
-			<div class="wrap w810">
+		<% if Project.owned_by(current_user).any? %>
+			<h2 class="action-header">Your projects</h2>
+
+			<div class="project-list-wrap">
 				<% Project.owned_by(current_user).each do |project| %>
 					<%= render "projects/quick_view", project: project %>
 				<% end %>
 			</div>
-		</div>
 		
-		<p style="text-align:center;">Got more work? Put it on Folyo!<br><br>
-      <%= link_to "+ Project".html_safe, new_project_path, class: "button" %>
-		</p>
-		
+			<p style="text-align:center;">Got more work? Put it on Folyo!<br><br>
+	      <%= link_to "+ Project".html_safe, new_project_path, class: "button" %>
+			</p>
+	
+		<% else %>
+			<h2 class="action-header">Projects for 
+	      <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
+	        prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
+			</h2>
+			
+				<% if @projects.blank? %>
+					<h2>There are no public projects at this time</h2>
+
+					<p><%= link_to "Create a project", new_project_wizard_path(project_id: :new), :class => "button" %></p>
+				
+				<% else %>
+					<div  class="project-list-wrap">
+						<% @projects.each do |project| %>
+							<%= render "projects/quick_view", project: project %>
+						<% end %>
+					</div>
+					
+	        <div style="text-align:center">
+	          <%= will_paginate @projects, previous_label: '<i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back'.html_safe, next_label: 'Forward<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'.html_safe %>
+	        </div>
+				<% end %>		
+			</div>
+		<% end %>
+
 	<% else %>
-	<div class="wrap w860">	
+
 		<h2 class="action-header">Projects for 
-      <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
-        prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
-		</h3>
-	</div>
-	
-		<div class="wrap w810">
-			<% if @projects.blank? %>
-				<h2>There are no public projects at this time</h2>
-
-				<p><%= link_to "Create a project", new_project_wizard_path(project_id: :new), :class => "button" %></p>
-			<% else %>
-				<div  class="wrap w810">
-					<% @projects.each do |project| %>
-						<%= render "projects/quick_view", project: project %>
-					<% end %>
-				</div>
-        <div style="text-align:center">
-          <%= will_paginate @projects, previous_label: "&lsaquo; Back", next_label: "Forward &rsaquo;" %>
-        </div>
-        
-			<% end %>
-		</div>
-	<% end %>
-
-<% else %>
-
-<div class="wrap w860">
-	<h2 class="action-header">Projects for 
-    <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
-      prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
-	</h2>
-</div>
-	
-	<div class="wrap w810">
+	    <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
+	      prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
+		</h2>
+		
 		<% if @projects.blank? %>
 			<p>There are no active projects for this category right now.</p>
 
 			<p><%= link_to "Notify me", new_subscription_path, :class => "button" %></p>
 		<% else %>
-			<div  class="wrap w810">
+		
+			<div  class="project-list-wrap">
 				<% @projects.each do |project| %>
 					<%= render "projects/quick_view", project: project %>
 				<% end %>
 			</div>
-      <div class="wrap w810" style="text-align:center">
-        <%= will_paginate @projects, previous_label: "&lsaquo; Back", next_label: "Forward &rsaquo;" %>
-      </div>
+	     
+			<div style="text-align:center">
+	      <%= will_paginate @projects, previous_label: '<i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back'.html_safe, next_label: 'Forward <i class="fa fa-long-arrow-right" aria-hidden="true"></i>'.html_safe %>
+	    </div>
 		<% end %>
-	</div>
 
-	<div class="wrap w810" style="text-align:center;">
-		<h1 style="margin: 0;">Find someone you love working with</h1>
+		<div style="text-align:center;">
+			<h1 style="margin: 0;">Find someone you love working with</h1>
 		
-		<p style="margin: 0 0 2em;">Connect with the best clients and freelancers on the web absolutely free.</p>
+			<p style="margin: 0 0 2em;">Connect with the best clients and freelancers on the web absolutely free.</p>
 		
-		<p><%= link_to "Post your project", new_subscription_path %> or <%= link_to "get projects emailed to you", new_subscription_path %> for free</p>
-	</div>
-<% end %>
+			<p><%= link_to "Post your project", new_subscription_path %> or <%= link_to "get projects emailed to you", new_subscription_path %> for free</p>
+		</div>
+	<% end %>
 
-<%= render "layouts/footer_menu" %>
+	<%= render "layouts/footer_menu" %>
+</div>

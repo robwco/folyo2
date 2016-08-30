@@ -4,11 +4,11 @@
 }
 </style>
 
-	<h3 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 13px; border-top-right-radius: 13px;  background-color: #fffddf;">
+	<h2 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 13px; border-top-right-radius: 13px;  background-color: #fffddf;">
 		<%= image_tag @reply.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %>
 	
 	<span style="float:right; font-weight: 400; font-size: 17px; color:#545047; margin-top: 5px;">Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></span>
-	</h3>
+	</h2>
 	
 	<div style="padding: 1em 2em;" class="reply">
 		<p><%= h([@reply.biography].join("\n")).gsub("\n", "</p>").html_safe %>

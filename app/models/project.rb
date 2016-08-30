@@ -78,6 +78,10 @@ class Project < ActiveRecord::Base
     self.listing_package.present?
   end
 
+  def owned_by?(check_user)
+    self.user == check_user
+  end
+  
 private
   def archive_project
     self.archived = true

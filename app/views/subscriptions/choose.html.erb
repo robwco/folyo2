@@ -9,7 +9,7 @@
 		<tr>
 			<% Plan.monthly.each do |plan| %>
 				<td style="padding: 0 2em 0 2em; border-right: 1px solid #eee;">
-					<h3 class="uppercase"><%= plan_header plan %></h3>
+					<h2 class="uppercase"><%= plan_header plan %></h2>
 					<%= plan.offer_description.html_safe %>
 					<%= link_to "Sign up", new_subscription_path(plan: plan.id), class: "button" %>
 				</td>

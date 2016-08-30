@@ -1,14 +1,14 @@
 <%= render "layouts/top_menu" %>
-			
+
 <h2 class="action-header" style="margin: 0 auto 1em;">
 	Your inbox
 
   <% if params[:archived] %>
-    <%= link_to "Back to unread", inbox_projects_path, style: "float:right; font-size: 16px; text-decoration: none; margin-top:3px;" %>
+    <%= link_to "See unread messages", inbox_projects_path, style: "float:right; font-size: 16px; text-decoration: none; margin-top:3px;" %>
   <% else %>
     <%= link_to "See read messages", inbox_projects_path(archived: true), style: "float:right; font-size: 16px; text-decoration: none; margin-top:3px;" %>
   <% end %>
-</h3>
+</h2>
 
 <style>
 
@@ -123,28 +123,30 @@
 </style>
 
 <% if @all_messages.any? %>
-	<div class="project-list-wrap" style="padding: 0; margin: 0 auto; width:810px;">
-		
-			<% @all_messages.each do |message| %>
-				<%= render("messages/standalone_message", message: message) if message.class.to_s == "Message" %>
-				<%= render("replies/standalone_reply", reply: message) if message.class.to_s == "Reply" %>
-			<% end %>
-
+	<div class="project-list-wrap wrap w810">
+		<% @all_messages.each do |message| %>
+			<%= render("messages/standalone_message", message: message) if message.class.to_s == "Message" %>
+			
+			<%= render("replies/standalone_reply", reply: message) if message.class.to_s == "Reply" %>
+		<% end %>
 	</div>
 <% else %>
 
+  <% if params[:archived] %>
+		<p style="text-align:center;">You have no read messages.</p>
+	<% else %>
+		<p style="text-align:center;">You have no unread messages.</p>
+	<% end %>
+	
 	<% if current_user.freelancer? %>
-		<p style="text-align:center;">You have no new messages yet.</p>
-		
 		<p style="text-align:center;">
-    	<%= link_to 'Reply to a project'.html_safe, home_projects_path, :class => "button", :style => "margin: .5em 0;" %>
+    	<%= link_to 'Reply to a project'.html_safe, home_projects_path, :class => "button" %>
 		</p>
 	<% end %>
+
 	<% if current_user.client? %>
-		<p style="text-align:center;">You have no new messages yet.</p>
-		
 		<p style="text-align:center;">
-    	<%= link_to 'Create a new project'.html_safe, new_project_path, :class => "button", :style => "margin: .5em 0;" %>
+    	<%= link_to 'Create a new project'.html_safe, new_project_path, :class => "button" %>
 		</p>
 	<% end %>
 	
