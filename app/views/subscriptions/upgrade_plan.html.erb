@@ -1,36 +1,76 @@
-<div style="width: 700px; margin: 1em auto;">
+<div class="wrap w600">
+
+	<p class="wrap nav-border" style="text-align: center; margin: 1em 0 2em; padding: 0 0 1em;">
+		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #aacfe0; vertical-align: 1px; margin: 1em .25em 0 -.25em;"></i> Go back'.html_safe, edit_user_registration_path, :style => "text-decoration: none; color:#666;margin:0;" %>
+	</p>
+	
   <%= form_for(current_user, url: upgrade_save_path, html: { method: :put }) do |f| %>
     <% if current_user.subscription.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(current_user.subscription.errors.count, "error") %> prohibited your upgrade from being saved:</h2>
 
-        <ul>
-        <% current_user.subscription.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+	      <ul>
+		      <% current_user.subscription.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	
+		<h1 style="margin: 0 0 .5em; text-align:center;">Become a <span class="pro-badge">PRO</span> for just: $<%= @plan.price %>/<%= @plan.interval_text %></h1>
 
-    <div style="padding: 0;">
-      <h1>Become a PRO for just: $<%= @plan.price %> / <%= @plan.interval_text %></h1>
+
+
+		<div class="wrap w500" style="display: table; margin: 0 auto;">
+
+			<div class="project-upsell-detail">
+				<div style="height: 100%; float:left;">
+					<i class="fa fa-check" aria-hidden="true"></i>
+				</div>
+
+				<div style="height: 100%; display:table;">
+				<p style="margin: .5em 0 0;"><strong>Get 70% boost in your chances of winning a project</strong></p>
+
+				<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>Your messages will be highlighted and show up above everyone else.</small></p>
+				</div>
+			</div>
+
+
+			<div class="project-upsell-detail">
+				<div style="height: 100%; float:left;">
+					<i class="fa fa-check" aria-hidden="true"></i>
+				</div>
+
+				<div style="height: 100%; display:table;">
+				<p style="margin: .5em 0 0;"><strong>Add your portfolio to all of your replies</strong></p>
+
+				<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>You'll be able to add a work sample with your messages.</small></p>
+				</div>
+			</div>
+
+
+			<div class="project-upsell-detail">
+				<div style="height: 100%; float:left;">
+					<i class="fa fa-check" aria-hidden="true"></i>
+				</div>
+
+				<div style="height: 100%; display:table;">
+				<p style="margin: .5em 0 0;"><strong>Make a better case to clients</strong></p>
+
+				<p style="line-height: 19px !important; margin: 0 0 .5em;"><small>You'll get extra writing space to show why you're a perfect fit for the project.</small></p>
+				</div>
+			</div>
       
       <%= render 'registrations/creditcard', :number_required => false  %>	
 
         <p style="Text-align: center;"><%= image_tag 'visa.png',  :style => "width:32px;" %> <%= image_tag 'mastercard.png',  :style => "width:32px;" %> <%= image_tag 'amex.png',  :style => "width:32px;" %> <%= image_tag 'discover.png',  :style => "width:32px;" %> <%= image_tag 'diners.png',  :style => "width:32px;" %> <%= image_tag 'jcb.png',  :style => "width:32px;" %>
         </p>
-          
-    </div>
-    
+      
+      <p style="margin:0; text-align:center;"><small style="margin:0;">We use <a href="http://stripe.com">Stripe</a> which is just crazy secure.</small></p>
+ 
     <div style="line-height: 4; padding: 0 0 1em;">
-      
-      <%= f.submit "Upgrade to PRO and send portfolio pieces with your replies", class: "button" %><br>
-      
-      <p style="margin:0;"><small style="margin:0;">We use <a href="http://stripe.com">Stripe</a> which is just crazy secure.</small></p>
-     
+      <%= f.submit "Upgrade to PRO and send portfolio pieces with your replies", class: "button" %><br>     
     </div>		
-
-    <%= link_to "Back", edit_user_registration_path %> <br/>
-
   <% end %>
+
 </div>

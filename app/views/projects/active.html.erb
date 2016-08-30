@@ -1,5 +1,4 @@
 <%= render "layouts/top_menu" %>
-
 	<% unless Project.in_conversation(current_user).empty? %>
 
 	<section style="margin: 3em 0 0; display: table;">
@@ -7,28 +6,21 @@
 	</section>
 	
 		<div class="index-leads wrap" style="margin: 0; box-shadow: #ccc 0px 0px 10px; border-radius: 5px;">  
-
-				<% Project.in_conversation(current_user).each do |project| %>
-					<%= render "projects/quick_view", project: project %>
-				<% end %>
-
+			<% Project.in_conversation(current_user).each do |project| %>
+				<%= render "projects/quick_view", project: project %>
+			<% end %>
 		</div>
-
+		
 	<% end %>
-
-
 
 	<section style="margin: 2em 0 0; display: table;">
 		<%= image_tag "other-projects.png", style: "height:40px; display: block; margin: -.35em 1em .25em; ", align: "left" %>
 	</section>
 
 	<div class="index-leads wrap" style="margin: 0 0 6em; box-shadow: #ccc 0px 0px 10px; border-radius: 5px;">
-
-			<% Project.published.recent.each do |project| %>
-				<%= render "projects/quick_view", project: project %>
-			<% end %>
-
+		<% Project.published.recent.each do |project| %>
+			<%= render "projects/quick_view", project: project %>
+		<% end %>
 	</div>
-
 
 	<%= render "layouts/footer_menu" %>
