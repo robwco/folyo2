@@ -136,6 +136,16 @@ h2.notice-header {
 	max-width: 600px;
 }
 
+
+.wrap.w650 {
+	max-width: 650px;
+}
+
+
+.wrap.w700 {
+	max-width: 700px; 
+}
+
 .wrap.w750 {
 	max-width: 750px; 
 }
@@ -391,9 +401,11 @@ input[type=text], input[type=email], input[type=password] {
 }
 
 .counter {
-	font-size: 12px; 
+	font-size: 11px; 
 	color: #748f9f !important; 
 	text-align: right;
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+	
 }
 
 @media only screen and (max-width: 800px) {
