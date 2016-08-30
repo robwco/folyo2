@@ -1,8 +1,7 @@
 <% if @reply.portfolio_message.present? %>
 	<%= image_tag(@reply.portfolio_image.url, class: "portfolio", style: "margin: 1.5em 0 0; width: 100%; border-radius: 5px; border:1px solid #dee5e9;") if @reply.portfolio_image.present? %>
 
-	<%= image_tag 'portfolios-folyo.png', :style => "margin: 1em 0 0; width:100%; border-radius:5px; border: 1px solid #dee5e9;" %>
-
 	<p>
 		<%= h(@reply.portfolio_message).gsub("\n\n", "</p>").html_safe %>
+  </p>
 <% end %>
