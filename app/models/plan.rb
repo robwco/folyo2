@@ -6,6 +6,7 @@ class Plan < ActiveRecord::Base
 
 	scope :active, -> { where(:published => true) }
 	scope :not_free, -> { where("amount > 0") }
+	scope :free, -> { where(amount: 0) }
 	scope :monthly, -> { where(:published => true, :interval => 'month') }
 	scope :annual, -> { where(:published => true, :interval => 'year') }
 

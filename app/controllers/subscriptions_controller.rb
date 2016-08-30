@@ -83,7 +83,7 @@ class SubscriptionsController < ApplicationController
         redirect_to(root_path) and return
       end
     else
-      @plan = Plan.active.where(amount: 0).first
+      @plan = Plan.active.free.first
     end
 
     @yearly = Plan.active.where(interval: 'year').first
@@ -154,11 +154,25 @@ class SubscriptionsController < ApplicationController
 #  end
 
   def upgrade_plan
-    @plans = Plan.active.not_free
-    redirect_to edit_user_registration_path unless @plans.any?
+    @plan = Plan.active.where(portfolio_replies: true).first
+    redirect_to edit_user_registration_path if @plan.blank?
   end
 
   def upgrade_save
+    @plan = Plan.active.where(portfolio_replies: true).first
+
+    redirect_to edit_user_registration_path if (@plan.blank? || current_user.subscription.allow_portfolio_replies?)
+
+    if CreateSubscription.call(@plan, current_user, params[:stripeToken], nil)
+      flash[:notice] = 'You can attach portfolio pieces to your replies now!'
+      redirect_to edit_user_registration_path
+    else
+      flash[:error] = 'There was an error upgrading your subscription. Please try again later.'
+      render 'upgrade_plan'
+    end
+  end
+
+  def freelancer_upsell_save
     redirect_to edit_reply_path(reply_id: params[:reply_id]) if current_user.subscription.allow_portfolio_replies?
 
     @plan = Plan.active.where(portfolio_replies: true).first
@@ -208,7 +222,7 @@ class SubscriptionsController < ApplicationController
 
   def destroy
 	  if CancelSubscription.call(current_user)
-		  flash[:notice] = 'Your Workshop subscription will end at the end of your current billing period.'
+		  flash[:notice] = 'Your Folyo subscription will end at the end of your current billing period.'
 		  redirect_to edit_user_registration_path
 	  else
 		  flash[:notice] = 'There was an error canceling your account. Please try again or contact Customer Service if you are unable to cancel.'
@@ -218,7 +232,7 @@ class SubscriptionsController < ApplicationController
 
   def reactivate
     if ReactivateSubscription.call(current_user, current_user.subscription)
-      flash[:notice] = 'Your Workshop subscription was reactivated!'
+      flash[:notice] = 'Your Folyo subscription was reactivated!'
     else
       flash[:notice] = 'There was an error reactivating your account. Please try again or contact Customer Service if you are unable to reactivate your account.'
     end

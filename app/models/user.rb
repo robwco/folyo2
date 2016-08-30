@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
     event :subscribe do
       transitions from: :pending, to: :trialing, if: :plan_has_trial?
       transitions from: :pending, to: :active, unless: :plan_has_trial?
-      end
+      transitions from: :active, to: :active
+    end
 
     event :overdue do
       transitions from: :active, to: :past_due

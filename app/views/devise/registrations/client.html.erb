@@ -1,26 +1,16 @@
-
 <p class="question" style="margin: .5em 0 0;">6. Enter your info</p>
 		
-		<%= f.text_area :name, placeholder: "Your name", style: "font-size: 16px; width: auto !important; height: 25px !important; padding: 0 !important; margin: .5em 0 0 !important; background-color: none !important;", class: "answer no_border" %>
+<%= f.text_area :name, placeholder: "Your name", style: "font-size: 16px; width: auto !important; height: 25px !important; padding: 0 !important; margin: .5em 0 0 !important; background-color: none !important;", class: "answer no_border" %>
 
-
-		<%= f.text_area :organization, class: "answer no_border", style: "font-size: 16px; width: auto !important; height: 25px !important; padding: 0 !important; margin: .5em 0 0 !important;", :placeholder => "Your Organization Name" %>
-					
-
+<%= f.text_area :organization, class: "answer no_border", style: "font-size: 16px; width: auto !important; height: 25px !important; padding: 0 !important; margin: .5em 0 0 !important;", :placeholder => "Your Organization Name" %>
 
 <%= f.text_area :website, placeholder: "Your website", style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin:.5em 0 2em !important;", class: "answer no_border"  %>
 
-
+<%= f.file_field :photo,  style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;" %>
 		
-
-
-		<%= f.file_field :photo,  style: "font-size: 16px; width: auto !important; height: 20px !important; padding: 0 !important; margin: 0 !important;" %>
+<%= f.file_field :company_logo, style: "margin: 0;" %>
 		
 		
-
-		<%= f.file_field :company_logo, style: "margin: 0;" %>
+<%= f.text_area :email, placeholder: "namey@comparoony.com", style: "font-size: 16px; width: auto !important; height: 25px !important; padding: 0 !important; margin: .5em 0 0 !important;", class: "answer no_border" %>
 		
-		
-		<%= f.text_area :email, placeholder: "namey@comparoony.com", style: "font-size: 16px; width: auto !important; height: 25px !important; padding: 0 !important; margin: .5em 0 0 !important;", class: "answer no_border" %>
-		<p style="color: #ddd; font-size: 12px; ">Won't won't share your email anywhere.</p>
-
+<p style="color: #ddd; font-size: 12px; ">Won't won't share your email anywhere.</p>

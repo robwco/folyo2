@@ -1,37 +1,27 @@
+<div class="wrap w300" style="margin: 2em auto;">
+	<h1 style="margin: 2.5em 0 .5em; text-align: left;">Log in</h1>
 
-<div style="width: 800px; margin: 0 auto;">
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	  <div class="field">
+	    <%= f.email_field :email, autofocus: true, :placeholder => "Email" %><br>
+	    <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
+			<%= render "devise/shared/links" %>
+	 	</div>
 
-<section class="sign-in" style="margin: 2em auto; width: 300px;">
-<h1 style="margin: 2.5em 0 .5em; text-align: left;">Log in</h1>
+	  <div class="actions" style="margin: 1em 0 .5em;">
+	    <%= f.submit "Log in", :style => "margin-left: 0;" %>
+	  </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	  <% if devise_mapping.rememberable? -%>
+	      <%= f.check_box :remember_me, :style => "margin-right: .6em;" %>
+	
+	      <%= f.label "Remember me on this computer", :style => "font-size: 14px; font-weight: normal; text-transform: none; letter-spacing: 0;" %>
+	  <% end -%>
+	<% end %>
 
+	<hr style="margin: 1em 0;">
 
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, :placeholder => "Email" %><br>
-    <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
-		<%= render "devise/shared/links" %>
- 	</div>
-
-  <div class="actions" style="margin: 1em 0 .5em;">
-    <%= f.submit "Log in", :style => "margin-left: 0;" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-
-      <%= f.check_box :remember_me, :style => "margin-right: .6em;" %>
-      <%= f.label "Remember me on this computer", :style => "font-size: 14px; font-weight: normal; text-transform: none; letter-spacing: 0;" %>
-
-  <% end -%>
-<% end %>
-
-<hr style="margin: 1em 0;">
-
-<span style="font-size: 16px; margin: 0;">New to Folyo</span><br>
-<%= link_to 'Create free account', new_subscription_path, :class => "button blue", :style => "font-size: 16px; margin-top: 1em; display: inline-block; color: #444 !important; background: #eee !important;" %>
-
-
-</section>
-
-
+	<p>New to Folyo</p>
+	
+	<%= link_to 'Create free account', new_subscription_path, :class => "button grey" %>
 </div>

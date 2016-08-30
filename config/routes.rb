@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   resources :messages do
     put "archive", on: :member
   end
@@ -74,7 +75,8 @@ Rails.application.routes.draw do
   # Plans and Billing
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
   get "/subscriptions/upgrade_plan" => "subscriptions#upgrade_plan", as: :upgrade_plan
-  post "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
+  put "/subscriptions/upgrade_save" => "subscriptions#upgrade_save", as: :upgrade_save
+  put "/subscriptions/freelancer_upsell_save" => "subscriptions#freelancer_upsell_save", as: :freelancer_upsell_save
   get "/subscriptions/cancel" => "subscriptions#cancel", as: :cancel_subscription
   get "/subscriptions/cancel_by_email" => "subscriptions#cancel_by_email", as: :cancel_subscription_by_email
   post "/subscriptions/cancel" => "subscriptions#cancel_post", as: :cancel_subscription_post
@@ -87,6 +89,13 @@ Rails.application.routes.draw do
   put "/subscriptions/categories_save" => "subscriptions#categories_save", as: :subscription_categories_save
   get "/subscriptions/choose" => "subscriptions#choose", as: :choose_subscription
 
+
+  # Marketing pages
+  get "about" => "pages#about"
+  get "terms" => "pages#terms"
+  get "partners" => "pages#partners"
+  
+  
   # Sign in
   root to: redirect("/projects/home")
   get "/admins/welcome" => "admins#welcome", as: :admin_root

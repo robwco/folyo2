@@ -408,7 +408,7 @@ input[type=submit], a.button {
   margin: 1em 0;
 	cursor: pointer;
 	border: 0;
-	border: 2px solid #bee1f9;
+	border: 1px solid #bee1f9;
 }
 
 input[type=submit]:hover, a.button:hover {
@@ -440,32 +440,17 @@ padding: .75em 1em .75em 2em;
 }
 
 .button.purple {
-	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	color: #FFF !important;
   background-color: #8c6eb9 !important;
-	transition: background 0.1s ease;
 	display: inline-block;
-	margin: 0 auto;
-	color: #FFF !important;
-	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	border: 0;
-	text-decoration: none;
-	display: inline-block;
 	border-radius: 5px;
-	font-size: 18px;
-	margin: 0;
-	padding: 8px 20px 10px;
-	line-height: 1;
-	cursor: pointer;
-  background: #8c6eb9;
-	transition: background 0.1s ease;
 	width: auto; 
-	display: inline-block; 
-	text-align:center; 
 	padding: .5em 1em; 
 	margin: 0 auto;
 	box-shadow: 0 3px 0 0 #61369c;
 }
+
 
 .button.purple:hover {
 	background: #b795e7 !important;
@@ -474,6 +459,18 @@ padding: .75em 1em .75em 2em;
 .button.purple.inactive {
 	background-color: #b19ece !important; 
 	color: #f1e7ff !important;
+}
+
+.button.grey {
+	color: #444 !important;
+  background-color: #eee !important;
+	border: 0;
+	box-shadow: 0 3px 0 0 #ccc;
+}
+
+
+.button.grey:hover {
+	background: #e5e5e5 !important;
 }
 
 
@@ -591,10 +588,9 @@ padding: .75em 1em .75em 2em;
 .pagination {
 	margin: 0 0 2em;
 	border-top: 1px solid #dee5e9;
-	padding: 2em 0;
+	padding: 1em 0 4em;
 }
 .pagination, .pagination a, .pagination i {
-	font-size: 14px;
 	color: #7d8d99 !important;
 	margin: 0 .5em;
 	text-decoration: none;
@@ -604,10 +600,10 @@ padding: .75em 1em .75em 2em;
 	font-weight: 300;
 	font-style: normal;
 	background-color:#dee5e9;
-	width: 22px;
-	height: 22px;
+	width: 1.5em;
+	height: 1.5em;
 	display: inline-block;
-	border-radius: 22px;
+	border-radius: 1.5em;
 	margin: 0 .5em;
 }
 

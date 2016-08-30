@@ -17,15 +17,15 @@ class ChangePlan
       subscription.plan = to_plan
       subscription.save!
 
-      custom_fields = Hash.new
+      #custom_fields = Hash.new
 
-      custom_fields["workshop_plan"] = to_plan.stripe_id
+      #custom_fields["workshop_plan"] = to_plan.stripe_id
 
-      Drip::Client.default_client.create_or_update_subscriber user.email, { 'custom_fields' => custom_fields }
+      #Drip::Client.default_client.create_or_update_subscriber user.email, { 'custom_fields' => custom_fields }
 
     rescue Stripe::StripeError => e
       subscription.errors[:base] << e.message
-	  return false
+      return false
     end
 
     subscription

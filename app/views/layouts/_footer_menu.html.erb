@@ -1,23 +1,19 @@
 <p class="footer-menu" style="margin: 5em 0; text-align: center;">
-	<% if admin_signed_in? %>
-		<%= link_to "Start a project", new_project_path %>
-		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
-	<% elsif user_signed_in? %>
+	<% if user_signed_in? %>
 		<%= link_to "Projects", home_projects_path %>
 		<%= link_to "New project", new_project_path %>
 		<%= link_to 'Profile', profile_path(current_user) %>
-		<%= mail_to "robert@folyo.me", "Help" %>
-		<a href="http://letsworkshop.com/press">About</a>
-		<a href="#">Partners</a>
+		<%= link_to "About", about_path %>
+		<%= link_to "Partners", partners_path %>
+		<%= link_to "Terms", terms_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% else %>	
+		<%= link_to "Projects", home_projects_path %>
 		<%= link_to 'Sign up', new_subscription_path(plan:2) %>
 		<%= link_to "Log in", new_user_session_path %>
-		<a href="http://letsworkshop.com/press">About</a>
-		<a href="#">Partners</a> 
-		<%= mail_to "robert@folyo.me", "Help" %>
-		<a href="http://letsworkshop.com/terms">Terms</a> 
+		<%= link_to "About", about_path %>
+		<%= link_to "Partners", partners_path %>
+		<%= link_to "Terms", terms_path %>
 	<% end %>
-
 	<span style="color: #7c8d99; opacity: .65;">© <%= Time.now.year %> Folyo</span>
 </p>

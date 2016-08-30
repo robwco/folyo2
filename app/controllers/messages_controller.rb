@@ -32,6 +32,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.html { 
+          ProjectMailer.delay.new_message(@message)
           redirect_to @reply, notice: 'Your message was sent!' 
         }
       else
