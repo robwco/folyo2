@@ -1,4 +1,41 @@
 <div class="project-listing <%= 'pro-listing' if project.allow_portfolio_replies? %>">
+	
+	
+	<div class="client-profile">
+		<div class="status-wrap">
+			<% if project.reply_from?(current_user) %>
+				<div class="status">
+					<span style="color:#7b8d99;"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em;color:#7b8d99;"></i> Replied</span>
+				</div>
+			<% end %>
+		
+			<% if user_signed_in? && project.owned_by?(current_user) %>
+				<div class="status">
+					<span style="color:#7b8d99;"><%= project.replies.count %> Replies</span>
+				</div>
+			<% end %>
+		</div>
+		
+		<div class="client-info-wrap">
+			<div class="avatar">
+	      <% if project.user.company_logo? %>
+	        <%= image_tag(project.user.company_logo.url) %>
+	      <% else %>
+	        <%= image_tag(project.user.photo.url, class: "photo") %>
+	      <% end %>
+			</div>
+	
+			<div class="client-info">
+				<p style="line-height: 1;">
+					<small><strong><%= project.user.name %></strong><br>
+					<%= truncate project.user.company_name, length: 17 %></small>
+				</p>
+			</div>
+		</div>
+
+	</div>
+
+
 	<div class="info">
 			<a href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
 			 <%= truncate project.title, length: 55 %>
@@ -12,34 +49,6 @@
       <% end %>
 		</div>
 	</div>
-	
-	<div class="client-profile">
-		
-		<% if user_signed_in? && project.owned_by?(current_user) %>
-			<div class="status">
-				<span style="color:#7b8d99;"><%= project.replies.count %> Replies</span>
-			</div>
-		<% end %>
-		
-		
-		<div class="avatar">
-      <% if project.user.company_logo? %>
-        <%= image_tag(project.user.company_logo.url) %>
-      <% else %>
-        <%= image_tag(project.user.photo.url, class: "photo") %>
-      <% end %>
-		</div>
-	
-		<div class="client-info">
-			<p style="line-height: 1;">
-				<small><strong><%= project.user.name %></strong><br>
-				<%= truncate project.user.company_name, length: 17 %></small>
-			</p>
-		</div>
-
-	</div>
-	
-
 </div>
 		
 

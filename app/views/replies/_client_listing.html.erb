@@ -1,25 +1,25 @@
-<div class="wrap w810">	
-	<div class="project-listing">		
+<div class="wrap w860">	
+	<div class="project-listing">
+		<div class="client-profile" style="padding: 0 0 1em; margin: 0;">
+			<% unless @project.replies.empty? %>
+				<p style="margin:1em 0;"><small><strong>Want more replies? Share your project:</strong></small></p>
+			
+				<%= render "replies/share_project" %>
+			<% end %>
+			
+			<p style="margin:1em 0 0;"><small><strong>Update project status</strong></small></p>
+      
+			<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true,) do |f| %>
+      	<%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, { style: "font-size: 16px;", data: { status_update: true } } %>
+      <% end %>
+		</div>
+				
 		<div class="info" style="max-width: 500px;">
 			<h2 style="margin-bottom: .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h2>
 			
 			<%= truncate @project.goals, length: 135 %> <%= "(draft)" unless @project.published? %><br>
 
 			<small>Project posted <%= @project.created_at.strftime("%b%_m") %></small>
-		</div>
-		
-		<div class="client-profile" style="padding: 0; margin: 0;">
-			<% unless @project.replies.empty? %>
-				<p style="margin: .65em 0 .25em;"><small><strong>Want more replies?</strong></small></p>
-			
-				<%= link_to 'Upgrade to a pro listing', preview_project_path, :class => "button" %>
-			<% end %>
-			
-			<p style="margin: .65em 0 .25em;"><small><strong>Project status</strong></small></p>
-      
-			<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true) do |f| %>
-      	<%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, { style: "font-size: 16px;", data: { status_update: true } } %>
-      <% end %>
 		</div>
 	</div>
 </div>
@@ -35,7 +35,9 @@
 		<p style="text-align:center; padding-top: 2em;">
 			No replies yet. Get more replies and make your project stand out!</p>
 		
-			<p style="text-align:center;"><%= link_to 'Upgrade to a pro listing', preview_project_path, :class => "button" %></p>
+			<p style="text-align:center; width:auto !important; margin: 0 auto;">
+				<%= render "replies/share_project" %>
+			</p>
 	</div>	
 <% else %>
 	<div class="project-list-wrap inbox">

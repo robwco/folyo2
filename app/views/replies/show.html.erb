@@ -28,48 +28,39 @@ $(document).ready(function(){
 	<%= render "layouts/top_menu" %>
 </div>
 
-<div class="wrap800" style="width:800px; margin: 0 auto; padding: 0 0 5em;">
+<div class="wrap w800" style="margin: 0 auto; padding: 0 0 5em;">
 	
 	<p style="padding:  1em 0; text-align: center;">
-		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="color: #dee5e9; vertical-align: 1px; margin-right: .5em; margin-left: -.25em;"></i> Back to project'.html_safe, @reply.project, :style => "text-decoration: none; color: #7c8d99;" %>
+		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="vertical-align: 1px; margin-right: .25em; margin-left: -.25em;"></i> Back to project'.html_safe, @reply.project, :style => "text-decoration: none; color: #7c8d99;" %>
 	</p>
 	
-	
-	<div style="box-sizing: border-box;  margin: 0 auto;margin: .5em auto 1em; border: 3px solid #8b6eb9; padding:  0; box-sizing: border-box; border-radius: 16px;">		
+	<div class="reply-box">		
 		<%= render "replies/reply_message", allow_edit: false %>
 	</div>
-
 	
 	<% if current_user.can_see_messages?(@reply) %>
 		<%= render "messages/listing", extra_padding: false, reply: @reply %>
 	<% end %>
 
-
 	<% if @reply.messages.blank? %>
-		<p style="text-align:center; margin: 2em 0 0; padding: 2em 0 5em; border-top: 1px solid #dee5e9;">
-			<%= link_to 'Write a message', message_reply_path(@reply), :class => "button", :style => "float: left; width: auto; display: inline-block; text-align:center; padding: 1em 3em; margin: 0 auto;" %>
-		
+		<p class="decision" style="padding: .5em 0 5em;">
+			<%= link_to 'Write a message', message_reply_path(@reply), :class => "button", :style => "float: left;" %>
 		
 			<% if user_signed_in? && current_user == @reply.project.user %>
 
-		      <%= link_to 'Archive this reply', archive_reply_path(@reply), method: :put, :class => "button danger", :style => "float:right;"  %>
+	      <%= link_to 'Archive this reply', archive_reply_path(@reply), method: :put, :class => "button danger", :style => "float:right;"  %>
 
 		  <% end %>
 			</p>			
 	<% else %>
-	
 
-					<div class="wrap800" style="margin:1em 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
-						<div class="wrap800" style="margin: 0 auto; width: 750px;">
-							<%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Dismiss this conversation'.html_safe, archive_reply_path(@reply), method: :put, :style => "color: #db8688; float: right; font-size: 16px; text-decoration: none; margin-top: -1em; margin-bottom: .5em;"  %>	
-						<%= render "messages/client_send", name: message_recipient(@reply) %>
-
-						
-
-						</div>
-					</div>
-
-
+	<div class="wrap w800" style="margin:1em 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
+		<div class="wrap w750" style="margin: 0 auto;">
+			<%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Dismiss this conversation'.html_safe, archive_reply_path(@reply), method: :put, :style => "color: #db8688; float: right; font-size: 16px; text-decoration: none; margin-top: -1em; margin-bottom: .5em;"  %>	
+		
+			<%= render "messages/client_send", name: message_recipient(@reply) %>
+		</div>
+	</div>
 	
 	<% end %>
 </div>
