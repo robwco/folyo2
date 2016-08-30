@@ -30,6 +30,7 @@ class RepliesController < ApplicationController
 
   def post
     @reply.publish
+    ProjectMailer.delay.new_reply(@reply)
     redirect_to @reply.project
   end
 
@@ -63,6 +64,7 @@ class RepliesController < ApplicationController
       if @reply.save
         format.html { 
           if can_reply_with_portfolio
+            ProjectMailer.delay.new_reply(@reply)
             redirect_to @reply.project, notice: "Your message was sent!"
           else
             redirect_to preview_reply_path(@reply) 
