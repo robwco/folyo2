@@ -1,6 +1,6 @@
 <div <%= 'style="padding-bottom: 2em;"'.html_safe if extra_padding %>>
 	<div>
-		<% reply.messages.each do |message| %>
+		<% reply.messages.order(:created_at).each do |message| %>
 			<%= render "messages/message", message: message %>
 		<% end %>
 	</div>
