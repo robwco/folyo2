@@ -6,61 +6,55 @@
 	<%= render "replies/client_listing" %>	
 <% else %>	
 	
-<div class="wrap w800">
-	<%= render 'projects/project' %>
-</div>
+  <div class="wrap w800">
+    <%= render 'projects/project' %>
+  </div>
 
-<div class="wrap w800" style="margin: 2em auto;">
-	<% if @project.reply_from?(current_user) %>
-		<p class="reply-header"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
-		
-	<% elsif @project.allow_replies_from?(current_user) %>
-	
-    <p class="reply-header">Reply to this project
-      <small><a href="http://folyo.me/write" style="float:right;"><span style="vertical-align: -5px;">How to write a client-winning message</span></a></small>
-		</p>
-	<% end %>
+  <div class="wrap w800" style="margin: 2em auto;">
+    <% if @project.reply_from?(current_user) %>
+      <p class="reply-header"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
+    <% end %>
 
-	<% if @project.allow_replies_from?(current_user) %>
-		<div class="wrap w800 reply" style="margin-top: 0;">
-				<div class="reply-box">
-					<% if @project.reply_from?(current_user) %>
-						<%= render "replies/reply" %>	
-					<% else %>
+    <% if @project.allow_replies_from?(current_user) %>
+      <% if user_signed_in? %>
+        <p class="reply-header">Reply to this project
+          <small><a href="http://folyo.me/write" style="float:right;"><span style="vertical-align: -5px;">How to write a client-winning message</span></a></small>
+        </p>
+        <div class="wrap w800 reply" style="margin-top: 0;">
+          <div class="reply-box">
+            <% if @project.reply_from?(current_user) %>
+              <%= render "replies/reply" %>	
+            <% else %>
+              <h2 class="reply-box-header"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
+                <% if user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project) %>
+                  <small><span class="reply-box-message"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span></small>
+                <% end %>
+              </h2>
+                
+              <div style="padding: .5em 1.25em;">
+                <%= render "replies/form" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <%= link_to 'Reply to this project free', new_subscription_path(project_id: @project.id), class: "button" %><br>
+      <% end %>
 
-						<% if user_signed_in? %>
-							<h2 class="reply-box-header"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
-								<% if user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project) %>
-									<small><span class="reply-box-message"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span></small>
-								<% end %></h2>
-								
-						<% else %>
-						
-							<h2 id="send-message-now" class="reply-box-header">Send your message free! <small><span class="reply-box-message">You'll need to create an account first.</span></small></h2>
-							
-						<% end %>
-				
-						<div style="padding: .5em 1.25em;">
-							<%= render "replies/form" %>
-						</div>
-					</div>
-			<% end %>
-		</div>
+      <% if user_signed_in? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
+        
+        <%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
 
-		<% if user_signed_in? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
-			
-			<%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
-
-			<% if current_user.can_send_message?(@reply) %>
-			
-			<div class="wrap800 decision-border">
-				
-				<div class="wrap w750">
-					<%= render "messages/send", name: message_recipient(@reply) %>
-				</div>
-			</div>
-			<% end %>
-		<% end %>
-	<% end %>
-</div>
+        <% if current_user.can_send_message?(@reply) %>
+        
+          <div class="wrap800 decision-border">
+            
+            <div class="wrap w750">
+              <%= render "messages/send", name: message_recipient(@reply) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
