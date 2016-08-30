@@ -132,6 +132,11 @@ h2.notice-header {
 	max-width: 600px;
 }
 
+.wrap.w750 {
+	max-width: 750px; 
+}
+
+
 .wrap.w800 {
 	max-width: 800px; 
 }
@@ -424,7 +429,6 @@ input[type=submit].small, a.button.small {
 	padding: 2px 10px 5px;
 	font-size: 14px;
 	border-radius: 5px;
-	border: 2px solid #bee1f9;
 	box-shadow: none;
 }
 
@@ -569,7 +573,47 @@ padding: .75em 1em .75em 2em;
 	width: 100%; 
 	box-sizing: border-box;
 }
+/* Project */
 
+p.reply-header {
+	margin: 0 0 1em .5em; 
+	color: #7c8d99;
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+}
+
+.reply-box {
+	margin: .5em auto 3em; 
+	border: 3px solid #8b6eb9; 
+	padding:  0; 
+	box-sizing: border-box; 
+	border-radius: 16px;
+}
+
+.reply-box-message {
+	float:right; 
+	font-weight: 400; 
+	color:#545047;
+	margin: .5em 0;
+}
+
+h2.reply-box-header {
+	margin: 0; 
+	padding: .5em 1em .75em; 
+	border-bottom: 3px solid #8b6eb9; 
+	border-top-left-radius: 16px; 
+	border-top-right-radius: 16px;  
+	background-color: #fffddf;
+}
+
+
+
+.decision-border {
+	margin: 0; 
+	padding: 2em 0; 
+	box-sizing: border-box; 
+	width: 100%; 
+	border-top: 1px solid #dee5e9;
+}
 /* Homepage */
 
 .project-list-wrap {
@@ -773,7 +817,7 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 
 
 .pro-listing {
-	background-color: #fff9e5;
+	background-color: #fffff2;
 }
 
 /* Project replies */
