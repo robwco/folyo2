@@ -25,7 +25,13 @@ class SubscriptionsController < ApplicationController
   def update_freelancer
     @user = current_user
     if @user.update(freelancer_details_params)
-      redirect_to home_projects_path
+      if session[:new_user_project_id]
+        project = Project.find(session[:new_user_project_id])
+        session.delete(:new_user_project_id)
+        redirect_to Project.find(project), notice: "You can reply to the project now!"
+      else
+        redirect_to home_projects_path
+      end
     else
       @selected_categories = Category.find(@user.category_ids)
       render :freelancer
@@ -70,6 +76,11 @@ class SubscriptionsController < ApplicationController
     #session[:last_page] = request.env['HTTP_REFERER'] || home_projects_url
 
     @user = User.new
+
+    if params[:project_id]
+      @user.account_type = "freelancer"
+      session[:new_user_project_id] = params[:project_id]
+    end
 
     if params[:plan]
       begin
