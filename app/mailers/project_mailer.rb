@@ -33,4 +33,12 @@ class ProjectMailer < ActionMailer::Base
 
     mail(to: @to_user.email, subject: subject, from: "\"Robert Williams (from Folyo)\" <robert@folyo.com>")
   end
+
+  def welcome(user)
+    @user = user
+
+    subject = "Welcome to Folyo!"
+
+    mail(to: user.email, subject: subject, from: "\"Robert Williams (from Folyo)\" <robert@folyo.com>")
+  end
 end

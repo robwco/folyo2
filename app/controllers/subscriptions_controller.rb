@@ -108,6 +108,7 @@ class SubscriptionsController < ApplicationController
 
     if CreateSubscription.call(@plan, @user, params[:stripeToken], params[:coupon_code])
       sign_in('user', @user)
+      ProjectMailer.delay.welcome(@user)
       if @user.account_type.blank?
         redirect_to account_type_path
       else
