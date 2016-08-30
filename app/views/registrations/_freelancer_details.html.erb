@@ -72,9 +72,6 @@
 	  </div>
 	</div>
 	
-<<<<<<< HEAD
-<% else %>
-=======
 <% elsif @user.canceling? %>
 
 	<div class="form-question-horizontal" style="margin-bottom: .5em;">
@@ -92,7 +89,6 @@
 
 <% else %>
 
->>>>>>> b5ec0a087ca05677c0e39a005cb741612b5a2983
 	<div class="form-question-horizontal" style="margin-bottom: .5em;">
 	  <div class="label-left">
 	    <p><span class="pro-badge">PRO</span> Status</p>
@@ -102,11 +98,7 @@
 	  <div class="input-right" style="margin-top: .5em;">
 			<i class="fa fa-check" aria-hidden="true" style="color: #88cf60;"></i> You're a pro<br><br>
 	    
-<<<<<<< HEAD
-			<%= link_to "Cancel your subscription", upgrade_plan_path, class: "button danger", :style => "font-size: 14px;" %>
-=======
 	<%= link_to "Cancel your subscription", destroy_subscription_path, method: :delete, class: "button danger", :style => "margin-top: 1em; font-size: 14px;" %>
->>>>>>> b5ec0a087ca05677c0e39a005cb741612b5a2983
 	  </div>
 	</div>
 <% end %>
