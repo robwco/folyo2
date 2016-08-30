@@ -24,7 +24,7 @@
 	
 
 		  <div id="upsell-container" style="display:none;">	
-        <%= form_for(current_user, url: freelancer_upsell_save_path(reply_id: @reply.id), html: { method: :post }) do |f| %>
+        <%= form_for(current_user, url: freelancer_upsell_save_path(reply_id: @reply.id), html: { method: :put }) do |f| %>
           <div style="padding: 0;">
             <h1>Become a PRO for just: $39/month</h1>
             

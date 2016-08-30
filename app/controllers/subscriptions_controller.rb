@@ -25,11 +25,7 @@ class SubscriptionsController < ApplicationController
   def update_freelancer
     @user = current_user
     if @user.update(freelancer_details_params)
-      if session[:unsent_reply_biography]
-        redirect_to complete_replies_path
-      else
-        redirect_to home_projects_path
-      end
+      redirect_to home_projects_path
     else
       @selected_categories = Category.find(@user.category_ids)
       render :freelancer
@@ -104,7 +100,11 @@ class SubscriptionsController < ApplicationController
       if @user.account_type.blank?
         redirect_to account_type_path
       else
-        redirect_to freelancer_details_path
+        if session[:unsent_reply_biography]
+          redirect_to complete_replies_path
+        else
+          redirect_to freelancer_details_path
+        end
       end
     else
       render :new
@@ -173,15 +173,16 @@ class SubscriptionsController < ApplicationController
   end
 
   def freelancer_upsell_save
-    redirect_to edit_reply_path(reply_id: params[:reply_id]) if current_user.subscription.allow_portfolio_replies?
+    reply = Reply.find(params[:reply_id])
+    redirect_to(edit_reply_path(reply)) and return if current_user.subscription.allow_portfolio_replies?
 
     @plan = Plan.active.where(portfolio_replies: true).first
 
-    redirect_to edit_reply_path(reply_id: params[:reply_id]) if @plan.blank?
+    redirect_to(edit_reply_path(reply)) and return if @plan.blank?
 
     if CreateSubscription.call(@plan, current_user, params[:stripeToken], nil)
       flash[:notice] = 'You can attach a portfolio to your reply now!'
-      redirect_to edit_reply_path(reply_id: params[:reply_id])
+      redirect_to edit_reply_path(reply)
     else
       flash[:notice] = 'There was an error upgrading your subscription. Please try again later.'
       @reply = Reply.find(params[:reply_id])

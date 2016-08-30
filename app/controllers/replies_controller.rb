@@ -31,7 +31,7 @@ class RepliesController < ApplicationController
   def post
     @reply.publish
     ProjectMailer.delay.new_reply(@reply)
-    redirect_to @reply.project
+    redirect_to @reply.project, notice: 'Your message was sent!'
   end
 
   def create
@@ -112,7 +112,10 @@ class RepliesController < ApplicationController
     respond_to do |format|
       if @reply.update(reply_params)
         format.html { 
-          @reply.publish
+          if !@reply.published?
+            @reply.publish
+            ProjectMailer.delay.new_reply(@reply)
+          end
           redirect_to @reply.project, notice: 'Your message was sent!'
         }
       else

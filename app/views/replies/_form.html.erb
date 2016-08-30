@@ -48,12 +48,12 @@
 	<div style="text-align:center; width:100%; padding: 0 0 1em;">
 		<div style="margin:2em 0 .5em; display: table; line-height: 1; text-align:center; width: 100%;">
 			<% if user_signed_in? %>
-				<%= f.submit 'Preview your message', class: "button" %>
+				<%= f.submit 'Send your message', class: "button" %>
 			<% else %>
 				<%= f.submit 'Next: Create Free Account', class: "button" %>
+        <small>You'll still be able to change your message.</small>
 			<% end %>		
 		</div>
-		<small>You'll still be able to change your message.</small>
 	</div>
 	
 	<% end %>
