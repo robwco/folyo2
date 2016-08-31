@@ -62,9 +62,9 @@ class ProjectsController < ApplicationController
 
   def charge_payment
     @project.listing_package = ListingPackage.active.first
-    @project.save
 
 	  if ChargeProject.call params[:stripeToken], @project
+      @project.save
       redirect_to thank_you_project_path(@project), notice: "Your payment was accepted!"	
     else
       format.html { render :preview, error: "Please correct the errors below." }
@@ -102,6 +102,7 @@ class ProjectsController < ApplicationController
   end
 
   def preview
+    @listing_package = ListingPackage.active.first
   end
 
   def update

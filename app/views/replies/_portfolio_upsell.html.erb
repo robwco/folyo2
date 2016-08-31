@@ -11,7 +11,7 @@
 <div class="wrap w600" style="display: table; margin: 2em auto 0; text-align:center;">
 
 	<p style="margin: 1em 0 0; ">Upgrade to <span class="pro-badge">PRO</span></p>
-	<h1 style="margin: 0 0 .5em;">Help your reply stand out for only $39/month!</h1> 
+	<h1 style="margin: 0 0 .5em;">Help your reply stand out for only $<%= @plan.price %>/<%= @plan.interval_text %>!</h1> 
 
 	
 	<%= image_tag 'pro-project.png', :style => "margin: 1em 0; width:100%; border: 1px solid #dee5e9; border-radius: 5px; box-shadow: 0 0 10px 0 #dee5e9" %>
@@ -22,7 +22,7 @@
 		  <div id="upsell-container" style="display:none;">	
         <%= form_for(current_user, url: freelancer_upsell_save_path(reply_id: @reply.id), html: { method: :put }) do |f| %>
           <div style="padding: 0;">
-            <h1>Become a PRO for just: $39/month</h1>
+            <h1>Become a PRO for just: $<%= @plan.price %>/<%= @plan.interval_text %></h1>
             
             <%= render 'registrations/creditcard', :number_required => false  %>	
 

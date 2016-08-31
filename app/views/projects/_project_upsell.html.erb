@@ -10,7 +10,7 @@
 <div class="wrap w600" style="display: table; margin: 2em auto 0; text-align:center;">
 
 	<p style="margin: 1em 0 0; ">Upgrade your listing to <span class="pro-badge">PRO</span></p>
-	<h1 style="margin: 0 0 .5em;">Make your project stand out for only $79!</h1> 
+	<h1 style="margin: 0 0 .5em;">Make your project stand out for only $<%= @listing_package.price.round %>!</h1> 
 
 	
 	<%= image_tag 'pro-project.png', :style => "margin: 1em 0; width:100%; border: 1px solid #dee5e9; border-radius: 5px; box-shadow: 0 0 10px 0 #dee5e9" %>
@@ -60,7 +60,7 @@
 	
 		 <div id="upsell-container" style="display:none;">
 			
-			<p style="text-align:center;">You'll be charged $79 and get an email receipt.</p>
+			<p style="text-align:center;">You'll be charged $<%= @listing_package.price.round %> and get an email receipt.</p>
 				
         <%= form_for(@project, url: charge_payment_project_path(@project), html: { method: :put }) do |f| %>
 
@@ -83,7 +83,7 @@
 			<div id="upsell-trigger">
 				<div style="text-align:center;">
 					<p style="margin: 1.5em 0;"><a class="upsell button" href="javascript:">Upgrade your project to PRO </a></p>
-					<p><%= link_to "No thanks, post for free", @project %></p>
+					<p><%= link_to "No thanks, post for free", thank_you_project_path(@project) %></p>
 				</div>					
 			</div>
 </div>

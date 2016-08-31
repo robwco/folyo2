@@ -26,6 +26,7 @@ class RepliesController < ApplicationController
   end
 
   def preview
+    @plan = Plan.active.where(portfolio_replies: true).first
   end
 
   def post
@@ -125,6 +126,8 @@ class RepliesController < ApplicationController
   end
 
   def archive
+    redirect_to(@reply) and return unless @reply.project.owned_by?(current_user)
+
     @reply.archive
     redirect_to @reply.project, notice: "Reply was archived!"
   end
