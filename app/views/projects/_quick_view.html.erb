@@ -43,8 +43,7 @@
 
 	<div class="info">
 		
-		<a href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
-		 <%= truncate project.title, length: 55 %>
+		<%= '<span class="pro-badge" style="margin-right:.75em;">PRO</span>'.html_safe if project.allow_portfolio_replies? %><a href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>" class="title"><%= truncate project.title, length: 55 %>
 		</a>
 
 		<p style="margin: .25em 0; line-height: 1.3; "><%= truncate project.goals, length: 115 %></p>

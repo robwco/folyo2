@@ -54,7 +54,8 @@ class User < ActiveRecord::Base
   has_attached_file :company_logo, :styles => { :medium => "190x190>", :thumb => "190x190>" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  validates :name, presence: { message: "Enter your name" }  
+  validates :name, presence: { message: "Enter your name" } 
+  validates :photo, presence: { message: "Upload a cute pic" }  
   validates :biography, presence: { message: "can't be blank" }, if: :freelancer_has_name?
   validates :company_name, presence: { message: "can't be blank" }, if: :client_has_name?
 

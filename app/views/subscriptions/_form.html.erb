@@ -1,13 +1,121 @@
-<%= form_for :user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>
+
+<script>
+$(function() {
+  $('#photo').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    // here's the file size
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      $('#target').attr('src', file.target.result);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+
+  function toggleAccountType(selected_type) {
+    $('.account-type a').each(function() {
+      if ($(this).data('account-type') == selected_type) {
+        $(this).removeClass('inactive');
+        $(this).find('i').show();
+      } else {
+        $(this).addClass('inactive');
+        $(this).find('i').hide();
+      }
+    });
+    $('.account-type input[type=hidden]').val(selected_type);
+  } 
+
+  $('.account-type').on('click', 'a', function() {
+    if ($(this).is('.inactive')) {
+      toggleAccountType($(this).data('account-type'));
+    } 
+  });
+});
+</script>
+
+<style>
+	.label-left {
+		width: 210px;
+		margin-left: 50px;
+		line-height: 1.3;
+	}
+	.label-left.multiple {
+		margin-top: -15px;
+	}		
+	.input-right {
+		width:400px;
+	}
+	.form-question-horizontal {
+		max-width: 100%;
+		margin: 0;
+	}
+	
+	.photo {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+	}
+	
+	.photo + label {
+	  display: inline-block;
+		margin: 0 auto;
+		color: #FFF !important;
+		font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+		border: 0;
+		text-decoration: none;
+		display: inline-block;
+		border-radius: 5px;
+		font-size: 18px;
+		margin: 0;
+		padding: 8px 20px 10px;
+		line-height: 1;
+		cursor: pointer;
+	  background: #8c6eb9;
+		transition: background 0.1s ease;
+		width: auto; 
+		display: inline-block; 
+		text-align:center; 
+		padding: .5em 1em; 
+		margin: 0 auto;
+		box-shadow: 0 3px 0 0 #61369c;
+	}
+
+	.photo:focus + label,
+	.photo + label:hover {
+		background: #987cbf;
+	}
+	
+	.photo + label {
+		cursor: pointer; /* "hand" cursor */
+	}
+</style>
+
+
+<%= form_for :user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>	
+	
+
 	
 	<p class="question-header"><strong>Your name</strong></p>
 	<%= f.text_field :name, placeholder: 'Name'	%>
    <%= form_error_for(@user, :name) %>
 
+
 	<p class="question-header"><strong>Your work email</strong><br>
 	<small class="form-helper">Won't be shown publicly</small></p>
 	<%= f.email_field :email, placeholder: "Email" %>
    <%= form_error_for(@user, :email) %>
+
+	<div style="margin: 1em 0 1.5em; width:100%; text-align:left;">
+		<%= f.file_field :photo, :class => "photo", :id => "photo" %>
+
+		<label for="photo">Upload a photo</label>
+		<%= form_error_for(@user, :photo) %>
+	</div>
 
 	<p class="question-header"><strong>Create a password</strong><br>
 	<small class="form-helper">Must have at least 8 characters</small></p>

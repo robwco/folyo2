@@ -15,7 +15,7 @@
 		<div class="info" style="max-width: 550px;">
 			<h2 style="margin-bottom: .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h2>
 			
-			<%= truncate @project.goals, length: 135 %> <%= "(draft)" unless @project.published? %><br>
+			<%= truncate @project.goals, length: 130 %> <%= "(draft)" unless @project.published? %><br>
 
 			<small>Project posted <%= @project.created_at.strftime("%b%_m") %></small>
 		</div>
@@ -40,7 +40,7 @@
 <% elsif @project.replies.unarchived.empty? %>
 	<div class="wrap w860">
 		<p style="text-align:center; padding-top: 2em;">
-			You archived all replies. <%= link_to "See old messages".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil) %></p>
+			You archived all replies for this project. <%= link_to "See old messages".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil) %></p>
 			<p style="text-align:center;">
 			<%= link_to 'Post a new project', new_project_path, :class => "button" %>
 		</p>
