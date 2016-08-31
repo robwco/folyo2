@@ -1,4 +1,4 @@
-$(function() {
+function on_ready() {
 	$("[data-preview-image-target]").each(function(){
 		var target = $("#" + $(this).data("preview-image-target"));
 		if (target) {
@@ -18,4 +18,6 @@ $(function() {
 
 		}
 	});
-});
+};
+$(document).ready(on_ready);
+$(document).on('page:load', on_ready);
