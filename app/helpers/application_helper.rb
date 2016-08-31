@@ -19,10 +19,7 @@ module ApplicationHelper
   end
 
   def render_google_analytics
-    #If you setup google analytics, uncomment the following line and delete the line after that. 
-    #Then update the UA-XXXXX code at the bottom.
-    #return '' unless Rails.env.production?
-	  return '' unless true || Rails.env.production?
+    return '' unless Rails.env.production?
 
     "
     <!-- Google Analytics -->
@@ -32,7 +29,7 @@ module ApplicationHelper
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-45184123-4', 'auto');
+      ga('create', 'UA-32751793', 'auto');
       ga('send', 'pageview');
     </script>
     ".html_safe
