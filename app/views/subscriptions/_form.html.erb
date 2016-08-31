@@ -9,6 +9,7 @@ $(function() {
     var reader = new FileReader();
     reader.onload = function(file) {
       $('#target').attr('src', file.target.result);
+      $("#target").show();
     }
     reader.readAsDataURL(image);
     console.log(files);
@@ -96,7 +97,7 @@ $(function() {
 </style>
 
 
-<%= form_for :user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>	
+<%= form_for @user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>	
 	
 
 	
@@ -110,6 +111,7 @@ $(function() {
 	<%= f.email_field :email, placeholder: "Email" %>
    <%= form_error_for(@user, :email) %>
 
+  <%= image_tag(f.object.photo.url, :class => "profile-photo",  :style => "width: 100px; border-radius: 100px; display: none; margin: 0 auto;", id: "target") %>
 	<div style="margin: 1em 0 1.5em; width:100%; text-align:left;">
 		<%= f.file_field :photo, :class => "photo", :id => "photo" %>
 
