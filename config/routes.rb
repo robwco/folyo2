@@ -101,6 +101,8 @@ Rails.application.routes.draw do
       match '/sessions/admin', to: 'devise/sessions#create', via: :post
   end
 
+  resources :subscriptions
+
   #resources :exclusives, :leads, :workers, :sales, :products, :prospects, :rfps, :subscriptions, :plans
 
   get '*path' => redirect('/') if Rails.env.production?
