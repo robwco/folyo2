@@ -93,7 +93,7 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
   get "terms" => "pages#terms"
   get "partners" => "pages#partners"
-  
+  get "humans" => "pages#humans"
   
   # Sign in
   root to: redirect("/projects/home")
