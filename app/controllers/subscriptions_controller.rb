@@ -51,26 +51,6 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-#	def new_finish_reply
-#	
-#	end
-#	
-#  def welcome 
-#  	@user = current_user
-#		@leads = Lead.all
-#  end
-#
-#
-#  def welcome_next_step
-#    flash[:notice] = "Your credit card was successfully charged $#{current_user.subscription.plan.price}, and you are ready to go!"
-#		@user = current_user
-#		@leads = Lead.all
-#  end
-#
-#  def choose
-#    render layout: "folyo"
-#  end
-
   #used
   def new
     #session[:last_page] = request.env['HTTP_REFERER'] || home_projects_url
@@ -143,27 +123,6 @@ class SubscriptionsController < ApplicationController
 		end
 
   end
-
-#  def categories
-#    @selected_category = params[:category_id]
-#    @user = current_user
-#
-#    unless @user.category_ids.include? @selected_category
-#      @user.category_ids = @user.category_ids.push @selected_category
-#      @user.save!
-#    end
-#  end
-#
-#  def categories_save
-#    @user = current_user
-#    
-#    if @user.update update_categories_params
-#      flash[:notice] = 'Your selected categories were updated!'
-#      redirect_to edit_user_registration_path
-#    else
-#      render :categories
-#    end
-#  end
 
   def upgrade_plan
     @plan = Plan.active.where(portfolio_replies: true).first
