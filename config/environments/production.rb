@@ -1,4 +1,4 @@
-Rails.application.configure do
+  Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -86,10 +86,9 @@ Rails.application.configure do
     }
   }
 
-  config.action_mailer.default_url_options = { :host => 'app.letsworkshop.com' }
-  config.action_controller.asset_host = 'app.letsworkshop.com'
-  config.action_mailer.asset_host = 'https://app.letsworkshop.com'
-  
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'folyo2.herokuapp.com' }
+  config.action_controller.asset_host = 'folyo2.herokuapp.com'
+  config.action_mailer.asset_host = 'https://folyo2.herokuapp.com'
 
+  config.action_mailer.delivery_method = :smtp
 end
