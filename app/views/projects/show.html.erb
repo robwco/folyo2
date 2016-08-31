@@ -38,7 +38,10 @@
           <% end %>
         </div>
       <% else %>
-        <%= link_to 'Reply to this project free', new_subscription_path(project_id: @project.id), class: "button" %><br>
+
+			<p class="decision" style="text-align:center;">
+        <%= link_to 'Reply to this project free', new_subscription_path(project_id: @project.id), class: "button" %>
+			</p>
       <% end %>
 
       <% if user_signed_in? && current_user.can_see_messages?(@project.reply_from(current_user)) %>

@@ -1,12 +1,6 @@
 <div class="wrap w860">	
 	<div class="project-listing">
-		<div class="client-profile" style="padding: 0 0 1em; margin: 0;">
-			<% unless @project.replies.empty? %>
-				<p style="margin:1em 0;"><small><strong>Want more replies? Share your project:</strong></small></p>
-			
-				<%= render "replies/share_project" %>
-			<% end %>
-			
+		<div class="client-profile">			
 			<p style="margin:1em 0 0;"><small><strong>Update project status</strong></small></p>
       
 			<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true,) do |f| %>
@@ -30,14 +24,12 @@
 	</h2>
 </div>
 
-<% if @project.replies.empty? %>
+<% if @project.replies.any? %>
 	<div class="wrap w860">
 		<p style="text-align:center; padding-top: 2em;">
-			No replies yet. Get more replies and make your project stand out!</p>
-		
-			<p style="text-align:center; width:auto !important; margin: 0 auto;">
-				<%= render "replies/share_project" %>
-			</p>
+			No replies. Post a new project!<br>
+			<%= link_to 'Post a new project', new_project_path, :class => "button" %>
+		</p>
 	</div>	
 <% else %>
 	<div class="project-list-wrap inbox">
