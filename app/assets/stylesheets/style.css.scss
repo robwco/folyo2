@@ -794,7 +794,16 @@ width: 120px; margin: 3em auto 1.5em; display: block;
 	color: #515c64;
 }
 
+/* inbox */
+.reply-message:hover {
+	border: 3px solid #8c6eb9 !important;
+}
 
+.reply p {
+	margin: .25em 0 .5em;
+}
+
+.reply-message {float:left; width:194px; border: 3px solid #dee5e9; border-radius: 13px; box-sizing: border-box; margin: .25em; padding: .5em; font-size: 16px; text-align: center;}
 
 
 /* Project Page */
