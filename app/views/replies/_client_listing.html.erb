@@ -1,14 +1,18 @@
 <div class="wrap w860">	
 	<div class="project-listing">
-		<div class="client-profile">			
-			<p style="margin:1em 0 0;"><small><strong>Update project status</strong></small></p>
-      
-			<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true,) do |f| %>
-      	<%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, { style: "font-size: 16px;", data: { status_update: true } } %>
-      <% end %>
+		<div class="client-profile">
+			
+			<div class="client-info-wrap">		
+				<p style="margin:1em 0 0;"><small><strong>Update project status</strong></small></p>
+			
+				<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true,) do |f| %>
+      		<%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, { style: "font-size: 16px;", data: { status_update: true } } %>
+      	<% end %>
+			</div>
+	
 		</div>
 				
-		<div class="info" style="max-width: 500px;">
+		<div class="info" style="max-width: 550px;">
 			<h2 style="margin-bottom: .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h2>
 			
 			<%= truncate @project.goals, length: 135 %> <%= "(draft)" unless @project.published? %><br>
@@ -24,7 +28,7 @@
 	</h2>
 </div>
 
-<% if @project.replies.any? %>
+<% if @project.replies.unarchived.empty? %>
 	<div class="wrap w860">
 		<p style="text-align:center; padding-top: 2em;">
 			No replies. Post a new project!<br>

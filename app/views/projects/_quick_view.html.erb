@@ -2,7 +2,9 @@
 	
 	
 	<div class="client-profile">
+		
 		<div class="status-wrap">
+			
 			<% if project.reply_from?(current_user) %>
 				<div class="status">
 					<span style="color:#7b8d99;"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em;color:#7b8d99;"></i> Replied</span>
@@ -14,9 +16,11 @@
 					<span style="color:#7b8d99;"><%= project.replies.count %> Replies</span>
 				</div>
 			<% end %>
+			
 		</div>
 		
 		<div class="client-info-wrap">
+			
 			<div class="avatar">
 	      <% if project.user.company_logo? %>
 	        <%= image_tag(project.user.company_logo.url) %>
@@ -31,15 +35,17 @@
 					<%= truncate project.user.company_name, length: 17 %></small>
 				</p>
 			</div>
+			
 		</div>
-
+		
 	</div>
 
 
 	<div class="info">
-			<a href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
-			 <%= truncate project.title, length: 55 %>
-			</a>
+		
+		<a href="<%= project.published? ? url_for(project) : project_wizard_step_url(project) %>">
+		 <%= truncate project.title, length: 55 %>
+		</a>
 
 		<p style="margin: .25em 0; line-height: 1.3; "><%= truncate project.goals, length: 115 %></p>
 		
@@ -48,7 +54,9 @@
         <a class="badge" href="<%= home_projects_path(category_id: category.id) %>"><%= category.name %></a> 
       <% end %>
 		</div>
+		
 	</div>
+	
 </div>
 		
 
