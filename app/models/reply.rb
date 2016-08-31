@@ -18,6 +18,10 @@ class Reply < ActiveRecord::Base
   scope :unread, -> { where(message_read: false) }
   scope :unarchived, -> { where(archived: false) }
 
+  def visible_to?(user)
+    self.owned_by?(user) || self.project.owned_by?(user)
+  end
+
   def publish
     self.published = true
     self.published_at = Time.now
@@ -39,6 +43,10 @@ class Reply < ActiveRecord::Base
       self.save
     end
     self.messages.sent_to(user).update_all(message_read: true)
+  end
+
+  def owned_by?(check_user)
+    self.user == check_user
   end
 
 end

@@ -1,16 +1,8 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy, :archive]
+  before_filter :authenticate_any!
+  before_action :set_message, only: [:edit, :update, :destroy, :archive]
 
   respond_to :html
-
-  def index
-    @messages = Message.all
-    respond_with(@messages)
-  end
-
-  def show
-    respond_with(@message)
-  end
 
   def new
     @message = Message.new
@@ -60,7 +52,11 @@ class MessagesController < ApplicationController
 
   private
     def set_message
-      @message = Message.find(params[:id])
+      @message = Message.owned_by(current_user).find(params[:id])
+
+      if @message.blank? || !@message.owned_by?(current_user)
+        head :forbidden
+      end
     end
 
     def message_params

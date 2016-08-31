@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
   before_action :set_project, only: [:show]
   before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :post, :destroy]
-  before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
 
   respond_to :html
 
@@ -171,6 +171,10 @@ class ProjectsController < ApplicationController
 
     def set_project_with_owner
       @project = Project.owned_by(current_user).find(params[:id])
+
+      if @project.blank? || !@project.owned_by?(current_user)
+        head :forbidden
+      end
     end
 
     def project_params

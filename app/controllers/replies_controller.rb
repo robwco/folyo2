@@ -1,11 +1,12 @@
 class RepliesController < ApplicationController
-  before_action :set_reply, only: [:show, :edit, :preview, :post, :update, :archive, :destroy, :message]
-  before_filter :authenticate_any! , except: [:create, :without_user]
+  before_filter :authenticate_any!
+  before_action :set_reply_if_visible, only: [:show, :archive, :message]
+  before_action :set_reply_from_owner, only: [:index, :edit, :preview, :post, :update, :destroy]
 
   respond_to :html
 
   def index
-    @replies = Reply.all
+    @replies = Reply.replies_from(current_user).all
     respond_with(@replies)
   end
 
@@ -18,7 +19,6 @@ class RepliesController < ApplicationController
 
   def new
     @reply = Reply.new
-    render plain: @reply.inspect
   end
 
   def edit
@@ -126,15 +126,12 @@ class RepliesController < ApplicationController
   end
 
   def archive
-    redirect_to(@reply) and return unless @reply.project.owned_by?(current_user)
-
     @reply.archive
     redirect_to @reply.project, notice: "Reply was archived!"
   end
   
   def message
 	  @message = Message.new
-
   end 
 
   def destroy
@@ -143,8 +140,20 @@ class RepliesController < ApplicationController
   end
 
   private
-    def set_reply
+    def set_reply_if_visible
       @reply = Reply.find(params[:id])
+
+      unless @reply.visible_to?(current_user)
+        head :forbidden
+      end
+    end
+
+    def set_reply_from_owner
+      @reply = Reply.find(params[:id])
+
+      unless @reply.owned_by?(current_user)
+        head :forbidden
+      end
     end
 
     def reply_params
