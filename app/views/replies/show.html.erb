@@ -42,7 +42,7 @@ $(document).ready(function(){
 		<%= render "messages/listing", extra_padding: false, reply: @reply %>
 	<% end %>
 
-	<% if @reply.messages.blank? %>
+	<% if @reply.messages.blank? && !@reply.archived? %>
 		<p class="decision" style="padding: .5em 0 5em;">
 			<%= link_to 'Write a message', message_reply_path(@reply), :class => "button", :style => "float: left;" %>
 		
@@ -52,16 +52,17 @@ $(document).ready(function(){
 
 		  <% end %>
 			</p>			
-	<% else %>
-
+	<% elsif !@reply.archived? %>
 	<div class="wrap w800" style="margin:1em 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
 		<div class="wrap w750" style="margin: 0 auto;">
 			<%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Dismiss this conversation'.html_safe, archive_reply_path(@reply), method: :put, :style => "color: #db8688; float: right; font-size: 16px; text-decoration: none; margin-top: -1em; margin-bottom: .5em;"  %>	
 		
 			<%= render "messages/client_send", name: message_recipient(@reply) %>
 		</div>
-	</div>
-	
+	</div>	
+	<% else %>
+		<p class="decision">
+			This reply was archived by the client.</p>
 	<% end %>
 </div>
 

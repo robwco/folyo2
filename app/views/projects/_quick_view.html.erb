@@ -13,7 +13,7 @@
 		
 			<% if user_signed_in? && project.owned_by?(current_user) %>
 				<div class="status">
-					<span style="color:#7b8d99;"><%= project.replies.count %> Replies</span>
+					<span style="color:#7b8d99;"><%= project.replies.unarchived.count %> Replies</span>
 				</div>
 			<% end %>
 			

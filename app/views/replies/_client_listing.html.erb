@@ -28,10 +28,20 @@
 	</h2>
 </div>
 
-<% if @project.replies.unarchived.empty? %>
+<% if @project.replies.empty? %>
 	<div class="wrap w860">
 		<p style="text-align:center; padding-top: 2em;">
-			No replies. Post a new project!<br>
+			No replies yet. Get more replies and make your project stand out!</p>
+		
+			<p style="text-align:center; width:auto !important; margin: 0 auto;">
+				<%= render "replies/share_project" %>
+			</p>
+	</div>
+<% elsif @project.replies.unarchived.empty? %>
+	<div class="wrap w860">
+		<p style="text-align:center; padding-top: 2em;">
+			You archived all replies. <%= link_to "See old messages".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil) %></p>
+			<p style="text-align:center;">
 			<%= link_to 'Post a new project', new_project_path, :class => "button" %>
 		</p>
 	</div>	
