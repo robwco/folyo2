@@ -61,8 +61,13 @@ $(function() {
 		position: absolute;
 		z-index: -1;
 	}
+
+  .field_with_errors + .photo-label {
+    margin-bottom: 10px;
+    background: #ff8687;
+  }
 	
-	.photo + label {
+	.photo-label {
 	  display: inline-block;
 		margin: 0 auto;
 		color: #FFF !important;
@@ -115,7 +120,7 @@ $(function() {
 	<div style="margin: 1em 0 1.5em; width:100%; text-align:left;">
 		<%= f.file_field :photo, :class => "photo", :id => "photo" %>
 
-		<label for="photo">Upload a photo</label>
+		<label for="photo" class="photo-label">Upload a photo</label>
 		<%= form_error_for(@user, :photo) %>
 	</div>
 
