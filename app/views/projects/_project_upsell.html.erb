@@ -83,7 +83,7 @@
 			<div id="upsell-trigger">
 				<div style="text-align:center;">
 					<p style="margin: 1.5em 0;"><a class="upsell button" href="javascript:">Upgrade your project to PRO </a></p>
-					<p><%= link_to "No thanks, post for free", thank_you_project_path(@project) %></p>
+					<p><%= link_to "No thanks, post for free", post_project_path(@project), method: :put %></p>
 				</div>					
 			</div>
 </div>

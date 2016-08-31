@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
-  before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :destroy]
+  before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :post, :destroy]
   before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
 
   respond_to :html
@@ -60,17 +60,6 @@ class ProjectsController < ApplicationController
     @message = Message.new
   end
 
-  def charge_payment
-    @project.listing_package = ListingPackage.active.first
-
-	  if ChargeProject.call params[:stripeToken], @project
-      @project.save
-      redirect_to thank_you_project_path(@project), notice: "Your payment was accepted!"	
-    else
-      format.html { render :preview, error: "Please correct the errors below." }
-    end
-  end
-
   def new
     if current_user.present? && current_user.company_name.blank?
       redirect_to client_details_path and return
@@ -86,13 +75,11 @@ class ProjectsController < ApplicationController
     #render plain: params.inspect and return
     @project = Project.new(project_params)
     @project.user = current_user
-    @project.published = true
 
     respond_to do |format|
       if @project.save
         format.html { 
-          Delayed::Job.enqueue NewProjectJob.new(@project.id)
-          redirect_to preview_project_path(@project), notice: 'Project was successfully created.' 
+          redirect_to preview_project_path(@project) 
         }
       else
         flash[:error] = "Please correct the errors below."
@@ -105,11 +92,35 @@ class ProjectsController < ApplicationController
     @listing_package = ListingPackage.active.first
   end
 
+  def charge_payment
+    @project.listing_package = ListingPackage.active.first
+
+	  if ChargeProject.call params[:stripeToken], @project
+      @project.publish
+      Delayed::Job.enqueue NewProjectJob.new(@project.id)
+
+      redirect_to thank_you_project_path(@project), notice: "Your project was posted!"	
+    else
+      format.html { render :preview, error: "Please correct the errors below." }
+    end
+  end
+
+  def post
+    @project.publish
+    Delayed::Job.enqueue NewProjectJob.new(@project.id)
+
+    redirect_to thank_you_project_path(@project), notice: "Your project was posted!"
+  end
+
   def update
     respond_to do |format|
       if @project.update(project_params)
         format.html { 
-          redirect_to edit_project_path(@project), notice: 'Project was saved.' 
+          if @project.published?
+            redirect_to thank_you_project_path(@project), notice: 'Project was saved.' 
+          else
+            redirect_to preview_project_path(@project) 
+          end
         }
       else
         format.html { render :new, notice: "Please correct the errors below." }

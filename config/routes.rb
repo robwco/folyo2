@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get "payment", on: :member
     put "charge_payment", on: :member
     put "update_status", on: :member
+    put "post", on: :member
 
     resources :replies do
       get 'new_user', on: :new
