@@ -5,19 +5,19 @@
 <p><strong><%= @freelancer.name %> just replied to your project titled "<%= truncate @project.title, length: 20 %>":</strong></p>
 	
 <div style="padding: 1em 2em;" class="reply">
-	<p><%= h([@reply.biography].join("\n")).gsub("\n", "</p>").html_safe %>
+	<p><%= @reply.biography%>
 	
-	<p><%= h([@reply.message].join("\n")).gsub("\n", "</p>").html_safe %>
+	<p><%= @reply.message %>
 	
 	<% if @reply.portfolio_message.present? %>
 		<%= image_tag(@reply.portfolio_image.url, class: "portfolio", style: "margin: 1.5em 0 0; width: 100%; border-radius: 5px; border:1px solid #dee5e9;") if @reply.portfolio_image.present? %>
 
 		<p>
-			<%= h(@reply.portfolio_message).gsub("\n\n", "</p>").html_safe %>
+			<%= @reply.portfolio_message %>
 	  </p>
 	<% end %>
 		
-	<p><%= h([@reply.next_steps].join("\n")).gsub("\n", "</p>").html_safe %>
+	<p><%= @reply.next_steps %>
 </div>
 
 <h2 class="reply-box-header">
