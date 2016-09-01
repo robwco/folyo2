@@ -1,29 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
-<body style='font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
-color: #545048;'>
-<p><%= @reply.biography%></p>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body style='font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+	color: #545048;'>
+	<p><strong><%= image_tag @reply.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %></strong> says:</p>
 
-<p><%= @reply.message %></p>
+	<p><%= @reply.biography%></p>
 
-<% if @reply.portfolio_message.present? %>
-	<%= image_tag(@reply.portfolio_image.url, class: "portfolio", style: "margin: 1.5em 0 0; width: 450px; border-radius: 5px; border:1px solid #dee5e9;") if @reply.portfolio_image.present? %>
+	<p><%= @reply.message %></p>
 
-	<p><%= @reply.portfolio_message %></p>
-<% end %>
+	<% if @reply.portfolio_message.present? %>
+		<%= image_tag(@reply.portfolio_image.url, class: "portfolio", style: "margin: 1.5em 0 0; width: 450px; border-radius: 5px; border:1px solid #dee5e9;") if @reply.portfolio_image.present? %>
 
-<p><%= @reply.next_steps %></p>
+		<p><%= @reply.portfolio_message %></p>
+	<% end %>
 
-<strong><%= image_tag @reply.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %></strong>	
-	
-<p><%= link_to 'Take me to this Reply', reply_url(@reply), :style => 'font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important; color:#555 !important; font-weight: 500; background: #bee1f9; padding: .4em 1.1em .55em; border-radius: 6px; text-decoration: none; box-shadow: 0 0 3px 0 #aaa; box-shadow: 0 3px 0 0 #8abbe5; margin: 1em 0; cursor: pointer;  border-bottom: 2px solid #8abbe5;  display: inline-block;' %></p>
+	<p><%= @reply.next_steps %></p>
 
-<hr style='width: 100%; height: 1px; display: table; border: 0; background-color:#DEE5E9;'>
+	<p><%= link_to 'Take me to this Reply', reply_url(@reply), :style => 'font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important; color:#555 !important; font-weight: 500; background: #bee1f9; padding: .4em 1.1em .55em; border-radius: 6px; text-decoration: none; box-shadow: 0 0 3px 0 #aaa; box-shadow: 0 3px 0 0 #8abbe5; margin: 1em 0; cursor: pointer;  border-bottom: 2px solid #8abbe5;  display: inline-block;' %></p>
 
-<small style='font-size: 90%;  color: #515b65;'>Sent to <%= link_to @project.title, project_url(@project), :style => "#4e9fc4;" %></small>
-</body>
+		<div style="padding: 1em 0;">
+			<hr style='width: 100%; height: 1px; display: table; border: 0; background-color:#DEE5E9;'>
+
+			<small style='font-size: 90%;  color: #515b65;'>Sent to <%= link_to @project.title, project_url(@project), :style => "color: #4e9fc4;" %></small>
+		</div>
+	</body>
 </html>

@@ -29,7 +29,7 @@ class ProjectMailer < ActionMailer::Base
     @message = message
     @project = message.project
 
-    subject = "There's a new message for you!"
+    subject = "#{@from_user.name} just sent you a new message!"
 
     mail(to: @to_user.email, subject: subject, from: "\"Folyo\" <hello@folyo.me>")
   end
