@@ -64,11 +64,11 @@
 	<div class="form-question-horizontal" style="margin-bottom: .5em;">
 	  <div class="label-left">
 	    <p><span class="pro-badge">PRO</span> Status</p>
-			<small><%= link_to 'See what benefits you get', upgrade_plan_path %></small>
+			<small><%= link_to 'See what benefits you get', upgrade_plan_path, data: {no_turbolink: true} %></small>
 	  </div>
 
 	  <div class="input-right">
-	    <%= link_to "Upgrade to pro", upgrade_plan_path, class: "button purple", :style => "margin-top: .65em;" %>
+	    <%= link_to "Upgrade to pro", upgrade_plan_path, class: "button purple", :style => "margin-top: .65em;", data: {no_turbolink: true} %>
 	  </div>
 	</div>
 	
