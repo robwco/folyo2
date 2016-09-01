@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates :name, presence: { message: "Enter your name" } 
-  validates :photo, presence: { message: 'Upload a cute pic. <a href="/humans">Why we require a photo</a>'.html_safe }  
+  validates :photo, presence: { message: "Upload a cute pic. <a href='/tour#humans'>Why we require a photo</a>".html_safe }  
   validates :biography, presence: { message: "can't be blank" }, if: :freelancer_has_name?
   validates :company_name, presence: { message: "can't be blank" }, if: :client_has_name?
 
