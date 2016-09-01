@@ -1,5 +1,5 @@
 class ProjectMailer < ActionMailer::Base
-  default :from => "robert@letsworkshop.com"
+  default :from => "hello@folyo.me"
   helper ApplicationHelper
   helper UsersHelper
 
@@ -9,7 +9,7 @@ class ProjectMailer < ActionMailer::Base
     @user = freelancer
     @project = project
 	  
-	  mail(to: freelancer.email, subject: subject, from: "\"Robert Williams (from Folyo)\" <robert@folyo.com>")
+	  mail(to: freelancer.email, subject: subject, from: "\"Folyo\" <hello@folyo.me>")
   end
 
   def new_reply(reply)
@@ -20,7 +20,7 @@ class ProjectMailer < ActionMailer::Base
 
     subject = "There's a new reply to your Folyo project!"
     
-    mail(to: @project_owner.email, subject: subject, from: "\"Robert Williams (from Folyo)\" <robert@folyo.com>")
+    mail(to: @project_owner.email, subject: subject, from: "\"Folyo\" <hello@folyo.me>")
   end
 
   def new_message(message)
@@ -31,7 +31,7 @@ class ProjectMailer < ActionMailer::Base
 
     subject = "There's a new message for you!"
 
-    mail(to: @to_user.email, subject: subject, from: "\"Robert Williams (from Folyo)\" <robert@folyo.com>")
+    mail(to: @to_user.email, subject: subject, from: "\"Folyo\" <hello@folyo.me>")
   end
 
   def welcome(user)
@@ -39,6 +39,6 @@ class ProjectMailer < ActionMailer::Base
 
     subject = "Welcome to Folyo!"
 
-    mail(to: user.email, subject: subject, from: "\"Robert Williams (from Folyo)\" <robert@folyo.com>")
+    mail(to: user.email, subject: subject, from: "\"Rob Williams\" <robert@folyo.me>")
   end
 end

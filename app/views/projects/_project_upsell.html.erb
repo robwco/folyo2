@@ -75,7 +75,7 @@
           
           <div style="text-align:center;">
           	<p style="margin:0;"><%= f.submit "Buy a PRO listing", class: "button" %></p>
-						<p style="margin:0;"><%= link_to "Nevermind, post for free", @project %></p>
+						<p style="margin:0;"><%= link_to "Nevermind, post for free", post_project_path(@project), method: :put %></p>
 					</div>		
           <% end %>
       </div>		
