@@ -35,9 +35,9 @@
 			</h2>
 			
 				<% if @projects.blank? %>
-					<h2>There are no public projects at this time</h2>
+					<p style="margin:3em 0 0;">There are no public projects at this time</p>
 
-					<p><%= link_to "Create a project", new_project_path, :class => "button" %></p>
+					<p style="margin: 0 0 3em; text-align:center;">><%= link_to "Create a project", new_project_path, :class => "button" %></p>
 				
 				<% else %>
 					<div  class="project-list-wrap">
@@ -61,9 +61,9 @@
 		</h2>
 		
 		<% if @projects.blank? %>
-			<p>There are no active projects for this category right now.</p>
+			<p style="margin:3em 0 0; text-align:center;">There are no active projects for this category right now.</p>
 
-			<p><%= link_to "Notify me", new_subscription_path, :class => "button" %></p>
+			<p style="margin: 0 0 3em; text-align:center;"><%= link_to "Notify me", new_subscription_path, :class => "button" %></p>
 		<% else %>
 		
 			<div  class="project-list-wrap">
