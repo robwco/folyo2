@@ -1,9 +1,4 @@
-<section class="top-menu">
-	<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
-		
-	<%= link_to "Log out", destroy_user_session_path, method: :delete%>
-</section>
-
+<%= render "layouts/onboarding_top_menu" %>
 
 <div style="width: 700px; margin: 0 auto;">
 	<div style="margin: 0em auto 2em; width: 600px; box-sizing: border-box;">
