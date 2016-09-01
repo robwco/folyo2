@@ -4,3 +4,12 @@
 
 <p><strong><%= @freelancer.name %> just replied to your project titled "<%= @project.title %>":</strong></p>
 
+<p><%= @reply.biography%></p>
+
+<p><%= @reply.message %></p>
+	
+<p><%= @reply.next_steps %></p>
+
+<small>Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></small>
+
+<p><%= link_to 'Take me to Reply', reply_url(reply), :class => "button" %></p>
