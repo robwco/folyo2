@@ -28,6 +28,7 @@ class ProjectMailer < ActionMailer::Base
     @from_user = message.user
     @message = message
     @project = message.project
+    @reply = message.reply
 
     subject = "#{@from_user.name} just sent you a new message!"
 
