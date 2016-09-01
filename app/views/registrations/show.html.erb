@@ -22,7 +22,7 @@
 	
 	<% if resource.freelancer? %>
 		<% unless @user.categories.empty? %>
-			<p class="skills profile">Skills:
+			<p class="skills profile">Following:
 	      <% @user.categories.each do |category| %>
 	      	<span class="badge"><%= category.name %></span> 
 	    	<% end %>
