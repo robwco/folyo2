@@ -2,28 +2,5 @@
 
 <p>Hello <%= @project_owner.name %>!</p>
 
-<p><strong><%= @freelancer.name %> just replied to your project titled "<%= truncate @project.title, length: 20 %>":</strong></p>
-	
-<div style="padding: 1em 2em;" class="reply">
-	<p><%= @reply.biography%>
-	
-	<p><%= @reply.message %>
-	
-	<% if @reply.portfolio_message.present? %>
-		<%= image_tag(@reply.portfolio_image.url, class: "portfolio", style: "margin: 1.5em 0 0; width: 100%; border-radius: 5px; border:1px solid #dee5e9;") if @reply.portfolio_image.present? %>
+<p><strong><%= @freelancer.name %> just replied to your project titled "<%= @project.title %>":</strong></p>
 
-		<p>
-			<%= @reply.portfolio_message %>
-	  </p>
-	<% end %>
-		
-	<p><%= @reply.next_steps %>
-</div>
-
-<h2 class="reply-box-header">
-		<%= image_tag @reply.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %>
-	
-	<small><span class="reply-box-message">Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></span></small>
-</h2>
-
-<p><%= link_to 'Take me to Reply', reply_url, :class => "button" %></p>
