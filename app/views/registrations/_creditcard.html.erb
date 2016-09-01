@@ -102,7 +102,7 @@
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
-	$(document).ready(function () {
+  var stripe_on_ready = function () {
 		Stripe.setPublishableKey('<%= Rails.configuration.stripe[:publishable_key] %>');
 
 		$('#number').parents('form').submit(function(e) {
@@ -128,7 +128,11 @@
 				$('#form-submit').css('opacity', '0.3');
 			}
 		});
-	});
+	};
+
+	$(document).ready(stripe_on_ready);
+	$(document).on('page:load', stripe_on_ready);
+
 	function stripeResponseHandler(status, response) {
 	  var form = $('#number').parents('form');
 	  if (response.error) {
