@@ -1,15 +1,68 @@
-<%= render 'project_mailer/style' %>
+<style>
+a.button {
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+  color:#555 !important;
+  font-weight: 500;
+  background: #bee1f9;
+  padding: .4em 1.1em .55em;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 0 3px 0 #aaa;
+  box-shadow: 0 3px 0 0 #8abbe5;
+  margin: 1em 0;
+	cursor: pointer;
+	border: 0;
+	border: 1px solid #bee1f9;
+	display: inline-block;
+}
 
-<p>Hello <%= @project_owner.name %>!</p>
+body {
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+	color: #545048;
+}
+
+h1,h2,strong {
+	color: #302f29;
+}
+
+small {
+	font-size: 80%; 
+	color: #7c8d99;
+	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+}
+
+blockquote {
+	border:2px solid #dee5e9;
+	padding-left: 2em;
+}
+
+hr {
+	width: 100%;
+	height: 1px;
+	display: table;
+	border: 0;
+	background-color:#DEE5E9;
+}
+</style>
+
+<p>What up <%= @project_owner.name %>!</p>
 
 <p><strong><%= @freelancer.name %> just replied to your project titled "<%= @project.title %>":</strong></p>
 
-<p><%= @reply.biography%></p>QWTFFF
+<blockquote>
+
+<p><%= @reply.biography%></p>
 
 <p><%= @reply.message %></p>
-	
+
+<% if @reply.portfolio_message.present? %>
+	<%= image_tag(@reply.portfolio_image.url, class: "portfolio", style: "margin: 1.5em 0 0; width: 450px; border-radius: 5px; border:1px solid #dee5e9;") if @reply.portfolio_image.present? %>
+
+	<p><%= @reply.portfolio_message %></p>
+<% end %>
+
 <p><%= @reply.next_steps %></p>
 
-<small>Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></small>
+</blockquote>
 
 <p><%= link_to 'Take me to Reply', reply_url(@reply), :class => "button" %></p>

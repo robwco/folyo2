@@ -431,6 +431,9 @@ input[type=submit], a.button {
 	border: 0;
 	border: 1px solid #bee1f9;
 	display: inline-block;
+	-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input[type=submit]:hover, a.button:hover {
