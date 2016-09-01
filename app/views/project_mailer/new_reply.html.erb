@@ -12,4 +12,4 @@
 
 <small>Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></small>
 
-<p><%= link_to 'Take me to Reply', reply_url(reply), :class => "button" %></p>
+<p><%= link_to 'Take me to Reply', reply_url(@reply), :class => "button" %></p>
