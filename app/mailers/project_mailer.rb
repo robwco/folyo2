@@ -18,7 +18,7 @@ class ProjectMailer < ActionMailer::Base
     @reply = reply
     @project = reply.project
 
-    subject = "There's a new reply to your Folyo project!"
+    subject = "#{@freelancer.name} just replied to your project!"
     
     mail(to: @project_owner.email, subject: subject, from: "\"Folyo\" <hello@folyo.me>")
   end
