@@ -86,9 +86,9 @@
     }
   }
 
-  config.action_mailer.default_url_options = { :host => 'folyo.me' }
-  config.action_controller.asset_host = 'folyo.me'
-  config.action_mailer.asset_host = 'https://folyo.me'
+  config.action_mailer.default_url_options = { :host => 'www.folyo.me' }
+  config.action_controller.asset_host = 'www.folyo.me'
+  config.action_mailer.asset_host = 'https://www.folyo.me'
 
   config.action_mailer.delivery_method = :smtp
 end
