@@ -132,7 +132,9 @@ class SubscriptionsController < ApplicationController
   def upgrade_save
     @plan = Plan.active.where(portfolio_replies: true).first
 
-    redirect_to edit_user_registration_path if (@plan.blank? || current_user.subscription.allow_portfolio_replies?)
+    if (@plan.blank? || current_user.subscription.allow_portfolio_replies?)
+      redirect_to(edit_user_registration_path) and return 
+    end
 
     if CreateSubscription.call(@plan, current_user, params[:stripeToken], nil)
       flash[:notice] = 'You can attach portfolio pieces to your replies now!'
