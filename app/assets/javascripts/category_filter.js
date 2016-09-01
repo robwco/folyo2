@@ -1,4 +1,4 @@
-function on_ready() {
+function category_on_ready() {
 	$("[data-category-filter]").each(function(){
 	  $(this).change(function() {
 		  var category_id = $(this).val();
@@ -12,5 +12,5 @@ function on_ready() {
 	});
 }
 
-$(document).ready(on_ready);
-$(document).on('page:load', on_ready);
+$(document).ready(category_on_ready);
+$(document).on('page:load', category_on_ready);

@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-function on_ready() {
+function projects_on_ready() {
 	$("textarea.answer").focus(function() {
 		$(this).prev(".question").addClass("focused");
 	});
@@ -18,5 +18,5 @@ function on_ready() {
 	});
 }
 
-$(document).ready(on_ready);
-$(document).on("page:load", on_ready);
+$(document).ready(projects_on_ready);
+$(document).on("page:load", projects_on_ready);

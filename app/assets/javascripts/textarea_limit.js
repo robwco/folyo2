@@ -1,4 +1,4 @@
-function on_ready() {
+function textarea_limit_on_ready() {
 	function countChars(text, counter) {
 	  var max = parseInt(text.data('max-characters'),10);
 	  var chars = text.val().length;
@@ -26,5 +26,5 @@ function on_ready() {
 	});
 }
 
-$(document).ready(on_ready);
-$(document).on('page:load', on_ready);
+$(document).ready(textarea_limit_on_ready);
+$(document).on('page:load', textarea_limit_on_ready);

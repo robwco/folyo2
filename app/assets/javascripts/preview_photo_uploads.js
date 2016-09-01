@@ -1,4 +1,4 @@
-function on_ready() {
+function photo_uploads_page_ready() {
 	$("[data-preview-image-target]").each(function(){
 		var target = $("#" + $(this).data("preview-image-target"));
 		if (target) {
@@ -19,5 +19,5 @@ function on_ready() {
 		}
 	});
 };
-$(document).ready(on_ready);
-$(document).on('page:load', on_ready);
+$(document).ready(photo_uploads_page_ready);
+$(document).on('page:load', photo_uploads_page_ready);

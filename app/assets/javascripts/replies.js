@@ -1,4 +1,4 @@
-var page_ready = function() {
+var replies_on_ready = function() {
 	$(".textarea-wrap textarea[data-max-characters]").each(function() {
 		var counter = $(this).parents(".textarea-wrap").find(".counter");
 		$(this).keyup(function() {
@@ -8,5 +8,5 @@ var page_ready = function() {
 	});
 };
 
-$(document).ready(page_ready);
-$(document).on("page:load", page_ready);
+$(document).ready(replies_on_ready);
+$(document).on("page:load", replies_on_ready);
