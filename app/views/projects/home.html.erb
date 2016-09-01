@@ -30,7 +30,7 @@
 				<% if @projects.blank? %>
 					<h2>There are no public projects at this time</h2>
 
-					<p><%= link_to "Create a project", new_project_wizard_path(project_id: :new), :class => "button" %></p>
+					<p><%= link_to "Create a project", new_project_path, :class => "button" %></p>
 				
 				<% else %>
 					<div  class="project-list-wrap">
