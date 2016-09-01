@@ -6,9 +6,9 @@
 	</head>
 	<body style='font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	color: #545048;'>
-		<p><strong><%= @project.title %></strong></p>
+		<p style="font-size:16px; color:#302f29;"><strong>New Project! <%= @project.title %></strong></p>
 		
-	<p class="by-line">
+	<p style="color:#7c8d99;">
 		<%= image_tag @project.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @project.user.name %>, <%= @project.user.company_name %>
 	</p>
 
