@@ -22,7 +22,8 @@ $(document).ready(function(){
 			<p class="question-header"><strong>Long description</strong></p>
 			
 			<small class="form-helper-push-right">
-				This is where you go into as much detail as possible about what you need. Write as much as you want – the longer, the better. <a href="https://clientgiant.us/is-your-project-pointless-cb972b8d6b5#.gvz5ski8u">3 Important questions to answer</a>. *Markdown accepted*
+				<p>This is where you go into as much detail as possible about what you need. Write as much as you want – the longer, the better. Here's <%= link_to 'How to write a great project description' manifesto_path(:anchor => "description") %>.</p> 
+				<p>Note: you can use <a href="http://www.jekyllnow.com/Markdown-Style-Guide/">markdown</a>.</p>
 			</small>
 
 			<%= f.text_area :long_description, placeholder: "Four score...", :style => "min-height: 200px;" %>

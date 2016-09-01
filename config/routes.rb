@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   end
 
   #resources :products
-
   devise_for :admins
   devise_for :users, :controllers => { registrations: 'registrations' }
 
@@ -53,7 +52,6 @@ Rails.application.routes.draw do
   get "/client-details" => "subscriptions#client", as: :client_details
   put "/client-details" => "subscriptions#update_client", as: :update_client_details
 
-  
   # Onboarding
   get "/tour/attract" => "tour#writing"
   get "/tour/great-responses" => "tour#responses"
@@ -81,12 +79,11 @@ Rails.application.routes.draw do
   put "/subscriptions/categories_save" => "subscriptions#categories_save", as: :subscription_categories_save
   get "/subscriptions/choose" => "subscriptions#choose", as: :choose_subscription
 
-
   # Marketing pages
   get "about" => "pages#about"
   get "terms" => "pages#terms"
   get "partners" => "pages#partners"
-  get "humans" => "pages#humans"
+  get "tour" => "pages#tour"
   
   # Sign in
   root to: redirect("/projects/home")

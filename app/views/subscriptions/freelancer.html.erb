@@ -1,6 +1,6 @@
-<div class="wrap w860" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 0 2em;">
-<%= render "shared/top_menu" %>
+<%= render "layouts/onboarding_top_menu" %>
 
+<div class="wrap w860" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 0 2em;">
 	<h1 style="margin: 1em 0; text-align:center;">Great! Now tell us a little more about yourself...</h1>	
 
 	<%= form_for @user, url: update_freelancer_details_path, method: :put, id: 'new_user', class: 'form-focus' do |f| %>
