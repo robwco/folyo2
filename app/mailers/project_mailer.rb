@@ -4,7 +4,7 @@ class ProjectMailer < ActionMailer::Base
   helper UsersHelper
 
   def new_project(freelancer, project)
-	  subject = "New Folyo project! #{project.title}"
+	  subject = "[Folyo] #{project.user.company_name} - #{project.title}"
 
     @user = freelancer
     @project = project
