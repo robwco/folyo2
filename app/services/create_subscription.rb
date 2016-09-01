@@ -8,7 +8,9 @@ class CreateSubscription
       return false unless user.save
     else
       user.subscription.plan = plan
-      return false unless user.subscription.save
+      if plan.amount.zero?
+        return false unless user.subscription.save
+      end
     end
 
     if plan.amount.zero?

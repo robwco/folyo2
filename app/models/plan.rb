@@ -33,8 +33,6 @@ class Plan < ActiveRecord::Base
 	end
 
 	def savings(plan)
-		puts plan.annual_price
-		puts self.annual_price
 		0 if plan.nil?
 		self.annual_price - plan.annual_price
 	end
@@ -56,7 +54,6 @@ class Plan < ActiveRecord::Base
 	end
 
 	def allow_portfolio_replies?
-		puts "HEREHERHER #{self.portfolio_replies?}"
 		self.portfolio_replies?
 	end
 
