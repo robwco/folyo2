@@ -47,7 +47,7 @@
 	</div>	
 <% else %>
 	<div class="project-list-wrap inbox">
-		<% @project.replies.unarchived.each do |reply| %>
+		<% @project.replies.unarchived.order({has_portfolio: :desc}, :created_at).each do |reply| %>
 			<%= render "replies/client_reply_view", reply: reply %>
 		<% end %>
 	</div>

@@ -30,6 +30,7 @@ class RepliesController < ApplicationController
   end
 
   def post
+    @reply.has_portfolio = @reply.portfolio_message.present?
     @reply.publish
     ProjectMailer.delay.new_reply(@reply)
     redirect_to @reply.project, notice: 'Your message was sent!'
@@ -53,12 +54,12 @@ class RepliesController < ApplicationController
 
     can_reply_with_portfolio = current_user.can_reply_with_portfolio?(@reply.project)
 
-    unless can_reply_with_portfolio
-      @reply.portfolio_message = nil
-      @reply.portfolio_image = nil
-    else
+    if can_reply_with_portfolio
       @reply.has_portfolio = true
       @reply.published = true
+    else
+      @reply.portfolio_message = nil
+      @reply.portfolio_image = nil
     end
 
     respond_to do |format|
@@ -114,6 +115,7 @@ class RepliesController < ApplicationController
       if @reply.update(reply_params)
         format.html { 
           if !@reply.published?
+            @reply.has_portfolio = @reply.portfolio_message.present?
             @reply.publish
             ProjectMailer.delay.new_reply(@reply)
           end
