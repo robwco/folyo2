@@ -7,4 +7,7 @@ class PagesController < ApplicationController
   
   def partners
   end
+  
+  def tour
+  end
 end
