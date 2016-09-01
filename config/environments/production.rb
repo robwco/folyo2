@@ -86,9 +86,9 @@
     }
   }
 
-  config.action_mailer.default_url_options = { :host => 'folyo2.herokuapp.com' }
-  config.action_controller.asset_host = 'folyo2.herokuapp.com'
-  config.action_mailer.asset_host = 'https://folyo2.herokuapp.com'
+  config.action_mailer.default_url_options = { :host => 'folyo.me' }
+  config.action_controller.asset_host = 'folyo.me'
+  config.action_mailer.asset_host = 'https://folyo.me'
 
   config.action_mailer.delivery_method = :smtp
 end
