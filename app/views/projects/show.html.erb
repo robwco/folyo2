@@ -11,15 +11,18 @@
   </div>
 
   <div class="wrap w800" style="margin: 2em auto;">
-    <% if @project.reply_from?(current_user) %>
-      <p class="reply-header"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
-    <% end %>
-
     <% if @project.allow_replies_from?(current_user) %>
       <% if user_signed_in? %>
-        <p class="reply-header">Reply to this project
-          <small><a href="http://folyo.me/write" style="float:right;"><span style="vertical-align: -5px;">How to write a client-winning message</span></a></small>
-        </p>
+
+		    <% if @project.reply_from?(current_user) %>
+		      <p class="reply-header"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
+	
+				<% else %>
+					<p class="reply-header">Reply to this project
+	          <small><a href="http://folyo.me/write" style="float:right;"><span style="vertical-align: -5px;">How to write a client-winning message</span></a></small>
+	        </p>
+		    <% end %>
+
         <div class="wrap w800 reply" style="margin-top: 0;">
           <div class="reply-box">
             <% if @project.reply_from?(current_user) %>
