@@ -17,7 +17,7 @@
 			
 			<%= truncate @project.goals, length: 130 %> <%= "(draft)" unless @project.published? %><br>
 
-			<small>Project posted <%= @project.created_at.strftime("%b%_m") %></small>
+			<small>Project posted <%= @project.created_at.strftime("%b%_d") %></small>
 		</div>
 	</div>
 </div>
