@@ -23,9 +23,9 @@
 			
 			<div class="avatar">
 	      <% if project.user.company_logo? %>
-	        <%= image_tag(project.user.company_logo.url) %>
+	        <%= image_tag(project.user.company_logo.url(:medium)) %>
 	      <% else %>
-	        <%= image_tag(project.user.photo.url, class: "photo") %>
+	        <%= image_tag(project.user.photo.url(:medium), class: "photo") %>
 	      <% end %>
 			</div>
 	

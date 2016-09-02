@@ -1,5 +1,5 @@
 <h2 class="reply-box-header">
-		<%= image_tag @reply.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %>
+		<%= image_tag @reply.user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %>
 	
 	<small><span class="reply-box-message">Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></span></small>
 </h2>

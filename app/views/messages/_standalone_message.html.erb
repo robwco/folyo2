@@ -1,7 +1,7 @@
 <div class="reply-message <%= 'unread' if message.unread? %>"> 
 	<a href="<%= url_for message.reply %>" class="reply" style="text-decoration: none;">
 		<div class="avatar" style="margin: 0 auto; display: block;">		
-			<%= image_tag message.user.photo.url, :style => "width: 40px; border-radius: 40px; margin: .5em auto 0; display: block;" %>
+			<%= image_tag message.user.photo.url(:medium), :style => "width: 40px; border-radius: 40px; margin: .5em auto 0; display: block;" %>
 		</div>
 		
 		<div class="name" style="color: #222 !important; font-weight: 600;">	

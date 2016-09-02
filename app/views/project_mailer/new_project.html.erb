@@ -9,7 +9,7 @@
 		<p style="font-size:16px; color:#302f29;"><strong>New Project! <%= @project.title %></strong></p>
 		
 	<p style="color:#7c8d99;">
-		<%= image_tag @project.user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @project.user.name %>, <%= @project.user.company_name %>
+		<%= image_tag @project.user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @project.user.name %>, <%= @project.user.company_name %>
 	</p>
 
 	<p><%= @project.long_description_html.html_safe %></p>

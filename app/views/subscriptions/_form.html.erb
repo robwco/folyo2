@@ -105,7 +105,7 @@ $(function() {
 	<%= f.email_field :email, placeholder: "Email" %>
    <%= form_error_for(@user, :email) %>
 
-  <%= image_tag(f.object.photo.url, :class => "profile-photo",  :style => "width: 100px; border-radius: 100px; display: none; margin: 0 auto;", id: "photo-target") %>
+  <%= image_tag(f.object.photo.url(:medium), :class => "profile-photo",  :style => "width: 100px; border-radius: 100px; display: none; margin: 0 auto;", id: "photo-target") %>
 	<div style="margin: 1em 0 1.5em; width:100%; text-align:left;">
 		<%= f.file_field :photo, :class => "photo", id: "photo", data: { preview_image_target: "photo-target" } %>
 

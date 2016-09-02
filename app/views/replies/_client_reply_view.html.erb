@@ -7,7 +7,7 @@
 <div class="reply-message" style="float:left; width:197px; border: 3px solid #dee5e9; border-radius: 13px; box-sizing: border-box; margin: .25em; padding: .5em; font-size: 16px; text-align: center;"> 
 	<a href="/replies/<%= reply.id %>" class="reply" style="text-decoration: none;">		
 		<div class="avatar" style="margin: 0 auto; display: block;">		
-			<%= image_tag reply.user.photo.url, :style => "width: 40px; border-radius: 40px; margin: .5em auto .25em; display: block;" %>
+			<%= image_tag reply.user.photo.url(:medium), :style => "width: 40px; border-radius: 40px; margin: .5em auto .25em; display: block;" %>
 		</div>
 		
 		<div class="name" style="color: #222 !important; font-weight: 600;">	

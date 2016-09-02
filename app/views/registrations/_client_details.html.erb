@@ -60,7 +60,7 @@
   </div>
 
   <div class="input-right">
-    <%= image_tag(f.object.company_logo.url(:thumb), :class => "profile-photo", :style => "width:100px; height: 100px; margin: 0; border-radius: 0;", id: "company-logo-target") %><br>
+    <%= image_tag(f.object.company_logo.url(:medium), :class => "profile-photo", :style => "width:100px; height: 100px; margin: 0; border-radius: 0;", id: "company-logo-target") %><br>
 
     <%= f.file_field :company_logo, data: { preview_image_target: "company-logo-target" }, 
       :style => "width: 200px;margin: .5em 0 1em;"	%>

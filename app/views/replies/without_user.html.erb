@@ -23,7 +23,7 @@ $(function() {
 		
 		
 		<div style="text-align:center;">
-	    <%= image_tag(f.object.photo.url, id: 'target', :style => "width:90px; border-radius: 90px; margin: 2em 0 .5em;") if f.object.photo(:thumb) %>
+	    <%= image_tag(f.object.photo.url(:medium), id: 'target', :style => "width:90px; border-radius: 90px; margin: 2em 0 .5em;") if f.object.photo(:thumb) %>
 
 			<h2 class="form-header" style="margin-top: .25em;">Upload a profile picture</h2>
 	    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 100px; margin: 0 auto 0;"	%>

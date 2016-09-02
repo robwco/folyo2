@@ -8,7 +8,7 @@
 		<h2 style="margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 13px; border-top-right-radius: 13px;  background-color: #fffddf;">
 			
 			
-			<%= image_tag @reply.user.photo.url, :style => "width:50px; border-radius: 50px; vertical-align:-8px; margin-right: .5em; float:left;" %> 
+			<%= image_tag @reply.user.photo.url(:medium), :style => "width:50px; border-radius: 50px; vertical-align:-8px; margin-right: .5em; float:left;" %> 
 			
 				<div style="display: table; line-height: 1;">RE: <%= truncate @reply.message, length: 60 %><br>
 					<span style="font-size: 16px; font-weight: 400; color: #545048;"><%= @reply.user.name %></span>

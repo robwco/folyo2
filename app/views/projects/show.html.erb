@@ -28,7 +28,7 @@
             <% if @project.reply_from?(current_user) %>
               <%= render "replies/reply" %>	
             <% else %>
-              <h2 class="reply-box-header"><%= image_tag(@current_user.photo.url, :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
+              <h2 class="reply-box-header"><%= image_tag(@current_user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
                 <% if user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project) %>
                   <small><span class="reply-box-message"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span></small>
                 <% end %>

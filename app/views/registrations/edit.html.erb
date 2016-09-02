@@ -120,7 +120,7 @@ $(function() {
 			<% unless current_user.past_due? || current_user.canceled? %>-->
 
 		<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
-			<%= image_tag(f.object.photo.url, :class => "profile-photo",  :style => "width: 100px; border-radius: 100px; display: block; margin: 0 auto;", id: "target") if f.object.photo? %>
+			<%= image_tag(f.object.photo.url(:medium), :class => "profile-photo",  :style => "width: 100px; border-radius: 100px; display: block; margin: 0 auto;", id: "target") if f.object.photo? %>
 
 			<div style="margin: 1em 0; width:100%; text-align:center;">
 				<%= f.file_field :photo, :class => "photo", :id => "photo" %>

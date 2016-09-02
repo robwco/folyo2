@@ -5,7 +5,7 @@
 
 <div class="wrap w600" style="padding-top: 2em;">	
 	<% if @user.photo.present? %>
-		<%= image_tag(@user.photo, :class => "profile-photo") %> 
+		<%= image_tag(@user.photo.url(:thumb), :class => "profile-photo") %> 
 	<% else %> 
 		<%= image_tag('default-avatar.png', :class => "profile-photo") %>
 	<% end %>
