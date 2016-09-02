@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   
   def tour
   end
+
+  def comingsoon
+  end
 end
+

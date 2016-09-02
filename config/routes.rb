@@ -84,6 +84,7 @@ Rails.application.routes.draw do
   get "terms" => "pages#terms"
   get "partners" => "pages#partners"
   get "tour" => "pages#tour"
+  get "comingsoon" => "pages#comingsoon"
   
   # Sign in
   root to: redirect("/projects/home")

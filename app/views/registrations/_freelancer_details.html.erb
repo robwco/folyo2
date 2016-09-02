@@ -111,7 +111,7 @@
   </div>
 
   <div class="input-right">
-    <%= f.text_area :biography, :style => "max-width: 600px;", :placeholder => "I'm..." %>
+    <%= f.text_area :biography, :style => "max-width: 600px;", :placeholder => "I'm...", data: { max_characters: 200 }  %>
     
     <p class="required">Include what you do for your clients and a little about yourself.</p>
   </div>
