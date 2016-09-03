@@ -15,9 +15,9 @@
 		<div class="info" style="max-width: 550px;">
 			<h2 style="margin-bottom: .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h2>
 			
-			<%= truncate @project.goals, length: 130 %> <%= "(draft)" unless @project.published? %><br>
+			<%= truncate @project.goals, length: 120 %> <%= "(draft)" unless @project.published? %><br>
 
-			<small>Project posted <%= @project.created_at.strftime("%b%_d") %></small>
+			<small>Project posted <%= @project.created_at.strftime("%b %_d") %> <%= link_to 'Edit project', edit_project_path, :class => "button small grey", :style => "margin-left: .5em;" %></small>
 		</div>
 	</div>
 </div>
