@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   has_attached_file :photo, :styles => { :medium => "190x190#", :thumb => "190x190#" }, default_url: 'default-avatar.png'
   validates_attachment_content_type :photo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  has_attached_file :company_logo, :styles => { :medium => "190x190#", :thumb => "190x190#" }, default_url: 'default-avatar.png'
+  has_attached_file :company_logo, :styles => { :medium => "190x190#", :thumb => "190x190#" }, default_url: 'company-logo-default.png'
   validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates :name, presence: { message: "Enter your name" } 
