@@ -5,7 +5,7 @@
 <h1 class="post-title"><%= @project.title %></h1>
 
 <p class="by-line">
-	<%= image_tag @project.user.photo.url(:medium), :class => "photo" %> <%= @project.user.name %>, <a href="<%= @project.user.company_website %>"><%= @project.user.company_name %></a>
+	<%= image_tag @project.user.photo.url(:medium), :class => "photo" %> <%= @project.user.name %>, <% if @project.user.company_website.length <= 10  %><%= @project.user.company_name %><% else %><a href="<%= @project.user.company_website %>"><%= @project.user.company_name %></a><% end %>
 </p>
 
 <div class="wrap w600">
@@ -13,5 +13,5 @@
 
 	<p><%= @project.goals %></p>
 	
-	<p><strong>We think this project should cost around $<%= @project.budget %>.</strong></p>
+	<p><strong>We think this project should cost around $<%= @project.budget %><%= link_to '<i class="fa fa-question-circle" aria-hidden="true" style="color:#8d6eb9; margin: 0; vertical-align: 8px; font-size: 14px;"></i>'.html_safe, tour_path(:anchor => "budgets"), :title => "This amount is a rough estimate, and should be discussed with the client." %>.</strong></p>
 </div>

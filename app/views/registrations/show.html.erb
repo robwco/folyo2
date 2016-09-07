@@ -16,7 +16,7 @@
 		<% end %>
 		
 		<% if resource.client? %> 
-			at <%= link_to @user.company_name, @user.company_website %> 
+			at <% if @user.company_website.length <= 10  %><%= @user.company_name %><% else %><%= link_to @user.company_name, @user.company_website %><% end %>  
 		<% end %>
 	</h1>
 	
