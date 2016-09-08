@@ -36,6 +36,8 @@ gem 'clockwork'
 gem 'puma'
 gem 'autosize-rails'
 gem 'wicked'
+gem 'airbrake', '~> 5.4'
+
 
 group :development do
   gem 'stripe-ruby-mock'
