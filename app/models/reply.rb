@@ -19,7 +19,7 @@ class Reply < ActiveRecord::Base
   scope :unarchived, -> { where(archived: false) }
 
   def visible_to?(user)
-    self.owned_by?(user) || self.project.owned_by?(user)
+    self.owned_by?(user) || (self.project && self.project.owned_by?(user))
   end
 
   def publish
@@ -38,7 +38,7 @@ class Reply < ActiveRecord::Base
   end
 
   def mark_read(user)
-    if self.project.user == user
+    if self.project && self.project.owned_by?(user)
       self.message_read = true
       self.save
     end
