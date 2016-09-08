@@ -12,8 +12,6 @@
 
 <div class="wrap w860">
 	<%= render "layouts/top_menu" %>
-
-	<p style="font-size: 120%; padding: 0 .5em 1em; text-align:center;">Looking for a great remote freelance designer, developer, or marketer?<br><%= link_to 'Post your freelance project for free today', new_subscription_path %> </p>
 	
 	<% if user_signed_in? %>
 	
@@ -56,6 +54,8 @@
 		<% end %>
 
 	<% else %>
+	
+	<p style="font-size: 120%; padding: 0 .5em 1em; text-align:center;">Looking for a great remote freelance designer, developer, or marketer?<br><%= link_to 'Post your freelance project for free today', new_subscription_path %> </p>
 
 		<h2 class="action-header">Projects for 
 	    <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
