@@ -6,6 +6,8 @@
 	</head>
 	<body style='font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	color: #545048;'>
+		<p><small>Do not reply to this email.</small></p>
+		
 	<p><strong><%= image_tag @from_user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @from_user.name %></strong> says:</p>
 
 	<p><%= @message.message %></p>

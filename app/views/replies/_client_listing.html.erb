@@ -8,6 +8,8 @@
 				<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true,) do |f| %>
       		<%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, { style: "font-size: 16px;", data: { status_update: true } } %>
       	<% end %>
+
+				<p style="line-height: 1;"><small>To stop receiving new replies change status to 'completed'</small></p>
 			</div>
 	
 		</div>
