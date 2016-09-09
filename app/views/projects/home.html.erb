@@ -1,19 +1,7 @@
-
-
-<h2 style="text-align:center; background-color: #4d616d; margin: 0; padding: 1em; font-weight: 300;">
-	
-	<%= link_to tour_path, :style => "color: #e8f4f9; background-color: #5e707b; padding: .25em .5em; border-radius: 5px; text-decoration: none;" do %>
-	  <span style="color:#FFF;font-weight: 600;"><em>New!</em></span> <%= image_tag "upsell.png", :style => "width: 25px; vertical-align: -5px;margin:0 .15em;" %> We relaunched Folyo! Take a tour...
-	<% end %>
-	
-</h2>
-
-
-
 <div class="wrap w860">
-	<%= render "layouts/top_menu" %>
-	
 	<% if user_signed_in? %>
+		<%= render "layouts/top_menu" %>
+
 	
 		<% if Project.owned_by(current_user).any? %>
 			<h2 class="action-header">Your projects</h2>
@@ -57,19 +45,29 @@
 	<% else %>
 	
 	
-	
-	<p style="font-size: 120%; padding: 1em .5em 0; text-align:center;">Looking for a great remote freelance designer, developer, or marketer?<br><%= link_to 'Post your freelance project for free today', new_subscription_path %> </p>
-	
-	
-	
-		<p style="padding: 0 .5em  0; text-align:center;">
-			<center><small style="letter-spacing: .125em; margin-bottom:">COMPANIES THAT HAVE BEEN ON FOLYO</small></center>
-			
-			<%= image_tag 'folyo-used-by.png', :style => "margin-top: .5em; max-width: 100%;" %></p>
+		<h1 style="padding: 0 .5em  0; text-align:center;">	
+				<%= link_to image_tag('folyo.png', :class => "logo", :style => "margin: 2em auto 1em; width: 200px;"), url_for(root_path) %>
 
+			Looking for a great freelancer? <%= link_to 'Post a project for free today', new_subscription_path %>
+		</h1>
+		
+			
+		<span style="display: table; margin: 2em auto -1em;">
+
+			<small style="letter-spacing: .125em; margin-bottom:">A FEW COMPANIES THAT HAVE USED FOLYO</small>
+	
+		</span>
+		
+		<p style="text-align:center;">
+			
+			
+
+			<%= image_tag 'folyo-used-by.png', :style => "margin-top: .5em; max-width: 100%;" %>
+			</p>
+			
 		<h2 class="action-header">Projects for 
 	    <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
-	      prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
+	      prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %> now hiring
 		</h2>
 		
 		<% if @projects.blank? %>
@@ -90,7 +88,7 @@
 		<% end %>
 
 
-		<div style="text-align:center;">
+		<div style="text-align:center;">		
 			<h1 style="margin: 0;">Find someone you love working with</h1>
 		
 			<p style="margin: 0 0 2em;">Connect with the best clients and freelancers on the web absolutely free.</p>

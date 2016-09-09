@@ -14,12 +14,12 @@ class Project < ActiveRecord::Base
 
 	scope :published, -> { where(published: true, archived: false) }
 	scope :drafted, -> { where(published: false) }
-	scope :recent, -> (limit_to = nil) { order(created_at: :desc).limit(limit_to ? limit_to : 5) }
+	scope :recent, -> (limit_to = nil) { order(created_at: :desc).limit(limit_to ? limit_to : 10) }
 	scope :owned_by, -> (user) { where(user_id: user.id) }
 	scope :in_conversation, -> (user) { joins(replies: :messages).where("replies.user_id = ?", user.id).distinct }
 	scope :replied_by, -> (user) { joins(:replies).where("replies.user_id = ?", user.id).distinct }
 
-  self.per_page = 5  
+  self.per_page = 10
 
   aasm(:status) do
     state :seeking_freelancer, initial: true

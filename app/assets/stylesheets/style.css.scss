@@ -61,15 +61,18 @@ p.decision {
 /* Header styles */
 h1, h2 {
 	color: #302f29;
-	font-weight: 600;
 }
 
 h1 {
 	font-size: 30px;
+	font-weight: normal;
 }
-
+h1 a {
+	font-weight: 600;
+}
 h2 {
 	font-size: 22px;
+	font-weight: 600;
 }
 
 @media only screen and (max-width: 800px) {
