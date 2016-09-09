@@ -57,13 +57,15 @@
 	<% else %>
 	
 	
-		<p style="font-size: 120%; padding: 0 .5em  0; text-align:center;">
-			<center><small style="font-size: 12px; letter-spacing: .125em; margin-bottom:">FOLYO USED BY</small></center>
+	
+	<p style="font-size: 120%; padding: 1em .5em 0; text-align:center;">Looking for a great remote freelance designer, developer, or marketer?<br><%= link_to 'Post your freelance project for free today', new_subscription_path %> </p>
+	
+	
+	
+		<p style="padding: 0 .5em  0; text-align:center;">
+			<center><small style="letter-spacing: .125em; margin-bottom:">COMPANIES THAT HAVE BEEN ON FOLYO</small></center>
 			
-			<%= image_tag 'used-by.png', :style => "margin-top: .5em; max-width: 100%;" %></p>
-	
-	
-	<p style="font-size: 120%; padding: 0 .5em 1em; text-align:center;">Looking for a great remote freelance designer, developer, or marketer?<br><%= link_to 'Post your freelance project for free today', new_subscription_path %> </p>
+			<%= image_tag 'folyo-used-by.png', :style => "margin-top: .5em; max-width: 100%;" %></p>
 
 		<h2 class="action-header">Projects for 
 	    <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
