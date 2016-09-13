@@ -29,4 +29,9 @@ class Message < ActiveRecord::Base
     self.message_read= true
     save
   end
+  
+  def unarchive
+   self.archived = false
+   save
+  end
 end

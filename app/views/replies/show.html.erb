@@ -55,14 +55,20 @@ $(document).ready(function(){
 	<% elsif !@reply.archived? %>
 	<div class="wrap w800" style="margin:1em 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
 		<div class="wrap w750" style="margin: 0 auto;">
-			<%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Dismiss this conversation'.html_safe, archive_reply_path(@reply), method: :put, :style => "color: #db8688; float: right; font-size: 16px; text-decoration: none; margin-top: -1em; margin-bottom: .5em;"  %>	
+			<% if current_user.client? %>
+				<%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Dismiss this conversation'.html_safe, archive_reply_path(@reply), method: :put, :style => "color: #db8688; float: right; font-size: 16px; text-decoration: none; margin-top: -1em; margin-bottom: .5em;"  %>
+			<% end %>
 		
 			<%= render "messages/client_send", name: message_recipient(@reply) %>
 		</div>
 	</div>	
 	<% else %>
 		<p class="decision">
-			This reply has been archived.
+			This reply has been archived. 
+			
+			<% if current_user.client? %> 
+				<%= link_to 'Undo archive.'.html_safe, unarchive_reply_path(@reply), method: :put %>
+			<% end %>
 		</p>
 	<% end %>
 </div>

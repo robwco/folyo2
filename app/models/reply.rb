@@ -32,6 +32,11 @@ class Reply < ActiveRecord::Base
     self.archived = true
     save
   end
+  
+  def unarchive
+    self.archived = false
+    save
+  end
 
   def unread?
     !self.message_read

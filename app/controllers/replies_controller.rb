@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
   before_filter :authenticate_any!
-  before_action :set_reply_if_visible, only: [:show, :archive, :message]
+  before_action :set_reply_if_visible, only: [:show, :archive, :message, :unarchive]
   before_action :set_reply_from_owner, only: [:index, :edit, :preview, :post, :update, :destroy]
 
   respond_to :html
@@ -130,6 +130,11 @@ class RepliesController < ApplicationController
   def archive
     @reply.archive
     redirect_to @reply.project, notice: "Reply was archived!"
+  end
+  
+  def unarchive
+    @reply.unarchive
+    redirect_to @reply.project, notice: "Reply was unarchived!"
   end
   
   def message

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :messages, except: :show do
     put "archive", on: :member
+    put "unarchive", on: :member
   end
 
   resources :replies do
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
 	  get "message", on: :member
 	  put "post", on: :member
 	  put "archive", on: :member
+    put "unarchive", on: :member
 	  resources :messages
   end
 

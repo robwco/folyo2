@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_any!
-  before_action :set_message, only: [:edit, :update, :destroy, :archive]
+  before_action :set_message, only: [:edit, :update, :destroy, :archive, :unarchive]
 
   respond_to :html
 
@@ -47,6 +47,13 @@ class MessagesController < ApplicationController
     @message.archive
     respond_to do |format|
       format.js { render :show, status: :ok, location: @message }        
+    end
+  end
+
+  def unarchive
+    @message.unarchive
+    respond_to do |format|
+      format.js { render :show, status: :ok, location: @message }
     end
   end
 
