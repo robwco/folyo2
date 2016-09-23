@@ -50,6 +50,8 @@ class RepliesController < ApplicationController
       redirect_to(without_user_replies_path) and return
     end
 
+    redirect_to(@reply.project, notice: "You have already replied to this project.") and return if @reply.project.reply_from?(current_user)
+
     @reply.user = current_user
 
     can_reply_with_portfolio = current_user.can_reply_with_portfolio?(@reply.project)

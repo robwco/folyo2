@@ -26,9 +26,14 @@ class SubscriptionsController < ApplicationController
     @user = current_user
     if @user.update(freelancer_details_params)
       if session[:new_user_project_id]
-        project = Project.find(session[:new_user_project_id])
+        project_id = session[:new_user_project_id]
         session.delete(:new_user_project_id)
-        redirect_to Project.find(project), notice: "You can reply to the project now!"
+        if Project.exists?(project_id)
+          project = Project.find(project_id)
+          redirect_to project, notice: "You can reply to the project now!" and return
+        else
+          redirect_to home_projects_path and return
+        end
       else
         redirect_to home_projects_path
       end
