@@ -9,6 +9,7 @@
 		<div style="text-align:center;">
 			<div class="account-type-option">
 				<h2>Want work?</h2>
+				<%= image_tag 'want-work.png', :style => "width:250px;" %>
 				<%= link_to "I'm a freelancer", update_account_type_path(type: :freelancer), method: :put, :class => "button"  %>
 			</div>
 			
@@ -16,6 +17,7 @@
 		
 			<div class="account-type-option">
 				<h2>Got a project?</h2>
+				<%= image_tag 'got-projects.png', :style => "width:250px;" %>
 				<%= link_to "I'm a client", update_account_type_path(type: :client), method: :put, :class => "button"  %>
 			</div>
 		</div>
@@ -34,8 +36,6 @@
 	padding: 1em 1em 1.5em;
 	border-radius: 10px;
 	margin:  0;
-	background-color: #f9f9f9;
-	border: 1px solid #dee5e9;
 }
 
 .account-type-option h2 {
