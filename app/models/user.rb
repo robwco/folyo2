@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   validates :name, presence: { message: "Enter your name" } 
   validates :photo, presence: { message: "Upload a cute pic. <a href='/tour#humans'>Why we require a photo</a>".html_safe }  
   validates :biography, presence: { message: "can't be blank" }, if: :freelancer_has_name?
-  validates :biography, length: { maximum: 220 } 
+  validates :biography, length: { maximum: 250 } 
   validates :company_name, presence: { message: "can't be blank" }, if: :client_has_name?
 
   scope :active, -> { where(:state => ['trialing','active','past_due']) }
