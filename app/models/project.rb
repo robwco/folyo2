@@ -43,7 +43,10 @@ class Project < ActiveRecord::Base
 
 	def reply_from(user)
 		return nil if user.nil?
-		self.replies.where(user_id: user.id).first
+    
+    return replies.detect { |reply| reply.user_id == user.id } if replies.loaded?
+		  
+    self.replies.where(user_id: user.id).first
 	end
 
 	def reply_from?(user)

@@ -126,6 +126,8 @@
 
   <div class="input-right">
     <div class="skills">
+  
+      <input type="hidden" name="user[category_ids][]" value="" />
       <% @selected_categories.each do |category| %>
         <a href="javascript:" class="badge" data-category="<%= category.name %>" data-category-id="<%= category.id %>">
           <%= category.name %> <i class="fa fa-times-circle" aria-hidden="true"></i>
