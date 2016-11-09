@@ -1,0 +1,77 @@
+<style>
+table {
+	width: 100%;
+	margin: 1em 0;
+}
+th {
+	color: #666;
+	padding: 0 0 1em;
+	font-family: 'concourse_c3regular';
+	font-size: 15px;
+	text-align: center;
+	text-transform: lowercase;
+	border-bottom: 1px solid #ccc;
+}
+tr:nth-child(2) td {
+	padding: 1em 0 .25em;
+}
+
+td {
+	padding: .25em 0;
+	text-align: center;
+}
+.link-options {
+	margin: 1em 0;
+}
+.link-options a {
+	margin: 0 .5em 0 0;
+	font-size: 15px; color: #666;
+	text-decoration: none;
+}
+</style>
+
+
+<div class="wrapper" style="max-width: 1000px;">
+
+	 
+		<div style="margin: 2em 0 3em;">
+				<h3>Admin options</h3>
+				<span class="link-options">
+					<%= link_to "Log out", destroy_admin_session_path, method: :delete %>
+				</span>
+		</div>
+
+
+
+	<h3 style="margin-top: 4em;">Our users</h3>
+	<p>There are currently <%= @users.active.count %> active customers. There have been <%= @users.count %> customers ever.</p>
+
+
+		<table cellspacing=0 style="margin-bottom: 5em;">
+			<tr>
+				<th>User</th>
+				<th>Email</th>
+				<th>Plan</th>
+				<th>Signed up</th>
+				<th>Cancelled</th>
+				<th>Amount</th>
+			</tr>
+
+
+
+			<% @users.order("users.state asc").each do |user| %>
+				<tr>
+					<td style="text-align:left; font-size: 80%;"><%= user.name %></td>
+					<td style="text-align:left; font-size: 80%;"><%= user.email %></td>
+					<td style="text-align:left; font-size: 60%;"><%= user.subscription.plan.name if user.subscription %></td>
+					<td style="text-align:center; font-size: 80%;"><%= user.created_at.strftime("%_m/%-d/%Y") %></td>
+					
+					<td style="text-align:center; font-size: 80%;"><%= user.subscription.current_period_end.strftime("%_m/%-d/%Y") if user.canceled? %></td>
+					
+					<td style="text-align:center; font-size: 80%;"><%= user.subscription.plan.amount if user.subscription %> </td>
+				</tr>
+			<% end %>
+		</table>
+
+
+</div>

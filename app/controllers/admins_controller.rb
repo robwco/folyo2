@@ -4,7 +4,6 @@ class AdminsController < ApplicationController
 
 	def welcome
     @users = User.all
-    @leads = Lead.all
     @categories = Category.all
     @plans = Plan.all
     @subscriptions = Subscription.all
