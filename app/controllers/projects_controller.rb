@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
   before_action :set_project, only: [:show]
   before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :post, :destroy]
-
   respond_to :html
 
   def home
@@ -90,6 +89,9 @@ class ProjectsController < ApplicationController
 
   def preview
     @listing_package = ListingPackage.active.first
+  end
+  
+  def admin_preview 
   end
 
   def charge_payment

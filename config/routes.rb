@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 	  resources :messages
   end
 
+  get "/admin-preview" => "projects#admin_preview"
+    
   resources :projects do
     get "home", on: :collection
     get "thank_you", on: :member
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     get "inbox", on: :collection
     get "publish", on: :collection
     get "preview", on: :member
+
     get "payment", on: :member
     put "charge_payment", on: :member
     put "update_status", on: :member
@@ -53,16 +56,7 @@ Rails.application.routes.draw do
   put "/freelancer-details" => "subscriptions#update_freelancer", as: :update_freelancer_details
   get "/client-details" => "subscriptions#client", as: :client_details
   put "/client-details" => "subscriptions#update_client", as: :update_client_details
-
-  # Onboarding
-  get "/tour/attract" => "tour#writing"
-  get "/tour/great-responses" => "tour#responses"
   
-  # Testing Emails
-  get "/test_emails" => "subscriptions#test_email"
-  get "/send_emails" => "subscriptions#send_email"
-  get "/test_weekly_emails" => "subscriptions#test_weekly_emails"
-  get "/send_weekly_emails" => "subscriptions#send_weekly_emails"
 
   # Plans and Billing
   put "/plans/archive/:id" => "plans#archive", as: :archive_plan
