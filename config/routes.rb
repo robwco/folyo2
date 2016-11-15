@@ -20,14 +20,16 @@ Rails.application.routes.draw do
     
   resources :projects do
     get "home", on: :collection
-    get "thank_you", on: :member
     get "tour", on: :collection
     #get "active", on: :collection
     #get "yours", on: :collection
     get "inbox", on: :collection
     get "publish", on: :collection
-    get "preview", on: :member
+    get "admin_new", on: :collection
+    post "admin_create", on: :collection
 
+    get "thank_you", on: :member
+    get "preview", on: :member
     get "payment", on: :member
     put "charge_payment", on: :member
     put "update_status", on: :member

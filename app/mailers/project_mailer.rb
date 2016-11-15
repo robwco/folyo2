@@ -1,7 +1,8 @@
 class ProjectMailer < ActionMailer::Base
+  include UsersHelper
   default :from => "hello@folyo.me"
   helper ApplicationHelper
-  helper UsersHelper
+  helper :users
 
   def new_project(freelancer, project)
 	  subject = "[Folyo] #{project.user.company_name} - #{project.title}"
@@ -33,6 +34,16 @@ class ProjectMailer < ActionMailer::Base
     subject = "#{@from_user.name} just sent you a new message!"
 
     mail(to: @to_user.email, subject: subject, from: "\"Folyo\" <hello@folyo.me>")
+  end
+
+  def client_approval(project)
+    @user = project.user
+    @project = project
+    @token = @user.authentication_token 
+
+    subject = "RE: #{first_name @user.name} have you found a freelancer yet?"
+
+    mail(to: @user.email, subject: subject, from: "\"Robert Williams\" <robert@folyo.me>")
   end
 
   def welcome(user)

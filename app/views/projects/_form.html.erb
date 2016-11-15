@@ -4,62 +4,64 @@ $(document).ready(function(){
 });
 </script>
 
-<%= form_for(@project) do |f| %>
+<%= form_for(@project, url: project_creation_path) do |f| %>
 
 
-<!-- if admin -->
-<h2 class="action-header">Hello, Admin! Assign this project:</h2>
+<% if admin_signed_in? && @client %>
+  <%= f.fields_for(@client) do |cf| %>
+    <h2 class="action-header">Hello, Admin! Assign this project:</h2>
 
-<div class="form-wrap">
-	<table style="width:100%;">
-		<tr>
-			<td class="assign-left" style="display: table-cell; vertical-align: top;">
-				<p class="question-header"><strong>Name</strong></p>
+    <div class="form-wrap">
+      <table style="width:100%;">
+        <tr>
+          <td class="assign-left" style="display: table-cell; vertical-align: top;">
+            <p class="question-header"><strong>Name</strong></p>
 
-		    <%= f.text_field :title, placeholder: 'Jason Fried'	%>	
-			</td>
-	
-			<td class="assign-left" style="display: table-cell; vertical-align: top;">
-				<p class="question-header"><strong>Organization name</strong></p>
+            <%= cf.text_field :name, placeholder: 'Jason Fried'	%>	
+          </td>
+      
+          <td class="assign-left" style="display: table-cell; vertical-align: top;">
+            <p class="question-header"><strong>Organization name</strong></p>
 
-		    <%= f.text_field :title, placeholder: 'Basecamp'	%>
-			</td>
-		</tr>
-	
-		<tr>
-			<td class="assign-left" style="display: table-cell; vertical-align: top;">
-				<p class="question-header"><strong>Email</strong></p>
+            <%= cf.text_field :company_name, placeholder: 'Basecamp'	%>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="assign-left" style="display: table-cell; vertical-align: top;">
+            <p class="question-header"><strong>Email</strong></p>
 
-		    <%= f.text_field :title, placeholder: 'jason@basecamp.com'	%>
-			</td>
-	
-			<td class="assign-left" style="display: table-cell; vertical-align: top;">
-				<p class="question-header"><strong>Website</strong></p>
+            <%= cf.text_field :email, placeholder: 'jason@basecamp.com'	%>
+          </td>
+      
+          <td class="assign-left" style="display: table-cell; vertical-align: top;">
+            <p class="question-header"><strong>Website</strong></p>
 
-		    <%= f.text_field :title, placeholder: 'http://basecamp.com'	%>
-			</td>
-		</tr>
-	
-		<tr>
-			<td class="assign-left" style="display: table-cell; vertical-align: top;">
-				<p class="question-header"><strong>Profile picture</strong></p>
+            <%= cf.text_field :company_website, placeholder: 'http://basecamp.com'	%>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="assign-left" style="display: table-cell; vertical-align: top;">
+            <p class="question-header"><strong>Profile picture</strong></p>
 
-				<%= image_tag 'default-avatar.png', :class => "profile-photo", :style => "width:50px; height: 50px; margin: 0 !important;" %><br>
+            <%= image_tag 'default-avatar.png', :class => "profile-photo", :style => "width:50px; height: 50px; margin: 0 !important;" %><br>
 
-				<%= f.file_field :photo, data: { preview_image_target: "photo-target" }, :style => "width: 200px; margin: 0 0 1em;"	%>
-			</td>
-		
-			<td class="assign-left" style="display: table-cell; vertical-align: top;">
-				<p class="question-header"><strong>Company logo</strong></p>
+            <%= cf.file_field :photo, data: { preview_image_target: "photo-target" }, :style => "width: 200px; margin: 0 0 1em;"	%>
+          </td>
+        
+          <td class="assign-left" style="display: table-cell; vertical-align: top;">
+            <p class="question-header"><strong>Company logo</strong></p>
 
-				<%= image_tag 'company-logo-default.png', :class => "profile-photo", :style => "width:50px; height: 50px; margin: 0 !important; border-radius: 5px;" %><br>
+            <%= image_tag 'company-logo-default.png', :class => "profile-photo", :style => "width:50px; height: 50px; margin: 0 !important; border-radius: 5px;" %><br>
 
-				<%= f.file_field :photo, data: { preview_image_target: "photo-target" }, :style => "width: 200px; margin: 0 0 1em;"	%>
-			</td>
-		</tr>
-	</table>
-</div>
-		
+            <%= cf.file_field :company_logo, data: { preview_image_target: "photo-target" }, :style => "width: 200px; margin: 0 0 1em;"	%>
+          </td>
+        </tr>
+      </table>
+    </div>
+  <% end %>	
+<% end %>	
 
 <h2 class="action-header">First, some overall stuff:</h2>
 	<div class="form-wrap">
