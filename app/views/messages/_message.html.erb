@@ -42,7 +42,7 @@
 	<%= image_tag message.user.photo.url(:medium), :class => "message-photo" %>
 	<p class="message-text">
 		<span class="message-name"><%= message_sender message %></span>
-		<%= message.message %>
+		<%= simple_format(message.message, {}, :sanitize => false) %>
 		
 		<% if message.created_at < 1.day.ago %>
 			<span class="message-time"><%= message.created_at.strftime("%b%_m") %></span>
