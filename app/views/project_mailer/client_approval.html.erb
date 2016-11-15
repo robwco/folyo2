@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body style='font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+	color: #545048;'>
+
+    <p>OK, thanks for the go ahead, <%= first_name @user.name %>!</p>
+
+    <p>your project is ready to be sent to my network (absolutely free). </p>
+
+    <p>Just go here: <%= link_to edit_project_url(@project, token: @token, user_email: @user.email), edit_project_url(@project, token: @token, user_email: @user.email) %></p>
+
+    <p>And hit "Approve your project". that will send it out!</p>
+
+    <p>Rob</p>
+  </body>
+</html>

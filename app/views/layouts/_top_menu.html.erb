@@ -1,7 +1,6 @@
 <section class="top-menu wrap w860">
 	<% if admin_signed_in? %>
-		<%= link_to "Start a project", new_project_path %>
-		<%= link_to "New Lead", new_lead_path %>
+		<%= link_to "Start a project", admin_new_projects_path %>
 		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
 	<% elsif user_signed_in? %>
 		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>

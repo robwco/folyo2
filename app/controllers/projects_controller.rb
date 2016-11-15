@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
+  before_action :authenticate_with_token!, only: [:edit]
+  before_action :authenticate_any!, except: [:show, :home, :portal, :tour]
+  before_action :authenticate_admin!, only: [:admin_new, :admin_create]
   before_action :set_project, only: [:show]
   before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :post, :destroy]
   respond_to :html
@@ -67,6 +69,21 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def admin_new
+    @client = User.new
+    @project = Project.new
+
+    @client.name = params[:name]
+    @client.email = params[:email]
+    @client.company_name = params[:company]
+    @client.company_website = params[:website]
+
+    @project.title = params[:title]
+    @project.long_description = params[:description]
+    @project.goals = params[:goals]
+    @project.budget = params[:budget]
+  end
+
   def edit
   end
 
@@ -83,6 +100,41 @@ class ProjectsController < ApplicationController
       else
         flash[:error] = "Please correct the errors below."
         format.html { render :new }
+      end
+    end
+  end
+
+  def admin_create
+    @client = User.new(client_params)
+    @project = Project.new(project_params)
+
+    @client.account_type = "client"
+    @client.password = random_password
+    @client.authentication_token = random_password
+    @client.admin_created = true
+
+    error_occurred = false
+    respond_to do |format|
+      if @client.save
+        @project.user = @client
+        
+        if @project.save
+          format.html { 
+            flash[:notice] = "Project and client account were created successfully!"
+            ProjectMailer.delay.client_approval(@project)
+            redirect_to admin_root_path 
+            return
+          }
+        else
+          error_occurred = true
+        end
+      else
+        error_occurred = true
+      end
+
+      if error_occurred
+        flash[:error] = "Please correct the errors below."
+        format.html { render :admin_new }
       end
     end
   end
@@ -179,6 +231,10 @@ class ProjectsController < ApplicationController
       end
     end
 
+	  def client_params
+      params.require(:project).require(:user).permit(:name, :email, :company_logo, :company_name, :company_website, :company_biography, :photo)
+	  end
+
     def project_params
       params.require(:project).permit(:title, :long_description, :goals, :deadline, :budget, { category_ids: [] } )
     end
@@ -189,5 +245,23 @@ class ProjectsController < ApplicationController
 
     def payment_package_params
       params.require(:project).permit(:listing_package_id)
+    end
+
+    def random_password
+      SecureRandom.urlsafe_base64
+    end
+
+    def authenticate_with_token!
+      return true unless params[:token] || current_user.present?
+
+      user_email = params[:user_email].presence
+      user       = user_email && User.find_by_email(user_email)
+
+      if user && Devise.secure_compare(user.authentication_token, params[:token])
+        sign_in user
+        user.clear_authentication_token
+      else
+        head :forbidden
+      end
     end
 end

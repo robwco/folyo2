@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   include AASM	
+
+  attr_accessor :admin_created
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -55,7 +58,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :company_logo, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   validates :name, presence: { message: "Enter your name" } 
-  validates :photo, presence: { message: "Upload a cute pic. <a href='/tour#humans'>Why we require a photo</a>".html_safe }  
+  validates :photo, presence: { message: "Upload a cute pic. <a href='/tour#humans'>Why we require a photo</a>".html_safe }, if: :user_created?
   validates :biography, presence: { message: "can't be blank" }, if: :freelancer_has_name?
   validates :biography, length: { maximum: 250 } 
   validates :company_name, presence: { message: "can't be blank" }, if: :client_has_name?
@@ -131,6 +134,11 @@ class User < ActiveRecord::Base
     reply.project.user == self || (reply.user == self && reply.messages.count > 0)
   end
 
+  def clear_authentication_token
+    self.authentication_token = nil
+    #save
+  end
+
   private
   	def plan_has_trial?
       subscription.plan.has_trial?
@@ -156,5 +164,9 @@ class User < ActiveRecord::Base
       if self.company_website
         self.company_website = "http://#{self.company_website}" unless self.company_website.start_with? "http"
       end
+    end
+
+    def user_created?
+      !admin_created
     end
 end
