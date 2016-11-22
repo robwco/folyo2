@@ -11,7 +11,7 @@
 
     <p>your project is ready to be sent to my network (absolutely free). </p>
 
-    <p>Just go here: <%= link_to edit_project_url(@project, token: @token, user_email: @user.email), edit_project_url(@project, token: @token, user_email: @user.email) %></p>
+    <p>Just go here: <%= link_to approve_project_url(@project, token: @token, user_email: @user.email), approve_project_url(@project, token: @token, user_email: @user.email) %></p>
 
     <p>And hit "Approve your project". that will send it out!</p>
 

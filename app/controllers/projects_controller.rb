@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:edit]
+  before_action :authenticate_with_token!, only: [:approve]
   before_action :authenticate_any!, except: [:show, :home, :portal, :tour]
   before_action :authenticate_admin!, only: [:admin_new, :admin_create]
   before_action :set_project, only: [:show]
-  before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :post, :destroy]
+  before_action :set_project_with_owner, only: [:preview, :approve, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :post, :destroy]
   respond_to :html
 
   def home
@@ -141,6 +141,10 @@ class ProjectsController < ApplicationController
 
   def preview
     @listing_package = ListingPackage.active.first
+  end
+
+  def approve
+
   end
   
   def admin_preview 

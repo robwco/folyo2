@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     get "thank_you", on: :member
     get "preview", on: :member
+    get "approve", on: :member
     get "payment", on: :member
     put "charge_payment", on: :member
     put "update_status", on: :member
