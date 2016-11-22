@@ -81,9 +81,10 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
   get "terms" => "pages#terms"
   get "partners" => "pages#partners"
-  get "tour" => "pages#tour"
-  get "comingsoon" => "pages#comingsoon"
-  
+  get "/tour", to: redirect("https://clientgiant.us/the-best-work-of-your-life-beb827df269b#.bh05ybl7r", status: 301)
+  get "/guides/how_to_pick_a_great_designer", to: redirect("https://clientgiant.us/how-to-write-a-job-ad-and-attract-the-right-people-to-your-project-9b8dd921e5e8#.vjyjulim6", status: 301)
+  get "/guides/how_to_write_a_good_job_description", to: redirect("https://clientgiant.us/how-to-write-a-job-ad-and-attract-the-right-people-to-your-project-9b8dd921e5e8#.vjyjulim6", status: 301)
+
   # Sign in
   root to: redirect("/projects/home")
   get "/admins/welcome" => "admins#welcome", as: :admin_root
