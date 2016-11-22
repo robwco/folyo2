@@ -1,0 +1,19 @@
+<div class="wrap w800">
+	<h1 style="margin: 1em 0 0; text-align:center;">Welcome <%= first_name current_user.name %>! Here's what your project will look like:</h1>
+  <hr />
+
+  <%= render 'projects/project' %>
+
+</div>
+
+<div style="text-align:center; margin: 0 0 5em;">
+  <div id="upsell-trigger">
+    <div style="text-align:center;">
+      <p style="margin: 1.5em 0;">
+        <%= link_to "Approve this project", preview_project_path(@project), class: "upsell button" %>
+      </p>
+      <p><%= link_to "Edit this project", edit_project_path(@project) %></p>
+    </div>					
+  </div>
+</div>
+
