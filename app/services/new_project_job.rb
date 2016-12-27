@@ -1,5 +1,7 @@
 class NewProjectJob < Struct.new(:project_id)
   def perform
+    return
+    
     project = Project.find project_id
 
     User.joins(:categories).active.freelancers.where(categories: { id: project.category_ids }).distinct.each do |user|
