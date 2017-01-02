@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_any!, except: [:show, :home, :portal, :tour]
-  before_action :set_project, only: [:show]
+  before_filter :authenticate_admin!, only: [:admin_approve, :admin_reject, :admin_destroy]
+  before_action :set_project, only: [:show, :admin_approve, :admin_reject, :admin_destroy]
   before_action :set_project_with_owner, only: [:preview, :payment, :charge_payment, :edit, :update, :update_status, :thank_you, :post, :destroy]
 
   respond_to :html
@@ -96,6 +97,7 @@ class ProjectsController < ApplicationController
     @project.listing_package = ListingPackage.active.first
 
 	  if ChargeProject.call params[:stripeToken], @project
+      @project.approve
       @project.publish
       Delayed::Job.enqueue NewProjectJob.new(@project.id)
 
@@ -106,10 +108,8 @@ class ProjectsController < ApplicationController
   end
 
   def post
-    @project.publish
-    Delayed::Job.enqueue NewProjectJob.new(@project.id)
-
-    redirect_to thank_you_project_path(@project), notice: "Your project was posted!"
+    @project.review!
+    redirect_to thank_you_project_path(@project), notice: "Your project was posted! A Folyo admin will review it for approval"
   end
 
   def update
@@ -162,6 +162,22 @@ class ProjectsController < ApplicationController
     redirect_to home_projects_path, notice: "Your project was deleted."
   end
   
+  def admin_approve
+    @project.approve!
+    @project.publish
+    Delayed::Job.enqueue NewProjectJob.new(@project.id)
+    redirect_to admin_root_path, notice: "The project was approved."
+  end
+
+  def admin_reject
+    @project.reject!
+    redirect_to admin_root_path, notice: "The project was rejected."
+  end
+
+  def admin_destroy
+    @project.destroy
+    redirect_to admin_root_path, notice: "The project was deleted."
+  end
   
 
   private

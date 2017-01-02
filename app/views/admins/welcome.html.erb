@@ -1,0 +1,28 @@
+<div class="wrap w860">
+  <h2>Projects waiting for review</h2>
+
+  <div  class="project-list-wrap">
+    <% @review_projects.each do |project| %>
+      <%= render "projects/quick_view", project: project %>
+    <% end %>
+  </div>
+  
+  <div style="text-align:center">
+    <%= will_paginate @review_projects, previous_label: '<i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back'.html_safe, next_label: 'Forward<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'.html_safe %>
+  </div>
+
+
+  <hr/>
+
+  <h2>All Projects</h2>
+  <div  class="project-list-wrap">
+    <% @projects.each do |project| %>
+      <%= render "projects/quick_view", project: project %>
+    <% end %>
+  </div>
+  
+  <div style="text-align:center">
+    <%= will_paginate @projects, previous_label: '<i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back'.html_safe, next_label: 'Forward<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'.html_safe %>
+  </div>
+
+</div>

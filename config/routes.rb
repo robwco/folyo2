@@ -30,6 +30,10 @@ Rails.application.routes.draw do
     put "update_status", on: :member
     put "post", on: :member
 
+    put "admin_approve", on: :member
+    put "admin_reject", on: :member
+    put "admin_destroy", on: :member
+
     resources :replies do
       get 'new_user', on: :new
     end

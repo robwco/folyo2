@@ -4,10 +4,8 @@ class AdminsController < ApplicationController
 
 	def welcome
     @users = User.all
-    @leads = Lead.all
-    @categories = Category.all
-    @plans = Plan.all
-    @subscriptions = Subscription.all
+    @review_projects = Project.includes(:categories, :replies, :user, :listing_package).under_review.page(params[:page]).order(created_at: :desc)
+    @projects = Project.includes(:categories, :replies, :user, :listing_package).all.page(params[:page]).order(created_at: :desc)
 	end
 
 end

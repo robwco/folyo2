@@ -2,7 +2,10 @@
 	<%= image_tag @project.user.company_logo.url(:medium), :style => "width:60px; border-radius:0px; vertical-align: -10px; margin-right: 0px;" if @project.user.company_logo.present? %>
 </h2>
 
-<h1 class="post-title"><%= @project.title %></h1>
+<h1 class="post-title">
+  <%= '<span class="pro-badge" style="margin-right:.75em;">UNDER REVIEW</span>'.html_safe if @project.under_review? %>
+  <%= @project.title %>
+</h1>
 
 <p class="by-line">
 	<%= image_tag @project.user.photo.url(:medium), :class => "photo" %> <%= @project.user.name %>, <% if @project.user.company_website.length <= 10  %><%= @project.user.company_name %><% else %><a href="<%= @project.user.company_website %>"><%= @project.user.company_name %></a><% end %>
