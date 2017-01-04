@@ -2,6 +2,24 @@
 	<%= render "layouts/top_menu" %>
 </div>
 
+<% if admin_signed_in? %>
+  <div class="wrap w800">
+    <% if @project.under_review? %>
+      Admin Review:
+
+      <p>
+        If this project is acceptable as-is, <%= link_to "Accept this project", admin_approve_project_path(@project), method: :put %>
+      </p>
+      <p>
+        If this project needs to be edited, <%= link_to "Reject this project", admin_reject_project_path(@project), method: :put %>
+      </p>
+      <p>
+        If this project is spam, <%= link_to "Delete this project", admin_destroy_project_path(@project), method: :put %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
 <% if user_signed_in? && current_user.can_see_project_replies?(@project) %>
 	<%= render "replies/client_listing" %>	
 <% else %>	

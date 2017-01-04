@@ -43,7 +43,7 @@
 
 	<div class="info">
 		
-		<%= '<span class="pro-badge" style="margin-right:.75em;">PRO</span>'.html_safe if project.allow_portfolio_replies? %><a href="<%= project.published? ? url_for(project) : edit_project_path(project) %>" class="title"><%= truncate project.title, length: 55 %> <%= "(draft)" unless project.published? %>
+		<%= '<span class="pro-badge" style="margin-right:.75em;">PRO</span>'.html_safe if project.allow_portfolio_replies? %><a href="<%= (project.published? || admin_signed_in?) ? url_for(project) : edit_project_path(project) %>" class="title"><%= truncate project.title, length: 55 %> <%= "(draft)" unless (project.published? || admin_signed_in?) %>
 		</a>
 
 		<p style="margin: .25em 0; line-height: 1.3; ">

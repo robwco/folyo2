@@ -12,6 +12,7 @@ class Project < ActiveRecord::Base
 	validates :title, presence: { message: "'What kind of help do you need?' is required." }
 	validates :budget, presence: { message: "'What type of budget do you have for this project?' is required." }
 
+	scope :under_review, -> { where(status: :under_review, archived: false) }
 	scope :published, -> { where(published: true, archived: false) }
 	scope :drafted, -> { where(published: false) }
 	scope :recent, -> (limit_to = nil) { order(created_at: :desc).limit(limit_to ? limit_to : 10) }
@@ -22,10 +23,21 @@ class Project < ActiveRecord::Base
   self.per_page = 10
 
   aasm(:status) do
-    state :seeking_freelancer, initial: true
+    state :drafted, initial: true
+    state :under_review
+    state :seeking_freelancer
     state :accepted
     state :completed
 
+    event :reject do
+      transitions from: [:under_review], to: :drafted
+    end
+    event :review do
+      transitions from: [:drafted], to: :under_review
+    end
+    event :approve do
+      transitions from: [:under_review, :drafted], to: :seeking_freelancer
+    end
     event :seek do
       transitions from: [:accepted, :completed], to: :seeking_freelancer, after: :unarchive_project
     end
