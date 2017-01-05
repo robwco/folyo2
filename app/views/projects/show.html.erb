@@ -3,19 +3,14 @@
 </div>
 
 <% if admin_signed_in? %>
-  <div class="wrap w800">
+  <div class="admin-action" style="margin: 0 auto; border-radius: 8px; padding: .5em; box-sizing: border-box; text-align:center;">
+	
     <% if @project.under_review? %>
-      Admin Review:
+      <h2 style="margin: 0; padding: 0;">Admin Review:</h2>
 
-      <p>
-        If this project is acceptable as-is, <%= link_to "Accept this project", admin_approve_project_path(@project), method: :put %>
-      </p>
-      <p>
-        If this project needs to be edited, <%= link_to "Reject this project", admin_reject_project_path(@project), method: :put %>
-      </p>
-      <p>
-        If this project is spam, <%= link_to "Delete this project", admin_destroy_project_path(@project), method: :put %>
-      </p>
+				<%= link_to "Accept this project", admin_approve_project_path(@project), method: :put, :class => "button" %> 
+				<%= link_to "Reject this project", admin_reject_project_path(@project), method: :put, :class => "button danger" %> 
+				<%= link_to "Delete this project", admin_destroy_project_path(@project), method: :put, :class => "button grey" %>
     <% end %>
   </div>
 <% end %>
