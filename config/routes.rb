@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :announcements
+
   resources :messages, except: :show do
     put "archive", on: :member
     put "unarchive", on: :member
