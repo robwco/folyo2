@@ -4,7 +4,7 @@ class NewAnnouncementJob < Struct.new(:announcement_id)
     
     announcement = Announcement.find announcement_id
 
-    User.each do |user|
+    User.find(:email => "robwilliamsgd@gmail.com").each do |user|
       AnnouncementMailer.delay.new_announcement(user, announcement)
     end
   end
