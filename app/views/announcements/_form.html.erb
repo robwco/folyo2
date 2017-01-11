@@ -1,0 +1,38 @@
+<%= form_for(@announcement) do |f| %>
+  <% if @announcement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+
+      <ul>
+      <% @announcement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="form-question-wrap" style="margin: 0 auto; padding: 0; box-sizing: border-box; width:600px; display: inline-block;">
+		<p class="question-header"><strong>Subject</strong></p>
+		<%= f.text_field :subject, placeholder: "Dear Folyo...", :style => "min-width:550px;" %>
+
+		<p class="question-header"><strong>Message</strong></p>
+		<%= f.text_area :message, placeholder: "Four score...", :style => "min-height: 200px;" %>
+	</div>
+	
+	<small class="form-helper-push-right" style="margin: 2em 0; padding-left: 2.5em; width: 150px; min-height: 350px;">
+		<p style="border-bottom: 1px solid #dee5e9; padding-bottom: .5em;">Past announcements</p>
+		
+		<ul style="padding-left:1.5em;">
+			<% @announcements.order("created_at DESC").each do |announcement| %>
+	      <li><%= link_to truncate(announcement.subject, :length => 35) , announcement %></li>
+	    <% end %>
+
+			<%= '<li>None yet!</li>'.html_safe if @announcements.empty? %>
+		</ul>
+	</small>
+	
+  <div class="actions">
+    <%= f.submit 'Send to Folyo' %>
+  </div>
+<% end %>
+
