@@ -1,91 +1,82 @@
-<div class="wrap w860">
-	<% if user_signed_in? %>
-		<%= render "layouts/top_menu" %>
+<div clas="site-wrap" style="max-width:600px; margin:0 auto;">	
+	<h1><%= image_tag 'emoji-fire.png', :alt => "HOT!" , :class => "emoji-h1" , :style => "max-width: 40px; vertical-align: middle;" %> Companies now hiring freelancers:</h1>
+</div>
 
+	<p><%= image_tag 'placeholder-logo2.jpg', :class => "company-logo" , :style => "max-width: 30px; border-radius: 30px; vertical-align: middle;" %> <strong>Snacktually</strong> <a href="#2">We have a constant influx of site design needs and need a web designer that can keep up.</a></p>
+
+	<p><%= image_tag 'placeholder-logo3.png', :class => "company-logo" , :style => "max-width: 30px; border-radius: 30px; vertical-align: middle;" %> <strong>Workshop</strong> <a href="#2">Help me find the best freelance gigs on the web.</a></p>
+
+	<p><%= image_tag 'placeholder-logo.png', :class => "company-logo" , :style => "max-width: 30px; border-radius: 30px; vertical-align: middle;" %> <strong>AtlaSense</strong> <a href="#2">We are looking for a freelance UI designer to help us with a prototype we need to have ready by January 15. Experience with CSS and HTML5 is required.</a></p>
+
+	<p><a href="/projects">MORE DOPE PROJECTS →</a></p>
+
+<div clas="site-wrap" style="max-width:600px; margin: 5em auto;">
+	<h1>Hire a web developer who's right for the job. <a href="#5">Post a project for free</a></h1>
+	<p>I don’t claim 100% of their success, but these companies have used this site to hire a freelancer, so there’s that:</p>
+
+	<ul class="homepage-company-list" style="list-style-type: none; columns: 6; -webkit-columns: 6; -moz-columns: 6;">
+		<li><a href="http://dropbox.com">Dropbox</a></li>
+		<li><a href="http://dropbox.com">Airbnb</a></li>
+		<li><a href="http://dropbox.com">Square</a></li>
+		<li><a href="http://dropbox.com">Asana</a></li>
+		<li><a href="http://dropbox.com">Intercom</a></li>
+		<li><a href="http://dropbox.com">Zendesk</a></li>
+	</ul>
+
+	<h2>Reasons to use this site:</h2>
+	<p>Dear random person on the internet. I've compiled a list of reasons you should use this site to hire a freelancer below.</p>
+	<section style="text-align:center;">
+
+		<p><strong>1. It’s free.</strong><br>
+		you can use this site 100% for free.</p>
 	
-		<% if Project.owned_by(current_user).any? %>
-			<h2 class="action-header">Your projects</h2>
-
-			<div class="project-list-wrap">
-				<% Project.owned_by(current_user).each do |project| %>
-					<%= render "projects/quick_view", project: project %>
-				<% end %>
-			</div>
-		
-
-			<p style="text-align:center; padding-top: 1em; margin: 0;">Got more work? Put it on Folyo!<br><br>
-	      <%= link_to "+ Project".html_safe, new_project_path, class: "button" %>
-			</p>
+		<p><strong>2. I'm not a big corporation.</strong><br>
+		unlike my competitors (think topdull and uptwerk) i’m not run by VC-investors looking to disrupt the freelance ecosystem or whatever. i’m a person that cares about making freelancing better.</p>
 	
-		<% else %>
-			<h2 class="action-header">Projects for 
-	      <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
-	        prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
-			</h2>
+		<p><strong>3. the money you pay me gets invested directly into my family.</strong><br>
+		anything i make on this site goes to stuff like buying my dog benny dogfood and taking my wife kieranne to disneyland.</p>
+	
+		<p><strong>4. i don’t take a cut out of your project (and never will).</strong><br>
+		typically you have to pay a percentage to use a site like this. i don't do that. the relationships are yours. i'm here to happily connect you with awesome people.</p>
+	
+		<p><strong>5. you get to know who runs the site.</strong><br>
+		because the team is small (3 people). you get to know everyone. there's me: <a href="https://medium.com/@letsworkshop">robert williams</a> (designer and owner), <a href="https://rigbooks.com">jason forrest</a> (programmer and buddy), and kieranne williams (my wife and head of support). there now you know everyone.</p>
+	
+		<p><strong>6. i use payment system i use is just crazy secure.</strong><br>
+		i use stripe which has been certified to PCI Service Provider Level 1.<br>
+		<%= image_tag 'etrust.png', :style => "margin:.5em 0; height: 20px; vertical-align: middle;" %></p>
+	
+	
+		<p><strong>7. i don’t let slimeballs use the site.</strong><br>
+		everyone who signs up has to have a picture and speak like a human. i monitor for this.</p>
+	
+		<p><strong>8. You don't need to know your budget yet.</strong><br>
+		Budgets can be poison when you don't know what the options are yet. Instead I recommend posting your project and letting a freelancer guide you on what it should cost.</p>
 			
-				<% if @projects.blank? %>
-					<p style="margin:3em 0 0;">There are no public projects at this time</p>
-
-					<p style="margin: 0 0 3em; text-align:center;">
-						<%= link_to "Create a project", new_project_path, :class => "button" %>
-					</p>
-				
-				<% else %>
-					<div  class="project-list-wrap">
-						<% @projects.each do |project| %>
-							<%= render "projects/quick_view", project: project %>
-						<% end %>
-					</div>
-					
-	        <div style="text-align:center">
-	          <%= will_paginate @projects, previous_label: '<i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back'.html_safe, next_label: 'Forward<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'.html_safe %>
-	        </div>
-				<% end %>		
-			</div>
-		<% end %>
-
-	<% else %>
-		<h1 style="padding: 0 .5em  0; text-align:center;">	
-			<%= link_to image_tag('folyo.png', :class => "logo", :style => "margin: 2em auto 1em; width: 200px;"), url_for(root_path) %>
-
-			Looking for a great freelancer? <%= link_to 'Post a project for free today', new_subscription_path %>
-		</h1>
-		
-		<span style="display: table; margin: 2em auto -1em;">
-			<small style="letter-spacing: .125em; margin-bottom:">A FEW COMPANIES THAT HAVE USED FOLYO</small>
-		</span>
-		
-		<p style="text-align:center;">
-			<%= image_tag 'folyo-used-by.png', :style => "margin-top: .5em; max-width: 100%;" %>
-		</p>
+		<p><strong>9. it's designed to be quick.</strong><br>
+		Hiring a freelancer seems like a lot of work. But this site is designed to help you hire the right freelancer in just 2 15-20 minute sessions. Replies are short, all in one place, and we'll guide you in making the right choice.</p>
 			
-		<h2 class="action-header">Projects for 
-	    <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
-	      prompt: "all skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %> now hiring
-		</h2>
+		<p><strong>10. you'll see work that actually relates to your project.</strong><br>
+		Portfolios are pointless if they don't show you how they can help you. That's what every portfolio on Folyo does.</p>
 		
-		<% if @projects.blank? %>
-			<p style="margin:3em 0 0; text-align:center;">There are no active projects for this category right now.</p>
-
-			<p style="margin: 0 0 3em; text-align:center;"><%= link_to "Notify me", new_subscription_path, :class => "button" %></p>
-		<% else %>
+		<p><strong>11. here’s some really great people on here.</strong><br>
+		i use this site myself (on both ends) and i've met real people who have helped grow my business and that i can honestly say i loved working with.</p>
 		
-			<div  class="project-list-wrap">
-				<% @projects.each do |project| %>
-					<%= render "projects/quick_view", project: project %>
-				<% end %>
-			</div>
-	     
-			<div style="text-align:center">
-	      <%= will_paginate @projects, previous_label: '<i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back'.html_safe, next_label: 'Forward <i class="fa fa-long-arrow-right" aria-hidden="true"></i>'.html_safe %>
-	    </div>
-		<% end %>
+		<p><strong>12. i have a beagle named benny.</strong><br> 
+			he looks like this → <%= image_tag 'beagle.png', :style => "max-width: 25px; vertical-align: middle;" %> and he's a good boy.</p>
 
+	</section>
+	<p>ok that's about it!</p>
 
-		<div style="text-align:center;margin:3em 0;">		
-			<h1>Find someone you love working with.<br> <%= link_to "Post your project", new_subscription_path %> or <%= link_to "get projects emailed to you", new_subscription_path %> for free</h1>
-		</div>
-	<% end %>
+	<hr />
 
-	<%= render "layouts/footer_menu" %>
+	<p><a href="#2">Take a look inside</a></p>
+
+	<hr />
+
+	<p>on this site being weird: because i'm a small one-person operation this site isn't trying to be a big or sleek or something it's not. this is my bet try at making something great i'm ok with that. </p>
+
+	<p>and special thanks to [sacha][Sacha Greif](http://sachagreif.com) for starting this site originally and advising me and to [jason][Jason Forrest](http://rigbooks.com) for helping me program it and to <a href="http://letsworkshop.com">workshop</a> my other site for helping keep the lights on</p>
+
+	<h1>if you need anything text me +1-760-693-3360</h1>
 </div>
