@@ -1,4 +1,11 @@
 <div class="wrap w860">
+	
+	<p>
+	<% @users.limit(10).each do |user| %>
+	<img src="<%= user.photo.url %>" style="width:50px; height: 50px; border-radius: 50px; margin:.25em .1em;">
+	<% end %>
+	
+	
 	<% if user_signed_in? %>
 		<%= render "layouts/top_menu" %>
 
@@ -88,4 +95,10 @@
 	<% end %>
 
 	<%= render "layouts/footer_menu" %>
+
+	<p>Latest Articles</p>
+	<% @rss.items.each do |item| %>
+   <p><a href="<%= item.link %>"><%= item.title %></a></p>
+  <% end %>
+
 </div>
