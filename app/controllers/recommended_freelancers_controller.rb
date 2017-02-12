@@ -43,6 +43,6 @@ class RecommendedFreelancersController < ApplicationController
     end
 
     def recommended_freelancer_params
-      params.require(:recommended_freelancer).permit(:name, :type, :photo, :title, :description, :price, :email)
+      params.require(:recommended_freelancer).permit(:name, :category, :photo, :title, :description, :price, :email)
     end
 end

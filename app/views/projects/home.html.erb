@@ -59,7 +59,10 @@
 			
 		
 		<div class="featured-services" style="margin: 2em 0 0; box-sizing: border-box;">
-			<h2 class="action-header">Recommended designers</h2>
+			
+			<% unless @recommended_freelancers.this_month.nil? %>
+				<h2 class="action-header">Recommended designers</h2>
+			<% end %>
 
 			<% @recommended_freelancers.this_month.each do |recommended_freelancer| %>
 				<a href="../recommended_freelancers/<%= recommended_freelancer.id %>" class="freelancer">				
@@ -70,13 +73,7 @@
 					</div>
 				</a>
 	    <% end %>
-			
-			<!--<p style="margin: 1em; display: block; text-align:right;">Freelancer? <a href="#">Apply to list your service</a></p>-->
 		</div>
-		
-		
-		
-
 		
 		<% if @projects.this_month.blank? %>
 		<% else %>
@@ -101,7 +98,7 @@
 
 <div class="wrap w700">	
 	<p><strong>You care about your independence.</strong><br>
-	Folyo doesn't take a cut of your project. Instead, I charge flat fee so you know what you're paying.</p>
+	Unlike most platforms, Folyo doesn't take a cut of your project. Instead, I charge flat fee so you know what you're paying.</p>
 
 	<p><strong>You want your money to go to a small independent team, not a big corporation.</strong><br>
 	Any money you pay me gets invested directly back into the site and my family. It goes to stuff like hosting, maintenance, buying my dog, Benny, dogfood and taking my wife, Kieranne, to Disneyland.</p>
