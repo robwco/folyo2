@@ -1,0 +1,29 @@
+<div class="wrap w700">
+	<h1>Recommended freelancers</h1>
+
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Title</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @recommended_freelancers.each do |recommended_freelancer| %>
+	      <tr>
+	        <td><%= recommended_freelancer.name %></td>
+	        <td><%= recommended_freelancer.title %></td>
+	        <td><%= link_to 'Show', recommended_freelancer %></td>
+	        <td><%= link_to 'Edit', edit_recommended_freelancer_path(recommended_freelancer) %></td>
+	        <td><%= link_to 'Destroy', recommended_freelancer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+	<br>
+
+	<%= link_to 'New featured freelancer', new_recommended_freelancer_path, :class => "button" %>
+</div>

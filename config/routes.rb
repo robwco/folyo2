@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :recommended_freelancers
+
   resources :announcements
 
   resources :messages, except: :show do

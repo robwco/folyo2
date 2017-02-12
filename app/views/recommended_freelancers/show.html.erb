@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recommended_freelancer.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @recommended_freelancer.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @recommended_freelancer.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @recommended_freelancer.price %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @recommended_freelancer.email %>
+</p>
+
+<%= link_to 'Edit', edit_recommended_freelancer_path(@recommended_freelancer) %> |
+<%= link_to 'Back', recommended_freelancers_path %>

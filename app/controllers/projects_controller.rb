@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
     @users = User.all
     require 'rss'
     @rss = RSS::Parser.parse('https://clientgiant.us/feed', false)
+    @recommended_freelancers = RecommendedFreelancer.all
   end
   
   def thank_you

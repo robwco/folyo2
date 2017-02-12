@@ -1,0 +1,49 @@
+<%= form_for(@recommended_freelancer) do |f| %>
+
+  <% if @recommended_freelancer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recommended_freelancer.errors.count, "error") %> prohibited this recommended_freelancer from being saved:</h2>
+
+      <ul>
+      <% @recommended_freelancer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :photo %>
+    <%= f.file_field :photo, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'New featured freelancer' %>
+  </div>
+<% end %>
