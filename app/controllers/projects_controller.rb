@@ -9,6 +9,9 @@ class ProjectsController < ApplicationController
   def home
     @projects =  Project.includes(:categories, :replies, :user, :listing_package).published.page(params[:page]).order(priority: :desc, created_at: :desc)
     @projects = @projects.joins(:categories).where({ categories: { id: params[:category_id] } }).order(priority: :desc, created_at: :desc) if params[:category_id]
+    require 'rss'
+    @rss = RSS::Parser.parse('https://clientgiant.us/feed', false)
+    @offerings = Offering.all
   end
   
   def thank_you

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @offering.photo, :class => "avatar" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @offering.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @offering.email %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @offering.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @offering.description %>
+</p>
+
+<p>
+  <strong>Contact info:</strong>
+  <%= @offering.contact_info %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @offering.category %>
+</p>
+
+<%= link_to 'Edit', edit_offering_path(@offering) %> |
+<%= link_to 'Back', offerings_path %>

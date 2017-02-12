@@ -3,8 +3,8 @@
 /* Universal content styles */
 
 body {
-	font-family: 'rooney-sans', -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
-	font-size: 18px;
+	font-family: "futura-pt", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+	font-size: 23px;
 	line-height: 1.5;
 	color: #545048;
 	padding: 0;
@@ -64,8 +64,9 @@ h1, h2 {
 }
 
 h1 {
-	font-size: 30px;
+	font-size: 50px;
 	font-weight: normal;
+	font-weight: 600;
 }
 h1 a {
 	font-weight: 600;
@@ -420,19 +421,16 @@ input[type=text], input[type=email], input[type=password] {
 
 input[type=submit], a.button {
 	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
-	font-size: 19px;
+	font-size: 25px;
   color:#555 !important;
   font-weight: 500;
   background: #bee1f9;
   padding: .4em 1.1em .55em;
-  border-radius: 6px;
+  border-radius: .5em;
   text-decoration: none;
-  box-shadow: 0 0 3px 0 #aaa;
-  box-shadow: 0 3px 0 0 #8abbe5;
   margin: 1em 0;
 	cursor: pointer;
 	border: 0;
-	border: 1px solid #bee1f9;
 	display: inline-block;
 	-webkit-appearance: none;
   -moz-appearance: none;
@@ -453,6 +451,13 @@ input[type=submit].small, a.button.small {
 	font-size: 14px;
 	border-radius: 5px;
 	box-shadow: none;
+}
+
+.button.big {
+	font-size: 125%;
+	display: table;
+	margin: 0 auto;
+  padding: .4em 1.6em .55em;
 }
 
 .button.share {
@@ -1177,7 +1182,7 @@ border: 0;
 	text-transform: uppercase;
 	letter-spacing: .075em;
 	display: inline-block;
-	font-family: 'rooney-sans', -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
+	font-family: "futura-pt", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
 	vertical-align: 2px;
 }
 
@@ -1331,4 +1336,3 @@ margin: -.5em 0 1em;
 	border-radius: 8px;
 	margin: .5em 1em 0 0;
 }
-
