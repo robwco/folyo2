@@ -49,38 +49,42 @@
 		<div class="wrap w700">							
 			<h1 style="line-height: 1.2; margin: 1.5em 0 .25em;">Valuable projects.</h1> 
 			
-			<p style="margin: 0 0 .5em;">Spend less time looking for someone to work with and more time on what you enjoy: growing your business. Use Folyo for free today to find your next client or remote worker.</p>
+			<p style="margin: 0 0 .5em;">Spend less time looking for someone to work with and more time on what you care about: growing your business. Use Folyo for free today to find your next client or remote worker.</p>
 		</div>
 		
 		<% unless @offerings.this_month.blank? %>
-			<div class="featured-services" style="margin: 2em 0 0; box-sizing: border-box;">	
-				<% if @offerings.by_designers.this_month.present? %>
-					<h2 class="action-header">Recommended designers</h2>
-				<% end %>
+			<div class="featured-services" style="margin: 2em 0 0; box-sizing: border-box;">
+				<div class="featured-service-category">	
+					<% if @offerings.by_designers.this_month.present? %>
+						<h2 class="action-header">Recommended designers</h2>
+					<% end %>
 
-				<% @offerings.by_designers.this_month.each do |offering| %>
-					<a href="../offerings/<%= offering.id %>" class="freelancer">				
-						<div class="service-description-wrap">
-							<span class="service"><strong><%= offering.title %></strong></span><br>
+					<% @offerings.by_designers.this_month.each do |offering| %>
+						<a href="../offerings/<%= offering.id %>" class="freelancer">				
+							<div class="service-description-wrap">
+								<span class="service"><strong><%= offering.title %></strong></span><br>
 					
-							<%= image_tag offering.photo, :class => "photo" %><span class="name"><%= offering.name %></span>
-						</div>
-					</a>
-		    <% end %>
+								<%= image_tag offering.photo, :class => "photo" %><span class="name"><%= offering.name %></span>
+							</div>
+						</a>
+			    <% end %>
+				</div>
 	
-				<% if @offerings.by_developers.this_month.present? %>
-					<h2 class="action-header">Recommended developers</h2>
-				<% end %>
+				<div class="featured-service-category">	
+					<% if @offerings.by_developers.this_month.present? %>
+						<h2 class="action-header">Recommended developers</h2>
+					<% end %>
 
-				<% @offerings.by_developers.this_month.each do |offering| %>
-					<a href="../offerings/<%= offering.id %>" class="freelancer">				
-						<div class="service-description-wrap">
-							<span class="service"><strong><%= offering.title %></strong></span><br>
+					<% @offerings.by_developers.this_month.each do |offering| %>
+						<a href="../offerings/<%= offering.id %>" class="freelancer">				
+							<div class="service-description-wrap">
+								<span class="service"><strong><%= offering.title %></strong></span><br>
 					
-							<%= image_tag offering.photo, :class => "photo" %><span class="name"><%= offering.name %></span>
-						</div>
-					</a>
-		    <% end %>
+								<%= image_tag offering.photo, :class => "photo" %><span class="name"><%= offering.name %></span>
+							</div>
+						</a>
+			    <% end %>
+				</div>
 			</div>
 		<% end %>
 		
@@ -97,25 +101,25 @@
 		
 		<div style="text-align:center; margin: 2em 0 0;">
 			<%= link_to "Startups: post your project (it's free)", new_project_path, :class => "big button" %>
-			<p>or <%= link_to "Freelancers: list yourself for 30 days"%></p>
+			<p>or <%= link_to "Freelancers: feature your service on Folyo for 30 days"%></p>
 		</div>
 
 		<h1 style="text-align:center; margin: 2em 0 0;">Why you should use Folyo...</h1>
 
 		<div class="wrap w700">	
 			<p><strong>You care about your independence.</strong><br>
-			Unlike most platforms, Folyo doesn't take a cut of your project. Instead, I charge flat fee so you know what you're paying.</p>
+			Unlike most platforms, Folyo doesn't take a cut of your project. This means your profit, clients, and projects are 100% yours.</p>
 
-			<p><strong>You want your money to go to a small independent team, not a big corporation.</strong><br>
-			Any money you pay me gets invested directly back into the site and my family. It goes to stuff like hosting, maintenance, buying my dog, Benny, dogfood and taking my wife, Kieranne, to Disneyland.</p>
+			<p><strong>You believe in small independent teams, not big corporations.</strong><br>
+			Any money you pay Folyo gets invested directly into a small business (and family). It goes to stuff like hosting, maintenance, buying dogfood and taking my wife to Disneyland.</p>
 
-			<p><strong>You're done with the race to the bottom system</strong><br>
-			This site empowers independent sellers and service providers to work on their own terms. No venture capital, no middle man, no disrupting ecosystems, or whatever those other sites are trying to do.</p>
+			<p><strong>You're done with the race-to-the-bottom</strong><br>
+			Folyo empowers you to work on your own terms. We're a platform, not a middle man - so we don't take VC-funding and we're not trying to disrupt the ecosystem or whatever those guys are doing.</p>
 
-			<p><strong>You hate reading copy-and-paste</strong><br>
-			Authentic is better. Writing is important on Folyo, and writing is important to you.</p>
+			<p><strong>You hate copy-and-paste</strong><br>
+			Real is better. Writing is selling. On Folyo promoting authentic communication comes first. It means less broken promises and poor communication.</p>
 
-			<p><strong>You can trust where we stand.</strong><br>
+			<p><strong>You need to trust who you work with.</strong><br>
 			We post our thoughts on freelancing, design, programming and business on our Medium publication daily. We don't hold back. <a href="http://clientgiant.us">Read our latest.</a></p>
 
 			<!--<% @rss.items.each do |item| %>
@@ -125,14 +129,14 @@
 			<p><strong>We are your size.</strong><br>
 			Our team is 3 people. Robert (founder and designer), Jason (programmer) and Kieranne (support).</p>
 
-			<p><strong>You are protected</strong><br>
+			<p><strong>You are protected.</strong><br>
 			Our payment system (Stripe) is crazy secure. Our <%= link_to "terms", terms_path %> are crazy fair.</p>
 
 			<p><strong>We don’t let slimeballs use the site.</strong><br>
 			Everyone who signs up has to have a real picture and speak like a human. I monitor for this myself. </p>
 
 			<p><strong>You'll spend more time with your family.</strong><br>
-			Finding your next freelancer or client is a lot of work. Our goal is to cut down on the time it takes so that you can get back to your life. Less stress, more money and a happier life.</p>
+			Finding your next freelancer or client is a lot of work. Our goal is to cut down on the time it takes you so you can get back to your life.</p>
 
 			<p><strong>I'm here.</strong><br>
 			You can text me (Rob) if you need anything: +1–760–693–3360</p>

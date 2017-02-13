@@ -1,5 +1,4 @@
 class ListingPackage < ActiveRecord::Base
-
 	scope :active, -> { where(active: true) }
 
 	def allow_portfolio_replies?
