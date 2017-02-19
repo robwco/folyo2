@@ -1,7 +1,9 @@
-<% content_for :title, "[Folyo] Independence for Independents" %>
+<% content_for :title, "[Folyo] Make more money and stay independent" %>
+
+<div class="background">
+</div>
 
 <div class="wrap w860">
-	
 	<% if user_signed_in? %>
 		<%= render "layouts/top_menu" %>
 	
@@ -46,10 +48,10 @@
 		<% end %>
 	<% else %>
 		
-		<div class="wrap w700">							
+		<div class="wrap w700">					
 			<h1 style="line-height: 1.2; margin: 1.5em 0 .25em;">Valuable projects.</h1> 
 			
-			<p style="margin: 0 0 .5em;">Spend less time looking for someone to work with and more time on what you care about: growing your business. Use Folyo for free today to find your next client or remote worker.</p>
+			<p style="margin: 0 0 .5em;">Spend less time looking for someone to work with and more time growing your business. Use Folyo for free today to find your next client or remote worker.</p>
 		</div>
 		
 		<% unless @offerings.this_month.blank? %>
@@ -101,7 +103,7 @@
 		
 		<div style="text-align:center; margin: 2em 0 0;">
 			<%= link_to "Startups: post your project (it's free)", new_project_path, :class => "big button" %>
-			<p>or <%= link_to "Freelancers: feature your service on Folyo for 30 days"%></p>
+			<!--<p>or <%= link_to "Freelancers: feature your service on Folyo for 30 days"%></p>-->
 		</div>
 
 		<h1 style="text-align:center; margin: 2em 0 0;">Why you should use Folyo...</h1>
@@ -117,10 +119,10 @@
 			Folyo empowers you to work on your own terms. We're a platform, not a middle man - so we don't take VC-funding and we're not trying to disrupt the ecosystem or whatever those guys are doing.</p>
 
 			<p><strong>You hate copy-and-paste</strong><br>
-			Real is better. Writing is selling. On Folyo promoting authentic communication comes first. It means less broken promises and poor communication.</p>
+			Real is better. Writing should come from the heart. Folyo's authenticity means less broken promises and poor communication.</p>
 
 			<p><strong>You need to trust who you work with.</strong><br>
-			We post our thoughts on freelancing, design, programming and business on our Medium publication daily. We don't hold back. <a href="http://clientgiant.us">Read our latest.</a></p>
+			We post our thoughts on freelancing, design, programming and business on our Medium publication daily. We don't hold back so you know where we stand. <a href="http://clientgiant.us">Read our latest.</a></p>
 
 			<!--<% @rss.items.each do |item| %>
 			 <p><a href="<%= item.link %>"><%= item.title %></a></p>
@@ -136,7 +138,7 @@
 			Everyone who signs up has to have a real picture and speak like a human. I monitor for this myself. </p>
 
 			<p><strong>You'll spend more time with your family.</strong><br>
-			Finding your next freelancer or client is a lot of work. Our goal is to cut down on the time it takes you so you can get back to your life.</p>
+			Finding your next freelancer or client is a lot of work. Every feature we've built is designed to cut down on the time it takes so you can get back to your life.</p>
 
 			<p><strong>I'm here.</strong><br>
 			You can text me (Rob) if you need anything: +1–760–693–3360</p>
