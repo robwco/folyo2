@@ -1,0 +1,86 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.featured-services {
+	padding: 0 0 2em;
+}
+
+.featured-services h2 {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.featured-services h2 + a.freelancer {
+margin-top: 1em;
+}	
+
+a.freelancer:last-child {
+	border-bottom: none;
+}
+	
+a.freelancer {
+	border-bottom: 1px solid #dee5e9; 
+	display: inline-block; 
+	margin:0; 
+	box-sizing: border-box; 
+	width: 100%;
+	background-color: #FFF;
+	text-decoration: none;
+	padding: 1em 0;
+	vertical-align: middle;
+	color: #4ea0c4;
+	text-align:center;
+}
+
+
+a.freelancer strong {
+	color: #4ea0c4;
+}
+
+a.freelancer img.photo {
+	width: 1.25em; 
+	height: 1.25em; 
+	border-radius: 1.25em;
+	margin: 0 .5em 0 .25em;
+}
+
+a.freelancer img.photo, a.freelancer .name, a.freelancer .service, a.freelancer .price {
+	vertical-align: middle;
+}
+
+a.freelancer .name {
+	color: #545048;
+}
+
+a.freelancer .service {
+}
+
+a.freelancer img.service-photo {
+	width: 200px;
+}
+
+a.freelancer .service-photo-wrap {
+	margin: 1em 0;
+	height: 100%;
+	width: 250px;
+	display: table;
+	float: left;
+}
+
+a.freelancer .service-description-wrap {
+	height: 100%;
+	width: 100%;
+	display: table;
+	padding: 0;
+	
+}
+
+ a.freelancer .service, a.freelancer .price {
+	color: #545048;
+
+}
+
+a.freelancer .price, a.freelancer .name {
+	font-size: 90%;
+}

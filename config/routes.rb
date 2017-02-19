@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :offerings
+
   resources :announcements
 
   resources :messages, except: :show do

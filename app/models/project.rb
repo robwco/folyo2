@@ -19,6 +19,7 @@ class Project < ActiveRecord::Base
 	scope :owned_by, -> (user) { where(user_id: user.id) }
 	scope :in_conversation, -> (user) { joins(replies: :messages).where("replies.user_id = ?", user.id).distinct }
 	scope :replied_by, -> (user) { joins(:replies).where("replies.user_id = ?", user.id).distinct }
+  scope :this_month, -> { where(:created_at => ((Time.now - 30.days)..Time.now)) }
 
   self.per_page = 10
 
