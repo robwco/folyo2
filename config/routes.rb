@@ -98,7 +98,7 @@ Rails.application.routes.draw do
   get "/guides/how_to_write_a_good_job_description", to: redirect("https://clientgiant.us/how-to-write-a-job-ad-and-attract-the-right-people-to-your-project-9b8dd921e5e8#.vjyjulim6", status: 301)
 
   # Sign in
-  root to: redirect("/projects/home")
+  root "pages#simple"
   get "/admins/welcome" => "admins#welcome", as: :admin_root
   
   devise_scope :user do 

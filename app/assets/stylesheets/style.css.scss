@@ -40,7 +40,7 @@ a {
 
 hr {
 	width: 100%;
-	height: 1px;
+	height: 2px;
 	display: table;
 	border: 0;
 	background-color:#DEE5E9;
@@ -67,13 +67,17 @@ h1 {
 	font-size: 50px;
 	font-weight: normal;
 	font-weight: 600;
+	line-height: 1.2;
+	margin: .5em 0 .25em;	
 }
 h1 a {
 	font-weight: 600;
 }
 h2 {
-	font-size: 22px;
-	font-weight: 600;
+	font-size: 28px;
+	font-weight: 400;
+	color: #7a7e80;
+	margin:0;
 }
 
 @media only screen and (max-width: 800px) {
@@ -659,7 +663,105 @@ h2.reply-box-header {
 	width: 100%; 
 	border-top: 1px solid #dee5e9;
 }
+
+
+
+
+
+
 /* Homepage */
+
+.folyo-hero { 
+	display: grid; 
+	grid-template-columns: 50% 50%; 
+	grid-gap: 10px; 
+	background-color: #FFF; 
+	padding: 0;
+	border: 5px solid #FFF;
+	justify-content: center;
+	}
+.hero-logo { 
+	grid-column: 1; 
+	grid-row: 1; 
+	justify-content: center; 
+	grid-row-align: center; 
+	grid-column-align:center; 
+	overflow-x: auto; 
+	vertical-align:middle; 
+	text-align:center; 
+	padding: 4em 1em 0; 
+	background-color: #FFF;
+	}
+.hero-signup { 
+	padding: 1em 0 0; 
+	grid-column: 2; 
+	grid-row: 1; 
+	justify-content: center;
+	background-color: #FFF;
+	padding: 0 1.5em;
+	}
+.hero-social {
+	grid-column: 1 / 3;
+	grid-row: 3;
+	max-width:900px;
+	margin: .5em auto 0;
+	}
+
+@media only screen and (min-width: 1300px) {
+	.folyo-hero {
+		grid-template-columns: 500px 500px; 
+		grid-gap: 0;
+		}	
+}
+
+@media only screen and (max-width: 800px) {
+	.folyo-hero {
+		padding: 0 .1em;
+	}
+	.hero-logo { 
+		grid-column: 1 / 3; 
+		grid-row: 1;  
+		justify-content: center; 
+		}
+	.hero-signup { 
+		grid-column: 1 / 3; 
+		grid-row: 2;  
+		justify-content: center; 
+		}
+}
+
+.hero-logo h1.logo {
+	margin: 0 auto;
+	font-size:30px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.hero-logo h1 {
+	line-height: 1.1;
+}
+
+.hero-logo h2 , .hero-logo p {
+	line-height: 1.2;
+}
+
+
+
+.community-pic {
+	max-width:70px; border-radius:70px; margin: 1px;
+}
+
+@media only screen and (max-width: 800px) {
+	.community-pic {
+		max-width:50px; border-radius:50px; margin: 1px;
+		
+	}
+}
+
+
+
+
+
+
 
 .project-list-wrap {
 	box-sizing: border-box;
