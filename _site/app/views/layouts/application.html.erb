@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= (yield(:title).empty? ? "Folyo - Find a freelancer you love working with." : yield(:title)) %></title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+	<!-- Typekit -->
+	<script src="https://use.typekit.net/zfb3foa.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	
+	<%= render_google_analytics %>
+	
+	<%= favicon_link_tag 'favicon.ico' %>
+
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <link href="/creditcardjs-v0.10.12.min.css" rel="stylesheet">
+</head>
+<body>
+	
+	
+	<% flash.each do |key, value| %>
+		<% if key == "undo"%>
+			<div style="width:100%;">
+	      <div class="alert alert-<%= key %>" id="error_explanation"><i class="fa fa-check" aria-hidden="true" style="color:#86d15a; margin-right:.25em;"></i> <%= value.html_safe %></div>
+			</div>
+		<% else %>
+			<div style="width:100%;">
+	    	<div class="alert alert-<%= key %>" id="error_explanation"><i class="fa fa-check" aria-hidden="true" style="color:#86d15a; margin-right:.25em;"></i> <%= value.html_safe unless value.blank? %></div>
+			</div>
+	    <% end %>
+	<% end %>
+
+<%= yield %>
+
+
+<!-- Drip -->
+<script type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {}; 
+  _dcs.account = '7912110';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true; 
+    dc.src = '//tag.getdrip.com/7912110.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+</body>
+</html>

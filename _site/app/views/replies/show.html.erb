@@ -1,0 +1,75 @@
+<script>
+$(document).ready(function(){
+  function highlight(elem, color, wait) {
+    var current = $(elem).css('background-color');
+    $(elem).css('background-color', color);
+    setTimeout(function () {
+      $(elem).css('background-color', current);
+    }, wait);
+  }
+
+  $('textarea').autosize();
+
+  <% if @reply.messages.present? && @reply.messages.count > 0 %>
+    var completed = false;
+    $('html, body').animate({ scrollTop: $(document).height()-$(window).height()}, "slow", function() {
+      if (!completed) {
+        $(".message-wrap.unread").each(function() {
+          highlight($(this), "#fffddf", 2000);
+        });
+      }
+      completed = true;
+    });
+  <% end %>
+});
+</script>
+
+<div style="max-width: 860px; margin: 0 auto; border-bottom: 1px solid #dee5e9;">
+	<%= render "layouts/top_menu" %>
+</div>
+
+<div class="wrap w800" style="margin: 0 auto; padding: 0 0 5em;">
+	
+	<p style="padding:  1em 0; text-align: center;">
+		<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="vertical-align: 1px; margin-right: .25em; margin-left: -.25em;"></i> Back to project'.html_safe, @reply.project, :style => "text-decoration: none; color: #7c8d99;" %>
+	</p>
+	
+	<div class="reply-box">		
+		<%= render "replies/reply_message", allow_edit: false %>
+	</div>
+	
+	<% if current_user.can_see_messages?(@reply) %>
+		<%= render "messages/listing", extra_padding: false, reply: @reply %>
+	<% end %>
+
+	<% if @reply.messages.blank? && !@reply.archived? %>
+		<p class="decision" style="padding: .5em 0 5em;">
+			<%= link_to 'Write a message', message_reply_path(@reply), :class => "button", :style => "float: left;" %>
+		
+			<% if user_signed_in? && current_user == @reply.project.user %>
+
+	      <%= link_to 'Archive this reply', archive_reply_path(@reply), method: :put, :class => "button danger", :style => "float:right;"  %>
+
+		  <% end %>
+			</p>			
+	<% elsif !@reply.archived? %>
+	<div class="wrap w800" style="margin:1em 0; padding: 2em 0; box-sizing: border-box; width: 100%; border-top: 1px solid #dee5e9;">
+		<div class="wrap w750" style="margin: 0 auto;">
+			<% if current_user.client? %>
+				<%= link_to '<i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Dismiss this conversation'.html_safe, archive_reply_path(@reply), method: :put, :style => "color: #db8688; float: right; font-size: 16px; text-decoration: none; margin-top: -1em; margin-bottom: .5em;"  %>
+			<% end %>
+		
+			<%= render "messages/client_send", name: message_recipient(@reply) %>
+		</div>
+	</div>	
+	<% else %>
+		<p class="decision">
+			This reply has been archived. 
+			
+			<% if current_user.client? %> 
+				<%= link_to 'Undo archive.'.html_safe, unarchive_reply_path(@reply), method: :put %>
+			<% end %>
+		</p>
+	<% end %>
+</div>
+

@@ -1,0 +1,26 @@
+<div class="reading wrap">
+	<table class="signup" style="width:700px; margin: 2em auto;">
+		<tr>
+		<th colspan="4">
+			<h1 style="margin: 0;">Ready to post your project? </h1>
+			<p style="font-size: 23px; font-weight: normal; margin: 1em 0 2em;">Just choose your preferred option below and you'll be ready to find your partner in mintues. </p>
+		</th>
+		</tr>
+		<tr>
+			<% @packages.each_with_index do |package, index| %>
+				<td style="padding: 0 2em 0 2em; <%= "border-right: 1px solid #eee;" unless index == @packages.count - 1 %>">
+					<h2 class="uppercase"><%= package.title %></h2>
+					<%= package.description.html_safe %>
+					<%= form_for(@project, url: select_payment_project_path(@project), method: :put) do |f| %>
+						<%= f.hidden_field :listing_package_id, value: package.id %>
+						<% if package.price > 0 %>
+							<%= f.submit "Buy Posting", class: "button", style: "margin: 1em 0;" %>
+						<% else %>
+							<%= f.submit "Post", class: "button", style: "margin: 1em 0;" %>
+						<% end %>
+					<% end %>
+				</td>
+			<% end %>
+		</tr>
+	</table>
+</div>

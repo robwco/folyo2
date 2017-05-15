@@ -689,7 +689,7 @@ h2.reply-box-header {
 	overflow-x: auto; 
 	vertical-align:middle; 
 	text-align:center; 
-	padding: 4em 1em 0; 
+	padding: 1.5em 1em 0; 
 	background-color: #FFF;
 	}
 .hero-signup { 
@@ -704,12 +704,12 @@ h2.reply-box-header {
 	grid-column: 1 / 3;
 	grid-row: 3;
 	max-width:900px;
-	margin: .5em auto 0;
+	margin: 0 auto 0;
 	}
 
 @media only screen and (min-width: 1300px) {
 	.folyo-hero {
-		grid-template-columns: 500px 500px; 
+		grid-template-columns: 600px 600px; 
 		grid-gap: 0;
 		}	
 }
@@ -732,10 +732,11 @@ h2.reply-box-header {
 
 .hero-logo h1.logo {
 	margin: 0 auto;
-	font-size:30px;
+	font-size: 30px;
 	text-align: center;
 	text-transform: uppercase;
 }
+
 .hero-logo h1 {
 	line-height: 1.1;
 }
@@ -747,17 +748,50 @@ h2.reply-box-header {
 
 
 .community-pic {
-	max-width:70px; border-radius:70px; margin: 1px;
+	max-width:50px; border-radius:50px; margin: 1px;
 }
 
+@media only screen and (max-width: 1100px) {
+	.community-pic {
+		max-width:40px; border-radius:40px; margin: 1px;
+	}	
+}
 @media only screen and (max-width: 800px) {
 	.community-pic {
-		max-width:50px; border-radius:50px; margin: 1px;
+		max-width:30px; border-radius:30px; margin: 1px;
 		
 	}
 }
 
-
+.how-it-works {
+	display: grid; 
+	grid-template-columns: 33% 33% 33%; 
+	grid-gap: 5px; 
+//	background-color: #d3e8c0; 
+	margin: 1em 0;
+	padding: 0;
+	border: 5px solid #FFF;
+	justify-content: center;
+	box-sizing:border-box;
+	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
+}
+.how-it-works .title {
+	grid-row:1; 
+	grid-column: 1 / 4; 
+	text-align:center;
+	margin: 1em 0 0;
+}
+.how-it-works .title h3 {
+	margin: 0;
+}
+.how-it-works .step {
+	grid-row: 2; 
+//	background-color: #e8c9a2; 
+	padding: 2em 1em 2em;
+	justify-content: center; 
+	text-align:center;
+}
 
 
 

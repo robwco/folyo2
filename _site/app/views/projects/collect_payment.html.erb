@@ -1,0 +1,15 @@
+<div class="reading wrap">
+	<%= form_for(current_user, url: charge_payment_project_path, html: { method: :put }) do |f| %>
+		
+		<div style="width: 20em; margin: auto;">
+			<h2 class="uppercase">Selected Package: <%= @project.listing_package.title %></h2>
+			<%= @project.listing_package.description.html_safe %>
+		</div>
+
+		<%= render 'registrations/creditcard' %>
+
+		<center>
+			<%= f.submit "Update credit card", id: 'form-submit', class: "button" %>
+		</center>
+	<% end %>
+</div>

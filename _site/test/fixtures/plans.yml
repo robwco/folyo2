@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stripe_id: MyString
+  name: MyString
+  description: 
+  interval: MyString
+  published: false
+
+two:
+  stripe_id: MyString
+  name: MyString
+  description: 
+  interval: MyString
+  published: false

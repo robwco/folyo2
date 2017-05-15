@@ -1,0 +1,20 @@
+<div class="wrap comfortable">
+	<table class="signup" style="width:700px; margin: 2em auto;">
+		<tr>
+		<th colspan="4">
+			<h1 style="margin: 0;">Ready to win Clients? Sign in or sign up </h1>
+			<p style="font-size: 23px; font-weight: normal; margin: 1em 0 2em;">Our job board is best for independent workers who work on projects like agencies, freelancers, designers, developers, marketers, assistants and writers.</p>
+		</th>
+		</tr>
+		<tr>
+			<% Plan.monthly.each do |plan| %>
+				<td style="padding: 0 2em 0 2em; border-right: 1px solid #eee;">
+					<h2 class="uppercase"><%= plan_header plan %></h2>
+					<%= plan.offer_description.html_safe %>
+					<%= link_to "Sign up", new_subscription_path(plan: plan.id), class: "button" %>
+				</td>
+			<% end %>
+		</tr>
+	</table>
+	<p><%= link_to "Already have an account? Log in here.", new_user_session_path %></p>
+</div>

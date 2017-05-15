@@ -1,0 +1,41 @@
+<script>
+$(function() {
+  $('#pictureInput').on('change', function(event) {
+    var files = event.target.files;
+    var image = files[0]
+    // here's the file size
+    console.log(image.size);
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      $('#target').attr('src', file.target.result);
+    }
+    reader.readAsDataURL(image);
+    console.log(files);
+  });
+});
+</script>
+
+<div style="width: 700px; margin: 2em auto;  border: 3px solid #8b6eb9; border-radius: 16px;">
+	<h2 style="text-align:center; margin: 1em 0 0; margin: 0; padding: .5em 1em .75em; border-bottom: 3px solid #8b6eb9; border-top-left-radius: 16px; border-top-right-radius: 16px;  background-color: #fffddf;">
+		Create your profile to finish sending your message!</h2>
+		
+	<%= form_for @user, url: subscriptions_path, method: :post, id: 'new_user', class: 'form-focus' do |f| %>	
+		
+		
+		<div style="text-align:center;">
+	    <%= image_tag(f.object.photo.url(:medium), id: 'target', :style => "width:90px; border-radius: 90px; margin: 2em 0 .5em;") if f.object.photo(:thumb) %>
+
+			<h2 class="form-header" style="margin-top: .25em;">Upload a profile picture</h2>
+	    <%= f.file_field :photo, :id => "pictureInput", :style => "width: 100px; margin: 0 auto 0;"	%>
+	    <p class="required" style="width:350px; font-size: 14px; margin: 0 auto;">
+	      Your picture will appear next to your reply. Square images work best. 200 pixels wide is optimal.
+	    </p>
+		</div>
+
+		<section style="margin: 1em auto 2em; width: 300px;">
+			<%= render "subscriptions/form" %>
+		</section>
+	</div>
+	
+	<% end %>
+	

@@ -1,0 +1,44 @@
+<div class="wrap w860 nav-border">
+	<%= render "layouts/top_menu" %>
+</div>
+	
+
+<div class="wrap w600" style="padding-top: 2em;">	
+	<% if @user.photo.present? %>
+		<%= image_tag(@user.photo.url(:thumb), :class => "profile-photo") %> 
+	<% else %> 
+		<%= image_tag('default-avatar.png', :class => "profile-photo") %>
+	<% end %>
+
+	<h1 style="text-align:center;"><%= @user.name %>
+		<% if resource.freelancer? && @user.subscription.allow_portfolio_replies? %>
+		<span style="color: #fff; background-color: #86d15a; border-radius: 5px; padding: 0 .25em; font-size: 14px; vertical-align: 7px; display: inline; margin-right: .25em;">PRO</span>
+		<% end %>
+		
+		<% if resource.client? %> 
+			at <% if @user.company_website.length <= 10  %><%= @user.company_name %><% else %><%= link_to @user.company_name, @user.company_website %><% end %>  
+		<% end %>
+	</h1>
+	
+	<% if resource.freelancer? %>
+		<% unless @user.categories.empty? %>
+			<p class="skills profile">Following:
+	      <% @user.categories.each do |category| %>
+	      	<span class="badge"><%= category.name %></span> 
+	    	<% end %>
+			</p>
+		<% end %>
+	<% end %>
+	
+	
+	<p><%= @user.biography if resource.freelancer? %></p>	
+	
+
+	
+
+	<% if user_signed_in? && current_user == @user %>
+			<p class="decision">
+			<%= link_to("Edit your profile", edit_registration_path(current_user), :class => "button") if user_signed_in? %>
+			</p>
+	<% end %>
+</div>

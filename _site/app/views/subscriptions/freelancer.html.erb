@@ -1,0 +1,17 @@
+<%= render "layouts/onboarding_top_menu" %>
+
+<div class="wrap w860" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 0 2em;">
+	<h1 style="margin: 1em 0; text-align:center;">Great! Now tell us a little more about yourself...</h1>	
+
+	<%= form_for @user, url: update_freelancer_details_path, method: :put, id: 'new_user', class: 'form-focus' do |f| %>
+    <%= render "registrations/freelancer_details_onboard", f: f %>
+	
+		<div style="text-align:center; display:table; width: 100%; margin: 2em 0;">
+			<%= f.submit 'Save and continue', :class => "button" %>
+			
+			<p>You'll still be able to change your answers.</p>
+		</div>
+
+		</div>
+	<% end %>
+</div>

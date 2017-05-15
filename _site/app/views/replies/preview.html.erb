@@ -1,0 +1,14 @@
+<div style="width: 800px; margin: 3em auto;">	
+	<% if current_user.can_reply_to_project?(@reply.project)%>
+		<% if current_user.can_reply_with_portfolio?(@reply.project) %>
+			<%= render "replies/portfolio_upload" %>
+		<% else %>
+			<%= render "replies/portfolio_upsell" %>
+		<% end %>
+	<% else %>
+		<%= render "replies/reply_upsell" %>
+	<% end %>	
+</div>
+
+
+

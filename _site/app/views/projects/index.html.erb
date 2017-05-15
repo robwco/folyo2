@@ -1,0 +1,18 @@
+<div class="reading wrap">
+  <div>
+    <%= image_tag "workshop-logo-placeholder.png", style: "max-width: 100%; margin: 2em 0 0;" %>
+  </div>
+</div>
+
+<div class="index-leads wrap">
+    <p class="recent uppercase">
+
+    <%= link_to "← Back home", home_projects_path %>
+
+    <% Project.published.order(created_at: :desc).limit(15).each do |project| %>
+      <%= render "projects/quick_view", project: project %>
+    <% end %>
+
+    <p class="job" style="padding-top: .75em;"><strong><%= link_to "See more projects", projects_path %></strong></p>
+</div>
+

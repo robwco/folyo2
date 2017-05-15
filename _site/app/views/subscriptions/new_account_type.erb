@@ -1,0 +1,51 @@
+<%= render "layouts/onboarding_top_menu" %>
+
+<div style="width: 700px; margin: 0 auto;">
+	<div style="margin: 0em auto 2em; width: 600px; box-sizing: border-box;">
+		<h1 style="margin: 1em 0 .5em; text-align: center;">Welcome to Folyo, <%= first_name current_user.name %>!</h1>
+		<p style="margin: 0;">We're thrilled to have you! First off, we want you to answer a few questions about why you're here today. Let's start with the easiest:</p>
+	</div>
+	
+		<div style="text-align:center;">
+			<div class="account-type-option">
+				<h2>Want work?</h2>
+				<%= image_tag 'want-work.png', :style => "width:250px;" %>
+				<%= link_to "I'm a freelancer", update_account_type_path(type: :freelancer), method: :put, :class => "button"  %>
+			</div>
+			
+			<div style="height: 200px; display: table; width: auto; padding: 3em 0 0;margin: 0 30px; display: inline-block; vertical-align: middle; text-align: left;">or</div>
+		
+			<div class="account-type-option">
+				<h2>Got a project?</h2>
+				<%= image_tag 'got-projects.png', :style => "width:250px;" %>
+				<%= link_to "I'm a client", update_account_type_path(type: :client), method: :put, :class => "button"  %>
+			</div>
+		</div>
+	
+			<p style="Text-align:center; margin: 1em 0 2em; ">You can change this at any time.</p>
+		</section>
+</div>
+
+
+<style>
+.account-type-option {
+	width:300px;
+	display:inline-block;
+	box-sizing: border-box;
+	text-align: center;
+	padding: 1em 1em 1.5em;
+	border-radius: 10px;
+	margin:  0;
+}
+
+.account-type-option h2 {
+	margin: 0 0 .5em;
+}
+
+.account-type-option img {
+	margin: 0 auto .5em;
+	width: 50px;
+	display: block;
+}
+
+</style>

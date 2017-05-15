@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= (yield(:title).empty? ? "Workshop - The best freelance job leads emailed to you daily." : yield(:title)) %></title>
+
+  <%= stylesheet_link_tag    'application-folyo', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+	<!-- Typekit -->
+	<script type="text/javascript" src="//use.typekit.net/adx2xiv.js"></script>
+	
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
+	<!-- Typography.com -->
+	<link rel="stylesheet" type="text/css" href="//cloud.typography.com/7135732/630226/css/fonts.css" />
+	
+	<%= render_google_analytics %>
+	
+	<%= favicon_link_tag 'favicon.ico' %>
+	
+	<!-- Font awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+	
+	
+	<% flash.each do |key, value| %>
+		<% if key == "undo"%>
+	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value.html_safe %></div>
+		<% else %>
+	        <div class="alert alert-<%= key %>" id="error_explanation"><%= value.html_safe unless value.blank? %></div>
+	    <% end %>
+	<% end %>
+
+	<%= render "layouts/top_menu" %>
+
+	<header class="logo">
+	  <span class="logo-helper"></span><span style="font-size: 16px; color: #FFF;">Workshop</span>
+	</header>
+
+	<%= yield %>
+
+
+<!-- Drip -->
+<script type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {}; 
+  _dcs.account = '7912110';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true; 
+    dc.src = '//tag.getdrip.com/7912110.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<p style="text-align: left; font-size: 12px; padding: 1em; margin: 1em auto;"><%= link_to "Back to your account", edit_user_registration_path %></p>
+
+<h2 style="text-align: center;">Update your credit card</h2>
+
+<%= form_for(current_user, url: subscription_creditcard_save_path, html: { method: :put }) do |f| %>
+  <% if current_user.errors.any? || current_user.subscription.errors.any? %>
+	<div id="error_explanation">
+
+	  <h2><%= pluralize(current_user.errors.count + current_user.subscription.errors.count, "error") %> occurred:</h2>
+
+	  <ul>
+		<% current_user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		<% current_user.subscription.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	  </ul>
+	</div>
+  <% end %>
+
+  <%= render 'registrations/creditcard', :number_required => false  %>
+
+  <div class="actions" style="width:23em !important; margin:auto;">
+    <%= f.submit "Update credit card", id: 'form-submit', :class => "buy" %>
+  </div>
+<% end %>
