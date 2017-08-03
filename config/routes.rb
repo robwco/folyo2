@@ -109,6 +109,8 @@ Rails.application.routes.draw do
   devise_scope :admin do 
       match '/sessions/admin', to: 'devise/sessions#create', via: :post
   end
+  
+  get "admins/download_users" => "admins#download_all", via: :get, defaults: { format: :csv }
 
   resources :subscriptions
 

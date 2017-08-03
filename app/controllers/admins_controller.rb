@@ -8,5 +8,14 @@ class AdminsController < ApplicationController
     @announcement = Announcement.new
     @announcements = Announcement.all
 	end
+	
+  def download_all    
+    respond_to do |format|
+      format.csv do 
+        payload = CsvExporter.export_users
+        send_data payload, type: "application/csv", filename: "all_users.csv"
+      end
+    end
+  end
 
 end
