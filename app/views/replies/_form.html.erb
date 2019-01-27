@@ -8,13 +8,13 @@
 <%= form_for([@project, @reply]) do |f| %>
 
 	<div class="form-question-wrap">
-		<p class="form-header"><strong>Who are you, and what do you do?</strong></p>
+		<p class="form-header">Who are you, and what do you do?</p>
 
 		<small class="form-helper-push-right w170">
       <% if current_user.present? %>
-        This is your normal bio, but you can edit it just for this reply if you want.
+        Here's your saved bio – but you can edit it just for this application if you want.
       <% else %>
-        Introduce yourself and any relevant work experience that relates to this project.
+        Introduce yourself and any relevant work experience that relates to this application.
       <% end %>
 		</small>
 
@@ -22,10 +22,10 @@
 	</div>
 
 	<div class="form-question-wrap">	
-		<p class="form-header"><strong>Why would you be a good fit for this project?</strong></p>
+		<p class="form-header">Why are you the right fit for this?</p>
 		
 		<small class="form-helper-push-right w170">
-			This is where you go into detail about what you can do for this project.
+			Share anything that shows why you are perfect for this opportunity.
 		</small>
 
 		<%= f.text_area :message, data: { max_characters: 200 } %>
@@ -36,10 +36,10 @@
 	<% end %>
 
 	<div class="form-question-wrap">
-		<p class="form-header"><strong>What next steps should the client take?</strong></p>
+		<p class="form-header">What's the next step?</p>
 
 		<small class="form-helper-push-right w170">
-			What do you need from a client in order to kick off? What's next?
+			What information or answers do you need to move forward?
 		</small>
 		
 		<%= f.text_area :next_steps, data: { max_characters: 200 } %>
@@ -48,7 +48,7 @@
 	<div style="text-align:center; width:100%; padding: 0 0 1em;">
 		<div style="margin:2em 0 .5em; display: table; line-height: 1; text-align:center; width: 100%;">
 			<% if user_signed_in? %>
-				<%= f.submit 'Send your message', class: "button" %>
+				<%= f.submit 'Finish your application', class: "button" %>
 			<% else %>
 				<%= f.submit 'Next: Create Free Account', class: "button" %><br>
         <small>You'll still be able to change your message.</small>

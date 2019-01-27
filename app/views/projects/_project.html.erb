@@ -1,20 +1,4 @@
-<h2 style="text-align:center; margin: 2em 0;">
-	<%= image_tag @project.user.company_logo.url(:medium), :style => "width:60px; border-radius:0px; vertical-align: -10px; margin-right: 0px;" if @project.user.company_logo.present? %>
-</h2>
-
 <h1 class="post-title">
   <%= '<span class="pro-badge" style="margin-right:.75em;">UNDER REVIEW</span>'.html_safe if @project.under_review? %>
-  <%= @project.title %>
+  Applying to: <%= @project.title %>
 </h1>
-
-<p class="by-line">
-	<%= image_tag @project.user.photo.url(:medium), :class => "photo" %> <%= @project.user.name %>, <% if @project.user.company_website.length <= 10  %><%= @project.user.company_name %><% else %><a href="<%= @project.user.company_website %>"><%= @project.user.company_name %></a><% end %>
-</p>
-
-<div class="wrap w600">
-  <%= @project.long_description_html.html_safe %>
-
-	<p><%= @project.goals %></p>
-	
-	<p><strong>We think this project should cost around $<%= @project.budget %><%= link_to '<i class="fa fa-question-circle" aria-hidden="true" style="color:#8d6eb9; margin: 0; vertical-align: 8px; font-size: 14px;"></i>'.html_safe, tour_path(:anchor => "budgets"), :title => "This amount is a rough estimate, and should be discussed with the client." %>.</strong></p>
-</div>

@@ -30,7 +30,7 @@ class SubscriptionsController < ApplicationController
         session.delete(:new_user_project_id)
         if Project.exists?(project_id)
           project = Project.find(project_id)
-          redirect_to project, notice: "You can reply to the project now!" and return
+          redirect_to project, notice: "Awesome, now finish your application" and return
         else
           redirect_to home_projects_path and return
         end

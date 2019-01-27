@@ -1,7 +1,3 @@
-<div class="wrap w860 nav-border">
-	<%= render "layouts/top_menu" %>
-</div>
-
 <% if admin_signed_in? %>
   <div class="admin-action" style="margin: 0 auto; border-radius: 8px; padding: .5em; box-sizing: border-box; text-align:center;">
 	
@@ -31,9 +27,7 @@
 		      <p class="reply-header"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
 	
 				<% else %>
-					<p class="reply-header">Reply to this project
-	          <small><a href="http://emailsthatwin.com" style="float:right;"><span style="vertical-align: -5px;">How to write a client-winning message</span></a></small>
-	        </p>
+				
 		    <% end %>
 
         <div class="wrap w800 reply" style="margin-top: 0;">
@@ -54,10 +48,7 @@
           <% end %>
         </div>
       <% else %>
-
-			<p class="decision" style="text-align:center;">
-        <%= link_to 'Reply to this project free', new_subscription_path(project_id: @project.id), class: "button" %>
-			</p>
+        <%= link_to 'Apply', new_subscription_path(project_id: @project.id), class: "button" %>
       <% end %>
 
       <% if user_signed_in? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
