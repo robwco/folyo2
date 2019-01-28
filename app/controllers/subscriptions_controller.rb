@@ -65,6 +65,7 @@ class SubscriptionsController < ApplicationController
     if params[:project_id]
       @user.account_type = "freelancer"
       session[:new_user_project_id] = params[:project_id]
+      @project = Project.find(params[:project_id])
     end
 
     if params[:plan]
@@ -79,7 +80,6 @@ class SubscriptionsController < ApplicationController
     end
 
     @yearly = Plan.active.where(interval: 'year').first
-
     @user.subscription = Subscription.new
     @coupon = params[:coupon]
   end

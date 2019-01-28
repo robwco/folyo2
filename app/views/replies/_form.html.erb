@@ -7,10 +7,12 @@
 <div style="padding: 0;">
 <%= form_for([@project, @reply]) do |f| %>
 
-	<div class="form-question-wrap">
-		<p class="form-header">Who are you, and what do you do?</p>
+<%= render "replies/portfolio_upload" %>
 
-		<small class="form-helper-push-right w170">
+	<div class="form-question-wrap">
+		<p class="text-md text-grey-dark">Who are you, and what do you do?</p>
+
+		<small class="form-helper-push-right w170 text-grey-dark text-sm mb-4">
       <% if current_user.present? %>
         Here's your saved bio – but you can edit it just for this application if you want.
       <% else %>
@@ -22,9 +24,9 @@
 	</div>
 
 	<div class="form-question-wrap">	
-		<p class="form-header">Why are you the right fit for this?</p>
+		<p class="form-header text-grey-dark">Why are you the right fit for this?</p>
 		
-		<small class="form-helper-push-right w170">
+		<small class="form-helper-push-right w170 text-grey-dark text-sm mb-4 ">
 			Share anything that shows why you are perfect for this opportunity.
 		</small>
 
@@ -36,9 +38,9 @@
 	<% end %>
 
 	<div class="form-question-wrap">
-		<p class="form-header">What's the next step?</p>
+		<p class="form-header text-grey-dark">What's the next step?</p>
 
-		<small class="form-helper-push-right w170">
+		<small class="form-helper-push-right w170 text-grey-dark text-sm mb-4">
 			What information or answers do you need to move forward?
 		</small>
 		

@@ -19,23 +19,28 @@
     <%= render 'projects/project' %>
   </div>
 
-  <div class="wrap w800" style="margin: 2em auto;">
+  <div class="max-w-lg mx-auto my-0">
     <% if @project.allow_replies_from?(current_user) %>
       <% if user_signed_in? %>
-
 		    <% if @project.reply_from?(current_user) %>
-		      <p class="reply-header"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
-	
+		      <p class="reply-header text-grey-dark text-sm mb-4"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
 				<% else %>
-				
+					<p class="text-grey-dark text-sm mb-4">Almost done! Finish your application to submit.</p>
+		
+					<div class="w-full bg-grey-lighter mb-6 rounded">
+					  <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded" style="width: 85%">85%</div>
+					</div>
 		    <% end %>
+
 
         <div class="wrap w800 reply" style="margin-top: 0;">
           <div class="reply-box">
             <% if @project.reply_from?(current_user) %>
               <%= render "replies/reply" %>	
             <% else %>
-              <h2 class="reply-box-header"><%= image_tag(@current_user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> <%= current_user.name %>
+              <h2 class="reply-box-header">
+								<%= image_tag(@current_user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> 
+								<%= current_user.name %>
                 <% if user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project) %>
                   <small><span class="reply-box-message"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span></small>
                 <% end %>

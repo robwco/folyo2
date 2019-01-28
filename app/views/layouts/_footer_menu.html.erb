@@ -1,4 +1,6 @@
 <p class="footer-menu" style="margin: 5em 0; text-align: center; font-size:70%;">
+	
+	<!--
 	<% if user_signed_in? %>	
 		<%= link_to "New project", new_project_path %>
 		<%= link_to 'Profile', profile_path(current_user) %>
@@ -7,5 +9,7 @@
 		<%= link_to 'Sign up', new_subscription_path(plan:2) %>
 		<%= link_to "Log in", new_user_session_path %>
 	<% end %>
+	
+-->
 	<span style="color: #7c8d99; opacity: .65;">© <%= Time.now.year %> Robert Williams</span>
 </p>

@@ -48,10 +48,8 @@
 		<% end %>
 	<% else %>
 		
-		<div class="wrap w700" style="text-align:center;">					
-			<h1 style="line-height: 1.2; margin: 1.5em 0 .25em;">Hi</h1> 
-			
-			<p style="margin: 0 0 2em;">Folyo uses this app to help companies hire!</p>
+		<div class="wrap w700" style="text-align:center;">						
+			<p class="my-2">Folyo uses custom hiring software to help companies find the right person to hire. Want access? <a href="MAILTO:robert@folyo.me">Email me to learn more</a>.</p>
 		</div>
 		
 		<% unless @offerings.this_month.blank? %>
@@ -101,9 +99,10 @@
 			</div>
 		<% end %>-->
 		
-		<div style="text-align:center; margin: 0;">
+<!--		<div style="text-align:center; margin: 0;">
 			<%= link_to "Submit a job", new_project_path, :class => "big button" %>
 		</div>
+		-->
 
 	<% end %>
 

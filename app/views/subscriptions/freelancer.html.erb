@@ -1,12 +1,13 @@
-<div class="wrap w860" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 0 2em;">
-	<%= form_for @user, url: update_freelancer_details_path, method: :put, id: 'new_user', class: 'form-focus' do |f| %>
-    <%= render "registrations/freelancer_details_onboard", f: f %>
-	
-		<div style="text-align:center; display:table; width: 100%; margin: 0;">
-			<%= f.submit 'Save and continue', :class => "button" %>
-			<p style="margin: 0; line-height: 1;"><small style="margin:0;">You can change this later.</small></p>
-		</div>
+<div class="max-w-md mx-auto">
+	<div class="w-full bg-grey-lighter mt-6 rounded">
+    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded" style="width: 66%">66%</div>
+  </div>
 
-		</div>
+	<%= form_for @user, url: update_freelancer_details_path, method: :put, id: 'new_user', class: 'form-focus w-full' do |f| %>
+		<%= render "registrations/freelancer_details_onboard", f: f %>
+		
+		<%= f.submit 'Save and continue', :class => "button mb-0", :style => "margin: 0;" %>
+		
+		<p class="text-grey-dark text-xs italic mt-4">You can change this later.</p>
 	<% end %>
 </div>

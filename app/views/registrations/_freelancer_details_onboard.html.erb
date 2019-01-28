@@ -1,5 +1,6 @@
-<div style="margin: 2em auto 0; width:600px; /*background: yellow;*/">
-	<p style="line-height:1;">Tell me about yourself<br>
-	<small>Include a quick bio on what you do and something interesting about you.</small></p>
-	<%= f.text_area :biography, placeholder: "I'm...", data: { max_characters: 200 }, :style => "max-width: 100%; width:100%; display: block;"  %>
-</div>
+<p class="text-grey-darker mt-6">Introduce yourself</p>
+
+<p class="text-grey-dark text-sm mb-4">Include a quick bio on what you do and something interesting about you.</p>
+
+<%= f.text_area :biography, placeholder: "I'm...", data: { max_characters: 200 }, :class => "w-full appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest"  %>
+

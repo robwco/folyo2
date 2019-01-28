@@ -410,7 +410,6 @@ textarea {
 input[type=text], input[type=email], input[type=password] {
 	font-size: 19px;
 	padding: .4em .5em .45em;
-	max-width: 350px;
 	width: 100%;
 	margin: 0 0 .5em;
 	box-sizing: border-box;
@@ -446,12 +445,12 @@ input::placeholder {
 
 input[type=submit], a.button {
 	font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
-	font-size: 25px;
+	font-size: 22px;
   color:#555 !important;
   font-weight: 500;
-  background: #bee1f9;
-  padding: .4em 1.1em .55em;
-  border-radius: .5em;
+  background-color: #bee1f9;
+  padding: .5em 1.5em .59em;
+  border-radius: .35em;
   text-decoration: none;
   margin: 1em 0;
 	cursor: pointer;
@@ -460,11 +459,11 @@ input[type=submit], a.button {
 	-webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  transition: background-color 0.25s ease;
 }
 
 input[type=submit]:hover, a.button:hover {
-  background: linear-gradient(top, #d4ecff, #bee1f9);
-  background: -webkit-linear-gradient(top, #d4ecff, #bee1f9); /* For Safari 5.1 to 6.0 */
+	background-color: #d7ecff;
 }
 
 input[type=submit]:active, a.button:active {
@@ -889,6 +888,10 @@ i.fa {
 }
 i.fa.unread {
 	color: #9d82c8 !important;
+}
+
+i.fa.white {
+	color: white;
 }
 
 .message-wrap.unread {

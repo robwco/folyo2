@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_action -> { flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] && flash[:notice] }
   before_action :set_unread_message_count
 
-
   def authenticate_any!
       if admin_signed_in?
           true

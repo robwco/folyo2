@@ -1,18 +1,37 @@
-<section class="top-menu wrap w860">
-	<% if admin_signed_in? %>
-		<%= link_to "Admin Home", admin_root_path %>
-		<%= link_to "Log out", destroy_admin_session_path, method: :delete%>
-	<% elsif user_signed_in? %>
-		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>
-			<% if current_user.present? && current_user.client? %>
-				<%= link_to "+ Project", new_project_path, :class => "button small" %>
+<nav class="fixed select-none bg-white lg:flex lg:items-stretch w-full pin-t">
+  <div class="flex flex-no-shrink items-stretch">	
+		<% if admin_signed_in? %>
+			<%= link_to "Admin Home", admin_root_path, :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+			
+		<% elsif user_signed_in? %>
+			<%= link_to "<i class='fa fa-home' aria-hidden='true'></i>".html_safe, url_for(root_path), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+			
+		<% else %>
+			<%= link_to "<i class='fa fa-home' aria-hidden='true'></i>".html_safe, url_for(root_path), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+		<% end %>
+  </div>
+
+  <div class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
+    <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
+			<% if admin_signed_in? %>
+				<%= link_to "Log out", destroy_admin_session_path, method: :delete%>
+				
+			<% elsif user_signed_in? %>
+					<% if current_user.present? && current_user.client? %>
+						<%= link_to "+ Project", new_project_path, :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+					<% end %>
+					
+				<%= link_to "<i class='fa fa-envelope #{ "unread" if @unread_message_count > 0}' aria-hidden='true'></i>Inbox (#{@unread_message_count})".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>		
+				<%= link_to 'Profile', profile_path(current_user), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+				<%= link_to "Log out", destroy_user_session_path, method: :delete, :class=> "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter"%>
+
+			<% else %>
+				<%= link_to 'Sign up', new_subscription_path, :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+				<%= link_to "Log in", new_user_session_path, :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
 			<% end %>
-		<%= link_to "<i class='fa fa-envelope #{ "unread" if @unread_message_count > 0}' aria-hidden='true'></i>Inbox (#{@unread_message_count})".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil) %>		
-		<%= link_to 'Profile', profile_path(current_user) %>
-		<%= link_to "Log out", destroy_user_session_path, method: :delete%>
-	<% else %>
-		<%= link_to image_tag('folyo.png', :class => "logo left"), url_for(root_path) %>	
-		<%= link_to 'Sign up', new_subscription_path %>
-		<%= link_to "Log in", new_user_session_path %>
-	<% end %>
-</section>
+    </div>
+  </div>
+</nav>
+
+
+

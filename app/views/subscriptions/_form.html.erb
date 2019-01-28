@@ -90,42 +90,75 @@ $(function() {
 	}
 </style>
 
-<%= form_for @user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus' } do |f| %>	
-
-	<p class="sign-up-label">Name</p>
-	<%= f.text_field :name, placeholder: 'Your name'	%>
-  <%= form_error_for(@user, :name) %>
-
-
-	<p class="sign-up-label">Email</p>
-	<%= f.email_field :email, placeholder: "you@example.com" %>
-  <%= form_error_for(@user, :email) %>
-
-	<p class="sign-up-label">Password</p>
-	<% if @validatable %>
-		<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
-	<% end %>
-	<%= f.password_field :password, autocomplete: "off", placeholder: 'Create a password' %>
-	<%= form_error_for(@user, :password) %>
+<%= form_for @user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus w-full max-w-md' } do |f| %>
 	
+	 <div class="flex flex-wrap -mx-3 mb-4">
+		  <div class="w-full px-3 pb-4">
+			  <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-photo">
+	        Photo
+	    	</label>
 
-	<div style="margin: 0;">
-		<p class="sign-up-label">Photo</p>
-	  <%= image_tag(f.object.photo.url(:medium), :class => "profile-photo",  :style => "width: 60px; height: 60px; border-radius: 60px; display: none; margin: .25em 0;", id: "photo-target") %>
-		<%= f.file_field :photo, :class => "photo", id: "photo", data: { preview_image_target: "photo-target" } %>
-		<label for="photo" class="photo-label">Upload a photo</label>
-		<%= form_error_for(@user, :photo) %>
+			  
+				
+				<%= f.file_field :photo, :class => "photo", id: "photo", data: { preview_image_target: "photo-target" } %>
+				
+				<label for="photo" class="border-4 border-grey-light rounded-full w-16 align-middle block"><%= image_tag(f.object.photo.url(:medium), :class => "rounded-full w-16 align-middle", id: "photo-target") %></label>
+				
+				<%= form_error_for(@user, :photo) %>
+	  	</div>
+		
+		
+		
+	    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+	      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-name">
+	        Full Name
+	      </label>
+				<%= f.text_field :name, placeholder: 'Your name', :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-name"	%>
+				<%= form_error_for(@user, :name) %>
+	    </div>
+	
+	    <div class="w-full md:w-1/2 px-3">
+	      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-email">
+	        Email
+	      </label>
+				<%= f.email_field :email, placeholder: "you@example.com", :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-email" %>
+				<%= form_error_for(@user, :email) %>
+	    </div>
+	  </div>
+	
+	  <div class="flex flex-wrap -mx-3 mb-2">
+
+	    <div class="w-full px-3">
+	      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
+	        Password
+	      </label>
+	
+				<% if @validatable %>
+					<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
+				<% end %>
+				
+				<%= f.password_field :password, autocomplete: "off", placeholder: 'Create a password', :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-password" %>
+				
+				<%= form_error_for(@user, :password) %>
+	    </div>
+	  </div>
+	
+<div class="flex flex-wrap -mx-3 mb-2 my-0">
+	<div class="w-full px-3">
+		<a href="#">
+			<%= f.submit "Start application", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, class: "mb-0" %>
+		</a>
+
+  	<p class="text-grey-dark text-xs italic">You only have to do this once. <a href="/users/sign_in">Log in to use past info</a></p>
+
+		<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
+		<%= f.hidden_field :account_type %>
+		<%= f.hidden_field :biography %>
+		
 	</div>
+</div>		
 
-	<a href="#">
-		<%= f.submit "Start application", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' } %>
-	</a>
-	
-	<p><small>Already have an account? <a href="/users/sign_in">Log in</a></small></p>
-
-	<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
-	<%= f.hidden_field :account_type %>
-	<%= f.hidden_field :biography %>
+	</div>
 <% end %>
 	
 
