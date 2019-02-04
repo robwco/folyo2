@@ -1,14 +1,41 @@
-<div style="width: 800px; margin: 3em auto;">	
-	<% if current_user.can_reply_to_project?(@reply.project)%>
-		<% if current_user.can_reply_with_portfolio?(@reply.project) %>
-			<%= render "replies/portfolio_upload" %>
-		<% else %>
-			<%= render "replies/portfolio_upsell" %>
-		<% end %>
-	<% else %>
-		<%= render "replies/reply_upsell" %>
-	<% end %>	
+<div class="max-w-2xl mx-auto py-6">
+
+<div class="flex">
+	<div class="flex-1">
+		<h2 class="font-display my-4 text-grey-darkest">Preview your application:</h2>
+	</div>
+	<div class="w-full text-right flex-1">
+<%= link_to "Submit my application", post_reply_path(@reply), method: :put, :class => "button mb-8 font-display-label" %>
 </div>
 
+</div>
 
+	<div class="rounded-lg shadow-lg mb-2 pb-6">
+		<div class="bg-grey -mb-4 p-8 rounded-t-lg" style="height:250px; background: #5d666d url(/assets/upload-header-icons.png) repeat-x center bottom;">
+		</div>
+	
+		<div class="flex">
+			<div class="w-24 ml-8">
+				<%= image_tag(@current_user.photo.url(:medium), :class => "w-24 rounded-full border-4 border-white ml-8") %> 
+			</div>
+	
+			<div class="w-auto mt-6 flex-1 ml-8">
+				<p class="font-display-label text-xl text-grey-darkest mt-2 ml-4 mb-0">
+					<%= current_user.name %>
+				</p>
+				<p class="text-base -mt-1 ml-4 text-grey-dark">
+					<%= current_user.email %>
+				</p>
+			</div>
+		</div>
+	
+		<div class="mx-8 mt-4 mb-8 block">
+			<p><%= sanitize @reply.biography %></p>
+			<p class="my-4"><%= sanitize @reply.message %></p>
+			<p class="my-4"><%= sanitize @reply.next_steps %></p>
+		</div>
+		
+	</div> 
+	
 
+</div>

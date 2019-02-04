@@ -1,62 +1,80 @@
-<script>
-  $(document).ready(function(){
-    $('textarea').autosize();
-  });
-</script>
+<div class="w-full">
+	<%= form_for([@project, @reply]) do |f| %>
 
-<div style="padding: 0;">
-<%= form_for([@project, @reply]) do |f| %>
+	<%= render "replies/portfolio_upload" %>
 
-<%= render "replies/portfolio_upload" %>
+	<div class="flex">
+		<div class="w-24 ml-8">
+			<%= image_tag(@current_user.photo.url(:medium), :class => "w-24 rounded-full border-4 border-white ml-8") %> 
+		</div>
+	
+		<div class="w-auto mt-6 flex-1 ml-8">
+			<p class="application-name">
+				<%= current_user.name %>
+			</p>
+			<p class="text-base -mt-1 ml-4 text-grey-dark">
+				<%= current_user.email %>
+			</p>
+		</div>
+	</div>
 
-	<div class="form-question-wrap">
-		<p class="text-md text-grey-dark">Who are you, and what do you do?</p>
-
-		<small class="form-helper-push-right w170 text-grey-dark text-sm mb-4">
+	<div class="border-4 border-purple rounded-lg bg-yellow-lighter mx-6 my-8">
+		<p class="text-2xl text-grey-darkest font-display-label mx-6 mt-6 leading-tight">Introduction - who are you and what do you do?</p>
+	
+		<p class="text-xl text-grey-dark mb-6 mx-6 mt-1 leading-tight">
       <% if current_user.present? %>
-        Here's your saved bio – but you can edit it just for this application if you want.
+        Here's your saved bio – you can tailor it specifically for this application if you want.
       <% else %>
         Introduce yourself and any relevant work experience that relates to this application.
       <% end %>
-		</small>
-
-		<%= f.text_area :biography, data: { max_characters: 200 } %>
-	</div>
-
-	<div class="form-question-wrap">	
-		<p class="form-header text-grey-dark">Why are you the right fit for this?</p>
-		
-		<small class="form-helper-push-right w170 text-grey-dark text-sm mb-4 ">
-			Share anything that shows why you are perfect for this opportunity.
-		</small>
-
-		<%= f.text_area :message, data: { max_characters: 200 } %>
-	</div>
-
-	<% if (user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project)) || @reply.project.allow_portfolio_replies? %>
-	  <%= render "replies/portfolio_upload_form", f: f %>
-	<% end %>
-
-	<div class="form-question-wrap">
-		<p class="form-header text-grey-dark">What's the next step?</p>
-
-		<small class="form-helper-push-right w170 text-grey-dark text-sm mb-4">
-			What information or answers do you need to move forward?
-		</small>
-		
-		<%= f.text_area :next_steps, data: { max_characters: 200 } %>
-	</div>
-
-	<div style="text-align:center; width:100%; padding: 0 0 1em;">
-		<div style="margin:2em 0 .5em; display: table; line-height: 1; text-align:center; width: 100%;">
-			<% if user_signed_in? %>
-				<%= f.submit 'Finish your application', class: "button" %>
-			<% else %>
-				<%= f.submit 'Next: Create Free Account', class: "button" %><br>
-        <small>You'll still be able to change your message.</small>
-			<% end %>		
+		</p>
+	
+		<div class="w-full bg-white p-6 rounded-b-lg border-t-4 border-purple">
+			<trix-editor input="reply_biography" data-max-characters="200"></trix-editor>
+			<%= f.hidden_field :biography %>
 		</div>
 	</div>
 	
-	<% end %>
+	<div class="border-4 border-purple rounded-lg bg-yellow-lighter mx-6 my-8">
+		<p class="text-2xl text-grey-darkest font-display-label mx-6 mt-6 leading-tight">
+			Why are you the right fit for this?
+		</p>
+	
+		<p class="text-xl text-grey-dark mb-6 mx-6 mt-1 leading-tight">
+			Share anything that shows why you are perfect for this opportunity.
+		</p>
+	
+		<div class="w-full bg-white p-6 rounded-b-lg border-t-4 border-purple">
+			<trix-editor input="reply_message" data-max-characters="200"></trix-editor>
+			<%= f.hidden_field :message %>
+		</div>
+	</div>
+	
+	
+	<div class="border-4 border-purple rounded-lg bg-yellow-lighter mx-6 mt-8">
+		<p class="text-2xl text-grey-darkest font-display-label mx-6 mt-6 leading-tight">
+			What's the next step?
+		</p>
+	
+		<p class="text-xl text-grey-dark mb-6 mx-6 mt-1 leading-tight">
+			What information or answers do you need to move forward?
+		</p>
+	
+		<div class="w-full bg-white p-6 rounded-b-lg border-t-4 border-purple">
+			<trix-editor input="reply_next_steps" data-max-characters="200"></trix-editor>
+			<%= f.hidden_field :next_steps %>
+		</div>
+	</div>
+
+	<div class="text-center mb-8 mt-0 pt-4 pb-6">
+		<% if user_signed_in? %>
+			<%= f.submit 'Submit your application', class: "button font-display-label" %>
+		<% else %>
+			<%= f.submit 'Next: Create Free Account', class: "button" %>
+			<p>You'll still be able to change your message.</p>
+		<% end %>		
+	</div>
+
+	
+		<% end %>
 </div>

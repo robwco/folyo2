@@ -37,6 +37,7 @@ gem 'puma'
 gem 'autosize-rails'
 gem 'wicked'
 gem 'airbrake', '~> 5.4'
+gem 'trix'
 
 
 group :development do

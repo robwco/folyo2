@@ -1,4 +1,12 @@
-<p class="text-grey-darker mt-6">
+<h1 class="text-grey-darkest mt-6 font-display font-light text-5xl leading-tight mb-2">
 	<%= '<span class="pro-badge" style="margin-right:.75em;">UNDER REVIEW</span>'.html_safe if @project.under_review? %>
 	<%= @project.title %>
-</p>
+</h1>
+
+<div class="text-2xl text-grey-darker leading-normal border-b-2 pb-4">
+	<p class="my-4"><%= @project.long_description_html.html_safe %></p>
+
+	<p class="my-4"><%= @project.goals %></p>
+	
+	<p class="my-4">Budget: $<%= @project.budget %></p>
+</div>

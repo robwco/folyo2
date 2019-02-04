@@ -15,43 +15,29 @@
 	<%= render "replies/client_listing" %>	
 <% else %>	
 	
-  <div class="wrap w800">
+	<%= link_to "home", root_url %>
+	
+	<div class="max-w-2xl mx-auto pt-6">
     <%= render 'projects/project' %>
   </div>
 
-  <div class="max-w-lg mx-auto my-0">
+	<div class="max-w-2xl mx-auto pt-6">
     <% if @project.allow_replies_from?(current_user) %>
       <% if user_signed_in? %>
 		    <% if @project.reply_from?(current_user) %>
-		      <p class="reply-header text-grey-dark text-sm mb-4"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've replied to this project.</p>
+		      <p class="text-grey-dark"><i class="fa fa-check" aria-hidden="true" style="color:#88cf60; margin-right: .25em;"></i> You've applied to this job.</p>
 				<% else %>
-					<p class="text-grey-dark text-sm mb-4">Almost done! Finish your application to submit.</p>
-		
-					<div class="w-full bg-grey-lighter mb-6 rounded">
-					  <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded" style="width: 85%">85%</div>
-					</div>
+					<p class="text-grey-dark">Almost done! Finish your application...</p>
 		    <% end %>
-
-
-        <div class="wrap w800 reply" style="margin-top: 0;">
-          <div class="reply-box">
+		
+				<div class="max-w-2xl mx-auto pt-6">
+          <div class="rounded-lg shadow-lg mb-8">
             <% if @project.reply_from?(current_user) %>
               <%= render "replies/reply" %>	
             <% else %>
-              <h2 class="reply-box-header">
-								<%= image_tag(@current_user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;") %> 
-								<%= current_user.name %>
-                <% if user_signed_in? && current_user.can_reply_with_portfolio?(@reply.project) %>
-                  <small><span class="reply-box-message"><i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#86d15a;"></i> You're a PRO</span></small>
-                <% end %>
-              </h2>
-                
-              <div style="padding: .5em 1.25em;">
-                <%= render "replies/form" %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+              <%= render "replies/form" %>
+          		<% end %>
+        	</div>
       <% else %>
         <%= link_to 'Apply', new_subscription_path(project_id: @project.id), class: "button" %>
       <% end %>

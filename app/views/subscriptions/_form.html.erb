@@ -90,15 +90,13 @@ $(function() {
 	}
 </style>
 
-<%= form_for @user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus w-full max-w-md' } do |f| %>
-	
+<%= form_for @user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus w-full max-w-sm' } do |f| %>
+
 	 <div class="flex flex-wrap -mx-3 mb-4">
 		  <div class="w-full px-3 pb-4">
-			  <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-photo">
+			  <label class="block uppercase tracking-wide text-grey-darker text-sm  mb-2 font-display-label font-bold" for="grid-photo">
 	        Photo
 	    	</label>
-
-			  
 				
 				<%= f.file_field :photo, :class => "photo", id: "photo", data: { preview_image_target: "photo-target" } %>
 				
@@ -107,18 +105,16 @@ $(function() {
 				<%= form_error_for(@user, :photo) %>
 	  	</div>
 		
-		
-		
-	    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-	      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-name">
+	    <div class="w-full px-3 mb-6 md:mb-0">
+	      <label class="block uppercase tracking-wide text-grey-darker text-sm mb-2 font-display-label font-bold" for="grid-name">
 	        Full Name
 	      </label>
 				<%= f.text_field :name, placeholder: 'Your name', :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-name"	%>
 				<%= form_error_for(@user, :name) %>
 	    </div>
 	
-	    <div class="w-full md:w-1/2 px-3">
-	      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-email">
+	    <div class="w-full px-3">
+	      <label class="block uppercase tracking-wide text-grey-darker text-sm mb-2 font-display-label font-bold" for="grid-email">
 	        Email
 	      </label>
 				<%= f.email_field :email, placeholder: "you@example.com", :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-email" %>
@@ -129,7 +125,7 @@ $(function() {
 	  <div class="flex flex-wrap -mx-3 mb-2">
 
 	    <div class="w-full px-3">
-	      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
+	      <label class="block uppercase tracking-wide text-grey-darker text-sm mb-2 font-display-label font-bold" for="grid-password">
 	        Password
 	      </label>
 	
@@ -140,17 +136,27 @@ $(function() {
 				<%= f.password_field :password, autocomplete: "off", placeholder: 'Create a password', :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-password" %>
 				
 				<%= form_error_for(@user, :password) %>
+				
+				<p class="text-sm">We'll save your info so you can apply more quickly in the future.</p>
 	    </div>
 	  </div>
 	
 <div class="flex flex-wrap -mx-3 mb-2 my-0">
-	<div class="w-full px-3">
-		<a href="#">
-			<%= f.submit "Start application", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, class: "mb-0" %>
-		</a>
-
-  	<p class="text-grey-dark text-xs italic">You only have to do this once. <a href="/users/sign_in">Log in to use past info</a></p>
-
+	<div class="w-full px-3">		
+		<% if params[:project_id] %>
+			<a href="#">
+				<%= f.submit "Start application", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, :class => "mb-0 font-display-label font-bold text-2xl" %>
+			</a>	
+		
+			<p class="text-grey-darker text-base mb-6">or <a href="/users/sign_in" class="text-grey-dark">sign in to use a past application</a></p>
+		<% else %>
+			<a href="#">
+				<%= f.submit "Create an account", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, :class => "mb-0 font-display-label font-bold text-2xl" %>
+			</a>	
+		
+			<p class="text-grey-darker text-base mb-6">or <a href="/users/sign_in" class="text-grey-dark">sign in if you already have an account</a></p>
+		<% end %>
+		
 		<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
 		<%= f.hidden_field :account_type %>
 		<%= f.hidden_field :biography %>

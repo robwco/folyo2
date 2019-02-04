@@ -7,10 +7,6 @@
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-	<!-- Typekit -->
-	<script src="https://use.typekit.net/zfb3foa.js"></script>
-	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 	
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -18,11 +14,15 @@
 	<%= render_google_analytics %>
 	
 	<%= favicon_link_tag 'favicon.ico' %>
+	
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+	<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hk-grotesk" type="text/css"/>
 
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <link href="/creditcardjs-v0.10.12.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-sans">
 	
 	
 	<% flash.each do |key, value| %>

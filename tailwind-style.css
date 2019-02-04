@@ -36,6 +36,12 @@
  * @import "components/forms";
  */
 
+
+.application-name {
+	@apply font-display-label text-xl text-grey-darkest mt-2 ml-4 mb-0;
+}
+
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.

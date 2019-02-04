@@ -1,11 +1,7 @@
-<div class="wrap800">
+<div>
 	<%= form_for([@project, @reply]) do |f| %>
 		<section class="upload-portfolio">
 			<%= render "replies/portfolio_upload_form", f: f %>
-			<br>
-			<p style="text-align: left;">
-				<button name="send" type="submit" class="button" value="1">All ready! Send my message</button> <span style="margin:0 .5em">or</span> <button type="submit">save for later</button>
-			</p>
 		</section>
 	<% end %>
 </div>

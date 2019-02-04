@@ -1,13 +1,9 @@
-<div class="max-w-md mx-auto">
-	<div class="w-full bg-grey-lighter mt-6 rounded">
-    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded" style="width: 66%">66%</div>
-  </div>
-
+<div class="max-w-lg mx-auto pt-6">
 	<%= form_for @user, url: update_freelancer_details_path, method: :put, id: 'new_user', class: 'form-focus w-full' do |f| %>
 		<%= render "registrations/freelancer_details_onboard", f: f %>
 		
-		<%= f.submit 'Save and continue', :class => "button mb-0", :style => "margin: 0;" %>
+		<%= f.submit 'Save and continue', :class => "button mb-0  font-display-label font-bold", :style => "margin: 0;" %>
 		
-		<p class="text-grey-dark text-xs italic mt-4">You can change this later.</p>
+		<p class="text-grey-darker text-base mt-4">You can change this later (when you become even more awesome).</p>
 	<% end %>
 </div>

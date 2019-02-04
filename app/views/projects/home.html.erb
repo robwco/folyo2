@@ -1,16 +1,14 @@
 <% content_for :title, "Folyo Hiring" %>
 
-<div class="background">
-</div>
-
-<div class="wrap">
 	<% if user_signed_in? %>
 		<%= render "layouts/top_menu" %>
+		
+		<div class="py-8 max-w-2xl mx-auto">
 	
 		<% if Project.owned_by(current_user).any? %>
-			<h2 class="action-header">Your projects</h2>
+			<h2>Your projects</h2>
 
-			<div class="project-list-wrap">
+			<div>
 				<% Project.owned_by(current_user).each do |project| %>
 					<%= render "projects/quick_view", project: project %>
 				<% end %>
@@ -21,20 +19,12 @@
 			</p>
 	
 		<% else %>
-			<h2 class="action-header">Projects for 
-	      <%= select_tag :category, options_from_collection_for_select(Category.order(:name), :id, :name, params[:category_id]), 
-	        prompt: "All skills", style: "font-size: 20px; vertical-align: 3px;", data: { category_filter: "true" } %>
-			</h2>
-			
+		
+			<h2 class="mt-8 pt-8 font-display text-grey-darkest mb-4">Jobs you've applied to...</h2>
 				<% if @projects.blank? %>
-					<p style="margin:3em 0 0;">There are no public projects at this time</p>
-
-					<p style="margin: 0 0 3em; text-align:center;">
-						<%= link_to "Create a project", new_project_path, :class => "button" %>
-					</p>
-				
+					<p>There are none yet.</p>				
 				<% else %>
-					<div  class="project-list-wrap">
+					<div>
 						<% @projects.each do |project| %>
 							<%= render "projects/quick_view", project: project %>
 						<% end %>
@@ -48,66 +38,9 @@
 		<% end %>
 	<% else %>
 		
-		<div class="wrap w700" style="text-align:center;">						
-			<p class="my-2">Folyo uses custom hiring software to help companies find the right person to hire. Want access? <a href="MAILTO:robert@folyo.me">Email me to learn more</a>.</p>
+		<div style="text-align:center;">						
+			<p class="mt-8 max-w-xl mx-auto">Folyo uses custom hiring software to help companies find the right person to hire. Want to learn more about it? <a href="MAILTO:robert@folyo.me">Send me an email</a>.</p>
 		</div>
-		
-		<% unless @offerings.this_month.blank? %>
-			<div class="featured-services" style="margin: 2em 0 0; box-sizing: border-box;">
-				<div class="featured-service-category">	
-					<% if @offerings.by_designers.this_month.present? %>
-						<h2 class="action-header">Recommended designers</h2>
-					<% end %>
-
-					<% @offerings.by_designers.this_month.each do |offering| %>
-						<a href="../offerings/<%= offering.id %>" class="freelancer">				
-							<div class="service-description-wrap">
-								<span class="service"><strong><%= offering.title %></strong></span><br>
-					
-								<%= image_tag offering.photo, :class => "photo" %><span class="name"><%= offering.name %></span>
-							</div>
-						</a>
-			    <% end %>
-				</div>
-	
-				<div class="featured-service-category">	
-					<% if @offerings.by_developers.this_month.present? %>
-						<h2 class="action-header">Recommended developers</h2>
-					<% end %>
-
-					<% @offerings.by_developers.this_month.each do |offering| %>
-						<a href="../offerings/<%= offering.id %>" class="freelancer">				
-							<div class="service-description-wrap">
-								<span class="service"><strong><%= offering.title %></strong></span><br>
-					
-								<%= image_tag offering.photo, :class => "photo" %><span class="name"><%= offering.name %></span>
-							</div>
-						</a>
-			    <% end %>
-				</div>
-			</div>
-		<% end %>
-		
-		<!--<% if @projects.this_month.blank? %>
-		<% else %>
-			<h2 class="action-header" style="margin-top: 0;">Live projects</h2>
-					
-			<div  class="project-list-wrap">
-				<% @projects.this_month.each do |project| %>
-					<%= render "projects/quick_view", project: project %>
-				<% end %>
-			</div>
-		<% end %>-->
-		
-<!--		<div style="text-align:center; margin: 0;">
-			<%= link_to "Submit a job", new_project_path, :class => "big button" %>
-		</div>
-		-->
 
 	<% end %>
-
-	<%= render "layouts/footer_menu" %>
-
-
-
 </div>

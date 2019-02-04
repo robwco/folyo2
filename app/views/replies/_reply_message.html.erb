@@ -1,19 +1,27 @@
-<h2 class="reply-box-header">
-		<%= image_tag @reply.user.photo.url(:medium), :style => "width:30px; border-radius: 30px; vertical-align:-8px; margin-right: .5em;" %> <%= @reply.user.name %>
-	
-	<small><span class="reply-box-message">Sent on <%= @reply.created_at.strftime("%b %d, %Y") %></span></small>
-</h2>
-	
-	<div style="padding: 1em 2em;" class="reply">
-		<p><%= h([@reply.biography].join("\n")).gsub("\n", "</p>").html_safe %>
-		
-		<p><%= h([@reply.message].join("\n")).gsub("\n", "</p>").html_safe %>
-		
-		<%= render "replies/portfolio_message" %>
-		
-		<p><%= h([@reply.next_steps].join("\n")).gsub("\n", "</p>").html_safe %>
-	
-		<% if allow_edit %>
-			<%= link_to "Edit your message", edit_reply_path(@reply), class: "message-preview-edit uppercase", :style => "text-transform: uppercase; font-size: 11px; font-weight: 600;" %>
-		<% end %>
+<div class="p-4">
+<div class="flex">
+	<div class="w-24 ml-8">
+		<%= image_tag @reply.user.photo.url(:medium), :class => "w-24 rounded-full border-4 border-white ml-8" %>
 	</div>
+
+	<div class="w-auto mt-6 flex-1 ml-8">
+		<p class="application-name">
+			<%= @reply.user.name %>
+		</p>
+		<p class="text-base -mt-1 ml-4 text-grey-dark">
+			Sent on <%= @reply.created_at.strftime("%b %d, %Y") %>
+		</p>
+	</div>
+</div>
+
+<div class="reply mx-8 mt-4 mb-8 block">
+	<p><%= sanitize @reply.biography %></p>
+	<p class="my-4"><%= sanitize @reply.message %></p>
+	<p class="my-4"><%= sanitize @reply.next_steps %></p>
+	
+			<%= render "replies/portfolio_message" %>
+	<% if allow_edit %>
+		<%= link_to "Edit your message", edit_reply_path(@reply), class: "message-preview-edit uppercase", :style => "text-transform: uppercase; font-size: 11px; font-weight: 600;" %>
+	<% end %>
+</div>
+</div>

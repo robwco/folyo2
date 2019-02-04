@@ -1,6 +1,7 @@
-<p class="text-grey-darker mt-6">Introduce yourself</p>
+<h1 class="text-grey-darkest mt-8 font-light font-display text-5xl mb-2">Howdy! Introduce yourself...</h1>
 
-<p class="text-grey-dark text-sm mb-4">Include a quick bio on what you do and something interesting about you.</p>
+<p class="text-grey-darker text-2xl mb-4">What do you do? What's something about you that's interesting?</p>
 
-<%= f.text_area :biography, placeholder: "I'm...", data: { max_characters: 200 }, :class => "w-full appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest"  %>
+<trix-editor input="user_biography"></trix-editor>
 
+<%= f.hidden_field :biography, placeholder: "I'm...", data: { max_characters: 200 } %>

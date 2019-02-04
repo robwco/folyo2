@@ -1,13 +1,13 @@
-<nav class="fixed select-none bg-white lg:flex lg:items-stretch w-full pin-t">
+<nav class="fixed select-none bg-white lg:flex lg:items-stretch w-full pin-t border-b-2 font-display-label">
   <div class="flex flex-no-shrink items-stretch">	
 		<% if admin_signed_in? %>
 			<%= link_to "Admin Home", admin_root_path, :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
 			
 		<% elsif user_signed_in? %>
-			<%= link_to "<i class='fa fa-home' aria-hidden='true'></i>".html_safe, url_for(root_path), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+			<%= link_to "<i class='fa fa-home text-grey-dark' aria-hidden='true'></i>".html_safe, url_for(root_path), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center" %>
 			
 		<% else %>
-			<%= link_to "<i class='fa fa-home' aria-hidden='true'></i>".html_safe, url_for(root_path), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
+			<%= link_to "<i class='fa fa-home text-grey-dark' aria-hidden='true'></i>".html_safe, url_for(root_path), :class => "flex-no-grow flex-no-shrink relative py-2 pl-4 leading-normal text-grey-darker no-underline flex items-center" %>
 		<% end %>
   </div>
 
@@ -21,9 +21,9 @@
 						<%= link_to "+ Project", new_project_path, :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
 					<% end %>
 					
-				<%= link_to "<i class='fa fa-envelope #{ "unread" if @unread_message_count > 0}' aria-hidden='true'></i>Inbox (#{@unread_message_count})".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>		
-				<%= link_to 'Profile', profile_path(current_user), :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
-				<%= link_to "Log out", destroy_user_session_path, method: :delete, :class=> "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter"%>
+				<%= link_to "<i class='fa fa-envelope text-grey-dark #{ "unread" if @unread_message_count > 0}' aria-hidden='true'></i>Inbox (#{@unread_message_count})".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil), :class=> "flex-no-grow flex-no-shrink relative py-4 px-4 leading-normal text-grey no-underline flex items-center text-base" %>		
+				<%= link_to 'Profile', profile_path(current_user), :class=> "flex-no-grow flex-no-shrink relative py-4 px-4 leading-normal text-grey no-underline flex items-center text-base" %>
+				<%= link_to "Log out", destroy_user_session_path, method: :delete, :class=> "flex-no-grow flex-no-shrink relative py-4 px-4 leading-normal text-grey no-underline flex items-center text-base" %>
 
 			<% else %>
 				<%= link_to 'Sign up', new_subscription_path, :class => "flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-grey-darker no-underline flex items-center hover:bg-grey-lighter" %>
