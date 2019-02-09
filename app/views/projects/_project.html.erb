@@ -3,10 +3,10 @@
 	<%= @project.title %>
 </h1>
 
-<div class="text-2xl text-grey-darker leading-normal border-b-2 pb-4">
+<div class="text-2xl text-grey-darker leading-normal">
 	<p class="my-4"><%= @project.long_description_html.html_safe %></p>
 
 	<p class="my-4"><%= @project.goals %></p>
-	
+
 	<p class="my-4">Budget: $<%= @project.budget %></p>
 </div>

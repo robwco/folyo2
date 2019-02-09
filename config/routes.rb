@@ -51,8 +51,8 @@ Rails.application.routes.draw do
 
   # Post a project marketing
   get "/choose-project-type" => "projects#portal"
-  
-  # New account differences 
+
+  # New account differences
   get "/pro-signup" => "subscriptions#new_pro"
   get "/account-type" => "subscriptions#new_account_type", as: :account_type
   put "/update-account-type/:type" => "subscriptions#update_account_type", as: :update_account_type
@@ -65,7 +65,7 @@ Rails.application.routes.draw do
   # Onboarding
   get "/tour/attract" => "tour#writing"
   get "/tour/great-responses" => "tour#responses"
-  
+
   # Testing Emails
   get "/test_emails" => "subscriptions#test_email"
   get "/send_emails" => "subscriptions#send_email"
@@ -100,16 +100,16 @@ Rails.application.routes.draw do
   # Sign in
   root "projects#home"
   get "/admins/welcome" => "admins#welcome", as: :admin_root
-  
-  devise_scope :user do 
+
+  devise_scope :user do
     match '/sessions/user', to: 'devise/sessions#create', via: :post
     get "/profile/:id" => "registrations#show", as: :profile
   end
-  
-  devise_scope :admin do 
+
+  devise_scope :admin do
       match '/sessions/admin', to: 'devise/sessions#create', via: :post
   end
-  
+
   get "admins/download_users" => "admins#download_all", via: :get, defaults: { format: :csv }
 
   resources :subscriptions

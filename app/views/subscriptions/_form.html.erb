@@ -11,12 +11,12 @@ $(function() {
       }
     });
     $('.account-type input[type=hidden]').val(selected_type);
-  } 
+  }
 
   $('.account-type').on('click', 'a', function() {
     if ($(this).is('.inactive')) {
       toggleAccountType($(this).data('account-type'));
-    } 
+    }
   });
 });
 </script>
@@ -29,7 +29,7 @@ $(function() {
 	}
 	.label-left.multiple {
 		margin-top: -15px;
-	}		
+	}
 	.input-right {
 		width:400px;
 	}
@@ -37,7 +37,7 @@ $(function() {
 		max-width: 100%;
 		margin: 0;
 	}
-	
+
 	.photo {
 		width: 0.1px;
 		height: 0.1px;
@@ -54,7 +54,7 @@ $(function() {
 		color: #555 !important;
 		box-shadow: 0 3px 0 0 #b64e54 !important;
   }
-	
+
 	.photo-label {
 	  display: inline-block;
 		font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !important;
@@ -69,7 +69,7 @@ $(function() {
 	  background: #FFF;
 		color: #4ea0c4;
 		transition: background 0.1s ease;
-		width: auto; 
+		width: auto;
 		margin: 0 auto;
 		border: 1px solid #bfbfbf;
 	}
@@ -78,11 +78,11 @@ $(function() {
 	.photo + label:hover {
 		background: #eee;
 	}
-	
+
 	.photo + label {
 		cursor: pointer; /* "hand" cursor */
 	}
-	
+
 	p.sign-up-label {
 		margin: .5em 0 .5em;
 		line-height: 1;
@@ -91,20 +91,19 @@ $(function() {
 </style>
 
 <%= form_for @user, url: subscriptions_path, html: { multipart: true, id: 'new_user', class: 'form-focus w-full max-w-sm' } do |f| %>
-
 	 <div class="flex flex-wrap -mx-3 mb-4">
 		  <div class="w-full px-3 pb-4">
 			  <label class="block uppercase tracking-wide text-grey-darker text-sm  mb-2 font-display-label font-bold" for="grid-photo">
 	        Photo
 	    	</label>
-				
+
 				<%= f.file_field :photo, :class => "photo", id: "photo", data: { preview_image_target: "photo-target" } %>
-				
+
 				<label for="photo" class="border-4 border-grey-light rounded-full w-16 align-middle block"><%= image_tag(f.object.photo.url(:medium), :class => "rounded-full w-16 align-middle", id: "photo-target") %></label>
-				
+
 				<%= form_error_for(@user, :photo) %>
 	  	</div>
-		
+
 	    <div class="w-full px-3 mb-6 md:mb-0">
 	      <label class="block uppercase tracking-wide text-grey-darker text-sm mb-2 font-display-label font-bold" for="grid-name">
 	        Full Name
@@ -112,7 +111,7 @@ $(function() {
 				<%= f.text_field :name, placeholder: 'Your name', :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-name"	%>
 				<%= form_error_for(@user, :name) %>
 	    </div>
-	
+
 	    <div class="w-full px-3">
 	      <label class="block uppercase tracking-wide text-grey-darker text-sm mb-2 font-display-label font-bold" for="grid-email">
 	        Email
@@ -121,50 +120,42 @@ $(function() {
 				<%= form_error_for(@user, :email) %>
 	    </div>
 	  </div>
-	
-	  <div class="flex flex-wrap -mx-3 mb-2">
 
+	  <div class="flex flex-wrap -mx-3 mb-2">
 	    <div class="w-full px-3">
 	      <label class="block uppercase tracking-wide text-grey-darker text-sm mb-2 font-display-label font-bold" for="grid-password">
 	        Password
 	      </label>
-	
+
 				<% if @validatable %>
 					<small><em>(<%= @minimum_password_length %> characters minimum)</em></small>
 				<% end %>
-				
+
 				<%= f.password_field :password, autocomplete: "off", placeholder: 'Create a password', :class => "appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-2 focus:border-grey focus:text-grey-darkest", :id => "grid-password" %>
-				
+
 				<%= form_error_for(@user, :password) %>
-				
+
 				<p class="text-sm">We'll save your info so you can apply more quickly in the future.</p>
 	    </div>
 	  </div>
-	
-<div class="flex flex-wrap -mx-3 mb-2 my-0">
-	<div class="w-full px-3">		
-		<% if params[:project_id] %>
-			<a href="#">
-				<%= f.submit "Start application", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, :class => "mb-0 font-display-label font-bold text-2xl" %>
-			</a>	
-		
-			<p class="text-grey-darker text-base mb-6">or <a href="/users/sign_in" class="text-grey-dark">sign in to use a past application</a></p>
-		<% else %>
-			<a href="#">
-				<%= f.submit "Create an account", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, :class => "mb-0 font-display-label font-bold text-2xl" %>
-			</a>	
-		
-			<p class="text-grey-darker text-base mb-6">or <a href="/users/sign_in" class="text-grey-dark">sign in if you already have an account</a></p>
-		<% end %>
-		
-		<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
-		<%= f.hidden_field :account_type %>
-		<%= f.hidden_field :biography %>
-		
-	</div>
-</div>		
 
-	</div>
+  <div class="flex flex-wrap -mx-3 mb-2 my-0">
+  	<div class="w-full px-3">
+  		<% if params[:project_id] %>
+  			<a href="#">
+  				<%= f.submit "Start application", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, :class => "mb-0 font-display-label font-bold text-2xl" %>
+  			</a>
+  		<% else %>
+  			<a href="#">
+  				<%= f.submit "Create an account", id: 'form-submit', data: { :"drip-attribute" => 'sign-up-button' }, :class => "mb-0 font-display-label font-bold text-2xl" %>
+  			</a>
+
+  			<p class="text-grey-darker text-base mb-6">or <a href="/users/sign_in" class="text-grey-dark">sign in if you already have an account</a></p>
+  		<% end %>
+
+  		<%= hidden_field_tag "plan", @plan ? @plan.id : "" %>
+  		<%= f.hidden_field :account_type %>
+  		<%= f.hidden_field :biography %>
+  	</div>
+  </div>
 <% end %>
-	
-

@@ -1,27 +1,26 @@
 <% if admin_signed_in? %>
   <div class="admin-action" style="margin: 0 auto; border-radius: 8px; padding: .5em; box-sizing: border-box; text-align:center;">
-	
     <% if @project.under_review? %>
       <h2 style="margin: 0; padding: 0;">Admin Review:</h2>
 
-				<%= link_to "Accept this project", admin_approve_project_path(@project), method: :put, :class => "button" %> 
-				<%= link_to "Reject this project", admin_reject_project_path(@project), method: :put, :class => "button danger" %> 
+				<%= link_to "Accept this project", admin_approve_project_path(@project), method: :put, :class => "button" %>
+				<%= link_to "Reject this project", admin_reject_project_path(@project), method: :put, :class => "button danger" %>
 				<%= link_to "Delete this project", admin_destroy_project_path(@project), method: :put, :class => "button grey" %>
     <% end %>
   </div>
 <% end %>
 
 <% if user_signed_in? && current_user.can_see_project_replies?(@project) %>
-	<%= render "replies/client_listing" %>	
-<% else %>	
-	
+	<%= render "replies/client_listing" %>
+<% else %>
+
 	<%= link_to "home", root_url %>
-	
+
 	<div class="max-w-2xl mx-auto pt-6">
     <%= render 'projects/project' %>
   </div>
 
-	<div class="max-w-2xl mx-auto pt-6">
+	<div class="max-w-2xl mx-auto">
     <% if @project.allow_replies_from?(current_user) %>
       <% if user_signed_in? %>
 		    <% if @project.reply_from?(current_user) %>
@@ -29,27 +28,39 @@
 				<% else %>
 					<p class="text-grey-dark">Almost done! Finish your application...</p>
 		    <% end %>
-		
+
 				<div class="max-w-2xl mx-auto pt-6">
           <div class="rounded-lg shadow-lg mb-8">
             <% if @project.reply_from?(current_user) %>
-              <%= render "replies/reply" %>	
+              <%= render "replies/reply" %>
             <% else %>
               <%= render "replies/form" %>
           		<% end %>
         	</div>
       <% else %>
-        <%= link_to 'Apply', new_subscription_path(project_id: @project.id), class: "button" %>
+        <h2 class="mt-8 text-grey-darkest font-display text-3xl">
+          Want to apply?
+        </h2>
+
+        <div class="mb-4">
+          <%= link_to 'Use past application', new_user_session_path(project_id: @project.id), class: "button" %>
+
+          <%= link_to 'Create new account', new_subscription_path(project_id: @project.id), class: "button" %>
+        </div>
+
+        <div class="border-t-2 max-w-2xl mx-auto py-6 text-base">
+          Powered by <%= link_to "Folyo's custom application software", root_url, :class => "text-grey-dark" %>
+        </div>
       <% end %>
 
       <% if user_signed_in? && current_user.can_see_messages?(@project.reply_from(current_user)) %>
-        
+
         <%= render "messages/listing", reply: @project.reply_from(current_user), extra_padding: true %>
 
         <% if current_user.can_send_message?(@reply) %>
-        
+
           <div class="wrap800 decision-border">
-            
+
             <div class="wrap w750">
               <%= render "messages/send", name: message_recipient(@reply) %>
             </div>

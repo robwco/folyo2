@@ -23,10 +23,10 @@
 	cursor: pointer;
   background: #8c6eb9;
 	transition: background 0.1s ease;
-	width: auto; 
-	display: inline-block; 
-	text-align:center; 
-	padding: .5em 1em; 
+	width: auto;
+	display: inline-block;
+	text-align:center;
+	padding: .5em 1em;
 	margin: 0 auto;
 }
 
@@ -72,14 +72,14 @@ $(function() {
 
 
 <div id="portfolio-selection" class="bg-grey -mb-4 p-8 rounded-t-lg" style="background: #5d666d url(/assets/upload-header-icons.png) repeat-x center bottom;">
-	
-	<p class="mt-8 font-display-label text-white text-center">Add a portfolio image to your message:</p>
-	
+
+	<p class="mt-8 font-display-label text-white text-center">Add a cover image to your application:</p>
+
 	<div id="" class="mt-2 text-white text-center text-base">About 1120&times;300 is optimal. We'll resize automatically if it's any wider.</div>
-	
+
 	<div style="margin: 1em 0; width:100%; text-align:center;">
 		<%= f.file_field :portfolio_image, :class => "portfolio font-display-label", :id => "portfolio", style: "width:170px; text-align: center; margin: 0 auto; display: block; cursor: pointer !important;" %>
-	
+
 		<label for="portfolio">Upload a portfolio piece...</label>
 	</div>
 </div>
@@ -88,12 +88,10 @@ $(function() {
 <div id="portfolio-display" style="display:none;">
 	<%= image_tag 'portfolios-folyo.png', id: "portfolio-image", :style => "width:100%; border-radius:5px; border: 1px solid #dee5e9;" %>
 	<p style="text-align:center; margin: 0;"><a href="javascript:" id="remove-portfolio" style="color: #db8688; font-size: 14px; text-decoration: none; margin: 0 0 1.5em;"><i class="fa fa-trash-o" aria-hidden="true" style=" margin-right:.5em;"></i>Remove portfolio</a></p>
-	
+
 	<p class="question-header" style="margin:1em 0 .5em 0;"><strong>Why did you pick this portfolio piece?</strong></p>
-	
+
 	<div style="font-size: 14px; width: 170px; float:right; color:#7c8d99;">Tip: Try answering how this work shows you're perfect for the project.</div>
 
 	<%= f.text_area :portfolio_message, placeholder: "On this project...", data: { max_characters: 300 } %>
 </div>
-
-

@@ -1,9 +1,88 @@
-<div class="max-w-lg mx-auto pt-6">
+<div class="w-full h-screen m-0 p-4">
+
+	<div class="max-w-lg mx-auto pt-6 rounded-lg bg-white">
+		<div class="max-w-full mx-auto my-2 pb-4">
+			<div class="flex pb-3">
+				<div class="flex-1">
+				</div>
+
+				<div class="flex-1">
+					<div class="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+						<span class="text-white text-center w-full"><i class="fa fa-check w-full fill-current white"></i></span>
+					</div>
+				</div>
+
+
+				<div class="w-1/6 align-center items-center align-middle content-center flex">
+					<div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+					 	<div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded " style="width: 70%"></div>
+					</div>
+				</div>
+
+
+				<div class="flex-1">
+					<div class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+						<span class="text-grey-darker text-center w-full">2</span>
+					</div>
+				</div>
+
+				<div class="w-1/6 align-center items-center align-middle content-center flex">
+					<div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+					 	<div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded " style="width: 0%"></div>
+					</div>
+				</div>
+
+				<div class="flex-1">
+					<div class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+						<span class="text-grey-darker text-center w-full">3</span>
+					</div>
+				</div>
+
+
+				<div class="w-1/6 align-center items-center align-middle content-center flex">
+					<div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+					 	<div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded " style="width: 0%"></div>
+					</div>
+				</div>
+
+
+				<div class="flex-1">
+					<div class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+						<span class="text-grey-darker text-center w-full">4</span>
+					</div>
+				</div>
+
+
+				<div class="flex-1">
+				</div>
+			</div>
+
+			<div class="flex text-xs content-center text-center">
+				<div class="w-1/4">
+					Start application
+				</div>
+
+				<div class="w-1/4">
+					Create a bio
+				</div>
+
+				<div class="w-1/4">
+					Application details
+				</div>
+
+				<div class="w-1/4">
+					Confirmation
+				</div>
+			</div>
+		</div>
+
 	<%= form_for @user, url: update_freelancer_details_path, method: :put, id: 'new_user', class: 'form-focus w-full' do |f| %>
 		<%= render "registrations/freelancer_details_onboard", f: f %>
-		
+
 		<%= f.submit 'Save and continue', :class => "button mb-0  font-display-label font-bold", :style => "margin: 0;" %>
-		
-		<p class="text-grey-darker text-base mt-4">You can change this later (when you become even more awesome).</p>
+
+		<p class="text-grey-darker text-base mt-4">You can change this later.</p>
 	<% end %>
+</div>
+
 </div>

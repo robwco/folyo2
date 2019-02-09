@@ -1,16 +1,18 @@
-<div class="max-w-2xl mx-auto py-6">
-	<% if params[:project_id] %>
+<div class="flex w-full">
+		<div class="w-2/3 h-auto p-8">
+			<% if params[:project_id] %>
+				<%= render 'projects/project' %>
+			<% else %>
+				No project put something else
+			<% end %>
+			<p class="text-base">Powered by <%= link_to "Folyo's custom application software", root_url, :class => "text-grey-dark" %></p>
+		</div>
 
-	<p class="text-sm text-grey-dark pb-2 text-center">	
-    <%= render 'projects/project' %>
+	<div class="w-1/3 h-auto p-8 shadow-lg">
 			<h2 class="my-8 text-grey-darkest font-display text-3xl">
-				Apply to this job
+				To apply, create an account
 			</h2>
-		<% else %>		
-			<h2 class="my-8 text-grey-darkest font-display text-3xl">
-				Create an account
-			</h2>
-		<% end %>
 
-	<%= render "form" %>
+			<%= render "form" %>
+	</div>
 </div>

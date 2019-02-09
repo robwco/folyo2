@@ -2,9 +2,9 @@
 
 	<% if user_signed_in? %>
 		<%= render "layouts/top_menu" %>
-		
+
 		<div class="py-8 max-w-2xl mx-auto">
-	
+
 		<% if Project.owned_by(current_user).any? %>
 			<h2>Your projects</h2>
 
@@ -17,29 +17,31 @@
 			<p style="text-align:center; padding-top: 1em; margin: 0;">Got more work? Put it on Folyo!<br><br>
 	      <%= link_to "+ Project".html_safe, new_project_path, class: "button" %>
 			</p>
-	
+
 		<% else %>
-		
+
 			<h2 class="mt-8 pt-8 font-display text-grey-darkest mb-4">Jobs you've applied to...</h2>
 				<% if @projects.blank? %>
-					<p>There are none yet.</p>				
+					<p>There are none yet.</p>
 				<% else %>
 					<div>
 						<% @projects.each do |project| %>
 							<%= render "projects/quick_view", project: project %>
 						<% end %>
 					</div>
-					
+
 	        <div style="text-align:center">
 	          <%= will_paginate @projects, previous_label: '<i class="fa fa-long-arrow-left" aria-hidden="true"></i>Back'.html_safe, next_label: 'Forward<i class="fa fa-long-arrow-right" aria-hidden="true"></i>'.html_safe %>
 	        </div>
-				<% end %>		
+				<% end %>
 			</div>
 		<% end %>
 	<% else %>
-		
-		<div style="text-align:center;">						
-			<p class="mt-8 max-w-xl mx-auto">Folyo uses custom hiring software to help companies find the right person to hire. Want to learn more about it? <a href="MAILTO:robert@folyo.me">Send me an email</a>.</p>
+
+		<div style="text-align:center;">
+			<p class="mt-8 max-w-xl mx-auto">Folyo uses custom hiring software to help companies find the right person to hire and meet applicants to the community.</p>
+
+			<p class="mt-4">Want to learn more about it? <a href="MAILTO:robert@folyo.me">Send me an email</a>.</p>
 		</div>
 
 	<% end %>
