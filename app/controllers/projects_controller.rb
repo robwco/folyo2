@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
     @rss = RSS::Parser.parse('https://clientgiant.us/feed', false)
     @offerings = Offering.all
   end
-  
+
   def thank_you
   end
 
@@ -22,14 +22,14 @@ class ProjectsController < ApplicationController
 
   def yours
   end
-  
+
   def portal
   end
 
-  
+
   def publish
   end
-  
+
   def inbox
     if params[:archived]
       @messages = Message.sent_to(current_user).read
@@ -42,8 +42,8 @@ class ProjectsController < ApplicationController
     @all_messages = @messages + @replies
     @all_messages.sort_by(&:created_at)
   end
-  
-  
+
+
   def index
     @projects = Project.all
     respond_with(@projects)
@@ -82,8 +82,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { 
-          redirect_to preview_project_path(@project) 
+        format.html {
+          redirect_to preview_project_path(@project)
         }
       else
         flash[:error] = "Please correct the errors below."
@@ -104,25 +104,25 @@ class ProjectsController < ApplicationController
       @project.publish
       Delayed::Job.enqueue NewProjectJob.new(@project.id)
 
-      redirect_to thank_you_project_path(@project), notice: "Your project was posted!"	
+      redirect_to thank_you_project_path(@project), notice: "Your project was posted!"
     else
       format.html { render :preview, error: "Please correct the errors below." }
     end
   end
 
   def post
-    @project.review!
-    redirect_to thank_you_project_path(@project), notice: "Your project was posted! A Folyo admin will review it for approval"
+    @project.publish
+    redirect_to thank_you_project_path(@project), notice: "Here's your project"
   end
 
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { 
+        format.html {
           if @project.published?
-            redirect_to thank_you_project_path(@project), notice: 'Project was saved.' 
+            redirect_to thank_you_project_path(@project), notice: 'Project was saved.'
           else
-            redirect_to preview_project_path(@project) 
+            redirect_to preview_project_path(@project)
           end
         }
       else
@@ -133,7 +133,7 @@ class ProjectsController < ApplicationController
 
   def update_status
     respond_to do |format|
-      
+
       project_status = project_status_params[:status]
       if project_status == "completed"
         @project.complete
@@ -144,15 +144,15 @@ class ProjectsController < ApplicationController
       end
 
       if @project.save
-        format.html { 
-          redirect_to @project, notice: 'Project status was updated!.' 
+        format.html {
+          redirect_to @project, notice: 'Project status was updated!.'
         }
         format.js {
           render plain: "Project status was updated!", status: :ok
         }
       else
         format.html { render :new, notice: "Please correct the errors below." }
-        format.js { 
+        format.js {
           puts @project.errors.inspect
           render plain: "An error occurred."
         }
@@ -164,7 +164,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to home_projects_path, notice: "Your project was deleted."
   end
-  
+
   def admin_approve
     @project.approve!
     @project.publish
@@ -181,7 +181,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to admin_root_path, notice: "The project was deleted."
   end
-  
+
 
   private
     def set_project
@@ -197,7 +197,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:title, :long_description, :goals, :deadline, :budget, { category_ids: [] } )
+      params.require(:project).permit(:title, :long_description)
     end
 
     def project_status_params

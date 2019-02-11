@@ -1,20 +1,13 @@
-<div class="wrap w860 nav-border">
-	<%= render "layouts/top_menu" %>
+<div>
+	<%= render 'projects/project' %>
+
+	<p>
+		<%= link_to 'Edit your project', edit_project_path(@project)  %>
+	</p>
+
+	<p>
+		Public url:
+		
+		<input value="<%= project_path %>"></input>
+	</p>
 </div>
-
-<div class="wrap w860">
-	<h2 class="notice-header"><%= image_tag 'upsell.png', :style => "width: 25px; vertical-align: -5px;margin-right: .15em;" %> Thank you for submitting your project! Here's what it looks like:</h2>
-
-	<div class="wrap w800">
-		<%= render 'projects/project' %>
-	
-		<p class="decision">
-			<%= link_to 'Looks great! Go to dashboard'.html_safe, root_path,  :class => "button", :style => "float: left;" %>
-
-		  <%= link_to 'Edit your project', edit_project_path(@project), :class => "button danger", :style => "float:right;"  %>
-		</p>
-	</div>
-</div>
-
-
-

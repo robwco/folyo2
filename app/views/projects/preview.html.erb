@@ -1,3 +1,6 @@
-<div class="wrap w800" style="margin: 0 auto 5em;">
-  <%= render "projects/project_upsell" %>	
+<div>
+  <p>Preview:</p>
+  <h1><%= sanitize @project.title %></h1>
+  <p><%= sanitize @project.long_description %></p>
+  <p><%= link_to "Publish", post_project_path(@project), method: :put %></p>
 </div>

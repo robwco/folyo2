@@ -9,10 +9,10 @@ class Project < ActiveRecord::Base
 
 	before_save :parse_long_description
 
-	validates :title, presence: { message: "'What kind of help do you need?' is required." }
-	validates :budget, presence: { message: "'What type of budget do you have for this project?' is required." }
+	validates :title, presence: { message: "A title is required." }
+	validates :long_description, presence: { message: "A project description is required." }
 
-	scope :under_review, -> { where(status: :under_review, archived: false) }
+	scope :under_review, -> { where(status: :under_review, archived: true) }
 	scope :published, -> { where(published: true, archived: false) }
 	scope :drafted, -> { where(published: false) }
 	scope :recent, -> (limit_to = nil) { order(created_at: :desc).limit(limit_to ? limit_to : 10) }
@@ -56,9 +56,9 @@ class Project < ActiveRecord::Base
 
 	def reply_from(user)
 		return nil if user.nil?
-    
+
     return replies.detect { |reply| reply.user_id == user.id } if replies.loaded?
-		  
+
     self.replies.where(user_id: user.id).first
 	end
 
@@ -97,7 +97,7 @@ class Project < ActiveRecord::Base
   def owned_by?(check_user)
     self.user == check_user
   end
-  
+
 private
   def archive_project
     self.archived = true

@@ -1,14 +1,5 @@
-<div class="wrap w860 nav-border">
-	<%= render "layouts/top_menu" %>
-</div>
-
-
-<div style="margin: 0 auto; width: 810px;">	
-	<h1 style="margin: 1em 0 0; text-align:center;">Welcome back! Edit your project:</h1>
-
+<div>
 	<%= render 'form' %>
-	
-	<p style="text-align:right;">
-		<%= link_to 'Delete this project', @project, method: :delete, :class => "button danger", :style => "float: right;", data: { confirm: "Are you sure you want to delete this project? You won't be able to undo this." }  %>
-	</p>
+
+	<%= link_to 'Delete this project', @project, method: :delete, data: { confirm: "Are you sure you want to delete this project? You won't be able to undo this." }  %>
 </div>
