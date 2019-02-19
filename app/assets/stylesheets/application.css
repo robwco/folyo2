@@ -14,4 +14,5 @@
 *= require trix
 *= require_self
 *= require style
+*= require jquery-ui
 */

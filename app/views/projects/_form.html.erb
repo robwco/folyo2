@@ -1,73 +1,30 @@
 <%= form_for(@project) do |f| %>
-
-<% if admin_signed_in? %>
-  <h2 class="action-header">Hello, Admin! Assign this project:</h2>
-
-  <div class="form-wrap">
-    <table style="width:100%;">
-      <tr>
-        <td class="assign-left" style="display: table-cell; vertical-align: top;">
-          <p class="question-header"><strong>Name</strong></p>
-
-          <%= f.text_field :title, placeholder: 'Jason Fried'	%>
-        </td>
-
-        <td class="assign-left" style="display: table-cell; vertical-align: top;">
-          <p class="question-header"><strong>Organization name</strong></p>
-
-          <%= f.text_field :title, placeholder: 'Basecamp'	%>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="assign-left" style="display: table-cell; vertical-align: top;">
-          <p class="question-header"><strong>Email</strong></p>
-
-          <%= f.text_field :title, placeholder: 'jason@basecamp.com'	%>
-        </td>
-
-        <td class="assign-left" style="display: table-cell; vertical-align: top;">
-          <p class="question-header"><strong>Website</strong></p>
-
-          <%= f.text_field :title, placeholder: 'http://basecamp.com'	%>
-        </td>
-      </tr>
-
-      <tr>
-        <td class="assign-left" style="display: table-cell; vertical-align: top;">
-          <p class="question-header"><strong>Profile picture</strong></p>
-
-          <%= image_tag 'default-avatar.png', :class => "profile-photo", :style => "width:50px; height: 50px; margin: 0 !important;" %><br>
-
-          <%= f.file_field :photo, data: { preview_image_target: "photo-target" }, :style => "width: 200px; margin: 0 0 1em;"	%>
-        </td>
-
-        <td class="assign-left" style="display: table-cell; vertical-align: top;">
-          <p class="question-header"><strong>Company logo</strong></p>
-
-          <%= image_tag 'company-logo-default.png', :class => "profile-photo", :style => "width:50px; height: 50px; margin: 0 !important; border-radius: 5px;" %><br>
-
-          <%= f.file_field :photo, data: { preview_image_target: "photo-target" }, :style => "width: 200px; margin: 0 0 1em;"	%>
-        </td>
-      </tr>
-    </table>
+  <div class="pin-t absolute bg-white pin-r w-full shadow flex items-stretch justify-end">
+    <div>
+      <%= link_to root_url %>
+    </div>
+    <div class="m-0 p-0">
+      <%= f.submit(:class => "text-lg mr-4 my-4 bg-white border-l-2 px-6 hover:cursor-pointer") %>
+    </div>
   </div>
-<% end %>
 
-<div class="px-2">
-  <trix-editor input="project_title" value="Project summary..." placeholder="Project summary..." class="trix-title text-5xl border-none p-0" autofocus="true"></trix-editor>
-  <%= f.hidden_field :title %>
+  <div class="pt-8 px-2 text-2xl">
+    <div class="project-title">
+      <trix-editor autofocus class="w-full trix-project-title text-5xl text-grey-darkest font-display font-light" input="project_title" placeholder="Untitled"></trix-editor>
+      <%= f.hidden_field :title  %>
+    </div>
 
-  <trix-editor class="trix-description" input="project_long_description" placeholder="Project description..."></trix-editor>
-  <%= f.hidden_field :long_description %>
-</div>
+    <div class="project-description">
+      <trix-editor class="trix-description" input="project_long_description" placeholder="Project description..."></trix-editor>
+      <%= f.hidden_field :long_description %>
+    </div>
 
-<% if @project.errors.any? %>
-  <% @project.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-<% end %>
+    <% if @project.errors.any? %>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
 
-<%= f.submit %>
 
+  </div>
 <% end %>

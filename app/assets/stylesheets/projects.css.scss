@@ -2,6 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.project-title trix-toolbar {
+	display:none;
+}
+
+.project-title trix-editor {
+	border: 0;
+	padding: 0;
+	min-height: 2em;
+	margin: 0;
+
+}
+
+
+.project-description trix-editor {
+	border:0;
+	padding: 0;
+	margin: 0;
+
+}
+
+.example-two:focus::-webkit-input-placeholder {
+  transition: text-indent 0.5s 0.5s ease;
+  text-indent: -100%;
+  opacity: 1;
+}
+
+
 .featured-services {
 	padding: 0 0 2em;
 }
@@ -13,17 +40,17 @@
 
 .featured-services h2 + a.freelancer {
 margin-top: 1em;
-}	
+}
 
 a.freelancer:last-child {
 	border-bottom: none;
 }
-	
+
 a.freelancer {
-	border-bottom: 1px solid #dee5e9; 
-	display: inline-block; 
-	margin:0; 
-	box-sizing: border-box; 
+	border-bottom: 1px solid #dee5e9;
+	display: inline-block;
+	margin:0;
+	box-sizing: border-box;
 	width: 100%;
 	background-color: #FFF;
 	text-decoration: none;
@@ -39,8 +66,8 @@ a.freelancer strong {
 }
 
 a.freelancer img.photo {
-	width: 1.25em; 
-	height: 1.25em; 
+	width: 1.25em;
+	height: 1.25em;
 	border-radius: 1.25em;
 	margin: 0 .5em 0 .25em;
 }
@@ -73,7 +100,7 @@ a.freelancer .service-description-wrap {
 	width: 100%;
 	display: table;
 	padding: 0;
-	
+
 }
 
  a.freelancer .service, a.freelancer .price {

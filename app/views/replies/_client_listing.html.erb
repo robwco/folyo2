@@ -1,57 +1,28 @@
-<div class="wrap w860">	
-	<div class="project-listing">
-		<div class="client-profile">
-			
-			<div class="client-info-wrap">		
-				<p style="margin:1em 0 0;"><small><strong>Update project status</strong></small></p>
-			
-				<%= form_for(@project, url: update_status_project_path(@project), method: :put, remote: true,) do |f| %>
-      		<%= f.select :status, options_for_select(Project.statuses_with_labels, @project.status), {}, { style: "font-size: 16px;", data: { status_update: true } } %>
-      	<% end %>
 
-				<p style="line-height: 1;"><small>To stop receiving new replies change status to 'completed'</small></p>
+
+<div class="max-w-xl mt-8 pt-8 mx-auto pb-8">
+		<h1 class="font-display"><%= sanitize @project.title %></h1>
+		<p><%= link_to "Edit project description", edit_project_path %></p>
+
+		<h2 class="w-full border-t-2 border-b-2 px-2 py-2 mt-8 text-grey-darker">Replies</h2>
+		<% if @project.replies.empty? %>
+			<div class="w-full rounded-lg bg-grey-lighter p-8 my-4">
+				<p>
+					No replies yet
+				</p>
 			</div>
-	
-		</div>
-				
-		<div class="info" style="max-width: 550px;">
-			<h2 style="margin-bottom: .25em;"><%= truncate @project.title, length: 100 %> <%= "(draft)" unless @project.published? %></h2>
-			
-			<%= truncate @project.goals, length: 120 %> <%= "(draft)" unless @project.published? %><br>
-
-			<small>Project posted <%= @project.created_at.strftime("%b %_d") %> <%= link_to 'Edit project', edit_project_path, :class => "button small grey", :style => "margin-left: .5em;" %></small>
-		</div>
-	</div>
-</div>
-	
-<div class="wrap w860">
-	<h2 class="action-header">
-		Replies
-	</h2>
-</div>
-
-<% if @project.replies.empty? %>
-	<div class="wrap w860">
-		<p style="text-align:center; padding-top: 2em;">
-			No replies yet. Share your project and get replies!</p>
-		
-			<p style="text-align:center; width:auto !important; margin: 0 auto;">
-				<%= render "replies/share_project" %>
-			</p>
-	</div>
-<% elsif @project.replies.unarchived.empty? %>
-	<div class="wrap w860">
-		<p style="text-align:center; padding-top: 2em;">
-			You archived all replies for this project. <%= link_to "See old messages".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil) %></p>
-			<p style="text-align:center;">
-			<%= link_to 'Post a new project', new_project_path, :class => "button" %>
-		</p>
-	</div>	
-<% else %>
-	<div class="project-list-wrap inbox">
-		<% @project.replies.unarchived.order({has_portfolio: :desc}, :created_at).each do |reply| %>
-			<%= render "replies/client_reply_view", reply: reply %>
+		<% elsif @project.replies.unarchived.empty? %>
+			<div>
+				<p>
+					You've archived all replies for this project. <%= link_to "See old messages".html_safe, inbox_projects_path(archived: @unread_message_count.zero? || nil) %>
+				</p>
+			</div>
+		<% else %>
+			<div id="replies" class="list-group">				
+				<% @project.replies.unarchived.each do |reply| %>
+					<%= render "replies/client_reply_view", reply: reply %>
+				<% end %>
+			</div>
 		<% end %>
-	</div>
-<% end %>
 
+</div>

@@ -38,7 +38,8 @@ gem 'autosize-rails'
 gem 'wicked'
 gem 'airbrake', '~> 5.4'
 gem 'trix'
-
+gem 'acts_as_list'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'stripe-ruby-mock'

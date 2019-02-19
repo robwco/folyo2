@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
   self.per_page = 10
 
   aasm(:status) do
-    state :drafted, initial: true
+    state :drafted, initial: false
     state :under_review
     state :seeking_freelancer
     state :accepted

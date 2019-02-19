@@ -1,3 +1,5 @@
+<%= render "layouts/top_menu" %>
+
 <% if admin_signed_in? %>
   <div class="admin-action" style="margin: 0 auto; border-radius: 8px; padding: .5em; box-sizing: border-box; text-align:center;">
     <% if @project.under_review? %>

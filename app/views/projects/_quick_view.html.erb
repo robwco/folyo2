@@ -8,25 +8,20 @@
     <% end %>
 
 	</div>
-	
-	<div class="flex-1 leading-tight">		
+
+	<div class="flex-1 leading-tight">
 		<%= '<span class="pro-badge" style="margin-right:.75em;">PRO</span>'.html_safe if project.allow_portfolio_replies? %>
-		<a href="<%= (project.published? || admin_signed_in?) ? url_for(project) : edit_project_path(project) %>" class="title my-0"><%= truncate project.title, length: 55 %> <%= "(draft)" unless (project.published? || admin_signed_in?) %>
+		<a href="<%= (project.published? || admin_signed_in?) ? url_for(project) : edit_project_path(project) %>" class="title my-0"><%= sanitize project.title, length: 55 %> <%= "(draft)" unless (project.published? || admin_signed_in?) %>
 		</a>
 
 		<p class="text-xl mt-2 leading-normal text-grey-dark">
-			<% if project.goals.present? %>
-				<%= truncate project.goals, length: 100 %>
-			<% else %>
-				<%= truncate project.long_description, length: 100 %>
-			<% end %>
-			
+
 			<% if project.reply_from?(current_user) %>
 				<span class="bg-grey-light status inline rounded text-center p-1 font-display-label text-xs" style="color:#7b8d99;">
 						<i class="fa fa-check" aria-hidden="true" style="margin-right: .25em; color:#7b8d99;"></i> Applied
 				</span>
 			<% end %>
-			
+
 			<% if user_signed_in? && project.owned_by?(current_user) %>
 				<span class="bg-grey-light status inline rounded text-center p-1 font-display-label text-xs" style="color:#7b8d99;">
 					<%= project.replies.unarchived.count %> Applications
@@ -35,10 +30,3 @@
 		</p>
 	</div>
 </div>
-		
-
-
-
-
-
-	
